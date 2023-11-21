@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  identifier:
+    image: mu-identifier:none
+  dispatcher:
+    platform: linux/amd64
+  database:
+    image: mu-authorization:personal
+  virtuoso:
+    platform: linux/amd64
+  resource:
+    platform: linux/amd64
+  migrations:
+    platform: linux/amd64

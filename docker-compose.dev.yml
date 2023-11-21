@@ -16,10 +16,6 @@ services:
       EMBER_FEATURE_WORSHIP_MINISTER_MANAGEMENT_ENABLED: "true"
       EMBER_WORSHIP_DECISIONS_DATABASE_URL: "https://dev.databankerediensten.lokaalbestuur.lblod.info"
       EMBER_WORSHIP_ORGANISATIONS_DATABASE_URL: "https://dev.organisaties.lokaalbestuur.lblod.info"
-  dashboard:
-    restart: "no"
-  vendor-management:
-    restart: "no"
   identifier:
     ports:
       - "90:80"
@@ -43,116 +39,21 @@ services:
   login:
     restart: "no"
   validation:
-    entrypoint: ["echo", "Service disabled"] # Note: this probably go in the future
+    entrypoint: [ "echo", "Service disabled" ] # Note: this probably go in the future
     restart: "no"
   file:
-    restart: "no"
-  create-bbcdr:
-    restart: "no"
-  package-bbcdr:
-    restart: "no"
-  deliver-bbcdr:
-    restart: "no"
-  dbcleanup:
     restart: "no"
   filehost:
     restart: "no"
   sink:
     restart: "no"
-  berichtencentrum-email-notification:
-    restart: "no"
-  submission-email-notification:
-    restart: "no"
-  berichtencentrum-sync-with-kalliope:
-    restart: "no"
-  deliver-email-service:
-    restart: "no"
-  download-url:
-    restart: "no"
-  adressenregister:
-    restart: "no"
-  report-generation:
-    restart: "no"
-  automatic-submission:
-    restart: "no"
-  import-submission:
-    restart: "no"
-  enrich-submission:
-    restart: "no"
-  validate-submission:
-    restart: "no"
-  toezicht-flattened-form-data-generator:
-    restart: "no"
-  export-submissions:
-    restart: "no"
-  clean-up-submission:
-    restart: "no"
   person-uri-for-social-security-number:
     restart: "no"
-  sync-with-kalliope-error-notification:
-    restart: "no"
   mandataris-archive:
-    restart: "no"
-  subsidy-applications-management:
-    environment:
-      VERSIONED_CONFIGURATION_WATCHER: null
-    restart: "no"
-  lpdc-ldes-consumer:
-    restart: "no"
-  lpdc-management:
-    restart: "no"
-  lpdc-publish:
-    restart: "no"
-  berichtencentrum-warning:
-    environment:
-      EMAIL_FROM: "Loket Local <loket-development@redpencil.io>"
-      EMAIL_TO: "loket-development@redpencil.io"
-    restart: "no"
-  download-url-warning:
-    environment:
-      EMAIL_FROM: "Loket Local <loket-development@redpencil.io>"
-      EMAIL_TO: "loket-development@redpencil.io"
-    restart: "no"
-  case-number-generator:
-    restart: "no"
-  subsidy-application-flow-management:
     restart: "no"
   eredienst-mandatarissen-consumer:
     restart: "no"
   dispatcher-worship-mandates:
     restart: "no"
-  publication-triplestore:
-    restart: "no"
-    ports:
-      - "8891:8890"
-  delta-producer-report-generator:
-    restart: "no"
-  delta-producer-dump-file-publisher:
-    restart: "no"
-  delta-producer-publication-graph-maintainer-leidinggevenden:
-    restart: "no"
-  delta-producer-publication-graph-maintainer-mandatarissen:
-    restart: "no"
-  delta-producer-publication-graph-maintainer:
-    restart: "no"
-  delta-producer-publication-graph-maintainer-ws-sensitive:
-    restart: "no"
-  error-alert:
-    environment:
-      EMAIL_FROM: "Loket Local <loket-development@redpencil.io>"
-      EMAIL_TO: "loket-development@redpencil.io"
-    restart: "no"
-  prepare-submissions-for-export:
-    restart: "no"
   update-bestuurseenheid-mock-login:
-    restart: "no"
-  reasoner:
-    restart: "no"
-  op-public-consumer:
-    restart: "no"
-  vendor-login:
-    restart: "no"
-  sparql-authorization-wrapper:
-    restart: "no"
-  vendor-data-distribution:
     restart: "no"

@@ -75,9 +75,7 @@
                               :as "editor-document")
              (document-container :via ,(s-prefix "ext:hasVersionedBehandeling")
                                  :inverse t
-                                 :as "document-container")
-             (behandeling-van-agendapunt :via ,(s-prefix "ext:behandeling")
-                                         :as "behandeling"))
+                                 :as "document-container"))
   :resource-base (s-url "http://data.lblod.info/prepublished-behandeling/")
   :features '(include-uri)
   :on-path "versioned-behandelingen")
@@ -154,8 +152,6 @@
              (zitting :via ,(s-prefix "ext:agenda")
                       :inverse t
                       :as "zitting"))
-  :has-many `((agendapunt :via ,(s-prefix "ext:agendaAgendapunt")
-                                  :as "agendapunten"))
   :resource-base (s-url "http://data.lblod.info/id/agendas/")
   :features '(include-uri)
   :on-path "agendas")
@@ -165,8 +161,6 @@
   :properties `((:inhoud :string ,(s-prefix "prov:value")))
   :has-one `((published-resource :via ,(s-prefix "prov:wasDerivedFrom")
                                  :as "publication")
-             (behandeling-van-agendapunt :via ,(s-prefix "ext:uittrekselBvap")
-                                         :as "behandeling-van-agendapunt")
              (zitting :via ,(s-prefix "ext:uittreksel")
                       :inverse t
                       :as "zitting"))

@@ -35,11 +35,7 @@
                 (:datum-ministrieel-besluit :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
                 (:generated-from :uri-set ,(s-prefix "ext:generatedFrom")) ;;if it e.g. comes from gelinkt-notuleren
                 (:duplication-reason :string ,(s-prefix "skos:changeNote")))
-  :has-many `((rechtsgrond-aanstelling :via ,(s-prefix "mandaat:isAangesteldDoor")
-                                       :as "rechtsgronden-aanstelling")
-              (rechtsgrond-beeindiging :via ,(s-prefix "mandaat:isOntslagenDoor")
-                                       :as "rechtsgronden-beeindiging")
-              (mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
+  :has-many `((mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
                           :as "tijdelijke-vervangingen")
               (contact-point :via ,(s-prefix "schema:contactPoint")
                           :as "contact-points")

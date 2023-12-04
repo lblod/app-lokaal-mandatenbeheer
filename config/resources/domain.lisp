@@ -26,7 +26,6 @@
 (read-domain-file "concept-scheme.lisp")
 (read-domain-file "post.lisp")
 (read-domain-file "master-users-domain.lisp")
-(read-domain-file "master-dynamic-forms-domain.lisp")
 (read-domain-file "slave-mandaat-domain.lisp")
 (read-domain-file "worship-units.lisp")
 (read-domain-file "slave-besluit-domain.lisp")

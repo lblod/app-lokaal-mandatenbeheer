@@ -53,28 +53,5 @@
                          :as "duplicate-of"))
   :resource-base (s-url "http://data.lblod.info/id/mandatarissen/")
   :features '(include-uri)
-  :on-path "mandatarissen")
-
-;;"RESHUFFLED" from slave-mandaat-domain.lisp
-(define-resource worship-mandatee (mandataris)
-  :class (s-prefix "ere:EredienstMandataris")
-  :properties `((:expected-end-date :date ,(s-prefix "ere:geplandeEinddatumAanstelling"))
-                (:reason-stopped :string ,(s-prefix "ere:redenVanStopzetting")))
-  :resource-base (s-url "http://data.lblod.info/id/mandatarissen/")
-  :features '(include-uri)
-  :on-path "worship-mandatees"
-  )
-
-;;"RESHUFFLED" from whorship-units.lisp
-(define-resource minister (agent-in-position)
-  :class (s-prefix "ere:RolBedienaar")
-  :has-one `((minister-position :via ,(s-prefix "org:holds")
-                                :as "minister-position")
-             (financing-code :via ,(s-prefix "ere:financiering")
-                             :as "financing"))
-  :has-many `((minister-condition :via ,(s-prefix "org:siteAddress")
-                                  :as "conditions"))
-  :resource-base (s-url "http://data.lblod.info/id/rollenBedienaar/")
-  :features '(include-uri)
-  :on-path "ministers"
+  :on-path "mandatarissen"
 )

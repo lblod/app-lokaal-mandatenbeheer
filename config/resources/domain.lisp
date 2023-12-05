@@ -29,9 +29,8 @@
 (read-domain-file "slave-mandaat-domain.lisp")
 (read-domain-file "worship-units.lisp")
 (read-domain-file "slave-besluit-domain.lisp")
+(read-domain-file "slave-leidinggevenden-domain.lisp")
 (read-domain-file "master-submissions-domain.lisp")
-
-
 
 ;; Extra security layer to return 403 on GET /files
 ;; It should be ok for mu-auth; but devs can make bugs and add files to the wrong graph (i.e. public)

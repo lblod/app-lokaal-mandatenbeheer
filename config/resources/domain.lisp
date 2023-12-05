@@ -29,6 +29,7 @@
 (read-domain-file "slave-mandaat-domain.lisp")
 (read-domain-file "worship-units.lisp")
 (read-domain-file "slave-besluit-domain.lisp")
+(read-domain-file "slave-contact-domain.lisp")
 (read-domain-file "slave-leidinggevenden-domain.lisp")
 (read-domain-file "master-submissions-domain.lisp")
 

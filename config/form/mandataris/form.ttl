@@ -1,0 +1,68 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix displayTypes: <http://lblod.data.gift/display-types/> .
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix ns: <http://data.vlaanderen.be/ns/mandaat#> .
+
+
+ext:rangordeF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:mandatarisPG;
+    sh:name "Rangorde";
+    sh:order 2;
+    sh:path ns:rangorde .
+ext:datumEedafleggingF
+    a form:Field;
+    form:displayType displayTypes:date;
+    sh:group ext:mandatarisPG;
+    sh:name "Datum eedaflegging";
+    sh:order 5;
+    sh:path ext:datumEedaflegging .
+ext:eindeF
+    a form:Field;
+    form:displayType displayTypes:dateTime;
+    sh:group ext:mandatarisPG;
+    sh:name "Einde";
+    sh:order 4;
+    sh:path ns:einde.
+ext:startF
+    a form:Field;
+    form:displayType displayTypes:dateTime;
+    sh:group ext:mandatarisPG;
+    sh:name "Start";
+    sh:order 3;
+    sh:path ns:start .
+ext:datumMinistrieelBesluitF
+    a form:Field;
+    form:displayType displayTypes:date;
+    sh:group ext:mandatarisPG;
+    sh:name "Datum Ministrieel Besluit";
+    sh:order 6;
+    sh:path ext:datumMinistrieelBesluit .
+ext:mandatarisPG
+    a form:PropertyGroup; sh:name "Mandataris"; sh:order 1 .
+
+ext:form
+    a form:Form, form:TopLevelForm;
+    form:includes
+        ext:rangordeF,
+        ext:datumEedafleggingF,
+        ext:eindeF,
+        ext:startF,
+        ext:datumMinistrieelBesluitF;
+    sh:group ext:mandatarisPG;
+    form:initGenerator ext:mandatarisG.
+
+ext:mandatarisG a form:Generator;
+  form:prototype [
+    form:shape [
+      a ns:Mandataris
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

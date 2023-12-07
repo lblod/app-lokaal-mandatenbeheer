@@ -289,6 +289,7 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/mandaat#Mandataris",
                         "http://www.w3.org/ns/person#Person",
                         "http://www.w3.org/ns/adms#Identifier",
+                        "http://mu.semte.ch/vocabularies/ext/GeneratedForm",
                         "http://purl.org/dc/terms/PeriodOfTime" ] } } ] },
       %GroupSpec{
         name: "o-mdb-wf",
@@ -303,6 +304,7 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/persoon#Geboorte",
                         "http://www.w3.org/ns/org#Membership",
                         "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+                        "http://mu.semte.ch/vocabularies/ext/GeneratedForm",
                         "http://www.w3.org/ns/person#Person",
                         "http://www.w3.org/ns/adms#Identifier",
                         "http://purl.org/dc/terms/PeriodOfTime" ] } } ] },

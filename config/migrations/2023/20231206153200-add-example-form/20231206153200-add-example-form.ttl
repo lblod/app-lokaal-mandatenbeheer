@@ -1,0 +1,12 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns1:	<http://mu.semte.ch/vocabularies/ext/> .
+<http://data.lblod.info/generated-forms/6570843E03AE160009000001>	rdf:type	ns1:GeneratedForm .
+@prefix ns2:	<http://purl.org/dc/terms/> .
+<http://data.lblod.info/generated-forms/6570843E03AE160009000001>	ns2:created	"2023-12-06T14:25:02.090Z" ;
+	ns2:modified	"2023-12-06T14:28:40.246Z" .
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#> .
+<http://data.lblod.info/generated-forms/6570843E03AE160009000001>	skos:comment	"example form" ;
+	ns1:ttlCode	"@prefix : <#>.\n@prefix form: <http://lblod.data.gift/vocabularies/forms/>.\n@prefix sh: <http://www.w3.org/ns/shacl#>.\n@prefix displayTypes: <http://lblod.data.gift/display-types/>.\n@prefix nodes: <http://data.lblod.info/form-data/nodes/>.\n@prefix emb: <http://ember-submission-form-fields/>.\n\nnodes:24289e48-258f-4919-8c3e-5783a6acb4a4\n    a form:Field;\n    form:displayType displayTypes:defaultInput;\n    sh:group nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;\n    sh:name \"Field name\";\n    sh:order 2;\n    sh:path nodes:e61f56db-6346-4a61-a75e-33e091789e40 .\nnodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1\na form:PropertyGroup; sh:name \"Title\"; sh:order 1 .\nnodes:e4b9b5f6-b6a2-4a6d-8431-900bacab4590\n    a form:Field;\n    form:displayType displayTypes:conceptSchemeSelector;\n    form:options\n        \"\"\"{\"conceptScheme\": \"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode\", \"searchEnabled\": true }\"\"\";\n    sh:group nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;\n    sh:name \"dropdown\";\n    sh:order 3;\n    sh:path nodes:09b55e3e-acce-4677-bce2-5ae76183db9b.\nemb:source-node\n    a form:Form, form:TopLevelForm;\n    form:includes\n        nodes:24289e48-258f-4919-8c3e-5783a6acb4a4,\n        nodes:e4b9b5f6-b6a2-4a6d-8431-900bacab4590;\n    sh:group nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1 .\n" .
+@prefix ns4:	<http://mu.semte.ch/vocabularies/core/> .
+<http://data.lblod.info/generated-forms/6570843E03AE160009000001>	ns4:uuid	"6570843E03AE160009000001" ;
+	skos:prefLabel	"example form" .

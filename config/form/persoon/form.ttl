@@ -1,0 +1,50 @@
+@prefix : <#>.
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix nodes: <http://data.lblod.info/form-data/nodes/>.
+@prefix emb: <http://ember-submission-form-fields/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ext:alternatieveNaamF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:persoonPG;
+    sh:name "Alternatieve Naam";
+    sh:order 3;
+    sh:path <http://xmlns.com/foaf/0.1/name> .
+ext:achternaamF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:persoonPG;
+    sh:name "Achternaam";
+    sh:order 2;
+    sh:path <http://xmlns.com/foaf/0.1/familyName> .
+ext:gebruikteNaamF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:persoonPG;
+    sh:name "Gebruikte Voornaam";
+    sh:order 4;
+    sh:path <https://data.vlaanderen.be/ns/persoon/#gebruikteVoornaam>.
+ext:persoonPG
+    a form:PropertyGroup; sh:name "Persoon"; sh:order 1 .
+
+ext:form a form:Form, form:TopLevelForm ;
+    form:includes
+        ext:alternatieveNaamF,
+        ext:achternaamF,
+        ext:gebruikteNaamF;
+    sh:group ext:persoonPG ;
+    form:initGenerator ext:personG.
+
+ext:personG a form:Generator;
+  form:prototype [
+    form:shape [
+      a foaf:Person ;
+      foaf:name "Richard";
+      foaf:familyName "Johnson"
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

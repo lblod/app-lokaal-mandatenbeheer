@@ -13,7 +13,7 @@ ext:alternatieveNaamF
     a form:Field;
     form:displayType displayTypes:defaultInput;
     sh:group ext:persoonPG;
-    sh:name "Alternatieve naam";
+    sh:name "Roepnaam";
     sh:order 3;
     sh:path foaf:name.
 ext:achternaamF
@@ -27,7 +27,7 @@ ext:gebruikteVoornaamF
     a form:Field;
     form:displayType displayTypes:defaultInput;
     sh:group ext:persoonPG;
-    sh:name "Gebruikte voornaam";
+    sh:name "Voornaam";
     sh:order 4;
     sh:path <https://data.vlaanderen.be/ns/persoon/#gebruikteVoornaam>.
 ext:persoonPG
@@ -44,9 +44,7 @@ ext:form a form:Form, form:TopLevelForm;
 ext:personG a form:Generator;
   form:prototype [
     form:shape [
-      a foaf:Person;
-      foaf:name "Richard";
-      foaf:familyName "Johnson"
+      a foaf:Person
     ]
   ];
   form:dataGenerator form:addMuUuid.

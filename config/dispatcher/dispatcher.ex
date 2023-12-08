@@ -218,6 +218,10 @@ defmodule Dispatcher do
     forward conn, path, "http://cache/site-types/"
   end
 
+  match "/form-content/*path" do
+    forward conn, path, "http://form-content/"
+  end
+
   match "/*_" do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end

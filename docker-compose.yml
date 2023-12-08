@@ -205,3 +205,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  form-content:
+    image: lblod/form-content-service:latest
+    restart: always
+    volumes:
+      - ./config/form-content:/config

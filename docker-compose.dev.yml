@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 services:
   proxy:
     image: nginx:1.13
@@ -39,7 +39,7 @@ services:
   login:
     restart: "no"
   validation:
-    entrypoint: [ "echo", "Service disabled" ] # Note: this probably go in the future
+    entrypoint: ["echo", "Service disabled"] # Note: this probably go in the future
     restart: "no"
   file:
     restart: "no"
@@ -56,4 +56,8 @@ services:
   dispatcher-worship-mandates:
     restart: "no"
   update-bestuurseenheid-mock-login:
+    restart: "no"
+  jobs-controller:
+    restart: "no"
+  form-content:
     restart: "no"

@@ -38,42 +38,6 @@ defmodule Acl.UserGroups.Config do
       }
   end
 
-  defp access_sensitive_delta_producer_data() do
-    %AccessByQuery{
-      vars: [ "group_name" ],
-      query: "
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
-        SELECT DISTINCT ?group_name WHERE {
-          <SESSION_ID> muAccount:account ?onlineAccount.
-
-          ?onlineAccount  a foaf:OnlineAccount.
-
-          ?agent a foaf:Agent;
-            foaf:account ?onlineAccount.
-
-          ?group foaf:member ?agent;
-            foaf:name ?group_name.
-        }"
-      }
-  end
-
-  defp access_for_vendor_api() do
-    %AccessByQuery{
-      vars: ["vendor_id", "session_group"],
-      query: sparql_query_for_access_vendor_api()
-    }
-  end
-
-  defp sparql_query_for_access_vendor_api() do
-    " PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
-      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-      SELECT DISTINCT ?vendor_id ?session_group WHERE {
-        <SESSION_ID> muAccount:canActOnBehalfOf/mu:uuid ?session_group;
-                     muAccount:account/mu:uuid ?vendor_id.
-      } "
-  end
-
   def user_groups do
     # These elements are walked from top to bottom.  Each of them may
     # alter the quads to which the current query applies.  Quads are
@@ -94,10 +58,6 @@ defmodule Acl.UserGroups.Config do
                         "http://mu.semte.ch/vocabularies/validation/Execution",
                         "http://mu.semte.ch/vocabularies/validation/Validation",
                         "http://mu.semte.ch/vocabularies/validation/Error",
-                        "http://mu.semte.ch/vocabularies/ext/FormNode",
-                        "http://mu.semte.ch/vocabularies/ext/FormInput",
-                        "http://mu.semte.ch/vocabularies/ext/DynamicSubform",
-                        "http://mu.semte.ch/vocabularies/ext/DocumentStatus",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://www.w3.org/ns/prov#Location",
                         "http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode",

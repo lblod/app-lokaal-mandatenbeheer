@@ -58,6 +58,7 @@ defmodule Acl.UserGroups.Config do
                         "http://mu.semte.ch/vocabularies/validation/Execution",
                         "http://mu.semte.ch/vocabularies/validation/Validation",
                         "http://mu.semte.ch/vocabularies/validation/Error",
+                        "http://mu.semte.ch/vocabularies/ext/FileAddress",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://www.w3.org/ns/prov#Location",
                         "http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode",

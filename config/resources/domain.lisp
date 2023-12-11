@@ -21,6 +21,7 @@
 ;; and move these to other files.
 ;; To track these resource, look for the files with comment "RESHUFFLED".
 
+(read-domain-file "master-files-domain.lisp")
 (read-domain-file "agent-in-position.lisp")
 (read-domain-file "organisation.lisp")
 (read-domain-file "concept-scheme.lisp")

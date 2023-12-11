@@ -71,7 +71,7 @@ ext:naamF
     a form:Field;
     form:displayType displayTypes:defaultInput;
     sh:group ext:contactpuntPG;
-    sh:name "Naam";
+    sh:name "Roepnaam";
     sh:order 5;
     sh:path foaf:name .
 

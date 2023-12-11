@@ -1,0 +1,50 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+
+
+ext:alternatieveNaamF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:persoonPG;
+    sh:name "Roepnaam";
+    sh:order 3;
+    sh:path foaf:name.
+ext:achternaamF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:persoonPG;
+    sh:name "Achternaam";
+    sh:order 2;
+    sh:path foaf:familyName.
+ext:gebruikteVoornaamF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:persoonPG;
+    sh:name "Voornaam";
+    sh:order 4;
+    sh:path <https://data.vlaanderen.be/ns/persoon/#gebruikteVoornaam>.
+ext:persoonPG
+    a form:PropertyGroup; sh:name "Persoon"; sh:order 1.
+
+ext:form a form:Form, form:TopLevelForm;
+    form:includes
+        ext:alternatieveNaamF,
+        ext:achternaamF,
+        ext:gebruikteVoornaamF;
+    sh:group ext:persoonPG;
+    form:initGenerator ext:personG.
+
+ext:personG a form:Generator;
+  form:prototype [
+    form:shape [
+      a foaf:Person
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

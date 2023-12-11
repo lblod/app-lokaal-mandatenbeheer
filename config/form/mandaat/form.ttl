@@ -1,0 +1,36 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix displayTypes: <http://lblod.data.gift/display-types/> .
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix ns: <http://data.vlaanderen.be/ns/mandaat#> .
+
+
+ext:aantalHoudersF
+    a form:Field;
+    form:displayType displayTypes:numericalInput;
+    sh:group ext:mandaatPG;
+    sh:name "Aantal houders";
+    sh:order 2;
+    sh:path ns:aantalHouders .
+ext:mandaatPG
+    a form:PropertyGroup; sh:name "Mandaat"; sh:order 1 .
+
+ext:form
+    a form:Form, form:TopLevelForm;
+    form:includes ext:aantalHoudersF;
+    sh:group ext:mandaatPG ;
+    form:initGenerator ext:mandaatG.
+
+ext:mandaatG a form:Generator;
+  form:prototype [
+    form:shape [
+      a ns:Mandaat ;
+      ns:aantalHouders 1
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

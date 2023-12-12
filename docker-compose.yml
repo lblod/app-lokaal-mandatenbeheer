@@ -176,4 +176,4 @@ services:
     image: lblod/form-content-service:latest
     restart: always
     volumes:
-      - ./config/form-content:/config
+      - ./config/form-content:/forms

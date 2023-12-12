@@ -164,39 +164,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  eredienst-mandatarissen-consumer:
-    image: lblod/delta-consumer:0.0.18
-    volumes:
-      - ./config/delta-consumer/eredienst-mandatarissen:/config/triples-dispatching/custom-dispatching
-      - ./data/files/consumer-files:/consumer-files
-    environment:
-      DCR_SERVICE_NAME: "eredienst-mandatarissen-consumer"
-      DCR_SYNC_BASE_URL: "https://dev.harvesting-self-service.lblod.info"
-      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/eredienst-mandatarissen-consumer"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://eredienst-mandatarissen-consumer/delta-sync"
-      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/WorshipCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://eredienst-mandatarissen-consumer/initial-sync"
-      DCR_SYNC_FILES_PATH: "/sync/worship/files/"
-      DCR_CRON_PATTERN_DELTA_SYNC: "15 * * * *" # Every hour at 15 minutes past the hour
-      DCR_DISABLE_INITIAL_SYNC: "true" # prefer to enable it manually on deploy
-      DCR_KEEP_DELTA_FILES: "true"
-      DCR_DELTA_FILE_FOLDER: "/consumer-files/eredienst-mandatarissen"
-      INGEST_GRAPH: "http://eredienst-mandatarissen-consumer/temp"
-      DCR_SYNC_LOGIN_ENDPOINT: "https://dev.harvesting-self-service.lblod.info/sync/worship/login"
-      DCR_SECRET_KEY: "66d0fda1-e987-4cf3-bf8c-80ee16271214"
-      SLEEP_BETWEEN_BATCHES: "100"
-      BATCH_SIZE: "500"
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-  dispatcher-worship-mandates:
-    image: lblod/worship-positions-graph-dispatcher-service-loket:1.3.0
-    environment:
-      LOGLEVEL: "info"
-    labels:
-      - "logging=true"
-    restart: always
   update-bestuurseenheid-mock-login:
     image: lblod/update-bestuurseenheid-mock-login-service:0.1.2
     volumes:

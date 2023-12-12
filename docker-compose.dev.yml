@@ -51,10 +51,6 @@ services:
     restart: "no"
   mandataris-archive:
     restart: "no"
-  eredienst-mandatarissen-consumer:
-    restart: "no"
-  dispatcher-worship-mandates:
-    restart: "no"
   update-bestuurseenheid-mock-login:
     restart: "no"
   jobs-controller:

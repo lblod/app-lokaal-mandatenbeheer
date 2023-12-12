@@ -109,9 +109,9 @@ services:
     restart: always
     logging: *default-logging
 
-  loket:
+  frontend:
     # TODO: update frontend image
-    image: lblod/frontend-loket:0.86.0
+    image: lblod/frontend-lokaal-mandatenbeheer:latest
     links:
       - identifier:backend
     labels:

@@ -118,14 +118,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  validation:
-    image: semtech/mu-validation-service:0.3.0
-    volumes:
-      - ./config/validations:/config
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
   filehost:
     image: nginx:1.15.2
     volumes:

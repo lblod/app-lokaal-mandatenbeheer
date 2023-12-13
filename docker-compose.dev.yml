@@ -40,9 +40,6 @@ services:
     restart: "no"
   login:
     restart: "no"
-  validation:
-    entrypoint: ["echo", "Service disabled"] # Note: this probably go in the future
-    restart: "no"
   file:
     restart: "no"
   filehost:

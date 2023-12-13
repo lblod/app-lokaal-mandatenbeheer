@@ -46,18 +46,26 @@ defmodule Acl.UserGroups.Config do
     # many ways.  The useage of a GroupSpec and GraphCleanup are
     # common.
     [
-      # // PUBLIC
+    # // PUBLIC
+    %GroupSpec{
+      name: "public",
+      useage: [:read],
+      access: %AlwaysAccessible{}, # This is needed otherwise you can't select a bestuurseenheid to login to.
+      graphs: [ %GraphSpec{
+                  graph: "http://mu.semte.ch/graphs/public",
+                  constraint: %ResourceConstraint{
+                    resource_types: [
+                        "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid"
+                      ] } } ] },
+
       %GroupSpec{
-        name: "public",
+        name: "auth",
         useage: [:read],
-        access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
+        access: is_authenticated(),
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/public",
                     constraint: %ResourceConstraint{
                       resource_types: [
-                        "http://mu.semte.ch/vocabularies/validation/Execution",
-                        "http://mu.semte.ch/vocabularies/validation/Validation",
-                        "http://mu.semte.ch/vocabularies/validation/Error",
                         "http://mu.semte.ch/vocabularies/ext/FileAddress",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://www.w3.org/ns/prov#Location",
@@ -80,7 +88,6 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
                         "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode",
                         "http://www.w3.org/ns/org#Role",
-                        "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode",
                         "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie",
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
@@ -88,8 +95,7 @@ defmodule Acl.UserGroups.Config do
                         "http://data.europa.eu/m8g/PeriodOfTime",
                         "http://xmlns.com/foaf/0.1/Document",
                         "http://www.w3.org/ns/org#Organization"
-                      ]
-                    } },
+                      ] } },
                   %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/sessions",
                     constraint: %ResourceFormatConstraint{

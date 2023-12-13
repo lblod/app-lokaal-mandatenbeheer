@@ -1,31 +1,11 @@
-Abstract configuration for app-digitaal-loket
+Abstract configuration for app-lokaal-mandatenbeheer
 
 * Data ownership
 
   | resource                             | pub  | org | o-mdb | o-bbcdr | o-toez | user | used |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
-  | :: dynamic-forms-domain ::           |      |     |       |         |        |      |      |
-  | ext:FormNode                         | r    |     |       |         |        |      | x    |
-  | ext:FormInput                        | r    |     |       |         |        |      | x    |
-  | ext:DynamicSubform                   | r    |     |       |         |        |      | x    |
-  |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: master-files-domain ::            |      |     |       |         |        |      |      |
-  | ext:DocumentStatus                   | r    |     |       |         |        |      | x    |
   | nfo:FileDataObject                   | rwf  |     |       |         |        |      | x    |
-  | bbcdr:Report                         |      |     |       | rwf     |        |      | x    |
-  |--------------------------------------+------+-----+-------+---------+--------+------+------|
-  | :: master-toezicht-domain ::         |      |     |       |         |        |      |      |
-  | toezicht:InzendingVoorToezicht       |      |     |       |         | rwf    |      | x    |
-  | toezicht:TaxType                     |      |     |       |         | rwf    |      | x    |
-  | toezicht:Nomenclature                |      |     |       |         | rwf    |      | x    |
-  | toezicht:FiscalPeriod                |      |     |       |         | rwf    |      | x    |
-  | toezicht:DeliveryReportType          |      |     |       |         | rwf    |      | x    |
-  | toezicht:AccountAcceptanceStatus     |      |     |       |         | rwf    |      | x    |
-  | toezicht:DocumentAuthenticityType    |      |     |       |         | rwf    |      | x    |
-  | toezicht:InzendingType               | r    |     |       |         |        |      | x    |
-  | toezicht:decisionType                | r    |     |       |         |        |      | x    |
-  | toezicht:TaxRate                     |      |     |       |         | rwf    |      | x    |
-  | ext:FormSolution                     |      |     |       |         | rwf    |      | x    |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: master-users-domain ::            |      |     |       |         |        |      |      |
   | foaf:Person                          | Arwf |     |       |         |        | r    | x    |
@@ -35,17 +15,7 @@ Abstract configuration for app-digitaal-loket
   | foaf:OnlineAccount                   | Arwf |     |       |         |        | r    | x    |
   | - dct:identifier                     | Arwf |     |       |         |        | r    | x    |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
-  | :: master-validations-domain ::      |      |     |       |         |        |      |      |
-  | validation:Execution                 |      |     | rAwf  |         |        |      | x    |
-  | validation:Validation                |      |     | rAwf  |         |        |      | x    |
-  | validation:Error                     |      |     | rAwf  |         |        |      | x    |
-  |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: slave-besluit-domain ::           |      |     |       |         |        |      |      |
-  | besluit:Agenda                       |      |     |       |         |        |      |      |
-  | besluit:Agendapunt                   |      |     |       |         |        |      |      |
-  | besluit:Artikel                      |      |     |       |         |        |      |      |
-  | besluit:BehandelingVanAgendapunt     |      |     |       |         |        |      |      |
-  | besluit:Besluit                      |      |     |       |         |        |      |      |
   | besluit:Bestuurseenheid              | r    |     |       |         |        |      | x    |
   | - org:hasPrimarySite                 | r    |     | wf    |         |        |      | x    |
   | - org:linkedTo                       | r    |     | wf    |         |        |      | x    |
@@ -53,17 +23,11 @@ Abstract configuration for app-digitaal-loket
   | - org:hasPost                        | r    |     | wf    |         |        |      | x    |
   | - ext:mailAdresVoorNotificaties      |      |     |       |         | rwf    |      | x    |
   | - ext:wilMailOntvangen               |      |     |       |         | rwf    |      | x    |
-  | prov:Location                        | r    |     |       |         |        |      | x    |
   | ext:BestuurseenheidClassificatieCode | r    |     |       |         |        |      | x    |
   | besluit:Bestuursorgaan               | r    |     |       |         |        |      | x    |
   | ext:BestuursorgaanClassificatieCode  | r    |     |       |         |        |      | x    |
-  | eli:LegalResource                    |      |     |       |         |        |      |      |
-  | eli:LegalResourceSubdivision         |      |     |       |         |        |      |      |
-  | besluit:Stemming                     |      |     |       |         |        |      |      |
-  | besluit:Zitting                      |      |     |       |         |        |      |      |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: slave-mandaat-domain ::           |      |     |       |         |        |      |      |
-  | prov:Entity                          |      |     |       |         |        |      |      |
   | mandaat:Fractie                      |      | r   | wf    |         |        |      | x    |
   | ext:Fractietype                      | r    |     |       |         |        |      | x    |
   | persoon:Geboorte                     |      |     | rwf   |         |        |      | x    |
@@ -81,22 +45,15 @@ Abstract configuration for app-digitaal-loket
   | - persoon:geslacht                   |      |     | rwf   |         |        |      | x    |
   | ext:GeslachtCode                     | r    |     |       |         |        |      | x    |
   | adms:Identifier                      |      |     | rwf   |         |        |      | x    |
-  | eli:LegalResource                    | r    |     |       |         |        |      | x    |
-  | mandaat:RechtsgrondAanstelling       | r    |     |       |         |        |      |      |
-  | mandaat:RechtsgrondBeeindiging       | r    |     |       |         |        |      |      |
-  | mandaat:RechtstreekseVerkiezing      | r    |     |       |         |        |      | x    |
-  | mandaat:TijdsgebondenEntiteit        |      |     |       |         |        |      |      |
   | dct:PeriodOfTime                     |      | r   | wf    |         |        |      |      |
   | mandaat:Verkiezingsresultaat         |      | r   |       |         |        |      |      |
   | ext:VerkiezingsresultaatGevolgCode   | r    |     |       |         |        |      |      |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: slave-organisatie-domain ::       |      |     |       |         |        |      |      |
   | org:Site                             | r    |     | wf    |         |        |      | x    |
-  | schema:PostalAddress                 | r    |     | wf    |         |        |      | x    |
   | org:Post                             | r    |     | wf    |         |        |      | x    |
   | org:Role                             | r    |     |       |         |        |      | x    |
   | org:Organization                     | r    |     | wf    |         |        |      | x    |
-
 
 * Implemented model
   This model has some changes applied to it based on our actual access
@@ -106,28 +63,8 @@ Abstract configuration for app-digitaal-loket
 
   | resource                             | pub  | org | o-mdb | o-bbcdr | o-toez | user | used |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
-  | :: dynamic-forms-domain ::           |      |     |       |         |        |      |      |
-  | ext:FormNode                         | r    |     |       |         |        |      | x    |
-  | ext:FormInput                        | r    |     |       |         |        |      | x    |
-  | ext:DynamicSubform                   | r    |     |       |         |        |      | x    |
-  |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: master-files-domain ::            |      |     |       |         |        |      |      |
-  | ext:DocumentStatus                   | r    |     |       |         |        |      | x    |
   | nfo:FileDataObject                   | rwf  |     |       |         |        |      | x    |
-  | bbcdr:Report                         |      |     |       | rwf     |        |      | x    |
-  |--------------------------------------+------+-----+-------+---------+--------+------+------|
-  | :: master-toezicht-domain ::         |      |     |       |         |        |      |      |
-  | toezicht:InzendingVoorToezicht       |      |     |       |         | rwf    |      | x    |
-  | toezicht:TaxType                     | r    |     |       |         |        |      | x    |
-  | toezicht:Nomenclature                | r    |     |       |         |        |      | x    |
-  | toezicht:FiscalPeriod                | r    |     |       |         |        |      | x    |
-  | toezicht:DeliveryReportType          | r    |     |       |         |        |      | x    |
-  | toezicht:AccountAcceptanceStatus     | r    |     |       |         |        |      | x    |
-  | toezicht:DocumentAuthenticityType    | r    |     |       |         |        |      | x    |
-  | toezicht:InzendingType               | r    |     |       |         |        |      | x    |
-  | toezicht:DecisionType                | r    |     |       |         |        |      | x    |
-  | toezicht:TaxRate                     |      |     |       |         | rwf    |      | x    |
-  | ext:FormSolution                     |      |     |       |         | rwf    |      | x    |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: master-users-domain ::            |      |     |       |         |        |      |      |
   | foaf:Person                          | Arwf | r   |       |         |        |      | x    |
@@ -137,33 +74,17 @@ Abstract configuration for app-digitaal-loket
   | foaf:OnlineAccount                   | Arwf | r   |       |         |        |      | x    |
   | - dct:identifier                     | Arwf | r   |       |         |        |      | x    |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
-  | :: master-validations-domain ::      |      |     |       |         |        |      |      |
-  | validation:Execution                 | rAwf |     |       |         |        |      | x    |
-  | validation:Validation                | rAwf |     |       |         |        |      | x    |
-  | validation:Error                     | rAwf |     |       |         |        |      | x    |
-  |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: slave-besluit-domain ::           |      |     |       |         |        |      |      |
-  | besluit:Agenda                       |      |     |       |         |        |      |      |
-  | besluit:Agendapunt                   |      |     |       |         |        |      |      |
-  | besluit:Artikel                      |      |     |       |         |        |      |      |
-  | besluit:BehandelingVanAgendapunt     |      |     |       |         |        |      |      |
-  | besluit:Besluit                      |      |     |       |         |        |      |      |
   | besluit:Bestuurseenheid              | r    |     |       |         |        |      | x    |
   | - org:hasPrimarySite                 |      |     | rwf   |         |        |      | x    |
   | - org:linkedTo                       |      |     | rwf   |         |        |      | x    |
   | - schema:contactPoint                |      |     | rwf   |         |        |      | x    |
   | - org:hasPost                        |      |     | rwf   |         |        |      | x    |
-  | prov:Location                        | r    |     |       |         |        |      | x    |
   | ext:BestuurseenheidClassificatieCode | r    |     |       |         |        |      | x    |
   | besluit:Bestuursorgaan               | r    |     |       |         |        |      | x    |
   | ext:BestuursorgaanClassificatieCode  | r    |     |       |         |        |      | x    |
-  | eli:LegalResource                    |      |     |       |         |        |      |      |
-  | eli:LegalResourceSubdivision         |      |     |       |         |        |      |      |
-  | besluit:Stemming                     |      |     |       |         |        |      |      |
-  | besluit:Zitting                      |      |     |       |         |        |      |      |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: slave-mandaat-domain ::           |      |     |       |         |        |      |      |
-  | prov:Entity                          |      |     |       |         |        |      |      |
   | mandaat:Fractie                      |      |     | rwf   |         |        |      | x    |
   | ext:Fractietype                      | r    |     |       |         |        |      | x    |
   | persoon:Geboorte                     |      |     | rwf   |         |        |      | x    |
@@ -178,18 +99,12 @@ Abstract configuration for app-digitaal-loket
   | person:Person                        |      |     | rwf   |         |        |      | x    |
   | ext:GeslachtCode                     | r    |     |       |         |        |      | x    |
   | adms:Identifier                      |      |     | rwf   |         |        |      | x    |
-  | eli:LegalResource                    | r    |     |       |         |        |      | x    |
-  | mandaat:RechtsgrondAanstelling       | r    |     |       |         |        |      |      |
-  | mandaat:RechtsgrondBeeindiging       | r    |     |       |         |        |      |      |
-  | mandaat:RechtstreekseVerkiezing      | r    |     |       |         |        |      | x    |
-  | mandaat:TijdsgebondenEntiteit        |      |     |       |         |        |      |      |
   | dct:PeriodOfTime                     |      |     | rwf   |         |        |      |      |
   | mandaat:Verkiezingsresultaat         | r    |     |       |         |        |      |      |
   | ext:VerkiezingsresultaatGevolgCode   | r    |     |       |         |        |      |      |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: slave-organisatie-domain ::       |      |     |       |         |        |      |      |
   | org:Site                             |      |     | rwf   |         |        |      | x    |
-  | schema:PostalAddress                 |      |     | rwf   |         |        |      | x    |
   | org:Post                             |      |     | rwf   |         |        |      | x    |
   | org:Role                             | r    |     |       |         |        |      | x    |
   | org:Organization                     |      |     | rwf   |         |        |      | x    |

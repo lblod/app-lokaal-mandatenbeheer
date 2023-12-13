@@ -148,14 +148,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  jobs-controller:
-    image: lblod/job-controller-service:1.0.1
-    volumes:
-      - ./config/jobs-controller/:/config/
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
   update-bestuurseenheid-mock-login:
     image: lblod/update-bestuurseenheid-mock-login-service:0.1.2
     volumes:

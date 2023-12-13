@@ -52,7 +52,5 @@ services:
     restart: "no"
   update-bestuurseenheid-mock-login:
     restart: "no"
-  jobs-controller:
-    restart: "no"
   form-content:
     restart: "no"

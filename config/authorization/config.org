@@ -23,6 +23,7 @@ Abstract configuration for app-lokaal-mandatenbeheer
   | - org:hasPost                        | r    |     | wf    |         |        |      | x    |
   | - ext:mailAdresVoorNotificaties      |      |     |       |         | rwf    |      | x    |
   | - ext:wilMailOntvangen               |      |     |       |         | rwf    |      | x    |
+  | prov:Location                        | r    |     |       |         |        |      | x    |
   | ext:BestuurseenheidClassificatieCode | r    |     |       |         |        |      | x    |
   | besluit:Bestuursorgaan               | r    |     |       |         |        |      | x    |
   | ext:BestuursorgaanClassificatieCode  | r    |     |       |         |        |      | x    |
@@ -80,6 +81,7 @@ Abstract configuration for app-lokaal-mandatenbeheer
   | - org:linkedTo                       |      |     | rwf   |         |        |      | x    |
   | - schema:contactPoint                |      |     | rwf   |         |        |      | x    |
   | - org:hasPost                        |      |     | rwf   |         |        |      | x    |
+  | prov:Location                        | r    |     |       |         |        |      | x    |
   | ext:BestuurseenheidClassificatieCode | r    |     |       |         |        |      | x    |
   | besluit:Bestuursorgaan               | r    |     |       |         |        |      | x    |
   | ext:BestuursorgaanClassificatieCode  | r    |     |       |         |        |      | x    |

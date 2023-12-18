@@ -50,7 +50,5 @@ services:
     restart: "no"
   mandataris-archive:
     restart: "no"
-  update-bestuurseenheid-mock-login:
-    restart: "no"
   form-content:
     restart: "no"

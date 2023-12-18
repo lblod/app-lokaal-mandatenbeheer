@@ -108,9 +108,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-
   frontend:
-    # TODO: update frontend image
     image: lblod/frontend-lokaal-mandatenbeheer:latest
     links:
       - identifier:backend
@@ -144,14 +142,6 @@ services:
     logging: *default-logging
   mandataris-archive:
     image: lblod/mandataris-archive-service:0.0.6
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-  update-bestuurseenheid-mock-login:
-    image: lblod/update-bestuurseenheid-mock-login-service:0.1.2
-    volumes:
-      - ./config/mock-login:/config
     labels:
       - "logging=true"
     restart: always

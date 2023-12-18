@@ -19,8 +19,6 @@ services:
     platform: linux/amd64
   file:
     platform: linux/amd64
-  update-bestuurseenheid-mock-login:
-    platform: linux/amd64
   person-uri-for-social-security-number:
     platform: linux/amd64
   login:

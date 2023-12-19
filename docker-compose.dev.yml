@@ -51,4 +51,12 @@ services:
   mandataris-archive:
     restart: "no"
   form-content:
-    restart: "no"
+    image: semtech/mu-javascript-template:latest
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "8081:80"
+      - "9229:9229"
+    volumes:
+      - ./config/form-content:/config
+      - ../form-content-service:/app

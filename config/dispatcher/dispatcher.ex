@@ -227,10 +227,10 @@ defmodule Dispatcher do
   match "/file-addresses/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://resource/file-addresses/"
   end
-  get "/files/:id/download" do
+  get "/files/:id/download", %{ layer: :resources, accept: %{ any: true} } do
     forward conn, [], "http://file/files/" <> id <> "/download"
   end
-  get "/files/*path" do
+  get "/files/*path", %{ layer: :resources, accept: %{ any: true} } do
     forward conn, path, "http://resource/files/"
   end
 

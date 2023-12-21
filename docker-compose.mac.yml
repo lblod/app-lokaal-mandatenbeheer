@@ -1,12 +1,12 @@
-version: '3.4'
+version: '3.7'
 
 services:
   identifier:
-    image: mu-identifier:none
+    image: mu-identifier:mac
   dispatcher:
     platform: linux/amd64
   database:
-    image: mu-authorization:personal
+    image: mu-authorization:mac
   virtuoso:
     platform: linux/amd64
   resource:

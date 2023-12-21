@@ -110,12 +110,12 @@ services:
     logging: *default-logging
   frontend:
     image: lblod/frontend-lokaal-mandatenbeheer:latest
-    links:
-      - identifier:backend
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
+    environment:
+      EMBER_AUTHENTICATION_ENABLED: "true"
   filehost:
     image: nginx:1.15.2
     volumes:
@@ -149,5 +149,7 @@ services:
   form-content:
     image: lblod/form-content-service:latest
     restart: always
+    labels:
+      - "logging=true"
     volumes:
       - ./config/form-content:/forms

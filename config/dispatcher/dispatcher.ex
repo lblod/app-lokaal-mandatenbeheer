@@ -237,29 +237,29 @@ defmodule Dispatcher do
   #################################################################
   # Login logic
   #################################################################
-  match "/mock/sessions/*path", %{ layer: resources, accept: %{ any: true}}  do
+  match "/mock/sessions/*path" do
     forward conn, path, "http://mocklogin/sessions/"
   end
-  match "/gebruikers/*path", %{ layer: resources, accept: %{ any: true}}  do
+  match "/gebruikers/*path", %{ layer: :resources, accept: %{ any: true}}  do
     forward conn, path, "http://cache/gebruikers/"
   end
-  match "/accounts/*path", %{ layer: resources, accept: %{ any: true}}  do
+  match "/accounts/*path", %{ layer: :resources, accept: %{ any: true}}  do
     forward conn, path, "http://cache/accounts/"
   end
-  match "/sessions/*path", %{ layer: resources, accept: %{ any: true}} do
+  match "/sessions/*path", %{ layer: :resources, accept: %{ any: true}} do
     Proxy.forward conn, path, "http://login/sessions/"
   end
 
   #################################################################
   # Extra services
   #################################################################
-  delete "/mandatarissen/:id", %{ layer: api_services, accept: %{ any: true}}  do
+  delete "/mandatarissen/:id", %{ layer: :api_services, accept: %{ any: true}}  do
     forward conn, [], "http://mandataris-archive/" <> id <> "/archive"
   end
-  match "/rrn/*path", %{ layer: api_services, accept: %{ any: true}}  do
+  match "/rrn/*path", %{ layer: :api_services, accept: %{ any: true}}  do
     forward conn, path, "http://person-uri-for-social-security-number/"
   end
-  match "/form-content/*path", %{ layer: api_services, accept: %{ any: true}}  do
+  match "/form-content/*path", %{ layer: :api_services, accept: %{ any: true}}  do
     forward conn, path, "http://form-content/"
   end
 

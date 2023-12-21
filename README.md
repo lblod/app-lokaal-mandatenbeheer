@@ -1,7 +1,28 @@
 # Lokaal mandatenbeheer
 
-[!CAUTION]
-This is still a work in progress all readme below is not up to date at this moment.
+[!WARNING]
+This is still a work in progress the first part of this readme has been updated, the part below the second horizontal line still needs a review.
+
+The text below this line is newly added so this is up to date.
+
+---
+
+## Running and maintaining
+
+General information on running and maintaining an installation.
+Some more detailed information can be found [below](#running-and-maintaining-old).
+
+### Running on mac silicon
+
+Running the application on mac silicon can cause some troubles. For this reason an extra docker-compose file has been included, this is the file docker-compose.mac.yml, this file should be included when starting the stack. The command `docker-compose up -f docker-compose.yml -f docker-compose.dev.yml up -d` now becomes `docker compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.mac.yml up -d`
+There are two main painpoints:
+
+1. Mac has an arm64 processor, a lot of the services don't have a multi-platform image. In the case they only have a amd64 image, docker will gave you a warning about this. In general this is not a real problem since your macbook can just emulate amd64, but still the warnings are annoying, so these are suppressed.
+2. At the moment this project was setup the service mu-identifier and mu-authorization weren't working for mac (at least on my device), so you have to build these yourself, and gave them the appropriate image name and tag.
+
+Everything below this line still needs to be reviewed.
+
+---
 
 Digitaal Loket application on top of multiple application profiles as defined on:
 
@@ -27,7 +48,7 @@ This repository harvest two setups. The base of these setups resides in the stan
   - publishes the database instance on port 8890 so you can easily see what content is stored in the base triplestore
   - provides a mock-login backend service so you don't need the ACM/IDM integration.
 
-## Running and maintaining
+## Running and maintaining Old
 
 General information on running and maintaining an installation
 
@@ -180,9 +201,8 @@ If you need to ingest the data for worship administrative units, you will need t
   Returns: `Initial sync http://redpencil.data.gift/id/job/URI has been successfully run`; you should be good.
   (Your computer will also stop making noise)
 - In `docker-compose.override.yml`, remove the disabled service
-  `    update-bestuurseenheid-mock-login:
-     entrypoint: ["echo", "Service-disabled to not confuse the service"]
-`
+  `   update-bestuurseenheid-mock-login:
+entrypoint: ["echo", "Service-disabled to not confuse the service"]`
   The mock-logins will be created when a cron job kicks in. You can control the moment it triggers by playing with the `CRON_PATTERN` variable.
   See the `README.md` of the related service for more options.
 

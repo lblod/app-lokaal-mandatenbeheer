@@ -1,7 +1,7 @@
 # Lokaal mandatenbeheer
 
-[!WARNING]
-This is still a work in progress the first part of this readme has been updated, the part below the second horizontal line still needs a review.
+> [!CAUTION]
+> This is still a work in progress the first part of this readme has been updated, the part below the second horizontal line still needs a review.
 
 The text below this line is newly added so this is up to date.
 

@@ -26,9 +26,6 @@
               (bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
                               :inverse t
                               :as "bestuursorganen")
-              (vendor :via ,(s-prefix "muAccount:canActOnBehalfOf")
-                              :inverse t
-                              :as "vendors")
               (participation :via ,(s-prefix "m8g:playsRole")
                             :as "participations"))
 

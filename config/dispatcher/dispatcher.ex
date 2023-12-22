@@ -201,13 +201,6 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # Random resources
-  #################################################################
-  match "/vendors/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/vendors/"
-  end
-
-  #################################################################
   # File logic + resources
   #################################################################
   patch "/files/*path", %{ layer: :resources, accept: %{ json: true } } do

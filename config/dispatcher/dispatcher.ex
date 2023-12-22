@@ -174,14 +174,8 @@ defmodule Dispatcher do
   match "/roles/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/roles/"
   end
-  match "/organizations/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/organizations/"
-  end
   match "/sites/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/sites/"
-  end
-  match "/organization-status-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/organization-status-codes/"
   end
   match "/site-types/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/site-types/"

@@ -6,35 +6,6 @@
   :on-path "roles"
 )
 
-(define-resource organization ()
-  :class (s-prefix "org:Organization")
-  :properties `((:name :string ,(s-prefix "skos:prefLabel"))
-                (:alternative-name :string ,(s-prefix "skos:altLabel")))
-  :has-one `((organization-status-code :via ,(s-prefix "regorg:orgStatus")
-                                       :as "organization-status")
-             (site :via ,(s-prefix "org:hasPrimarySite")
-                   :as "primary-site")
-             (organization :via ,(s-prefix "org:linkedTo")
-                           :inverse t
-                           :as "is-associated-with")
-             (organization :via ,(s-prefix "org:hasSubOrganization")
-                           :inverse t
-                           :as "is-sub-organization-of"))
-  :has-many `((identificator :via ,(s-prefix "adms:identifier")
-                             :as "identifiers")
-              (site :via ,(s-prefix "org:hasSite")
-                    :as "sites")
-              (post :via ,(s-prefix "org:hasPost")
-                    :as "positions")
-              (organization :via ,(s-prefix "org:linkedTo")
-                            :as "associated-organizations")
-              (organization :via ,(s-prefix "org:hasSubOrganization")
-                            :as "sub-organizations"))
-  :resource-base (s-url "http://data.lblod.info/id/organisaties/")
-  :features '(include-uri)
-  :on-path "organizations"
-)
-
 (define-resource site ()
   :class (s-prefix "org:Site")
   :has-one `((adres :via ,(s-prefix "organisatie:bestaatUit")
@@ -46,14 +17,6 @@
   :resource-base (s-url "http://data.lblod.info/id/vestigingen/")
   :features '(include-uri)
   :on-path "sites"
-)
-
-(define-resource organization-status-code ()
-  :class (s-prefix "code:OrganisatieStatusCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
-  :resource-base (s-url "http://lblod.data.gift/concepts/")
-  :features '(include-uri)
-  :on-path "organization-status-codes"
 )
 
 (define-resource site-type ()

@@ -54,7 +54,6 @@ Abstract configuration for app-lokaal-mandatenbeheer
   | org:Site                             | r    |     | wf    |         |        |      | x    |
   | org:Post                             | r    |     | wf    |         |        |      | x    |
   | org:Role                             | r    |     |       |         |        |      | x    |
-  | org:Organization                     | r    |     | wf    |         |        |      | x    |
 
 * Implemented model
   This model has some changes applied to it based on our actual access
@@ -109,7 +108,6 @@ Abstract configuration for app-lokaal-mandatenbeheer
   | org:Site                             |      |     | rwf   |         |        |      | x    |
   | org:Post                             |      |     | rwf   |         |        |      | x    |
   | org:Role                             | r    |     |       |         |        |      | x    |
-  | org:Organization                     |      |     | rwf   |         |        |      | x    |
 
 
 * SEAS extensions

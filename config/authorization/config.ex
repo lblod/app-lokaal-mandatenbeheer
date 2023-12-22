@@ -93,8 +93,7 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
                         "http://www.w3.org/2004/02/skos/core#Concept",
                         "http://data.europa.eu/m8g/PeriodOfTime",
-                        "http://xmlns.com/foaf/0.1/Document",
-                        "http://www.w3.org/ns/org#Organization"
+                        "http://xmlns.com/foaf/0.1/Document"
                       ] } },
                   %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/sessions",

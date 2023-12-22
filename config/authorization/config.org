@@ -51,7 +51,6 @@ Abstract configuration for app-lokaal-mandatenbeheer
   | ext:VerkiezingsresultaatGevolgCode   | r    |     |       |         |        |      |      |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: slave-organisatie-domain ::       |      |     |       |         |        |      |      |
-  | org:Site                             | r    |     | wf    |         |        |      | x    |
   | org:Post                             | r    |     | wf    |         |        |      | x    |
   | org:Role                             | r    |     |       |         |        |      | x    |
 
@@ -105,7 +104,6 @@ Abstract configuration for app-lokaal-mandatenbeheer
   | ext:VerkiezingsresultaatGevolgCode   | r    |     |       |         |        |      |      |
   |--------------------------------------+------+-----+-------+---------+--------+------+------|
   | :: slave-organisatie-domain ::       |      |     |       |         |        |      |      |
-  | org:Site                             |      |     | rwf   |         |        |      | x    |
   | org:Post                             |      |     | rwf   |         |        |      | x    |
   | org:Role                             | r    |     |       |         |        |      | x    |
 

@@ -11,23 +11,11 @@
 (defparameter sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 (setf *fetch-all-types-in-construct-queries* t)
 
-;; Note: the organisation of the files is currently a bit of a mess.
-;; Previously we ordered files by Application Profile/Model.
-;; However since the introduction of inheritance of mu-resource
-;; we had to shuffle the declaration of resources around
-;; since there is a bug in mu-resource 1.21.0 that forces us
-;; to declare the inheritance tree in one file.
-;; This means that we had to break the content of some files
-;; and move these to other files.
-;; To track these resource, look for the files with comment "RESHUFFLED".
-
 (read-domain-file "abstract-resources.lisp")
 
 (read-domain-file "concept-scheme.lisp")
-
 (read-domain-file "files.lisp")
 (read-domain-file "user.lisp")
-
 (read-domain-file "external-besluit.lisp")
 (read-domain-file "external-contact.lisp")
 (read-domain-file "external-leidinggevenden.lisp")

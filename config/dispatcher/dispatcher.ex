@@ -57,35 +57,24 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # Agent resources
+  # Abstract resources
   #################################################################
   match "/agents-in-position/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/agents-in-position/"
   end
-  match "/mandatarissen/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/mandatarissen/"
-  end
-
-  #################################################################
-  # Post resources
-  #################################################################
   match "/posts/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/posts/"
   end
-  match "/mandaten/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/mandaten/"
-  end
-
-  #################################################################
-  # Organisation resources
-  #################################################################
-  match "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/bestuurseenheden/"
+  match "/roles/*path", %{ layer: :resources, accept: %{ json: true } } do
+    forward conn, path, "http://cache/roles/"
   end
 
   #################################################################
   # Besluit resources
   #################################################################
+  match "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
+    forward conn, path, "http://cache/bestuurseenheden/"
+  end
   match "/werkingsgebieden/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/werkingsgebieden/"
   end
@@ -120,8 +109,14 @@ defmodule Dispatcher do
   match "/lidmaatschappen/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/lidmaatschappen/"
   end
+  match "/mandaten/*path", %{ layer: :resources, accept: %{ json: true } } do
+    forward conn, path, "http://cache/mandaten/"
+  end
   match "/bestuursfunctie-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/bestuursfunctie-codes/"
+  end
+  match "/mandatarissen/*path", %{ layer: :resources, accept: %{ json: true } } do
+    forward conn, path, "http://cache/mandatarissen/"
   end
   match "/mandataris-status-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/mandataris-status-codes/"
@@ -166,13 +161,6 @@ defmodule Dispatcher do
   end
   match "/functionaris-status-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/functionaris-status-codes/"
-  end
-
-  #################################################################
-  # Worship resources
-  #################################################################
-  match "/roles/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/roles/"
   end
 
   #################################################################

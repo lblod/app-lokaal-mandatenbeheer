@@ -26,6 +26,8 @@ These files have been renamed:
 
 The file organisation has been deleted, since the only resource in it belongs to external-besluit (this has resource has thus been moved).
 
+The superclasses are defined in a standalone file to make sure these are imported first and don't really belong to the domain of one specific file.
+
 ## Problems
 
 The resource organization is a bit problematic, if I interpret the domain model correctly the orginization should be an abstract resource implemented in bestuursorgaan or bestuurseenheid, however these don't actually inherit from the organization resource. For this reason, the organization resource has been deleted.

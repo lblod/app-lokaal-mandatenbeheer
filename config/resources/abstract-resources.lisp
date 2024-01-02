@@ -1,10 +1,5 @@
-;; re-shuffle declaration of files, because
-;; mu-resource 1.21.0 is sensible when files
-;; are declared vs loaded the class hierarchy
-;; hence this is a temporary workaround
-;; ORDER REALLY MATTERS FOR NOW!
+;; This class contains some superclasses used in mandatenbeheer.
 
-;;"RESHUFFLED" from worship-units.lisp
 (define-resource agent-in-position ()
   :class (s-prefix "ch:AgentInPositie")
   :properties `((:agent-start-date :date ,(s-prefix "ch:startdatum"))
@@ -25,3 +20,14 @@
   :on-path "agents-in-position"
 )
 
+(define-resource post ()
+  :class (s-prefix "org:Post")
+  :has-one `((role :via ,(s-prefix "org:role")
+                   :as "role"))
+  :has-many `((agent-in-position :via ,(s-prefix "org:holds")
+                                 :inverse t
+                                 :as "agents-in-position"))
+  :resource-base (s-url "http://data.lblod.info/id/posities/")
+  :features '(include-uri)
+  :on-path "posts"
+)

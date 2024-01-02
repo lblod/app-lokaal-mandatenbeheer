@@ -32,26 +32,6 @@
   :features '(include-uri)
   :on-path "geboortes")
 
-(define-resource lijsttype ()
-  :class (s-prefix "ext:KandidatenlijstLijsttype")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/")
-  :features '(include-uri)
-  :on-path "lijsttypes")
-
-(define-resource kandidatenlijst ()
-  :class (s-prefix "mandaat:Kandidatenlijst")
-  :properties `((:lijstnaam :string ,(s-prefix "skos:prefLabel"))
-                (:lijstnummer :number ,(s-prefix "mandaat:lijstnummer")))
-  :has-many `((persoon :via ,(s-prefix "mandaat:heeftKandidaat")
-                       :as "kandidaten"))
-  :has-one `((lijsttype :via ,(s-prefix "mandaat:lijsttype")
-                        :as "lijsttype"))
-  :resource-base (s-url "http://data.lblod.info/id/kandidatenlijsten/")
-  :features '(include-uri)
-  :on-path "kandidatenlijsten")
-
 (define-resource lidmaatschap ()
   :class (s-prefix "org:Membership")
   :has-one `((fractie :via ,(s-prefix "org:organisation")
@@ -143,9 +123,6 @@
   :has-many `((mandataris :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                           :inverse t
                           :as "is-aangesteld-als")
-              (kandidatenlijst :via ,(s-prefix "mandaat:heeftKandidaat")
-                               :inverse t
-                               :as "is-kandidaat-voor")
               (nationality :via ,(s-prefix "persoon:heeftNationaliteit")
                             :as "nationalities"))
   :has-one `((geboorte :via ,(s-prefix "persoon:heeftGeboorte")

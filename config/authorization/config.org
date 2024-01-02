@@ -32,8 +32,6 @@ Abstract configuration for app-lokaal-mandatenbeheer
   | mandaat:Fractie                      |      | r   | wf    |         |        |      | x    |
   | ext:Fractietype                      | r    |     |       |         |        |      | x    |
   | persoon:Geboorte                     |      |     | rwf   |         |        |      | x    |
-  | ext:KandidatenlijstType              | r    |     |       |         |        |      | x    |
-  | mandaat:Kandidatenlijst              |      | r   |       |         |        |      | x    |
   | org:Membership                       |      | r   | wf    |         |        |      | x    |
   | mandaat:Mandaat                      |      | r   |       |         |        |      | x    |
   | ext:BestuursfunctieCode              | r    |     |       |         |        |      | x    |
@@ -88,8 +86,6 @@ Abstract configuration for app-lokaal-mandatenbeheer
   | mandaat:Fractie                      |      |     | rwf   |         |        |      | x    |
   | ext:Fractietype                      | r    |     |       |         |        |      | x    |
   | persoon:Geboorte                     |      |     | rwf   |         |        |      | x    |
-  | ext:KandidatenlijstType              | r    |     |       |         |        |      | x    |
-  | mandaat:Kandidatenlijst              | r    |     |       |         |        |      | x    |
   | org:Membership                       |      |     | rwf   |         |        |      | x    |
   | mandaat:Mandaat                      | r    |     |       |         |        |      | x    |
   | ext:BestuursfunctieCode              | r    |     |       |         |        |      | x    |

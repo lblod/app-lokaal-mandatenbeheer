@@ -73,8 +73,6 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode",
                         "http://mu.semte.ch/vocabularies/ext/Fractietype",
-                        "http://mu.semte.ch/vocabularies/ext/KandidatenlijstType",
-                        "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
                         "http://data.vlaanderen.be/ns/mandaat#Mandaat",
                         "http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode",
                         "http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode",

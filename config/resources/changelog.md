@@ -11,6 +11,10 @@ Site
 Site-type
 Participation
 
+Lijsttype
+Kandidatenlijst
+have also been deleted, since they weren't used and only make sense if verkiezingen would be re-added.
+
 ## File reorganisation
 
 Some files have been renamed and reshuffled to better reflect the domain and how it is structured.

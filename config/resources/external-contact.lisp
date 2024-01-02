@@ -1,3 +1,7 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; CONTACT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; this is a shared domain file, maintained in https://github.com/lblod/domain-files (file master-contact-domain)
+;; in this file there have been some additions however.
+
 (define-resource contact-punt ()
   :class (s-prefix "schema:ContactPoint")
   :properties `((:aanschrijfprefix :language-string-set ,(s-prefix "vcard:honorific-prefix"))
@@ -9,16 +13,13 @@
                 (:website :url ,(s-prefix "foaf:page"))
                 (:telefoon :string ,(s-prefix "schema:telephone"))
                 (:type :string ,(s-prefix "schema:contactType")))
-
   :has-one `((adres :via ,(s-prefix "locn:address")
                     :as "adres")
              (contact-punt :via ,(s-prefix "ext:secondaryContactPoint")
                     :as "secondary-contact-point"))
-
   :has-many `((agent-in-position :via ,(s-prefix "schema:contactPoint")
                     :inverse t
                     :as "agents-in-position"))
-
   :features '(include-uri)
   :resource-base (s-url "http://data.lblod.info/id/contact-punten/")
   :on-path "contact-punten"

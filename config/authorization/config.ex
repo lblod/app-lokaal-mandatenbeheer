@@ -73,8 +73,6 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode",
                         "http://mu.semte.ch/vocabularies/ext/Fractietype",
-                        "http://mu.semte.ch/vocabularies/ext/KandidatenlijstType",
-                        "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
                         "http://data.vlaanderen.be/ns/mandaat#Mandaat",
                         "http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode",
                         "http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode",
@@ -93,8 +91,7 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
                         "http://www.w3.org/2004/02/skos/core#Concept",
                         "http://data.europa.eu/m8g/PeriodOfTime",
-                        "http://xmlns.com/foaf/0.1/Document",
-                        "http://www.w3.org/ns/org#Organization"
+                        "http://xmlns.com/foaf/0.1/Document"
                       ] } },
                   %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/sessions",

@@ -3,9 +3,7 @@
 > [!CAUTION]
 > This is still a work in progress the first part of this readme has been updated, the part below the second horizontal line still needs a review.
 
-The text below this line is newly added so this is up to date.
-
----
+This first part is newly added so should be up to date.
 
 ## Running and maintaining
 
@@ -20,7 +18,12 @@ There are two main painpoints:
 1. Mac has an arm64 processor, a lot of the services don't have a multi-platform image. In the case they only have a amd64 image, docker will gave you a warning about this. In general this is not a real problem since your macbook can just emulate amd64, but still the warnings are annoying, so these are suppressed.
 2. At the moment this project was setup the service mu-identifier and mu-authorization weren't working for mac (at least on my device), so you have to build these yourself, and gave them the appropriate image name and tag.
 
-Everything below this line still needs to be reviewed.
+## Resource definitions
+
+A big part of the resources is shared with other applications, because of this these are defined in a dedicated github repo [link](https://github.com/lblod/domain-files). The resources that originate here are defined in files of which the name starts with external-. Unfortunately there have been some changes to these files that are not reflected in the original definition.
+
+> [!CAUTION]
+> Everything below this line still needs to be reviewed.
 
 ---
 

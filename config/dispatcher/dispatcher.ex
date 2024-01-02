@@ -57,35 +57,24 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # Agent resources
+  # Abstract resources
   #################################################################
   match "/agents-in-position/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/agents-in-position/"
   end
-  match "/mandatarissen/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/mandatarissen/"
-  end
-
-  #################################################################
-  # Post resources
-  #################################################################
   match "/posts/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/posts/"
   end
-  match "/mandaten/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/mandaten/"
-  end
-
-  #################################################################
-  # Organisation resources
-  #################################################################
-  match "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/bestuurseenheden/"
+  match "/roles/*path", %{ layer: :resources, accept: %{ json: true } } do
+    forward conn, path, "http://cache/roles/"
   end
 
   #################################################################
   # Besluit resources
   #################################################################
+  match "/bestuurseenheden/*path", %{ layer: :resources, accept: %{ json: true } } do
+    forward conn, path, "http://cache/bestuurseenheden/"
+  end
   match "/werkingsgebieden/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/werkingsgebieden/"
   end
@@ -111,17 +100,17 @@ defmodule Dispatcher do
   match "/geboortes/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/geboortes/"
   end
-  match "/lijsttypes/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/lijsttypes/"
-  end
-  match "/kandidatenlijsten/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/kandidatenlijsten/"
-  end
   match "/lidmaatschappen/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/lidmaatschappen/"
   end
+  match "/mandaten/*path", %{ layer: :resources, accept: %{ json: true } } do
+    forward conn, path, "http://cache/mandaten/"
+  end
   match "/bestuursfunctie-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/bestuursfunctie-codes/"
+  end
+  match "/mandatarissen/*path", %{ layer: :resources, accept: %{ json: true } } do
+    forward conn, path, "http://cache/mandatarissen/"
   end
   match "/mandataris-status-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/mandataris-status-codes/"
@@ -169,28 +158,6 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # Worship resources
-  #################################################################
-  match "/roles/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/roles/"
-  end
-  match "/organizations/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/organizations/"
-  end
-  match "/sites/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/sites/"
-  end
-  match "/organization-status-codes/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/organization-status-codes/"
-  end
-  match "/site-types/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/site-types/"
-  end
-  match "/participations/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/participations/"
-  end
-
-  #################################################################
   # Concept scheme resources
   #################################################################
   get "/concept-schemes/*path", %{ layer: :resources, accept: %{ json: true } } do
@@ -198,13 +165,6 @@ defmodule Dispatcher do
   end
   get "/concepts/*path", %{ layer: :resources, accept: %{ json: true } } do
     forward conn, path, "http://cache/concepts/"
-  end
-
-  #################################################################
-  # Random resources
-  #################################################################
-  match "/vendors/*path", %{ layer: :resources, accept: %{ json: true } } do
-    forward conn, path, "http://cache/vendors/"
   end
 
   #################################################################

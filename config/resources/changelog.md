@@ -5,3 +5,27 @@ Since the domain model was reviewed the resources have been refactored to delete
 ## Deleted resources
 
 Vendor resource wasn't in the original and wasn't used anymore, so this has been deleted.
+Organization
+Organization-status-code
+Site
+Site-type
+
+## File reorganisation
+
+Some files have been renamed and reshuffled to better reflect the domain and how it is structured.
+
+These files have been renamed:
+
+- master-files-domain -> files
+- master-users-domain -> user
+
+- slave-besluit-domain -> external-besluit
+- slave-contact-domain -> external-contact
+- slave-leidinggevenden-domain -> external-leidinggevenden
+- slave-mandaat-domain -> external-mandaat
+
+The file organisation has been deleted, since the only resource in it belongs to external-besluit (this has resource has thus been moved).
+
+## Problems
+
+The resource organization is a bit problematic, if I interpret the domain model correctly the orginization should be an abstract resource implemented in bestuursorgaan or bestuurseenheid, however these don't actually inherit from the organization resource. For this reason, the organization resource has been deleted.

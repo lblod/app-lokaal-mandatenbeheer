@@ -23,15 +23,15 @@
 
 (read-domain-file "master-files-domain.lisp")
 (read-domain-file "agent-in-position.lisp")
-(read-domain-file "organisation.lisp")
 (read-domain-file "concept-scheme.lisp")
 (read-domain-file "post.lisp")
 (read-domain-file "master-users-domain.lisp")
-(read-domain-file "slave-mandaat-domain.lisp")
 (read-domain-file "worship-units.lisp")
-(read-domain-file "slave-besluit-domain.lisp")
-(read-domain-file "slave-contact-domain.lisp")
-(read-domain-file "slave-leidinggevenden-domain.lisp")
+
+(read-domain-file "external-besluit.lisp")
+(read-domain-file "external-contact.lisp")
+(read-domain-file "external-leidinggevenden.lisp")
+(read-domain-file "external-mandaat.lisp")
 
 ;; Extra security layer to return 403 on GET /files
 ;; It should be ok for mu-auth; but devs can make bugs and add files to the wrong graph (i.e. public)

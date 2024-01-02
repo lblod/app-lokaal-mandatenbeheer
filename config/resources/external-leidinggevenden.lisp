@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; LEIDINGGEVENDEN ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; this is a shared domain file, maintained in https://github.com/lblod/domain-files
+;; this is a shared domain file, maintained in https://github.com/lblod/domain-files (file master-leidinggevenden-domain)
+
 (define-resource bestuursfunctie ()
   :class (s-prefix "lblodlg:Bestuursfunctie")
   :has-one `((bestuursfunctie-code :via ,(s-prefix "org:role")

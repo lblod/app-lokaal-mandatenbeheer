@@ -21,9 +21,7 @@
                             :as "contactinfo")
               (bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
                               :inverse t
-                              :as "bestuursorganen")
-              (participation :via ,(s-prefix "m8g:playsRole")
-                            :as "participations"))
+                              :as "bestuursorganen"))
   :resource-base (s-url "http://data.lblod.info/id/bestuurseenheden/")
   :features '(include-uri)
   :on-path "bestuurseenheden"

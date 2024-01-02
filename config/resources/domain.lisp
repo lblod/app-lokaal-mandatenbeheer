@@ -28,8 +28,6 @@
 (read-domain-file "files.lisp")
 (read-domain-file "user.lisp")
 
-(read-domain-file "worship-units.lisp")
-
 (read-domain-file "external-besluit.lisp")
 (read-domain-file "external-contact.lisp")
 (read-domain-file "external-leidinggevenden.lisp")

@@ -9,6 +9,7 @@ Organization
 Organization-status-code
 Site
 Site-type
+Participation
 
 ## File reorganisation
 

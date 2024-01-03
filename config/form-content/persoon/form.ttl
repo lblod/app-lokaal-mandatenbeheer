@@ -29,7 +29,15 @@ ext:gebruikteVoornaamF
     sh:group ext:persoonPG;
     sh:name "Voornaam";
     sh:order 4;
-    sh:path <https://data.vlaanderen.be/ns/persoon/#gebruikteVoornaam>.
+    sh:path <http://data.vlaanderen.be/ns/persoon/#gebruikteVoornaam>.
+ext:geslachtCodeF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:persoonPG;
+    sh:name "Geslacht";
+    sh:order 5;
+    sh:path <http://data.vlaanderen.be/ns/persoon/#geslacht>;
+    form:options """{"conceptScheme":"http://lblod.data.gift/concept-schemes/c5a91bd7-3eb5-4d69-a51b-9bac6bf345f6","searchEnabled":false}""".
 ext:persoonPG
     a form:PropertyGroup; sh:name "Persoon"; sh:order 1.
 
@@ -37,7 +45,8 @@ ext:form a form:Form, form:TopLevelForm;
     form:includes
         ext:alternatieveNaamF,
         ext:achternaamF,
-        ext:gebruikteVoornaamF;
+        ext:gebruikteVoornaamF,
+        ext:geslachtCodeF;
     sh:group ext:persoonPG;
     form:initGenerator ext:personG.
 

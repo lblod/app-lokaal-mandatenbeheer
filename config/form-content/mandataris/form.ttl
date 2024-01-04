@@ -7,7 +7,7 @@
 @prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
-@prefix ns: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 
 
 ext:rangordeF
@@ -16,7 +16,7 @@ ext:rangordeF
     sh:group ext:mandatarisPG;
     sh:name "Rangorde";
     sh:order 2;
-    sh:path ns:rangorde .
+    sh:path mandaat:rangorde .
 ext:datumEedafleggingF
     a form:Field;
     form:displayType displayTypes:date;
@@ -30,14 +30,14 @@ ext:eindeF
     sh:group ext:mandatarisPG;
     sh:name "Einde";
     sh:order 4;
-    sh:path ns:einde.
+    sh:path mandaat:einde.
 ext:startF
     a form:Field;
     form:displayType displayTypes:dateTime;
     sh:group ext:mandatarisPG;
     sh:name "Start";
     sh:order 3;
-    sh:path ns:start .
+    sh:path mandaat:start .
 ext:datumMinistrieelBesluitF
     a form:Field;
     form:displayType displayTypes:date;
@@ -45,6 +45,22 @@ ext:datumMinistrieelBesluitF
     sh:name "Datum Ministrieel Besluit";
     sh:order 6;
     sh:path ext:datumMinistrieelBesluit .
+ext:beleidsdomeinCodeF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:mandatarisPG;
+    sh:name "Beleidsdomein";
+    sh:order 7;
+    sh:path mandaat:beleidsdomein;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true}""".
+ext:mandatarisStatusCodeF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:mandatarisPG;
+    sh:name "Status";
+    sh:order 8;
+    sh:path mandaat:status;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
 ext:mandatarisPG
     a form:PropertyGroup; sh:name "Mandataris"; sh:order 1 .
 
@@ -55,14 +71,16 @@ ext:form
         ext:datumEedafleggingF,
         ext:eindeF,
         ext:startF,
-        ext:datumMinistrieelBesluitF;
+        ext:datumMinistrieelBesluitF,
+        ext:beleidsdomeinCodeF,
+        ext:mandatarisStatusCodeF;
     sh:group ext:mandatarisPG;
     form:initGenerator ext:mandatarisG.
 
 ext:mandatarisG a form:Generator;
   form:prototype [
     form:shape [
-      a ns:Mandataris
+      a mandaat:Mandataris
     ]
   ];
   form:dataGenerator form:addMuUuid.

@@ -7,7 +7,7 @@
 @prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
-@prefix ns: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 
 
 ext:aantalHoudersF
@@ -16,21 +16,31 @@ ext:aantalHoudersF
     sh:group ext:mandaatPG;
     sh:name "Aantal houders";
     sh:order 2;
-    sh:path ns:aantalHouders .
+    sh:path mandaat:aantalHouders .
+ext:bestuursfunctieCodeF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:mandaatPG;
+    sh:name "Bestuursfunctie";
+    sh:order 3;
+    sh:path <http://www.w3.org/ns/org#role>;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode","searchEnabled":true}""".
 ext:mandaatPG
     a form:PropertyGroup; sh:name "Mandaat"; sh:order 1 .
 
 ext:form
     a form:Form, form:TopLevelForm;
-    form:includes ext:aantalHoudersF;
+    form:includes 
+      ext:aantalHoudersF,
+      ext:bestuursfunctieCodeF;
     sh:group ext:mandaatPG ;
     form:initGenerator ext:mandaatG.
 
 ext:mandaatG a form:Generator;
   form:prototype [
     form:shape [
-      a ns:Mandaat ;
-      ns:aantalHouders 1
+      a mandaat:Mandaat ;
+      mandaat:aantalHouders 1
     ]
   ];
   form:dataGenerator form:addMuUuid.

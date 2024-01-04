@@ -32,6 +32,14 @@ ext:bindingStartF
     sh:name "Binding start";
     sh:order 4;
     sh:path mandaat:bindingStart .
+ext:bestuursorgaanClassificatieCodeF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:bestuursorgaanPG;
+    sh:name "Standaard type";
+    sh:order 5;
+    sh:path <http://data.vlaanderen.be/ns/besluit#classificatie>;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BestuursorgaanClassificatieCode","searchEnabled":true}""".
 ext:bestuursorgaanPG
     a form:PropertyGroup; sh:name "Bestuursorgaan"; sh:order 1 .
 
@@ -40,8 +48,9 @@ ext:form
     form:includes
         ext:bindingEindeF,
         ext:naamF,
-        ext:bindingStartF;
-    sh:group ext:bestuursorgaanPG ;
+        ext:bindingStartF,
+        ext:bestuursorgaanClassificatieCodeF;
+    sh:group ext:bestuursorgaanPG;
     form:initGenerator ext:bestuursorgaanG.
 
 ext:bestuursorgaanG a form:Generator;

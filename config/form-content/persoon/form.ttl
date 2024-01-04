@@ -37,7 +37,7 @@ ext:geslachtCodeF
     sh:name "Geslacht";
     sh:order 5;
     sh:path <http://data.vlaanderen.be/ns/persoon/#geslacht>;
-    form:options """{"conceptScheme":"http://lblod.data.gift/concept-schemes/c5a91bd7-3eb5-4d69-a51b-9bac6bf345f6","searchEnabled":false}""".
+    form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":false}""".
 ext:persoonPG
     a form:PropertyGroup; sh:name "Persoon"; sh:order 1.
 

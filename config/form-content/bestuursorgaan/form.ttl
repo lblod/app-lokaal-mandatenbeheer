@@ -51,7 +51,8 @@ ext:form
         ext:bindingStartF,
         ext:bestuursorgaanClassificatieCodeF;
     sh:group ext:bestuursorgaanPG;
-    form:initGenerator ext:bestuursorgaanG.
+    form:initGenerator ext:bestuursorgaanG;
+    ext:label "bestuursorgaan" .
 
 ext:bestuursorgaanG a form:Generator;
   form:prototype [

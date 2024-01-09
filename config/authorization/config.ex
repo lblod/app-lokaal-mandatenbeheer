@@ -161,6 +161,8 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/persoon#Geboorte",
                         "http://www.w3.org/ns/org#Membership",
                         "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+                        "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+                        "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://www.w3.org/ns/person#Person",
                         "http://www.w3.org/ns/adms#Identifier",
                         "http://purl.org/dc/terms/PeriodOfTime" ] } } ] },

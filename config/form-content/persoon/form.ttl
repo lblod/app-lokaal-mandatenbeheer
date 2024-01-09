@@ -7,6 +7,7 @@
 @prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix person: <http://www.w3.org/ns/person#>.
 
 
 ext:alternatieveNaamF
@@ -53,7 +54,7 @@ ext:form a form:Form, form:TopLevelForm;
 ext:personG a form:Generator;
   form:prototype [
     form:shape [
-      a foaf:Person
+      a person:Person
     ]
   ];
   form:dataGenerator form:addMuUuid.

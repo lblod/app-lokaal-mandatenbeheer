@@ -48,7 +48,8 @@ ext:form a form:Form, form:TopLevelForm;
         ext:gebruikteVoornaamF,
         ext:geslachtCodeF;
     sh:group ext:persoonPG;
-    form:initGenerator ext:personG.
+    form:initGenerator ext:personG;
+    ext:label "persoon" .
 
 ext:personG a form:Generator;
   form:prototype [
@@ -57,5 +58,3 @@ ext:personG a form:Generator;
     ]
   ];
   form:dataGenerator form:addMuUuid.
-
-  ext:form ext:label "persoon" .

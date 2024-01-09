@@ -34,7 +34,8 @@ ext:form
       ext:aantalHoudersF,
       ext:bestuursfunctieCodeF;
     sh:group ext:mandaatPG ;
-    form:initGenerator ext:mandaatG.
+    form:initGenerator ext:mandaatG;
+    ext:label "mandaat" .
 
 ext:mandaatG a form:Generator;
   form:prototype [
@@ -44,5 +45,3 @@ ext:mandaatG a form:Generator;
     ]
   ];
   form:dataGenerator form:addMuUuid.
-
-  ext:form ext:label "mandaat" .

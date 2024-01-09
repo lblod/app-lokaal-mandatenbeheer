@@ -75,7 +75,8 @@ ext:form
         ext:beleidsdomeinCodeF,
         ext:mandatarisStatusCodeF;
     sh:group ext:mandatarisPG;
-    form:initGenerator ext:mandatarisG.
+    form:initGenerator ext:mandatarisG;
+    ext:label "mandataris" .
 
 ext:mandatarisG a form:Generator;
   form:prototype [
@@ -84,5 +85,3 @@ ext:mandatarisG a form:Generator;
     ]
   ];
   form:dataGenerator form:addMuUuid.
-
-  ext:form ext:label "mandataris" .

@@ -44,3 +44,5 @@ ext:mandaatG a form:Generator;
     ]
   ];
   form:dataGenerator form:addMuUuid.
+
+  ext:form ext:label "mandaat" .

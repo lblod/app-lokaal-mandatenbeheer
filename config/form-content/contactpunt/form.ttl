@@ -88,7 +88,8 @@ ext:form
         ext:telefoonF,
         ext:naamF;
     sh:group ext:contactpuntPG ;
-    form:initGenerator ext:contactpuntG.
+    form:initGenerator ext:contactpuntG ;
+    ext:label "contactpunt" .
 
 ext:contactpuntG a form:Generator;
   form:prototype [
@@ -97,5 +98,3 @@ ext:contactpuntG a form:Generator;
     ]
   ];
   form:dataGenerator form:addMuUuid.
-
-  ext:form ext:label "contactpunt" .

@@ -35,7 +35,8 @@ ext:form
       ext:fractietypeF;
     sh:group ext:fractiePG ;
     form:initGenerator ext:fractieG;
-    ext:label "fractie" .
+    ext:label "fractie" ;
+    ext:prefix mandaat:Fractie .
 
 ext:fractieG a form:Generator;
   form:prototype [

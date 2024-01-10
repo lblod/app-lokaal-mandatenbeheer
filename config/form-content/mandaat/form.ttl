@@ -35,7 +35,8 @@ ext:form
       ext:bestuursfunctieCodeF;
     sh:group ext:mandaatPG ;
     form:initGenerator ext:mandaatG;
-    ext:label "mandaat" .
+    ext:label "mandaat" ;
+    ext:prefix mandaat:Mandaat .
 
 ext:mandaatG a form:Generator;
   form:prototype [

@@ -89,7 +89,8 @@ ext:form
         ext:naamF;
     sh:group ext:contactpuntPG ;
     form:initGenerator ext:contactpuntG ;
-    ext:label "contactpunt" .
+    ext:label "contactpunt" ;
+    ext:prefix schema:ContactPoint .
 
 ext:contactpuntG a form:Generator;
   form:prototype [

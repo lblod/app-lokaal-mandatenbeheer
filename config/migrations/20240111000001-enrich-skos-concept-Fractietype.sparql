@@ -3,7 +3,7 @@ PREFIX conceptscheme: <http://data.vlaanderen.be/id/conceptscheme/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 INSERT {
-  GRAPH ?g {
+  GRAPH ?h {
     ?s a skos:Concept;
       skos:inScheme conceptscheme:Fractietype;
       skos:topConceptOf conceptscheme:Fractietype.
@@ -11,6 +11,7 @@ INSERT {
 }
 WHERE {
   GRAPH ?g {
-    ?s a ext:Fractietype;
+    ?s a ext:Fractietype.
+    BIND(?g as ?h). # Workaround to avoid Virtuoso SR002 22023 error
   }
 }

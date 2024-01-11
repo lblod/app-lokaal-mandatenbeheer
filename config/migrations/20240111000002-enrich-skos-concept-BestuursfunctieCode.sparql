@@ -1,0 +1,16 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX conceptscheme: <http://data.vlaanderen.be/id/conceptscheme/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+  GRAPH ?g {
+    ?s a skos:Concept;
+      skos:inScheme conceptscheme:BestuursfunctieCode;
+      skos:topConceptOf conceptscheme:BestuursfunctieCode.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a ext:BestuursfunctieCode;
+  }
+}

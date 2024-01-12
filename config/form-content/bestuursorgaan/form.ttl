@@ -53,7 +53,7 @@ ext:form
     sh:group ext:bestuursorgaanPG;
     form:initGenerator ext:bestuursorgaanG;
     ext:label "bestuursorgaan" ;
-    ext:prefix besluit:Bestuursorgaan .
+    ext:prefix besluit:bestuursorgaan .
 
 ext:bestuursorgaanG a form:Generator;
   form:prototype [

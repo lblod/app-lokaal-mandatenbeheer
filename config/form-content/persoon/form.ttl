@@ -51,7 +51,7 @@ ext:form a form:Form, form:TopLevelForm;
     sh:group ext:persoonPG;
     form:initGenerator ext:personG;
     ext:label "persoon" ;
-    ext:prefix person:Person .
+    ext:prefix person:person .
 
 ext:personG a form:Generator;
   form:prototype [

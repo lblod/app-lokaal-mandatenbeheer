@@ -181,6 +181,7 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/ns/locn#Address",
                         "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
                         "http://data.vlaanderen.be/ns/persoon#Geboorte",
+                        "http://www.w3.org/ns/person#Person",
                         "http://www.w3.org/ns/adms#Identifier"
                       ] } },
                   %GraphSpec{

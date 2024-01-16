@@ -76,6 +76,8 @@ ext:form
         ext:mandatarisStatusCodeF;
     sh:group ext:mandatarisPG;
     form:initGenerator ext:mandatarisG;
+    form:targetType mandaat:Mandataris ;
+    form:targetLabel mu:uuid ;
     ext:label "mandataris" ;
     ext:prefix mandaat:mandataris .
 

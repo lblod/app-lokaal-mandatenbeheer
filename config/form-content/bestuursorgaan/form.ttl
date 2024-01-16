@@ -52,7 +52,8 @@ ext:form
         ext:bestuursorgaanClassificatieCodeF;
     sh:group ext:bestuursorgaanPG;
     form:initGenerator ext:bestuursorgaanG;
-    ext:label "bestuursorgaan" ;
+    form:targetType besluit:Bestuursorgaan ;
+    form:targetLabel skos:prefLabel ;
     ext:prefix besluit:bestuursorgaan .
 
 ext:bestuursorgaanG a form:Generator;

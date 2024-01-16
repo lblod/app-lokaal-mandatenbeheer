@@ -30,12 +30,13 @@ ext:mandaatPG
 
 ext:form
     a form:Form, form:TopLevelForm;
-    form:includes 
+    form:includes
       ext:aantalHoudersF,
       ext:bestuursfunctieCodeF;
     sh:group ext:mandaatPG ;
     form:initGenerator ext:mandaatG;
-    ext:label "mandaat" ;
+    form:targetType mandaat:Mandaat ;
+    form:targetLabel mu:uuid ;
     ext:prefix mandaat:mandaat .
 
 ext:mandaatG a form:Generator;

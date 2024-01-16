@@ -30,11 +30,13 @@ ext:fractiePG
 
 ext:form
     a form:Form, form:TopLevelForm;
-    form:includes 
+    form:includes
       ext:naamF,
       ext:fractietypeF;
     sh:group ext:fractiePG ;
     form:initGenerator ext:fractieG;
+    form:targetType mandaat:Fractie ;
+    form:targetLabel regorg:legalName ;
     ext:label "fractie" ;
     ext:prefix mandaat:fractie .
 

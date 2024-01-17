@@ -37,7 +37,6 @@ ext:form
     form:initGenerator ext:fractieG;
     form:targetType mandaat:Fractie ;
     form:targetLabel regorg:legalName ;
-    ext:label "fractie" ;
     ext:prefix mandaat:fractie .
 
 ext:fractieG a form:Generator;

@@ -9,6 +9,7 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 @prefix regorg: <https://www.w3.org/ns/regorg#>.
+@prefix org: <http://www.w3.org/ns/org#>.
 
 ext:naamF
     a form:Field;
@@ -28,16 +29,29 @@ ext:fractietypeF
 ext:fractiePG
     a form:PropertyGroup; sh:name "Fractie"; sh:order 1.
 
+ext:hiddenBestuursorgaanF a form:Field ;
+    sh:name "Bestuursorganen in de tijd [hidden input]" ;
+    sh:order 5001 ;
+    sh:path org:memberOf .
+
+ext:hiddenBestuurseenheidF a form:Field ;
+    sh:name "Bestuurseenheid [hidden input]" ;
+    sh:order 5002 ;
+    sh:path org:linkedTo .
+
+
 ext:form
     a form:Form, form:TopLevelForm;
     form:includes
       ext:naamF,
-      ext:fractietypeF;
+      ext:fractietypeF,
+      ext:hiddenBestuursorgaanF,
+      ext:hiddenBestuurseenheidF;
     sh:group ext:fractiePG ;
     form:initGenerator ext:fractieG;
     form:targetType mandaat:Fractie ;
     form:targetLabel regorg:legalName ;
-    ext:prefix mandaat:fractie .
+    ext:prefix <http://mu.semte.ch/vocabularies/ext/fractie/>.
 
 ext:fractieG a form:Generator;
   form:prototype [

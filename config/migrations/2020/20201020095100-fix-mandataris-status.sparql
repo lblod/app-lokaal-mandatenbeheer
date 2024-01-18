@@ -1,9 +1,0 @@
-DELETE {
-  GRAPH ?g {
-    <http://data.lblod.info/id/mandatarissen/00ccaf213a738a05942f71f87092c50b0aa4fc67c5206251642a39da09b757a1> <http://data.vlaanderen.be/ns/mandaat#status> ?status .
-  }
-} WHERE {
-  GRAPH ?g {
-    <http://data.lblod.info/id/mandatarissen/00ccaf213a738a05942f71f87092c50b0aa4fc67c5206251642a39da09b757a1> <http://data.vlaanderen.be/ns/mandaat#status> ?status .
-  }
-}

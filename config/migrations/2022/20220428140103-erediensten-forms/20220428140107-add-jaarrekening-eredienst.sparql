@@ -1,6 +1,0 @@
-INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-      <https://data.vlaanderen.be/id/concept/BesluitType/e44c535d-4339-4d15-bdbf-d4be6046de2c> 
-      <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>.
-  }
-}

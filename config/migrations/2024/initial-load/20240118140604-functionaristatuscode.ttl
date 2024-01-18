@@ -1,0 +1,6 @@
+<http://data.vlaanderen.be/id/concept/functionarisStatusCode/45b4b155-d22a-4eaf-be3a-97022c6b7fcd>	<http://www.w3.org/2004/02/skos/core#prefLabel>	"aangesteld" .
+<http://data.vlaanderen.be/id/concept/functionarisStatusCode/188fc9c0-dae7-43b2-b2b3-6122c1594479>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode> .
+<http://data.vlaanderen.be/id/concept/functionarisStatusCode/188fc9c0-dae7-43b2-b2b3-6122c1594479>	<http://www.w3.org/2004/02/skos/core#prefLabel>	"waarnemend" .
+<http://data.vlaanderen.be/id/concept/functionarisStatusCode/45b4b155-d22a-4eaf-be3a-97022c6b7fcd>	<http://mu.semte.ch/vocabularies/core/uuid>	"45b4b155-d22a-4eaf-be3a-97022c6b7fcd" .
+<http://data.vlaanderen.be/id/concept/functionarisStatusCode/188fc9c0-dae7-43b2-b2b3-6122c1594479>	<http://mu.semte.ch/vocabularies/core/uuid>	"188fc9c0-dae7-43b2-b2b3-6122c1594479" .
+<http://data.vlaanderen.be/id/concept/functionarisStatusCode/45b4b155-d22a-4eaf-be3a-97022c6b7fcd>	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>	<http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode> .

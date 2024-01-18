@@ -1,7 +1,0 @@
-<http://lblod.data.gift/concepts/faa5110a-fdb2-47fa-a0d2-118e5542ef05> a  <http://www.w3.org/2004/02/skos/core#Concept>;
-   <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/9cf6fa63-1f49-4d53-af06-e1c235ece10b>;
-   <http://www.w3.org/2004/02/skos/core#prefLabel> "Verwijderd"@nl;
-   <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/9cf6fa63-1f49-4d53-af06-e1c235ece10b> .
-
-<http://lblod.data.gift/concepts/faa5110a-fdb2-47fa-a0d2-118e5542ef05> <http://mu.semte.ch/vocabularies/core/uuid> "faa5110a-fdb2-47fa-a0d2-118e5542ef05" .
-<http://lblod.data.gift/concepts/faa5110a-fdb2-47fa-a0d2-118e5542ef05> a <http://mu.semte.ch/vocabularies/ext/SubmissionDocumentStatus> .

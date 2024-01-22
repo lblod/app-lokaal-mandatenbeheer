@@ -1,0 +1,56 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix person: <http://www.w3.org/ns/person#>.
+
+
+ext:testFieldF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:testPG;
+    sh:name "Test";
+    sh:order 2;
+    sh:path ext:test.
+ext:testInstanceSelectorF
+    a form:Field;
+    form:displayType displayTypes:instanceSelector;
+    form:instanceApiUrl "/fracties";
+    form:instanceLabelProperty "naam";
+    sh:group ext:testPG;
+    sh:name "testInstanceSelector";
+    sh:order 3;
+    sh:path ext:testInstanceSelector.
+ext:testInstanceMultiSelectorF
+    a form:Field;
+    form:displayType displayTypes:instanceMultiSelector;
+    form:instanceApiUrl "/fracties";
+    form:instanceLabelProperty "naam";
+    sh:group ext:testPG;
+    sh:name "testInstanceMultiSelector";
+    sh:order 4;
+    sh:path ext:testInstanceMultiSelector.
+ext:testPG
+    a form:PropertyGroup; sh:name "Test"; sh:order 1.
+
+ext:form a form:Form, form:TopLevelForm;
+    form:includes
+        ext:testFieldF,
+        ext:testInstanceSelectorF,
+        ext:testInstanceMultiSelectorF;
+    sh:group ext:testPG;
+    form:initGenerator ext:testG;
+    ext:label "test" .
+
+ext:testG a form:Generator;
+  form:prototype [
+    form:shape [
+      a person:Person
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

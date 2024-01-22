@@ -20,8 +20,8 @@ ext:alternatieveNaamF
 ext:testInstanceSelectorF
     a form:Field;
     form:displayType displayTypes:instanceSelector;
-    form:instanceApiUrl "testInstanceSelector";
-    form:instanceLabelProperty "testInstanceSelector";
+    form:instanceApiUrl "/fracties";
+    form:instanceLabelProperty "naam";
     sh:group ext:persoonPG;
     sh:name "testInstanceSelector";
     sh:order 3;
@@ -29,8 +29,8 @@ ext:testInstanceSelectorF
 ext:testInstanceMultiSelectorF
     a form:Field;
     form:displayType displayTypes:instanceMultiSelector;
-    form:instanceApiUrl "testInstanceMultiSelector";
-    form:instanceLabelProperty "testInstanceMultiSelector";
+    form:instanceApiUrl "/fracties";
+    form:instanceLabelProperty "naam";
     sh:group ext:persoonPG;
     sh:name "testInstanceMultiSelector";
     sh:order 4;

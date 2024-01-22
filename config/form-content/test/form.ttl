@@ -10,19 +10,19 @@
 @prefix person: <http://www.w3.org/ns/person#>.
 
 
-ext:alternatieveNaamF
+ext:testFieldF
     a form:Field;
     form:displayType displayTypes:defaultInput;
-    sh:group ext:persoonPG;
-    sh:name "Roepnaam";
+    sh:group ext:testPG;
+    sh:name "Test";
     sh:order 2;
-    sh:path foaf:name.
+    sh:path ext:test.
 ext:testInstanceSelectorF
     a form:Field;
     form:displayType displayTypes:instanceSelector;
     form:instanceApiUrl "/fracties";
     form:instanceLabelProperty "naam";
-    sh:group ext:persoonPG;
+    sh:group ext:testPG;
     sh:name "testInstanceSelector";
     sh:order 3;
     sh:path ext:testInstanceSelector.
@@ -31,23 +31,23 @@ ext:testInstanceMultiSelectorF
     form:displayType displayTypes:instanceMultiSelector;
     form:instanceApiUrl "/fracties";
     form:instanceLabelProperty "naam";
-    sh:group ext:persoonPG;
+    sh:group ext:testPG;
     sh:name "testInstanceMultiSelector";
     sh:order 4;
     sh:path ext:testInstanceMultiSelector.
-ext:persoonPG
-    a form:PropertyGroup; sh:name "Persoon"; sh:order 1.
+ext:testPG
+    a form:PropertyGroup; sh:name "Test"; sh:order 1.
 
 ext:form a form:Form, form:TopLevelForm;
     form:includes
-        ext:alternatieveNaamF,
+        ext:testFieldF,
         ext:testInstanceSelectorF,
         ext:testInstanceMultiSelectorF;
-    sh:group ext:persoonPG;
-    form:initGenerator ext:personG;
-    ext:label "persoon" .
+    sh:group ext:testPG;
+    form:initGenerator ext:testG;
+    ext:label "test" .
 
-ext:personG a form:Generator;
+ext:testG a form:Generator;
   form:prototype [
     form:shape [
       a person:Person

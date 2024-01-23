@@ -45,7 +45,8 @@ ext:form a form:Form, form:TopLevelForm;
         ext:testInstanceMultiSelectorF;
     sh:group ext:testPG;
     form:initGenerator ext:testG;
-    ext:label "test" .
+    form:targetType person:Person ;
+    form:targetLabel ext:test .
 
 ext:testG a form:Generator;
   form:prototype [

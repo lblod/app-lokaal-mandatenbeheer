@@ -50,7 +50,8 @@ ext:form a form:Form, form:TopLevelForm;
         ext:geslachtCodeF;
     sh:group ext:persoonPG;
     form:initGenerator ext:personG;
-    ext:label "persoon" ;
+    form:targetType person:Person ;
+    form:targetLabel foaf:name ;
     ext:prefix person:person .
 
 ext:personG a form:Generator;

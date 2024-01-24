@@ -54,7 +54,7 @@ ext:form
     form:initGenerator ext:bestuursorgaanG;
     form:targetType besluit:Bestuursorgaan ;
     form:targetLabel skos:prefLabel ;
-    ext:prefix besluit:bestuursorgaan .
+    ext:prefix <http://data.lblod.info/id/bestuursorganen/> .
 
 ext:bestuursorgaanG a form:Generator;
   form:prototype [

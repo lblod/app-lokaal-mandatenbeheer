@@ -78,7 +78,7 @@ ext:form
     form:initGenerator ext:mandatarisG;
     form:targetType mandaat:Mandataris ;
     form:targetLabel mu:uuid ;
-    ext:prefix mandaat:mandataris .
+    ext:prefix <http://data.lblod.info/id/mandatarissen/> .
 
 ext:mandatarisG a form:Generator;
   form:prototype [

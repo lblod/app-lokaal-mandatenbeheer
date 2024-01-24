@@ -51,7 +51,7 @@ ext:form
     form:initGenerator ext:fractieG;
     form:targetType mandaat:Fractie ;
     form:targetLabel regorg:legalName ;
-    ext:prefix <http://mu.semte.ch/vocabularies/ext/fractie/>.
+    ext:prefix <http://data.lblod.info/id/fracties/>.
 
 ext:fractieG a form:Generator;
   form:prototype [

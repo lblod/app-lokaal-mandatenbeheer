@@ -37,7 +37,7 @@ ext:form
     form:initGenerator ext:mandaatG;
     form:targetType mandaat:Mandaat ;
     form:targetLabel mu:uuid ;
-    ext:prefix mandaat:mandaat .
+    ext:prefix <http://data.lblod.info/id/mandaten/> .
 
 ext:mandaatG a form:Generator;
   form:prototype [

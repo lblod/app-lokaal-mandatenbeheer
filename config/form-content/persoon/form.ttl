@@ -52,7 +52,7 @@ ext:form a form:Form, form:TopLevelForm;
     form:initGenerator ext:personG;
     form:targetType person:Person ;
     form:targetLabel foaf:familyName ;
-    ext:prefix <http://mu.semte.ch/vocabularies/ext/person/> .
+    ext:prefix <http://data.lblod.info/id/personen/> .
 
 ext:personG a form:Generator;
   form:prototype [

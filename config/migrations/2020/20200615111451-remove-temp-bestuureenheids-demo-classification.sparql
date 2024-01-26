@@ -1,7 +1,0 @@
-PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-
-DELETE WHERE {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-     ?bestuurseenheid ext:submissionTrialUser "development" .
-  }
-}

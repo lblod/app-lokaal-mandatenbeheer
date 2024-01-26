@@ -1,8 +1,0 @@
-# Adding missing betrokken besturen kerkfabriek St.-Pieter van Puurs-Sint-Amands
-
-<http://data.lblod.info/id/bestuurseenheden/c8f33e80-6f19-4ba1-a758-9d85f42d28d4> <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> <http://data.lblod.info/id/betrokkenLokaleBesturen/635237108DE5818A7C9F41D1> .
-<http://data.lblod.info/id/betrokkenLokaleBesturen/635237108DE5818A7C9F41D1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen> .
-<http://data.lblod.info/id/betrokkenLokaleBesturen/635237108DE5818A7C9F41D1> <http://mu.semte.ch/vocabularies/core/uuid> "635237108DE5818A7C9F41D1" .
-<http://data.lblod.info/id/betrokkenLokaleBesturen/635237108DE5818A7C9F41D1> <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> 100 .
-<http://data.lblod.info/id/betrokkenLokaleBesturen/635237108DE5818A7C9F41D1> <http://www.w3.org/ns/org#organization> <http://data.lblod.info/id/besturenVanDeEredienst/0cf9e2ba13383363a0dafecd18c39fd4> .
-<http://data.lblod.info/id/betrokkenLokaleBesturen/635237108DE5818A7C9F41D1> <http://data.lblod.info/vocabularies/erediensten/typebetrokkenheid> <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1> .

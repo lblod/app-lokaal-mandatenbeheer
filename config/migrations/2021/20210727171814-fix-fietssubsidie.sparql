@@ -1,5 +1,0 @@
-INSERT DATA {
- GRAPH <http://mu.semte.ch/graphs/public> {
-   <http://data.lblod.info/id/periodes/001dac27-0146-4eb5-9313-8967e20d599b> <http://data.europa.eu/m8g/startTime> "2021-01-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>
- }
-}

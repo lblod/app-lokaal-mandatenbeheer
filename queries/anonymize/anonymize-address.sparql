@@ -1,0 +1,47 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX schema: <http://schema.org/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+
+DELETE {
+  GRAPH ?g {
+    ?adres ?addrProp ?addrValue.
+  }
+} INSERT {
+    GRAPH ?g {
+      ?adres ?addrProp ?addrValue_s.
+    }
+}
+WHERE {
+	?adres a locn:Address.
+	# TODO use a random string here
+  BIND("TODO REPLACE ME WITH A HARD TO GUESS STRING" AS ?salt).
+	OPTIONAL {
+		GRAPH ?g {
+			?adres ?addrProp ?addrValue.
+			VALUES ?addrProp {
+				adres:Adresvoorstelling.busnummer
+				adres:Adresvoorstelling.huisnummer
+				locn:thoroughfare
+				locn:postCode
+				adres:gemeentenaam
+				adres:land
+				locn:locatorDesignator
+				locn:locatorName
+				locn:poBox
+				locn:postName
+				locn:fullAddress
+			}
+			BIND(SHA1(CONCAT(?salt, ?addrValue)) AS ?addrValue_s).
+		}
+	}
+
+}

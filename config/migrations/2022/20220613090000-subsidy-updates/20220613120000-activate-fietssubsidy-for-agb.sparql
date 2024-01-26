@@ -1,7 +1,0 @@
-INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    # Fietsinfrastructuur
-    <http://lblod.data.gift/concepts/70cc4947-33a3-4d26-82e0-2e1eacd2fea2> <http://data.europa.eu/m8g/hasCriterion>
-      <http://data.lblod.info/id/criterions/72ada772-6e71-4eb3-85a6-c58539a13865>. # agb
-  }
-}

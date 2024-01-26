@@ -1,0 +1,314 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+PREFIX schema: <http://schema.org/>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+	GRAPH <http://mu.semte.ch/graph/temp/web> {
+		?target a ext:lmbTarget.
+	}
+}
+# CONSTRUCT {
+#  	?target a ext:lmbTarget.
+# }
+WHERE {
+	?b a besluit:Bestuurseenheid.
+	?b mu:uuid ?id.
+	VALUES ?id {
+    "8af37430f91603017873dbc1390eccf364bf82854f7358e9c9845498b184660f"
+    "670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c"
+    "8662dc060c121e9d69101062f67daeef8370d38bfe86533752b9e54190dd0e2f"
+    "747d235d067e1f04eb12261b79850098ba93cdd3522cb75bd84e4605038bc76a"
+    "f0cc06aca0893bc875d3254bf753f2357f67f2895871347a0dd05628b0ce77c2"
+    "d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18"
+    "ba4d960fe3e01984e15fd0b141028bab8f2b9b240bf1e5ab639ba0d7fe4dc522"
+    "4d7946dc0b77ae0cbc08637f4e1a0009a58305ab5da33aadd75c7d4748340b86"
+    "f73c7109-06a0-45d7-b558-879d87ca3553"
+    "011a6ad0efca0b7e03ca9b99bd6c636a26cbde49aa0d6844b9ebc434dc58216c"
+    "5be3ff820769b385a32e499d17bbf1f15feeacb65381d5384841732dd4a1209b"
+    "bd74ee38a4b1e296821a11729c1f704cf439576c7ab2c910c95b067cf183d923"
+    "83c7a12a4a8ac8dd82895715095a866dc4794e60de61b967419bdfc1e207ad96"
+    "d6a04c16b842c671407bccdad2d3b536b7d356096ae24e7c6c6e22cee4296db4"
+    "461fdead3ed31710eb58da8b8acc22a08f82409c4edc3adf220ef2f98aa57c30"
+    "5116efa8-e96e-46a2-aba6-c077e9056a96"
+    "2fd8218dd4a404931eeaef879e33506ae998e38d4ca745620f4f6044c230dff3"
+    "974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4"
+    "38dc63f50a4f7ea61ef741d8944a874a59ba84b69b9ff3e73f69680da2c6ef37"
+    "5d6cc695e6c2082ca219baf425c61e8fc8ea25ec5a11187f1d96863266adcd64"
+	}
+	{
+		{
+			?b a ?thing.
+			BIND(?b AS ?target)
+		}
+		UNION
+		{
+			?b besluit:werkingsgebied ?target.
+		}
+		UNION
+		{
+			?b schema:contactPoint ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?target.
+		}
+		UNION
+		{
+			?b ext:inProvincie ?target.
+		}
+		UNION
+		{
+			?b besluit:classificatie ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan besluit:classificatie ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?target mandaat:isTijdspecialisatieVan ?orgaan.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan org:hasPost ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd org:hasPost ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan lblodlg:heeftBestuursfunctie ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd lblodlg:heeftBestuursfunctie ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan besluit:classificatie ?code.
+			?code ext:hasDefaultType ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd besluit:classificatie ?code.
+			?code ext:hasDefaultType ?target.
+		}
+		UNION
+		{
+			?target a skos:ConceptScheme .
+		}
+		UNION
+		{
+			?target a skos:Concept .
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd lblodlg:heeftBestuursfunctie ?fun.
+			?fun org:role ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan lblodlg:heeftBestuursfunctie ?fun.
+			?fun org:role ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd lblodlg:heeftBestuursfunctie ?fun.
+			?fun org:role ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan lblodlg:heeftBestuursfunctie ?fun.
+			?fun schema:contactPoint ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd lblodlg:heeftBestuursfunctie ?fun.
+			?fun schema:contactPoint ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd lblodlg:heeftBestuursfunctie ?fun.
+			?fun ^org:holds ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan lblodlg:heeftBestuursfunctie ?fun.
+			?fun ^org:holds ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd lblodlg:heeftBestuursfunctie ?fun.
+			?fun ^org:holds ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan lblodlg:heeftBestuursfunctie ?fun.
+			?fun ^org:holds ?functionaris.
+			?functionaris mandaat:status ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd lblodlg:heeftBestuursfunctie ?fun.
+			?fun ^org:holds ?functionaris.
+			?functionaris mandaat:status ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaan lblodlg:heeftBestuursfunctie ?fun.
+			?fun ^org:holds ?functionaris.
+			?functionaris mandaat:isBestuurlijkeAliasVan ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt ?orgaan.
+			?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan.
+			?orgaanInTijd lblodlg:heeftBestuursfunctie ?fun.
+			?fun ^org:holds ?functionaris.
+			?functionaris mandaat:isBestuurlijkeAliasVan ?target.
+		}
+		UNION
+		{
+			# fractie
+			?b ^org:linkedTo ?target.
+		}
+		UNION
+		{
+			?b ^org:linkedTo ?fractie.
+			?fractie org:memberOf ?target.
+		}
+		UNION
+		{
+			?b ^org:linkedTo ?fractie.
+			?fractie ext:isFractietype ?target.
+		}
+		UNION
+		{
+			# lidmaatschap
+			?b ^org:linkedTo ?fractie.
+			?fractie ^org:organization ?target.
+		}
+		UNION
+		{
+			# mandataris
+			?b ^org:linkedTo ?fractie.
+			?fractie ^org:organization ?lidmaatschap.
+			?lidmaatschap ^org:hasMembership ?target.
+		}
+		UNION
+		{
+			?b ^org:linkedTo ?fractie.
+			?fractie ^org:organization ?lidmaatschap.
+			?lidmaatschap org:memberDuring ?target.
+		}
+		UNION
+		{
+			?b ^besluit:bestuurt/^mandaat:isTijdspecialisatieVan? ?orgaan.
+			?orgaan org:hasPost ?mandaat.
+			?mandaat org:role ?target.
+		}
+		UNION
+		{
+			# agent-in-position
+			?b ^besluit:bestuurt/^mandaat:isTijdspecialisatieVan? ?orgaan.
+			?orgaan org:hasPost ?mandaat.
+			?mandaat ^org:holds ?target.
+		}
+	UNION
+		{
+			?b ^besluit:bestuurt/^mandaat:isTijdspecialisatieVan? ?orgaan.
+			?orgaan org:hasPost ?mandaat.
+			?mandaat ^org:holds ?mandataris.
+			?mandataris mandaat:beleidsdomein ?target.
+		}
+	UNION
+		{
+			?b ^besluit:bestuurt/^mandaat:isTijdspecialisatieVan? ?orgaan.
+			?orgaan org:hasPost ?mandaat.
+			?mandaat ^org:holds ?mandataris.
+			?mandataris org:hasMembership ?target.
+		}
+	UNION
+		{
+			?b ^besluit:bestuurt/^mandaat:isTijdspecialisatieVan? ?orgaan.
+			?orgaan org:hasPost ?mandaat.
+			?mandaat ^org:holds ?mandataris.
+			?mandataris mandaat:status ?target.
+		}
+	UNION
+		{
+			?b ^besluit:bestuurt/^mandaat:isTijdspecialisatieVan? ?orgaan.
+			?orgaan org:hasPost ?mandaat.
+			?mandaat ^org:holds ?mandataris.
+			?mandataris owl:sameAs ?target.
+		}
+	UNION
+		{
+			?b ^besluit:bestuurt/^mandaat:isTijdspecialisatieVan? ?orgaan.
+			?orgaan org:hasPost ?mandaat.
+			?mandaat ^org:holds ?mandataris.
+			?mandataris mandaat:isBestuurlijkeAliasVan ?target.
+		}
+	UNION
+		{
+			?b ^besluit:bestuurt/^mandaat:isTijdspecialisatieVan? ?orgaan.
+			?orgaan org:hasPost ?mandaat.
+			?mandaat ^org:holds ?mandataris.
+			?mandataris org:heldBy ?target.
+		}
+
+	}
+}

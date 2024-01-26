@@ -1,5 +1,0 @@
-DELETE DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    <http://data.lblod.info/DecisionType/d68c36802386c988df798ed577b96d8e0f010441f74628f4d2dbd3196c1c6ac3> <http://mu.semte.ch/vocabularies/ext/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/cc4e2d67-603b-4784-9b61-e50bac1ec089> .
-  }
-}

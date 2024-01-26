@@ -1,9 +1,0 @@
-INSERT DATA {
-
-  GRAPH <http://mu.semte.ch/graphs/public> {
-
-    #Gemeenten zonder Gemeentehuis
-    <http://lblod.data.info/id/subsidy-measure-offers/8379a4ea-fd83-47cc-89fa-1a72ee4fbaff> <http://data.europa.eu/m8g/hasCriterion>
-       <http://data.lblod.info/id/criterions/ece5bfcf-2c3f-401a-8176-0dac66ecbdad> .  #OCMW vereniging
-  }
-}

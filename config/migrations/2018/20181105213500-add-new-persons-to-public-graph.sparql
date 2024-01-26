@@ -1,2 +1,0 @@
-ADD <http://mu.semte.ch/application> TO <http://mu.semte.ch/graphs/public>;
-DROP SILENT GRAPH <http://mu.semte.ch/application>;

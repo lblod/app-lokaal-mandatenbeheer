@@ -1,8 +1,0 @@
-INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    <http://data.lblod.info/id/account/bd8ce92f77ca5d41c95a7206e4e8170e> <http://mu.semte.ch/vocabularies/ext/sessionRole> "LoketLB-berichtenGebruiker", "LoketLB-leidinggevendenGebruiker", "LoketLB-personeelsbeheer", "LoketLB-subsidies".
-  }
-  GRAPH <http://mu.semte.ch/graphs/organizations/2dba80cb3ee4e036d4658d3b213c2f0ea89b9d9dcdbc9878e84cf2a4a9169b24> {
-    <http://data.lblod.info/id/account/bd8ce92f77ca5d41c95a7206e4e8170e> <http://mu.semte.ch/vocabularies/ext/sessionRole> "LoketLB-berichtenGebruiker", "LoketLB-leidinggevendenGebruiker", "LoketLB-personeelsbeheer", "LoketLB-subsidies".
-  }
-}

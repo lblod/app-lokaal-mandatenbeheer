@@ -1,5 +1,0 @@
-INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/organizations/7d80e3a1006e3c56299a1e1f028a2dbfb1163873acc914b6f024ea56b53a4760/LoketLB-mandaatGebruiker> {
-    <http://data.lblod.info/id/mandatarissen/00ccaf213a738a05942f71f87092c50b0aa4fc67c5206251642a39da09b757a1> <http://data.vlaanderen.be/ns/mandaat#status> <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75> .
-  }
-}

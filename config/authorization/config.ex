@@ -165,6 +165,7 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://www.w3.org/ns/person#Person",
                         "http://www.w3.org/ns/adms#Identifier",
+                        "http://www.w3.org/ns/activitystreams#Tombstone",
                         "http://purl.org/dc/terms/PeriodOfTime" ] } } ] },
 
       # // LEIDINGGEVENDEN
@@ -182,6 +183,7 @@ defmodule Acl.UserGroups.Config do
                         "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
                         "http://data.vlaanderen.be/ns/persoon#Geboorte",
                         "http://www.w3.org/ns/person#Person",
+                        "http://www.w3.org/ns/activitystreams#Tombstone",
                         "http://www.w3.org/ns/adms#Identifier"
                       ] } },
                   %GraphSpec{

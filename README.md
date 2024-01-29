@@ -103,7 +103,8 @@ At some times you may want to clean the database and make sure it's in a pristin
 
 ```
 # This assumes the .env file has been set. Cf. supra in the README.md
-# Bring down our current setup
+# First you should run the query CHECKPOINT in your virtuoso conductor's isql interface on localhost:8890
+# Then you can bring down the current setup
 docker compose down
 # Back-up your database folder
 mv data/db data/db-bak

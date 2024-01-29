@@ -1,6 +1,0 @@
-INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    <http://lblod.data.info/id/subsidy-measure-offers/64d40351-8128-464f-990f-41066154583e>
-      skos:related <http://www.vvsg.be/netwerkklimaat/lokaal-energie-en-klimaatpact> .
-  }
-}

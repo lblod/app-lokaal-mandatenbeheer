@@ -1,0 +1,43 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+CONSTRUCT {
+	?account ext:wasInGraph ?accountGraph.
+	?gebruiker ext:wasInGraph ?gebruikerGraph.
+	?account ?p ?o.
+	?gebruiker ?pp ?oo.
+}
+WHERE {
+	?account a foaf:OnlineAccount.
+	?account mu:uuid ?target.
+	VALUES ?target {
+		"82b8e2d9fc766d35ad1ac8203895b4ac"
+    "9b875bc387960fd6efa0065bdff32877"
+    "4b93449a5e19fe89465ee75438d63047"
+    "a0eba703e0b81eafb57fba6f7afb65bd"
+    "87ccde5844055259b384de2543e1b094"
+    "a67f2cc12c096d5037a63c9ada7f5f95"
+    "59ffd17e6e6359d8b4dd9616d9276c60"
+    "4b2d4f2d9ef4eee34f60c958673be21b"
+    "de04ba68c7b1832014df3461e33d8a8b"
+    "df92f82363f6f7801723bb9787697242"
+    "383f468f5517f763b871f3b096f8a040"
+    "67b109e557248c51fd85210f5412bdb2"
+    "14f195693d7a48cb762955e2f766cb98"
+    "b14ad6488f1c56ef2a2133c5dae44a71"
+    "3591f5a6514b5a0368523b3e1efa093a"
+    "0b423832c211fb2d25a3f6b7fc8b77b3"
+    "e61d27b8ef0d49fd03d86aa2c4ceb3d0"
+    "e482d1807d7c192a2b965ca985aac069"
+    "929e2abc7f5cf05adb2ea191eeddc42b"
+    "1a8144f45fe57986e63d756ad3efd675"
+	}
+	GRAPH ?accountGraph {
+		?account ?p ?o.
+	}
+	?gebruiker foaf:account ?account.
+	GRAPH ?gebruikerGraph {
+		?gebruiker ?pp ?oo.
+	}
+}

@@ -1,0 +1,59 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX schema: <http://schema.org/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX schema: <http://schema.org/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+
+INSERT {
+	GRAPH <http://mu.semte.ch/graphs/temp/geboorte> {
+		?geboorte persoon:datum ?anonGeboorte.
+	}
+}
+WHERE {
+	?geboorte a persoon:Geboorte.
+	BIND(CONCAT(FLOOR(2002-RAND() * 60), "-0", FLOOR(RAND() * 9 + 1), "-",FLOOR(RAND() * 18 + 10)) as ?anonGeboorte)
+};
+DELETE {
+  GRAPH ?g {
+    ?geboorte persoon:datum ?geboorteDatum.
+  }
+	GRAPH <http://mu.semte.ch/graphs/temp/geboorte> {
+		?geboorte persoon:datum ?anonGeboorte.
+	}
+} INSERT {
+    GRAPH ?g {
+      ?geboorte persoon:datum ?anonGeboorte.
+    }
+}
+WHERE {
+  GRAPH ?g {
+		?geboorte a persoon:Geboorte.
+		OPTIONAL {
+			?geboorte persoon:datum ?geboorteDatum
+		}
+	}
+	FILTER(?g != <http://mu.semte.ch/graphs/temp/geboorte>)
+	GRAPH <http://mu.semte.ch/graphs/temp/geboorte> {
+		?geboorte persoon:datum ?anonGeboorte.
+	}
+}

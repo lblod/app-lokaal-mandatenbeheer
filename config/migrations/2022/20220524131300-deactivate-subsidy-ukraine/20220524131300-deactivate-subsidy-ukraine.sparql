@@ -1,9 +1,0 @@
-DELETE DATA {
-
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    #Ukraine cleanup sleep area
-    <http://lblod.data.info/id/subsidy-measure-offers/b03215cf-2206-493c-b534-0546a2479eef> <http://data.europa.eu/m8g/hasCriterion>
-      <http://data.lblod.info/id/criterions/8c32faa4-1167-4fee-932f-3d453e59b09a>, # ocmw
-      <http://data.lblod.info/id/criterions/f5ea0615-0b0a-47db-a38c-6097ff80815d>. # gemeente
-  }
-}

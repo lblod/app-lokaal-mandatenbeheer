@@ -1,8 +1,0 @@
-PREFIX xkos: <http://rdf-vocabulary.ddialliance.org/xkos#>
-
-INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    <http://lblod.data.info/id/subsidie-application-flow-steps/c50d7726-4880-43e2-b098-c356722a3096>
-      xkos:next <http://lblod.data.info/id/subsidie-application-flow-steps/6977011a-a29c-11eb-b62a-7fee2a9561b8> .
-  }
-}

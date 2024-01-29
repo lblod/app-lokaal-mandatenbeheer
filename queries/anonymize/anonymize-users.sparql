@@ -1,0 +1,42 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX schema: <http://schema.org/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+
+DELETE {
+    GRAPH ?g {
+			?user ?userProp ?userValue.
+    }
+} INSERT {
+    GRAPH ?g {
+			?user ?userProp ?userValue_s.
+    }
+}
+WHERE {
+  BIND("TODO REPLACE ME WITH A HARD TO GUESS STRING" AS ?salt).
+	?user a foaf:Person.
+  GRAPH ?g {
+		# TODO use a random string here
+		OPTIONAL {
+			?user ?userProp ?userValue.
+			VALUES ?userProp {
+				foaf:firstName
+				foaf:familyName
+				dct:identifier
+			}
+			BIND(SHA1(CONCAT(?salt, ?userValue)) AS ?userValue_s).
+		}
+  }
+	FILTER NOT EXISTS {
+		?user foaf:account ?account.
+		?account foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>.
+	}
+}

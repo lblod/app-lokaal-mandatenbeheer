@@ -1,0 +1,7 @@
+This directory contains some utility queries
+
+# anonymize
+this anonimizes PII data in a database. Be sure to replace the salts in the queries.
+
+# reduce
+this reduces the size of a large database to only a couple of bestuurseenheden to have a realistic but small dataset.

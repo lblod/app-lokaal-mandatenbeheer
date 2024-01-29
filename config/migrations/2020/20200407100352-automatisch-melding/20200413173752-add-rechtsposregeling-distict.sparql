@@ -1,8 +1,0 @@
-PREFIX lblodBesluit: <http://lblod.data.gift/vocabularies/besluit/> 
-INSERT DATA {
-
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    <https://data.vlaanderen.be/id/concept/BesluitType/fb21d14b-734b-48f4-bd4e-888163fd08e8> lblodBesluit:decidableBy <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>.
-  }
-
-}

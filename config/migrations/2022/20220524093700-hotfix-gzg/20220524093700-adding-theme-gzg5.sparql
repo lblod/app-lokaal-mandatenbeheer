@@ -1,8 +1,0 @@
-INSERT DATA {
-    GRAPH <http://mu.semte.ch/graphs/public> {
-        
-        # Workplace of the future
-        <http://lblod.data.gift/concepts/9fb0732f-e779-4d2b-b53d-159e7088c678>
-            <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/6e9129dc-06aa-409f-af5e-fc450bf87123> .
-    }
-}

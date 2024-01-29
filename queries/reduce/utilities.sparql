@@ -1,0 +1,58 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+PREFIX schema: <http://schema.org/>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+	GRAPH <http://mu.semte.ch/graph/temp/web> {
+		?target a ext:lmbTarget.
+		?adres a ext:lmbTarget.
+		?secondary a ext:lmbTarget.
+	}
+}
+WHERE {
+	?interesting a ext:lmbTarget.
+	?target a ?type.
+	VALUES ?type {
+		ext:GeslachtCode
+		euvoc:Country
+		persoon:Geboorte
+		schema:ContactPoint
+	}
+	?interesting ?link ?target.
+	VALUES ?link {
+		schema:contactPoint
+		persoon:heeftGeboorte
+		persoon:geslacht
+		persoon:heeftNationaliteit
+	}
+	OPTIONAL {
+		?target locn:address ?adres.
+	}
+	OPTIONAL {
+		?target ext:secondaryContactPoint ?secondary.
+	}
+}

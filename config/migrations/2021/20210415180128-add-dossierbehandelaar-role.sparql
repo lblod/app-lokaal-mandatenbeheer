@@ -1,9 +1,0 @@
-PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-
-INSERT DATA {
-    GRAPH <http://mu.semte.ch/graphs/public> {
-        <http://data.lblod.info/association-role/249969e6-2bfa-48c2-9a37-3f0b97685a24>
-            mu:uuid "249969e6-2bfa-48c2-9a37-3f0b97685a24" ;
-            skos:prefLabel "Kalliope dossierbehandelaar" .
-    }
-}

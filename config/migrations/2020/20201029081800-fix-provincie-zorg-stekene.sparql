@@ -1,9 +1,0 @@
-DELETE DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    <http://data.lblod.info/id/bestuurseenheden/f490a5f5-5f21-4c01-b70e-80d76ad8c256> <http://mu.semte.ch/vocabularies/ext/inProvincie> <http://data.lblod.info/id/werkingsgebieden/b6868be9ca6881b1020e6cff8d431531a1cff64b39dc92646a5173b3ee144516> . # Limburg
-  }
-} INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    <http://data.lblod.info/id/bestuurseenheden/f490a5f5-5f21-4c01-b70e-80d76ad8c256> <http://mu.semte.ch/vocabularies/ext/inProvincie> <http://data.lblod.info/id/werkingsgebieden/a9a0cabd376a2b3a8eb838f15f6aeb1b63ffe49d527598994962e0d15ad2081c> . # Oost-Vlaanderen
-  }
-}

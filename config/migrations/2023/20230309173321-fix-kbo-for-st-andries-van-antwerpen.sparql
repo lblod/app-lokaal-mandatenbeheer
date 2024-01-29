@@ -1,9 +1,0 @@
-delete {graph ?graph{
- ?s ?p "0211225022".
-}}
-insert {graph ?graph{
- ?s ?p "0850328922".
-}}
-where {graph ?graph{
- ?s ?p "0211225022".
-}}

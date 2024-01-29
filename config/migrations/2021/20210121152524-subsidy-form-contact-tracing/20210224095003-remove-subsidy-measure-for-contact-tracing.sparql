@@ -1,6 +1,0 @@
-DELETE DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    <http://lblod.data.gift/concepts/2697fbe1-4226-4325-807b-5dfa58e40a95>
-        <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/33e233eb-6a9b-4141-b607-2ff72fe2ded2> .
-  }
-}

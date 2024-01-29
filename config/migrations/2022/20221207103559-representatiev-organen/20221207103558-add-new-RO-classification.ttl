@@ -1,8 +1,0 @@
-@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36372fad-0358-499c-a4e3-f412d2eae213> a <http://www.w3.org/2004/02/skos/core#Concept>, <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>, <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>;
-          mu:uuid "36372fad-0358-499c-a4e3-f412d2eae213";
-          skos:prefLabel "Representatief orgaan";
-          skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode>;
-          skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode>, <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b>.

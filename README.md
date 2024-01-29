@@ -2,13 +2,14 @@
 
 ## What's included?
 
-This repository harvest two setups. The base of these setups resides in the standard docker-compose.yml.
+This repository contains multiple docker-compose files
 
 - _docker-compose.yml_ This provides you with the backend components. There is a frontend application included which you can publish using a separate proxy (we tend to put a letsencrypt proxy in front).
 - _docker-compose.dev.yml_ Provides changes for a good frontend development setup.
   - publishes the backend services on port 90 directly, so you can run `ember serve --proxy http://localhost:90/` when developing the frontend apps natively.
   - publishes the database instance on port 8890 so you can easily see what content is stored in the base triplestore
   - provides a mock-login backend service so you don't need the ACM/IDM integration.
+- _docker-compose.mac.yml_ This contains some overrides for development on mac.
 
 ## Running and maintaining
 

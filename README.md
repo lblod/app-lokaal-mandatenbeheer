@@ -125,6 +125,33 @@ The original application profiles are defined on:
 - http://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank
 - https://lblod.github.io/pages-vendors/#/docs/leidinggevenden
 
+## Migrations
+
+The original application had a lot of migrations, these have been pruned to a test set to be used during development. For deployment a wider data set, fetched from the production of the loket application will have to be used. The queries that have been run to fetch the test data can be found in the queries folder with an additional readme.
+
+## Form Content Service
+
+An important service that is used in this repository is the [form-content-service](https://github.com/lblod/form-content-service), during deployment some extra settings can be useful to prevent constantly needing to rebuild this docker image. Make sure to clone the repo in the same directory as where you clone this repo and add the following to you docker-compose.override.yml, then your form-content service will automatically be rebuild if changes are made in one of it's files.
+
+```
+  form-content:
+    image: semtech/mu-javascript-template:latest
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "8081:80"
+      - "9229:9229"
+    volumes:
+      - ./config/form-content:/config
+      - ../form-content-service:/app
+```
+
+To check it actually builds and is done building, it can be useful to run the following command:
+
+```
+drc logs form-content -f
+```
+
 > [!CAUTION]
 > The info below is not up to date anymore. These services are inherited from [loket](https://github.com/lblod/app-digitaal-loket), these aren't used anymore, but will be introduced again in the near future.
 

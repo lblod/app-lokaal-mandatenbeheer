@@ -131,7 +131,7 @@ The original application had a lot of migrations, these have been pruned to a te
 
 ## Form Content Service
 
-An important service that is used in this repository is the [form-content-service](https://github.com/lblod/form-content-service), during deployment some extra settings can be useful to prevent constantly needing to rebuild this docker image. Make sure to clone the repo in the same directory as where you clone this repo and add the following to you docker-compose.override.yml, then your form-content service will automatically be rebuild if changes are made in one of it's files.
+An important service that is used in this repository is the [form-content-service](https://github.com/lblod/form-content-service), during development some extra settings can be useful to prevent constantly needing to rebuild this docker image. Make sure to clone the repo in the same directory as where you clone this repo and add the following to you docker-compose.override.yml, then your form-content service will automatically be rebuild if changes are made in one of it's files.
 
 ```
   form-content:

@@ -136,6 +136,7 @@ WHERE {
 		UNION
 		{
 			?target a skos:Concept .
+			FILTER( NOT EXISTS { ?target a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> } )
 		}
 		UNION
 		{

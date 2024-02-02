@@ -153,3 +153,9 @@ services:
       - "logging=true"
     volumes:
       - ./config/form-content:/forms
+  adressenregister:
+    image: lblod/adressenregister-fuzzy-search-service:0.6.3
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging

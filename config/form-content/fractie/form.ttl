@@ -18,39 +18,40 @@ ext:naamF
     sh:name "Naam";
     sh:order 2;
     sh:path regorg:legalName.
-ext:fractietypeF
-    a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
-    sh:group ext:fractiePG;
-    sh:name "Fractietype";
-    sh:order 3;
-    sh:path ext:isFractietype;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/Fractietype","searchEnabled":true}""".
+
 ext:fractiePG
     a form:PropertyGroup; sh:name "Fractie"; sh:order 1.
 
-ext:hiddenBestuursorgaanF a form:Field ;
-    sh:name "Bestuursorganen in de tijd [hidden input]" ;
-    sh:order 5001 ;
-    sh:path org:memberOf .
+ext:hiddenFractietypeF
+    a form:Field;
+    sh:name "Fractietype [hidden input]";
+    sh:order 5001;
+    sh:path ext:isFractietype.
 
-ext:hiddenBestuurseenheidF a form:Field ;
-    sh:name "Bestuurseenheid [hidden input]" ;
-    sh:order 5002 ;
-    sh:path org:linkedTo .
+ext:hiddenBestuursorgaanF 
+    a form:Field;
+    sh:name "Bestuursorganen in de tijd [hidden input]";
+    sh:order 5002;
+    sh:path org:memberOf.
+
+ext:hiddenBestuurseenheidF 
+    a form:Field;
+    sh:name "Bestuurseenheid [hidden input]";
+    sh:order 5003;
+    sh:path org:linkedTo.
 
 
 ext:form
     a form:Form, form:TopLevelForm;
     form:includes
       ext:naamF,
-      ext:fractietypeF,
+      ext:hiddenFractietypeF,
       ext:hiddenBestuursorgaanF,
       ext:hiddenBestuurseenheidF;
-    sh:group ext:fractiePG ;
+    sh:group ext:fractiePG;
     form:initGenerator ext:fractieG;
-    form:targetType mandaat:Fractie ;
-    form:targetLabel regorg:legalName ;
+    form:targetType mandaat:Fractie;
+    form:targetLabel regorg:legalName;
     ext:prefix <http://data.lblod.info/id/fracties/>.
 
 ext:fractieG a form:Generator;

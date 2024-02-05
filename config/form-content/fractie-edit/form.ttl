@@ -1,0 +1,63 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix regorg: <https://www.w3.org/ns/regorg#>.
+@prefix org: <http://www.w3.org/ns/org#>.
+
+ext:naamF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:fractiePG;
+    sh:name "Naam";
+    sh:order 2;
+    sh:path regorg:legalName.
+
+ext:fractiePG
+    a form:PropertyGroup; sh:name "Fractie"; sh:order 1.
+
+ext:hiddenFractietypeF
+    a form:Field;
+    sh:name "Fractietype [hidden input]";
+    sh:order 5001;
+    sh:path ext:isFractietype.
+
+ext:hiddenBestuursorgaanF 
+    a form:Field ;
+    sh:name "Bestuursorganen in de tijd [hidden input]" ;
+    sh:order 5002 ;
+    sh:path org:memberOf .
+
+ext:hiddenBestuurseenheidF 
+    a form:Field ;
+    sh:name "Bestuurseenheid [hidden input]" ;
+    sh:order 5003 ;
+    sh:path org:linkedTo .
+
+
+ext:form
+    a form:Form, form:TopLevelForm;
+    form:includes
+      ext:naamF,
+      ext:hiddenFractietypeF,
+      ext:hiddenBestuursorgaanF,
+      ext:hiddenBestuurseenheidF;
+    sh:group ext:fractiePG ;
+    form:initGenerator ext:fractieG;
+    form:targetType mandaat:Fractie ;
+    form:targetLabel regorg:legalName ;
+    ext:prefix <http://data.lblod.info/id/fracties/>.
+
+ext:fractieG a form:Generator;
+  form:prototype [
+    form:shape [
+      a mandaat:Fractie
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

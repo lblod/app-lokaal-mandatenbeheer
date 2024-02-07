@@ -10,6 +10,7 @@
 @prefix person: <http://www.w3.org/ns/person#>.
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
 @prefix lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>.
+@prefix org: <http://www.w3.org/ns/org#>.
 
 ext:persoonF
     a form:Field;
@@ -43,12 +44,19 @@ ext:statusF
 ext:functionarisEditPG
     a form:PropertyGroup; sh:name "Functie"; sh:order 1.
 
+ext:hiddenBestuursfunctieF
+    a form:Field;
+    sh:name "Bestuursfunctie [hidden input]";
+    sh:order 5001;
+    sh:path org:holds.
+
 ext:form a form:Form, form:TopLevelForm;
     form:includes
         ext:persoonF,
         ext:startF,
         ext:eindeF,
-        ext:statusF;
+        ext:statusF,
+        ext:hiddenBestuursfunctieF;
     sh:group ext:functionarisEditPG;
     form:initGenerator ext:functionarisEditG;
     form:targetType lblodlg:Functionaris ;

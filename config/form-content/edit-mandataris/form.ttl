@@ -9,6 +9,7 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 
+# TODO add Mandaat selector
 ext:mandatarisStatusCodeF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelector;    
@@ -50,7 +51,8 @@ ext:eindeF
     sh:order 6;
     sh:path mandaat:einde.
 ext:editMandatarisPG
-    a form:PropertyGroup; sh:name "Mandaat"; sh:order 1.
+    a form:PropertyGroup; sh:name ""; sh:order 1.
+# TODO add Fractie selector
 
 ext:form
     a form:Form, form:TopLevelForm;

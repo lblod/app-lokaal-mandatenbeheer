@@ -127,6 +127,22 @@ The original application profiles are defined on:
 - http://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank
 - https://lblod.github.io/pages-vendors/#/docs/leidinggevenden
 
+## Model
+
+The models this app uses are:
+
+- [mandatendatank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/)
+- [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/)
+- [leidinggevenden databank](https://lblod.github.io/pages-vendors/#/docs/leidinggevenden)
+
+### Decretaal vs Niet-decretaal
+
+Decretaal (based on a decree) Mandates and governing bodies should never be modified by end users in this application. Rather, this application will monitor Besluiten (Decisions) made by governing bodies and update its data on Decretale concepten automatically.
+
+Whether a Bestuursorgaan is decretaal or not depends on its type (`besluit:classificatie`), a fix list of types that are decretaal is controlled by this application.
+
+Whether a Mandaat/Mandataris is decretaal or not depends on whether it is linked to a Decretaal Bestuursorgaan.
+
 ## Migrations
 
 The original application had a lot of migrations, these have been pruned to a test set to be used during development. For deployment a wider data set, fetched from the production of the loket application will have to be used. The queries that have been run to fetch the test data can be found in the queries folder with an additional readme.

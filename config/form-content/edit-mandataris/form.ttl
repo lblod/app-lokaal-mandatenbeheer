@@ -65,8 +65,7 @@ ext:fractieF
     sh:order 8;
     sh:path org:hasMembership. 
 ext:editMandatarisPG
-    a form:PropertyGroup; sh:name "Mandaat"; sh:order 1.
-
+    a form:PropertyGroup; sh:name ""; sh:order 1.
 
 ext:form
     a form:Form, form:TopLevelForm;

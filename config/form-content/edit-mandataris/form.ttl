@@ -8,14 +8,22 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix org: <http://www.w3.org/ns/org#> .
 
+ext:mandaatF
+    a form:Field;
+    form:displayType displayTypes:mandatarisMandaatSelector;
+    sh:group ext:editMandatarisPG;
+    sh:name "Mandaat";
+    sh:order 2;
+    sh:path org:holds.
 ext:mandatarisStatusCodeF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelector;    
     sh:group ext:editMandatarisPG;
     sh:name "Status";
     form:help "Titelvoerdend is enkel voor burgemeester";
-    sh:order 2;
+    sh:order 3;
     sh:path mandaat:status;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
 ext:beleidsdomeinCodeF
@@ -24,7 +32,7 @@ ext:beleidsdomeinCodeF
     sh:group ext:editMandatarisPG;
     sh:name "Beleidsdomein";
     form:help "Enkel voor schepenen en burgemeester";
-    sh:order 3;
+    sh:order 4;
     sh:path mandaat:beleidsdomein;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true}""".
 ext:rangordeF
@@ -33,33 +41,43 @@ ext:rangordeF
     sh:group ext:editMandatarisPG;
     sh:name "Rangorde";
     form:help "Enkel voor schepenen";
-    sh:order 4;
+    sh:order 5;
     sh:path mandaat:rangorde.
 ext:startF
     a form:Field;
     form:displayType displayTypes:dateTime;
     sh:group ext:editMandatarisPG;
     sh:name "Start";
-    sh:order 5;
+    sh:order 6;
     sh:path mandaat:start.
 ext:eindeF
     a form:Field;
     form:displayType displayTypes:dateTime;
     sh:group ext:editMandatarisPG;
     sh:name "Einde";
-    sh:order 6;
+    sh:order 7;
     sh:path mandaat:einde.
+ext:fractieF
+    a form:Field;
+    form:displayType displayTypes:mandatarisFractieSelector;
+    sh:group ext:editMandatarisPG;
+    sh:name "Fractie";
+    sh:order 8;
+    sh:path org:hasMembership. 
 ext:editMandatarisPG
     a form:PropertyGroup; sh:name "Mandaat"; sh:order 1.
+
 
 ext:form
     a form:Form, form:TopLevelForm;
     form:includes
+        ext:mandaatF,
         ext:mandatarisStatusCodeF,
         ext:beleidsdomeinCodeF,
         ext:rangordeF,
         ext:startF,
-        ext:eindeF;
+        ext:eindeF,
+        ext:fractieF;
     sh:group ext:editMandatarisPG;
     form:targetType mandaat:Mandataris;
     form:targetLabel mu:uuid;

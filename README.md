@@ -117,20 +117,13 @@ git checkout data/db
 docker compose up
 ```
 
-## Resource definitions
+## Resources
 
 A big part of the resources is shared with other applications, because of this, these resources are defined in a dedicated github repo [link](https://github.com/lblod/domain-files). The resources that originate here are defined in files of which the name starts with external-. Unfortunately there have been some changes to these files that are not reflected in the original definition.
 
-The original application profiles are defined on:
-
-- http://data.vlaanderen.be/ns/mandaat
-- http://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank
-- https://lblod.github.io/pages-vendors/#/docs/leidinggevenden
-
-## Model
-
 The models this app uses are:
 
+- [mandaten](http://data.vlaanderen.be/ns/mandaat)
 - [mandatendatank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/)
 - [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/)
 - [leidinggevenden databank](https://lblod.github.io/pages-vendors/#/docs/leidinggevenden)

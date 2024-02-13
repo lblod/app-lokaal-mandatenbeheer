@@ -7,7 +7,7 @@
 (defparameter *include-count-in-paginated-responses* t
   "when non-nil, all paginated listings will contain the number
    of responses in the result object's meta.")
-(defparameter *max-group-sorted-properties* t)
+(defparameter *max-group-sorted-properties* nil)
 (defparameter sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 (setf *fetch-all-types-in-construct-queries* t)
 

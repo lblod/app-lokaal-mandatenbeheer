@@ -1,0 +1,99 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
+@prefix org: <http://www.w3.org/ns/org#>.
+
+ext:mandaatF
+    a form:Field;
+    form:displayType displayTypes:mandatarisMandaatSelector;
+    sh:group ext:mandatarisPG;
+    sh:name "Mandaat";
+    sh:order 2;
+    sh:path org:holds.
+ext:mandatarisStatusCodeF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;    
+    sh:group ext:mandatarisPG;
+    sh:name "Status";
+    form:help "Titelvoerdend is enkel voor burgemeester";
+    sh:order 3;
+    sh:path mandaat:status;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
+ext:beleidsdomeinCodeF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:mandatarisPG;
+    sh:name "Beleidsdomein";
+    form:help "Enkel voor schepenen en burgemeester";
+    sh:order 4;
+    sh:path mandaat:beleidsdomein;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true}""".
+ext:rangordeF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:mandatarisPG;
+    sh:name "Rangorde";
+    form:help "Enkel voor schepenen";
+    sh:order 5;
+    sh:path mandaat:rangorde.
+ext:startF
+    a form:Field;
+    form:displayType displayTypes:dateTime;
+    sh:group ext:mandatarisPG;
+    sh:name "Start";
+    sh:order 6;
+    sh:path mandaat:start.
+ext:eindeF
+    a form:Field;
+    form:displayType displayTypes:dateTime;
+    sh:group ext:mandatarisPG;
+    sh:name "Einde";
+    sh:order 7;
+    sh:path mandaat:einde.
+ext:fractieF
+    a form:Field;
+    form:displayType displayTypes:mandatarisFractieSelector;
+    sh:group ext:mandatarisPG;
+    sh:name "Fractie";
+    sh:order 8;
+    sh:path org:hasMembership. 
+ext:mandatarisPG
+    a form:PropertyGroup; sh:name ""; sh:order 1.
+
+ext:hiddenPersoonF
+    a form:Field;
+    sh:name "Persoon [hidden input]";
+    sh:order 5001;
+    sh:path mandaat:isBestuurlijkeAliasVan.
+
+ext:form
+    a form:Form, form:TopLevelForm;
+    form:includes
+        ext:mandaatF,
+        ext:mandatarisStatusCodeF,
+        ext:beleidsdomeinCodeF,
+        ext:rangordeF,
+        ext:startF,
+        ext:eindeF,
+        ext:fractieF,
+        ext:hiddenPersoonF;
+    sh:group ext:mandatarisPG;
+    form:initGenerator ext:mandatarisG;
+    form:targetType mandaat:Mandataris;
+    form:targetLabel mu:uuid;
+    ext:prefix <http://data.lblod.info/id/mandatarissen/>.
+
+ext:mandatarisG a form:Generator;
+  form:prototype [
+    form:shape [
+      a mandaat:Mandataris
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

@@ -74,7 +74,7 @@ ext:fractieF
 ext:mandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
-ext:form
+<http://data.lblod.info/id/lmb/forms/mandataris-new>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:persoonF,
@@ -89,7 +89,8 @@ ext:form
     form:initGenerator ext:mandatarisG;
     form:targetType mandaat:Mandataris;
     form:targetLabel mu:uuid;
-    ext:prefix <http://data.lblod.info/id/mandatarissen/>.
+    ext:prefix <http://data.lblod.info/id/mandatarissen/>;
+    mu:uuid "2522a2e2-5242-4b6d-98ee-c5bd709fceaa".
 
 ext:mandatarisG a form:Generator;
   form:prototype [

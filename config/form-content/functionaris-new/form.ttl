@@ -8,25 +8,25 @@
 
 ext:persoonF
     a form:Field;
-    form:displayType displayTypes:personSelector ;
+    form:displayType displayTypes:personSelector;
     sh:group ext:functionarisEditPG;
     sh:name "Functionaris";
     sh:order 2;
-    sh:path mandaat:isBestuurlijkeAliasVan .
+    sh:path mandaat:isBestuurlijkeAliasVan.
 ext:startF
     a form:Field;
     form:displayType displayTypes:dateTime;
     sh:group ext:functionarisEditPG;
     sh:name "Start aanstellingsperiode";
     sh:order 3;
-    sh:path mandaat:start .
+    sh:path mandaat:start.
 ext:eindeF
     a form:Field;
     form:displayType displayTypes:dateTime;
     sh:group ext:functionarisEditPG;
     sh:name "Einde aanstellingsperiode";
     sh:order 4;
-    sh:path mandaat:einde .
+    sh:path mandaat:einde.
 ext:statusF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelector;

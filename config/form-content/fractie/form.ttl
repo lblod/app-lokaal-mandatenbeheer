@@ -18,7 +18,6 @@ ext:naamF
     sh:name "Naam";
     sh:order 2;
     sh:path regorg:legalName.
-
 ext:fractiePG
     a form:PropertyGroup; sh:name "Fractie"; sh:order 1.
 
@@ -27,21 +26,18 @@ ext:hiddenFractietypeF
     sh:name "Fractietype [hidden input]";
     sh:order 5001;
     sh:path ext:isFractietype.
-
 ext:hiddenBestuursorgaanF 
     a form:Field;
     sh:name "Bestuursorganen in de tijd [hidden input]";
     sh:order 5002;
     sh:path org:memberOf.
-
 ext:hiddenBestuurseenheidF 
     a form:Field;
     sh:name "Bestuurseenheid [hidden input]";
     sh:order 5003;
     sh:path org:linkedTo.
 
-
-ext:form
+<http://data.lblod.info/id/lmb/forms/fractie>
     a form:Form, form:TopLevelForm;
     form:includes
       ext:naamF,
@@ -52,7 +48,8 @@ ext:form
     form:initGenerator ext:fractieG;
     form:targetType mandaat:Fractie;
     form:targetLabel regorg:legalName;
-    ext:prefix <http://data.lblod.info/id/fracties/>.
+    ext:prefix <http://data.lblod.info/id/fracties/>;
+    mu:uuid "a2362cb2-e63c-4b06-99c4-988867609246".
 
 ext:fractieG a form:Generator;
   form:prototype [

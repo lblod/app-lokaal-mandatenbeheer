@@ -9,7 +9,6 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix person: <http://www.w3.org/ns/person#>.
 
-
 ext:testFieldF
     a form:Field;
     form:displayType displayTypes:defaultInput;
@@ -38,15 +37,17 @@ ext:testInstanceMultiSelectorF
 ext:testPG
     a form:PropertyGroup; sh:name "Test"; sh:order 1.
 
-ext:form a form:Form, form:TopLevelForm;
+<http://data.lblod.info/id/lmb/forms/test>
+    a form:Form, form:TopLevelForm;
     form:includes
         ext:testFieldF,
         ext:testInstanceSelectorF,
         ext:testInstanceMultiSelectorF;
     sh:group ext:testPG;
     form:initGenerator ext:testG;
-    form:targetType person:Person ;
-    form:targetLabel ext:test .
+    form:targetType person:Person;
+    form:targetLabel ext:test;
+    mu:uuid "59605cf4-49e7-4813-a619-7481fc313026".
 
 ext:testG a form:Generator;
   form:prototype [

@@ -9,14 +9,13 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 
-
 ext:aantalHoudersF
     a form:Field;
     form:displayType displayTypes:numericalInput;
     sh:group ext:mandaatPG;
     sh:name "Aantal houders";
     sh:order 2;
-    sh:path mandaat:aantalHouders .
+    sh:path mandaat:aantalHouders.
 ext:bestuursfunctieCodeF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelector;
@@ -26,23 +25,24 @@ ext:bestuursfunctieCodeF
     sh:path <http://www.w3.org/ns/org#role>;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode","searchEnabled":true}""".
 ext:mandaatPG
-    a form:PropertyGroup; sh:name "Mandaat"; sh:order 1 .
+    a form:PropertyGroup; sh:name "Mandaat"; sh:order 1.
 
-ext:form
+<http://data.lblod.info/id/lmb/forms/mandaat>
     a form:Form, form:TopLevelForm;
     form:includes
       ext:aantalHoudersF,
       ext:bestuursfunctieCodeF;
-    sh:group ext:mandaatPG ;
+    sh:group ext:mandaatPG;
     form:initGenerator ext:mandaatG;
-    form:targetType mandaat:Mandaat ;
-    form:targetLabel mu:uuid ;
-    ext:prefix <http://data.lblod.info/id/mandaten/> .
+    form:targetType mandaat:Mandaat;
+    form:targetLabel mu:uuid;
+    ext:prefix <http://data.lblod.info/id/mandaten/>;
+    mu:uuid "6e3fbd29-1410-4e1e-859d-cf64d62ce09d".
 
 ext:mandaatG a form:Generator;
   form:prototype [
     form:shape [
-      a mandaat:Mandaat ;
+      a mandaat:Mandaat;
       mandaat:aantalHouders 1
     ]
   ];

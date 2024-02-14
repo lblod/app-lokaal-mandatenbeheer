@@ -63,7 +63,8 @@ ext:possibleDuplicateF
     sh:order 5001;
     sh:path ext:possibleDuplicate.
 
-ext:form a form:Form, form:TopLevelForm;
+<http://data.lblod.info/id/lmb/forms/persoon> 
+    a form:Form, form:TopLevelForm;
     form:includes
         ext:gebruikteVoornaamF,
         ext:achternaamF,
@@ -74,9 +75,10 @@ ext:form a form:Form, form:TopLevelForm;
         ext:possibleDuplicateF;
     sh:group ext:persoonPG;
     form:initGenerator ext:personG;
-    form:targetType person:Person ;
-    form:targetLabel foaf:familyName ;
-    ext:prefix <http://data.lblod.info/id/personen/> .
+    form:targetType person:Person;
+    form:targetLabel foaf:familyName;
+    ext:prefix <http://data.lblod.info/id/personen/>;
+    mu:uuid "4632bf99-2348-4145-9f2b-c1141b0c545d".
 
 ext:personG a form:Generator;
   form:prototype [

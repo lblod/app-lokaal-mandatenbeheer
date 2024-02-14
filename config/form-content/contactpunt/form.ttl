@@ -22,7 +22,7 @@ ext:aanschrijfprefixF
     sh:group ext:contactpuntPG;
     sh:name "Aanschrijfprefix";
     sh:order 2;
-    sh:path vcard:honorific-prefix .
+    sh:path vcard:honorific-prefix.
 ext:websiteF
     a form:Field;
     form:displayType displayTypes:remoteUrls;
@@ -36,7 +36,7 @@ ext:voornaamF
     sh:group ext:contactpuntPG;
     sh:name "Voornaam";
     sh:order 6;
-    sh:path foaf:firstName .
+    sh:path foaf:firstName.
 ext:emailF
     a form:Field;
     form:displayType displayTypes:defaultInput;
@@ -50,7 +50,7 @@ ext:typeF
     sh:group ext:contactpuntPG;
     sh:name "Type";
     sh:order 10;
-    sh:path schema:contactType .
+    sh:path schema:contactType.
 ext:achternaamF
     a form:Field;
     form:displayType displayTypes:defaultInput;
@@ -66,16 +66,16 @@ ext:telefoonF
     sh:order 9;
     sh:path schema:telephone.
 ext:contactpuntPG
-    a form:PropertyGroup; sh:name "Contactpunt"; sh:order 1 .
+    a form:PropertyGroup; sh:name "Contactpunt"; sh:order 1.
 ext:naamF
     a form:Field;
     form:displayType displayTypes:defaultInput;
     sh:group ext:contactpuntPG;
     sh:name "Roepnaam";
     sh:order 5;
-    sh:path foaf:name .
+    sh:path foaf:name.
 
-ext:form
+<http://data.lblod.info/id/lmb/forms/contactpunt>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:faxF,
@@ -87,11 +87,12 @@ ext:form
         ext:achternaamF,
         ext:telefoonF,
         ext:naamF;
-    sh:group ext:contactpuntPG ;
-    form:initGenerator ext:contactpuntG ;
-    form:targetType schema:ContactPoint ;
-    form:targetLabel foaf:name ;
-    ext:prefix <http://data.lblod.info/id/contact-punten/> .
+    sh:group ext:contactpuntPG;
+    form:initGenerator ext:contactpuntG;
+    form:targetType schema:ContactPoint;
+    form:targetLabel foaf:name;
+    ext:prefix <http://data.lblod.info/id/contact-punten/>;
+    mu:uuid "e1cf95a4-ec79-442d-b1a8-9ebdc291b6df".
 
 ext:contactpuntG a form:Generator;
   form:prototype [

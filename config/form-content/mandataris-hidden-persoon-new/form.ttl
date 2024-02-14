@@ -73,7 +73,7 @@ ext:hiddenPersoonF
     sh:order 5001;
     sh:path mandaat:isBestuurlijkeAliasVan.
 
-ext:form
+<http://data.lblod.info/id/lmb/forms/mandataris-hidden-persoon-new>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:mandaatF,
@@ -88,7 +88,8 @@ ext:form
     form:initGenerator ext:mandatarisG;
     form:targetType mandaat:Mandataris;
     form:targetLabel mu:uuid;
-    ext:prefix <http://data.lblod.info/id/mandatarissen/>.
+    ext:prefix <http://data.lblod.info/id/mandatarissen/>;
+    mu:uuid "23ad9851-fcca-4cf7-a7ac-0a36c910caec".
 
 ext:mandatarisG a form:Generator;
   form:prototype [

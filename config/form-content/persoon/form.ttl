@@ -42,7 +42,8 @@ ext:geslachtCodeF
 ext:persoonPG
     a form:PropertyGroup; sh:name "Persoon"; sh:order 1.
 
-ext:form a form:Form, form:TopLevelForm;
+<http://data.lblod.info/id/lmb/forms/persoon> 
+    a form:Form, form:TopLevelForm;
     form:includes
         ext:alternatieveNaamF,
         ext:achternaamF,
@@ -53,6 +54,7 @@ ext:form a form:Form, form:TopLevelForm;
     form:targetType person:Person ;
     form:targetLabel foaf:familyName ;
     ext:prefix <http://data.lblod.info/id/personen/> .
+    mu:uuid "4632bf99-2348-4145-9f2b-c1141b0c545d".
 
 ext:personG a form:Generator;
   form:prototype [

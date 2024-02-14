@@ -75,7 +75,7 @@ ext:naamF
     sh:order 5;
     sh:path foaf:name .
 
-ext:form
+<http://data.lblod.info/id/lmb/forms/contactpunt>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:faxF,
@@ -92,6 +92,7 @@ ext:form
     form:targetType schema:ContactPoint ;
     form:targetLabel foaf:name ;
     ext:prefix <http://data.lblod.info/id/contact-punten/> .
+    mu:uuid "e1cf95a4-ec79-442d-b1a8-9ebdc291b6df".
 
 ext:contactpuntG a form:Generator;
   form:prototype [

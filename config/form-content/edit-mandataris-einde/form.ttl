@@ -29,8 +29,7 @@ ext:eindeF
 ext:editMandatarisEindePG
     a form:PropertyGroup; sh:name ""; sh:order 1 .
 
-
-ext:form
+<http://data.lblod.info/id/lmb/forms/mandataris-einde-edit>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:startF,
@@ -38,4 +37,5 @@ ext:form
     sh:group ext:editMandatarisEindePG;
     form:targetType mandaat:Mandataris;
     form:targetLabel mu:uuid;
-    ext:prefix <http://data.lblod.info/id/mandatarissen/> .
+    ext:prefix <http://data.lblod.info/id/mandatarissen/>;
+    mu:uuid "686dabed-b868-4370-956d-8933a1a2cb2a".

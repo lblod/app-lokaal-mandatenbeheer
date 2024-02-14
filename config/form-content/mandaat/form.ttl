@@ -28,7 +28,7 @@ ext:bestuursfunctieCodeF
 ext:mandaatPG
     a form:PropertyGroup; sh:name "Mandaat"; sh:order 1 .
 
-ext:form
+<http://data.lblod.info/id/lmb/forms/mandaat>
     a form:Form, form:TopLevelForm;
     form:includes
       ext:aantalHoudersF,
@@ -38,6 +38,7 @@ ext:form
     form:targetType mandaat:Mandaat ;
     form:targetLabel mu:uuid ;
     ext:prefix <http://data.lblod.info/id/mandaten/> .
+    mu:uuid "6e3fbd29-1410-4e1e-859d-cf64d62ce09d".
 
 ext:mandaatG a form:Generator;
   form:prototype [

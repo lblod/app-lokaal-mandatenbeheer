@@ -9,7 +9,6 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 
-
 ext:startF
     a form:Field;
     form:displayType displayTypes:dateTime;
@@ -17,7 +16,6 @@ ext:startF
     sh:name "Start";
     sh:order 2;
     sh:path mandaat:start.
-
 ext:eindeF
     a form:Field;
     form:displayType displayTypes:dateTime;
@@ -25,9 +23,8 @@ ext:eindeF
     sh:name "Einde";
     sh:order 3;
     sh:path mandaat:einde.
-
 ext:editMandatarisEindePG
-    a form:PropertyGroup; sh:name ""; sh:order 1 .
+    a form:PropertyGroup; sh:name ""; sh:order 1.
 
 <http://data.lblod.info/id/lmb/forms/mandataris-einde-edit>
     a form:Form, form:TopLevelForm;

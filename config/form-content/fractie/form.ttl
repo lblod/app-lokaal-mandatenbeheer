@@ -18,7 +18,6 @@ ext:naamF
     sh:name "Naam";
     sh:order 2;
     sh:path regorg:legalName.
-
 ext:fractiePG
     a form:PropertyGroup; sh:name "Fractie"; sh:order 1.
 
@@ -27,13 +26,11 @@ ext:hiddenFractietypeF
     sh:name "Fractietype [hidden input]";
     sh:order 5001;
     sh:path ext:isFractietype.
-
 ext:hiddenBestuursorgaanF 
     a form:Field;
     sh:name "Bestuursorganen in de tijd [hidden input]";
     sh:order 5002;
     sh:path org:memberOf.
-
 ext:hiddenBestuurseenheidF 
     a form:Field;
     sh:name "Bestuurseenheid [hidden input]";

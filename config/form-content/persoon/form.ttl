@@ -55,7 +55,7 @@ ext:geslachtCodeF
     sh:path persoon:geslacht;
     form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":false}""".
 ext:persoonPG
-    a form:PropertyGroup; sh:name "Persoon"; sh:order 1.
+    a form:PropertyGroup; sh:name "Voeg persoon toe"; sh:order 1.
 
 ext:possibleDuplicateF
     a form:Field;

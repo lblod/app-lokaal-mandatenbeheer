@@ -57,6 +57,12 @@ ext:geslachtCodeF
 ext:persoonPG
     a form:PropertyGroup; sh:name "Persoon"; sh:order 1.
 
+ext:possibleDuplicateF
+    a form:Field;
+    sh:name "Possible duplicate [hidden input]";
+    sh:order 5001;
+    sh:path ext:possibleDuplicate.
+
 ext:form a form:Form, form:TopLevelForm;
     form:includes
         ext:gebruikteVoornaamF,
@@ -64,7 +70,8 @@ ext:form a form:Form, form:TopLevelForm;
         ext:alternatieveNaamF,
         ext:identificatorF,
         ext:geboorteF,
-        ext:geslachtCodeF;
+        ext:geslachtCodeF,
+        ext:possibleDuplicateF;
     sh:group ext:persoonPG;
     form:initGenerator ext:personG;
     form:targetType person:Person ;

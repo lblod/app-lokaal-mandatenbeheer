@@ -29,7 +29,7 @@ ext:adresF
 ext:contactpuntPG
     a form:PropertyGroup; sh:name "Contactgegevens"; sh:order 1 .
 
-ext:form
+<http://data.lblod.info/id/lmb/forms/contactinfo>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:emailF,
@@ -40,6 +40,7 @@ ext:form
     form:targetType schema:ContactPoint ;
     form:targetLabel schema:email ;
     ext:prefix <http://data.lblod.info/id/contact-punten/> .
+    mu:uuid "80d91b0d-7fd0-4c29-b70e-c64d148668ab".
 
 ext:contactpuntG a form:Generator;
   form:prototype [

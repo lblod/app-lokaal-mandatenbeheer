@@ -44,7 +44,8 @@ ext:hiddenBestuursfunctieF
     sh:order 5001;
     sh:path org:holds.
 
-ext:form a form:Form, form:TopLevelForm;
+<http://data.lblod.info/id/lmb/forms/functionaris-new> 
+    a form:Form, form:TopLevelForm;
     form:includes
         ext:persoonF,
         ext:startF,
@@ -55,7 +56,8 @@ ext:form a form:Form, form:TopLevelForm;
     form:initGenerator ext:functionarisEditG;
     form:targetType lblodlg:Functionaris ;
     form:targetLabel mandaat:start ;
-    ext:prefix <http://data.lblod.info/id/functionarissen/> .
+    ext:prefix <http://data.lblod.info/id/functionarissen/>;
+    mu:uuid "1213d763-5f1f-4e2e-a12c-4052ce1d37fb".
 
 ext:functionarisEditG a form:Generator;
   form:prototype [

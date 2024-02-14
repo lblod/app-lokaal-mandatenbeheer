@@ -43,7 +43,7 @@ ext:bestuursorgaanClassificatieCodeF
 ext:bestuursorgaanPG
     a form:PropertyGroup; sh:name "Bestuursorgaan"; sh:order 1 .
 
-ext:form
+<http://data.lblod.info/id/lmb/forms/bestuursorgaan>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:bindingEindeF,
@@ -55,6 +55,7 @@ ext:form
     form:targetType besluit:Bestuursorgaan ;
     form:targetLabel skos:prefLabel ;
     ext:prefix <http://data.lblod.info/id/bestuursorganen/> .
+    mu:uuid "4c3d6cb3-328a-4c64-8bed-b1bc0e009e6a".
 
 ext:bestuursorgaanG a form:Generator;
   form:prototype [

@@ -49,6 +49,7 @@
 (define-resource bestuursorgaan ()
   :class (s-prefix "besluit:Bestuursorgaan")
   :properties `((:naam :string ,(s-prefix "skos:prefLabel"))
+                (:deactivated-at :date ,(s-prefix "ext:deactivatedAt"))
                 (:binding-einde :date ,(s-prefix "mandaat:bindingEinde"))
                 (:binding-start :date ,(s-prefix "mandaat:bindingStart")))
   :has-one `((bestuurseenheid :via ,(s-prefix "besluit:bestuurt")

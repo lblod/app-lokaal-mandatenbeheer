@@ -1,0 +1,63 @@
+# Reference
+<http://lblod.data.gift/concept-schemes/646b3381-9a63-48d3-8686-4d877502db8c>	rdf:type	skos:ConceptScheme ,
+		skos:Concept ,
+		rdfs:Class ;
+	ns4:uuid	"646b3381-9a63-48d3-8686-4d877502db8c" ;
+	ns5:wasInGraph	ns6:public ;
+	skos:prefLabel	"Plan Samenleven doelstellingen rules"@en .
+
+<http://data.lblod.info/id/subsidies/rules/88388d78-f277-43ee-963e-6e111fc28d46>	rdf:type	ns47:PlanLivingTogetherSubsidyWithdrawalRule ,
+		skos:Concept ,
+		rdfs:Class ;
+	ns4:uuid	"88388d78-f277-43ee-963e-6e111fc28d46" ;
+	ns5:wasInGraph	ns6:public ;
+	skos:inScheme	<http://lblod.data.gift/concept-schemes/646b3381-9a63-48d3-8686-4d877502db8c> ;
+	ns48:maximum	75 ;
+	skos:prefLabel	"Werk arbeidsmarkt"@nl ;
+	ns48:label	"begeleide 55-plussers" ;
+	ns49:multiplier	650 .
+
+
+# Actual concept scheme
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns3:    <http://data.vlaanderen.be/id/conceptscheme/> .
+@prefix ns4:	<http://mu.semte.ch/vocabularies/core/> .
+@prefix ns5:	<http://mu.semte.ch/vocabularies/ext/> .
+@prefix ns6:	<http://mu.semte.ch/graphs/> .
+
+<http://lblod.data.gift/concept-schemes/bae082b8-ab4a-46b6-b5d6-d04b4cf3b296>	rdf:type	skos:ConceptScheme,
+		skos:Concept,
+		rdfs:Class;
+	ns4:uuid	"bae082b8-ab4a-46b6-b5d6-d04b4cf3b296";
+	ns5:wasInGraph	ns6:public;
+	skos:prefLabel	"Decretale bestuursorgaan codes".
+
+<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8>
+  rdf:type skos:Concept ;
+  ns4:uuid	"5733254e-73ff-4844-8d43-7afb7ec726e8" ;
+  ns5:wasInGraph	ns6:public ;
+  skos:prefLabel "Directiecomité" ;
+  skos:topConceptOf ns3:BestuursorgaanClassificatieCode ;
+  skos:inScheme 
+    ns3:BestuursorgaanClassificatieCode ,
+    <http://lblod.data.gift/concept-schemes/bae082b8-ab4a-46b6-b5d6-d04b4cf3b296>.
+<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943>
+  rdf:type skos:Concept ;
+  ns4:uuid	"013cc838-173a-4657-b1ae-b00c048df943" ;
+  ns5:wasInGraph	ns6:public ;
+  skos:prefLabel "Raad van bestuur" ;
+  skos:topConceptOf ns3:BestuursorgaanClassificatieCode ;
+  skos:inScheme 
+    ns3:BestuursorgaanClassificatieCode ,
+    <http://lblod.data.gift/concept-schemes/bae082b8-ab4a-46b6-b5d6-d04b4cf3b296>.
+<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382>
+  rdf:type skos:Concept ;
+  ns4:uuid	"0dbc70ec-6be9-4997-b8e1-11b6c0542382" ;
+  ns5:wasInGraph	ns6:public ;
+  skos:prefLabel "Bevoegd beslissingsorgaan" ;
+  skos:topConceptOf ns3:BestuursorgaanClassificatieCode ;
+  skos:inScheme 
+    ns3:BestuursorgaanClassificatieCode ,
+    <http://lblod.data.gift/concept-schemes/bae082b8-ab4a-46b6-b5d6-d04b4cf3b296>.

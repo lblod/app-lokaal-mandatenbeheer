@@ -1,0 +1,25 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#>.
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>.
+@prefix mu:   <http://mu.semte.ch/vocabularies/core/>.
+@prefix conceptschemes: <http://lblod.data.gift/concept-schemes/>.
+@prefix bcc:  <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/>.
+
+conceptschemes:decretale-bestuursorgaan-codes	
+  rdf:type	
+    skos:ConceptScheme,
+	  skos:Concept,
+	  rdfs:Class;
+	mu:uuid	"decretale-bestuursorgaan-codes";
+	skos:prefLabel "Decretale bestuursorgaan codes".
+
+# skos:Concepts
+bcc:5733254e-73ff-4844-8d43-7afb7ec726e8
+  skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes;
+  skos:inScheme conceptschemes:decretale-bestuursorgaan-codes.
+bcc:013cc838-173a-4657-b1ae-b00c048df943
+  skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes;
+  skos:inScheme conceptschemes:decretale-bestuursorgaan-codes.
+bcc:0dbc70ec-6be9-4997-b8e1-11b6c0542382
+  skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes;
+  skos:inScheme conceptschemes:decretale-bestuursorgaan-codes.

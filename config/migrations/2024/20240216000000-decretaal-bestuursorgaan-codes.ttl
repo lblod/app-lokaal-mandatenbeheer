@@ -10,10 +10,10 @@ conceptschemes:decretale-bestuursorgaan-codes
     skos:ConceptScheme,
 	  skos:Concept,
 	  rdfs:Class;
-	mu:uuid	"decretale-bestuursorgaan-codes";
+	mu:uuid	"2e127dcf-d6c8-4134-ac39-8be1d7fbdfaf";
 	skos:prefLabel "Decretale bestuursorgaan codes".
 
-# skos:Concepts
+# Decretale BestuursorgaanClassificatieCodes
 bcc:5733254e-73ff-4844-8d43-7afb7ec726e8
   skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes;
   skos:inScheme conceptschemes:decretale-bestuursorgaan-codes.
@@ -21,5 +21,8 @@ bcc:013cc838-173a-4657-b1ae-b00c048df943
   skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes;
   skos:inScheme conceptschemes:decretale-bestuursorgaan-codes.
 bcc:0dbc70ec-6be9-4997-b8e1-11b6c0542382
+  skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes;
+  skos:inScheme conceptschemes:decretale-bestuursorgaan-codes.
+bcc:5ab0e9b8a3b2ca7c5e000005
   skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes;
   skos:inScheme conceptschemes:decretale-bestuursorgaan-codes.

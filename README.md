@@ -163,6 +163,10 @@ To check it actually builds and is done building, it can be useful to run the fo
 drc logs form-content -f
 ```
 
+## LDES
+
+This application uses LDES to share information with other applications, like the Vlaamse Mandatendatabank and Gelinkt Notuleren. Read more about it [here](docs/LDES.md).
+
 > [!CAUTION]
 > The info below is not up to date anymore. These services are inherited from [loket](https://github.com/lblod/app-digitaal-loket), these aren't used anymore, but will be introduced again in the near future.
 
@@ -283,94 +287,3 @@ Not all required parameters are provided, since deploy specific, see [report-gen
 ###### deliver-email-service
 
 Should have credentials provided, see [deliver-email-service](https://github.com/redpencilio/deliver-email-service)
-
-# LDES in LMB
-
-> [!CAUTION]
-> This section contains the specification of how we will be using LDES. This is not implemented yet and unproven. A PoC implementation will be created in the sprint of 26-02 -> 08-03
-
-
-## LDES Feeds Produced by LMB
-
-We will be using LDES to sync with different partners: 
--   the Notulering-system (e.g. Gelinkt Notuleren, but it could be a vendor specific provider too, for easy writing the text below will use GN to denote any software taking the role of the Notulering-system)
--   the Vlaamse Mandatendatabank
-
-### Draft Mandataris instances for GN
-
-LMB will be the sole master of Mandataris instances (including the creation of their URIs). 
-
-As GN will not be allowed to create Mandataris instances, it needs to be supplied with draft Mandataris instances in order to link a Besluit to them in order for them to be made official. In LMB, we can probably do this with a boolean flag, marking the Mandataris as draft. However, in our LDES feeds, they shouldn't be called Mandataris (or be in the Mandataris LDES feed) until they are no longer in the draft state. The URI for these draft Mandataris instances will need to be the same as the final instance, because otherwise, GN cannot link a besluit to the Mandataris.
-
-We should also **watch** the LDES feed from GN for instances of Besluit with the right type (the one that makes a mandataris official) that are linked to a Mandataris (which on our side will be in draft). If we find such a Besluit, we should switch the Mandataris to official and create that link on our end too. 
-
-However, there is no guarantee that the besluit will be created in GN. Therefore it should be possible to mark a mandataris as official (as opposed to draft) manually, even if no event was received from GN. In that case, a link to the meeting notes of the corresponding meeting can be provided manually as well.
-
-### Publishing to Vlaamse Mandatendatabank
-
-LMB extracts the Mandaten and Leidinggevenden scope from Loket. Therefore, it should also pick up the role of sharing this information with the central publication system, specifically the Vlaamse Mandaten Databank (VMDB). This will also be done through an LDES stream.
-
-Since suppliers of the meeting note software (filling the role of Gelinkt Notuleren) understand SPARQL and are currently using a SPARQL endpoint on Loket for syncing, we should use the same principle for the draft Mandataris instances. This means that we expect the Vlaamse Mandatendatabank to also listen to our Draft Mandataris LDES feed and internalize this information into their SPARQL endpoint OR that we listen to the local LDES feeds in the central Loket version of LMB and provide the sparql endpoint there.
-
-## Types exposed on LDES feed
-
-VMDB will be interested in instances of the following types:
--   **mandaat:Mandataris:** but only the Mandataris instances in the official state
--   **mandaat:Fractie:** as the local government can define their own instances of Fracties to link a Mandataris to
--   **org:Membership:** when used to define the membership of a Mandataris of a Fractie
--   **ext:BeleidsdomeinCode:** as a mandataris can be linked to these concepts and a local government can define their own set of concepts here
--   **person:Person:** normally, the Person a Mandataris links to can be found in the election results and so this information should be globally available (and non-modifiable). However, there are cases where an unelected person can still be called in to take a Decretaal mandaat. These should be published too so the Person a Mandataris links to has meaning. This also happens for the head of OCMW, who can be made shepen. Luckily, there is an api to get the uri of a person given you have the RRN. Person still needs to be on the LDES, but this likely means we need to secure our LDES as there can be no personal info on public LDES feed
--   **persoon:Geboorte:** as part of the Person information above
--   **adms:Identifier:** as part of the Person information above
--   **lblodlg:Functionaris:** this models a Leidinggevende in the local government
--   **schema:ContactPoint:** to model the contact point of the Functionaris above
--   **locn:Address:** to model the address of the Functionaris above
--   **ext:DraftMandataris:** a type to model the draft Mandataris instances for GN and make it clear that they are different from the mandaat:Mandataris instances that are ready to be published
-
-The only predicates that are shared about these concepts are predicates that are defined in the application profiles for [mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/), [leidinggevenden](https://lblod.github.io/pages-vendors/#/docs/leidinggevenden) and [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/).
-
-## Mandataris as a Versioned Entity
-
-A Mandataris is a Versioned Entity, meaning that when one wants to model a change in state of Mandataris from e.g. 'actief' to 'verhinderd' at time `T`, the following should happen:
--   the current Mandataris entity keeps its `mandaat:status`, but the `mandaat:einde` changes to `T`. Let's call this original Mandataris entity `O`.
--   a new Mandataris entity is created with the same content as the first, but without a `mandaat:einde` and with a `mandaat:start` set to `T`. This new Mandataris entity receives the new `mandaat:status` of 'verhinderd', lets call this new Mandataris entity `V`.
--   if one wants to model that another Mandataris replaces the first, another Mandataris entity `R` is created and the new 'verhinderd' entity `V` receives a `mandaat:isTijdelijkVervangenDoor`  reference to `R`.
-
-This means that except for correcting mistakes and changing the `mandaat:einde`, Mandataris entities should never be modified.
-
-## Expected Peripheral Knowledge
-
-There is a substantial amount of data that is referenced in the entities on the LDES above but that is not expected to change often (or at all) and that isn't the responsibility of the LMB system to maintain. Let's call such data Peripheral Knowledge.
-
-As the LMB LDES instances reference this data, we do expect systems that the LDES data to have this Peripheral Knowledge loaded themselves. 
-
-A suggestion would be that a central system could provide its own LDES feed that other systems can use to update their peripheral knowledge (given how little this data is expected to change, this can even be a manual update). There are multiple options here and this is something that can wait as we will likely only launch centrally first (possibly one separately with heavy, heavy support). In this case, a migration or set of migrations will be good enough. Another path is that we can make an interface (API, not LDES) where they just fetch the latest version. Another path is to use the caching headers of LDES, allowing caching for e.g. half a year. We can also terminate an LDES when we know no more data is going to change.
-
-## LDES setup
-
-The LDES spec can be found [here](https://semiceu.github.io/LinkedDataEventStreams/). 
-We will be using the implementation provided by [redpencil.io on their github](https://github.com/redpencilio/fragmentation-producer-service) to publish the LDES. It will be fed using our own service that monitors deltas on our SEAS instance.
-
-We'll use a time-fragmenter, one stream will be set up per type of instance that we will share, with pagination and the following setup for versioning: 
-
-    <stream> ldes:timestampPath prov:generatedAtTime ;
-             ldes:versionOfPath dct:isVersionOf .
-             ldes:retentionPolicy ext:retention .
-    
-    ext:retention a ldes:DurationAgoPolicy ;
-          tree:value "P1Y"^^xsd:duration .
-
-This also means that we promise that we will keep the data for at least one year after it was created.
-The url of the type of entity will be based on the resources path of the entity type in 
-
-## Links to Entities
-
-When other entities are referenced from an LDES feed instance, the original URI of that entity is used, not the versioned URI.
-
-For instance, if this snippet is part of a `mandaat:Mandatarais` instance that refers to a `person:Person`, its `mandaat:isBestuurlijkeAliasVan` predicate refers to the true URI of the person, not the person's versioned URI (if any exists because we had to create it ourselves).
-
-    # prefixes are as per prefix.cc
-    
-    ext:mandatarisVersioned1 dct:isVersionOf ext:mandatarisTrueUri
-     dct:issued "2024-02-14T14:05:00.000Z"^^xsd:dateTime;
-     mandaat:isBestuurlijkeAliasVan ext:truePersonUri.

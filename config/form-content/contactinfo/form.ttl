@@ -4,6 +4,7 @@
 @prefix schema: <http://schema.org/>.
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix locn: <http://www.w3.org/ns/locn#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 
 ext:emailF
     a form:Field;

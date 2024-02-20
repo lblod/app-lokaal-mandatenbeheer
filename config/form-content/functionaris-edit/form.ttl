@@ -4,6 +4,7 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
 @prefix lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 
 ext:startF
     a form:Field;

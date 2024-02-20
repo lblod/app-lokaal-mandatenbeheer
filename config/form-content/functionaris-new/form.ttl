@@ -5,6 +5,7 @@
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
 @prefix lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>.
 @prefix org: <http://www.w3.org/ns/org#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 
 ext:persoonF
     a form:Field;

@@ -45,10 +45,10 @@ ext:bestuursorgaanPG
 <http://data.lblod.info/id/lmb/forms/bestuursorgaan>
     a form:Form, form:TopLevelForm;
     form:includes
-        ext:deactivatedAtF,
         ext:naamF,
         ext:bestuursorgaanClassificatieCodeF,
-				ext:hiddenBestuurseenheidF;
+        ext:deactivatedAtF,
+        ext:hiddenBestuurseenheidF;
     sh:group ext:bestuursorgaanPG;
     form:initGenerator ext:bestuursorgaanG;
     form:targetType besluit:Bestuursorgaan;

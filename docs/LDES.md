@@ -34,7 +34,7 @@ VMDB will be interested in instances of the following types:
 - **mandaat:Fractie:** as the local government can define their own instances of Fracties to link a Mandataris to
 - **org:Membership:** when used to define the membership of a Mandataris of a Fractie
 - **ext:BeleidsdomeinCode:** as a mandataris can be linked to these concepts and a local government can define their own set of concepts here
-- **person:Person:** normally, the Person a Mandataris links to can be found in the election results and so this information should be globally available (and non-modifiable). However, there are cases where an unelected person can still be called in to take a Decretaal mandaat. These should be published too so the Person a Mandataris links to has meaning. This also happens for the head of OCMW organisation, who can be made schepen. Luckily, there is an api to get the uri of a person given you have the RRN. Person still needs to be on the LDES, but this likely means we need to secure our LDES as there can be no personal info on public LDES feed
+- **person:Person:** normally, the Person a Mandataris links to can be found in the election results and so this information should be globally available (and non-modifiable). However, there are cases where an unelected person can still be called in to assume a Decretaal mandaat. These are also published so the Person a Mandataris links to has meaning. This also happens for the head of OCMW organisation, who can be made schepen. Luckily, there is an api to get the uri of a person given the RRN. Person still needs to be on the LDES, but this likely means we need to secure our LDES with an authorization layer as there can be no personal info on our public LDES feed
 - **persoon:Geboorte:** as part of the Person information above
 - **adms:Identifier:** as part of the Person information above
 - **lblodlg:Functionaris:** this models a Leidinggevende in the local government
@@ -87,7 +87,9 @@ We'll use a time-fragmenter, one stream will be set up per type of instance that
           tree:value "P1Y"^^xsd:duration .
 
 This also means that we promise that we will keep the data for at least one year after it was created.
-The url of the type of entity will be based on the resources path of the entity type in
+The url of the type of entity will be based on the resources path of the entity type in resources.
+
+Note here that the LDES spec calls for the use of a specific versioned URI to be created to represent the state of the concept at a certain time. This URI then refers to the true URI of that concept through the predicate defined as the value of `ldes:versionOfPath`, `dct:isVersionOf` in our case. This versioned URI is not to be confused with the versioned entity of a Mandataris. In fact, the versioned Mandataris entity will itself also have a versioned URI for every change that happened to it.
 
 ## Links to Entities
 

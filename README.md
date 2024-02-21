@@ -163,6 +163,10 @@ To check it actually builds and is done building, it can be useful to run the fo
 drc logs form-content -f
 ```
 
+## LDES
+
+This application uses LDES to share information with other applications, like the Vlaamse Mandatendatabank and Gelinkt Notuleren. Read more about it [here](docs/LDES.md).
+
 > [!CAUTION]
 > The info below is not up to date anymore. These services are inherited from [loket](https://github.com/lblod/app-digitaal-loket), these aren't used anymore, but will be introduced again in the near future.
 

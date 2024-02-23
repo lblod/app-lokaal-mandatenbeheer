@@ -1,0 +1,57 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix regorg: <https://www.w3.org/ns/regorg#>.
+@prefix org: <http://www.w3.org/ns/org#>.
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+
+ext:bindingStartF
+    a form:Field;
+    form:displayType displayTypes:dateTime;
+    sh:group ext:bestuursperiodePG;
+    sh:name "Start";
+    sh:order 2;
+    sh:path mandaat:bindingStart.
+ext:bindingEindeF
+    a form:Field;
+    form:displayType displayTypes:dateTime;
+    sh:group ext:bestuursperiodePG;
+    sh:name "Einde";
+    sh:order 3;
+    sh:path mandaat:bindingEinde.
+ext:bestuursperiodePG
+    a form:PropertyGroup; sh:order 1.
+
+ext:hiddenBestuursorgaanF 
+    a form:Field;
+    sh:name "Bestuursorgaan [hidden input]";
+    sh:order 5001;
+    sh:path mandaat:isTijdspecialisatieVan.
+
+<http://data.lblod.info/id/lmb/forms/fractie>
+    a form:Form, form:TopLevelForm;
+    form:includes
+      ext:bindingStartF,
+      ext:bindingEindeF,
+      ext:hiddenBestuursorgaanF;
+    sh:group ext:bestuursperiodePG;
+    form:initGenerator ext:bestuursperiodeG;
+    form:targetType besluit:Bestuursorgaan;
+    form:targetLabel mandaat:bindingStart;
+    ext:prefix <http://data.lblod.info/id/bestuursorganen/>;
+    mu:uuid "47ec8633-7da2-483b-8013-eee7d85161b5".
+
+ext:bestuursperiodeG a form:Generator;
+  form:prototype [
+    form:shape [
+      a besluit:Bestuursorgaan
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

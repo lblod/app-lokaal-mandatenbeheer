@@ -226,6 +226,17 @@ defmodule Dispatcher do
     forward conn, path, "http://adressenregister/"
   end
 
+  #################################################################
+  # Metis
+  #################################################################
+  get "/uri-info/*path", %{ accept: %{ json: true } } do
+    forward conn, path, "http://uri-info/"
+  end
+
+  get "/resource-labels/*path", %{ accept: %{ json: true } } do
+    forward conn, path, "http://resource-labels-cache/"
+  end
+
   #################
   # NOT FOUND
   #################

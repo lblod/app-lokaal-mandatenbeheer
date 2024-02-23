@@ -22,8 +22,7 @@ ext:mandaatPG
 <http://data.lblod.info/id/lmb/forms/mandaat>
     a form:Form, form:TopLevelForm;
     form:includes
-      ext:aantalHoudersF,
-      ext:bestuursfunctieCodeF;
+      ext:aantalHoudersF;
     sh:group ext:mandaatPG;
     form:initGenerator ext:mandaatG;
     form:targetType mandaat:Mandaat;

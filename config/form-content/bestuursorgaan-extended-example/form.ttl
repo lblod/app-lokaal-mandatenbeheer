@@ -1,0 +1,51 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix schema: <http://schema.org/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix locn: <http://www.w3.org/ns/locn#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+
+ext:emailF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    ext:extendsGroup ext:bestuursorgaanPG;
+    sh:name "Email";
+    sh:order 301;
+    sh:path schema:email.
+ext:telefoonF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    ext:extendsGroup ext:bestuursorgaanPG;
+    sh:name "Telefoon";
+    sh:order 302;
+    sh:path schema:telephone.
+ext:adresF
+    a form:Field;
+    form:displayType displayTypes:addressSelector;
+    ext:extendsGroup ext:bestuursorgaanPG;
+    sh:name "Address";
+    sh:order 303;
+    sh:path locn:address.
+
+<http://data.lblod.info/id/lmb/forms/bestuursorgaan-extended-example>
+    a form:Extension;
+    form:includes
+        ext:emailF,
+        ext:telefoonF,
+        ext:adresF;
+    ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan>;
+    ext:extendsGroup ext:bestuursorgaanPG;
+    form:initGenerator ext:ext:bestuursorgaanExtendedExampleG;
+    form:targetType ext:BestuursorgaanExtendedExample;
+    form:targetLabel schema:email;
+    ext:prefix <http://data.lblod.info/id/bestuursorgaan-extended-examples/>;
+    mu:uuid "630891b2-6086-4b36-9e88-982fd32b57e0".
+
+ext:ext:bestuursorgaanExtendedExampleG a form:Generator;
+  form:prototype [
+    form:shape [
+      a ext:BestuursorgaanExtendedExample
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

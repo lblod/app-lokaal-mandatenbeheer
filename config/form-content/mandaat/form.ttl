@@ -16,22 +16,13 @@ ext:aantalHoudersF
     sh:name "Aantal houders";
     sh:order 2;
     sh:path mandaat:aantalHouders.
-ext:bestuursfunctieCodeF
-    a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
-    sh:group ext:mandaatPG;
-    sh:name "Bestuursfunctie";
-    sh:order 3;
-    sh:path <http://www.w3.org/ns/org#role>;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode","searchEnabled":true}""".
 ext:mandaatPG
     a form:PropertyGroup; sh:name "Mandaat"; sh:order 1.
 
 <http://data.lblod.info/id/lmb/forms/mandaat>
     a form:Form, form:TopLevelForm;
     form:includes
-      ext:aantalHoudersF,
-      ext:bestuursfunctieCodeF;
+      ext:aantalHoudersF;
     sh:group ext:mandaatPG;
     form:initGenerator ext:mandaatG;
     form:targetType mandaat:Mandaat;
@@ -43,7 +34,6 @@ ext:mandaatG a form:Generator;
   form:prototype [
     form:shape [
       a mandaat:Mandaat;
-      mandaat:aantalHouders 1
     ]
   ];
   form:dataGenerator form:addMuUuid.

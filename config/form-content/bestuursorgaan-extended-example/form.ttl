@@ -35,7 +35,6 @@ ext:adresF
         ext:telefoonF,
         ext:adresF;
     ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan>;
-    sh:group ext:bestuursorgaanPG;
     form:initGenerator ext:ext:bestuursorgaanExtendedExampleG;
     form:targetType ext:BestuursorgaanExtendedExample;
     form:targetLabel schema:email;

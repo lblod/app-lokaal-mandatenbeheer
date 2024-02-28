@@ -1,6 +1,7 @@
 # Virtuoso files /data/db
 /data/publication-triplestore/*
 /data/db/*
+/data/ldes-feed/*
 /data/exports/*
 /data/toezicht-reports/*
 /data/db/virtuoso.ini

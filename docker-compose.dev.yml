@@ -52,8 +52,12 @@ services:
     restart: "no"
   form-content:
     restart: "no"
+  adressenregister:
+    restart: "no"
   ldes-delta-pusher:
     restart: "no"
+    environment:
+      DEBUG: "true"
   ldes-backend:
     restart: "no"
     environment:

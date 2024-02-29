@@ -230,7 +230,7 @@ defmodule Dispatcher do
   # LDES
   #################################################################
   get "/streams/ldes/*path" do
-    forward conn, path, "http://fragmentation-producer"
+    forward conn, path, "http://ldes-backend"
   end
 
   #################

@@ -159,7 +159,18 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  fragmentation-producer:
+
+  ##############################################################################
+  # LDES
+  ##############################################################################
+  ldes-delta-pusher:
+    image: redpencil/ldes-delta-pusher:latest
+    environment:
+      LDES_ENDPOINT: "http://ldes-backend/"
+    volumes:
+      - ./config/ldes-delta-pusher/:/config/
+    restart: always
+  ldes-backend:
     image: redpencil/fragmentation-producer:0.4.0
     restart: always
     logging: *default-logging

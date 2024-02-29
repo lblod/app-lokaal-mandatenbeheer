@@ -74,6 +74,12 @@ ext:fractieF
 ext:mandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
+ext:hiddenIsDraftF
+    a form:Field;
+    sh:name "Is draft [hidden input]";
+    sh:order 5000;
+    sh:path ext:isDraft.
+
 <http://data.lblod.info/id/lmb/forms/mandataris-new>
     a form:Form, form:TopLevelForm;
     form:includes
@@ -84,7 +90,8 @@ ext:mandatarisPG
         ext:rangordeF,
         ext:startF,
         ext:eindeF,
-        ext:fractieF;
+        ext:fractieF,
+        ext:hiddenIsDraftF;
     sh:group ext:mandatarisPG;
     form:initGenerator ext:mandatarisG;
     form:targetType mandaat:Mandataris;

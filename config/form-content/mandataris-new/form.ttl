@@ -77,7 +77,7 @@ ext:mandatarisPG
 ext:hiddenIsDraftF
     a form:Field;
     sh:name "Is draft [hidden input]";
-    sh:order 5000;
+    sh:order 5001;
     sh:path ext:isDraft.
 
 <http://data.lblod.info/id/lmb/forms/mandataris-new>

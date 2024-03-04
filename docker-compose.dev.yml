@@ -52,7 +52,9 @@ services:
     restart: "no"
   form-content:
     restart: "no"
-  fragmentation-producer:
+  ldes-delta-pusher:
+    restart: "no"
+  ldes-backend:
     restart: "no"
     environment:
       BASE_URL: "http://localhost/streams/ldes"

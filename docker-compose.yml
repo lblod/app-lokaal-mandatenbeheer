@@ -159,3 +159,20 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  fragmentation-producer:
+    image: redpencil/fragmentation-producer:0.4.0
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
+    environment:
+      BASE_URL: "https://lmb.lblod.info/streams/ldes"
+      FOLDER_DEPTH: 1
+      PAGE_RESOURCES_COUNT: 10
+      LDES_STREAM_PREFIX: "http://lmb.lblod.info/streams/ldes/"
+      TIME_TREE_RELATION_PATH: "http://www.w3.org/ns/prov#generatedAtTime"
+      CACHE_SIZE: 10
+      DATA_FOLDER: "/data"
+      ENABLE_AUTH: "false"
+    volumes:
+      - "./data/ldes-feed/:/data/"

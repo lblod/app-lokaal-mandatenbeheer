@@ -52,3 +52,9 @@ services:
     restart: "no"
   form-content:
     restart: "no"
+  fragmentation-producer:
+    restart: "no"
+    environment:
+      BASE_URL: "http://localhost/streams/ldes"
+    ports:
+      - "6666:80"

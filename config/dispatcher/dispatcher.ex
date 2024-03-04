@@ -226,6 +226,13 @@ defmodule Dispatcher do
     forward conn, path, "http://adressenregister/"
   end
 
+  #################################################################
+  # LDES
+  #################################################################
+  get "/streams/ldes/*path" do
+    forward conn, path, "http://fragmentation-producer"
+  end
+
   #################
   # NOT FOUND
   #################

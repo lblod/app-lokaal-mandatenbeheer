@@ -166,10 +166,12 @@ services:
   ldes-delta-pusher:
     image: redpencil/ldes-delta-pusher:latest
     environment:
-      LDES_ENDPOINT: "http://ldes-backend/"
+      LDES_ENDPOINT: "http://ldes-backend"
     volumes:
       - ./config/ldes-delta-pusher/:/config/
     restart: always
+    links:
+      - virtuoso:database
   ldes-backend:
     image: redpencil/fragmentation-producer:0.4.0
     restart: always

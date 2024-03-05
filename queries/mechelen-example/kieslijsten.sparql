@@ -1,0 +1,37 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+CONSTRUCT {
+	?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+	?verkiezing mandaat:steltSamen ?bestuursorgaanInTijd.
+	?verkiezing ?verkiesP ?verkiesO.
+
+	?kieslijst mandaat:behoortTot ?verkiezing.
+	?kieslijst ?kiesp ?kieso.
+
+	?resultaat mandaat:isResultaatVoor ?kieslijst.
+	?resultaat ?resp ?reso.
+
+	?resultaat mandaat:isResultaatVan ?person.
+}
+WHERE {
+	VALUES ?bestuursorgaan {
+		<http://data.lblod.info/id/bestuursorganen/06c2b56ed7b49d146337f6db044204f19c34c4242deb3b4e142dbf925d733eda>
+		<http://data.lblod.info/id/bestuursorganen/61b5f831241a25e43c4acf4cdf620769f334514de906151dfa1ac01146ecd971>
+	}
+	?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+	?verkiezing mandaat:steltSamen ?bestuursorgaanInTijd.
+	?verkiezing ?verkiesP ?verkiesO.
+
+	?kieslijst mandaat:behoortTot ?verkiezing.
+	?kieslijst ?kiesp ?kieso.
+
+	?resultaat mandaat:isResultaatVoor ?kieslijst.
+	# ?resultaat ?resp ?reso.
+
+	?resultaat mandaat:isResultaatVan ?person.
+
+} limit 100000
+
+

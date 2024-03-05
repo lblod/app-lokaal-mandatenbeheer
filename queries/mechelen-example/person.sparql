@@ -1,0 +1,62 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+CONSTRUCT {
+	?person ?stringP ?newO.
+	?person ?copyP ?copyO.
+	?person <http://data.vlaanderen.be/ns/persoon#geslacht> ?gender.
+	?person <http://data.vlaanderen.be/ns/persoon#heeftNationaliteit> ?nat.
+	?person <http://data.vlaanderen.be/ns/persoon#heeftGeboorte> ?geboorte.
+	?geboorte a <http://data.vlaanderen.be/ns/persoon#Geboorte>.
+	?geboorte <http://data.vlaanderen.be/ns/persoon#datum> ?birth.
+	?person <http://www.w3.org/ns/adms#identifier> ?id.
+	?id a <http://www.w3.org/ns/adms#Identifier>.
+	?id <http://www.w3.org/2004/02/skos/core#notation> "0000000000097"
+}
+WHERE {
+	# VALUES ?bestuursorgaan {
+	# 	<http://data.lblod.info/id/bestuursorganen/06c2b56ed7b49d146337f6db044204f19c34c4242deb3b4e142dbf925d733eda>
+	# 	<http://data.lblod.info/id/bestuursorganen/61b5f831241a25e43c4acf4cdf620769f334514de906151dfa1ac01146ecd971>
+	# }
+	# ?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+	# ?verkiezing mandaat:steltSamen ?bestuursorgaanInTijd.
+
+	# ?kieslijst mandaat:behoortTot ?verkiezing.
+
+	# ?resultaat mandaat:isResultaatVoor ?kieslijst.
+
+	# ?resultaat mandaat:isResultaatVan ?person.
+	GRAPH <http://localhost/temp/mechelen> {
+		?thing mandaat:isResultaatVan ?person.
+	}
+
+	VALUES ?stringP {
+		<http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam>
+		<http://xmlns.com/foaf/0.1/familyName>
+		<http://xmlns.com/foaf/0.1/name>
+	}
+	?person ?stringP ?o.
+
+	?person mu:uuid ?newO. 
+
+	VALUES ?copyP {
+		<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+		<http://mu.semte.ch/vocabularies/core/uuid>
+	}
+	?person ?copyP ?copyO.
+
+	# this is a uuid so this way we have some variation, though not much
+	BIND(IF(SUBSTR(?newO, 1, 1) < "7", <http://publications.europa.eu/resource/authority/human-sex/FEMALE>, <http://publications.europa.eu/resource/authority/human-sex/MALE> ) AS ?gender)
+
+  BIND(<http://publications.europa.eu/resource/authority/country/BEL> as ?nat)
+
+	?person <http://data.vlaanderen.be/ns/persoon#heeftGeboorte> ?geboorte.
+	BIND("2000-01-01" as ?birth)
+
+	?person <http://www.w3.org/ns/adms#identifier> ?id.
+
+}
+
+

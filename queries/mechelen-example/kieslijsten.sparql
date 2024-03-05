@@ -32,6 +32,6 @@ WHERE {
 
 	?resultaat mandaat:isResultaatVan ?person.
 
-} limit 100000
+}
 
 

@@ -44,7 +44,7 @@ ext:adresF
 ext:bestuursorgaanExtendedExampleG a form:Generator;
   form:prototype [
     form:shape [
-      a ext:BestuursorgaanExtendedExample
+      a ext:BestuursorgaanExtendedExample;
     ]
   ];
   form:dataGenerator form:addMuUuid.

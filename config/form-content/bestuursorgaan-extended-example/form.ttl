@@ -35,13 +35,13 @@ ext:adresF
         ext:telefoonF,
         ext:adresF;
     ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan>;
-    form:initGenerator ext:ext:bestuursorgaanExtendedExampleG;
+    form:initGenerator ext:bestuursorgaanExtendedExampleG;
     form:targetType ext:BestuursorgaanExtendedExample;
     form:targetLabel schema:email;
     ext:prefix <http://data.lblod.info/id/bestuursorgaan-extended-examples/>;
     mu:uuid "630891b2-6086-4b36-9e88-982fd32b57e0".
 
-ext:ext:bestuursorgaanExtendedExampleG a form:Generator;
+ext:bestuursorgaanExtendedExampleG a form:Generator;
   form:prototype [
     form:shape [
       a ext:BestuursorgaanExtendedExample

@@ -21,7 +21,7 @@ async function sendLDESRequest(type: string, body: string) {
     headers: {
       "Content-Type": "text/turtle",
     },
-    // somehow the xsd prefix isn't included bit is used in the types...
+    // xsd prefix is used in the types of the result data, so it needs to be declared.
     body: `@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n${body}`,
   });
 }

@@ -14,7 +14,7 @@ const regularTypesToLDESMapping = {
   "http://data.vlaanderen.be/ns/mandaat#Mandaat": "mandaat",
   "http://www.w3.org/ns/person#Person": "persoon",
   "http://purl.org/dc/terms/PeriodOfTime": "periode",
-  "http://purl.org/dc/terms/Identifier": "identifier",
+  "http://www.w3.org/ns/adms#Identifier": "identifier",
   "http://data.vlaanderen.be/ns/persoon#Geboorte": "geboorte",
 };
 

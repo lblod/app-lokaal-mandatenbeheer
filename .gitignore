@@ -8,7 +8,9 @@
 !/data/db/toLoad
 !/data/db/toLoad/*
 /data/files/*
+/debug
 .DS_Store
+.vscode
 *~
 
 !/tmp/

@@ -81,6 +81,9 @@
                 (:is-draft :boolean ,(s-prefix "ext:isDraft")))
   :has-many `((mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
                           :as "tijdelijke-vervangingen")
+              (mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
+                          :inverse t
+                          :as "vervanger-van")
               (contact-point :via ,(s-prefix "schema:contactPoint")
                           :as "contact-points")
               (beleidsdomein-code :via ,(s-prefix "mandaat:beleidsdomein")

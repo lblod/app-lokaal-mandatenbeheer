@@ -1,0 +1,15 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+CONSTRUCT {
+	?s ?p ?o.
+}
+WHERE {
+	?s a skos:Concept.
+	?s skos:topConceptOf <http://publications.europa.eu/resource/authority/human-sex>.
+	?s ?p ?o.
+}
+
+

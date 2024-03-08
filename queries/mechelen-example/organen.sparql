@@ -1,0 +1,34 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+CONSTRUCT {
+	?bestuursorgaan ?p ?o.
+
+	?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+	?bestuursorgaanInTijd ?tp ?to.
+
+	?bestuursorgaan besluit:bestuurt ?eenheid.
+	?eenheid ?ep ?eo.
+
+	?bestuursorgaanInTijd <http://www.w3.org/ns/org#hasPost> ?mandaat.
+	?mandaat ?mandaatp ?mandaato.
+}
+WHERE {
+	VALUES ?bestuursorgaan {
+		<http://data.lblod.info/id/bestuursorganen/06c2b56ed7b49d146337f6db044204f19c34c4242deb3b4e142dbf925d733eda>
+		<http://data.lblod.info/id/bestuursorganen/61b5f831241a25e43c4acf4cdf620769f334514de906151dfa1ac01146ecd971>
+	}
+	?bestuursorgaan ?p ?o.
+
+	?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+	?bestuursorgaanInTijd ?tp ?to.
+
+	?bestuursorgaan besluit:bestuurt ?eenheid.
+	?eenheid ?ep ?eo.
+
+	?bestuursorgaanInTijd <http://www.w3.org/ns/org#hasPost> ?mandaat.
+	?mandaat ?mandaatp ?mandaato.
+}
+
+

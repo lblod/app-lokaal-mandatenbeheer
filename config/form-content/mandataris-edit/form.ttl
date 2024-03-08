@@ -15,7 +15,7 @@ ext:mandaatF
     form:displayType displayTypes:mandatarisMandaatSelector;
     sh:group ext:editMandatarisPG;
     sh:name "Mandaat";
-    sh:order 2;
+    sh:order 200;
     sh:path org:holds.
 ext:mandatarisStatusCodeF
     a form:Field;
@@ -23,16 +23,23 @@ ext:mandatarisStatusCodeF
     sh:group ext:editMandatarisPG;
     sh:name "Status";
     form:help "Titelvoerdend is enkel voor burgemeester";
-    sh:order 3;
+    sh:order 300;
     sh:path mandaat:status;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
+ext:replacementF
+    a form:Field;
+    form:displayType displayTypes:mandatarisReplacement;
+    sh:group ext:editMandatarisPG;
+    sh:name "Tijdelijk vervangen door";
+    sh:order 400;
+    sh:path mandaat:isTijdelijkVervangenDoor.
 ext:beleidsdomeinCodeF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelector;
     sh:group ext:editMandatarisPG;
     sh:name "Beleidsdomein";
     form:help "Enkel voor schepenen en burgemeester";
-    sh:order 4;
+    sh:order 500;
     sh:path mandaat:beleidsdomein;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true}""".
 ext:rangordeF
@@ -41,29 +48,29 @@ ext:rangordeF
     sh:group ext:editMandatarisPG;
     sh:name "Rangorde";
     form:help "Enkel voor schepenen";
-    sh:order 5;
+    sh:order 600;
     sh:path mandaat:rangorde.
 ext:startF
     a form:Field;
     form:displayType displayTypes:dateTime;
     sh:group ext:editMandatarisPG;
     sh:name "Start";
-    sh:order 6;
+    sh:order 700;
     sh:path mandaat:start.
 ext:eindeF
     a form:Field;
     form:displayType displayTypes:dateTime;
     sh:group ext:editMandatarisPG;
     sh:name "Einde";
-    sh:order 7;
+    sh:order 800;
     sh:path mandaat:einde.
 ext:fractieF
     a form:Field;
     form:displayType displayTypes:mandatarisFractieSelector;
     sh:group ext:editMandatarisPG;
     sh:name "Fractie";
-    sh:order 8;
-    sh:path org:hasMembership. 
+    sh:order 900;
+    sh:path org:hasMembership.
 ext:editMandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
@@ -76,6 +83,7 @@ ext:editMandatarisPG
         ext:rangordeF,
         ext:startF,
         ext:eindeF,
+        ext:replacementF,
         ext:fractieF;
     sh:group ext:editMandatarisPG;
     form:targetType mandaat:Mandataris;

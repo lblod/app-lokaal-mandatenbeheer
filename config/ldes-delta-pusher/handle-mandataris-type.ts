@@ -19,12 +19,12 @@ const keepRegularTypesQuery = async (subjects: string[]) => {
         VALUES ?s { ${[...subjects]
           .map((subject) => `<${subject}>`)
           .join(" ")} }
-        ?s ext:isDraft ?isDraft.
+        OPTIONAL { ?s ext:isDraft ?isDraft. }
       }
     `);
   return matches.results.bindings
     .map((binding) => {
-      const isDraft = binding.isDraft.value === "true";
+      const isDraft = binding.isDraft?.value === "true"; // default to non-draft if not present
       const ldesType = isDraft ? "mandataris-draft" : "mandataris";
       return { uri: binding.s.value, ldesType };
     })

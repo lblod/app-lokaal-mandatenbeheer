@@ -5,6 +5,7 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix locn: <http://www.w3.org/ns/locn#>.
 @prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
 
 ext:emailF
     a form:Field;
@@ -35,16 +36,7 @@ ext:adresF
         ext:telefoonF,
         ext:adresF;
     ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan>;
-    form:initGenerator ext:bestuursorgaanExtendedExampleG;
-    form:targetType ext:BestuursorgaanExtendedExample;
+    form:targetType besluit:Bestuursorgaan;
     form:targetLabel schema:email;
     ext:prefix <http://data.lblod.info/id/bestuursorgaan-extended-examples/>;
     mu:uuid "630891b2-6086-4b36-9e88-982fd32b57e0".
-
-ext:bestuursorgaanExtendedExampleG a form:Generator;
-  form:prototype [
-    form:shape [
-      a ext:BestuursorgaanExtendedExample;
-    ]
-  ];
-  form:dataGenerator form:addMuUuid.

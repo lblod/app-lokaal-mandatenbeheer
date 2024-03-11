@@ -6,6 +6,7 @@
 @prefix locn: <http://www.w3.org/ns/locn#>.
 @prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 @prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
 
 ext:emailF
     a form:Field;
@@ -28,13 +29,22 @@ ext:adresF
     sh:name "Address";
     sh:order 303;
     sh:path locn:address.
+ext:statusF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:bestuursorgaanPG;
+    sh:name "Status";
+    sh:order 304;
+    sh:path mandaat:status;
+    form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/FunctionarisStatusCode","searchEnabled":false}""".
 
 <http://data.lblod.info/id/lmb/forms/bestuursorgaan-ext-example>
     a form:Extension;
     form:includes
         ext:emailF,
         ext:telefoonF,
-        ext:adresF;
+        ext:adresF,
+        ext:statusF;
     ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan>;
     form:targetType besluit:Bestuursorgaan;
     form:targetLabel schema:email;

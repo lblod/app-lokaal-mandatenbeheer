@@ -5,6 +5,7 @@
 @prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 @prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix persoon: <http://data.vlaanderen.be/ns/persoon#>.
 
 ext:testF
     a form:Field;
@@ -13,11 +14,20 @@ ext:testF
     sh:name "Test";
     sh:order 401;
     sh:path ext:test.
+ext:geslachtCodeF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:bestuursorgaanPG;
+    sh:name "Geslacht";
+    sh:order 402;
+    sh:path persoon:geslacht;
+    form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":false}""".
 
 <http://data.lblod.info/id/lmb/forms/bestuursorgaan-ext-ext-example>
     a form:Extension;
     form:includes
-        ext:testF;
+        ext:testF,
+        ext:geslachtCodeF;
     ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan-ext-example>;
     form:targetType besluit:Bestuursorgaan;
     form:targetLabel skos:prefLabel;

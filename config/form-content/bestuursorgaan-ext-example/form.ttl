@@ -29,7 +29,7 @@ ext:adresF
     sh:order 303;
     sh:path locn:address.
 
-<http://data.lblod.info/id/lmb/forms/bestuursorgaan-extended-example>
+<http://data.lblod.info/id/lmb/forms/bestuursorgaan-ext-example>
     a form:Extension;
     form:includes
         ext:emailF,
@@ -38,5 +38,5 @@ ext:adresF
     ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan>;
     form:targetType besluit:Bestuursorgaan;
     form:targetLabel schema:email;
-    ext:prefix <http://data.lblod.info/id/bestuursorgaan-extended-examples/>;
+    ext:prefix <http://data.lblod.info/id/bestuursorgaan-ext-examples/>;
     mu:uuid "630891b2-6086-4b36-9e88-982fd32b57e0".

@@ -18,7 +18,7 @@ ext:testF
     a form:Extension;
     form:includes
         ext:testF;
-    ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan-extended-example>;
+    ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan-ext-example>;
     form:targetType besluit:Bestuursorgaan;
     form:targetLabel skos:prefLabel;
     ext:prefix <http://data.lblod.info/id/bestuursorgaan-ext-ext-examples/>;

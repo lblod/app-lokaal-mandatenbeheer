@@ -25,3 +25,6 @@
 (add-prefix "rdfs" "http://www.w3.org/2000/01/rdf-schema#")
 (add-prefix "ch" "http://data.lblod.info/vocabularies/contacthub/")
 (add-prefix "euvoc" "http://publications.europa.eu/ontology/euvoc#")
+(add-prefix "form" "http://lblod.data.gift/vocabularies/forms/")
+(add-prefix "sh" "http://www.w3.org/ns/shacl#")
+(add-prefix "mu" "http://mu.semte.ch/vocabularies/core/")

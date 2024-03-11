@@ -223,7 +223,16 @@ defmodule Dispatcher do
     forward conn, path, "http://form-content/"
   end
   match "/adressenregister/*path" do
-    forward conn, path, "http://adressenregister/"
+  #################################################################
+  # Forms
+  #################################################################
+
+  match "/forms/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/forms/")
+  end
+
+  match "/form-extensions/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/form-extensions/")
   end
 
   #################################################################

@@ -79,7 +79,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:feature-optionally-accept-strange-resource-types
+    image: semtech/mu-cl-resources:1.23.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:

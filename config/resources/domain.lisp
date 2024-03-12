@@ -20,6 +20,7 @@
 (read-domain-file "external-contact.lisp")
 (read-domain-file "external-leidinggevenden.lisp")
 (read-domain-file "external-mandaat.lisp")
+(read-domain-file "forms.lisp")
 
 ;; Extra security layer to return 403 on GET /files
 ;; It should be ok for mu-auth; but devs can make bugs and add files to the wrong graph (i.e. public)

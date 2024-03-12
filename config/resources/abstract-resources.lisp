@@ -39,27 +39,3 @@
   :features '(include-uri)
   :on-path "roles"
 )
-
-;; TODO define field, group, generator resources
-(define-resource form ()
-  :class (s-prefix "form:Form")
-  :properties `((:target-type :url ,(s-prefix "form:targetType"))
-                (:target-label :uri-set ,(s-prefix "form:targetLabel"))
-                (:prefix :url ,(s-prefix "ext:prefix"))
-                (:id :string ,(s-prefix "mu:uuid")))  
-  :has-many `((field :via ,(s-prefix "form:includes")
-                        :as "fields")
-              (group :via ,(s-prefix "sh:group")
-                      :as "groups")
-              (generator :via ,(s-prefix "form:initGenerator")
-                      :as "generators"))
-  :resource-base (s-url "http://data.lblod.info/id/lmb/forms/")
-  :on-path "forms"
-)
-
-(define-resource form-extension (form)
-  :class (s-prefix "form:Extension")
-  :properties `((:extends-form :url ,(s-prefix "ext:extendsForm")))  
-  :resource-base (s-url "http://data.lblod.info/id/lmb/forms/")
-  :on-path "form-extensions"
-)

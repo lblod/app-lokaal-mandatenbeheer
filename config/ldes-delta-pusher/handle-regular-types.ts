@@ -1,12 +1,9 @@
 import { Changeset } from "../types";
 import { query } from "mu";
-import { publish } from "./publisher";
-import { log } from "./logger";
-
-type InterestingSubject = {
-  uri: string;
-  ldesType: string;
-};
+import {
+  InterestingSubject,
+  publishInterestingSubjects,
+} from "./handle-types-util";
 
 const regularTypesToLDESMapping = {
   "http://data.vlaanderen.be/ns/mandaat#Fractie": "fractie",
@@ -18,7 +15,9 @@ const regularTypesToLDESMapping = {
   "http://data.vlaanderen.be/ns/persoon#Geboorte": "geboorte",
 };
 
-const keepRegularTypesQuery = async (subjects: string[]) => {
+const keepRegularTypesQuery = async (
+  subjects: string[]
+): Promise<InterestingSubject[]> => {
   const types = Object.keys(regularTypesToLDESMapping);
   const matches = await query(`
       SELECT DISTINCT ?s ?type WHERE {
@@ -37,44 +36,9 @@ const keepRegularTypesQuery = async (subjects: string[]) => {
       }
       return { uri: binding.s.value, ldesType };
     })
-    .filter((b) => !!b) as InterestingSubject[];
-};
-
-const keepRegularTypeSubjects = async (changesets: Changeset[]) => {
-  const subjects = new Set<string>();
-  for (const changeset of changesets) {
-    changeset.inserts.forEach((insert) => {
-      subjects.add(insert.subject.value);
-    });
-    changeset.deletes.forEach((del) => {
-      subjects.add(del.subject.value);
-    });
-  }
-
-  const allSubjects = [...subjects];
-  let subjectsToKeep: InterestingSubject[] = [];
-  const chunkSize = 1000;
-  for (let i = 0; i < allSubjects.length; i += chunkSize) {
-    const currentChunk = allSubjects.slice(i, i + chunkSize);
-    const toKeepForChunk = await keepRegularTypesQuery(currentChunk);
-    subjectsToKeep = subjectsToKeep.concat(toKeepForChunk);
-  }
-
-  return subjectsToKeep;
+    .filter((b) => !!b);
 };
 
 export const handleRegularTypes = async (changesets: Changeset[]) => {
-  const interestingSubjects = await keepRegularTypeSubjects(changesets);
-  log(
-    `Received changeset(s) touching the following interesting subjects:\n${JSON.stringify(
-      interestingSubjects
-    )}`,
-    "debug"
-  );
-
-  // do this serially to avoid overloading the stream endpoint
-  let current: InterestingSubject | undefined;
-  while ((current = interestingSubjects.pop())) {
-    await publish(current.ldesType, current.uri);
-  }
+  await publishInterestingSubjects(changesets, keepRegularTypesQuery);
 };

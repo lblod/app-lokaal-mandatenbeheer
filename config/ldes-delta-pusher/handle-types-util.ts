@@ -8,9 +8,7 @@ export type InterestingSubject = {
   ldesType: string;
 };
 
-type SubjectsToInterestingSubjects = {
-  (subjects: string[]): Promise<InterestingSubject[]>;
-};
+type SubjectFilter = (subjects: string[]) => Promise<InterestingSubject[]>;
 
 const mapToSubjects = (changesets: Changeset[]) => {
   const subjects = new Set<string>();
@@ -27,7 +25,7 @@ const mapToSubjects = (changesets: Changeset[]) => {
 
 const filterInterestingSubjects = async (
   allSubjects: string[],
-  filter: SubjectsToInterestingSubjects
+  filter: SubjectFilter
 ) => {
   let subjectsToKeep: InterestingSubject[] = [];
 
@@ -43,7 +41,7 @@ const filterInterestingSubjects = async (
 
 export const publishInterestingSubjects = async (
   changesets: Changeset[],
-  filter: SubjectsToInterestingSubjects
+  filter: SubjectFilter
 ) => {
   const allSubjects = mapToSubjects(changesets);
   const interestingSubjects = await filterInterestingSubjects(

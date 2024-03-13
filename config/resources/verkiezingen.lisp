@@ -9,7 +9,6 @@
   :features '(include-uri)
   :on-path "installatievergaderingen")
 
-;; Possible statuses: teBehandelen, klaarVoorVergadering or behandeld
 (define-resource installatievergadering-status ()
   :class (s-prefix "ext:InstallatievergaderingStatus")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))

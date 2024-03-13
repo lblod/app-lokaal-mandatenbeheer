@@ -180,6 +180,18 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # Verkiezingen resources
+  #################################################################
+
+  match "/installatievergaderingen/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/installatievergaderingen/")
+  end
+
+  match "/installatievergadering-statussen/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/installatievergadering-statussen/")
+  end
+
+  #################################################################
   # Concept scheme resources
   #################################################################
   get "/concept-schemes/*path", %{layer: :resources, accept: %{json: true}} do

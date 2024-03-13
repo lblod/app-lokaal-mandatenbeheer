@@ -26,7 +26,7 @@ ext:mandaatF
     sh:path org:holds.
 ext:mandatarisStatusCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;    
+    form:displayType displayTypes:conceptSchemeSelector;
     sh:group ext:mandatarisPG;
     sh:name "Status";
     form:help "Titelvoerdend is enkel voor burgemeester";
@@ -70,7 +70,7 @@ ext:fractieF
     sh:group ext:mandatarisPG;
     sh:name "Fractie";
     sh:order 9;
-    sh:path org:hasMembership. 
+    sh:path org:hasMembership.
 ext:mandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
@@ -97,6 +97,7 @@ ext:hiddenIsDraftF
     form:targetType mandaat:Mandataris;
     form:targetLabel mu:uuid;
     ext:prefix <http://data.lblod.info/id/mandatarissen/>;
+    ext:withHistory true;
     mu:uuid "2522a2e2-5242-4b6d-98ee-c5bd709fceaa".
 
 ext:mandatarisG a form:Generator;

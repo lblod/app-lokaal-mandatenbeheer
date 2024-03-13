@@ -89,4 +89,5 @@ ext:editMandatarisPG
     form:targetType mandaat:Mandataris;
     form:targetLabel mu:uuid;
     ext:prefix <http://data.lblod.info/id/mandatarissen/>;
+    ext:withHistory true;
     mu:uuid "fe64eb54-3539-4e55-bccb-a75eeed30e9d".

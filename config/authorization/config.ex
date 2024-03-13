@@ -174,8 +174,8 @@ defmodule Acl.UserGroups.Config do
                 "http://www.w3.org/ns/person#Person",
                 "http://www.w3.org/ns/adms#Identifier",
                 "http://purl.org/dc/terms/PeriodOfTime",
-                "http://lblod.data.gift/vocabularies/forms/Form",
-                "http://lblod.data.gift/vocabularies/forms/Extension"
+                "http://mu.semte.ch/vocabularies/ext/Form",
+                "http://mu.semte.ch/vocabularies/ext/Extension"
               ]
             }
           }
@@ -202,8 +202,8 @@ defmodule Acl.UserGroups.Config do
                 "http://www.w3.org/ns/adms#Identifier",
                 "http://www.w3.org/ns/activitystreams#Tombstone",
                 "http://purl.org/dc/terms/PeriodOfTime",
-                "http://lblod.data.gift/vocabularies/forms/Form",
-                "http://lblod.data.gift/vocabularies/forms/Extension"
+                "http://mu.semte.ch/vocabularies/ext/Form",
+                "http://mu.semte.ch/vocabularies/ext/Extension"
               ]
             }
           }

@@ -175,7 +175,9 @@ defmodule Acl.UserGroups.Config do
                 "http://www.w3.org/ns/adms#Identifier",
                 "http://purl.org/dc/terms/PeriodOfTime",
                 "http://mu.semte.ch/vocabularies/ext/Form",
-                "http://mu.semte.ch/vocabularies/ext/Extension"
+                "http://mu.semte.ch/vocabularies/ext/Extension",
+                "http://mu.semte.ch/vocabularies/ext/Installatievergadering",
+                "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus"
               ]
             }
           }
@@ -203,7 +205,9 @@ defmodule Acl.UserGroups.Config do
                 "http://www.w3.org/ns/activitystreams#Tombstone",
                 "http://purl.org/dc/terms/PeriodOfTime",
                 "http://mu.semte.ch/vocabularies/ext/Form",
-                "http://mu.semte.ch/vocabularies/ext/Extension"
+                "http://mu.semte.ch/vocabularies/ext/Extension",
+                "http://mu.semte.ch/vocabularies/ext/Installatievergadering",
+                "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus"
               ]
             }
           }

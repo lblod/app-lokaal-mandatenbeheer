@@ -1,0 +1,45 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#>.
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>.
+@prefix mu:   <http://mu.semte.ch/vocabularies/core/>.
+@prefix conceptschemes: <http://lblod.data.gift/concept-schemes/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix ivs: <http://data.lblod.info/id/InstallatievergaderingStatus/>.
+
+
+# Installatievergadering status concept scheme
+conceptschemes:installatievergadering-status
+  rdf:type 
+    skos:ConceptScheme,
+	  skos:Concept,
+	  rdfs:Class;
+  mu:uuid "65ca3991-0337-4603-98a1-e8e1c7b6842f";
+  skos:prefLabel "Installatievergadering status".
+
+# Installatievergadering status concepts
+ivs:b54dbe98-d618-4af7-9f01-791aa90774e4
+  rdf:type 
+    skos:Concept,
+    ext:InstallatievergaderingStatus;
+  skos:inScheme conceptschemes:installatievergadering-status;
+  skos:topConceptOf conceptschemes:installatievergadering-status;
+  skos:prefLabel "Te behandelen";
+  mu:uuid "b54dbe98-d618-4af7-9f01-791aa90774e4".
+
+ivs:a40b8f8a-8de2-4710-8d9b-3fc43a4b740e
+  rdf:type 
+    skos:Concept,
+    ext:InstallatievergaderingStatus;
+  skos:inScheme conceptschemes:installatievergadering-status;
+  skos:topConceptOf conceptschemes:installatievergadering-status;
+  skos:prefLabel "Klaar voor vergadering";
+  mu:uuid "a40b8f8a-8de2-4710-8d9b-3fc43a4b740e".
+
+ivs:c9fc3292-1576-4a82-8dcd-60795e22131f
+  rdf:type 
+    skos:Concept,
+    ext:InstallatievergaderingStatus;
+  skos:inScheme conceptschemes:installatievergadering-status;
+  skos:topConceptOf conceptschemes:installatievergadering-status;
+  skos:prefLabel "Behandeld";
+  mu:uuid "c9fc3292-1576-4a82-8dcd-60795e22131f".

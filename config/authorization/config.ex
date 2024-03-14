@@ -177,7 +177,12 @@ defmodule Acl.UserGroups.Config do
                 "http://mu.semte.ch/vocabularies/ext/Form",
                 "http://mu.semte.ch/vocabularies/ext/Extension",
                 "http://mu.semte.ch/vocabularies/ext/Installatievergadering",
-                "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus"
+                "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus",
+                "http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing",
+                "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
+                "http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype",
+                "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
+                "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode"
               ]
             }
           }
@@ -207,7 +212,12 @@ defmodule Acl.UserGroups.Config do
                 "http://mu.semte.ch/vocabularies/ext/Form",
                 "http://mu.semte.ch/vocabularies/ext/Extension",
                 "http://mu.semte.ch/vocabularies/ext/Installatievergadering",
-                "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus"
+                "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus",
+                "http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing",
+                "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
+                "http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype",
+                "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
+                "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode"
               ]
             }
           }

@@ -1,11 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Installatievergaderingen ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-resource installatievergadering ()
   :class (s-prefix "ext:Installatievergadering")
-  :has-one `((installatievergadering-status :via ,(s-prefix "ext:hasInstallatievergaderingStatus")
+  :has-one `((installatievergadering-status :via ,(s-prefix "ext:hasStatus")
                                             :as "status")
              (bestuursorgaan :via ,(s-prefix "ext:hasBestuursorgaanInDeTijd")
                              :as "bestuursorgaan-in-tijd"))
-  :resource-base (s-url "http://data.lblod.info/id/Installatievergaderingen/")
+  :resource-base (s-url "http://data.lblod.info/id/installatievergaderingen/")
   :features '(include-uri)
   :on-path "installatievergaderingen")
 
@@ -13,7 +13,7 @@
   :class (s-prefix "ext:InstallatievergaderingStatus")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
-  :resource-base (s-url "http://data.lblod.info/id/InstallatievergaderingStatus/")
+  :resource-base (s-url "http://data.lblod.info/id/concept/InstallatievergaderingStatus/")
   :features '(include-uri)
   :on-path "installatievergadering-statussen")
 

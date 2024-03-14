@@ -4,7 +4,7 @@
 @prefix mu:   <http://mu.semte.ch/vocabularies/core/>.
 @prefix conceptschemes: <http://lblod.data.gift/concept-schemes/>.
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
-@prefix ivs: <http://data.lblod.info/id/InstallatievergaderingStatus/>.
+@prefix ivs: <http://data.lblod.info/id/concept/InstallatievergaderingStatus/>.
 
 
 # Installatievergadering status concept scheme

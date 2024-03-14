@@ -57,7 +57,10 @@
              (bestuursorgaan-classificatie-code :via ,(s-prefix "besluit:classificatie")
                                                 :as "classificatie")
              (bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
-                             :as "is-tijdsspecialisatie-van"))
+                             :as "is-tijdsspecialisatie-van")
+             (rechtstreekse-verkiezing :via ,(s-prefix "mandaat:steltSamen")
+                                       :inverse t
+                                       :as "rechtstreekse-verkiezing"))
   :has-many `((bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
                        :inverse t
                        :as "heeft-tijdsspecialisaties")

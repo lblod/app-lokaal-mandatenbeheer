@@ -38,7 +38,7 @@
   :has-one `((lijsttype :via ,(s-prefix "mandaat:lijsttype")
                         :as "lijsttype")
              (rechtstreekse-verkiezing :via ,(s-prefix "mandaat:behoortTot")
-                                       :as "rechtstreekse-verkiezing"))
+                                       :as "verkiezing"))
   :has-many `((persoon :via ,(s-prefix "mandaat:heeftKandidaat")
                        :as "kandidaten")
               (verkiezingsresultaat :via ,(s-prefix "mandaat:isResultaatVoor")

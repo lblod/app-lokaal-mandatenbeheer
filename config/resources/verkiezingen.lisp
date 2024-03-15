@@ -11,8 +11,7 @@
 
 (define-resource installatievergadering-status ()
   :class (s-prefix "ext:InstallatievergaderingStatus")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
   :resource-base (s-url "http://data.lblod.info/id/InstallatievergaderingStatus/")
   :features '(include-uri)
   :on-path "installatievergadering-statussen")
@@ -72,8 +71,7 @@
 
 (define-resource verkiezingsresultaat-gevolg-code ()
   :class (s-prefix "ext:VerkiezingsresultaatGevolgCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/VerkiezingsresultaatGevolgCode/")
   :features '(include-uri)
   :on-path "verkiezingsresultaat-gevolg-codes")

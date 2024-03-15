@@ -10,6 +10,8 @@ export default [
     options: {
       resourceFormat: "v0.0.1",
       gracePeriod: 10000,
+      retry: 3,
+      retryTimeout: 250,
     },
   },
 ];

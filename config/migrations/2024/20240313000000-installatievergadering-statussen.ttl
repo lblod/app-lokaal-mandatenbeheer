@@ -11,7 +11,6 @@
 conceptschemes:installatievergadering-status
   rdf:type 
     skos:ConceptScheme,
-	  skos:Concept,
 	  rdfs:Class;
   mu:uuid "65ca3991-0337-4603-98a1-e8e1c7b6842f";
   skos:prefLabel "Installatievergadering status".

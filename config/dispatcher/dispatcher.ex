@@ -191,6 +191,26 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/installatievergadering-statussen/")
   end
 
+  match "/rechtstreekse-verkiezingen/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/rechtstreekse-verkiezingen/")
+  end
+
+  match "/kandidatenlijsten/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/kandidatenlijsten/")
+  end
+
+  match "/lijsttypes/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/lijsttypes/")
+  end
+
+  match "/verkiezingsresultaten/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/verkiezingsresultaten/")
+  end
+
+  match "/verkiezingsresultaat-gevolg-codes/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/verkiezingsresultaat-gevolg-codes/")
+  end
+
   #################################################################
   # Concept scheme resources
   #################################################################

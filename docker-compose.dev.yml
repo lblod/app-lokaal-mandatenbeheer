@@ -64,3 +64,7 @@ services:
       BASE_URL: "http://localhost/streams/ldes"
     ports:
       - "6666:80"
+  vendor-login:
+    restart: "no"
+  sparql-authorization-wrapper:
+    restart: "no"

@@ -1,0 +1,12 @@
+PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX bestuurseenheid: <http://data.lblod.info/id/bestuurseenheden/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+   <http://data.lblod.info/vendors/c5da766f-f1a6-426a-9a4d-36b96a855e18> muAccount:key "my super secret key that i should replace" .
+  }
+}
+

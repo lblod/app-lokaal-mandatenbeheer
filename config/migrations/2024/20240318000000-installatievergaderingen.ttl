@@ -1,20 +1,25 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix ivs: <http://data.lblod.info/id/concept/InstallatievergaderingStatus/>.
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 
 <http://data.lblod.info/id/installatievergaderingen/11f56aca-e9a0-4468-aea3-39c98958da16>
 	rdf:type ext:Installatievergadering;
 	ext:hasStatus ivs:a40b8f8a-8de2-4710-8d9b-3fc43a4b740e;
-  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/10202d069077537a27709e11ef82955f14e8543c8d910eaa4d57c344401313c4>.
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/10202d069077537a27709e11ef82955f14e8543c8d910eaa4d57c344401313c4>;
+	mu:uuid "11f56aca-e9a0-4468-aea3-39c98958da16".
 <http://data.lblod.info/id/installatievergaderingen/8cf01533-0c93-4a3b-9681-6205d8ba2f17>
 	rdf:type ext:Installatievergadering;
 	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
-  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/07a396470f09f18367209c752aff9c4cce661261f640f193e980fb8b60889c7b>.
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/07a396470f09f18367209c752aff9c4cce661261f640f193e980fb8b60889c7b>;
+	mu:uuid "8cf01533-0c93-4a3b-9681-6205d8ba2f17".
 <http://data.lblod.info/id/installatievergaderingen/42a132c8-15e0-48d1-bc19-df053bb0dcf9>
 	rdf:type ext:Installatievergadering;
 	ext:hasStatus ivs:c9fc3292-1576-4a82-8dcd-60795e22131f;
-  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/9258a457d9ceff0032527d1c092c938ab006f66f570e0d7c9d6885a08eab1a9d>.
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/9258a457d9ceff0032527d1c092c938ab006f66f570e0d7c9d6885a08eab1a9d>;
+	mu:uuid "42a132c8-15e0-48d1-bc19-df053bb0dcf9".
 <http://data.lblod.info/id/installatievergaderingen/eaadccd1-9337-4cd5-80ad-915309a6d674>
 	rdf:type ext:Installatievergadering;
 	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
-  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/07d9a4d3e33e4d08777d1ac172320871e1d75f7073e02e8d74af3e286240cd63>.
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/07d9a4d3e33e4d08777d1ac172320871e1d75f7073e02e8d74af3e286240cd63>;
+	mu:uuid "eaadccd1-9337-4cd5-80ad-915309a6d674".

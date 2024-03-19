@@ -14,24 +14,24 @@
 ext:naamF
     a form:Field;
     form:displayType displayTypes:defaultInput;
-    sh:group ext:fractiePG;
+    form:partOf ext:fractieSection;
     sh:name "Naam";
     sh:order 2;
     sh:path regorg:legalName.
-ext:fractiePG
-    a form:PropertyGroup; sh:name "Fractie"; sh:order 1.
+ext:fractieSection
+    a form:Section; sh:name "Fractie"; sh:order 1.
 
 ext:hiddenFractietypeF
     a form:Field;
     sh:name "Fractietype [hidden input]";
     sh:order 5001;
     sh:path ext:isFractietype.
-ext:hiddenBestuursorgaanF 
+ext:hiddenBestuursorgaanF
     a form:Field;
     sh:name "Bestuursorganen in de tijd [hidden input]";
     sh:order 5002;
     sh:path org:memberOf.
-ext:hiddenBestuurseenheidF 
+ext:hiddenBestuurseenheidF
     a form:Field;
     sh:name "Bestuurseenheid [hidden input]";
     sh:order 5003;
@@ -39,12 +39,14 @@ ext:hiddenBestuurseenheidF
 
 <http://data.lblod.info/id/lmb/forms/fractie>
     a form:Form, form:TopLevelForm;
+    ext:withHistory true;
     form:includes
       ext:naamF,
       ext:hiddenFractietypeF,
       ext:hiddenBestuursorgaanF,
+      ext:fractieSection,
       ext:hiddenBestuurseenheidF;
-    sh:group ext:fractiePG;
+    sh:group ext:fractieSection;
     form:initGenerator ext:fractieG;
     form:targetType mandaat:Fractie;
     form:targetLabel regorg:legalName;

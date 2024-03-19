@@ -30,7 +30,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/mu-authorization:feature-service-roam-r1.1
+    image: semtech/mu-authorization:0.6.0-beta.8
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
       DATABASE_OVERLOAD_RECOVERY: "true"
@@ -170,6 +170,8 @@ services:
     volumes:
       - ./config/ldes-delta-pusher/:/config/
     restart: always
+    labels:
+      - "logging=true"
     links:
       - virtuoso:database
   ldes-backend:
@@ -189,3 +191,16 @@ services:
       ENABLE_AUTH: "false"
     volumes:
       - "./data/ldes-feed/:/data/"
+  ##############################################################################
+  # VENDOR ENDPOINTS
+  ##############################################################################
+  vendor-login:
+    image: lblod/vendor-login-service:1.0.0
+    restart: always
+    logging: *default-logging
+  sparql-authorization-wrapper:
+    image: lblod/sparql-authorization-wrapper-service:1.0.0
+    volumes:
+      - ./config/sparql-authorization-wrapper:/config
+    restart: always
+    logging: *default-logging

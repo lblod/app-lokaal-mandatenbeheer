@@ -1,0 +1,53 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+CONSTRUCT {
+  ?target ?p ?o.
+  ?target ?extraP ?extraO.
+  ?target <http://mu.semte.ch/vocabularies/ext/inGraph> ?g.
+}
+WHERE {
+    #?verkiezingsresultaat a <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat>.
+    #?verkiezingsresultaat <http://data.vlaanderen.be/ns/mandaat#isResultaatVoor> ?kandidatenlijst.
+    #?kandidantenlijst  <http://data.vlaanderen.be/ns/mandaat#behoortTot> ?verkiezing.
+    #?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaanInTijd.
+    #?bestuursorgaanInTijd <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?bestuursorgaan.
+    # ?bestuursorgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid.
+  GRAPH ?g {
+    ?bestuurseenheid ^<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuursorgaan.
+  }
+
+  ?bestuursorgaan ^<http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> / ^<http://data.vlaanderen.be/ns/mandaat#steltSamen> / ^<http://data.vlaanderen.be/ns/mandaat#behoortTot>? / ^<http://data.vlaanderen.be/ns/mandaat#isResultaatVoor>? ?target.
+  ?target ?p ?o.
+
+  FILTER (?p NOT IN (mandaat:aantalNaamstemmen, mandaat:plaatsRangorde))
+
+  OPTIONAL {
+    ?target a mandaat:Verkiezingsresultaat.
+    ?target ?extraP ?oSomething.
+    FILTER (?extraP IN (mandaat:aantalNaamstemmen, mandaat:plaatsRangorde))
+    BIND (if(?extraP = mandaat:aantalNaamstemmen, 100, 1) as ?extraO )
+  }
+
+  VALUES ?bestuurseenheid { 
+    <http://data.lblod.info/id/bestuurseenheden/ba4d960fe3e01984e15fd0b141028bab8f2b9b240bf1e5ab639ba0d7fe4dc522>
+    <http://data.lblod.info/id/bestuurseenheden/4d7946dc0b77ae0cbc08637f4e1a0009a58305ab5da33aadd75c7d4748340b86>
+    <http://data.lblod.info/id/bestuurseenheden/747d235d067e1f04eb12261b79850098ba93cdd3522cb75bd84e4605038bc76a>
+    <http://data.lblod.info/id/bestuurseenheden/83c7a12a4a8ac8dd82895715095a866dc4794e60de61b967419bdfc1e207ad96>
+    <http://data.lblod.info/id/bestuurseenheden/5116efa8-e96e-46a2-aba6-c077e9056a96>
+    <http://data.lblod.info/id/bestuurseenheden/5d6cc695e6c2082ca219baf425c61e8fc8ea25ec5a11187f1d96863266adcd64>
+    <http://data.lblod.info/id/bestuurseenheden/461fdead3ed31710eb58da8b8acc22a08f82409c4edc3adf220ef2f98aa57c30>
+    <http://data.lblod.info/id/bestuurseenheden/5be3ff820769b385a32e499d17bbf1f15feeacb65381d5384841732dd4a1209b>
+    <http://data.lblod.info/id/bestuurseenheden/d6a04c16b842c671407bccdad2d3b536b7d356096ae24e7c6c6e22cee4296db4>
+    <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c>
+    <http://data.lblod.info/id/bestuurseenheden/8662dc060c121e9d69101062f67daeef8370d38bfe86533752b9e54190dd0e2f>
+    <http://data.lblod.info/id/bestuurseenheden/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18>
+    <http://data.lblod.info/id/bestuurseenheden/2fd8218dd4a404931eeaef879e33506ae998e38d4ca745620f4f6044c230dff3>
+    <http://data.lblod.info/id/bestuurseenheden/38dc63f50a4f7ea61ef741d8944a874a59ba84b69b9ff3e73f69680da2c6ef37>
+    <http://data.lblod.info/id/bestuurseenheden/f73c7109-06a0-45d7-b558-879d87ca3553>
+    <http://data.lblod.info/id/bestuurseenheden/011a6ad0efca0b7e03ca9b99bd6c636a26cbde49aa0d6844b9ebc434dc58216c>
+    <http://data.lblod.info/id/bestuurseenheden/8af37430f91603017873dbc1390eccf364bf82854f7358e9c9845498b184660f>
+    <http://data.lblod.info/id/bestuurseenheden/f0cc06aca0893bc875d3254bf753f2357f67f2895871347a0dd05628b0ce77c2>
+    <http://data.lblod.info/id/bestuurseenheden/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4>
+    <http://data.lblod.info/id/bestuurseenheden/bd74ee38a4b1e296821a11729c1f704cf439576c7ab2c910c95b067cf183d923>
+  }
+}

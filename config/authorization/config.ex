@@ -17,6 +17,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://www.w3.org/ns/org#Post",
       "http://www.w3.org/ns/person#Person",
       "http://www.w3.org/ns/adms#Identifier",

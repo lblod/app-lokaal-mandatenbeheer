@@ -1,0 +1,51 @@
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix ivs: <http://data.lblod.info/id/concept/InstallatievergaderingStatus/>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+
+<http://data.lblod.info/id/installatievergaderingen/11f56aca-e9a0-4468-aea3-39c98958da16>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:a40b8f8a-8de2-4710-8d9b-3fc43a4b740e;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/fdf4f64702a6cbdecf79382a33035daa81c6fcb49ca8e05127a9eead72405598>;
+	mu:uuid "11f56aca-e9a0-4468-aea3-39c98958da16".
+<http://data.lblod.info/id/installatievergaderingen/8cf01533-0c93-4a3b-9681-6205d8ba2f17>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/ea37594145dd619da390b3343ea3f7ed0f55ae920212a8d77c589f8bc377e4b9>;
+	mu:uuid "8cf01533-0c93-4a3b-9681-6205d8ba2f17".
+<http://data.lblod.info/id/installatievergaderingen/42a132c8-15e0-48d1-bc19-df053bb0dcf9>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:c9fc3292-1576-4a82-8dcd-60795e22131f;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/f1b72f9fc64ceca5896a38161135ed149141a83db964dc4c26b1df1d62e3bc01>;
+	mu:uuid "42a132c8-15e0-48d1-bc19-df053bb0dcf9".
+<http://data.lblod.info/id/installatievergaderingen/eaadccd1-9337-4cd5-80ad-915309a6d674>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/5f05da0d28da533e97b64043caa9c30e325123a6be45a832de86e8f05ff7e1db>;
+	mu:uuid "eaadccd1-9337-4cd5-80ad-915309a6d674".
+<http://data.lblod.info/id/installatievergaderingen/dc1d83f0-7a70-4d08-9e76-e124f9c9ca46>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/caecfb2f2a7a18e8769c40449402be18ef2f21d125297bf6cf828b1ffac08ec0>;
+	mu:uuid "dc1d83f0-7a70-4d08-9e76-e124f9c9ca46".
+<http://data.lblod.info/id/installatievergaderingen/bb124b91-c6da-4385-a6e5-aa82631aafa8>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/0df01206dd8440a99c4ff70bb5bef7e8409d86bead52290e51133be48eff8481>;
+	mu:uuid "bb124b91-c6da-4385-a6e5-aa82631aafa8".
+<http://data.lblod.info/id/installatievergaderingen/cf31f4fe-7312-4159-abc1-99f363fd945f>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/78aca6ca5ffef7b303a7a7c81aa4fc623f0b8bd719df15edfad83fe2a5d8e6d0>;
+	mu:uuid "cf31f4fe-7312-4159-abc1-99f363fd945f".
+<http://data.lblod.info/id/installatievergaderingen/f9492995-c053-41e2-b5e6-20f9a9d66b9e>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/521b3f49b206a4c1269cd754cb8159f0e121e5fe6d333431ecdd78e183f71226>;
+	mu:uuid "f9492995-c053-41e2-b5e6-20f9a9d66b9e".
+<http://data.lblod.info/id/installatievergaderingen/ceae0bdc-17ee-4ec1-ac7b-a23cb18d4ebe>
+	rdf:type ext:Installatievergadering;
+	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
+  ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/071963c7a740d5429d7f70e65edea127760a4ca0a39caddc05dc83425475cbf9>;
+	mu:uuid "ceae0bdc-17ee-4ec1-ac7b-a23cb18d4ebe".
+

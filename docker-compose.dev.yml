@@ -1,4 +1,8 @@
 version: "3.7"
+networks:
+  debug:
+    driver: bridge
+    name: debug
 services:
   proxy:
     image: nginx:1.13
@@ -24,8 +28,14 @@ services:
     restart: "no"
   dispatcher:
     restart: "no"
+    networks:
+      - default
+      - debug
   database:
     restart: "no"
+    networks:
+      - default
+      - debug
   virtuoso:
     ports:
       - "8890:8890"
@@ -52,6 +62,8 @@ services:
     restart: "no"
   form-content:
     restart: "no"
+    profiles:
+      - nodebug
   adressenregister:
     restart: "no"
   ldes-delta-pusher:

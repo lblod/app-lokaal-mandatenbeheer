@@ -1,0 +1,64 @@
+PREFIX rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX foaf:	<http://xmlns.com/foaf/0.1/> 
+PREFIX ns2:	<http://mu.semte.ch/vocabularies/ext/> 
+PREFIX ns3:	<http://mu.semte.ch/graphs/> 
+PREFIX ns4:	<http://mu.semte.ch/vocabularies/core/> 
+PREFIX ns5:	<https://github.com/lblod/> 
+PREFIX ns6:	<http://mu.semte.ch/graphs/organizations/> 
+PREFIX ns8:	<http://data.lblod.info/id/bestuurseenheden/> 
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organizations/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4> {
+  <http://data.lblod.info/id/account/670f1eae-3a9c-4aba-bd08-404a1a1ccc31>	rdf:type	foaf:OnlineAccount ;
+  	ns2:sessionRole	
+      "LoketLB-mandaatGebruiker",
+  		"LoketLB-leidinggevendenGebruiker";
+  	ns4:uuid	"670f1eae-3a9c-4aba-bd08-404a1a1ccc31" ;
+  	foaf:accountServiceHomepage	ns5:mock-login-service .
+  
+  <http://data.lblod.info/id/persoon/0422771a-8002-4395-a026-5706e1733850>	rdf:type	foaf:Person ;
+  	foaf:familyName	"Aalst" ;
+  	ns4:uuid "0422771a-8002-4395-a026-5706e1733850" ;
+  	foaf:account <http://data.lblod.info/id/account/670f1eae-3a9c-4aba-bd08-404a1a1ccc31> ;
+  	foaf:member	
+      <http://data.lblod.info/id/bestuurseenheden/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4>,
+      ns8:d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18;
+  	foaf:firstName	"Gemeente en OCMW" .
+  }
+  
+  GRAPH ns6:d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18 {
+  <http://data.lblod.info/id/account/670f1eae-3a9c-4aba-bd08-404a1a1ccc31>	rdf:type	foaf:OnlineAccount ;
+  	ns2:sessionRole	
+      "LoketLB-mandaatGebruiker",
+  		"LoketLB-leidinggevendenGebruiker";
+  	ns4:uuid	"670f1eae-3a9c-4aba-bd08-404a1a1ccc31" ;
+  	foaf:accountServiceHomepage	ns5:mock-login-service .
+  
+  <http://data.lblod.info/id/persoon/0422771a-8002-4395-a026-5706e1733850>	rdf:type	foaf:Person ;
+  	foaf:familyName	"Aalst" ;
+  	ns4:uuid "0422771a-8002-4395-a026-5706e1733850" ;
+  	foaf:account <http://data.lblod.info/id/account/670f1eae-3a9c-4aba-bd08-404a1a1ccc31> ;
+  	foaf:member	
+      <http://data.lblod.info/id/bestuurseenheden/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4>,
+      ns8:d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18;
+  	foaf:firstName	"Gemeente en OCMW" .
+  }
+  
+  GRAPH ns3:public {
+  <http://data.lblod.info/id/account/670f1eae-3a9c-4aba-bd08-404a1a1ccc31>	rdf:type	foaf:OnlineAccount ;
+  	ns2:sessionRole	
+      "LoketLB-mandaatGebruiker",
+  		"LoketLB-leidinggevendenGebruiker";
+  	ns4:uuid	"670f1eae-3a9c-4aba-bd08-404a1a1ccc31" ;
+  	foaf:accountServiceHomepage	ns5:mock-login-service .
+  
+  <http://data.lblod.info/id/persoon/0422771a-8002-4395-a026-5706e1733850>	rdf:type	foaf:Person ;
+  	foaf:familyName	"Aalst" ;
+  	ns4:uuid "0422771a-8002-4395-a026-5706e1733850" ;
+  	foaf:account <http://data.lblod.info/id/account/670f1eae-3a9c-4aba-bd08-404a1a1ccc31> ;
+  	foaf:member	
+      <http://data.lblod.info/id/bestuurseenheden/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4>,
+      ns8:d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18;
+  	foaf:firstName	"Gemeente en OCMW" .
+  }
+}

@@ -64,19 +64,6 @@ defmodule Acl.UserGroups.Config do
     }
   end
 
-  defp can_access_automatic_submission() do
-    %AccessByQuery{
-      vars: [],
-      query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-        SELECT DISTINCT ?session_group ?session_role WHERE {
-          <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
-                       ext:sessionRole ?session_role.
-          FILTER( ?session_role = \"LoketLB-vendorManagementGebruiker\" )
-        }"
-      }
-  end
-
   defp access_for_vendor_sparql() do
     %AccessByQuery{
       vars: ["session_group", "session_role"],
@@ -272,31 +259,6 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
-
-      # // VENDOR MANAGEMENT
-      %GroupSpec{
-        name: "o-toezicht-vendor-management-rwf",
-        useage: [:read, :write, :read_for_write],
-        access: can_access_automatic_submission(),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/automatic-submission",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
-                        "http://mu.semte.ch/vocabularies/ext/Vendor",
-                        "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid"
-                      ] } },
-                   %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/authenticated/public",
-                    constraint: %ResourceConstraint{
-                       resource_types: [
-                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-                       ],
-                       predicates: %NoPredicates{
-                         except: [
-                           "http://mu.semte.ch/vocabularies/ext/viewOnlyModules"
-                         ] } } }
-                  ] },
-
       # // Vendor API
       %GroupSpec{
         name: "o-vendor-api-r",

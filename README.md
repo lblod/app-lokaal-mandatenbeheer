@@ -167,6 +167,30 @@ drc logs form-content -f
 
 This application uses LDES to share information with other applications, like the Vlaamse Mandatendatabank and Gelinkt Notuleren. Read more about it [here](docs/LDES.md).
 
+## Vendor Sparql Access
+
+Vendors can access the sparql endpoint through the `/vendor/sparql` endpoint. This is secured through the [lblod/vendor-login-service](https://github.com/lblod/vendor-login-service). They need to log in first using a POST request to `/vendor/login` with a body like this:
+
+```
+{
+  "organization": "http://data.lblod.info/id/bestuurseenheden/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18",
+  "publisher": {
+    "uri": "http://data.lblod.info/vendors/c5da766f-f1a6-426a-9a4d-36b96a855e18",
+    "key": "my super secret key that i should replace"
+  }
+}
+```
+
+In this request the `organization` property contains the URI of the bestuurseenheid they want to have access for. They provide their own URI in the `publisher.uri` field and their key in the `publisher.key` field.
+
+New publishers can be registered using a migration e.g. like the [add-vendor-login.sparql](./config/migrations/2024/20240319110700-add-vendor-login.sparql) on in this repo. This migration links the vendor's user to the organizations it can act on behalf of and adds the right roles to their account. HOWEVER you should NEVER add a key for the vendor in this migration. The key should be added using a manual query/migration on the production server, e.g. the [add-vendor-key.sparql](./queries/vendor-access/add-vendor-key.sparql) example query in this repo. It should NEVER be put in the git repo.
+
+Once the vendor is logged in, they receive a token in their cookie, like is done with the normal login service and they can access the `/vendor/sparql` endpoint using that cookie. This endpoint acts exactly like the normal sparql endpoint, but also [verifies](./config/sparql-authorization-wrapper/filter.js) that the user can act on behalf of an organization (as a secondary precaution after the login service).
+
+An example request to the vendor's sparql endpoint could be a POST with Content-Type: application/x-www-form-urlencoded and body `query=SELECT+DISTINCT+?s+?p+?o+WHERE+{+?s+?p+?o+.+}+LIMIT+10` (so the url encoded query).
+
+## Legacy
+
 > [!CAUTION]
 > The info below is not up to date anymore. These services are inherited from [loket](https://github.com/lblod/app-digitaal-loket), these aren't used anymore, but will be introduced again in the near future.
 

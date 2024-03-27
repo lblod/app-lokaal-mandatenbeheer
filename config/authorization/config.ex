@@ -8,6 +8,31 @@ alias Acl.GroupSpec, as: GroupSpec
 alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
+  defp mandaat_types() do
+    [
+      "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
+      "http://data.vlaanderen.be/ns/mandaat#Fractie",
+      "http://data.vlaanderen.be/ns/persoon#Geboorte",
+      "http://www.w3.org/ns/org#Membership",
+      "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+      "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+      "http://www.w3.org/ns/org#Post",
+      "http://www.w3.org/ns/person#Person",
+      "http://www.w3.org/ns/adms#Identifier",
+      "http://purl.org/dc/terms/PeriodOfTime",
+      "http://mu.semte.ch/vocabularies/ext/Form",
+      "http://mu.semte.ch/vocabularies/ext/Extension",
+      "http://mu.semte.ch/vocabularies/ext/Installatievergadering",
+      "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus",
+      "http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing",
+      "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
+      "http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype",
+      "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
+      "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode"
+    ]
+  end
+
   defp access_by_role(group_string) do
     %AccessByQuery{
       vars: ["session_group", "session_role"],
@@ -37,6 +62,23 @@ defmodule Acl.UserGroups.Config do
                        ext:sessionRole ?session_role.
         }"
     }
+  end
+
+  defp access_for_vendor_sparql() do
+    %AccessByQuery{
+      vars: ["session_group", "session_role"],
+      query: sparql_query_for_access_vendor_sparql()
+    }
+  end
+
+  defp sparql_query_for_access_vendor_sparql() do
+    " PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+      PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
+      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      SELECT DISTINCT ?session_group ?session_role WHERE {
+        <SESSION_ID> muAccount:canActOnBehalfOf/mu:uuid ?session_group;
+                     muAccount:account/ext:sessionRole ?session_role.
+      } "
   end
 
   def user_groups do
@@ -162,28 +204,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: [
-                "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
-                "http://data.vlaanderen.be/ns/mandaat#Fractie",
-                "http://data.vlaanderen.be/ns/persoon#Geboorte",
-                "http://www.w3.org/ns/org#Membership",
-                "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-                "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-                "http://data.vlaanderen.be/ns/mandaat#Mandaat",
-                "http://www.w3.org/ns/org#Post",
-                "http://www.w3.org/ns/person#Person",
-                "http://www.w3.org/ns/adms#Identifier",
-                "http://purl.org/dc/terms/PeriodOfTime",
-                "http://mu.semte.ch/vocabularies/ext/Form",
-                "http://mu.semte.ch/vocabularies/ext/Extension",
-                "http://mu.semte.ch/vocabularies/ext/Installatievergadering",
-                "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus",
-                "http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing",
-                "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
-                "http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype",
-                "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
-                "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode"
-              ]
+              resource_types: mandaat_types()
             }
           }
         ]
@@ -196,29 +217,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: [
-                "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
-                "http://data.vlaanderen.be/ns/mandaat#Fractie",
-                "http://data.vlaanderen.be/ns/persoon#Geboorte",
-                "http://www.w3.org/ns/org#Membership",
-                "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-                "http://data.vlaanderen.be/ns/mandaat#Mandaat",
-                "http://www.w3.org/ns/org#Post",
-                "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-                "http://www.w3.org/ns/person#Person",
-                "http://www.w3.org/ns/adms#Identifier",
-                "http://www.w3.org/ns/activitystreams#Tombstone",
-                "http://purl.org/dc/terms/PeriodOfTime",
-                "http://mu.semte.ch/vocabularies/ext/Form",
-                "http://mu.semte.ch/vocabularies/ext/Extension",
-                "http://mu.semte.ch/vocabularies/ext/Installatievergadering",
-                "http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus",
-                "http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing",
-                "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
-                "http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype",
-                "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
-                "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode"
-              ]
+              resource_types: mandaat_types()
             }
           }
         ]
@@ -260,6 +259,17 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+      # // Vendor API
+      %GroupSpec{
+        name: "o-vendor-api-r",
+        useage: [:read],
+        access: access_for_vendor_sparql(),
+        graphs: [ %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/",
+            constraint: %ResourceConstraint{
+              resource_types: mandaat_types()
+            }
+          } ] },
 
       # // CLEANUP
       #

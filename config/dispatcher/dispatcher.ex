@@ -312,6 +312,28 @@ defmodule Dispatcher do
     forward(conn, path, "http://ldes-backend")
   end
 
+  #################################################################
+  # Vendor Login for SPARQL endpoint
+  #################################################################
+
+  post "/vendor/login/*path" do
+    Proxy.forward conn, path, "http://vendor-login/sessions"
+  end
+
+  delete "/vendor/logout" do
+    Proxy.forward conn, [], "http://vendor-login/sessions/current"
+  end
+
+  #################################################################
+  # Vendor SPARQL endpoint
+  #################################################################
+
+  # Not only POST. SPARQL via GET is also allowed.
+  match "/vendor/sparql" do
+    Proxy.forward conn, [], "http://sparql-authorization-wrapper/sparql"
+  end
+
+
   #################
   # NOT FOUND
   #################

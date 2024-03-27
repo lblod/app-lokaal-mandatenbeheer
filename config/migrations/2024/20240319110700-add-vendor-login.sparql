@@ -1,0 +1,17 @@
+PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX bestuurseenheid: <http://data.lblod.info/id/bestuurseenheden/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+   <http://data.lblod.info/vendors/c5da766f-f1a6-426a-9a4d-36b96a855e18> a foaf:Agent, ext:Vendor ;
+    foaf:name "Demo Vendor" ;
+    muAccount:canActOnBehalfOf bestuurseenheid:d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18 ,
+                               bestuurseenheid:5d6cc695e6c2082ca219baf425c61e8fc8ea25ec5a11187f1d96863266adcd64 ;
+    <http://mu.semte.ch/vocabularies/ext/sessionRole>	"LoketLB-mandaatGebruiker" ,
+		                                                  "LoketLB-leidinggevendenGebruiker" ;
+    mu:uuid "c5da766f-f1a6-426a-9a4d-36b96a855e18".
+  }
+}

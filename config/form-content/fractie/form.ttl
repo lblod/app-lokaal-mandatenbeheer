@@ -11,9 +11,15 @@
 @prefix regorg: <https://www.w3.org/ns/regorg#>.
 @prefix org: <http://www.w3.org/ns/org#>.
 
+ext:requiredLegalNameValidationNode a form:RequiredConstraint;
+  form:grouping form:Bag;
+  sh:path regorg:legalName;
+  sh:resultMessage "Naam is verplicht.".
+
 ext:naamF
     a form:Field;
     form:displayType displayTypes:defaultInput;
+    form:validations ext:requiredLegalNameValidationNode;
     form:partOf ext:fractieSection;
     sh:name "Naam";
     sh:order 2;

@@ -183,11 +183,11 @@ Vendors can access the sparql endpoint through the `/vendor/sparql` endpoint. Th
 
 In this request the `organization` property contains the URI of the bestuurseenheid they want to have access for. They provide their own URI in the `publisher.uri` field and their key in the `publisher.key` field.
 
-New publishers can be registered using a migration e.g. like [this one](./config/migrations/2024/20240319110700-add-vendor-login.sparql). This migration links the vendor's user to the organizations it can act on behalf of and adds the right roles to their account. HOWEVER you should NEVER add a key for the vendor in this migration. The key should be added using a manual query/migration on the production server, e.g. [like this](./queries/vendor-access/add-vendor-key.sparql). It should NEVER be put in the git repo.
+New publishers can be registered using a migration e.g. like the [add-vendor-login.sparql](./config/migrations/2024/20240319110700-add-vendor-login.sparql) on in this repo. This migration links the vendor's user to the organizations it can act on behalf of and adds the right roles to their account. HOWEVER you should NEVER add a key for the vendor in this migration. The key should be added using a manual query/migration on the production server, e.g. the [add-vendor-key.sparql](./queries/vendor-access/add-vendor-key.sparql) example query in this repo. It should NEVER be put in the git repo.
 
 Once the vendor is logged in, they receive a token in their cookie, like is done with the normal login service and they can access the `/vendor/sparql` endpoint using that cookie. This endpoint acts exactly like the normal sparql endpoint, but also [verifies](./config/sparql-authorization-wrapper/filter.js) that the user can act on behalf of an organization (as a secondary precaution after the login service).
 
-An example request to the vendor's sparql endpoint could be a POST with Content-Type: application/x-www-form-urlencoded and body `query=SELECT+DISTINCT+?s+?p+?o+WHERE+{+?s+?p+?o+.+}+LIMIT+10`.
+An example request to the vendor's sparql endpoint could be a POST with Content-Type: application/x-www-form-urlencoded and body `query=SELECT+DISTINCT+?s+?p+?o+WHERE+{+?s+?p+?o+.+}+LIMIT+10` (so the url encoded query).
 
 ## Legacy
 

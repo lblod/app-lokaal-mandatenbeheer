@@ -21,4 +21,5 @@ WHERE {
 		?mandataris a mandaat:Mandataris.
 		?mandataris mandaat:beleidsdomein ?beleid.
 	}
+	FILTER (!STRSTARTS( STR(?mandatarisGraph), "http://mu.semte.ch/graphs/formHistory"))
 }

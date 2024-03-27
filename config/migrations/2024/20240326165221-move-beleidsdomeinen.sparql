@@ -1,5 +1,6 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
 
 DELETE {
 	GRAPH <http://mu.semte.ch/graphs/public> {
@@ -21,5 +22,9 @@ WHERE {
 		?mandataris a mandaat:Mandataris.
 		?mandataris mandaat:beleidsdomein ?beleid.
 	}
-	FILTER (!STRSTARTS( STR(?mandatarisGraph), "http://mu.semte.ch/graphs/formHistory"))
+	FILTER NOT EXISTS {
+		GRAPH <http://mu.semte.ch/graphs/formHistory> {
+			?mandatarisGraph dct:isVersionOf ?mandataris.
+		}
+	}
 }

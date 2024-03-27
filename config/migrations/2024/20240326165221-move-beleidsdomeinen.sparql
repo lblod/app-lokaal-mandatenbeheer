@@ -1,0 +1,24 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+	GRAPH <http://mu.semte.ch/graphs/public> {
+		?beleid ?p ?o.
+	}
+}
+INSERT {
+	GRAPH <http://mu.semte.ch/graphs/tmp> {
+		?beleid ?p ?o.
+		?beleid ext:destGraph ?mandatarisGraph.
+	}
+}
+WHERE {
+	GRAPH <http://mu.semte.ch/graphs/public> {
+		?beleid a ext:BeleidsdomeinCode.
+		?beleid ?p ?o.
+	}
+	GRAPH ?mandatarisGraph {
+		?mandataris a mandaat:Mandataris.
+		?mandataris mandaat:beleidsdomein ?beleid.
+	}
+}

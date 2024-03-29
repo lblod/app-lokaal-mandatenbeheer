@@ -34,6 +34,38 @@ ext:testInstanceMultiSelectorF
     sh:name "testInstanceMultiSelector";
     sh:order 4;
     sh:path ext:testInstanceMultiSelector.
+ext:testConceptSchemeSelectorF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    sh:group ext:testPG;
+    sh:name "testConceptSchemeSelector";
+    sh:order 5;
+    sh:path ext:testConceptSchemeSelector;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
+ext:testConceptSchemeMultiSelectorF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeMultiSelector;
+    sh:group ext:testPG;
+    sh:name "testConceptSchemeMultiSelector";
+    sh:order 6;
+    sh:path ext:testConceptSchemeMultiSelector;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true}""".
+ext:testConceptSchemeSelector2F
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeMultiSelectCheckboxes;
+    sh:group ext:testPG;
+    sh:name "testConceptSchemeSelectorCheckboxes";
+    sh:order 7;
+    sh:path ext:testConceptSchemeSelector2;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BestuursorgaanClassificatieCode","searchEnabled":true}""".
+ext:testConceptSchemeMultiSelector2F
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeRadioButtons;
+    sh:group ext:testPG;
+    sh:name "testConceptSchemeRadioButtons";
+    sh:order 8;
+    sh:path ext:testConceptSchemeMultiSelector2;
+    form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":true}""".
 ext:testPG
     a form:PropertyGroup; sh:name "Test"; sh:order 1.
 
@@ -42,7 +74,11 @@ ext:testPG
     form:includes
         ext:testFieldF,
         ext:testInstanceSelectorF,
-        ext:testInstanceMultiSelectorF;
+        ext:testInstanceMultiSelectorF,
+        ext:testConceptSchemeSelectorF,
+        ext:testConceptSchemeMultiSelectorF,
+        ext:testConceptSchemeSelector2F,
+        ext:testConceptSchemeMultiSelector2F;
     sh:group ext:testPG;
     form:initGenerator ext:testG;
     form:targetType person:Person;

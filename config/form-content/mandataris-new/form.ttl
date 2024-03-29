@@ -26,7 +26,7 @@ ext:mandaatF
     sh:path org:holds.
 ext:mandatarisStatusCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
+    form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
     sh:group ext:mandatarisPG;
     sh:name "Status";
     form:help "Titelvoerdend is enkel voor burgemeester";
@@ -35,7 +35,7 @@ ext:mandatarisStatusCodeF
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
 ext:beleidsdomeinCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
+    form:displayType displayTypes:conceptSchemeMultiSelectorWithoutMeta;
     sh:group ext:mandatarisPG;
     sh:name "Beleidsdomein";
     form:help "Enkel voor schepenen en burgemeester";

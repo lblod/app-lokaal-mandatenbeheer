@@ -48,7 +48,7 @@ ext:geboorteF
     sh:path persoon:heeftGeboorte.
 ext:geslachtCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
+    form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
     sh:group ext:persoonPG;
     sh:name "Geslacht";
     sh:order 7;

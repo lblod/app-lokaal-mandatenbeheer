@@ -1,0 +1,29 @@
+PREFIX mu:	<http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+	GRAPH ?g {
+		?s skos:prefLabel "niet gekend".
+	}
+}
+WHERE {
+	GRAPH ?g {
+		?s mu:uuid "5accdb4d64a9790001000000".
+	}
+}
+
+DELETE {
+	GRAPH ?g {
+		?s skos:prefLabel "niet van toepassing".
+	}
+}
+INSERT {
+	GRAPH ?g {
+		?s skos:prefLabel "Niet van toepassing".
+	}
+}
+WHERE {
+	GRAPH ?g {
+		?s mu:uuid "5accdb8464a9790001000001".
+	}
+}

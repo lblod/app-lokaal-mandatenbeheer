@@ -41,11 +41,11 @@ ext:identificatorF
     sh:path adms:identifier.
 ext:geboorteF
     a form:Field;
-    form:displayType displayTypes:geboorteDatumInput;
+    form:displayType displayTypes:dateTime;
     sh:group ext:persoonPG;
     sh:name "Geboortedatum";
     sh:order 6;
-    sh:path persoon:heeftGeboorte.
+    sh:path ( persoon:heeftGeboorte persoon:datum ).
 ext:geslachtCodeF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
@@ -83,7 +83,10 @@ ext:possibleDuplicateF
 ext:personG a form:Generator;
   form:prototype [
     form:shape [
-      a person:Person
+      a person:Person;
+      persoon:heeftGeboorte [
+        a persoon:Geboorte
+      ]
     ]
   ];
   form:dataGenerator form:addMuUuid.

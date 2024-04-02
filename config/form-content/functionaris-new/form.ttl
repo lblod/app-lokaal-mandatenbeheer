@@ -30,7 +30,7 @@ ext:eindeF
     sh:path mandaat:einde.
 ext:statusF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
+    form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
     sh:group ext:functionarisEditPG;
     sh:name "Status";
     sh:order 5;

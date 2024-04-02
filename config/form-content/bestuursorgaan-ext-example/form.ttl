@@ -31,7 +31,7 @@ ext:adresF
     sh:path locn:address.
 ext:statusF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
+    form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
     sh:group ext:bestuursorgaanPG;
     sh:name "Status";
     sh:order 304;

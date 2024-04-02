@@ -20,7 +20,7 @@ ext:naamF
     sh:path skos:prefLabel.
 ext:bestuursorgaanClassificatieCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
+    form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
     sh:group ext:bestuursorgaanPG;
     sh:name "Type";
     sh:order 2;

@@ -16,7 +16,7 @@ ext:testF
     sh:path ext:test.
 ext:geslachtCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
+    form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
     sh:group ext:bestuursorgaanPG;
     sh:name "Geslacht";
     sh:order 402;

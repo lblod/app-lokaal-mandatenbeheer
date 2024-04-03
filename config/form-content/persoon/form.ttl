@@ -10,6 +10,7 @@
 @prefix person: <http://www.w3.org/ns/person#>.
 @prefix persoon: <http://data.vlaanderen.be/ns/persoon#>.
 @prefix adms: <http://www.w3.org/ns/adms#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 
 ext:gebruikteVoornaamF
     a form:Field;
@@ -34,11 +35,11 @@ ext:alternatieveNaamF
     sh:path foaf:name.
 ext:identificatorF
     a form:Field;
-    form:displayType displayTypes:rijksregisterInput;
+    form:displayType displayTypes:defaultInput;
     sh:group ext:persoonPG;
     sh:name "Rijksregisternummer";
     sh:order 5;
-    sh:path adms:identifier.
+    sh:path ( adms:identifier skos:notation ).
 ext:geboorteF
     a form:Field;
     form:displayType displayTypes:dateTime;
@@ -86,6 +87,9 @@ ext:personG a form:Generator;
       a person:Person;
       persoon:heeftGeboorte [
         a persoon:Geboorte
+      ];
+      adms:identifier [
+        a adms:Identifier
       ]
     ]
   ];

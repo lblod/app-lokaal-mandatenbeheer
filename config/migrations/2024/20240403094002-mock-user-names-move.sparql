@@ -1,0 +1,15 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+
+INSERT {
+	GRAPH ?target {
+		?s ?p ?o.
+	}
+}
+WHERE {
+	GRAPH ?target {
+		?s a person:Person.
+	}
+	GRAPH <http://mu.semte.ch/graphs/temp/names> {
+		?s ?p ?o.
+	}
+}

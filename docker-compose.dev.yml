@@ -32,10 +32,10 @@ services:
       - default
       - debug
   database:
-    restart: "no"
-    networks:
-      - default
-      - debug
+    image: semtech/sparql-parser:latest
+    volumes:
+      - ./config/cl-authorization:/config
+    restart: always
   virtuoso:
     ports:
       - "8890:8890"

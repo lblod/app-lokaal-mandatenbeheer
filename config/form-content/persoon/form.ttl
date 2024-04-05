@@ -35,11 +35,17 @@ ext:alternatieveNaamF
     sh:path foaf:name.
 ext:identificatorF
     a form:Field;
-    form:displayType displayTypes:defaultInput;
+    form:displayType displayTypes:rijksregisterInput;
     sh:group ext:persoonPG;
     sh:name "Rijksregisternummer";
     sh:order 5;
-    sh:path ( adms:identifier skos:notation ).
+    sh:path ( adms:identifier skos:notation );
+    form:validatedBy [
+      a ext:ValidRijksregisternummer;
+      form:grouping form:MatchSome;
+      sh:resultMessage "Vul een geldig rijksregisternummer in";
+      sh:path ( adms:identifier skos:notation )
+    ].
 ext:geboorteF
     a form:Field;
     form:displayType displayTypes:dateTime;

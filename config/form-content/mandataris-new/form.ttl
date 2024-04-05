@@ -70,7 +70,7 @@ ext:fractieF
     sh:group ext:mandatarisPG;
     sh:name "Fractie";
     sh:order 9;
-    sh:path org:hasMembership.
+    sh:path ( org:hasMembership org:organisation ).
 ext:mandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
@@ -103,7 +103,10 @@ ext:hiddenIsDraftF
 ext:mandatarisG a form:Generator;
   form:prototype [
     form:shape [
-      a mandaat:Mandataris
+      a mandaat:Mandataris;
+      org:hasMembership [
+        a org:Membership
+      ]
     ]
   ];
   form:dataGenerator form:addMuUuid.

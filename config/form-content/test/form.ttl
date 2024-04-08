@@ -66,6 +66,22 @@ ext:testConceptSchemeMultiSelector2F
     sh:order 8;
     sh:path ext:testConceptSchemeMultiSelector2;
     form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":true}""".
+ext:testConceptSchemeSelectorWithCreateF
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelectorWithCreate;
+    sh:group ext:testPG;
+    sh:name "testConceptSchemeSelectorWithCreate";
+    sh:order 9;
+    sh:path ext:testConceptSchemeSelectorWithCreate;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
+ext:testConceptSchemeSelectorWithCreate2F
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeMultiSelectorWithCreate;
+    sh:group ext:testPG;
+    sh:name "testConceptSchemeMultiSelectorWithCreate";
+    sh:order 10;
+    sh:path ext:testConceptSchemeSelectorWithCreate2;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
 ext:testPG
     a form:PropertyGroup; sh:name "Test"; sh:order 1.
 
@@ -78,7 +94,9 @@ ext:testPG
         ext:testConceptSchemeSelectorF,
         ext:testConceptSchemeMultiSelectorF,
         ext:testConceptSchemeSelector2F,
-        ext:testConceptSchemeMultiSelector2F;
+        ext:testConceptSchemeMultiSelector2F,
+        ext:testConceptSchemeSelectorWithCreateF,
+        ext:testConceptSchemeSelectorWithCreate2F;
     sh:group ext:testPG;
     form:initGenerator ext:testG;
     form:targetType person:Person;

@@ -111,10 +111,9 @@
   :features '(include-uri)
   :on-path "mandataris-status-codes")
 
-(define-resource beleidsdomein-code ()
+(define-resource beleidsdomein-code (concept)
   :class (s-prefix "ext:BeleidsdomeinCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+  :properties `((:scope-note :string ,(s-prefix "skos:scopeNote")))
   :has-many `((mandataris :via ,(s-prefix "mandaat:beleidsdomein")
                           :inverse t
                           :as "mandatarissen"))

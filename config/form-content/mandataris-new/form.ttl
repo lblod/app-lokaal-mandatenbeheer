@@ -35,13 +35,13 @@ ext:mandatarisStatusCodeF
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
 ext:beleidsdomeinCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeMultiSelectorWithoutMeta;
+    form:displayType displayTypes:conceptSchemeMultiSelectorWithCreate;
     sh:group ext:mandatarisPG;
     sh:name "Beleidsdomein";
     form:help "Enkel voor schepenen en burgemeester";
     sh:order 5;
     sh:path mandaat:beleidsdomein;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true}""".
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
 ext:rangordeF
     a form:Field;
     form:displayType displayTypes:defaultInput;

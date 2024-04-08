@@ -1,0 +1,102 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos:	<http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX mu:   <http://mu.semte.ch/vocabularies/core/>
+PREFIX extlmb:  <http://mu.semte.ch/vocabularies/ext/lmb/>
+PREFIX conceptschemes: <http://lblod.data.gift/concept-schemes/>
+PREFIX bcc:  <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/>
+
+DELETE {
+  GRAPH ?g {
+    ?s skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes .
+    ?s skos:inScheme conceptschemes:decretale-bestuursorgaan-codes .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s skos:topConceptOf conceptschemes:decretale-bestuursorgaan-codes .
+    ?s skos:inScheme conceptschemes:decretale-bestuursorgaan-codes .
+  }
+};
+DELETE {
+  GRAPH ?g {
+    conceptschemes:decretale-bestuursorgaan-codes ?p ?o.
+  }
+} WHERE {
+  GRAPH ?g {
+    conceptschemes:decretale-bestuursorgaan-codes ?p ?o.
+  }
+};
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    extlmb:gemeente-bestuursorgaan-codes
+      rdf:type
+        skos:ConceptScheme,
+        rdfs:Class;
+      mu:uuid	"479feb3a-7bd3-40b4-827d-9b372cc57279";
+      skos:prefLabel "Gemeente bestuursorgaan codes".
+
+    extlmb:decretale-bestuursorgaan-codes
+      rdf:type
+        skos:ConceptScheme,
+        rdfs:Class;
+      mu:uuid	"2e127dcf-d6c8-4134-ac39-8be1d7fbdfaf";
+      skos:prefLabel "Decretale bestuursorgaan codes".
+
+    extlmb:vrije-bestuursorgaan-codes
+      rdf:type
+        skos:ConceptScheme,
+        rdfs:Class;
+      mu:uuid	"98e7aad5-580b-450f-86f8-5735fed835b1";
+      skos:prefLabel "Vrije bestuursorgaan codes".
+
+    # andere
+    # bevoegd beslissingsorgaan
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382> skos:topConceptOf extlmb:vrije-bestuursorgaan-codes;
+      skos:inScheme extlmb:vrije-bestuursorgaan-codes.
+    # comité
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b475fa47e17a8a05ae04a9e1fb9c9258> skos:topConceptOf extlmb:vrije-bestuursorgaan-codes;
+      skos:inScheme extlmb:vrije-bestuursorgaan-codes.
+
+    # gemeente
+    # bijzonder comité voor de sociale dienst
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # burgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # college van burgemeester en schepenen
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # districtsburgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # districtscollege
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # districtsraad
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # gemeenteraad
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # gouverneur
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/180a2fba-6ca9-4766-9b94-82006bb9c709> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # provincieraad
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000c> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # vast bureau
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+
+    # decretale
+    # algemene vergadering
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000e> skos:topConceptOf extlmb:decretale-bestuursorgaan-codes;
+      skos:inScheme extlmb:decretale-bestuursorgaan-codes.
+    # bestendige deputatie
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000d> skos:topConceptOf extlmb:decretale-bestuursorgaan-codes;
+      skos:inScheme extlmb:decretale-bestuursorgaan-codes.
+  }
+}

@@ -77,6 +77,7 @@ ext:possibleDuplicateF
     form:initGenerator ext:personG;
     form:targetType person:Person;
     form:targetLabel foaf:familyName;
+    form:targetLabel persoon:gebruikteVoornaam;
     ext:prefix <http://data.lblod.info/id/personen/>;
     mu:uuid "4632bf99-2348-4145-9f2b-c1141b0c545d".
 

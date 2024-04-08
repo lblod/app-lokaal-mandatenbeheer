@@ -40,8 +40,7 @@
 
 (define-resource bestuurseenheid-classificatie-code ()
   :class (s-prefix "ext:BestuurseenheidClassificatieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/")
   :features '(include-uri)
   :on-path "bestuurseenheid-classificatie-codes")
@@ -74,8 +73,7 @@
 
 (define-resource bestuursorgaan-classificatie-code ()
   :class (s-prefix "ext:BestuursorgaanClassificatieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
   :has-many `((bestuursfunctie-code :via ,(s-prefix "ext:hasDefaultType")
                         :as "standaard-type"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/")

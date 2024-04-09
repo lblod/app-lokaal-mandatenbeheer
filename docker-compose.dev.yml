@@ -36,6 +36,9 @@ services:
     volumes:
       - ./config/cl-authorization:/config
     restart: always
+    networks:
+      - default
+      - debug
   virtuoso:
     ports:
       - "8890:8890"

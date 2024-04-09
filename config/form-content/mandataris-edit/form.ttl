@@ -70,7 +70,7 @@ ext:fractieF
     sh:group ext:editMandatarisPG;
     sh:name "Fractie";
     sh:order 900;
-    sh:path org:hasMembership.
+    sh:path ( org:hasMembership org:organisation ).
 ext:editMandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
@@ -86,8 +86,18 @@ ext:editMandatarisPG
         ext:replacementF,
         ext:fractieF;
     sh:group ext:editMandatarisPG;
+    form:initGenerator ext:mandatarisG;
     form:targetType mandaat:Mandataris;
     form:targetLabel mu:uuid;
     ext:prefix <http://data.lblod.info/id/mandatarissen/>;
     ext:withHistory true;
     mu:uuid "fe64eb54-3539-4e55-bccb-a75eeed30e9d".
+
+ext:mandatarisG a form:Generator;
+  form:prototype [
+    form:shape [
+      org:hasMembership [
+        a org:Membership
+      ]
+    ]
+  ];

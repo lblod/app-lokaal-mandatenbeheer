@@ -8,7 +8,12 @@ const fetchSubjectData = async (subject: string) => {
     CONSTRUCT {
       <${subject}> ?p ?o .
     } WHERE {
-      <${subject}> ?p ?o .
+      GRAPH ?g {
+        <${subject}> ?p ?o .
+      }
+      FILTER NOT EXISTS {
+        ?g a <http://mu.semte.ch/vocabularies/ext/FormHistory> .
+      }
     }
   `);
   return data.results.bindings.map(bindingToTriple).join("\n");

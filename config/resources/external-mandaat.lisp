@@ -44,7 +44,7 @@
   :features '(include-uri)
   :on-path "lidmaatschappen")
 
-(define-resource mandaat (post)
+(define-resource mandaat ()
   :class (s-prefix "mandaat:Mandaat")
   :properties `((:aantal-houders :number ,(s-prefix "mandaat:aantalHouders")))
   :has-one `((bestuursfunctie-code :via ,(s-prefix "org:role")

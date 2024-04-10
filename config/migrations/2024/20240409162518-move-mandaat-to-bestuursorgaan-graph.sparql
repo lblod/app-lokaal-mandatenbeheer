@@ -1,0 +1,21 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?mandaat ?predicate ?object . 
+  }
+}
+INSERT {
+  GRAPH ?bestuursGraph {
+    ?mandaat ?predicate ?object .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?mandaat a mandaat:Mandaat .
+    ?mandaat ?predicate ?object . 
+  }
+  GRAPH ?bestuursGraph {
+    ?bestuursorgaan <http://www.w3.org/ns/org#hasPost> ?mandaat .
+  }
+} 

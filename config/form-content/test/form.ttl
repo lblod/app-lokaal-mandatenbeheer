@@ -16,6 +16,21 @@ ext:testFieldF
     sh:name "Test";
     sh:order 2;
     sh:path ext:test.
+ext:testNumericalF
+    a form:Field;
+    form:displayType displayTypes:numericalInput;
+    sh:group ext:testPG;
+    sh:name "TestNumber with clear";
+    sh:order 2;
+    sh:path ext:testNumber;
+    form:options """{"allowClear":true}""".
+ext:testNumerical2F
+    a form:Field;
+    form:displayType displayTypes:numericalInput;
+    sh:group ext:testPG;
+    sh:name "TestNumber without clear";
+    sh:order 2;
+    sh:path ext:testNumber2.
 ext:testInstanceSelectorF
     a form:Field;
     form:displayType displayTypes:instanceSelector;
@@ -89,6 +104,8 @@ ext:testPG
     a form:Form, form:TopLevelForm;
     form:includes
         ext:testFieldF,
+        ext:testNumericalF,
+        ext:testNumerical2F,
         ext:testInstanceSelectorF,
         ext:testInstanceMultiSelectorF,
         ext:testConceptSchemeSelectorF,

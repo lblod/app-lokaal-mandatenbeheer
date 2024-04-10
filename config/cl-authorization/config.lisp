@@ -36,44 +36,55 @@
   "All known GRANT instances connecting ACCESS-SPECIFICATION to GRAPH.")
 
 (define-prefixes
-  :contacthub "http://data.lblod.info/vocabularies/contacthub/"
-  :besluit "http://data.vlaanderen.be/ns/besluit#"
-  :mandaat "http://data.vlaanderen.be/ns/mandaat#"
-  :persoon "http://data.vlaanderen.be/ns/persoon#"
-  :ext "http://mu.semte.ch/vocabularies/ext/"
-  :dct "http://purl.org/dc/terms/"
+  :astreams "http://www.w3.org/ns/activitystreams#"
   :adms "http://www.w3.org/ns/adms#"
+  :besluit "http://data.vlaanderen.be/ns/besluit#"
+  :contacthub "http://data.lblod.info/vocabularies/contacthub/"
+  :dct "http://purl.org/dc/terms/"
+  :euvoc "http://publications.europa.eu/ontology/euvoc#"
+  :ext "http://mu.semte.ch/vocabularies/ext/"
+  :eli "http://data.europa.eu/eli/ontology#"
+  :foaf "http://xmlns.com/foaf/0.1/"
+  :lblodlg "http://data.lblod.info/vocabularies/leidinggevenden/"
+  :locn "http://www.w3.org/ns/locn#"
+  :m8g "http://data.europa.eu/m8g/"
+  :mandaat "http://data.vlaanderen.be/ns/mandaat#"
+  :musession "http://mu.semte.ch/vocabularies/session/"
+  :nfo "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
   :org "http://www.w3.org/ns/org#"
   :person "http://www.w3.org/ns/person#"
-  :musession "http://mu.semte.ch/vocabularies/session/"
-  :foaf "http://xmlns.com/foaf/0.1/")
+  :persoon "http://data.vlaanderen.be/ns/persoon#"
+  :prov "http://www.w3.org/ns/prov#"
+  :schema "http://schema.org/"
+  :skos "http://www.w3.org/2004/02/skos/core#"
+)
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("ext:FileAddress" -> _)
-  ("http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject" -> _)
-  ("http://www.w3.org/ns/prov#Location" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("prov:Location" -> _)
   ("besluit:Bestuurseenheid" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/Fractietype" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/GeslachtCode" -> _)
-  ("http://publications.europa.eu/ontology/euvoc#Country" -> _)
-  ("http://data.europa.eu/eli/ontology#LegalResource" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#RechtsgrondAanstelling" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#RechtsgrondBeeindiging" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode" -> _)
-  ("http://www.w3.org/ns/org#Role" -> _)
-  ("http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode" -> _)
-  ("http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie" -> _)
-  ("http://www.w3.org/2004/02/skos/core#ConceptScheme" -> _)
-  ("http://www.w3.org/2004/02/skos/core#Concept" -> _)
-  ("http://data.europa.eu/m8g/PeriodOfTime" -> _)
-  ("http://xmlns.com/foaf/0.1/Document" -> _))
+  ("ext:BestuurseenheidClassificatieCode" -> _)
+  ("ext:BestuursorgaanClassificatieCode" -> _)
+  ("ext:Fractietype" -> _)
+  ("ext:BestuursfunctieCode" -> _)
+  ("ext:MandatarisStatusCode" -> _)
+  ("ext:BeleidsdomeinCode" -> _)
+  ("ext:GeslachtCode" -> _)
+  ("euvoc:Country" -> _)
+  ("eli:LegalResource" -> _)
+  ("mandaat:RechtsgrondAanstelling" -> _)
+  ("mandaat:RechtsgrondBeeindiging" -> _)
+  ("mandaat:RechtstreekseVerkiezing" -> _)
+  ("mandaat:Verkiezingsresultaat" -> _)
+  ("ext:VerkiezingsresultaatGevolgCode" -> _)
+  ("org:Role" -> _)
+  ("lblodlg:FunctionarisStatusCode" -> _)
+  ("lblodlg:Bestuursfunctie" -> _)
+  ("skos:ConceptScheme" -> _)
+  ("skos:Concept" -> _)
+  ("m8g:PeriodOfTime" -> _)
+  ("foaf:Document" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("musession:Session" -> _))
@@ -82,44 +93,44 @@
   ("besluit:Bestuurseenheid" -> "ext:viewOnlyModules"))
 
 (define-graph organization ("http://mu.semte.ch/graphs/organizations/")
-  ("http://xmlns.com/foaf/0.1/Person" -> _)
-  ("http://xmlns.com/foaf/0.1/OnlineAccount" -> _)
-  ("http://www.w3.org/ns/adms#Identifier" -> _))
+  ("foaf:Person" -> _)
+  ("foaf:OnlineAccount" -> _)
+  ("adms:Identifier" -> _))
 
 (define-graph organization-mandatendatabank ("http://mu.semte.ch/graphs/organizations/")
-  ("http://data.lblod.info/vocabularies/contacthub/AgentInPositie" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#Fractie" -> _)
-  ("http://data.vlaanderen.be/ns/persoon#Geboorte" -> _)
-  ("http://www.w3.org/ns/org#Membership" -> _)
-  ("http://data.vlaanderen.be/ns/besluit#Bestuursorgaan" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#Mandataris" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#Mandaat" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode" -> _)
-  ("http://www.w3.org/ns/org#Post" -> _)
-  ("http://www.w3.org/ns/person#Person" -> _)
-  ("http://www.w3.org/ns/adms#Identifier" -> _)
-  ("http://purl.org/dc/terms/PeriodOfTime" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/Form" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/Extension" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/Installatievergadering" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/InstallatievergaderingStatus" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype" -> _)
-  ("http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat" -> _)
-  ("http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode" -> _))
+  ("contacthub:AgentInPositie" -> _)
+  ("mandaat:Fractie" -> _)
+  ("persoon:Geboorte" -> _)
+  ("org:Membership" -> _)
+  ("besluit:Bestuursorgaan" -> _)
+  ("mandaat:Mandataris" -> _)
+  ("mandaat:Mandaat" -> _)
+  ("ext:BeleidsdomeinCode" -> _)
+  ("org:Post" -> _)
+  ("person:Person" -> _)
+  ("adms:Identifier" -> _)
+  ("dct:PeriodOfTime" -> _)
+  ("ext:Form" -> _)
+  ("ext:Extension" -> _)
+  ("ext:Installatievergadering" -> _)
+  ("ext:InstallatievergaderingStatus" -> _)
+  ("mandaat:RechtstreekseVerkiezing" -> _)
+  ("mandaat:Kandidatenlijst" -> _)
+  ("ext:KandidatenlijstLijsttype" -> _)
+  ("mandaat:Verkiezingsresultaat" -> _)
+  ("ext:VerkiezingsresultaatGevolgCode" -> _))
 
 (define-graph organization-leidinggevende ("http://mu.semte.ch/graphs/organizations/")
-  ("http://data.lblod.info/vocabularies/contacthub/AgentInPositie" -> _)
-  ("http://schema.org/ContactPoint" -> _)
-  ("http://www.w3.org/ns/locn#Address" -> _)
-  ("http://data.lblod.info/vocabularies/leidinggevenden/Functionaris" -> _)
-  ("http://data.vlaanderen.be/ns/persoon#Geboorte" -> _)
-  ("http://www.w3.org/ns/person#Person" -> _)
-  ("http://www.w3.org/ns/activitystreams#Tombstone" -> _)
-  ("http://www.w3.org/ns/adms#Identifier" -> _)
-  ("http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie"
-   -> "http://schema.org/contactPoint"))
+  ("contacthub:AgentInPositie" -> _)
+  ("schema:ContactPoint" -> _)
+  ("locn:Address" -> _)
+  ("lblodlg:Functionaris" -> _)
+  ("persoon:Geboorte" -> _)
+  ("person:Person" -> _)
+  ("astreams:Tombstone" -> _)
+  ("adms:Identifier" -> _)
+  ("lblodlg:Bestuursfunctie"
+   -> "schema:contactPoint"))
 
 (supply-allowed-group "public")
 

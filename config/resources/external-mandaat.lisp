@@ -67,7 +67,7 @@
   :features '(include-uri)
   :on-path "bestuursfunctie-codes")
 
-(define-resource mandataris (agent-in-position)
+(define-resource mandataris ()
   :class (s-prefix "mandaat:Mandataris")
   :properties `((:rangorde :string ,(s-prefix "mandaat:rangorde"))
                 (:start :datetime ,(s-prefix "mandaat:start"))

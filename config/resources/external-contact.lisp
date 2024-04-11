@@ -17,9 +17,6 @@
                     :as "adres")
              (contact-punt :via ,(s-prefix "ext:secondaryContactPoint")
                     :as "secondary-contact-point"))
-  :has-many `((agent-in-position :via ,(s-prefix "schema:contactPoint")
-                    :inverse t
-                    :as "agents-in-position"))
   :features '(include-uri)
   :resource-base (s-url "http://data.lblod.info/id/contact-punten/")
   :on-path "contact-punten"

@@ -5,8 +5,6 @@ services:
     image: mu-identifier:mac
   dispatcher:
     platform: linux/amd64
-  database:
-    image: mu-authorization:mac
   virtuoso:
     platform: linux/amd64
   resource:

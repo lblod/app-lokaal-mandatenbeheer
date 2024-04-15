@@ -11,8 +11,6 @@
 (defparameter sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 (setf *fetch-all-types-in-construct-queries* t)
 
-(read-domain-file "abstract-resources.lisp")
-
 (read-domain-file "concept-scheme.lisp")
 (read-domain-file "files.lisp")
 (read-domain-file "user.lisp")

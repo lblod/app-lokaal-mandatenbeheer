@@ -1,0 +1,21 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX fractieType: <http://data.vlaanderen.be/id/concept/Fractietype/>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+
+DELETE {
+	GRAPH ?g {
+		?fractie ext:isFractietype fractieType:Samenwerkingsverband.
+	}
+}
+INSERT {
+	GRAPH ?g {
+		?fractie ext:isFractietype fractieType:Onafhankelijk.
+	}
+}
+WHERE {
+	GRAPH ?g {
+		?fractie ext:isFractietype fractieType:Samenwerkingsverband.
+		?fractie regorg:legalName ?name.
+	}
+	FILTER regex(?name, "onafhank", "i").
+}

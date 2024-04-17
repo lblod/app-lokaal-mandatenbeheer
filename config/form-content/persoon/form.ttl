@@ -11,7 +11,6 @@
 @prefix persoon: <http://data.vlaanderen.be/ns/persoon#>.
 @prefix adms: <http://www.w3.org/ns/adms#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix dct: <http://purl.org/dc/terms/>.
 
 ext:gebruikteVoornaamF
     a form:Field;
@@ -71,12 +70,6 @@ ext:possibleDuplicateF
     sh:order 5001;
     sh:path ext:possibleDuplicate.
 
-ext:modifiedAtF
-    a form:Field;
-    sh:name "Modified at [hidden input]";
-    sh:order 5002;
-    sh:path dct:modified.
-
 <http://data.lblod.info/id/lmb/forms/persoon> 
     a form:Form, form:TopLevelForm;
     form:includes
@@ -86,8 +79,7 @@ ext:modifiedAtF
         ext:identificatorF,
         ext:geboorteF,
         ext:geslachtCodeF,
-        ext:possibleDuplicateF,
-        ext:modifiedAtF;
+        ext:possibleDuplicateF;
     sh:group ext:persoonPG;
     form:initGenerator ext:personG;
     form:targetType person:Person;

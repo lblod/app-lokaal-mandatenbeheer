@@ -129,6 +129,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/mandataris-status-codes/")
   end
 
+  match "/mandataris-publication-statussen/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/mandataris-publication-statussen/")
+  end
+
   match "/beleidsdomein-codes/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/beleidsdomein-codes/")
   end
@@ -317,11 +321,11 @@ defmodule Dispatcher do
   #################################################################
 
   post "/vendor/login/*path" do
-    Proxy.forward conn, path, "http://vendor-login/sessions"
+    Proxy.forward(conn, path, "http://vendor-login/sessions")
   end
 
   delete "/vendor/logout" do
-    Proxy.forward conn, [], "http://vendor-login/sessions/current"
+    Proxy.forward(conn, [], "http://vendor-login/sessions/current")
   end
 
   #################################################################
@@ -330,9 +334,8 @@ defmodule Dispatcher do
 
   # Not only POST. SPARQL via GET is also allowed.
   match "/vendor/sparql" do
-    Proxy.forward conn, [], "http://sparql-authorization-wrapper/sparql"
+    Proxy.forward(conn, [], "http://sparql-authorization-wrapper/sparql")
   end
-
 
   #################
   # NOT FOUND

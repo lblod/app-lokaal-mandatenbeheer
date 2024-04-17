@@ -28,3 +28,4 @@
 (add-prefix "form" "http://lblod.data.gift/vocabularies/forms/")
 (add-prefix "sh" "http://www.w3.org/ns/shacl#")
 (add-prefix "mu" "http://mu.semte.ch/vocabularies/core/")
+(add-prefix "extlmb" "http://mu.semte.ch/vocabularies/ext/lmb/")

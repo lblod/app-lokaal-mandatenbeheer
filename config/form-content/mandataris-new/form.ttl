@@ -9,6 +9,7 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
 @prefix org: <http://www.w3.org/ns/org#>.
+@prefix extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>.
 
 ext:persoonF
     a form:Field;
@@ -74,11 +75,11 @@ ext:fractieF
 ext:mandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
-ext:hiddenIsDraftF
+ext:hiddenPublicationStatusF
     a form:Field;
-    sh:name "Is draft [hidden input]";
+    sh:name "Publication status [hidden input]";
     sh:order 5001;
-    sh:path ext:isDraft.
+    sh:path extlmb:hasPublicationStatus.
 
 <http://data.lblod.info/id/lmb/forms/mandataris-new>
     a form:Form, form:TopLevelForm;
@@ -91,7 +92,7 @@ ext:hiddenIsDraftF
         ext:startF,
         ext:eindeF,
         ext:fractieF,
-        ext:hiddenIsDraftF;
+        ext:hiddenPublicationStatusF;
     sh:group ext:mandatarisPG;
     form:initGenerator ext:mandatarisG;
     form:targetType mandaat:Mandataris;

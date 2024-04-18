@@ -6,7 +6,8 @@
 (define-resource fractie ()
   :class (s-prefix "mandaat:Fractie")
   :properties `((:naam :string ,(s-prefix "regorg:legalName"))
-                (:generated-from :uri-set ,(s-prefix "ext:generatedFrom"))) ;;if it e.g. comes from gelinkt-notuleren
+                (:generated-from :uri-set ,(s-prefix "ext:generatedFrom")) ;;if it e.g. comes from gelinkt-notuleren
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.lblod.info/id/fracties/")
   :has-many `((bestuursorgaan :via ,(s-prefix "org:memberOf")
                               :as "bestuursorganen-in-tijd"))
@@ -76,7 +77,8 @@
                 (:datum-ministrieel-besluit :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
                 (:generated-from :uri-set ,(s-prefix "ext:generatedFrom")) ;;if it e.g. comes from gelinkt-notuleren
                 (:duplication-reason :string ,(s-prefix "skos:changeNote"))
-                (:is-draft :boolean ,(s-prefix "ext:isDraft")))
+                (:is-draft :boolean ,(s-prefix "ext:isDraft"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :has-many `((mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
                           :as "tijdelijke-vervangingen")
               (mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
@@ -122,7 +124,8 @@
   :properties `((:achternaam :string ,(s-prefix "foaf:familyName"))
                 (:alternatieve-naam :string ,(s-prefix "foaf:name"))
                 (:gebruikte-voornaam :string ,(s-prefix "persoon:gebruikteVoornaam"))
-                (:possible-duplicate :boolean ,(s-prefix "ext:possibleDuplicate")))
+                (:possible-duplicate :boolean ,(s-prefix "ext:possibleDuplicate"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :has-many `((mandataris :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                           :inverse t
                           :as "is-aangesteld-als")

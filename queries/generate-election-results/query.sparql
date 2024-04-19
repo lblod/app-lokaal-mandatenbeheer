@@ -1,0 +1,34 @@
+# Query used to generate the csv content for a kieslijst based on (fake) content in our db
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+
+
+SELECT ?lastName ?firstName ?kieskring ?geslacht MIN(?fractieNaam) as ?lijst WHERE {
+SELECT ?lastName ?firstName STRAFTER(?gemeenteNaam, " ") as ?kieskring SUBSTR(?gender, 1,1) as ?geslacht ?fractieNaam WHERE {
+	?person ^mandaat:isBestuurlijkeAliasVan ?mandataris.
+	?person persoon:geslacht ?genderCode.
+	?genderCode skos:prefLabel ?gender.
+	?mandataris a mandaat:Mandataris .
+	?mandataris org:holds / ^org:hasPost / mandaat:isTijdspecialisatieVan ?orgaan .
+		?mandataris org:hasMembership ?lidmaatschap.
+		?lidmaatschap org:organisation ?fractie.
+		?fractie regorg:legalName ?fractieNaam.
+
+	?orgaan skos:prefLabel ?gemeenteNaam.
+	?orgaan besluit:classificatie / skos:prefLabel "Gemeenteraad" .
+	?orgaan besluit:bestuurt ?bestuurseenheid .
+
+	?person foaf:familyName ?lastName.
+	?person persoon:gebruikteVoornaam ?firstName.
+
+	VALUES ?bestuurseenheid {
+		<http://data.lblod.info/id/bestuurseenheden/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18>
+		<http://data.lblod.info/id/bestuurseenheden/5116efa8-e96e-46a2-aba6-c077e9056a96>
+		<http://data.lblod.info/id/bestuurseenheden/ba4d960fe3e01984e15fd0b141028bab8f2b9b240bf1e5ab639ba0d7fe4dc522>
+	}
+}
+} GROUP BY ?lastName ?firstName ?kieskring ?geslacht ORDER BY ?kieskring

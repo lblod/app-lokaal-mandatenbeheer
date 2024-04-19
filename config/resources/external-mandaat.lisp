@@ -77,7 +77,6 @@
                 (:datum-ministrieel-besluit :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
                 (:generated-from :uri-set ,(s-prefix "ext:generatedFrom")) ;;if it e.g. comes from gelinkt-notuleren
                 (:duplication-reason :string ,(s-prefix "skos:changeNote"))
-                (:is-draft :boolean ,(s-prefix "ext:isDraft"))
                 (:modified :datetime ,(s-prefix "dct:modified")))
   :has-many `((mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
                           :as "tijdelijke-vervangingen")

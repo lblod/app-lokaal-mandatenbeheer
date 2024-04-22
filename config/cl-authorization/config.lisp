@@ -86,7 +86,7 @@
   ("skos:Concept" -> _)
   ("m8g:PeriodOfTime" -> _)
   ("foaf:Document" -> _)
-  ("extlmb:MandatarisPublicationStatus" -> _))
+  ("extlmb:MandatarisPublicationStatusCode" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("musession:Session" -> _))

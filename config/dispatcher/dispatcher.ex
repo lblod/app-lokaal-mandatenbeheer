@@ -129,8 +129,8 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/mandataris-status-codes/")
   end
 
-  match "/mandataris-publication-statussen/*path", %{layer: :resources, accept: %{json: true}} do
-    forward(conn, path, "http://cache/mandataris-publication-statussen/")
+  match "/mandataris-publication-status-codes/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/mandataris-publication-status-codes/")
   end
 
   match "/beleidsdomein-codes/*path", %{layer: :resources, accept: %{json: true}} do

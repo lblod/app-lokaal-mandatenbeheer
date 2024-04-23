@@ -1,0 +1,44 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos:	<http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX mu:   <http://mu.semte.ch/vocabularies/core/>
+PREFIX extlmb:  <http://mu.semte.ch/vocabularies/ext/lmb/>
+PREFIX mps: <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    extlmb:mandataris-publication-status-code
+      rdf:type
+        skos:ConceptScheme,
+        rdfs:Class;
+      skos:prefLabel "Mandataris publicatie status";
+      mu:uuid	"93217162-4e4c-4cdb-bc34-22c13941f80e".
+
+    mps:588ce330-4abb-4448-9776-a17d9305df07
+      skos:topConceptOf extlmb:mandataris-publication-status-code;
+      skos:inScheme extlmb:mandataris-publication-status-code;
+      rdf:type 
+        skos:Concept,
+        extlmb:MandatarisPublicationStatusCode;
+      skos:prefLabel "Draft";
+      mu:uuid "588ce330-4abb-4448-9776-a17d9305df07".
+
+    mps:d3b12468-3720-4cb0-95b4-6aa2996ab188
+      skos:topConceptOf extlmb:mandataris-publication-status-code;
+      skos:inScheme extlmb:mandataris-publication-status-code;
+      rdf:type 
+        skos:Concept,
+        extlmb:MandatarisPublicationStatusCode;
+      skos:prefLabel "Effectief";
+      mu:uuid "d3b12468-3720-4cb0-95b4-6aa2996ab188".
+
+    mps:9d8fd14d-95d0-4f5e-b3a5-a56a126227b6
+      skos:topConceptOf extlmb:mandataris-publication-status-code;
+      skos:inScheme extlmb:mandataris-publication-status-code;
+      rdf:type 
+        skos:Concept,
+        extlmb:MandatarisPublicationStatusCode;
+      skos:prefLabel "Bekrachtigd";
+      mu:uuid "9d8fd14d-95d0-4f5e-b3a5-a56a126227b6".
+  }
+}

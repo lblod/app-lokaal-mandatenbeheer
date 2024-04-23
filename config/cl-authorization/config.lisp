@@ -57,6 +57,7 @@
   :prov "http://www.w3.org/ns/prov#"
   :schema "http://schema.org/"
   :skos "http://www.w3.org/2004/02/skos/core#"
+  :extlmb "http://mu.semte.ch/vocabularies/ext/lmb/"
 )
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
@@ -84,7 +85,8 @@
   ("skos:ConceptScheme" -> _)
   ("skos:Concept" -> _)
   ("m8g:PeriodOfTime" -> _)
-  ("foaf:Document" -> _))
+  ("foaf:Document" -> _)
+  ("extlmb:MandatarisPublicationStatusCode" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("musession:Session" -> _))

@@ -77,7 +77,6 @@
                 (:datum-ministrieel-besluit :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
                 (:generated-from :uri-set ,(s-prefix "ext:generatedFrom")) ;;if it e.g. comes from gelinkt-notuleren
                 (:duplication-reason :string ,(s-prefix "skos:changeNote"))
-                (:is-draft :boolean ,(s-prefix "ext:isDraft"))
                 (:modified :datetime ,(s-prefix "dct:modified")))
   :has-many `((mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
                           :as "tijdelijke-vervangingen")
@@ -97,11 +96,12 @@
              (mandataris-status-code :via ,(s-prefix "mandaat:status")
                                      :as "status")
              (mandataris :via ,(s-prefix "owl:sameAs")
-                         :as "duplicate-of"))
+                         :as "duplicate-of")
+             (mandataris-publication-status-code :via ,(s-prefix "extlmb:hasPublicationStatus")
+                         :as "publication-status"))
   :resource-base (s-url "http://data.lblod.info/id/mandatarissen/")
   :features '(include-uri)
-  :on-path "mandatarissen"
-)
+  :on-path "mandatarissen")
 
 (define-resource mandataris-status-code ()
   :class (s-prefix "ext:MandatarisStatusCode")
@@ -109,6 +109,13 @@
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/MandatarisStatusCode/")
   :features '(include-uri)
   :on-path "mandataris-status-codes")
+
+(define-resource mandataris-publication-status-code ()
+  :class (s-prefix "extlmb:MandatarisPublicationStatusCode")
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :resource-base (s-url "http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/")
+  :features '(include-uri)
+  :on-path "mandataris-publication-status-codes")
 
 (define-resource beleidsdomein-code (concept)
   :class (s-prefix "ext:BeleidsdomeinCode")

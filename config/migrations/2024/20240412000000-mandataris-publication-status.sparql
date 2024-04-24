@@ -4,8 +4,6 @@ PREFIX rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
 PREFIX mu:   <http://mu.semte.ch/vocabularies/core/>
 PREFIX extlmb:  <http://mu.semte.ch/vocabularies/ext/lmb/>
 PREFIX mps: <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/>
-PREFIX sh: <http://www.w3.org/ns/shacl#>
-PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
@@ -23,8 +21,7 @@ INSERT DATA {
         skos:Concept,
         extlmb:MandatarisPublicationStatusCode;
       skos:prefLabel "Draft";
-      mu:uuid "588ce330-4abb-4448-9776-a17d9305df07";
-      sh:order "1"^^xsd:integer.
+      mu:uuid "588ce330-4abb-4448-9776-a17d9305df07".
 
     mps:d3b12468-3720-4cb0-95b4-6aa2996ab188
       skos:topConceptOf extlmb:mandataris-publication-status-code;
@@ -33,8 +30,7 @@ INSERT DATA {
         skos:Concept,
         extlmb:MandatarisPublicationStatusCode;
       skos:prefLabel "Effectief";
-      mu:uuid "d3b12468-3720-4cb0-95b4-6aa2996ab188";
-      sh:order "2"^^xsd:integer.
+      mu:uuid "d3b12468-3720-4cb0-95b4-6aa2996ab188".
 
     mps:9d8fd14d-95d0-4f5e-b3a5-a56a126227b6
       skos:topConceptOf extlmb:mandataris-publication-status-code;
@@ -43,7 +39,6 @@ INSERT DATA {
         skos:Concept,
         extlmb:MandatarisPublicationStatusCode;
       skos:prefLabel "Bekrachtigd";
-      mu:uuid "9d8fd14d-95d0-4f5e-b3a5-a56a126227b6";
-      sh:order "3"^^xsd:integer.
+      mu:uuid "9d8fd14d-95d0-4f5e-b3a5-a56a126227b6".
   }
 }

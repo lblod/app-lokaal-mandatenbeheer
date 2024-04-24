@@ -112,7 +112,8 @@
 
 (define-resource mandataris-publication-status-code ()
   :class (s-prefix "extlmb:MandatarisPublicationStatusCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:order :number ,(s-prefix "sh:order")))
   :resource-base (s-url "http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/")
   :features '(include-uri)
   :on-path "mandataris-publication-status-codes")

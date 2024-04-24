@@ -1,0 +1,17 @@
+PREFIX mps: <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+
+    mps:588ce330-4abb-4448-9776-a17d9305df07 
+      sh:order "1"^^xsd:integer.
+
+    mps:d3b12468-3720-4cb0-95b4-6aa2996ab188
+      sh:order "2"^^xsd:integer.
+
+    mps:9d8fd14d-95d0-4f5e-b3a5-a56a126227b6
+      sh:order "3"^^xsd:integer.
+  }
+}

@@ -181,7 +181,7 @@ services:
     labels:
       - "logging=true"
     environment:
-      BASE_URL: "https://lmb.lblod.info/streams/ldes"
+      BASE_URL: "https://lmb.lblod.info/streams/ldes/"
       FOLDER_DEPTH: 1
       PAGE_RESOURCES_COUNT: 10
       LDES_STREAM_PREFIX: "http://lmb.lblod.info/streams/ldes/"

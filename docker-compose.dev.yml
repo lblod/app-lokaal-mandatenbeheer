@@ -76,9 +76,12 @@ services:
   ldes-backend:
     restart: "no"
     environment:
-      BASE_URL: "http://localhost/streams/ldes"
+      BASE_URL: "http://ldes-backend/"
     ports:
       - "6666:80"
+    networks:
+      - default
+      - debug
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:

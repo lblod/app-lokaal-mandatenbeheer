@@ -3,6 +3,7 @@
 
 (define-resource bestuursfunctie ()
   :class (s-prefix "lblodlg:Bestuursfunctie")
+  :properties `((:modified :datetime ,(s-prefix "dct:modified")))
   :has-one `((bestuursfunctie-code :via ,(s-prefix "org:role")
                                    :as "rol")
              (contact-punt :via ,(s-prefix "schema:contactPoint")
@@ -17,7 +18,8 @@
 (define-resource functionaris ()
   :class (s-prefix "lblodlg:Functionaris")
   :properties `((:start :datetime ,(s-prefix "mandaat:start"))
-                (:einde :datetime ,(s-prefix "mandaat:einde")))
+                (:einde :datetime ,(s-prefix "mandaat:einde"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :has-one `((bestuursfunctie :via ,(s-prefix "org:holds")
                               :as "bekleedt")
              (functionaris-status-code :via ,(s-prefix "mandaat:status")
@@ -30,7 +32,8 @@
 
 (define-resource functionaris-status-code ()
   :class (s-prefix "lblodlg:FunctionarisStatusCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/functionarisStatusCode/")
   :features '(include-uri)
   :on-path "functionaris-status-codes")

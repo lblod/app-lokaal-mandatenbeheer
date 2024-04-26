@@ -20,20 +20,23 @@
 
 (define-resource fractietype ()
   :class (s-prefix "ext:Fractietype")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Fractietype/")
   :features '(include-uri)
   :on-path "fractietypes")
 
 (define-resource geboorte ()
   :class (s-prefix "persoon:Geboorte")
-  :properties `((:datum :date ,(s-prefix "persoon:datum")))
+  :properties `((:datum :date ,(s-prefix "persoon:datum"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.lblod.info/id/geboortes/")
   :features '(include-uri)
   :on-path "geboortes")
 
 (define-resource lidmaatschap ()
   :class (s-prefix "org:Membership")
+  :properties `((:modified :datetime ,(s-prefix "dct:modified")))
   :has-one `((fractie :via ,(s-prefix "org:organisation")
                       :as "binnen-fractie")
              (mandataris :via ,(s-prefix "org:hasMembership")
@@ -47,7 +50,8 @@
 
 (define-resource mandaat ()
   :class (s-prefix "mandaat:Mandaat")
-  :properties `((:aantal-houders :number ,(s-prefix "mandaat:aantalHouders")))
+  :properties `((:aantal-houders :number ,(s-prefix "mandaat:aantalHouders"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :has-one `((bestuursfunctie-code :via ,(s-prefix "org:role")
                                    :as "bestuursfunctie"))
   :has-many `((bestuursorgaan :via ,(s-prefix "org:hasPost")
@@ -63,7 +67,8 @@
 
 (define-resource bestuursfunctie-code ()
   :class (s-prefix "ext:BestuursfunctieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursfunctieCode/")
   :features '(include-uri)
   :on-path "bestuursfunctie-codes")
@@ -105,7 +110,8 @@
 
 (define-resource mandataris-status-code ()
   :class (s-prefix "ext:MandatarisStatusCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/MandatarisStatusCode/")
   :features '(include-uri)
   :on-path "mandataris-status-codes")
@@ -113,6 +119,7 @@
 (define-resource mandataris-publication-status-code ()
   :class (s-prefix "extlmb:MandatarisPublicationStatusCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:modified :datetime ,(s-prefix "dct:modified"))
                 (:order :number ,(s-prefix "sh:order")))
   :resource-base (s-url "http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/")
   :features '(include-uri)
@@ -156,7 +163,7 @@
   :features '(include-uri)
   :on-path "geslacht-codes")
 
-(define-resource nationality ()
+(define-resource nationality ()\
   :class (s-prefix "euvoc:Country")
   :properties `((:country-label :string ,(s-prefix "skos:prefLabel"))
                 (:nationality-label :string ,(s-prefix "rdfs:label")))
@@ -166,7 +173,8 @@
 
 (define-resource identificator ()
   :class (s-prefix "adms:Identifier")
-  :properties `((:identificator :string ,(s-prefix "skos:notation"))) ;; TODO: should have a specific type
+  :properties `((:identificator :string ,(s-prefix "skos:notation"))
+                (:modified :datetime ,(s-prefix "dct:modified"))) ;; TODO: should have a specific type
   :resource-base (s-url "http://data.lblod.info/id/identificatoren/")
   :features '(include-uri)
   :on-path "identificatoren")
@@ -174,7 +182,8 @@
 (define-resource tijdsinterval ()
   :class (s-prefix "dct:PeriodOfTime")
   :properties `((:begin :datetime ,(s-prefix "generiek:begin"))
-                (:einde :datetime ,(s-prefix "generiek:einde")))
+                (:einde :datetime ,(s-prefix "generiek:einde"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.lblod.info/id/tijdsintervallen/")
   :features '(include-uri)
   :on-path "tijdsintervallen")

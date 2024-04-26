@@ -10,6 +10,7 @@
                 (:wil-mail-ontvangen :boolean ,(s-prefix "ext:wilMailOntvangen")) ;;Voorkeur in berichtencentrum
                 (:mail-adres :string ,(s-prefix "ext:mailAdresVoorNotificaties"))
                 (:is-trial-user :boolean ,(s-prefix "ext:isTrailUser"))
+                (:modified :datetime ,(s-prefix "dct:modified"))
                 (:view-only-modules :string-set ,(s-prefix "ext:viewOnlyModules")))
   :has-one `((werkingsgebied :via ,(s-prefix "besluit:werkingsgebied")
                              :as "werkingsgebied")
@@ -30,6 +31,7 @@
 (define-resource werkingsgebied ()
   :class (s-prefix "prov:Location")
   :properties `((:naam :string ,(s-prefix "rdfs:label"))
+                (:modified :datetime ,(s-prefix "dct:modified"))
                 (:niveau :string, (s-prefix "ext:werkingsgebiedNiveau")))
   :has-many `((bestuurseenheid :via ,(s-prefix "besluit:werkingsgebied")
                                :inverse t
@@ -40,7 +42,8 @@
 
 (define-resource bestuurseenheid-classificatie-code ()
   :class (s-prefix "ext:BestuurseenheidClassificatieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/")
   :features '(include-uri)
   :on-path "bestuurseenheid-classificatie-codes")
@@ -50,7 +53,8 @@
   :properties `((:naam :string ,(s-prefix "skos:prefLabel"))
                 (:deactivated-at :date ,(s-prefix "ext:deactivatedAt"))
                 (:binding-einde :date ,(s-prefix "mandaat:bindingEinde"))
-                (:binding-start :date ,(s-prefix "mandaat:bindingStart")))
+                (:binding-start :date ,(s-prefix "mandaat:bindingStart"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :has-one `((bestuurseenheid :via ,(s-prefix "besluit:bestuurt")
                               :as "bestuurseenheid")
              (bestuursorgaan-classificatie-code :via ,(s-prefix "besluit:classificatie")
@@ -73,7 +77,8 @@
 
 (define-resource bestuursorgaan-classificatie-code ()
   :class (s-prefix "ext:BestuursorgaanClassificatieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :has-many `((bestuursfunctie-code :via ,(s-prefix "ext:hasDefaultType")
                         :as "standaard-type"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/")

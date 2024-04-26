@@ -7,7 +7,8 @@
                 (:prefix :url ,(s-prefix "ext:prefix"))
                 (:id :string ,(s-prefix "mu:uuid"))
                 (:form-ttl :string ,(s-prefix "ext:formTtl"))
-                (:meta-ttl :string ,(s-prefix "ext:metaTtl")))
+                (:meta-ttl :string ,(s-prefix "ext:metaTtl"))
+                (:modified :datetime ,(s-prefix "dct:modified")))
   :has-many `((form-extension :via ,(s-prefix "ext:extendsForm")
                               :inverse t
                               :as "extensions"))

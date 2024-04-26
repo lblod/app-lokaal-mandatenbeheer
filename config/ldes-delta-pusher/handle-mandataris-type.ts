@@ -27,8 +27,12 @@ const keepMandatarisTypesQuery = async (
     .map((binding) => {
       const isNotDraft =
         binding.publicationStatus?.value !== MANDATARIS_DRAFT_STATE;
-      const ldesType = isNotDraft ? "mandataris" : "mandataris-draft"; // default to non-draft if not present
-      return { uri: binding.s.value, ldesType };
+      const ldesType = isNotDraft ? "public" : "abb"; // default to non-draft if not present
+      return {
+        uri: binding.s.value,
+        ldesType,
+        type: "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+      };
     })
     .filter((b) => !!b) as InterestingSubject[];
 };

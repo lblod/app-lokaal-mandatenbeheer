@@ -65,12 +65,20 @@ This presents the question of how this peripheral knowledge reaches these differ
 - an LDES as discussed earlier. We can use the caching headers here to clarify that the resource isn't expected to change for another month or so. We can also terminate an LDES when we know no more data is going to change, e.g. for election results.
 - we can make an interface (API, not LDES) where they just fetch the latest version.
 
+## Published streams
+
+This application will publish 3 streams:
+
+- **public**: a public stream with limited information. This stream contains the information sent to abb but removes sensitive information like RRN numbers of person entities
+- **abb**: a stream to be used by ABB consumers. This is to be secured in the future and holds all instances that are part of the Mandatendatabank model: mandaat:Mandataris, mandaat:Fractie, org:Membership, mandaat:Mandaat, person:Person, dct:PeriodOfTime, adms:Identifier, persoon:Geboorte, schema:ContactPoint, locn:Address. It only exposes the properties known to the model + dct:modified, mu:uuid and rdf:type.
+- **public**: a stream to be used internally. Currently this exposes the same model instances as the abb stream but with all of their properties.
+
 ## LDES setup
 
 The LDES spec can be found [here](https://semiceu.github.io/LinkedDataEventStreams/).
 We will be using the implementation provided by [redpencil.io on their github](https://github.com/redpencilio/fragmentation-producer-service) to publish the LDES. It will be fed using our own service that monitors deltas on our SEAS instance.
 
-We'll use a time-fragmenter, one stream will be set up per type of instance that we will share, with pagination and the following setup for versioning:
+We'll use a time-fragmenter with pagination and the following setup for versioning:
 
     @prefix dct: <http://purl.org/dc/terms/>.
     @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.

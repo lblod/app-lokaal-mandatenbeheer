@@ -4,8 +4,7 @@
 
 (define-resource contact-punt ()
   :class (s-prefix "schema:ContactPoint")
-  :properties `((:aanschrijfprefix :language-string-set ,(s-prefix "vcard:honorific-prefix"))
-                (:email :string ,(s-prefix "schema:email"))
+  :properties `((:email :string ,(s-prefix "schema:email"))
                 (:fax :string ,(s-prefix "schema:faxNumber"))
                 (:naam :string ,(s-prefix "foaf:name"))
                 (:voornaam :string ,(s-prefix "foaf:firstName"))

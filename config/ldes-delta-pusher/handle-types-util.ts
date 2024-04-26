@@ -1,12 +1,7 @@
 import { Changeset } from "../types";
 import { query } from "mu";
-import { publish } from "./publisher";
+import { InterestingSubject, LDES_TYPE, publish } from "./publisher";
 import { log } from "./logger";
-
-export type InterestingSubject = {
-  uri: string;
-  ldesType: string;
-};
 
 type SubjectFilter = (subjects: string[]) => Promise<InterestingSubject[]>;
 
@@ -58,6 +53,6 @@ export const publishInterestingSubjects = async (
   // do this serially to avoid overloading the stream endpoint
   let current: InterestingSubject | undefined;
   while ((current = interestingSubjects.pop())) {
-    await publish(current.ldesType, current.uri);
+    await publish(current);
   }
 };

@@ -14,7 +14,10 @@
   :has-one `((bestuurseenheid :via ,(s-prefix "org:linkedTo")
                               :as "bestuurseenheid")
              (fractietype :via ,(s-prefix "ext:isFractietype")
-                          :as "fractietype"))
+                          :as "fractietype")
+             (kandidatenlijst :via ,(s-prefix "ext:produceertFractie")
+                          :inverse t
+                          :as "originele-kandidatenlijst"))
   :features '(include-uri)
   :on-path "fracties")
 

@@ -19,7 +19,7 @@ ext:mandaatF
     sh:path org:holds.
 ext:mandatarisStatusCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
+    form:displayType displayTypes:mandatarisStatusCodeSelector;
     sh:group ext:editMandatarisPG;
     sh:name "Status";
     form:help "Titelvoerdend is enkel voor burgemeester";

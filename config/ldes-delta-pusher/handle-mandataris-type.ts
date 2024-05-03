@@ -6,9 +6,7 @@ import {
 } from "./handle-types-util";
 import { MANDATARIS_DRAFT_STATE } from "./utils/well-known-uris";
 
-const keepMandatarisTypesQuery = async (
-  subjects: string[]
-): Promise<InterestingSubject[]> => {
+export const toMandatarisDraftState = async (subjects: string[]) => {
   const matches = await query(`
       PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
       PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
@@ -23,7 +21,14 @@ const keepMandatarisTypesQuery = async (
         OPTIONAL { ?s extlmb:hasPublicationStatus ?publicationStatus. }
       }
     `);
-  return matches.results.bindings
+  return matches.results.bindings;
+};
+
+const keepMandatarisTypesQuery = async (
+  subjects: string[]
+): Promise<InterestingSubject[]> => {
+  const subjectsWithDraftState = await toMandatarisDraftState(subjects);
+  return subjectsWithDraftState
     .map((binding) => {
       const isNotDraft =
         binding.publicationStatus?.value !== MANDATARIS_DRAFT_STATE;

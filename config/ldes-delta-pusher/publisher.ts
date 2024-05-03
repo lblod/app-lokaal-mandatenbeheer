@@ -38,7 +38,7 @@ const fetchSubjectData = async (
   return data.results.bindings.map(bindingToTriple).join("\n");
 };
 
-async function sendLDESRequest(type: string, body: string) {
+async function sendLDESRequest(type: string, body: string, retriesLeft = 3) {
   log(`Sending data to LDES endpoint ${LDES_ENDPOINT}/${type}`, "debug");
   await fetch(`${LDES_ENDPOINT}/${type}`, {
     method: "POST",
@@ -47,6 +47,16 @@ async function sendLDESRequest(type: string, body: string) {
     },
     // xsd prefix is used in the types of the result data, so it needs to be declared.
     body: `@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n${body}`,
+  }).catch(async (e) => {
+    if (retriesLeft > 0) {
+      log(
+        `Error sending data to LDES endpoint ${type} (retrying): ${e}`,
+        "error"
+      );
+      sendLDESRequest(type, body, retriesLeft - 1);
+    } else {
+      log(`Error sending data to LDES endpoint ${type}: ${e}`, "error");
+    }
   });
 }
 

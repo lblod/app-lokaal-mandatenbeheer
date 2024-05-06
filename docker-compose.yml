@@ -153,6 +153,12 @@ services:
       - "logging=true"
     volumes:
       - ./config/form-content:/forms
+  mandataris:
+    image: lblod/mandataris-service:latest
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.6.3
     labels:

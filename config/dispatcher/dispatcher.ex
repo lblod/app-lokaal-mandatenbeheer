@@ -310,6 +310,14 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # Mandataris api
+  #################################################################
+
+  match "/mandataris-api/*path", %{layer: :api_services, accept: %{any: true}} do
+    forward(conn, path, "http://mandataris/")
+  end
+
+  #################################################################
   # LDES
   #################################################################
   get "/streams/ldes/*path" do

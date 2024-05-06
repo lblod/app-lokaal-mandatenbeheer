@@ -67,6 +67,10 @@ services:
     restart: "no"
     profiles:
       - nodebug
+  mandataris:
+    restart: "no"
+    profiles:
+      - nodebug
   adressenregister:
     restart: "no"
   ldes-delta-pusher:

@@ -140,12 +140,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  mandataris-archive:
-    image: lblod/mandataris-archive-service:0.0.6
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
   form-content:
     image: lblod/form-content-service:0.0.4
     restart: always

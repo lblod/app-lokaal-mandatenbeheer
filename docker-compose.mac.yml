@@ -23,8 +23,6 @@ services:
     platform: linux/amd64
   form-content:
     platform: linux/amd64
-  mandataris-archive:
-    platform: linux/amd64
   frontend:
     platform: linux/amd64
   cache:

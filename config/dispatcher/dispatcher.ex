@@ -281,10 +281,6 @@ defmodule Dispatcher do
   #################################################################
   # Extra services
   #################################################################
-  delete "/mandatarissen/:id", %{layer: :api_services, accept: %{any: true}} do
-    forward(conn, [], "http://mandataris-archive/" <> id <> "/archive")
-  end
-
   match "/rrn/*path", %{layer: :api_services, accept: %{any: true}} do
     forward(conn, path, "http://person-uri-for-social-security-number/")
   end

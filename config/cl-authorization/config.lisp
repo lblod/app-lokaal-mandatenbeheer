@@ -123,7 +123,7 @@
   ("mandaat:Verkiezingsresultaat" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("ext:SystemNotification" -> _)
-  ("astreams:Tombstone" -> _))
+  ("ext:BestuurseenheidContactInfo" -> _))
 
 (define-graph organization-leidinggevende ("http://mu.semte.ch/graphs/organizations/")
   ("contacthub:AgentInPositie" -> _)

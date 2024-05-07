@@ -57,6 +57,8 @@
                                                 :as "classificatie")
              (bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
                              :as "is-tijdsspecialisatie-van")
+             (bestuursperiode :via ,(s-prefix "ext:heeftBestuursperiode")
+                             :as "heeft-bestuursperiode")
              (rechtstreekse-verkiezing :via ,(s-prefix "mandaat:steltSamen")
                                        :inverse t
                                        :as "verkiezing"))
@@ -75,7 +77,8 @@
   :class (s-prefix "ext:Bestuursperiode")
   :properties `((:einde :string ,(s-prefix "ext:startYear"))
                 (:start :string ,(s-prefix "ext:endYear")))
-  :has-many `((bestuursorgaan :via ,(s-prefix "ext:heeftBestuursorgaanInTijd")
+  :has-many `((bestuursorgaan :via ,(s-prefix "ext:heeftBestuursperiode")
+                       :inverse t
                        :as "heeft-bestuursorganen-in-tijd"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Bestuursperiode/")
   :features '(include-uri)

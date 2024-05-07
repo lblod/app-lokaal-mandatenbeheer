@@ -75,8 +75,8 @@
 
 (define-resource bestuursperiode (concept)
   :class (s-prefix "ext:Bestuursperiode")
-  :properties `((:einde :integer ,(s-prefix "ext:startYear"))
-                (:start :integer ,(s-prefix "ext:endYear")))
+  :properties `((:start :integer ,(s-prefix "ext:startYear"))
+                (:einde :integer ,(s-prefix "ext:endYear")))
   :has-many `((bestuursorgaan :via ,(s-prefix "ext:heeftBestuursperiode")
                        :inverse t
                        :as "heeft-bestuursorganen-in-tijd"))

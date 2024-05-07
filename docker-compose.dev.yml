@@ -61,8 +61,6 @@ services:
     restart: "no"
   person-uri-for-social-security-number:
     restart: "no"
-  mandataris-archive:
-    restart: "no"
   form-content:
     restart: "no"
     profiles:

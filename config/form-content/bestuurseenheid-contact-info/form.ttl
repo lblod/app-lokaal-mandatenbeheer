@@ -1,0 +1,41 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
+
+<http://data.lblod.info/id/lmb/forms/BestuurseenheidContactInfo>
+  a form:Form, form:TopLevelForm;
+  form:includes ext:emailF
+  sh:group ext:contactInfoPG;
+  form:initGenerator ext:contactInfoG;
+  form:targetType ext:BestuurseenheidContactInfo;
+  form:targetLabel schema:email;
+  ext:prefix <http://data.lblod.info/id/BestuurseenheidContactInfo/>;
+  mu:uuid "6293bfe1-40a3-4228-8f33-1f74dc45e2b9".
+
+ext:contactInfoPG
+  a form:PropertyGroup;
+  sh:name "Contact info";
+  sh:order 1.
+
+ext:emailF
+  a form:Field;
+  form:displayType displayTypes:defaultInput;
+  sh:group ext:contactInfoPG;
+  sh:name "Email";
+  sh:order 2;
+  sh:path schema:email.
+
+ext:contactInfoG a form:Generator;
+  form:prototype [
+    form:shape [
+      a ext:BestuurseenheidContactInfo
+    ]
+  ];
+  form:dataGenerator form:addMuUuid.

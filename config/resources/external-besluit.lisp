@@ -82,7 +82,7 @@
                        :as "heeft-bestuursorganen-in-tijd"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Bestuursperiode/")
   :features '(include-uri)
-  :on-path "bestuursperioden")
+  :on-path "bestuursperiodes")
 
 (define-resource bestuursorgaan-classificatie-code ()
   :class (s-prefix "ext:BestuursorgaanClassificatieCode")

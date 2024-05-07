@@ -1,0 +1,20 @@
+INSERT {
+	GRAPH ?g {
+		?bestuursorgaan ?p ?o .
+		?mandaat ?pp ?oo .
+	}
+}
+WHERE {
+	?bestuursorgaan <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?owner.
+
+	GRAPH <http://mu.semte.ch/graph/temp/election> {
+		OPTIONAL {
+			?bestuursorgaan <http://www.w3.org/ns/org#hasPost> ?mandaat.
+			?mandaat ?pp ?oo .
+		}
+		?bestuursorgaan ?p ?o .
+	}
+	GRAPH ?g {
+		?owner a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> .
+	}
+}

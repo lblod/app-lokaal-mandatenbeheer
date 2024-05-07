@@ -24,7 +24,7 @@ bestuursperiode:845dbc7f-139e-4632-b200-f90e180f1dba
   ext:endYear 2019;
   skos:inScheme conceptschemes:bestuursperiodes;
   skos:topConceptOf conceptschemes:bestuursperiodes;
-  skos:prefLabel "2012-2019";
+  skos:prefLabel "2012 - 2019";
   mu:uuid "845dbc7f-139e-4632-b200-f90e180f1dba".
 
 bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca
@@ -35,7 +35,7 @@ bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca
   ext:endYear 2025;
   skos:inScheme conceptschemes:bestuursperiodes;
   skos:topConceptOf conceptschemes:bestuursperiodes;
-  skos:prefLabel "2019-2025";
+  skos:prefLabel "2019 - 2025";
   mu:uuid "a2b977a3-ce68-4e42-80a6-4397f66fc5ca".
 
 bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7
@@ -45,5 +45,5 @@ bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7
   ext:startYear 2025;
   skos:inScheme conceptschemes:bestuursperiodes;
   skos:topConceptOf conceptschemes:bestuursperiodes;
-  skos:prefLabel "2025-heden";
+  skos:prefLabel "2025 - heden";
   mu:uuid "96efb929-5d83-48fa-bfbb-b98dfb1180c7".

@@ -20,8 +20,8 @@ bestuursperiode:845dbc7f-139e-4632-b200-f90e180f1dba
   rdf:type 
     skos:Concept,
     ext:Bestuursperiode;
-  ext:startYear "2012";
-  ext:endYear "2019";
+  ext:startYear 2012;
+  ext:endYear 2019;
   skos:inScheme conceptschemes:bestuursperiodes;
   skos:topConceptOf conceptschemes:bestuursperiodes;
   skos:prefLabel "2012-2019";
@@ -31,8 +31,8 @@ bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca
   rdf:type 
     skos:Concept,
     ext:Bestuursperiode;
-  ext:startYear "2019";
-  ext:endYear "2025";
+  ext:startYear 2019;
+  ext:endYear 2025;
   skos:inScheme conceptschemes:bestuursperiodes;
   skos:topConceptOf conceptschemes:bestuursperiodes;
   skos:prefLabel "2019-2025";
@@ -42,7 +42,7 @@ bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7
   rdf:type 
     skos:Concept,
     ext:Bestuursperiode;
-  ext:startYear "2025";
+  ext:startYear 2025;
   skos:inScheme conceptschemes:bestuursperiodes;
   skos:topConceptOf conceptschemes:bestuursperiodes;
   skos:prefLabel "2025-heden";

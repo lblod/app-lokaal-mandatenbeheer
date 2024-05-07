@@ -71,6 +71,16 @@
   :features '(include-uri)
   :on-path "bestuursorganen")
 
+(define-resource bestuursperiode (concept)
+  :class (s-prefix "ext:Bestuursperiode")
+  :properties `((:einde :string ,(s-prefix "ext:startYear"))
+                (:start :string ,(s-prefix "ext:endYear")))
+  :has-many `((bestuursorgaan :via ,(s-prefix "ext:heeftBestuursorgaanInTijd")
+                       :as "heeft-bestuursorganen-in-tijd"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Bestuursperiode/")
+  :features '(include-uri)
+  :on-path "bestuursperioden")
+
 (define-resource bestuursorgaan-classificatie-code ()
   :class (s-prefix "ext:BestuursorgaanClassificatieCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel")))

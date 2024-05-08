@@ -121,7 +121,6 @@
   ("mandaat:Kandidatenlijst" -> _)
   ("ext:KandidatenlijstLijsttype" -> _)
   ("mandaat:Verkiezingsresultaat" -> _)
-  ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("ext:SystemNotification" -> _)
   ("astreams:Tombstone" -> _)
   ("ext:BestuurseenheidContact" -> _)

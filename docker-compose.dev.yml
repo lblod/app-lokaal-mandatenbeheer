@@ -85,3 +85,21 @@ services:
     restart: "no"
   sparql-authorization-wrapper:
     restart: "no"
+  besluiten-consumer-0:
+    environment:
+     # #### START: 'normal operation mode' in optimal performance for direct virtuoso (needs full-reindex though)
+      #SLEEP_BETWEEN_BATCHES: 1 # also maybe increast this during intial sync
+      #BATCH_SIZE: 1000
+      #BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: 'true'
+      #PARALLEL_CALLS: "4" # we might be jinxing virtuoso; but let's try
+      # #### END: 'normal operation mode' in optimal performance for direct virtuoso
+
+      # #### START: 'normal operation mode' in optimal performance for mu-auth
+      BATCH_SIZE: "1"
+      SLEEP_BETWEEN_BATCHES: "1"
+      PARALLEL_CALLS: "8"
+      # #### END: 'normal operation mode' in optimal performance for mu-auth
+
+      DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-0.s.redhost.be/"
+      DCR_DISABLE_DELTA_INGEST: "false" # uncomment to enable data ingestion
+      DCR_DISABLE_INITIAL_SYNC: "false" # uncomment to enable initial sync

@@ -122,3 +122,12 @@ services:
       DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-2.s.redhost.be/"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
+  besluiten-consumer-3:
+    environment:
+      BATCH_SIZE: "1"
+      SLEEP_BETWEEN_BATCHES: "1"
+      PARALLEL_CALLS: "16"
+
+      DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-3.s.redhost.be/"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"

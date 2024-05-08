@@ -21,14 +21,14 @@
 
 ext:contactPG
   a form:PropertyGroup;
-  sh:name "";
+  sh:name "Contact";
   sh:order 1.
 
 ext:emailF
   a form:Field;
   form:displayType displayTypes:defaultInput;
   sh:group ext:contactPG;
-  sh:name "Contact email";
+  sh:name "Email";
   sh:order 2;
   form:validatedBy
     [ a form:ValidEmail;

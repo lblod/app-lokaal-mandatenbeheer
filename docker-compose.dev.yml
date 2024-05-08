@@ -103,3 +103,13 @@ services:
       DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-0.s.redhost.be/"
       DCR_DISABLE_DELTA_INGEST: "false" # uncomment to enable data ingestion
       DCR_DISABLE_INITIAL_SYNC: "false" # uncomment to enable initial sync
+  besluiten-consumer-1:
+    environment:
+      BATCH_SIZE: "1"
+      SLEEP_BETWEEN_BATCHES: "1"
+      PARALLEL_CALLS: "16"
+
+      DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-1.s.redhost.be/"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_START_FROM_DELTA_TIMESTAMP: "2024-01-12T15:51:23.478Z"

@@ -216,6 +216,7 @@ services:
     environment:
       DCR_SERVICE_NAME: "besluiten-consumer-0"
       # DCR_SYNC_BASE_URL: ""
+      DCR_SYNC_FILES_PATH: "/sync/besluiten/files"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten"
@@ -234,11 +235,30 @@ services:
       DCR_SERVICE_NAME: "besluiten-consumer-1"
       # DCR_SYNC_BASE_URL: ""
       DCR_SYNC_FILES_PATH: "/sync/besluiten/files"
+      DCR_DISABLE_DELTA_INGEST: "false"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten-1"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/besluitenSyncing-1"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/besluiten-consumer-1"
       DCR_KEEP_DELTA_FILES: "false"
       DCR_DELTA_FILE_FOLDER: "/consumer-files-1"
+      DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
+  besluiten-consumer-2:
+    image: lblod/delta-consumer:0.0.24
+    profiles:
+      - withConsumer
+    depends_on:
+      - virtuoso
+    environment:
+      DCR_SERVICE_NAME: "besluiten-consumer-2"
+      # DCR_SYNC_BASE_URL: ""
+      DCR_SYNC_FILES_PATH: "/sync/besluiten/files"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten-2"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/besluitenSyncing-2"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/besluiten-consumer-2"
+      DCR_KEEP_DELTA_FILES: "false"
+      DCR_DELTA_FILE_FOLDER: "/consumer-files-2"
       DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
 

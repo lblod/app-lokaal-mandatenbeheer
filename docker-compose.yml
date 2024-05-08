@@ -204,3 +204,20 @@ services:
       - ./config/sparql-authorization-wrapper:/config
     restart: always
     logging: *default-logging
+  ##############################################################################
+  # Consumers
+  ##############################################################################
+  besluiten-consumer:
+    image: lblod/delta-consumer:0.0.24
+    environment:
+      DCR_SERVICE_NAME: "besluiten-consumer"
+      DCR_SYNC_BASE_URL: "https://harvesting-self-service.lblod.info/" # you choose endpoint here
+      DCR_SYNC_FILES_PATH: "/sync/besluiten/files"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      # DCR_DISABLE_INITIAL_SYNC: "true"
+      DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/besluiten-consumer"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/besluitenSyncing"
+      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump"
+

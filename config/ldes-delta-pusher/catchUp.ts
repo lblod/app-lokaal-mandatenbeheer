@@ -13,14 +13,13 @@ export const handlePage = async (items: CatchupPageItem[]) => {
       mandatarisSubjects.push(item.uri);
     } else {
       const ldesType = getLdesForRegularType(item.type);
-      if (!ldesType) {
-        return;
+      if (ldesType) {
+        interestingSubjects.push({
+          uri: item.uri,
+          ldesType,
+          type: item.type,
+        });
       }
-      interestingSubjects.push({
-        uri: item.uri,
-        ldesType,
-        type: item.type,
-      });
     }
   });
 
@@ -28,12 +27,11 @@ export const handlePage = async (items: CatchupPageItem[]) => {
     mandatarisSubjects
   );
   mandatarisSubjectsWithDraftState.map((binding) => {
+    const isDraftMandataris =
+      binding.publicationStatus?.value === MANDATARIS_DRAFT_STATE;
     interestingSubjects.push({
       uri: binding.s.value,
-      ldesType:
-        binding.publicationStatus?.value !== MANDATARIS_DRAFT_STATE
-          ? "public"
-          : "abb",
+      ldesType: isDraftMandataris ? "abb" : "public",
       type: "http://data.vlaanderen.be/ns/mandaat#Mandataris",
     });
   });

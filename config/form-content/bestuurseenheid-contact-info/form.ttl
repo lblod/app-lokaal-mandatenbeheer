@@ -21,15 +21,22 @@
 
 ext:contactInfoPG
   a form:PropertyGroup;
-  sh:name "Contact info";
+  sh:name "";
   sh:order 1.
 
 ext:emailF
   a form:Field;
   form:displayType displayTypes:defaultInput;
   sh:group ext:contactInfoPG;
-  sh:name "Email";
+  sh:name "Contact email";
   sh:order 2;
+  form:validatedBy
+    [ a form:ValidEmail;
+      form:grouping form:MatchEvery;
+      sh:order 1;
+      sh:resultMessage "Geef een geldig e-mailadres op."@nl;
+      sh:path schema:email
+    ];
   sh:path schema:email.
 
 ext:contactInfoG a form:Generator;

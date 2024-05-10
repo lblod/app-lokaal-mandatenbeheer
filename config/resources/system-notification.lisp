@@ -7,9 +7,8 @@
     (:read-at :datetime ,(s-prefix "ext:readAt"))
     (:archived-at :datetime ,(s-prefix "ext:archivedAt"))
   )
-  :has-one `((gebruiker :via ,(s-prefix "ext:forUser")
-                        :inverse t
-                        :as "forUser"))
+  :has-one `((gebruiker :via ,(s-prefix "ext:notificationFor")
+                        :as "gebruiker"))
   :resource-base (s-url "http://data.lblod.info/id/SystemNotification")
   :features '(include-uri)
-  :on-path "system-notification")
+  :on-path "system-notifications")

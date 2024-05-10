@@ -8,7 +8,7 @@
                        :as "account")
               (bestuurseenheid :via ,(s-prefix "foaf:member")
                               :as "bestuurseenheden")
-              (system-notification :via ,(s-prefix "ext:SystemNotification")
+              (system-notification :via ,(s-prefix "ext:notificationFor")
                               :as "system-notifications")
              )
   :on-path "gebruikers"

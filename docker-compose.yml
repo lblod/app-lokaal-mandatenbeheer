@@ -159,6 +159,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  modified:
+    image: lblod/track-modified-service:0.0.0
+    labels:
+      - "logging=true"
+    volumes:
+      - ./config/modified:/config
+    restart: always
+    logging: *default-logging
 
   ##############################################################################
   # LDES

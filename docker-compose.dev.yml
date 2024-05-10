@@ -45,6 +45,9 @@ services:
     restart: "no"
   deltanotifier:
     restart: "no"
+    networks:
+      - default
+      - debug
   migrations:
     restart: "no"
   cache:
@@ -66,6 +69,11 @@ services:
     profiles:
       - nodebug
   mandataris:
+    restart: "no"
+    profiles:
+      - nodebug
+  modified:
+    image: lblod/track-modified-service:0.0.0
     restart: "no"
     profiles:
       - nodebug

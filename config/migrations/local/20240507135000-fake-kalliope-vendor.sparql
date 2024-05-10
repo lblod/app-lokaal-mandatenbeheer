@@ -1,0 +1,14 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+   <http://data.lblod.info/vendors/kalliope> a foaf:Agent, ext:Vendor ;
+    foaf:name "Kalliope" ;
+    muAccount:canActOnBehalfOf <http://data.lblod.info/vendors/kalliope> ;
+    mu:uuid "15e906cd-724e-430f-8ab4-60e0d982d239" ;
+    muAccount:key "MysuperSecretKeyThatIShouldReplace" .
+  }
+}

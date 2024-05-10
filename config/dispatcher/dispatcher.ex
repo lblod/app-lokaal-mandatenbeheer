@@ -248,17 +248,15 @@ defmodule Dispatcher do
     forward(conn, path, "http://resource/files/")
   end
 
-  post "/files/*path", %{layer: :resources, accept: %{json: true}} do
+  post "/burgemeester-benoeming/*path", %{ layer: :api_services } do
+    forward(conn, path, "http://mandataris/burgemeester-benoeming/")
+  end
+
+  post "/files/*path", %{ layer: :api_services } do
     forward(conn, path, "http://file/files/")
   end
 
-  # TODO: find all usage of this endpoint and replace it with `POST /files`
-  # This is kept to maintain compatibility with code that uses the "old" endpoint.
-  post "/file-service/files/*path", %{layer: :resources, accept: %{json: true}} do
-    forward(conn, path, "http://file/files/")
-  end
-
-  delete "/files/*path", %{layer: :resources, accept: %{json: true}} do
+  delete "/files/*path", %{ accept: [ :json ], layer: :api_services } do
     forward(conn, path, "http://file/files/")
   end
 
@@ -266,7 +264,7 @@ defmodule Dispatcher do
     forward(conn, path, "http://resource/file-addresses/")
   end
 
-  get "/files/:id/download", %{layer: :resources, accept: %{any: true}} do
+  get "/files/:id/download", %{layer: :api_services, accept: %{any: true}} do
     forward(conn, [], "http://file/files/" <> id <> "/download")
   end
 

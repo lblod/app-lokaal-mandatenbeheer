@@ -6,7 +6,6 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>.
 
-
 # Bestuursperiode concept scheme
 conceptschemes:bestuursperiodes
   rdf:type 
@@ -47,3 +46,12 @@ bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7
   skos:topConceptOf conceptschemes:bestuursperiodes;
   skos:prefLabel "2025 - heden";
   mu:uuid "96efb929-5d83-48fa-bfbb-b98dfb1180c7".
+
+bestuursperiode:9486222f-2696-4811-bde1-fef9dc4b5f68
+  rdf:type
+    skos:Concept,
+    ext:Bestuursperiode;
+  skos:inScheme conceptschemes:bestuursperiodes;
+  skos:topConceptOf conceptschemes:bestuursperiodes;
+  skos:prefLabel "Overig";
+  mu:uuid "9486222f-2696-4811-bde1-fef9dc4b5f68".

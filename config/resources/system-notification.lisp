@@ -1,5 +1,5 @@
 (define-resource system-notification ()
-  :class (s-prefix "ext:system-notification")
+  :class (s-prefix "ext:SystemNotification")
   :properties `(
     (:subject :string ,(s-prefix "dct:subject"))
     (:message :string ,(s-prefix "schema:description"))

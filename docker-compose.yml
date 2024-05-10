@@ -211,6 +211,8 @@ services:
     image: lblod/delta-consumer:0.0.24
     depends_on:
       - virtuoso
+    volumes:
+      - ./config/custom-dispatching:/config/triples-dispatching/custom-dispatching
     environment:
       DCR_SERVICE_NAME: "besluiten-consumer-0"
       # DCR_SYNC_BASE_URL: ""
@@ -230,6 +232,8 @@ services:
     image: lblod/delta-consumer:0.0.24
     depends_on:
       - virtuoso
+    volumes:
+      - ./config/custom-dispatching:/config/triples-dispatching/custom-dispatching
     environment:
       DCR_SERVICE_NAME: "besluiten-consumer-1"
       # DCR_SYNC_BASE_URL: ""
@@ -249,6 +253,8 @@ services:
     image: lblod/delta-consumer:0.0.24
     depends_on:
       - virtuoso
+    volumes:
+      - ./config/custom-dispatching:/config/triples-dispatching/custom-dispatching
     environment:
       DCR_SERVICE_NAME: "besluiten-consumer-2"
       # DCR_SYNC_BASE_URL: ""
@@ -268,6 +274,8 @@ services:
     image: lblod/delta-consumer:0.0.24
     depends_on:
       - virtuoso
+    volumes:
+      - ./config/custom-dispatching:/config/triples-dispatching/custom-dispatching
     environment:
       DCR_SERVICE_NAME: "besluiten-consumer-3"
       # DCR_SYNC_BASE_URL: ""

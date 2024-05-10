@@ -1,0 +1,15 @@
+(define-resource system-notification ()
+  :class (s-prefix "ext:system-notification")
+  :properties `(
+    (:title :string ,(s-prefix "dct:title"))
+    (:message :string ,(s-prefix "schema:description"))
+    (:created-at :datetime ,(s-prefix "dct:created"))
+    (:read-at :datetime ,(s-prefix "ext:readAt"))
+    (:archived-at :datetime ,(s-prefix "ext:archivedAt"))
+  )
+  :has-one `((gebruiker :via ,(s-prefix "ext:forUser")
+                        :inverse t
+                        :as "forUser"))
+  :resource-base (s-url "http://data.lblod.info/id/SystemNotification")
+  :features '(include-uri)
+  :on-path "system-notification")

@@ -164,7 +164,7 @@ services:
   # LDES
   ##############################################################################
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:0.1.1
+    image: redpencil/ldes-delta-pusher:0.2.0
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
     volumes:

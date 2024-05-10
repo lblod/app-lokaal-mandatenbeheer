@@ -227,6 +227,13 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # System notification
+  #################################################################
+  match "/system-notifications/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/system-notifications/")
+  end
+
+  #################################################################
   # File logic + resources
   #################################################################
   patch "/files/*path", %{layer: :resources, accept: %{json: true}} do

@@ -30,6 +30,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
       "http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype",
       "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
+      "http://mu.semte.ch/vocabularies/ext/SystemNotification",
       "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode",
       "http://www.w3.org/2004/02/skos/core#Concept"
     ]

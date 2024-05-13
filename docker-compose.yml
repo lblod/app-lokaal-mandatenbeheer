@@ -209,8 +209,6 @@ services:
   ##############################################################################
   besluiten-consumer-0:
     image: lblod/delta-consumer:0.0.24
-    profiles:
-      - withConsumer
     depends_on:
       - virtuoso
     environment:
@@ -227,8 +225,6 @@ services:
       DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
   besluiten-consumer-1:
     image: lblod/delta-consumer:0.0.24
-    profiles:
-      - withConsumer
     depends_on:
       - virtuoso
     environment:
@@ -245,8 +241,6 @@ services:
       DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
   besluiten-consumer-2:
     image: lblod/delta-consumer:0.0.24
-    profiles:
-      - withConsumer
     depends_on:
       - virtuoso
     environment:
@@ -263,8 +257,6 @@ services:
       DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
   besluiten-consumer-3:
     image: lblod/delta-consumer:0.0.24
-    profiles:
-      - withConsumer
     depends_on:
       - virtuoso
     environment:

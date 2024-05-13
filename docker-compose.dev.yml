@@ -86,6 +86,8 @@ services:
   sparql-authorization-wrapper:
     restart: "no"
   besluiten-consumer-0:
+    profiles:
+      - withConsumer
     environment:
      # #### START: 'normal operation mode' in optimal performance for direct virtuoso (needs full-reindex though)
       #SLEEP_BETWEEN_BATCHES: 1 # also maybe increast this during intial sync
@@ -104,6 +106,8 @@ services:
       DCR_DISABLE_DELTA_INGEST: "false" # uncomment to enable data ingestion
       DCR_DISABLE_INITIAL_SYNC: "false" # uncomment to enable initial sync
   besluiten-consumer-1:
+    profiles:
+      - withConsumer
     environment:
       BATCH_SIZE: "1"
       SLEEP_BETWEEN_BATCHES: "1"
@@ -114,6 +118,8 @@ services:
       DCR_DISABLE_INITIAL_SYNC: "false"
       DCR_START_FROM_DELTA_TIMESTAMP: "2024-01-12T15:51:23.478Z"
   besluiten-consumer-2:
+    profiles:
+      - withConsumer
     environment:
       BATCH_SIZE: "1"
       SLEEP_BETWEEN_BATCHES: "1"
@@ -123,6 +129,8 @@ services:
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
   besluiten-consumer-3:
+    profiles:
+      - withConsumer
     environment:
       BATCH_SIZE: "1"
       SLEEP_BETWEEN_BATCHES: "1"

@@ -16,10 +16,11 @@
              (werkingsgebied :via ,(s-prefix "ext:inProvincie")
                              :as "provincie")
              (bestuurseenheid-classificatie-code :via ,(s-prefix "besluit:classificatie")
-                                                 :as "classificatie"))
-  :has-many `((contact-punt :via ,(s-prefix "schema:contactPoint")
-                            :as "contactinfo")
-              (bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
+                                                 :as "classificatie")
+             (bestuurseenheid-contact :via ,(s-prefix "ext:contactVoor")
+                                          :inverse t
+                                          :as "contact"))
+  :has-many `((bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
                               :inverse t
                               :as "bestuursorganen"))
   :resource-base (s-url "http://data.lblod.info/id/bestuurseenheden/")
@@ -44,6 +45,13 @@
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/")
   :features '(include-uri)
   :on-path "bestuurseenheid-classificatie-codes")
+
+(define-resource bestuurseenheid-contact ()
+  :class (s-prefix "ext:BestuurseenheidContact")
+  :properties `((:email :string ,(s-prefix "schema:email")))
+  :resource-base (s-url "http://data.lblod.info/id/BestuurseenheidContact/")
+  :features '(include-uri)
+  :on-path "bestuurseenheid-contacten")
 
 (define-resource bestuursorgaan ()
   :class (s-prefix "besluit:Bestuursorgaan")

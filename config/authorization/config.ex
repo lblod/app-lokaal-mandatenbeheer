@@ -15,6 +15,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/persoon#Geboorte",
       "http://www.w3.org/ns/org#Membership",
       "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "http://mu.semte.ch/vocabularies/ext/BestuurseenheidContact",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",

@@ -67,6 +67,7 @@
   ("besluit:Bestuurseenheid" -> _)
   ("ext:BestuurseenheidClassificatieCode" -> _)
   ("ext:BestuursorgaanClassificatieCode" -> _)
+  ("ext:Bestuursperiode" -> _)
   ("ext:Fractietype" -> _)
   ("ext:BestuursfunctieCode" -> _)
   ("ext:MandatarisStatusCode" -> _)

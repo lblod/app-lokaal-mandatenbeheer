@@ -122,6 +122,7 @@
   ("ext:KandidatenlijstLijsttype" -> _)
   ("mandaat:Verkiezingsresultaat" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
+  ("ext:SystemNotification" -> _)
   ("astreams:Tombstone" -> _))
 
 (define-graph organization-leidinggevende ("http://mu.semte.ch/graphs/organizations/")

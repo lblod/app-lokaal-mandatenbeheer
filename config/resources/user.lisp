@@ -8,6 +8,9 @@
                        :as "account")
               (bestuurseenheid :via ,(s-prefix "foaf:member")
                               :as "bestuurseenheden")
+              (system-notification :via ,(s-prefix "ext:notificationFor")
+                              :inverse t
+                              :as "system-notifications")
              )
   :on-path "gebruikers"
 )

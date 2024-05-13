@@ -71,6 +71,21 @@ ext:fractieF
     sh:name "Fractie";
     sh:order 900;
     sh:path ( org:hasMembership org:organisation ).
+ext:linkTobesluitF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:editMandatarisPG;
+    sh:name "Link naar besluit";
+    sh:order 1000;
+    form:validatedBy [
+        a form:UriConstraint;
+        form:grouping form:MatchEvery;
+        sh:order 1;
+        sh:path schema:url;
+        sh:resultMessage
+            "Gelieve een geldige URL op te geven. Zorg dat vooraan in de link altijd http://, https://, ftp:// of sftp:// staat."@nl
+    ];
+    sh:path schema:url.
 ext:editMandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
@@ -84,7 +99,8 @@ ext:editMandatarisPG
         ext:startF,
         ext:eindeF,
         ext:replacementF,
-        ext:fractieF;
+        ext:fractieF,
+        ext:linkTobesluitF;
     sh:group ext:editMandatarisPG;
     form:initGenerator ext:mandatarisG;
     form:targetType mandaat:Mandataris;

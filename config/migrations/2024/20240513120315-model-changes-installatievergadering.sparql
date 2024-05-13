@@ -1,0 +1,23 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH ?g {
+    ?installatieVergadering ext:hasBestuursorgaanInDeTijd ?bestuursorgaanInDeTijd.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?installatieVergadering ext:heeftBestuurseenheid ?bestuurseenheid;
+                            ext:heeftBestuursperiode ?periode.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?installatieVergadering ext:hasBestuursorgaanInDeTijd ?bestuursorgaanInDeTijd.
+    ?bestuursorgaanInDeTijd mandaat:isTijdspecialisatieVan ?orgaan.
+    ?bestuursorgaanInDeTijd ext:heeftBestuursperiode ?periode.
+    ?orgaan besluit:bestuurt ?bestuurseenheid.
+  }
+}

@@ -205,7 +205,7 @@ services:
     restart: always
     logging: *default-logging
   ##############################################################################
-  # Consumers
+  # Besluiten consumers
   ##############################################################################
   besluiten-consumer-0:
     image: lblod/delta-consumer:0.0.24

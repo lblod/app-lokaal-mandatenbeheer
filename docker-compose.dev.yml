@@ -85,12 +85,15 @@ services:
     restart: "no"
   sparql-authorization-wrapper:
     restart: "no"
+  ##############################################################################
+  # Besluiten consumers
+  ##############################################################################
   besluiten-consumer-0:
     profiles:
       - withConsumer
     environment:
       DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-0.s.redhost.be/"
-      DCR_DISABLE_INITIAL_SYNC: "false" # uncomment to enable initial sync
+      DCR_DISABLE_INITIAL_SYNC: "false"
   besluiten-consumer-1:
     profiles:
       - withConsumer

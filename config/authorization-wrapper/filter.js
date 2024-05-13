@@ -22,7 +22,7 @@ export async function isAuthorized(sessionUri) {
           a session:Session ;
           mu:uuid ?uuid ;
           dct:created ?created ;
-          muAccount:account ?account .
+          muAccount:account ?account ;
           muAccount:canActOnBehalfOf ext:abb .
       }
     } LIMIT 2

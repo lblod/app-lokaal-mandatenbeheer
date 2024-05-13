@@ -87,7 +87,10 @@
                 (:einde :integer ,(s-prefix "ext:endYear")))
   :has-many `((bestuursorgaan :via ,(s-prefix "ext:heeftBestuursperiode")
                        :inverse t
-                       :as "heeft-bestuursorganen-in-tijd"))
+                       :as "heeft-bestuursorganen-in-tijd")
+             (installatievergadering :via ,(s-prefix "ext:heeftBestuursperiode")
+                       :inverse t
+                       :as "installatievergaderingen"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Bestuursperiode/")
   :features '(include-uri)
   :on-path "bestuursperiodes")

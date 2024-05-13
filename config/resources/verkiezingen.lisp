@@ -6,7 +6,7 @@
              (bestuurseenheid :via ,(s-prefix "ext:heeftBestuurseenheid")
                               :as "bestuurseenheid")
              (bestuursperiode :via ,(s-prefix "ext:heeftBestuursperiode")
-                             :as "heeft-bestuursperiode"))
+                             :as "bestuursperiode"))
   :resource-base (s-url "http://data.lblod.info/id/installatievergaderingen/")
   :features '(include-uri)
   :on-path "installatievergaderingen")

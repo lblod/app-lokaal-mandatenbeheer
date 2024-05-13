@@ -51,7 +51,7 @@
   :properties `((:email :string ,(s-prefix "schema:email")))
   :resource-base (s-url "http://data.lblod.info/id/BestuurseenheidContact/")
   :features '(include-uri)
-  :on-path "bestuurseenheid-contact")
+  :on-path "bestuurseenheid-contacten")
 
 (define-resource bestuursorgaan ()
   :class (s-prefix "besluit:Bestuursorgaan")

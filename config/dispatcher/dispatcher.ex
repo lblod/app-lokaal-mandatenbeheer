@@ -86,8 +86,8 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/bestuurseenheid-classificatie-codes/")
   end
 
-  match "/bestuurseenheid-contact/*path", %{layer: :resources, accept: %{json: true}} do
-    forward(conn, path, "http://cache/bestuurseenheid-contact/")
+  match "/bestuurseenheid-contacten/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/bestuurseenheid-contacten/")
   end
 
   match "/bestuursorganen/*path", %{layer: :resources, accept: %{json: true}} do

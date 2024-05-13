@@ -76,7 +76,7 @@ ext:linkTobesluitF
     form:displayType displayTypes:defaultInput;
     sh:group ext:editMandatarisPG;
     sh:name "Link naar besluit";
-    sh:order 900;
+    sh:order 1000;
     form:validatedBy [
         a form:UriConstraint;
         form:grouping form:MatchEvery;

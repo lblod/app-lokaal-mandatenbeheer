@@ -223,6 +223,9 @@ services:
       DCR_KEEP_DELTA_FILES: "false"
       DCR_DELTA_FILE_FOLDER: "/consumer-files-0"
       DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
+      BATCH_SIZE: "1"
+      SLEEP_BETWEEN_BATCHES: "1"
+      PARALLEL_CALLS: "4" # In virtuoso.ini we define `ThreadsPerQuery` equal to 4
   besluiten-consumer-1:
     image: lblod/delta-consumer:0.0.24
     depends_on:
@@ -239,6 +242,9 @@ services:
       DCR_KEEP_DELTA_FILES: "false"
       DCR_DELTA_FILE_FOLDER: "/consumer-files-1"
       DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
+      BATCH_SIZE: "1"
+      SLEEP_BETWEEN_BATCHES: "1"
+      PARALLEL_CALLS: "4" # In virtuoso.ini we define `ThreadsPerQuery` equal to 4
   besluiten-consumer-2:
     image: lblod/delta-consumer:0.0.24
     depends_on:
@@ -255,6 +261,9 @@ services:
       DCR_KEEP_DELTA_FILES: "false"
       DCR_DELTA_FILE_FOLDER: "/consumer-files-2"
       DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
+      BATCH_SIZE: "1"
+      SLEEP_BETWEEN_BATCHES: "1"
+      PARALLEL_CALLS: "4" # In virtuoso.ini we define `ThreadsPerQuery` equal to 4
   besluiten-consumer-3:
     image: lblod/delta-consumer:0.0.24
     depends_on:
@@ -271,4 +280,7 @@ services:
       DCR_KEEP_DELTA_FILES: "false"
       DCR_DELTA_FILE_FOLDER: "/consumer-files-3"
       DIRECT_DATABASE_ENDPOINT: "http://virtuoso:8890/sparql"
+      BATCH_SIZE: "1"
+      SLEEP_BETWEEN_BATCHES: "1"
+      PARALLEL_CALLS: "4" # In virtuoso.ini we define `ThreadsPerQuery` equal to 4
 

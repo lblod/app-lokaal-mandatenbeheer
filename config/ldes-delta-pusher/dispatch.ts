@@ -10,14 +10,15 @@ export default async function dispatch(changesets: Changeset[]) {
 }
 
 function filterOutHistoryChanges(changesets: Changeset[]) {
-  const doesNotStartWithHistoryUri = (quad) => !quad.graph.value.startsWith('http://mu.semte.ch/graphs/formHistory');
+  const doesNotStartWithHistoryUri = (quad) =>
+    !quad.graph.value.startsWith("http://mu.semte.ch/graphs/formHistory");
 
-  return changesets.map(change => {
+  return changesets.map((change) => {
     const { inserts, deletes } = change;
 
     return {
       inserts: inserts.filter(doesNotStartWithHistoryUri),
       deletes: deletes.filter(doesNotStartWithHistoryUri),
-    }
-  })
+    };
+  });
 }

@@ -164,7 +164,7 @@ services:
   # LDES
   ##############################################################################
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:0.1.1
+    image: redpencil/ldes-delta-pusher:0.2.0
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
     volumes:
@@ -183,7 +183,7 @@ services:
     environment:
       BASE_URL: "https://lmb.lblod.info/streams/ldes"
       FOLDER_DEPTH: 1
-      PAGE_RESOURCES_COUNT: 10
+      PAGE_RESOURCES_COUNT: 20
       LDES_STREAM_PREFIX: "http://lmb.lblod.info/streams/ldes/"
       TIME_TREE_RELATION_PATH: "http://www.w3.org/ns/prov#generatedAtTime"
       CACHE_SIZE: 10

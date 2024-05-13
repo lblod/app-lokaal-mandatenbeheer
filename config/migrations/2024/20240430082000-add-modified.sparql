@@ -1,0 +1,41 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX schema: <http://schema.org/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+  GRAPH ?g {
+    ?s dct:modified ?defaultModified.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a ?type
+    VALUES ?type {
+      mandaat:Mandataris
+      mandaat:Fractie
+      persoon:Geboorte
+      org:Membership
+      mandaat:Mandaat
+      ext:BeleidsdomeinCode
+      person:Person
+      dct:PeriodOfTime
+      adms:Idenfifier
+      besluit:Bestuursorgaan
+      lblodlg:Bestuursfunctie
+      lblodlg:Functionaris
+      ext:Installatievergadering
+      schema:ContactPoint
+      locn:Address
+    }
+  }
+  BIND("2024-01-01T00:00:00Z"^^xsd:dateTime AS ?defaultModified)
+}

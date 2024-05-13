@@ -17,6 +17,10 @@ const regularTypesToLDESMapping = {
   "http://www.w3.org/ns/locn#Address": "abb",
 };
 
+export const getLdesForRegularType = (type: string) => {
+  return regularTypesToLDESMapping[type];
+};
+
 const keepRegularTypesQuery = async (
   subjects: string[]
 ): Promise<InterestingSubject[]> => {
@@ -32,7 +36,7 @@ const keepRegularTypesQuery = async (
     `);
   return matches.results.bindings
     .map((binding) => {
-      const ldesType = regularTypesToLDESMapping[binding.type.value];
+      const ldesType = getLdesForRegularType(binding.type.value);
       if (!ldesType) {
         return null;
       }

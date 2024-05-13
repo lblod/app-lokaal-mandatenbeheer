@@ -168,6 +168,14 @@ services:
     restart: always
     logging: *default-logging
 
+  authorization-wrapper:
+    image: local-authorization-wrapper
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+    volumes:
+      - ./config/authorization-wrapper:/config
   ##############################################################################
   # LDES
   ##############################################################################

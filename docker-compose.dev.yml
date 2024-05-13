@@ -73,7 +73,6 @@ services:
     profiles:
       - nodebug
   modified:
-    image: lblod/track-modified-service:0.0.0
     restart: "no"
     profiles:
       - nodebug
@@ -92,6 +91,8 @@ services:
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:
+    restart: "no"
+  authorization-wrapper:
     restart: "no"
   ##############################################################################
   # Besluiten consumers

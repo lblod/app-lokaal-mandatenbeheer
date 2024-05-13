@@ -335,6 +335,13 @@ defmodule Dispatcher do
   #################################################################
   # LDES
   #################################################################
+  get "/streams/ldes/abb/*path" do
+    forward(conn, path, "http://authorization-wrapper/abb/")
+  end
+  get "/streams/ldes/internal/*path" do
+    forward(conn, path, "http://authorization-wrapper/internal/")
+  end
+
   get "/streams/ldes/*path" do
     forward(conn, path, "http://ldes-backend")
   end

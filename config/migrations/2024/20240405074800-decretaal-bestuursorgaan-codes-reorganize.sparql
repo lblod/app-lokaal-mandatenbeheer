@@ -90,6 +90,9 @@ INSERT DATA {
     # vast bureau
     <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
       skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+    # raad voor maatschappelijk welzijn
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> skos:topConceptOf extlmb:gemeente-bestuursorgaan-codes;
+      skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
 
     # decretale
     # algemene vergadering

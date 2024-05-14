@@ -23,7 +23,7 @@
   :has-many `((bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
                               :inverse t
                               :as "bestuursorganen")
-             ((bestuursorgaan :via ,(s-prefix "ext:origineleBestuurseenheid")
+              (bestuursorgaan :via ,(s-prefix "ext:origineleBestuurseenheid")
                               :inverse t
                               :as "fake-bestuursorganen"))
   :resource-base (s-url "http://data.lblod.info/id/bestuurseenheden/")

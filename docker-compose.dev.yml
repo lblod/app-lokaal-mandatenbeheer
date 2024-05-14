@@ -85,7 +85,7 @@ services:
   ldes-backend:
     restart: "no"
     environment:
-      BASE_URL: "http://localhost/streams/ldes"
+      BASE_URL: "http://localhost/streams/ldes/"
     ports:
       - "6666:80"
   vendor-login:

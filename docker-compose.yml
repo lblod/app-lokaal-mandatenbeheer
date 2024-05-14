@@ -169,7 +169,7 @@ services:
     logging: *default-logging
 
   authorization-wrapper:
-    image: lblod/ldes-authorization-wrapper:0.0.0
+    image: lblod/ldes-authorization-wrapper:0.0.2
     labels:
       - "logging=true"
     restart: always

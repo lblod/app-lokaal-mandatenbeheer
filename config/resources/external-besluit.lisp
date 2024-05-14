@@ -22,7 +22,10 @@
                                           :as "contact"))
   :has-many `((bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
                               :inverse t
-                              :as "bestuursorganen"))
+                              :as "bestuursorganen")
+             ((bestuursorgaan :via ,(s-prefix "ext:origineleBestuurseenheid")
+                              :inverse t
+                              :as "fake-bestuursorganen"))
   :resource-base (s-url "http://data.lblod.info/id/bestuurseenheden/")
   :features '(include-uri)
   :on-path "bestuurseenheden"
@@ -62,7 +65,7 @@
   :has-one `((bestuurseenheid :via ,(s-prefix "besluit:bestuurt")
                               :as "bestuurseenheid")
              (bestuurseenheid :via ,(s-prefix "ext:origineleBestuurseenheid")
-                              :as "OGbestuurseenheid")
+                              :as "original-bestuurseenheid")
              (bestuursorgaan-classificatie-code :via ,(s-prefix "besluit:classificatie")
                                                 :as "classificatie")
              (bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")

@@ -20,6 +20,7 @@ INSERT {
           mu:uuid ?bestuursorgaanInTijdId;  
           ext:heeftBestuursperiode ?bestuursperiode;
           org:hasPost ?mandaat.
+    ?mandaat ?pp ?oo .
   }
 }
 WHERE {
@@ -42,8 +43,11 @@ WHERE {
     ?bestuursorgaanInTijd a besluit:Bestuursorgaan;
           mu:uuid ?bestuursorgaanInTijdId;  
           ext:heeftBestuursperiode ?bestuursperiode;
-          mandaat:isTijdspecialisatieVan ?bestuursorgaan;
-          org:hasPost ?mandaat.
+          mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+    OPTIONAL {
+	    ?bestuursorgaanInTijd org:hasPost ?mandaat.
+          ?mandaat ?pp ?oo .
+    }
   }
   GRAPH ?k {
     ?bestuursorgaan2 besluit:bestuurt ?bestuurseenheidGemeente.

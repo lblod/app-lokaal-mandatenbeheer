@@ -70,6 +70,8 @@
                                                 :as "classificatie")
              (bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
                              :as "is-tijdsspecialisatie-van")
+             (bestuursorgaan :via ,(s-prefix "ext:origineleBestuursorgaan")
+                              :as "original-bestuursorgaan")
              (bestuursperiode :via ,(s-prefix "ext:heeftBestuursperiode")
                              :as "heeft-bestuursperiode")
              (rechtstreekse-verkiezing :via ,(s-prefix "mandaat:steltSamen")

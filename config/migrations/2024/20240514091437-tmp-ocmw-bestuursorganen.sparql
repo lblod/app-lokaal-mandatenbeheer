@@ -9,15 +9,16 @@ prefix mu: <http://mu.semte.ch/vocabularies/core/>
 
 INSERT {
   GRAPH ?k {
-    ?bestuursorgaan besluit:bestuurt ?bestuurseenheidGemeente;
+    ?bestuursorgaanURI besluit:bestuurt ?bestuurseenheidGemeente;
           a besluit:Bestuursorgaan;  
           mu:uuid ?bestuursorgaanId;  
           ext:origineleBestuurseenheid ?bestuurseenheidOCMW;
           skos:prefLabel ?naam;
           besluit:classificatie ?classificatie.
-    ?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan;
+    ?bestuursorgaanInTijdURI mandaat:isTijdspecialisatieVan ?bestuursorgaanURI;
           a besluit:Bestuursorgaan;  
           mu:uuid ?bestuursorgaanInTijdId;  
+          ext:origineleBestuursorgaan ?bestuursorgaanInTijd;
           ext:heeftBestuursperiode ?bestuursperiode;
           org:hasPost ?mandaat.
     ?mandaat ?pp ?oo .
@@ -52,4 +53,6 @@ WHERE {
   GRAPH ?k {
     ?bestuursorgaan2 besluit:bestuurt ?bestuurseenheidGemeente.
   }
+  BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen-fake/", ?bestuursorgaanId)) AS ?bestuursorgaanURI).
+  BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen-fake/", ?bestuursorgaanInTijdId)) AS ?bestuursorgaanInTijdURI).
 }

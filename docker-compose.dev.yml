@@ -73,7 +73,6 @@ services:
     profiles:
       - nodebug
   modified:
-    image: lblod/track-modified-service:0.0.0
     restart: "no"
     profiles:
       - nodebug
@@ -86,12 +85,14 @@ services:
   ldes-backend:
     restart: "no"
     environment:
-      BASE_URL: "http://localhost/streams/ldes"
+      BASE_URL: "http://localhost/streams/ldes/"
     ports:
       - "6666:80"
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:
+    restart: "no"
+  authorization-wrapper:
     restart: "no"
   ##############################################################################
   # Besluiten consumers

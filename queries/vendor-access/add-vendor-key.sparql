@@ -7,6 +7,9 @@ PREFIX bestuurseenheid: <http://data.lblod.info/id/bestuurseenheden/>
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
    <http://data.lblod.info/vendors/c5da766f-f1a6-426a-9a4d-36b96a855e18> muAccount:key "my super secret key that i should replace" .
+   <http://data.lblod.info/vendors/c5da766f-f1a6-426a-9a4d-36b96a855e18> muAccount:canActOnBehalfOf ext:abb .
+
+   ext:abb mu:uuid "a4d0e269-35ca-4f0f-be44-c836d0f3f5b7" .
   }
 }
 

@@ -1,0 +1,58 @@
+prefix mandaat:	<http://data.vlaanderen.be/ns/mandaat#> 
+prefix besluit:	<http://data.vlaanderen.be/ns/besluit#> 
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+prefix org: <http://www.w3.org/ns/org#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH ?k {
+    ?bestuursorgaanURI besluit:bestuurt ?bestuurseenheidGemeente;
+          a besluit:Bestuursorgaan;  
+          mu:uuid ?bestuursorgaanId;  
+          ext:origineleBestuurseenheid ?bestuurseenheidOCMW;
+          skos:prefLabel ?naam;
+          besluit:classificatie ?classificatie.
+    ?bestuursorgaanInTijdURI mandaat:isTijdspecialisatieVan ?bestuursorgaanURI;
+          a besluit:Bestuursorgaan;  
+          mu:uuid ?bestuursorgaanInTijdId;  
+          ext:origineleBestuursorgaan ?bestuursorgaanInTijd;
+          ext:heeftBestuursperiode ?bestuursperiode;
+          org:hasPost ?mandaat.
+    ?mandaat ?pp ?oo .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?bestuurseenheidGemeente a besluit:Bestuurseenheid;
+          besluit:classificatie bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001;
+          besluit:werkingsgebied ?werkingsgebied.
+    ?bestuurseenheidOCMW a besluit:Bestuurseenheid;
+          besluit:classificatie bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000002;
+          besluit:werkingsgebied ?werkingsgebied.
+    ?bestuursperiode a ext:Bestuursperiode;
+          ext:startYear "2025"^^xsd:integer.
+    ?classificatie skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
+  }
+  GRAPH ?h {
+    ?bestuursorgaan besluit:bestuurt ?bestuurseenheidOCMW;
+          mu:uuid ?bestuursorgaanId;  
+          skos:prefLabel ?naam;
+          besluit:classificatie ?classificatie.
+    ?bestuursorgaanInTijd a besluit:Bestuursorgaan;
+          mu:uuid ?bestuursorgaanInTijdId;  
+          ext:heeftBestuursperiode ?bestuursperiode;
+          mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+    OPTIONAL {
+	    ?bestuursorgaanInTijd org:hasPost ?mandaat.
+          ?mandaat ?pp ?oo .
+    }
+  }
+  GRAPH ?k {
+    ?bestuursorgaan2 besluit:bestuurt ?bestuurseenheidGemeente.
+  }
+  BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen-fake/", ?bestuursorgaanId)) AS ?bestuursorgaanURI).
+  BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen-fake/", ?bestuursorgaanInTijdId)) AS ?bestuursorgaanInTijdURI).
+}

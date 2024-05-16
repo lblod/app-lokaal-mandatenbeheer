@@ -22,7 +22,10 @@
                                           :as "contact"))
   :has-many `((bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
                               :inverse t
-                              :as "bestuursorganen"))
+                              :as "bestuursorganen")
+              (bestuursorgaan :via ,(s-prefix "ext:origineleBestuurseenheid")
+                              :inverse t
+                              :as "fake-bestuursorganen"))
   :resource-base (s-url "http://data.lblod.info/id/bestuurseenheden/")
   :features '(include-uri)
   :on-path "bestuurseenheden"
@@ -61,10 +64,14 @@
                 (:binding-start :date ,(s-prefix "mandaat:bindingStart")))
   :has-one `((bestuurseenheid :via ,(s-prefix "besluit:bestuurt")
                               :as "bestuurseenheid")
+             (bestuurseenheid :via ,(s-prefix "ext:origineleBestuurseenheid")
+                              :as "original-bestuurseenheid")
              (bestuursorgaan-classificatie-code :via ,(s-prefix "besluit:classificatie")
                                                 :as "classificatie")
              (bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
                              :as "is-tijdsspecialisatie-van")
+             (bestuursorgaan :via ,(s-prefix "ext:origineleBestuursorgaan")
+                              :as "original-bestuursorgaan")
              (bestuursperiode :via ,(s-prefix "ext:heeftBestuursperiode")
                              :as "heeft-bestuursperiode")
              (rechtstreekse-verkiezing :via ,(s-prefix "mandaat:steltSamen")
@@ -87,7 +94,10 @@
                 (:einde :integer ,(s-prefix "ext:endYear")))
   :has-many `((bestuursorgaan :via ,(s-prefix "ext:heeftBestuursperiode")
                        :inverse t
-                       :as "heeft-bestuursorganen-in-tijd"))
+                       :as "heeft-bestuursorganen-in-tijd")
+             (installatievergadering :via ,(s-prefix "ext:heeftBestuursperiode")
+                       :inverse t
+                       :as "installatievergaderingen"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Bestuursperiode/")
   :features '(include-uri)
   :on-path "bestuursperiodes")

@@ -30,27 +30,31 @@ ext:mandatarisStatusCodeF
     form:displayType displayTypes:mandatarisStatusCodeSelector;
     sh:group ext:mandatarisPG;
     sh:name "Status";
-    form:help "Titelvoerdend is enkel voor burgemeester";
     sh:order 4;
     sh:path mandaat:status;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
 ext:beleidsdomeinCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeMultiSelectorWithCreate;
+    form:displayType displayTypes:mandatarisBeleidsdomein;
     sh:group ext:mandatarisPG;
     sh:name "Beleidsdomein";
-    form:help "Enkel voor schepenen en burgemeester";
     sh:order 5;
     sh:path mandaat:beleidsdomein;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
 ext:rangordeF
     a form:Field;
-    form:displayType displayTypes:defaultInput;
+    form:displayType displayTypes:mandatarisRangorde;
     sh:group ext:mandatarisPG;
     sh:name "Rangorde";
-    form:help "Enkel voor schepenen";
     sh:order 6;
-    sh:path mandaat:rangorde.
+    sh:path mandaat:rangorde;
+    form:validatedBy [
+      a ext:ValidRangorde;
+      form:grouping form:MatchSome;
+      sh:severity sh:Warning;
+      sh:resultMessage "Er werd geen geldige rangorde herkend";
+      sh:path mandaat:rangorde
+    ].
 ext:startF
     a form:Field;
     form:displayType displayTypes:dateTime;

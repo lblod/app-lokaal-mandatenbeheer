@@ -252,6 +252,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://mandataris/burgemeester-benoeming/")
   end
 
+  post "/installatievergadering-api/*path", %{ layer: :api_services } do
+    forward(conn, path, "http://mandataris/installatievergadering-api/")
+  end
+
   post "/files/*path", %{ layer: :api_services } do
     forward(conn, path, "http://file/files/")
   end

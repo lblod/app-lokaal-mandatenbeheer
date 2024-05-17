@@ -33,14 +33,6 @@ ext:mandatarisStatusCodeF
     sh:order 4;
     sh:path mandaat:status;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
-ext:beleidsdomeinCodeF
-    a form:Field;
-    form:displayType displayTypes:mandatarisBeleidsdomein;
-    sh:group ext:mandatarisPG;
-    sh:name "Beleidsdomein";
-    sh:order 5;
-    sh:path mandaat:beleidsdomein;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
 ext:rangordeF
     a form:Field;
     form:displayType displayTypes:mandatarisRangorde;
@@ -91,7 +83,6 @@ ext:hiddenPublicationStatusF
         ext:persoonF,
         ext:mandaatF,
         ext:mandatarisStatusCodeF,
-        ext:beleidsdomeinCodeF,
         ext:rangordeF,
         ext:startF,
         ext:eindeF,

@@ -146,7 +146,7 @@ services:
     labels:
       - "logging=true"
     volumes:
-      - ./config/form-content:/forms
+      - ./config/form-content:/config
   mandataris:
     image: lblod/mandataris-service:0.0.0
     labels:

@@ -75,6 +75,54 @@ Het resultaat van onze query is de start datum. Dit is een string met als dataty
 | --- | ------------------------------------------------------------------- |
 | 1   | "2021-06-25T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> |
 
+#### Een eigenschap met als waarde een andere URI
+
+Als we woorden (string) of getallen (integere/decimalen) terugkrijgen weten we wat we er mee kunnen doen. Als de `?waarde` van een `?eigenschap` gelijk is aan een andere URI gaan we nog een extra query moeten uitvoeren tot we op de gewenste waarde uitkomen dat we zoeken. Het resultaat van in [Specifieke Mandataris ophalen aan de hand van zijn URI](#specifieke-mandataris-ophalen-aan-de-hand-van-zijn-uri) geeft ons een `?eigenschap` terug waar dit het geval is. We zullen eens kijken hoe we dit aanpakken.
+
+Als we `?eigenschap` met uri http://www.w3.org/ns/org#hasMembership nemen zien we dat de `?waarde` gelijk is aan een URI. Deze URI kan je zien als een nieuw `subject` waar we informatie van kunnen gaan ophalen. Dit doen we door zoals in [Specifieke Mandataris ophalen aan de hand van zijn URI](#specifieke-mandataris-ophalen-aan-de-hand-van-zijn-uri) de uri voorop te stellen in onze query en daarvan al de eigenschappen en hun `?waarde` op te vragen.
+
+```sparql
+SELECT * WHERE {
+  <http://data.lblod.info/id/lidmaatschappen/614089E2E5754600080000B5> ?eigenschap ?waarde .
+}
+```
+
+Dit geeft als resultaat de eigenschappen van ons `?lidmaatschap`. Hier zeg ik lidmaatschap omdat als we kijken naar de URI de uuid staat achter het woord `lidmaatschappen`. Dit lidmaatschap heeft ook weer een type, uuid en organistatie `?eigenschap` die elks een `?waarde` hebben.
+
+|     | Eigenschap                                        | Waarde                                                        |
+| --- | ------------------------------------------------- | ------------------------------------------------------------- |
+| 1   | <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> | <http://www.w3.org/ns/org#Membership>                         |
+| 2   | <http://mu.semte.ch/vocabularies/core/uuid>       | 614089E2E5754600080000B5                                      |
+| 3   | <http://www.w3.org/ns/org#organisation>           | <http://data.lblod.info/id/fracties/5E8F615FA3ACB60008000AD4> |
+
+Halen we de informatie op van onze `organistatie` krijgen we volgende eigeschappen terug die je kan vinden door op de URI = https://data.lblod.info/id/fracties/5E8F615FA3ACB60008000AD4 (`?waarde`) door te klikken of weer een query te maken met de `?waarde` als `subject`.
+
+```sparql
+SELECT * WHERE {
+  <http://data.lblod.info/id/fracties/5E8F615FA3ACB60008000AD4> ?eigenschap ?waarde .
+}
+```
+
+|     | Eigenschap                                        | Waarde                                                                                                        |
+| --- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 1   | <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> | <http://data.vlaanderen.be/ns/mandaat#Fractie>                                                                |
+| 2   | <https://www.w3.org/ns/regorg#legalName>          | Een partij naam                                                                                               |
+| 3   | <http://www.w3.org/ns/org#linkedTo>               | <http://data.lblod.info/id/bestuurseenheden/a9e63c13a602de3cc5463cc81eee0b8d80d14a1846d1deb82b3a2d4e7efc96af> |
+| 4   | <http://www.w3.org/ns/org#memberOf>               | <http://data.lblod.info/id/bestuursorganen/508ba1f646df60ccca50d66dae56d5b2790436c0c23c0bf8019b647fd6e83a0c>  |
+| 5   | <http://www.w3.org/ns/org#memberOf>               | <http://data.lblod.info/id/bestuursorganen/8889822dcf84932bd7f48726cdc726e5da586f9829fb7bc14605ebc496c9af97>  |
+| 6   | <http://www.w3.org/ns/org#memberOf>               | <http://data.lblod.info/id/bestuursorganen/e775fec5a58ec771f0ceb818545e127a404919173957e71eb74717dc73195971>  |
+| 7   | <http://mu.semte.ch/vocabularies/core/uuid>       | 5E8F615FA3ACB60008000AD4                                                                                      |
+
+Hadden we nu graag de waarde van één van de eigenschappen getoond vervangen we de variabele `?eigenschap` door de URI die de eigenschap representeerd.
+
+```sparql
+SELECT * WHERE {
+  <http://data.lblod.info/id/fracties/5E8F615FA3ACB60008000AD4> <https://www.w3.org/ns/regorg#legalName> ?waarde .
+}
+```
+
+Bij dit voorbeeld krijgen we dan `Een partij naam` terug als `?waarde`.
+
 ## Links
 
 - Centrale Vindplaats sparql endpoint | https://centrale-vindplaats.lblod.info/sparql

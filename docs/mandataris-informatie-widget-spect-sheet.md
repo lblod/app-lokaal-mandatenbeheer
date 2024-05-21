@@ -12,6 +12,8 @@ Onze data gaan we ophalen door gebruik te maken van het sparql endpoint van [**C
 
 Om te weten hoe zo een mandataris er uit ziet halen we eerst 5 mandatarissen op. Dit doen we door volgende query kopieren in ons sparql endpoint van **Centrale Vindplaats**.
 
+⚠️ Let op als je subjects opvraagt per type, weet dat die er mogelijks als een groot aantal inzitten en gebruik dus de LIMIT om de query niet te zwaar te maken.
+
 ```sparql
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 

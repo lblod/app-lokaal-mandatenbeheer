@@ -153,6 +153,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+    volumes:
+      - ./data/files/burgemeester-benoemingen:/uploads
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.6.3
     labels:

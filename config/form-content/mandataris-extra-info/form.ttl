@@ -1,0 +1,36 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix displayTypes: <http://lblod.data.gift/display-types/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+
+ext:beleidsdomeinCodeF
+    a form:Field;
+    form:displayType displayTypes:mandatarisBeleidsdomein;
+    sh:group ext:editMandatarisPG;
+    sh:name "Beleidsdomein";
+    sh:order 100;
+    sh:path mandaat:beleidsdomein;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
+# Strictly this is not needed, but is used to check whether beleidsdomeinen should render ...
+ext:hiddenmandaatF
+    a form:Field;
+    sh:name "Mandaat [hidden input]";
+    sh:order 5000;
+    sh:path org:holds.
+ext:editMandatarisPG
+    a form:PropertyGroup; sh:name ""; sh:order 1.
+
+<http://data.lblod.info/id/lmb/forms/mandataris-extra-info>
+    a form:Form, form:TopLevelForm;
+    form:includes
+        ext:beleidsdomeinCodeF,
+        ext:hiddenmandaatF;
+    sh:group ext:editMandatarisPG;
+    form:targetType mandaat:Mandataris;
+    form:targetLabel mu:uuid;
+    ext:prefix <http://data.lblod.info/id/mandatarissen/>;
+    ext:withHistory true;
+    mu:uuid "6a37b8c1-5b37-4a39-b61e-5a7ff259361e".

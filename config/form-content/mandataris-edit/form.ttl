@@ -32,14 +32,6 @@ ext:replacementF
     sh:name "Tijdelijk vervangen door";
     sh:order 400;
     sh:path mandaat:isTijdelijkVervangenDoor.
-ext:beleidsdomeinCodeF
-    a form:Field;
-    form:displayType displayTypes:mandatarisBeleidsdomein;
-    sh:group ext:editMandatarisPG;
-    sh:name "Beleidsdomein";
-    sh:order 500;
-    sh:path mandaat:beleidsdomein;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
 ext:rangordeF
     a form:Field;
     form:displayType displayTypes:mandatarisRangorde;
@@ -98,7 +90,6 @@ ext:editMandatarisPG
     form:includes
         ext:mandaatF,
         ext:mandatarisStatusCodeF,
-        ext:beleidsdomeinCodeF,
         ext:rangordeF,
         ext:startF,
         ext:eindeF,

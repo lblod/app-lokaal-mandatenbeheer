@@ -45,6 +45,105 @@ await fetch('https://centrale-vindplaats.lblod.info/sparql', {
 })
 ```
 
+Het JSON resultaat bij het opvragen van een lijst van Mandatarissen.
+
+```json
+{
+  "results": {
+    "ordered": true,
+    "distinct": false,
+    "bindings": [
+      {
+        "voornaam": {
+          "value": "<voornaam>",
+          "type": "literal"
+        },
+        "status": {
+          "value": "Waarnemend",
+          "type": "literal"
+        },
+        "start": {
+          "value": "2019-01-02T00:00:00Z",
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "mandaat": {
+          "value": "Schepen",
+          "type": "literal"
+        },
+        "fractie": {
+          "value": "Voor Mechelen",
+          "type": "literal"
+        },
+        "familienaam": {
+          "value": "<familienaam>",
+          "type": "literal"
+        },
+        "einde": {
+          "value": "2024-12-31T00:00:00Z",
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "bevoegdheden": {
+          "value": " Communicatie , Participatie, Openbare Werken, natuur- en groenontwikkeling, parken en stadstuinen",
+          "type": "literal"
+        }
+      },
+      {...}
+      {
+        "voornaam": {
+          "value": "<voornaam>",
+          "type": "literal"
+        },
+        "status": {
+          "value": "Verhinderd",
+          "type": "literal"
+        },
+        "start": {
+          "value": "2015-11-30T00:00:00Z",
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "mandaat": {
+          "value": "Schepen",
+          "type": "literal"
+        },
+        "fractie": {
+          "value": "N-VA",
+          "type": "literal"
+        },
+        "familienaam": {
+          "value": "<familienaam>",
+          "type": "literal"
+        },
+        "einde": {
+          "value": "2017-12-31T00:00:00Z",
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "bevoegdheden": {
+          "value": "Openbare Werken",
+          "type": "literal"
+        }
+      }
+    ]
+  },
+  "head": {
+    "vars": [
+      "mandaat",
+      "fractie",
+      "voornaam",
+      "familienaam",
+      "status",
+      "bevoegdheden",
+      "start",
+      "einde"
+    ],
+    "link": []
+  }
+}
+```
+
 ### Mandataris
 
 Om de detail van één mandataris op te vragen kan je volgende query gebruiken.
@@ -86,7 +185,7 @@ await fetch('https://centrale-vindplaats.lblod.info/sparql', {
 })
 ```
 
-Het resultaat van de queries gebruiken kan door het JSON patroon te volgen. Hieronder vind je een voorbeeld van zo een resultaat.
+Het JSON resultaat bij het opvragen van een Mandataris volgens zijn uuid.
 
 ```json
 {

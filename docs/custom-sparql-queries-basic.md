@@ -1,14 +1,14 @@
 # Custom sparql queries Basic
 
-In dit document vind je de nodige informatie voor het creëren van een widget met mandataris informatie dat gebaseerd is op de **Vlaamse Madatendatabank**. Een overzicht van hoe deze informatie is opgebouwd kan [hier](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/#overview) vinden. Onze data gaan we ophalen door gebruik te maken van het publieke endpoint van de **Centrale Vindplaats**.
+In dit document vind je de nodige informatie voor het creëren van een widget met mandataris informatie dat gebaseerd is op de **Vlaamse Madatendatabank**. Een overzicht van hoe deze informatie is opgebouwd kan [hier](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/#overview) vinden.
 
 ## SPARQL endpoint
 
-Onze data gaan we ophalen door gebruik te maken van het sparql endpoint van [**Centrale Vindplaats**](https://centrale-vindplaats.lblod.info/sparql). De link naar dit endpoint kan je steeds terugvinden in de [Links](#links) onderaan in dit document.
+De data wordt opgehaald door gebruik te maken van het sparql endpoint van [**Centrale Vindplaats**](https://centrale-vindplaats.lblod.info/sparql). De link naar dit endpoint kan je steeds terugvinden in de [Links](#links) onderaan in dit document.
 
 ### Lijst van mandatarissen
 
-Als we een lijst willen tonen van mandatrissen moeten we de basis informatie ophalen zodat we hier verder mee kunnen werken.
+Voor het tonen van een lijst van mandatrissen moet je de basis informatie ophalen zodat je hier verder mee aan de slag kan.
 
 #### Basis informatie
 

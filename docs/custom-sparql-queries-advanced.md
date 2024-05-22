@@ -1,16 +1,16 @@
 # Custom sparql queries Advanced
 
-In dit document vind je de nodige informatie voor het creëren van een widget met mandataris informatie dat gebaseerd is op de **Vlaamse Madatendatabank**. Een overzicht van hoe deze informatie is opgebouwd kan [hier](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/#overview) vinden. Onze data gaan we ophalen door gebruik te maken van het publieke endpoint van de **Centrale Vindplaats**.
+In dit document vind je de nodige informatie voor het creëren van een widget met mandataris informatie dat gebaseerd is op de **Vlaamse Madatendatabank**. Een overzicht van hoe deze informatie is opgebouwd kan [hier](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/#overview) vinden.
 
 ## SPARQL endpoint
 
-Onze data gaan we ophalen door gebruik te maken van het sparql endpoint van [**Centrale Vindplaats**](https://centrale-vindplaats.lblod.info/sparql). De link naar dit endpoint kan je steeds terugvinden in de [Links](#links) onderaan in dit document.
+De data wordt opgehaald door gebruik te maken van het sparql endpoint van [**Centrale Vindplaats**](https://centrale-vindplaats.lblod.info/sparql). De link naar dit endpoint kan je steeds terugvinden in de [Links](#links) onderaan in dit document.
 
 ### Hoe navigeren door de data
 
 #### Meerdere Mandatarissen ophalen
 
-Om te weten hoe zo een mandataris er uit ziet halen we eerst 5 mandatarissen op. Dit doen we door volgende query kopieren in ons sparql endpoint van **Centrale Vindplaats**.
+Om te weten hoe zo een mandataris er uit ziet halen we eerst 5 mandatarissen op. Dit doe je door volgende query te kopieren in het sparql endpoint van **Centrale Vindplaats**.
 
 ⚠️ Let op als je subjects opvraagt per type, weet dat die er mogelijks als een groot aantal inzitten en gebruik dus de LIMIT om de query niet te zwaar te maken.
 
@@ -32,11 +32,11 @@ Onderstaande waarden zijn een mogelijk resultaat van onze query. ⚠️ Deze res
 | 4   | <http://data.lblod.info/id/mandatarissen/6141BC08E57546000800018A> |
 | 5   | <http://data.lblod.info/id/mandatarissen/6142EE5CE575460008000227> |
 
-Als het goed is krijg je 5 resultaten terug. Deze resultaten zijn de `subjects` (uri's) van de mandatarissen. Als we meer informatie willen weten over een van deze kunnen we de waarde tussen de driehoekige haken gebruiken (URI).
+Als het goed is krijg je 5 resultaten terug. Deze resultaten zijn de `subjects` (uri's) van de mandatarissen. Om meer informatie te weten te komen kan je de waarde tussen de driehoekige haken gebruiken (URI).
 
 #### Specifieke Mandataris ophalen aan de hand van zijn URI
 
-Ons eerste resultaat is de mandataris met URI gelijk aan **http://data.lblod.info/id/mandatarissen/614089E2E5754600080000B6**. Om meer informatie te weten te komen over deze mandataris kunnen we doorklikken op deze URI. Nu krijg je al de eigenschappen en relaties te zien in een tabel van deze mandataris.
+Ons eerste resultaat is de mandataris met URI gelijk aan **http://data.lblod.info/id/mandatarissen/614089E2E5754600080000B6**. Om meer informatie te weten te komen over deze mandataris kan je doorklikken op deze URI. Nu krijg je al de eigenschappen en relaties te zien in een tabel van deze mandataris.
 
 Om deze informatie op te halen via ons endpoint kan je gebruik maken van volgende query.
 
@@ -59,11 +59,11 @@ Resultaat van onze query
 | 7   | <http://data.vlaanderen.be/ns/mandaat#start>                  | "2021-06-25T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>                                   |
 | 8   | <http://data.vlaanderen.be/ns/mandaat#status>                 | <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/c301248f-0199-45ca-b3e5-4c596731d5fe>      |
 
-Vergelijk de terug gekregen resultaten met de waarden die je daarnet in de tabel zag. Elke `?eigenschap` vind je ook hier terug met zijn overkomstige `?waarde`. Zo zien we dat onze **Mandataris** een start en eind datum heeft maar ook een nog andere eigenschappen. Om meer informatie over elke eigenschap te weten te komen kunnen we telkens doorklikken op de URI. Die verwijzen meestal naar een leesbare pagina waar de eigenschap uitgelegd staat maar kan ook verwijzen naar een turtle bestand dat iets moeilijker te lezen is.
+Vergelijk de terug gekregen resultaten met de waarden die je daarnet in de tabel zag. Elke `?eigenschap` vind je ook hier terug met zijn overkomstige `?waarde`. Zo zien je dat de **Mandataris** een start en eind datum heeft maar ook een nog andere eigenschappen. Om meer informatie over elke eigenschap te weten te komen kan je telkens doorklikken op de URI. Die verwijzen meestal naar een leesbare pagina waar de eigenschap uitgelegd staat maar kan ook verwijzen naar een turtle bestand dat iets moeilijker te lezen is.
 
 #### Een eigenschap specifieke eigennschap ophalen van een Mandataris
 
-Onze vorige query gaf als resultaat al zijn eigenschappen terug. Als we niet al zijn eigenschappen willen terug krijgen maar één dan kunnen we gebruik maken van de URI van die eigenschap. Als we bijvoorbeeld de start datum van de Mandataris willen terugkrijgen kunnen we de URI (http://data.vlaanderen.be/ns/mandaat#start) uit voorgaand resultaat gebruiken om dit op te vragen. De query zal er als volgt uitzien.
+Onze vorige query gaf als resultaat al zijn eigenschappen terug. Als je niet al zijn eigenschappen willen terug krijgen maar één dan kan je gebruik maken van de URI van die eigenschap. Neem als bijvoorbeeld de start datum van de Mandataris, dit kan je terugkrijgen door de URI (http://data.vlaanderen.be/ns/mandaat#start) uit voorgaand resultaat te gebruiken. De query zal er als volgt uitzien.
 
 ```sparql
 SELECT * WHERE {
@@ -79,9 +79,9 @@ Het resultaat van onze query is de start datum. Dit is een string met als dataty
 
 #### Een eigenschap met als waarde een andere URI
 
-Als we woorden (string) of getallen (integere/decimalen) terugkrijgen weten we wat we er mee kunnen doen. Als de `?waarde` van een `?eigenschap` gelijk is aan een andere URI gaan we nog een extra query moeten uitvoeren tot we op de gewenste waarde uitkomen dat we zoeken. Het resultaat van in [Specifieke Mandataris ophalen aan de hand van zijn URI](#specifieke-mandataris-ophalen-aan-de-hand-van-zijn-uri) geeft ons een `?eigenschap` terug waar dit het geval is. We zullen eens kijken hoe we dit aanpakken.
+Bij het terugkrijgen van woorden (string) of getallen (integere/decimalen) is het tonen van de waarde duidelijk. Als de `?waarde` van een `?eigenschap` gelijk is aan een andere URI ga je nog een extra query moeten uitvoeren tot er op de gewenste waarde wordt uigekomen. Het resultaat van in [Specifieke Mandataris ophalen aan de hand van zijn URI](#specifieke-mandataris-ophalen-aan-de-hand-van-zijn-uri) geeft ons een `?eigenschap` terug waar dit het geval is. Hieronder zie je het dit aangepakt kan worden.
 
-Als we `?eigenschap` met uri http://www.w3.org/ns/org#hasMembership nemen zien we dat de `?waarde` gelijk is aan een URI. Deze URI kan je zien als een nieuw `subject` waar we informatie van kunnen gaan ophalen. Dit doen we door zoals in [Specifieke Mandataris ophalen aan de hand van zijn URI](#specifieke-mandataris-ophalen-aan-de-hand-van-zijn-uri) de uri voorop te stellen in onze query en daarvan al de eigenschappen en hun `?waarde` op te vragen.
+Bij een `?eigenschap` met uri http://www.w3.org/ns/org#hasMembership kan je zien dat de `?waarde` gelijk is aan een URI. Deze URI kan je zien als een nieuw `subject` waar je informatie van kan ophalen. Dit doe je door zoals in [Specifieke Mandataris ophalen aan de hand van zijn URI](#specifieke-mandataris-ophalen-aan-de-hand-van-zijn-uri) de uri voorop te stellen in onze query en daarvan al de eigenschappen en hun `?waarde` op te vragen.
 
 ```sparql
 SELECT * WHERE {
@@ -89,7 +89,7 @@ SELECT * WHERE {
 }
 ```
 
-Dit geeft als resultaat de eigenschappen van ons `?lidmaatschap`. Hier gebruiken we lidmaatschap als variabelen omdat als we kijken naar de URI de uuid staat achter het woord `lidmaatschappen`. Dit lidmaatschap heeft ook weer een type, uuid en organistatie `?eigenschap` die elks een `?waarde` hebben.
+Dit geeft als resultaat de eigenschappen van ons `?lidmaatschap`. Lidmaatschap wordt gebruikt als variabele doordat je kijkt naar het woord `lidmaatschappen` voor de uuid. Dit lidmaatschap heeft ook weer een type, uuid en organistatie `?eigenschap` die elks een `?waarde` hebben.
 
 |     | Eigenschap                                        | Waarde                                                        |
 | --- | ------------------------------------------------- | ------------------------------------------------------------- |
@@ -97,7 +97,7 @@ Dit geeft als resultaat de eigenschappen van ons `?lidmaatschap`. Hier gebruiken
 | 2   | <http://mu.semte.ch/vocabularies/core/uuid>       | 614089E2E5754600080000B5                                      |
 | 3   | <http://www.w3.org/ns/org#organisation>           | <http://data.lblod.info/id/fracties/5E8F615FA3ACB60008000AD4> |
 
-Halen we de informatie op van onze `organistatie` krijgen we volgende eigeschappen terug die je kan vinden door op de URI = https://data.lblod.info/id/fracties/5E8F615FA3ACB60008000AD4 (`?waarde`) door te klikken of weer een query te maken met de `?waarde` als `subject`.
+Bioj het ophalen van de informatie over de `organistatie` krijgen je volgende eigeschappen terug die je kan vinden door op de URI = https://data.lblod.info/id/fracties/5E8F615FA3ACB60008000AD4 (`?waarde`) door te klikken of weer een query te maken met de `?waarde` als `subject`.
 
 ```sparql
 SELECT * WHERE {
@@ -115,7 +115,7 @@ SELECT * WHERE {
 | 6   | <http://www.w3.org/ns/org#memberOf>               | <http://data.lblod.info/id/bestuursorganen/e775fec5a58ec771f0ceb818545e127a404919173957e71eb74717dc73195971>  |
 | 7   | <http://mu.semte.ch/vocabularies/core/uuid>       | 5E8F615FA3ACB60008000AD4                                                                                      |
 
-Hadden we nu graag de waarde van één van de eigenschappen getoond vervangen we de variabele `?eigenschap` door de URI die de eigenschap representeerd.
+Had je nu graag de waarde van één van de eigenschappen getoond vervang je de variabele `?eigenschap` door de URI die de eigenschap representeerd.
 
 ```sparql
 SELECT * WHERE {
@@ -123,13 +123,13 @@ SELECT * WHERE {
 }
 ```
 
-Bij dit voorbeeld krijgen we dan `Een partij naam` terug als `?waarde`.
+Bij dit voorbeeld verkrijg je dan `Een partij naam` terug als `?waarde`.
 
 ### Verkrijgen van data voor een widget
 
 #### Lijst van mandatarissen
 
-Hierboven hebben we gekeken hoe we meerdere mandatarissen kunnen ophalen aan de hand van een query. Hierna hebben we gekeken hoe we specifieke eigenschappen opvragen van één mandataris. Bij deze query gaan we beide combineren zodat we een lijst kunnen tonen van mandatarissen die bepaalde basis informatie meegeeft over elke mandataris.
+Hierboven heb je gekeken hoe meerdere mandatarissen kunnen opgehaald worden aan de hand van een query. Daarna heb je gezien hoe specifieke eigenschappen op te vragen van één mandataris. Bij volgende query combineren we beide zodat je een lijst kan tonen van mandatarissen die bepaalde basis informatie meegeeft over elke mandataris.
 
 ```sparql
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
@@ -167,12 +167,12 @@ GROUP BY ?mandaatLabel ?fractie ?voornaam ?familienaam ?status ?startdatum ?eind
 
 #### Mandataris tonen
 
-Als we bovenstaande informatie gebruik hebben om in onze applicatie een lijst van mandatarissen te tonen willen we waarschijnlijk ook graag deze informatie tonen voor een specifieke mandataris. bv na het doorklikken op de mandataris in de lijst.
+Door bovenstaande informatie te gebruiken kan je een lijst van mandatarissen te tonen. Natuurlijk wil je ook graag deze informatie tonen voor een specifieke mandataris. bv na het doorklikken op de mandataris in de lijst.
 
 BIj de query zijn er een aantal verschillen dan bij het ophalen van al de mandatarissen.
 
-1. We specifieren welke URI onze `?mandataris` heeft
-2. We vragen twee `?eigenschappen` meer op waaronder de `?locatie` en het `?orgaan`
+1. Specifieer welke URI onze `?mandataris` heeft
+2. Er worden twee `?eigenschappen` meer opgevraagd waaronder de `?locatie` en het `?orgaan`
 3. Beide variable worden ook toegevoegd aan de `GROUP BY`
 
 ```sparql

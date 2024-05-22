@@ -6,7 +6,7 @@ In dit document vind je de nodige informatie voor het creëren van een widget me
 
 Onze data gaan we ophalen door gebruik te maken van het sparql endpoint van [**Centrale Vindplaats**](https://centrale-vindplaats.lblod.info/sparql). De link naar dit endpoint kan je steeds terugvinden in de [Links](#links) onderaan in dit document.
 
-### Hoe navigeer ik door de data
+### Hoe navigeren door de data
 
 #### Meerdere Mandatarissen ophalen
 
@@ -89,7 +89,7 @@ SELECT * WHERE {
 }
 ```
 
-Dit geeft als resultaat de eigenschappen van ons `?lidmaatschap`. Hier zeg ik lidmaatschap omdat als we kijken naar de URI de uuid staat achter het woord `lidmaatschappen`. Dit lidmaatschap heeft ook weer een type, uuid en organistatie `?eigenschap` die elks een `?waarde` hebben.
+Dit geeft als resultaat de eigenschappen van ons `?lidmaatschap`. Hier gebruiken we lidmaatschap als variabelen omdat als we kijken naar de URI de uuid staat achter het woord `lidmaatschappen`. Dit lidmaatschap heeft ook weer een type, uuid en organistatie `?eigenschap` die elks een `?waarde` hebben.
 
 |     | Eigenschap                                        | Waarde                                                        |
 | --- | ------------------------------------------------- | ------------------------------------------------------------- |

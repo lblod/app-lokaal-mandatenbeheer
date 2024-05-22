@@ -132,6 +132,50 @@ Bij dit voorbeeld krijgen we dan `Een partij naam` terug als `?waarde`.
 Hierboven hebben we gekeken hoe we meerdere mandatarissen kunnen ophalen aan de hand van een query. Hierna hebben we gekeken hoe we specifieke eigenschappen opvragen van één mandataris. Bij deze query gaan we beide combineren zodat we een lijst kunnen tonen van mandatarissen die bepaalde basis informatie meegeeft over elke mandataris.
 
 ```sparql
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+
+SELECT (?mandaatLabel AS ?mandaat) ?fractie ?voornaam ?familienaam ?status (GROUP_CONCAT(?beleidsdomein; separator=", ") as ?bevoegdheden) (?startdatum AS ?start) (?einddatum AS ?einde) WHERE {
+  ?mandataris a mandaat:Mandataris .
+  ?mandataris mandaat:start ?startdatum .
+  ?mandataris mandaat:einde ?einddatum .
+
+  ?mandataris mandaat:status ?mandatarisStatusCode .
+  ?mandatarisStatusCode skos:prefLabel ?status .
+
+  ?mandataris org:holds ?mandaat .
+  ?mandaat  org:role ?bestuursfunctieCode.
+  ?bestuursfunctieCode skos:prefLabel ?mandaatLabel .
+
+  ?mandataris org:hasMembership ?lidmaatschap .
+  ?lidmaatschap org:organisation ?organisation .
+  ?organisation regorg:legalName ?fractie .
+
+  ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon .
+  ?persoon persoon:gebruikteVoornaam ?voornaam .
+  ?persoon foaf:familyName ?familienaam .
+
+  ?mandataris mandaat:beleidsdomein ?beleidsdomeinen .
+  ?beleidsdomeinen skos:prefLabel ?beleidsdomein .
+}
+GROUP BY ?mandaatLabel ?fractie ?voornaam ?familienaam ?status ?startdatum ?einddatum
+```
+
+#### Mandataris tonen
+
+Als we bovenstaande informatie gebruik hebben om in onze applicatie een lijst van mandatarissen te tonen willen we waarschijnlijk ook graag deze informatie tonen voor een specifieke mandataris. bv na het doorklikken op de mandataris in de lijst.
+
+BIj de query zijn er een aantal verschillen dan bij het ophalen van al de mandatarissen.
+
+1. We specifieren welke URI onze `?mandataris` heeft
+2. We vragen twee `?eigenschappen` meer op waaronder de `?locatie` en het `?orgaan`
+3. Beide variable worden ook toegevoegd aan de `GROUP BY`
+
+```sparql
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -141,8 +185,9 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX regorg: <https://www.w3.org/ns/regorg#>
 
 SELECT (?bestuurdIn AS ?locatie) (?bestuursOrgaanInTijdLabel AS ?orgaan) (?mandaatLabel AS ?mandaat) ?fractie ?voornaam ?familienaam ?status (GROUP_CONCAT(?beleidsdomein; separator=", ") as ?bevoegdheden) (?startdatum AS ?start) (?einddatum AS ?einde) WHERE {
-  ?mandataris a mandaat:Mandataris .
-  ?mandataris mandaat:start ?stardatumt .
+  VALUES ?mandataris { <http://data.lblod.info/id/mandatarissen/bb318931-b2bb-446b-b87c-e4f706f57e7f> }
+
+  ?mandataris mandaat:start ?startdatum .
   ?mandataris mandaat:einde ?einddatum .
 
   ?mandataris mandaat:status ?mandatarisStatusCode .
@@ -170,6 +215,12 @@ SELECT (?bestuurdIn AS ?locatie) (?bestuursOrgaanInTijdLabel AS ?orgaan) (?manda
 }
 GROUP BY ?bestuurdIn ?bestuursOrgaanInTijdLabel ?mandaatLabel ?fractie ?voornaam ?familienaam ?status ?startdatum ?einddatum
 ```
+
+Deze query geeft daarbij als resultaat
+
+| Locatie  | Orgaan                                         | Mandaat | Fractie | Voornaam | Familienaam | Status    | Bevoegdheden          | Start                                                               | Einde                                                               |
+| -------- | ---------------------------------------------- | ------- | ------- | -------- | ----------- | --------- | --------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Borgloon | College van Burgemeester en Schepenen Borgloon | Schepen | sp.a    | Jo       | Dardenne    | Effectief | Woon- en leefomgeving | "2019-01-02T23:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> | "2020-12-30T23:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> |
 
 ## Links
 

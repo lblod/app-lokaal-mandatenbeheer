@@ -6,6 +6,15 @@ In dit document vind je de nodige informatie voor het creëren van een widget me
 
 De data wordt opgehaald door gebruik te maken van het sparql endpoint van [**Centrale Vindplaats**](https://centrale-vindplaats.lblod.info/sparql). De link naar dit endpoint kan je steeds terugvinden in de [Links](#links) onderaan in dit document.
 
+## Formaat van de data bij de requests
+
+Bij het oprvagen van de lijst van mandatarissen of een enkele mandataris krijg je de data terug als JSON (`application/sparql-results+json`). Deze data bestaat uit een aantal properties die het eenvoudig zouden moeten maken om de informatie in je applicatie te gebruiken.
+
+- `results > bindings`: Geeft een array terug waar elke rij een mandataris is (in dit voorbeeld)
+- `head > vars`: Hier vind je de namen van de kolommen
+
+De informatie samen stellen kan door de waardenb in de `bindings` te combineren met de `vars`.
+
 ### Lijst van mandatarissen
 
 Voor het tonen van een lijst van mandatrissen moet je de basis informatie ophalen zodat je hier verder mee aan de slag kan.

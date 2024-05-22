@@ -291,7 +291,7 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/accounts/")
   end
 
-  match "/sessions/*path", %{layer: :resources, accept: %{any: true}} do
+  match "/sessions/*path", %{layer: :api_services, accept: %{any: true}} do
     Proxy.forward(conn, path, "http://login/sessions/")
   end
 

@@ -93,9 +93,12 @@ services:
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "a2c0d6ea-01b4-4f68-920b-10834a943c27"
-      MU_APPLICATION_AUTH_REDIRECT_URI: "https://loket.lblod.info/authorization/callback"
-      MU_APPLICATION_AUTH_CLIENT_SECRET: "secret"
       LOG_SINK_URL: "http://sink"
+      MU_APPLICATION_AUTH_JWK_PRIVATE_KEY: /config/jwk_private_key.json
+      MU_APPLICATION_AUTH_USERID_CLAIM: vo_id
+      MU_APPLICATION_AUTH_REDIRECT_URI: "https://mandatenbeheer.lblod.info/authorization/callback"
+    volumes:
+      - ./config/login:/config
     labels:
       - "logging=true"
     restart: always

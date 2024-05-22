@@ -6,7 +6,7 @@ In dit document vind je de nodige informatie voor het creëren van een widget me
 
 Onze data gaan we ophalen door gebruik te maken van het sparql endpoint van [**Centrale Vindplaats**](https://centrale-vindplaats.lblod.info/sparql). De link naar dit endpoint kan je steeds terugvinden in de [Links](#links) onderaan in dit document.
 
-### Hoe ziet een mandataris er uit
+### Hoe navigeer ik door de data
 
 #### Meerdere Mandatarissen ophalen
 
@@ -124,6 +124,52 @@ SELECT * WHERE {
 ```
 
 Bij dit voorbeeld krijgen we dan `Een partij naam` terug als `?waarde`.
+
+### Verkrijgen van data voor een widget
+
+#### Lijst van mandatarissen
+
+Hierboven hebben we gekeken hoe we meerdere mandatarissen kunnen ophalen aan de hand van een query. Hierna hebben we gekeken hoe we specifieke eigenschappen opvragen van één mandataris. Bij deze query gaan we beide combineren zodat we een lijst kunnen tonen van mandatarissen die bepaalde basis informatie meegeeft over elke mandataris.
+
+```sparql
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+
+SELECT (?bestuurdIn AS ?locatie) (?bestuursOrgaanInTijdLabel AS ?orgaan) (?mandaatLabel AS ?mandaat) ?fractie ?voornaam ?familienaam ?status (GROUP_CONCAT(?beleidsdomein; separator=", ") as ?bevoegdheden) (?startdatum AS ?start) (?einddatum AS ?einde) WHERE {
+  ?mandataris a mandaat:Mandataris .
+  ?mandataris mandaat:start ?stardatumt .
+  ?mandataris mandaat:einde ?einddatum .
+
+  ?mandataris mandaat:status ?mandatarisStatusCode .
+  ?mandatarisStatusCode skos:prefLabel ?status .
+
+  ?mandataris org:holds ?mandaat .
+  ?mandaat  org:role ?bestuursfunctieCode.
+  ?bestuursfunctieCode skos:prefLabel ?mandaatLabel .
+  ?mandaat ^org:hasPost ?bestuursorgaan .
+  ?bestuursorgaan mandaat:isTijdspecialisatieVan ?bestuursOrgaanInTijd .
+  ?bestuursOrgaanInTijd skos:prefLabel ?bestuursOrgaanInTijdLabel .
+  ?bestuursOrgaanInTijd besluit:bestuurt ?bestuurd .
+  ?bestuurd skos:prefLabel ?bestuurdIn .
+
+  ?mandataris org:hasMembership ?lidmaatschap .
+  ?lidmaatschap org:organisation ?organisation .
+  ?organisation regorg:legalName ?fractie .
+
+  ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon .
+  ?persoon persoon:gebruikteVoornaam ?voornaam .
+  ?persoon foaf:familyName ?familienaam .
+
+  ?mandataris mandaat:beleidsdomein ?beleidsdomeinen .
+  ?beleidsdomeinen skos:prefLabel ?beleidsdomein .
+}
+GROUP BY ?bestuurdIn ?bestuursOrgaanInTijdLabel ?mandaatLabel ?fractie ?voornaam ?familienaam ?status ?startdatum ?einddatum
+```
 
 ## Links
 

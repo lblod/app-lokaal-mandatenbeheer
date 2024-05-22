@@ -101,3 +101,75 @@ await fetch('https://centrale-vindplaats.lblod.info/sparql', {
   method: 'POST',
 })
 ```
+
+Het resultaat van de queries gebruiken kan door het JSON patroon te volgen. Hieronder vind je een voorbeeld van zo een resultaat.
+
+```json
+{
+  "results": {
+    "ordered": true,
+    "distinct": false,
+    "bindings": [
+      {
+        "voornaam": {
+          "value": "<voornaam>",
+          "type": "literal"
+        },
+        "status": {
+          "value": "Effectief",
+          "type": "literal"
+        },
+        "start": {
+          "value": "2019-01-02T23:00:00Z",
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "orgaan": {
+          "value": "College van Burgemeester en Schepenen Borgloon",
+          "type": "literal"
+        },
+        "mandaat": {
+          "value": "Schepen",
+          "type": "literal"
+        },
+        "locatie": {
+          "value": "Borgloon",
+          "type": "literal"
+        },
+        "fractie": {
+          "value": "<fractie>",
+          "type": "literal"
+        },
+        "familienaam": {
+          "value": "<familienaam>",
+          "type": "literal"
+        },
+        "einde": {
+          "value": "2020-12-30T23:00:00Z",
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "bevoegdheden": {
+          "value": "Woon- en leefomgeving",
+          "type": "literal"
+        }
+      }
+    ]
+  },
+  "head": {
+    "vars": [
+      "locatie",
+      "orgaan",
+      "mandaat",
+      "fractie",
+      "voornaam",
+      "familienaam",
+      "status",
+      "bevoegdheden",
+      "start",
+      "einde"
+    ],
+    "link": []
+  }
+}
+```

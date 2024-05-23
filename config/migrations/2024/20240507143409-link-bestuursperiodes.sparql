@@ -6,7 +6,7 @@ INSERT {
   GRAPH ?h {
     ?boit ext:heeftBestuursperiode ?bestuursperiode.
   }
-} 
+}
 WHERE {
   GRAPH ?g {
     ?boit a besluit:Bestuursorgaan;
@@ -23,6 +23,6 @@ WHERE {
     ?bestuursperiode ext:endYear ?endYear.
   }
   FILTER (?startYear = year(?start)).
-  FILTER ((!bound(?endYear) && !bound(?end)) || ?endYear = year(?end)).
+  FILTER (!bound(?end) || ?endYear = year(?end)).
   BIND (?g AS ?h).
 }

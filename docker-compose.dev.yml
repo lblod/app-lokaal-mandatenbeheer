@@ -94,34 +94,4 @@ services:
     restart: "no"
   authorization-wrapper:
     restart: "no"
-  ##############################################################################
-  # Besluiten consumers
-  ##############################################################################
-  besluiten-consumer-0:
-    profiles:
-      - withConsumer
-    environment:
-      DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-0.s.redhost.be/"
-      DCR_DISABLE_INITIAL_SYNC: "false"
-      DCR_START_FROM_DELTA_TIMESTAMP: "2024-01-12T15:51:23.478Z"
-  besluiten-consumer-1:
-    profiles:
-      - withConsumer
-    environment:
-      DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-1.s.redhost.be/"
-      DCR_DISABLE_INITIAL_SYNC: "false"
-      DCR_START_FROM_DELTA_TIMESTAMP: "2024-01-12T15:51:23.478Z"
-  besluiten-consumer-2:
-    profiles:
-      - withConsumer
-    environment:
-      DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-2.s.redhost.be/"
-      DCR_DISABLE_INITIAL_SYNC: "false"
-      DCR_START_FROM_DELTA_TIMESTAMP: "2024-01-12T15:51:23.478Z"
-  besluiten-consumer-3:
-    profiles:
-      - withConsumer
-    environment:
-      DCR_SYNC_BASE_URL: "https://lokaalbeslist-harvester-3.s.redhost.be/"
-      DCR_DISABLE_INITIAL_SYNC: "false"
-      DCR_START_FROM_DELTA_TIMESTAMP: "2024-01-12T15:51:23.478Z"
+    

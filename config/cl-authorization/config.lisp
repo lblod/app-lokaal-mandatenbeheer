@@ -103,6 +103,7 @@
   ("mandaat:Fractie" -> _)
   ("persoon:Geboorte" -> _)
   ("org:Membership" -> _)
+  ("besluit:Besluit" -> _)
   ("besluit:Bestuursorgaan" -> _)
   ("mandaat:Mandataris" -> _)
   ("mandaat:Mandaat" -> _)

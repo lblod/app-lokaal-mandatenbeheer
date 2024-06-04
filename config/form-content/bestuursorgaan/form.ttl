@@ -31,7 +31,7 @@ ext:bestuursorgaanClassificatieCodeF
     sh:group ext:bestuursorgaanPG;
     sh:name "Type";
     sh:order 2;
-    sh:path besluit:classificatie;
+    sh:path <http://data.vlaanderen.be/ns/besluit#classificatie>;
     form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/lmb/vrije-bestuursorgaan-codes","searchEnabled":true}""".
 ext:deactivatedAtF
     a form:Field;

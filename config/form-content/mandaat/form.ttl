@@ -15,7 +15,13 @@ ext:aantalHoudersF
     sh:group ext:mandaatPG;
     sh:name "Aantal houders";
     sh:order 2;
-    sh:path mandaat:aantalHouders.
+    sh:path mandaat:aantalHouders;
+    form:validatedBy [
+      a form:PositiveNumber ;
+      form:grouping form:MatchEvery ;
+      sh:resultMessage "Je kan hier geen negatief getal ingeven." ;
+      sh:path mandaat:aantalHouders ;
+    ].
 ext:mandaatPG
     a form:PropertyGroup; sh:name "Mandaat"; sh:order 1.
 

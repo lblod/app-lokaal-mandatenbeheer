@@ -12,7 +12,14 @@ ext:startF
     sh:group ext:functionarisEditPG;
     sh:name "Start aanstellingsperiode";
     sh:order 2;
-    sh:path mandaat:start.
+    sh:path mandaat:start;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:start;
+            sh:resultMessage "Startdatum is verplicht."
+    ].
 ext:eindeF
     a form:Field;
     form:displayType displayTypes:dateTime;
@@ -27,7 +34,14 @@ ext:statusF
     sh:name "Status";
     sh:order 4;
     sh:path mandaat:status;
-    form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/FunctionarisStatusCode","searchEnabled":false}""".
+    form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/FunctionarisStatusCode","searchEnabled":false}""";
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:status;
+            sh:resultMessage "Status is verplicht."
+    ].
 ext:functionarisEditPG
     a form:PropertyGroup; sh:name "Functie"; sh:order 1.
 

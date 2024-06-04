@@ -17,15 +17,29 @@ ext:naamF
     sh:group ext:bestuursorgaanPG;
     sh:name "Naam";
     sh:order 1;
-    sh:path skos:prefLabel.
+    sh:path skos:prefLabel;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path skos:prefLabel;
+            sh:resultMessage "Naam is verplicht."
+    ].
 ext:bestuursorgaanClassificatieCodeF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
     sh:group ext:bestuursorgaanPG;
     sh:name "Type";
     sh:order 2;
-    sh:path <http://data.vlaanderen.be/ns/besluit#classificatie>;
-    form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/lmb/vrije-bestuursorgaan-codes","searchEnabled":true}""".
+    sh:path besluit:classificatie;
+    form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/lmb/vrije-bestuursorgaan-codes","searchEnabled":true}""";
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path besluit:classificatie;
+            sh:resultMessage "Type is verplicht."
+    ].
 ext:deactivatedAtF
     a form:Field;
     form:displayType displayTypes:archivedInput;

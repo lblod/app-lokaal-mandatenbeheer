@@ -24,7 +24,14 @@ ext:mandatarisStatusCodeF
     sh:name "Status";
     sh:order 300;
     sh:path mandaat:status;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""";
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:status;
+            sh:resultMessage "Status is verplicht."
+    ].
 ext:replacementF
     a form:Field;
     form:displayType displayTypes:mandatarisReplacement;
@@ -52,7 +59,14 @@ ext:startF
     sh:group ext:editMandatarisPG;
     sh:name "Start";
     sh:order 700;
-    sh:path mandaat:start.
+    sh:path mandaat:start;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:start;
+            sh:resultMessage "Start datum is verplicht."
+    ].
 ext:eindeF
     a form:Field;
     form:displayType displayTypes:dateTime;
@@ -66,7 +80,14 @@ ext:fractieF
     sh:group ext:editMandatarisPG;
     sh:name "Fractie";
     sh:order 900;
-    sh:path ( org:hasMembership org:organisation ).
+    sh:path ( org:hasMembership org:organisation );
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path ( org:hasMembership org:organisation );
+            sh:resultMessage "Dit veld is verplicht."
+    ].
 ext:linkTobesluitF
     a form:Field;
     form:displayType displayTypes:defaultInput;

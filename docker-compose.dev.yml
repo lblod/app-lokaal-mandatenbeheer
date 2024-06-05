@@ -32,9 +32,6 @@ services:
       - default
       - debug
   database:
-    image: semtech/sparql-parser:latest
-    volumes:
-      - ./config/cl-authorization:/config
     restart: always
     networks:
       - default
@@ -94,4 +91,3 @@ services:
     restart: "no"
   authorization-wrapper:
     restart: "no"
-    

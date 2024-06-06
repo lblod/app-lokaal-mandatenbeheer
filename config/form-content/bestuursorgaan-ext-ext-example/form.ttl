@@ -29,7 +29,6 @@ ext:geslachtCodeF
         ext:testF,
         ext:geslachtCodeF;
     ext:extendsForm <http://data.lblod.info/id/lmb/forms/bestuursorgaan-ext-example>;
-    form:targetType besluit:Bestuursorgaan;
     form:targetLabel skos:prefLabel;
     ext:prefix <http://data.lblod.info/id/bestuursorgaan-ext-ext-examples/>;
     mu:uuid "3d4c9725-4a31-40b5-acaa-90bd6dcae13d".

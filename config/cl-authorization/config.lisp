@@ -122,16 +122,9 @@
   ("ext:SystemNotification" -> _)
   ("astreams:Tombstone" -> _)
   ("ext:BestuurseenheidContact" -> _)
-  ("ext:VerkiezingsresultaatGevolgCode" -> _))
-
-(define-graph organization-leidinggevende ("http://mu.semte.ch/graphs/organizations/")
-  ("contacthub:AgentInPositie" -> _)
+  ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("schema:ContactPoint" -> _)
-  ("locn:Address" -> _)
-  ("persoon:Geboorte" -> _)
-  ("person:Person" -> _)
-  ("astreams:Tombstone" -> _)
-  ("adms:Identifier" -> _))
+  ("locn:Address" -> _))
 
 (supply-allowed-group "public")
 
@@ -200,18 +193,3 @@
 (grant (read write)
        :to-graph organization-mandatendatabank
        :for-allowed-group "mandaat-gebruiker")
-
-(supply-allowed-group "leidinggevende-gebruiker"
-  :parameters ("session_group" "session_role")
-  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-          PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-          SELECT DISTINCT ?session_group ?session_role WHERE {
-            <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
-                         ext:sessionRole ?session_role.
-            FILTER( ?session_role = \"LoketLB-leidinggevendenGebruiker\" )
-          }")
-
-(grant (read write)
-       :to organization-leidinggevende
-       :for "mandaat-gebruiker")
-

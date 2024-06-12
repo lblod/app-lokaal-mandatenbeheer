@@ -1,0 +1,38 @@
+# SELECT ?thing (COUNT(?s) as ?count) WHERE {
+# 	GRAPH <http://mu.semte.ch/graphs/public> {
+# 		?s a ?thing.
+# 		?s ?p ?o.
+# 	}
+# } GROUP BY ?thing ORDER BY DESC(?count)
+
+
+	# {
+	# 	"thing": "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
+	# 	"count": "754257"
+	# },
+	# {
+	# 	"thing": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+	# 	"count": "191737"
+	# },
+	# {
+	# 	"thing": "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+	# 	"count": "147419"
+	# },
+
+  DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?s ?p ?o.
+      ?oo ?pp ?s.
+    }
+  }
+  WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?s a ?thing.
+      FILTER (?thing NOT IN (<http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat>, <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>, <http://data.vlaanderen.be/ns/mandaat#Mandaat>, <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>, <http://xmlns.com/foaf/0.1/OnlineAccount>, <http://xmlns.com/foaf/0.1/Person>, <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>, <http://www.w3.org/2004/02/skos/core#Concept>, <http://www.w3.org/ns/adms#Identifier>, <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>, <http://www.w3.org/ns/locn#Address>, <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>, <http://www.w3.org/ns/prov#Location>, <http://publications.europa.eu/ontology/euvoc#Country>, <http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode>, <http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode>, <http://data.europa.eu/m8g/PeriodOfTime>, <http://www.w3.org/2004/02/skos/core#ConceptScheme>, <http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode>, <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>, <http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode>, <http://mu.semte.ch/vocabularies/ext/GeslachtCode>, <http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype>, <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>, <http://www.w3.org/ns/org#Role>, <http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode>, <http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode>, <http://mu.semte.ch/vocabularies/ext/Fractietype>, <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>))
+      ?s ?p ?o.
+
+      OPTIONAL {
+        ?oo ?pp ?s.
+      }
+    }
+  } LIMIT 1000000

@@ -1,0 +1,541 @@
+
+
+# SELECT DISTINCT ?p 
+# WHERE { 
+#   ?bestuurseenheid a besluit:Bestuurseenheid.
+#   { VALUES ?p { 
+#     besluit:werkingsgebied
+#     ext:inProvincie
+#     besluit:classificatie # this probably needs to stay in public
+#     ext:contactVoor
+#     besluit:bestuurt
+#     ext:origineleBestuurseenheid
+#    } ?bestuurseenheid ?p ?o. } 
+#   UNION 
+#   { VALUES ?pp { besluit:werkingsgebied } 
+#     ?o a prov:Location.
+#     ?o ?pp ?oo. }
+# }
+
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+CONSTRUCT {
+  ?s ?p ?o.
+}
+WHERE {
+  ?s a besluit:Bestuurseenheid;
+       ?p ?o.
+  {
+    VALUES ?p { 
+      besluit:werkingsgebied
+      ext:inProvincie
+      besluit:classificatie # this probably needs to stay in public
+      ext:contactVoor
+      besluit:bestuurt
+      ext:origineleBestuurseenheid
+    }
+  } UNION {
+    VALUES ?pp { besluit:werkingsgebied } 
+    ?o a prov:Location.
+    ?o ?pp ?oo.
+  }
+}
+
+
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+CONSTRUCT {
+  ?s ?p ?o.
+}
+WHERE {
+  ?s a besluit:Bestuurseenheid;
+       ?p ?o.
+  {
+    VALUES ?p { besluit:werkingsgebied }
+    ?werkingsgebied a prov:Location.
+    ?ss ?p ?oo.
+  } UNION {
+    VALUES ?p { ext:inProvincie }
+    ?provincie a prov:Location.
+    ?ss ?p ?oo.
+  } UNION {
+    VALUES ?p { ext:contactVoor }
+    ?
+    ?ss ?p ?oo.
+  } UNION {
+    VALUES ?p { besluit:bestuurt }
+    ?ss ?p ?oo.
+  } UNION {
+    VALUES ?p { ext:origineleBestuurseenheid }
+    ?ss ?p ?oo.
+  }
+}
+
+
+    SELECT ?type ?predicate ?g (COUNT (DISTINCT ?target) AS ?count)
+    WHERE {
+      GRAPH ?g {
+        ?s a ?type; 
+           ?predicate ?target.
+        FILTER (strstarts( str(?g), "http://mu.semte.ch/graphs/organizations/" ))
+        FILTER (strends( str(?g), "LoketLB-mandaatGebruiker" ))
+      }
+    } GROUP BY ?type ?predicate ORDER BY ASC(?type) DESC(?count)
+
+SELECT ?type ?predicate ?g (COUNT (DISTINCT ?target)) AS ?count
+        WHERE {
+          GRAPH ?g {
+            ?s a ?type; ?predicate ?target.
+            FILTER (str(?g) != "http://www.openlinksw.com/schemas/virtrdf#")
+            FILTER (str(?g) != "http://www.openlinksw.com/schemas/virtrdf#")
+            FILTER (str(?g) != "http://www.w3.org/ns/ldp#")
+            FILTER (str(?g) != "urn:activitystreams-owl:map")
+            FILTER (str(?g) != "urn:core:services:sparql")
+            FILTER (str(?g) != "http://localhost:8890/DAV")
+            FILTER (str(?g) != "http://www.w3.org/2002/07/owl#")
+          }
+        } GROUP BY ?type ?predicate ?g ORDER BY ASC(?type) DESC(?count)
+
+
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH ?targetGraph {
+    ?s ?p ?o.
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?p { besluit:werkingsgebied ext:inProvincie besluit:classificatie ext:contactVoor besluit:bestuurt ext:origineleBestuurseenheid }
+    ?s a besluit:Bestuurseenheid;
+      mu:uuid ?id;
+      ?p ?o.
+  } 
+  FILTER ( strstarts( str(?g), "http://mu.semte.ch/graphs/organizations/") || str(?g) = "http://mu.semte.ch/graphs/public" )
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?targetGraph)
+}
+
+
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
+PREFIX schema: <http://schema.org/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX temp: <http://mu.semte.ch/graph/temp/>
+
+# Inserting bestuurseenheid
+INSERT {
+  GRAPH temp:migrate {
+    ?bestuurseenheid ?p ?o.
+    ?os ?op ?bestuurseenheid.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?bestuurseenheid a besluit:Bestuurseenheid.
+    {
+      ?bestuurseenheid ?p ?o.
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel skos:altLabel ext:wilMailOntvangen ext:mailAdresVoorNotificaties ext:isTrailUser ext:viewOnlyModules
+                  besluit:werkingsgebied ext:inProvincie besluit:classificatie }
+    }
+    UNION
+    {
+      ?os ?op ?bestuurseenheid.
+      VALUES ?op { ext:contactVoor besluit:bestuurt ext:origineleBestuurseenheid }
+    }
+  }
+};
+# Inserting bestuurseenheid-contact
+# bestuurseenheid-contact doesn't exit in the loket data
+
+# Inserting werkingsgebied
+INSERT {
+  GRAPH temp:migrate {
+    ?werkingsgebied ?p ?o.
+  }
+} WHERE {
+  GRAPH temp:migrate {
+    ?bestuurseenheid besluit:werkingsgebied ?werkingsgebied.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?werkingsgebied a prov:Location;
+                    ?p ?o.
+    VALUES ?p { rdf:type mu:uuid rdfs:label ext:werkingsgebiedNiveau }
+  }
+};
+# Inserting bestuursorgaan
+INSERT {
+  GRAPH temp:migrate {
+    ?bestuursorgaan ?p ?o.
+    ?fakeBestuursorgaan ?pp ?oo.
+    ?os ?op ?bestuursorgaanO.
+  }
+} WHERE {
+  GRAPH temp:migrate {
+    ?bestuurseenheid ^besluit:bestuurt ?bestuursorgaan;
+                     ^ext:origineleBestuurseenheid ?fakeBestuursorgaan.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    {
+      ?bestuursorgaan a besluit:Bestuursorgaan;
+                ?p ?o.
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+            besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
+      ?fakeBestuursorgaan a besluit:Bestuursorgaan;
+                    ?pp ?oo.
+      VALUES ?pp { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+            besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
+    }
+    UNION
+    {
+      ?bestuursorgaanO a besluit:Bestuursorgaan.
+      ?os ?op ?bestuursorgaanO.
+      VALUES ?op { mandaat:isTijdspecialisatieVan }
+    }
+  }
+};
+# Inserting bestuursorgaan in de tijd
+INSERT {
+  GRAPH temp:migrate {
+    ?orgaanInTijd ?p ?o.
+    ?os ?op ?orgaanInTijd.
+  }
+} WHERE {
+  GRAPH temp:migrate {
+    ?orgaan ^mandaat:isTijdspecialisatieVan ?orgaanInTijd.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?orgaanInTijd a besluit:Bestuursorgaan.
+    {
+      ?orgaanInTijd ?p ?o.
+      VALUES ?p { rdf:type mu:uuid dct:modified ext:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
+            mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie ext:heeftBestuursperiode }      
+    }
+    UNION
+    {
+      ?os ?op ?orgaanInTijd.
+      VALUES ?op { mandaat:steltSamen }
+    }
+  }
+};
+# Inserting mandaat
+INSERT {
+  GRAPH temp:migrate {
+    ?mandaat ?p ?o.
+    ?mandataris org:holds ?mandaat.
+  }
+} WHERE {
+  GRAPH temp:migrate {
+    ?orgaanInTijd org:hasPost ?mandaat.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?mandaat a mandaat:Mandaat.
+    {
+      ?mandaat ?p ?o.
+      VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders 
+                  org:role }
+    }
+    UNION
+    {
+      ?mandataris org:holds ?mandaat.
+    }
+  }
+};
+# Inserting mandataris
+# The mandatarissen are already in the LoketLB-mandaatGebruiker graphs
+
+# Inserting lidmaatschap
+# The lidmaatschappen are already in the LoketLB-mandaatGebruiker graphs
+
+# Inserting persoon
+# The personen are already in the LoketLB-mandaatGebruiker graphs
+
+# Inserting rechtstreekse-verkiezing
+INSERT {
+  GRAPH temp:migrate {
+    ?verkiezing ?p ?o.
+    ?kandidatenlijst mandaat:behoortTot ?verkiezing.
+  }
+} WHERE {
+  GRAPH temp:migrate {
+    ?orgaanInTijd ^mandaat:steltSamen ?verkiezing.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?verkiezing a mandaat:RechtstreekseVerkiezing.
+    {
+      ?verkiezing ?p ?o.
+      VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid 
+                  mandaat:steltSamen }
+    }
+    UNION
+    {
+      ?kandidatenlijst mandaat:behoortTot ?verkiezing.
+    }
+  }
+};
+# Inserting kandidatenlijst
+INSERT {
+  GRAPH temp:migrate {
+    ?kandidatenlijst ?p ?o.
+    ?resultaat mandaat:isResultaatVoor ?kandidatenlijst.
+  }
+} WHERE {
+  GRAPH temp:migrate {
+    ?verkiezing ^mandaat:behoortTot ?kandidatenlijst.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?kandidatenlijst a mandaat:Kandidatenlijst.
+    {
+      ?kandidatenlijst ?p ?o.
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel mandaat:lijstnummer
+                  mandaat:lijsttype mandaat:behoortTot mandaat:heeftKandidaat ext:produceertFractie }
+    }
+    UNION
+    {
+      ?resultaat mandaat:isResultaatVoor ?kandidatenlijst.
+    }
+  }
+};
+# Inserting verkiezingsresultaat
+INSERT {
+  GRAPH temp:migrate {
+    ?resultaat ?p ?o.
+  }
+} WHERE {
+  GRAPH temp:migrate {
+    ?kandidatenlijst ^mandaat:isResultaatVoor ?resultaat.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?resultaat a mandaat:Verkiezingsresultaat;
+              ?p ?o.
+    VALUES ?p { rdf:type mu:uuid mandaat:aantalNaamstemmen mandaat:plaatsRangorde
+                mandaat:isResultaatVan mandaat:isResultaatVoor mandaat:gevolg }
+  }
+};
+
+
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
+PREFIX schema: <http://schema.org/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX temp: <http://mu.semte.ch/graph/temp/>
+
+# Inserting bestuurseenheid
+# Should stay in public graph
+INSERT {
+  GRAPH ?targetGraph {
+    ?bestuurseenheid ?p ?o.
+    ?os ?op ?bestuurseenheid.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?bestuurseenheid a besluit:Bestuurseenheid;
+                     mu:uuid ?id.
+    {
+      # Outgoing
+      ?bestuurseenheid ?p ?o.
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel skos:altLabel ext:wilMailOntvangen ext:mailAdresVoorNotificaties ext:isTrailUser ext:viewOnlyModules
+                  besluit:werkingsgebied ext:inProvincie besluit:classificatie }
+    }
+    UNION
+    {
+      # Incoming
+      ?os ?op ?bestuurseenheid.
+      VALUES ?op { ext:contactVoor besluit:bestuurt ext:origineleBestuurseenheid }
+    }
+  }
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?targetGraph)
+};
+# Inserting bestuurseenheid-contact
+# bestuurseenheid-contact doesn't exit in the loket data
+
+# Inserting werkingsgebied
+# Should stay in public graph
+INSERT {
+  GRAPH ?targetGraph {
+    ?werkingsgebied ?p ?o.
+  }
+} WHERE {
+  GRAPH ?targetGraph {
+    ?bestuurseenheid besluit:werkingsgebied ?werkingsgebied.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?werkingsgebied a prov:Location;
+                    ?p ?o.
+    VALUES ?p { rdf:type mu:uuid rdfs:label ext:werkingsgebiedNiveau }
+  }
+};
+# Inserting bestuursorgaan
+INSERT {
+  GRAPH ?targetGraph {
+    ?orgaan ?p ?o.
+    ?fakeOrgaan ?pp ?oo.
+    ?os ?op ?orgaan.
+    ?oss ?opp ?fakeOrgaan.
+  }
+} WHERE {
+  GRAPH ?targetGraph {
+    ?bestuurseenheid ^besluit:bestuurt ?orgaan;
+                     ^ext:origineleBestuurseenheid ?fakeOrgaan.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?orgaan a besluit:Bestuursorgaan.
+    ?fakeOrgaan a besluit:Bestuursorgaan.
+    {
+      ?orgaan ?p ?o.
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+                  besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
+      ?fakeOrgaan ?pp ?oo.
+      VALUES ?pp { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+                   besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
+    }
+    UNION
+    {
+      ?os ?op ?orgaan.
+      VALUES ?op { mandaat:isTijdspecialisatieVan }
+
+      ?oss ?opp ?fakeOrgaan.
+      VALUES ?opp { mandaat:isTijdspecialisatieVan }
+    }
+  }
+};
+# Inserting bestuursorgaan in de tijd
+INSERT {
+  GRAPH ?targetGraph {
+    ?orgaanInTijd ?p ?o.
+    ?os ?op ?orgaanInTijd.
+  }
+} WHERE {
+  GRAPH ?targetGraph {
+    ?orgaan ^mandaat:isTijdspecialisatieVan ?orgaanInTijd.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?orgaanInTijd a besluit:Bestuursorgaan.
+    {
+      ?orgaanInTijd ?p ?o.
+      VALUES ?p { rdf:type mu:uuid dct:modified ext:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
+                  mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie ext:heeftBestuursperiode }      
+    }
+    UNION
+    {
+      ?os ?op ?orgaanInTijd.
+      VALUES ?op { mandaat:steltSamen }
+    }
+  }
+};
+# Inserting mandaat
+INSERT {
+  GRAPH ?targetGraph {
+    ?mandaat ?p ?o.
+    ?mandataris org:holds ?mandaat.
+  }
+} WHERE {
+  GRAPH ?targetGraph {
+    ?orgaanInTijd org:hasPost ?mandaat.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?mandaat a mandaat:Mandaat.
+    {
+      ?mandaat ?p ?o.
+      VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders 
+                  org:role }
+    }
+    UNION
+    {
+      ?mandataris org:holds ?mandaat.
+    }
+  }
+};
+# Inserting mandataris
+# The mandatarissen are already in the LoketLB-mandaatGebruiker graphs
+
+# Inserting lidmaatschap
+# The lidmaatschappen are already in the LoketLB-mandaatGebruiker graphs
+
+# Inserting persoon
+# The personen are already in the LoketLB-mandaatGebruiker graphs
+
+# Inserting rechtstreekse-verkiezing
+INSERT {
+  GRAPH ?targetGraph {
+    ?verkiezing ?p ?o.
+    ?kandidatenlijst mandaat:behoortTot ?verkiezing.
+  }
+} WHERE {
+  GRAPH ?targetGraph {
+    ?orgaanInTijd ^mandaat:steltSamen ?verkiezing.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?verkiezing a mandaat:RechtstreekseVerkiezing.
+    {
+      ?verkiezing ?p ?o.
+      VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid 
+                  mandaat:steltSamen }
+    }
+    UNION
+    {
+      ?kandidatenlijst mandaat:behoortTot ?verkiezing.
+    }
+  }
+};
+# Inserting kandidatenlijst
+INSERT {
+  GRAPH ?targetGraph {
+    ?kandidatenlijst ?p ?o.
+    ?resultaat mandaat:isResultaatVoor ?kandidatenlijst.
+  }
+} WHERE {
+  GRAPH ?targetGraph {
+    ?verkiezing ^mandaat:behoortTot ?kandidatenlijst.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?kandidatenlijst a mandaat:Kandidatenlijst.
+    {
+      ?kandidatenlijst ?p ?o.
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel mandaat:lijstnummer
+                  mandaat:lijsttype mandaat:behoortTot mandaat:heeftKandidaat ext:produceertFractie }
+    }
+    UNION
+    {
+      ?resultaat mandaat:isResultaatVoor ?kandidatenlijst.
+    }
+  }
+};
+# Inserting verkiezingsresultaat
+INSERT {
+  GRAPH ?targetGraph {
+    ?resultaat ?p ?o.
+  }
+} WHERE {
+  GRAPH ?targetGraph {
+    ?kandidatenlijst ^mandaat:isResultaatVoor ?resultaat.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?resultaat a mandaat:Verkiezingsresultaat;
+               ?p ?o.
+    VALUES ?p { rdf:type mu:uuid mandaat:aantalNaamstemmen mandaat:plaatsRangorde
+                mandaat:isResultaatVan mandaat:isResultaatVoor mandaat:gevolg }
+  }
+};

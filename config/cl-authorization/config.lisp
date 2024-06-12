@@ -81,7 +81,6 @@
   ("mandaat:Verkiezingsresultaat" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("org:Role" -> _)
-  ("lblodlg:Bestuursfunctie" -> _)
   ("skos:ConceptScheme" -> _)
   ("skos:Concept" -> _)
   ("m8g:PeriodOfTime" -> _)
@@ -132,9 +131,7 @@
   ("persoon:Geboorte" -> _)
   ("person:Person" -> _)
   ("astreams:Tombstone" -> _)
-  ("adms:Identifier" -> _)
-  ("lblodlg:Bestuursfunctie"
-   -> "schema:contactPoint"))
+  ("adms:Identifier" -> _))
 
 (supply-allowed-group "public")
 

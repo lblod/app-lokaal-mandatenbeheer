@@ -17,7 +17,14 @@ ext:naamF
     sh:group ext:bestuursorgaanPG;
     sh:name "Naam";
     sh:order 1;
-    sh:path skos:prefLabel.
+    sh:path skos:prefLabel;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path skos:prefLabel;
+            sh:resultMessage "Naam is verplicht."
+    ].
 ext:bestuursorgaanClassificatieCodeF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;

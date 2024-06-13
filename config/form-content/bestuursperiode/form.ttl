@@ -18,7 +18,14 @@ ext:bindingStartF
     sh:group ext:bestuursperiodePG;
     sh:name "Start";
     sh:order 2;
-    sh:path mandaat:bindingStart.
+    sh:path mandaat:bindingStart;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:bindingStart;
+            sh:resultMessage "Startdatum is verplicht."
+    ].
 ext:bindingEindeF
     a form:Field;
     form:displayType displayTypes:dateTime;

@@ -32,7 +32,14 @@ ext:mandatarisStatusCodeF
     sh:name "Status";
     sh:order 4;
     sh:path mandaat:status;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""";
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:status;
+            sh:resultMessage "Status is verplicht."
+    ].
 ext:rangordeF
     a form:Field;
     form:displayType displayTypes:mandatarisRangorde;
@@ -53,7 +60,14 @@ ext:startF
     sh:group ext:mandatarisPG;
     sh:name "Start";
     sh:order 7;
-    sh:path mandaat:start.
+    sh:path mandaat:start;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:start;
+            sh:resultMessage "Startdatum is verplicht."
+    ].
 ext:eindeF
     a form:Field;
     form:displayType displayTypes:dateTime;
@@ -67,7 +81,14 @@ ext:fractieF
     sh:group ext:mandatarisPG;
     sh:name "Fractie";
     sh:order 9;
-    sh:path ( org:hasMembership org:organisation ).
+    sh:path ( org:hasMembership org:organisation );
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path ( org:hasMembership org:organisation );
+            sh:resultMessage "Dit veld is verplicht."
+    ].
 ext:mandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 

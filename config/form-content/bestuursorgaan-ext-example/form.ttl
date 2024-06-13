@@ -52,7 +52,7 @@ ext:statusF
     sh:name "Status";
     sh:order 304;
     sh:path mandaat:status;
-    form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/FunctionarisStatusCode","searchEnabled":false}""";
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""";
     form:validatedBy 
         [
             a form:RequiredConstraint;

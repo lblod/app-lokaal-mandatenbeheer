@@ -1,3 +1,6 @@
+# DISCLAIMER: if this queries are reused, remove functionaris resources, 
+# these no longer belong to the domain of this application.
+
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>

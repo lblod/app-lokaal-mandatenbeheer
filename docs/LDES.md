@@ -37,9 +37,8 @@ VMDB will be interested in instances of the following types:
 - **person:Person:** normally, the Person a Mandataris links to can be found in the election results and so this information should be globally available (and non-modifiable). However, there are cases where an unelected person can still be called in to assume a Decretaal mandaat. These are also published so the Person a Mandataris links to has meaning. This also happens for the head of OCMW organisation, who can be made schepen. Luckily, there is an api to get the uri of a person given the RRN. Person still needs to be on the LDES, but this likely means we need to secure our LDES with an authorization layer as there can be no personal info on our public LDES feed
 - **persoon:Geboorte:** as part of the Person information above
 - **adms:Identifier:** as part of the Person information above
-- **lblodlg:Functionaris:** this models a Leidinggevende in the local government
-- **schema:ContactPoint:** to model the contact point of the Functionaris above
-- **locn:Address:** to model the address of the Functionaris above
+- **schema:ContactPoint:** to model the contact point of the Mandataris above
+- **locn:Address:** to model the address of the Mandataris above
 - **ext:DraftMandataris:** a type to model the draft Mandataris instances for GN and make it clear that they are different from the mandaat:Mandataris instances that are ready to be published
 
 The only predicates that are shared about these concepts are predicates that are defined in the application profiles for [mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/), [leidinggevenden](https://lblod.github.io/pages-vendors/#/docs/leidinggevenden) and [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/).

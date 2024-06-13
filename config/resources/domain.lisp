@@ -16,7 +16,6 @@
 (read-domain-file "user.lisp")
 (read-domain-file "external-besluit.lisp")
 (read-domain-file "external-contact.lisp")
-(read-domain-file "external-leidinggevenden.lisp")
 (read-domain-file "external-mandaat.lisp")
 (read-domain-file "forms.lisp")
 (read-domain-file "verkiezingen.lisp")

@@ -177,21 +177,6 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # Leidinggevenden resources
-  #################################################################
-  match "/bestuursfuncties/*path", %{layer: :resources, accept: %{json: true}} do
-    forward(conn, path, "http://cache/bestuursfuncties/")
-  end
-
-  match "/functionarissen/*path", %{layer: :resources, accept: %{json: true}} do
-    forward(conn, path, "http://cache/functionarissen/")
-  end
-
-  match "/functionaris-status-codes/*path", %{layer: :resources, accept: %{json: true}} do
-    forward(conn, path, "http://cache/functionaris-status-codes/")
-  end
-
-  #################################################################
   # Verkiezingen resources
   #################################################################
 

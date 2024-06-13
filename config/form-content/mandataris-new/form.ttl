@@ -15,7 +15,7 @@ ext:persoonF
     a form:Field;
     form:displayType displayTypes:personSelector;
     sh:group ext:mandatarisPG;
-    sh:name "Functionaris";
+    sh:name "Persoon";
     sh:order 2;
     sh:path mandaat:isBestuurlijkeAliasVan.
 ext:mandaatF

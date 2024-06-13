@@ -30,8 +30,6 @@ WHERE {
       dct:PeriodOfTime
       adms:Idenfifier
       besluit:Bestuursorgaan
-      lblodlg:Bestuursfunctie
-      lblodlg:Functionaris
       ext:Installatievergadering
       schema:ContactPoint
       locn:Address

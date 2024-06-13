@@ -14,14 +14,30 @@ ext:emailF
     ext:extendsGroup ext:bestuursorgaanPG;
     sh:name "Email";
     sh:order 301;
-    sh:path schema:email.
+    sh:path schema:email;
+    form:validatedBy
+        [ 
+            a form:ValidEmail;
+            form:grouping form:MatchEvery;
+            sh:order 1;
+            sh:resultMessage "Geef een geldig e-mailadres op."@nl;
+            sh:path schema:email
+    ].
 ext:telefoonF
     a form:Field;
     form:displayType displayTypes:defaultInput;
     ext:extendsGroup ext:bestuursorgaanPG;
     sh:name "Telefoon";
     sh:order 302;
-    sh:path schema:telephone.
+    sh:path schema:telephone;
+    form:validatedBy
+        [
+            a form:ValidPhoneNumber;
+            form:defaultCountry "BE";
+            form:grouping form:MatchEvery;
+            sh:path schema:telephone;
+            sh:resultMessage "Geef een geldig telefoonnummer in."
+    ].
 ext:adresF
     a form:Field;
     form:displayType displayTypes:addressSelector;
@@ -36,7 +52,14 @@ ext:statusF
     sh:name "Status";
     sh:order 304;
     sh:path mandaat:status;
-    form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/FunctionarisStatusCode","searchEnabled":false}""".
+    form:options """{"conceptScheme":"http://mu.semte.ch/vocabularies/ext/FunctionarisStatusCode","searchEnabled":false}""";
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:status;
+            sh:resultMessage "Status is verplicht."
+    ].
 
 <http://data.lblod.info/id/lmb/forms/bestuursorgaan-ext-example>
     a form:Extension;

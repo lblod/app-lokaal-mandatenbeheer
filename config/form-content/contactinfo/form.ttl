@@ -12,14 +12,30 @@ ext:emailF
     sh:group ext:contactpuntPG;
     sh:name "Email";
     sh:order 2;
-    sh:path schema:email.
+    sh:path schema:email;
+    form:validatedBy
+        [
+            a form:ValidEmail;
+            form:grouping form:MatchEvery;
+            sh:order 1;
+            sh:resultMessage "Geef een geldig e-mailadres op."@nl;
+            sh:path schema:email
+    ].
 ext:telefoonF
     a form:Field;
     form:displayType displayTypes:defaultInput;
     sh:group ext:contactpuntPG;
     sh:name "Telefoon";
     sh:order 3;
-    sh:path schema:telephone.
+    sh:path schema:telephone;
+    form:validatedBy
+        [
+            a form:ValidPhoneNumber;
+            form:defaultCountry "BE";
+            form:grouping form:MatchEvery;
+            sh:path schema:telephone;
+            sh:resultMessage "Geef een geldig telefoonnummer in."
+    ].
 ext:adresF
     a form:Field;
     form:displayType displayTypes:addressSelector;

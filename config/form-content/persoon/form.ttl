@@ -18,14 +18,28 @@ ext:gebruikteVoornaamF
     sh:group ext:persoonPG;
     sh:name "Voornaam";
     sh:order 2;
-    sh:path persoon:gebruikteVoornaam.
+    sh:path persoon:gebruikteVoornaam;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path persoon:gebruikteVoornaam;
+            sh:resultMessage "Voornaam is verplicht."
+    ].
 ext:achternaamF
     a form:Field;
     form:displayType displayTypes:defaultInput;
     sh:group ext:persoonPG;
     sh:name "Achternaam";
     sh:order 3;
-    sh:path foaf:familyName.
+    sh:path foaf:familyName;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path foaf:familyName;
+            sh:resultMessage "Achternaam is verplicht."
+    ].
 ext:alternatieveNaamF
     a form:Field;
     form:displayType displayTypes:defaultInput;

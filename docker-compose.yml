@@ -112,7 +112,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-lokaal-mandatenbeheer:0.0.8
+    image: lblod/frontend-lokaal-mandatenbeheer:0.0.9
     labels:
       - "logging=true"
     restart: always
@@ -144,14 +144,14 @@ services:
     restart: always
     logging: *default-logging
   form-content:
-    image: lblod/form-content-service:0.0.6
+    image: lblod/form-content-service:0.0.7
     restart: always
     labels:
       - "logging=true"
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.0.4
+    image: lblod/mandataris-service:0.0.5
     labels:
       - "logging=true"
     restart: always

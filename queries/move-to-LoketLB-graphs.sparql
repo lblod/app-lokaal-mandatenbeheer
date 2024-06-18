@@ -58,43 +58,44 @@ PREFIX temp: <http://mu.semte.ch/graph/temp/>
 #     VALUES ?p { rdf:type mu:uuid rdfs:label ext:werkingsgebiedNiveau }
 #   }
 # };
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?bestuurseenheid ext:inGraph ?targetGraph.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?bestuurseenheid a besluit:Bestuurseenheid;
+                     mu:uuid ?id.
+  }
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?targetGraph)
+};
+
 # UNDER CONSTRUCTION, IN THE PROCESS OF ADDING ext:inGraph
 # Inserting bestuursorgaan
 INSERT {
   GRAPH ?targetGraph {
     ?orgaan ?p ?o.
-    ?fakeOrgaan ?pp ?oo.
     ?os ?op ?orgaan.
-    ?oss ?opp ?fakeOrgaan.
     ?orgaan ext:inGraph ?targetGraph.
-    ?fakeOrgaan ext:inGraph ?targetGraph.
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/public> {
     ?bestuurseenheid a besluit:Bestuurseenheid;
-                     mu:uuid ?id;
-                     ^besluit:bestuurt ?orgaan;
-                     ^ext:origineleBestuurseenheid ?fakeOrgaan.
+                     ext:inGraph ?targetGraph;
+                     ^besluit:bestuurt ?orgaan.
     ?orgaan a besluit:Bestuursorgaan.
-    ?fakeOrgaan a besluit:Bestuursorgaan.
     {
       ?orgaan ?p ?o.
       VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
                   besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
-      ?fakeOrgaan ?pp ?oo.
-      VALUES ?pp { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
-                   besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
     }
     UNION
     {
       ?os ?op ?orgaan.
       VALUES ?op { mandaat:isTijdspecialisatieVan }
-
-      ?oss ?opp ?fakeOrgaan.
-      VALUES ?opp { mandaat:isTijdspecialisatieVan }
     }
   }
-  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?targetGraph)
 };
 # Inserting bestuursorgaan in de tijd
 INSERT {
@@ -103,9 +104,8 @@ INSERT {
     ?os ?op ?orgaanInTijd.
   }
 } WHERE {
-  GRAPH ?targetGraph {
-    ?orgaan ^mandaat:isTijdspecialisatieVan ?orgaanInTijd.
-  }
+  ?orgaan ext:inGraph ?targetGraph;
+          ^mandaat:isTijdspecialisatieVan ?orgaanInTijd.
   GRAPH <http://mu.semte.ch/graphs/public> {
     ?orgaanInTijd a besluit:Bestuursorgaan.
     {
@@ -127,9 +127,9 @@ INSERT {
     ?mandataris org:holds ?mandaat.
   }
 } WHERE {
-  GRAPH ?targetGraph {
-    ?orgaanInTijd org:hasPost ?mandaat.
-  }
+  ?orgaan ext:inGraph ?targetGraph;
+          ^mandaat:isTijdspecialisatieVan ?orgaanInTijd.
+  ?orgaanInTijd org:hasPost ?mandaat.
   GRAPH <http://mu.semte.ch/graphs/public> {
     ?mandaat a mandaat:Mandaat.
     {
@@ -159,9 +159,9 @@ INSERT {
     ?kandidatenlijst mandaat:behoortTot ?verkiezing.
   }
 } WHERE {
-  GRAPH ?targetGraph {
-    ?orgaanInTijd ^mandaat:steltSamen ?verkiezing.
-  }
+  ?orgaan ext:inGraph ?targetGraph;
+          ^mandaat:isTijdspecialisatieVan ?orgaanInTijd.
+  ?orgaanInTijd ^mandaat:steltSamen ?verkiezing.
   GRAPH <http://mu.semte.ch/graphs/public> {
     ?verkiezing a mandaat:RechtstreekseVerkiezing.
     {
@@ -182,9 +182,10 @@ INSERT {
     ?resultaat mandaat:isResultaatVoor ?kandidatenlijst.
   }
 } WHERE {
-  GRAPH ?targetGraph {
-    ?verkiezing ^mandaat:behoortTot ?kandidatenlijst.
-  }
+  ?orgaan ext:inGraph ?targetGraph;
+          ^mandaat:isTijdspecialisatieVan ?orgaanInTijd.
+  ?orgaanInTijd ^mandaat:steltSamen ?verkiezing.
+  ?verkiezing ^mandaat:behoortTot ?kandidatenlijst.
   GRAPH <http://mu.semte.ch/graphs/public> {
     ?kandidatenlijst a mandaat:Kandidatenlijst.
     {
@@ -204,13 +205,26 @@ INSERT {
     ?resultaat ?p ?o.
   }
 } WHERE {
-  GRAPH ?targetGraph {
-    ?kandidatenlijst ^mandaat:isResultaatVoor ?resultaat.
-  }
+  ?orgaan ext:inGraph ?targetGraph;
+          ^mandaat:isTijdspecialisatieVan ?orgaanInTijd.
+  ?orgaanInTijd ^mandaat:steltSamen ?verkiezing.
+  ?verkiezing ^mandaat:behoortTot ?kandidatenlijst.
+  ?kandidatenlijst ^mandaat:isResultaatVoor ?resultaat.
   GRAPH <http://mu.semte.ch/graphs/public> {
     ?resultaat a mandaat:Verkiezingsresultaat;
                ?p ?o.
     VALUES ?p { rdf:type mu:uuid mandaat:aantalNaamstemmen mandaat:plaatsRangorde
                 mandaat:isResultaatVan mandaat:isResultaatVoor mandaat:gevolg }
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s ext:inGraph ?o.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ext:inGraph ?o.
   }
 };

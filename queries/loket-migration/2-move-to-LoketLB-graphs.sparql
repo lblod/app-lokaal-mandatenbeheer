@@ -13,51 +13,6 @@ PREFIX schema: <http://schema.org/>
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX temp: <http://mu.semte.ch/graph/temp/>
 
-# Inserting bestuurseenheid
-# Should stay in public graph
-# INSERT {
-#   GRAPH ?targetGraph {
-#     ?bestuurseenheid ?p ?o.
-#     ?os ?op ?bestuurseenheid.
-#   }
-# } WHERE {
-#   GRAPH <http://mu.semte.ch/graphs/public> {
-#     ?bestuurseenheid a besluit:Bestuurseenheid;
-#                      mu:uuid ?id.
-#     {
-#       # Outgoing
-#       ?bestuurseenheid ?p ?o.
-#       VALUES ?p { rdf:type mu:uuid skos:prefLabel skos:altLabel ext:wilMailOntvangen ext:mailAdresVoorNotificaties ext:isTrailUser ext:viewOnlyModules
-#                   besluit:werkingsgebied ext:inProvincie besluit:classificatie }
-#     }
-#     UNION
-#     {
-#       # Incoming
-#       ?os ?op ?bestuurseenheid.
-#       VALUES ?op { ext:contactVoor besluit:bestuurt ext:origineleBestuurseenheid }
-#     }
-#   }
-#   BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?targetGraph)
-# };
-# Inserting bestuurseenheid-contact
-# bestuurseenheid-contact doesn't exit in the loket data
-
-# Inserting werkingsgebied
-# Should stay in public graph
-# INSERT {
-#   GRAPH ?targetGraph {
-#     ?werkingsgebied ?p ?o.
-#   }
-# } WHERE {
-#   GRAPH ?targetGraph {
-#     ?bestuurseenheid besluit:werkingsgebied ?werkingsgebied.
-#   }
-#   GRAPH <http://mu.semte.ch/graphs/public> {
-#     ?werkingsgebied a prov:Location;
-#                     ?p ?o.
-#     VALUES ?p { rdf:type mu:uuid rdfs:label ext:werkingsgebiedNiveau }
-#   }
-# };
 
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/public> {

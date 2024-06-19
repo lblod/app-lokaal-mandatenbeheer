@@ -1,0 +1,75 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+
+# This query is duplicated 2 times with a limit of 1 million to avoid a Virtuoso Stack Overflow
+# In the first part we leave out the types, because otherwise the type of a subject can be deleted before the other triples connected to that subject
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o.
+    ?oo ?pp ?s.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?thing.
+    VALUES ?thing {
+      besluit:Bestuursorgaan
+      mandaat:Mandaat
+      mandaat:RechtstreekseVerkiezing
+      mandaat:Kandidatenlijst
+      mandaat:Verkiezingsresultaat
+    }
+    {
+      ?s ?p ?o.
+      FILTER (?p != rdf:type)
+    } UNION {
+      ?oo ?pp ?s.
+    }
+  }
+} LIMIT 1000000;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o.
+    ?oo ?pp ?s.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?thing.
+    VALUES ?thing {
+      besluit:Bestuursorgaan
+      mandaat:Mandaat
+      mandaat:RechtstreekseVerkiezing
+      mandaat:Kandidatenlijst
+      mandaat:Verkiezingsresultaat
+    }
+    {
+      ?s ?p ?o.
+      FILTER (?p != rdf:type)
+    } UNION {
+      ?oo ?pp ?s.
+    }
+  }
+} LIMIT 1000000;
+
+# Delete the leftover types
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?thing.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?thing.
+    VALUES ?thing {
+      besluit:Bestuursorgaan
+      mandaat:Mandaat
+      mandaat:RechtstreekseVerkiezing
+      mandaat:Kandidatenlijst
+      mandaat:Verkiezingsresultaat
+    }
+  }
+};

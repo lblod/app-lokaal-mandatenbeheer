@@ -13,7 +13,7 @@ PREFIX schema: <http://schema.org/>
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX temp: <http://mu.semte.ch/graph/temp/>
 
-
+# Define the LoketLB-mandaatGebruiker graphs
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/public> {
     ?bestuurseenheid ext:inGraph ?targetGraph.
@@ -26,7 +26,6 @@ INSERT {
   BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?targetGraph)
 };
 
-# UNDER CONSTRUCTION, IN THE PROCESS OF ADDING ext:inGraph
 # Inserting bestuursorgaan
 INSERT {
   GRAPH ?targetGraph {

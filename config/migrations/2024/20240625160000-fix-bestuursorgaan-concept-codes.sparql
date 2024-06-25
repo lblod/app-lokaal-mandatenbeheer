@@ -1,0 +1,14 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+  GRAPH ?g {
+    ?s a ext:BestuursorgaanClassificatieCode.
+    ?s a skos:Concept.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a ext:BestuursorgaanClassificatieCode.
+  }
+}

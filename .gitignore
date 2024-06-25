@@ -5,8 +5,6 @@
 /data/exports/*
 /data/toezicht-reports/*
 /data/db/virtuoso.ini
-!/data/db/toLoad
-!/data/db/toLoad/*
 /data/files/*
 /debug
 .DS_Store

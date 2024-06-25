@@ -1,0 +1,25 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon ?p ?o.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a foaf:Person;
+      ?p ?o.
+  }
+}
+
+DELETE {
+  GRAPH ?g {
+    ?account ?pp ?oo.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?account a foaf:OnlineAccount;
+      ?pp ?oo.
+  }
+}

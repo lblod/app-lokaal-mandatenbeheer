@@ -13,7 +13,7 @@ INSERT DATA {
       rdf:type
         skos:Concept,
         ext:MandatarisStatusCode;
-	    skos:prefLabel "Beeindigd";
+	    skos:prefLabel "Beëindigd";
 	    mu:uuid "b8866fa2-d61c-4e3d-afaf-8a29eaaa7fb9".
   }
 }

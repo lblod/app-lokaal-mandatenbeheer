@@ -1,0 +1,19 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cs: <http://data.vlaanderen.be/id/conceptscheme/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ext:	<http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX msc: <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    msc:b8866fa2-d61c-4e3d-afaf-8a29eaaa7fb9
+	    skos:topConceptOf	cs:MandatarisStatusCode;
+	    skos:inScheme	cs:MandatarisStatusCode;
+      rdf:type
+        skos:Concept,
+        ext:MandatarisStatusCode;
+	    skos:prefLabel "Beeindigd";
+	    mu:uuid "b8866fa2-d61c-4e3d-afaf-8a29eaaa7fb9".
+  }
+}

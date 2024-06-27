@@ -48,10 +48,3 @@
 	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
   ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/071963c7a740d5429d7f70e65edea127760a4ca0a39caddc05dc83425475cbf9>;
 	mu:uuid "ceae0bdc-17ee-4ec1-ac7b-a23cb18d4ebe".
-# one for the previous elections of aalst in 2012
-<http://data.lblod.info/id/installatievergaderingen/6684a96f-a1d8-487b-ab7d-f37d32adb949>
-		rdf:type ext:Installatievergadering;
-	ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
- ext:hasBestuursorgaanInDeTijd <http://data.lblod.info/id/bestuursorganen/509d93f78ffc107fc368edfc879fb931b52cbbd8597f6e94e6c33a16901f4481>;
- mu:uuid "6684a96f-a1d8-487b-ab7d-f37d32adb949".
-

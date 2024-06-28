@@ -9,7 +9,7 @@ INSERT {
   GRAPH ?g {
     ?installatievergadering a ext:Installatievergadering;
       mu:uuid ?uuid;
-      ext:hasStatus ivs:c9fc3292-1576-4a82-8dcd-60795e22131f;
+      ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
       ext:heeftBestuurseenheid ?bestuurseenheid;
       ext:heeftBestuursperiode ?bestuursperiode.
   }

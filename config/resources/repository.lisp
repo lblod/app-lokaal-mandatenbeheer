@@ -29,3 +29,5 @@
 (add-prefix "sh" "http://www.w3.org/ns/shacl#")
 (add-prefix "mu" "http://mu.semte.ch/vocabularies/core/")
 (add-prefix "extlmb" "http://mu.semte.ch/vocabularies/ext/lmb/")
+(add-prefix "eli" "http://data.europa.eu/eli/ontology#")
+(add-prefix "nao" "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#")

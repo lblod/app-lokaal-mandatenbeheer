@@ -3,6 +3,27 @@
 ;; only part of the resources have been imported
 ;; in this file there have also been some additions to some resources.
 
+(define-resource besluit ()
+  :class (s-prefix "besluit:Besluit")
+  :properties `((:beschrijving :string ,(s-prefix "eli:description"))
+                (:citeeropschrift :string ,(s-prefix "eli:title_short"))
+                (:motivering :language-string ,(s-prefix "besluit:motivering"))
+                (:publicatiedatum :date ,(s-prefix "eli:date_publication"))
+                (:inhoud :string ,(s-prefix "prov:value"))
+                (:taal :url ,(s-prefix "eli:language"))
+                (:titel :string ,(s-prefix "eli:title"))
+                (:score :float ,(s-prefix "nao:score")))
+  :has-one `((rechtsgrond-besluit :via ,(s-prefix "eli:realizes") ;; This relation resources are not defined in this project
+                                  :as "realisatie")
+             (behandeling-van-agendapunt :via ,(s-prefix "prov:generated") ;; This relation resources are not defined in this project
+                                         :inverse t
+                                         :as "volgend-uit-behandeling-van-agendapunt"))
+  :has-many `((published-resource :via ,(s-prefix "prov:wasDerivedFrom") ;; This relation resources are not defined in this project
+                                  :as "publications"))
+  :resource-base (s-url "http://data.lblod.info/id/besluiten/")
+  :features '(include-uri)
+  :on-path "besluiten")
+
 (define-resource bestuurseenheid () ;; Subclass of m8g:PublicOrganisation, which is a subclass of dct:Agent
   :class (s-prefix "besluit:Bestuurseenheid")
   :properties `((:naam :string ,(s-prefix "skos:prefLabel"))

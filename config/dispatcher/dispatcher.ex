@@ -74,6 +74,10 @@ defmodule Dispatcher do
   #################################################################
   # Besluit resources
   #################################################################
+  match "/besluiten/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/besluiten/")
+  end
+
   match "/bestuurseenheden/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/bestuurseenheden/")
   end

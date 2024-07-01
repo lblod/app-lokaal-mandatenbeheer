@@ -1,0 +1,37 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX ivs: <http://data.lblod.info/id/concept/InstallatievergaderingStatus/>
+
+INSERT {
+  GRAPH ?g {
+    ?installatievergadering a ext:Installatievergadering;
+      mu:uuid ?uuid;
+      ext:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4;
+      ext:heeftBestuurseenheid ?bestuurseenheid;
+      ext:heeftBestuursperiode ?bestuursperiode.
+  }
+}
+WHERE {
+  ?bestuurseenheid a besluit:Bestuurseenheid;
+      skos:prefLabel ?bestuurseenheidLabel;
+      besluit:classificatie ?classificatie;
+      mu:uuid ?bestuurseenheidId.
+      
+  FILTER (?classificatie IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>))
+
+{
+  SELECT ?bestuursperiode WHERE {
+  ?bestuursorgaan besluit:bestuurt ?bestuurseenheid.
+  ?currentBestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
+      mandaat:bindingStart "2019-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+      ext:heeftBestuursperiode ?bestuursperiode.
+  }
+  LIMIT 1
+}
+  BIND(SHA256(CONCAT("installatie-vergadering", ":", STR(?bestuurseenheidLabel))) AS ?uuid).
+  BIND(IRI(CONCAT("http://data.lblod.info/id/installatievergaderingen/", STR(?uuid))) AS ?installatievergadering).
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", STR(?bestuurseenheidId), "/LoketLB-mandaatGebruiker")) AS ?g).
+}

@@ -1,0 +1,40 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+
+DELETE {
+    GRAPH ?g {
+		?bestuursorgaanInTijd mandaat:bindingEinde ?einde.
+    }
+} INSERT {
+    GRAPH ?g {
+		?bestuursorgaanInTijd mandaat:bindingEinde "2024-12-06"^^xsd:date.
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?bestuursorgaanInTijd ext:heeftBestuursperiode bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca. # 2019 - 2025
+        OPTIONAL {
+          ?bestuursorgaanInTijd mandaat:bindingEinde ?einde.
+        }
+    }
+};
+
+DELETE {
+    GRAPH ?g {
+		?bestuursorgaanInTijd mandaat:bindingEinde ?einde.
+    }
+} INSERT {
+    GRAPH ?g {
+		?bestuursorgaanInTijd mandaat:bindingEinde "2030-12-06"^^xsd:date.
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?bestuursorgaanInTijd ext:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7. # 2025 - 2030
+        OPTIONAL {
+          ?bestuursorgaanInTijd mandaat:bindingEinde ?einde.
+        }
+    }
+};

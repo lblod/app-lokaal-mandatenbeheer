@@ -1,0 +1,33 @@
+prefix mandaat:	<http://data.vlaanderen.be/ns/mandaat#> 
+prefix bestuursorgaan: <http://data.lblod.info/id/bestuursorganen/>
+prefix verkiezingen: <http://data.lblod.info/id/rechtstreekse-verkiezingen/>
+prefix xsd:	<http://www.w3.org/2001/XMLSchema#>
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?oldBestuursorgaanInDeTijd .
+    ?verkiezing mandaat:datum ?datum .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?huidigBestuursorgaanInDeTijd .
+    ?verkiezing mandaat:datum "2025-01-01"^^xsd:date.
+  }
+}
+
+WHERE {
+  GRAPH ?g {
+    ?orgaan a besluit:Bestuursorgaan.
+    ?oldBestuursorgaanInDeTijd mandaat:isTijdspecialisatieVan ?orgaan .
+    ?oldBestuursorgaanInDeTijd mandaat:bindingStart "2019-01-01"^^xsd:date .
+
+    ?huidigBestuursorgaanInDeTijd mandaat:isTijdspecialisatieVan ?orgaan .
+    ?huidigBestuursorgaanInDeTijd mandaat:bindingStart "2025-01-01"^^xsd:date .
+
+    ?verkiezing mandaat:steltSamen ?oldBestuursorgaanInDeTijd .
+    ?verkiezing mandaat:datum ?datum .
+  }
+}

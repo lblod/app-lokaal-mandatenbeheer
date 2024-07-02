@@ -29,7 +29,7 @@ WHERE {
       
   FILTER (?classificatie IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>))
 
-  BIND(SHA256(CONCAT("ef263097-4f6f-416c-9ba9-168ab2d98721", ":", STR(?bestuursorgaanLabel))) AS ?uuidInTijd) .
+  BIND(SHA256(CONCAT("3ff5d4aa-6b1b-488d-8b34-d2cb6fa64e45", ":", STR(?bestuursorgaanLabel))) AS ?uuidInTijd) .
   BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?uuidInTijd))) AS ?bestuursorgaanInTijd) .
   BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", STR(?bestuurseenheidId), "/LoketLB-mandaatGebruiker")) AS ?g).
 }

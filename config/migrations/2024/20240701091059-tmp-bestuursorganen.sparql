@@ -1,0 +1,35 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+
+# Nieuwe bestuursorganen in tijd voor Gemeente, OCMW, District en Provincie
+
+INSERT {
+  GRAPH ?g {
+    ?vorigBestuursorgaanInTijd mandaat:bindingEinde "2024-12-06"^^<http://www.w3.org/2001/XMLSchema#date> .
+    ?bestuursorgaanInTijd a besluit:Bestuursorgaan ;
+      mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
+      mu:uuid ?uuidInTijd ;
+      mandaat:bindingStart "2025-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+      ext:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
+  }
+}
+WHERE {
+  ?bestuurseenheid a besluit:Bestuurseenheid;
+      skos:prefLabel ?bestuurseenheidLabel;
+      besluit:classificatie ?classificatie;
+      mu:uuid ?bestuurseenheidId.
+  ?bestuursorgaan besluit:bestuurt ?bestuurseenheid ;
+      skos:prefLabel ?bestuursorgaanLabel .
+  ?vorigBestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
+      mandaat:bindingStart "2019-01-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+      
+  FILTER (?classificatie IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>))
+
+  BIND(SHA256(CONCAT("ef263097-4f6f-416c-9ba9-168ab2d98721", ":", STR(?bestuursorgaanLabel))) AS ?uuidInTijd) .
+  BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?uuidInTijd))) AS ?bestuursorgaanInTijd) .
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", STR(?bestuurseenheidId), "/LoketLB-mandaatGebruiker")) AS ?g).
+}

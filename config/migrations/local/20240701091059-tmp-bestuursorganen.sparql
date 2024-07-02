@@ -5,6 +5,7 @@ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
 PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX extlmb:  <http://mu.semte.ch/vocabularies/ext/lmb/>
 
 # Nieuwe bestuursorganen in tijd voor Gemeente, OCMW, District en Provincie
 
@@ -25,11 +26,15 @@ WHERE {
       besluit:classificatie ?classificatie;
       mu:uuid ?bestuurseenheidId.
   ?bestuursorgaan besluit:bestuurt ?bestuurseenheid ;
-      skos:prefLabel ?bestuursorgaanLabel .
+      skos:prefLabel ?bestuursorgaanLabel ;
+      besluit:classificatie ?bestuursorgaanClassificatie.
+  ?bestuursorgaanClassificatie skos:inScheme ?decretaleCodes.
   ?vorigBestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
       mandaat:bindingStart "2019-01-01"^^<http://www.w3.org/2001/XMLSchema#date> .
       
   FILTER (?classificatie IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>))
+  FILTER(?decretaleCodes IN (extlmb:gemeente-bestuursorgaan-codes, extlmb:decretale-bestuursorgaan-codes, extlmb:vrije-bestuursorgaan-codes)).
+
 
   BIND(SHA256(CONCAT("3ff5d4aa-6b1b-488d-8b34-d2cb6fa64e45", ":", STR(?bestuursorgaanLabel))) AS ?uuidInTijd) .
   BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?uuidInTijd))) AS ?bestuursorgaanInTijd) .

@@ -4,6 +4,7 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX org: <http://www.w3.org/ns/org#>
 
 # Nieuwe bestuursorganen in tijd voor Gemeente, OCMW, District en Provincie
 
@@ -32,4 +33,32 @@ WHERE {
   BIND(SHA256(CONCAT("3ff5d4aa-6b1b-488d-8b34-d2cb6fa64e45", ":", STR(?bestuursorgaanLabel))) AS ?uuidInTijd) .
   BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?uuidInTijd))) AS ?bestuursorgaanInTijd) .
   BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", STR(?bestuurseenheidId), "/LoketLB-mandaatGebruiker")) AS ?g).
+}
+
+# Mandaten voor nieuwe bestuursorganen
+
+INSERT {
+  GRAPH ?g {
+    ?mandaat a mandaat:Mandaat ;
+      mu:uuid ?uuid ;
+      org:role ?role .
+
+    ?newBestuursorgaanInTijd org:hasPost ?mandaat .
+  }
+} WHERE {
+    ?bestuursorgaan a besluit:Bestuursorgaan ;
+      skos:prefLabel ?bestuursorgaanLabel .
+    ?vorigBestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
+      ext:heeftBestuursperiode bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca ; # 2019-2025
+      org:hasPost ?oldMandaat .
+    ?newBestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
+      ext:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2025-heden
+    
+  GRAPH ?g {
+    ?oldMandaat org:role ?role.
+  }
+    ?role skos:prefLabel ?mandaatLabel.
+
+    BIND(SHA256(CONCAT("f2373ae0-661f-45b8-8bd3-42b33e10c1a2", ":2025-01-01:", STR(?mandaatLabel), STR(?bestuursorgaanLabel))) AS ?uuid) .
+    BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", STR(?uuid))) AS ?mandaat) .
 }

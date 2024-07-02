@@ -26,7 +26,7 @@ WHERE {
   SELECT ?bestuursperiode WHERE {
   ?bestuursorgaan besluit:bestuurt ?bestuurseenheid.
   ?currentBestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
-      mandaat:bindingStart "2019-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+      mandaat:bindingStart "2025-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
       ext:heeftBestuursperiode ?bestuursperiode.
   }
   LIMIT 1

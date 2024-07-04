@@ -11,13 +11,13 @@ INSERT {
   GRAPH ?k {
     ?bestuursorgaanURI besluit:bestuurt ?bestuurseenheidGemeente;
           a besluit:Bestuursorgaan;  
-          mu:uuid ?bestuursorgaanId;  
+          mu:uuid ?uuid;  
           ext:origineleBestuurseenheid ?bestuurseenheidOCMW;
           skos:prefLabel ?naam;
           besluit:classificatie ?classificatie.
     ?bestuursorgaanInTijdURI mandaat:isTijdspecialisatieVan ?bestuursorgaanURI;
           a besluit:Bestuursorgaan;  
-          mu:uuid ?bestuursorgaanInTijdId;  
+          mu:uuid ?uuidInTijd;  
           ext:origineleBestuursorgaan ?bestuursorgaanInTijd;
           ext:heeftBestuursperiode ?bestuursperiode;
           org:hasPost ?mandaat.

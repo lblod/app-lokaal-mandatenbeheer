@@ -11,13 +11,13 @@ INSERT {
   GRAPH ?k {
     ?bestuursorgaanURI besluit:bestuurt ?bestuurseenheidGemeente;
           a besluit:Bestuursorgaan;  
-          mu:uuid ?bestuursorgaanId;  
+          mu:uuid ?uuid;  
           ext:origineleBestuurseenheid ?bestuurseenheidOCMW;
           skos:prefLabel ?naam;
           besluit:classificatie ?classificatie.
     ?bestuursorgaanInTijdURI mandaat:isTijdspecialisatieVan ?bestuursorgaanURI;
           a besluit:Bestuursorgaan;  
-          mu:uuid ?bestuursorgaanInTijdId;  
+          mu:uuid ?uuidInTijd;  
           ext:origineleBestuursorgaan ?bestuursorgaanInTijd;
           ext:heeftBestuursperiode ?bestuursperiode;
           org:hasPost ?mandaat.
@@ -53,6 +53,8 @@ WHERE {
   GRAPH ?k {
     ?bestuursorgaan2 besluit:bestuurt ?bestuurseenheidGemeente.
   }
-  BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen-fake/", ?bestuursorgaanId)) AS ?bestuursorgaanURI).
-  BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen-fake/", ?bestuursorgaanInTijdId)) AS ?bestuursorgaanInTijdURI).
+  BIND(SHA256(CONCAT("7dcad3b3-23c8-46e9-8375-2d0ddd3d2b11", ":", STR(?bestuursorgaanId))) AS ?uuid) .
+  BIND(SHA256(CONCAT("87fb8e46-71ed-4699-83a2-d9162ef65359", ":", STR(?bestuursorgaanInTijdId))) AS ?uuidInTijd) .
+  BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuid)) AS ?bestuursorgaanURI).
+  BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidInTijd)) AS ?bestuursorgaanInTijdURI).
 }

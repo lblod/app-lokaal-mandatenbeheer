@@ -1,0 +1,21 @@
+prefix mandaat:	<http://data.vlaanderen.be/ns/mandaat#> 
+prefix org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+      ?mandataris mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/c301248f-0199-45ca-b3e5-4c596731d5fe>.
+  }
+}
+INSERT {
+  GRAPH ?g {
+      ?mandataris mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/aacb3fed-b51d-4e0b-a411-f3fa641da1b3>.
+  }
+}
+WHERE {
+  GRAPH ?g {
+      ?mandataris org:holds ?mandaat;
+            mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/c301248f-0199-45ca-b3e5-4c596731d5fe>.
+      ?mandaat org:role ?bestuursfunctieCode.
+      FILTER (?bestuursfunctieCode IN (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013>, <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a>)).
+  }
+}

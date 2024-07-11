@@ -98,11 +98,11 @@ ext:linkTobesluitF
         a form:UriConstraint;
         form:grouping form:MatchEvery;
         sh:order 1;
-        sh:path schema:url;
+        sh:path ext:linkToBesluit;
         sh:resultMessage
             "Gelieve een geldige URL op te geven. Zorg dat vooraan in de link altijd http://, https://, ftp:// of sftp:// staat."@nl
     ];
-    sh:path schema:url.
+    sh:path ext:linkToBesluit.
 ext:editMandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 

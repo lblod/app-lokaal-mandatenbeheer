@@ -92,7 +92,7 @@ ext:fractieF
 ext:beleidsdomeinCodeF
     a form:Field;
     form:displayType displayTypes:mandatarisBeleidsdomein;
-    ext:extendsGroup ext:mandatarisPG;
+    sh:group ext:mandatarisPG;
     sh:name "Beleidsdomein";
     sh:order 10;
     sh:path mandaat:beleidsdomein;
@@ -106,7 +106,7 @@ ext:hiddenPublicationStatusF
     sh:order 5001;
     sh:path extlmb:hasPublicationStatus.
 
-<http://data.lblod.info/id/lmb/forms/mandataris-new>
+<http://data.lblod.info/id/lmb/forms/mandataris-ext>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:persoonF,
@@ -124,7 +124,7 @@ ext:hiddenPublicationStatusF
     form:targetLabel mu:uuid;
     ext:prefix <http://data.lblod.info/id/mandatarissen/>;
     ext:withHistory false;
-    mu:uuid "2522a2e2-5242-4b6d-98ee-c5bd709fceaa".
+    mu:uuid "ee79d356-120b-48ca-a7f4-554cfa167518".
 
 ext:mandatarisG a form:Generator;
   form:prototype [

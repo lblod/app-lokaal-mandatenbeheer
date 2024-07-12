@@ -1,0 +1,23 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix displayTypes: <http://lblod.data.gift/display-types/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+
+ext:beleidsdomeinCodeF
+    a form:Field;
+    form:displayType displayTypes:mandatarisBeleidsdomein;
+    ext:extendsGroup ext:mandatarisPG;
+    sh:name "Beleidsdomein";
+    sh:order 100;
+    sh:path mandaat:beleidsdomein;
+    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
+
+<http://data.lblod.info/id/lmb/forms/mandataris-ext>
+    a form:Extension;
+    form:includes
+        ext:beleidsdomeinCodeF;
+    ext:extendsForm <http://data.lblod.info/id/lmb/forms/mandataris-new>;
+    ext:withHistory false;
+    mu:uuid "01f671e2-df52-463d-9249-293e31eb7f54".

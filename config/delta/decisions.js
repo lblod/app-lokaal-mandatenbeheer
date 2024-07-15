@@ -1,14 +1,17 @@
 export default [
   {
     match: {
-      subject: {},
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/bekrachtigtAanstellingVan',
+      },
       graph: {
         type: 'uri',
         value: 'http://mu.semte.ch/graphs/besluiten-consumed',
       },
     },
     callback: {
-      url: 'http://mandataris/mandatees-decisions',
+      url: 'http://mandataris/delta/decisions',
       method: 'POST',
     },
     options: {

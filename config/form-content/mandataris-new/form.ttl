@@ -17,14 +17,28 @@ ext:persoonF
     sh:group ext:mandatarisPG;
     sh:name "Persoon";
     sh:order 2;
-    sh:path mandaat:isBestuurlijkeAliasVan.
+    sh:path mandaat:isBestuurlijkeAliasVan;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path mandaat:isBestuurlijkeAliasVan;
+            sh:resultMessage "Persoon is verplicht."
+    ].
 ext:mandaatF
     a form:Field;
     form:displayType displayTypes:mandatarisMandaatSelector;
     sh:group ext:mandatarisPG;
     sh:name "Mandaat";
     sh:order 3;
-    sh:path org:holds.
+    sh:path org:holds;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path org:holds;
+            sh:resultMessage "Mandaat is verplicht."
+    ].
 ext:mandatarisStatusCodeF
     a form:Field;
     form:displayType displayTypes:mandatarisStatusCodeSelector;

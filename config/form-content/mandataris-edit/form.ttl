@@ -16,7 +16,14 @@ ext:mandaatF
     sh:group ext:editMandatarisPG;
     sh:name "Mandaat";
     sh:order 200;
-    sh:path org:holds.
+    sh:path org:holds;
+    form:validatedBy 
+        [
+            a form:RequiredConstraint;
+            form:grouping form:Bag;
+            sh:path org:holds;
+            sh:resultMessage "Mandaat is verplicht."
+    ].
 ext:mandatarisStatusCodeF
     a form:Field;
     form:displayType displayTypes:mandatarisStatusCodeSelector;

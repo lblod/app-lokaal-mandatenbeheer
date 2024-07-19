@@ -50,7 +50,9 @@
 
 (define-resource mandaat ()
   :class (s-prefix "mandaat:Mandaat")
-  :properties `((:aantal-houders :number ,(s-prefix "mandaat:aantalHouders")))
+  :properties `((:aantal-houders :number ,(s-prefix "mandaat:aantalHouders"))
+                (:min-aantal-houders :number ,(s-prefix "ext:minAantalHouders"))
+                (:max-aantal-houders :number ,(s-prefix "ext:maxAantalHouders")))
   :has-one `((bestuursfunctie-code :via ,(s-prefix "org:role")
                                    :as "bestuursfunctie"))
   :has-many `((bestuursorgaan :via ,(s-prefix "org:hasPost")

@@ -46,11 +46,11 @@ WHERE {
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
       org:hasPost ?mandaat.
     ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011>;
-      ext:minAantalHouders ?huidigMin;
-      ext:maxAantalHouders ?huidigMax.
+      ext:minAantalHouders ?huidigMinLid;
+      ext:maxAantalHouders ?huidigMaxLid.
     ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012>;
-      ext:minAantalHouders ?huidigMin;
-      ext:maxAantalHouders ?huidigMax.
+      ext:minAantalHouders ?huidigMinVoorzitter;
+      ext:maxAantalHouders ?huidigMaxVoorzitter.
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))

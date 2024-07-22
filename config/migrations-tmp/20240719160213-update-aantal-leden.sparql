@@ -44,7 +44,8 @@ WHERE {
       besluit:bestuurt ?bestuurseenheid;
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
-      org:hasPost ?mandaat.
+      org:hasPost ?mandaatLid;
+      org:hasPost ?mandaatVoorzitter.
     ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011>.
     OPTIONAL {
       ?mandaatLid ext:minAantalHouders ?huidigMinLid;
@@ -100,7 +101,9 @@ WHERE {
       besluit:bestuurt ?bestuurseenheid;
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
-      org:hasPost ?mandaat.
+      org:hasPost ?mandaatSchepen;
+      org:hasPost ?mandaatBurgemeester;
+      org:hasPost ?mandaatAangewezenBurgemeester.
     ?mandaatSchepen org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014>.
     OPTIONAL {
       ?mandaatSchepen ext:minAantalHouders ?huidigMinSchepen;
@@ -166,7 +169,8 @@ WHERE {
       besluit:bestuurt ?bestuurseenheidOCMW;
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanITVB.
     ?bestuursorgaanITVB ext:heeftBestuursperiode ?bestuursperiode;
-      org:hasPost ?mandaatLid.
+      org:hasPost ?mandaatLid;
+      org:hasPost ?mandaatVoorzitter.
     ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017>.
     OPTIONAL {
       ?mandaatLid ext:minAantalHouders ?huidigMinLid;
@@ -219,7 +223,8 @@ WHERE {
       besluit:bestuurt ?bestuurseenheid;
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
-      org:hasPost ?mandaat.
+      org:hasPost ?mandaatLid;
+      org:hasPost ?mandaatVoorzitter.
     ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015>.
     OPTIONAL {
       ?mandaatLid ext:minAantalHouders ?huidigMinLid;
@@ -273,7 +278,8 @@ WHERE {
       besluit:bestuurt ?bestuurseenheid;
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
-      org:hasPost ?mandaat.
+      org:hasPost ?mandaatLid;
+      org:hasPost ?mandaatVoorzitter.
     ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000019>.
     OPTIONAL {
       ?mandaatLid ext:minAantalHouders ?huidigMinLid;
@@ -327,7 +333,8 @@ WHERE {
       besluit:bestuurt ?bestuurseenheid;
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
-      org:hasPost ?mandaat.
+      org:hasPost ?mandaatLid;
+      org:hasPost ?mandaatVoorzitter.
     ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b>.
     OPTIONAL {
       ?mandaatLid ext:minAantalHouders ?huidigMinLid;

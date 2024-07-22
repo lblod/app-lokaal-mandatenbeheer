@@ -1,0 +1,57 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+# Process nb members gemeenteraad
+DELETE {
+  GRAPH ?graph {
+    ?mandaatLid ext:minAantalHouders ?huidigMinLid;
+        ext:maxAantalHouders ?huidigMaxLid.
+    ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
+        ext:maxAantalHouders ?huidigMaxVoorzitter.
+  }
+}
+INSERT {
+  GRAPH ?graph {
+    ?mandaatLid ext:minAantalHouders ?min;
+        ext:maxAantalHouders ?max.
+    ?mandaatVoorzitter ext:minAantalHouders 1;
+        ext:maxAantalHouders 1.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/tmp/load> {
+    ?row a ext:NbMembersObject;
+         ext:bestuurseenheid ?naam1;
+         ext:leden_max ?max;
+         ext:leden_min ?min;
+         ext:mandaat "gemeenteraad".
+    FILTER (isNumeric(?max) && isNumeric(?min))
+  }
+  GRAPH ?g {
+    ?bestuurseenheid a besluit:Bestuurseenheid;
+      skos:prefLabel ?naam2;
+      besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>.
+    ?bestuursperiode a ext:Bestuursperiode;
+      skos:prefLabel "2025 - heden".
+  }
+  GRAPH ?h {
+    ?bestuursorgaan a besluit:Bestuursorgaan;
+      besluit:bestuurt ?bestuurseenheid;
+      ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
+    ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
+      org:hasPost ?mandaat.
+    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011>;
+      ext:minAantalHouders ?huidigMin;
+      ext:maxAantalHouders ?huidigMax.
+    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012>;
+      ext:minAantalHouders ?huidigMin;
+      ext:maxAantalHouders ?huidigMax.
+  }
+  BIND (?h AS ?graph)
+  FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
+}

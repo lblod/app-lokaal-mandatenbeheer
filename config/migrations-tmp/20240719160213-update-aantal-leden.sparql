@@ -24,7 +24,7 @@ INSERT {
   }
 }
 WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp/load> {
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
     ?row a ext:NbMembersObject;
          ext:bestuurseenheid ?naam1;
          ext:leden_max ?max;
@@ -81,7 +81,7 @@ INSERT {
   }
 }
 WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp/load> {
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
     ?row a ext:NbMembersObject;
          ext:bestuurseenheid ?naam1;
          ext:leden_max ?max;
@@ -203,7 +203,7 @@ INSERT {
   }
 }
 WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp/load> {
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
     ?row a ext:NbMembersObject;
          ext:bestuurseenheid ?naam1;
          ext:leden_max ?max;
@@ -258,7 +258,7 @@ INSERT {
   }
 }
 WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp/load> {
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
     ?row a ext:NbMembersObject;
          ext:bestuurseenheid ?naam1;
          ext:leden_max ?max;
@@ -313,7 +313,7 @@ INSERT {
   }
 }
 WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp/load> {
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
     ?row a ext:NbMembersObject;
          ext:bestuurseenheid ?naam1;
          ext:leden_max ?max;

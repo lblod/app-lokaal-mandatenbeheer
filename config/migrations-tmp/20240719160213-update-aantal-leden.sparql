@@ -45,12 +45,16 @@ WHERE {
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
       org:hasPost ?mandaat.
-    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011>;
-      ext:minAantalHouders ?huidigMinLid;
-      ext:maxAantalHouders ?huidigMaxLid.
-    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012>;
-      ext:minAantalHouders ?huidigMinVoorzitter;
-      ext:maxAantalHouders ?huidigMaxVoorzitter.
+    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011>.
+    OPTIONAL {
+      ?mandaatLid ext:minAantalHouders ?huidigMinLid;
+        ext:maxAantalHouders ?huidigMaxLid.
+    }
+    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012>.
+    OPTIONAL {
+      ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
+        ext:maxAantalHouders ?huidigMaxVoorzitter.
+    }
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
@@ -97,15 +101,21 @@ WHERE {
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
       org:hasPost ?mandaat.
-    ?mandaatSchepen org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014>;
-      ext:minAantalHouders ?huidigMinSchepen;
-      ext:maxAantalHouders ?huidigMaxSchepen.
-    ?mandaatBurgemeester org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013>;
-      ext:minAantalHouders ?huidigMinBurgemeester;
-      ext:maxAantalHouders ?huidigMaxBurgemeester.
-    ?mandaatAangewezenBurgemeester org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a>;
-      ext:minAantalHouders ?huidigMinAangewezenBurgemeester;
-      ext:maxAantalHouders ?huidigMaxAangewezenBurgemeester.
+    ?mandaatSchepen org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014>.
+    OPTIONAL {
+      ?mandaatSchepen ext:minAantalHouders ?huidigMinSchepen;
+        ext:maxAantalHouders ?huidigMaxSchepen.
+    }
+    ?mandaatBurgemeester org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013>.
+    OPTIONAL {
+      ?mandaatBurgemeester ext:minAantalHouders ?huidigMinBurgemeester;
+        ext:maxAantalHouders ?huidigMaxBurgemeester.
+    }
+    ?mandaatAangewezenBurgemeester org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a>.
+    OPTIONAL {
+      ?mandaat mandaatAangewezenBurgemeester ext:minAantalHouders ?huidigMinAangewezenBurgemeester;
+        ext:maxAantalHouders ?huidigMaxAangewezenBurgemeester.
+    }
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
@@ -150,12 +160,16 @@ WHERE {
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
       org:hasPost ?mandaat.
-    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015>;
-      ext:minAantalHouders ?huidigMinLid;
-      ext:maxAantalHouders ?huidigMaxLid.
-    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016>;
-      ext:minAantalHouders ?huidigMinVoorzitter;
-      ext:maxAantalHouders ?huidigMaxVoorzitter.
+    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015>.
+    OPTIONAL {
+      ?mandaatLid ext:minAantalHouders ?huidigMinLid;
+        ext:maxAantalHouders ?huidigMaxLid.
+    }
+    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016>.
+    OPTIONAL {
+      ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
+        ext:maxAantalHouders ?huidigMaxVoorzitter.
+    }
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
@@ -200,12 +214,16 @@ WHERE {
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
       org:hasPost ?mandaat.
-    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000019>;
-      ext:minAantalHouders ?huidigMinLid;
-      ext:maxAantalHouders ?huidigMaxLid.
-    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a>;
-      ext:minAantalHouders ?huidigMinVoorzitter;
-      ext:maxAantalHouders ?huidigMaxVoorzitter.
+    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000019>.
+    OPTIONAL {
+      ?mandaatLid ext:minAantalHouders ?huidigMinLid;
+        ext:maxAantalHouders ?huidigMaxLid.
+    }
+    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a>.
+    OPTIONAL {
+      ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
+        ext:maxAantalHouders ?huidigMaxVoorzitter.
+    }
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
@@ -250,12 +268,16 @@ WHERE {
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
       org:hasPost ?mandaat.
-    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017>;
-      ext:minAantalHouders ?huidigMinLid;
-      ext:maxAantalHouders ?huidigMaxLid.
-    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018>;
-      ext:minAantalHouders ?huidigMinVoorzitter;
-      ext:maxAantalHouders ?huidigMaxVoorzitter.
+    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017>.
+    OPTIONAL {
+      ?mandaatLid ext:minAantalHouders ?huidigMinLid;
+        ext:maxAantalHouders ?huidigMaxLid.
+    }
+    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018>.
+    OPTIONAL {
+      ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
+        ext:maxAantalHouders ?huidigMaxVoorzitter.
+    }
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
@@ -300,12 +322,16 @@ WHERE {
       ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
     ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
       org:hasPost ?mandaat.
-    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b>;
-      ext:minAantalHouders ?huidigMinLid;
-      ext:maxAantalHouders ?huidigMaxLid.
-    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c>;
-      ext:minAantalHouders ?huidigMinVoorzitter;
-      ext:maxAantalHouders ?huidigMaxVoorzitter.
+    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b>.
+    OPTIONAL {
+      ?mandaatLid ext:minAantalHouders ?huidigMinLid;
+        ext:maxAantalHouders ?huidigMaxLid.
+    }
+    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c>.
+    OPTIONAL {
+      ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
+        ext:maxAantalHouders ?huidigMaxVoorzitter.
+    }
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))

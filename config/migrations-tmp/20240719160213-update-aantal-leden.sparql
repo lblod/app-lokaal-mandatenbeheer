@@ -121,6 +121,66 @@ WHERE {
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
 }
 
+# Process nb members Vast Bureau -> Mirrors CBS
+DELETE {
+  GRAPH ?graph {
+    ?mandaatLid ext:minAantalHouders ?huidigMinLid;
+        ext:maxAantalHouders ?huidigMaxLid.
+    ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
+        ext:maxAantalHouders ?huidigMaxVoorzitter.
+  }
+}
+INSERT {
+  GRAPH ?graph {
+    ?mandaatLid ext:minAantalHouders ?huidigMinSchepen;
+        ext:maxAantalHouders ?huidigMaxSchepen.
+    ?mandaatVoorzitter ext:minAantalHouders 1;
+        ext:maxAantalHouders 1.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?bestuurseenheidGemeente a besluit:Bestuurseenheid;
+      besluit:werkingsgebied ?werkingsgebied;
+      besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>.
+    ?bestuurseenheidOCMW a besluit:Bestuurseenheid;
+      besluit:werkingsgebied ?werkingsgebied;
+      besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>.
+    ?bestuursperiode a ext:Bestuursperiode;
+      skos:prefLabel "2025 - heden".
+  }
+  GRAPH ?gemeente {
+    ?bestuursorgaanCBS a besluit:Bestuursorgaan;
+      besluit:bestuurt ?bestuurseenheidGemeente;
+      ^mandaat:isTijdspecialisatieVan ?bestuursorgaanITCBS.
+    ?bestuursorgaanITCBS ext:heeftBestuursperiode ?bestuursperiode;
+      org:hasPost ?mandaatSchepen.
+    ?mandaatSchepen org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014>.
+    OPTIONAL {
+      ?mandaatSchepen ext:minAantalHouders ?huidigMinSchepen;
+        ext:maxAantalHouders ?huidigMaxSchepen.
+    }
+  }
+  GRAPH ?ocmw {
+    ?bestuursorgaanVB a besluit:Bestuursorgaan;
+      besluit:bestuurt ?bestuurseenheidOCMW;
+      ^mandaat:isTijdspecialisatieVan ?bestuursorgaanITVB.
+    ?bestuursorgaanITVB ext:heeftBestuursperiode ?bestuursperiode;
+      org:hasPost ?mandaatLid.
+    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017>.
+    OPTIONAL {
+      ?mandaatLid ext:minAantalHouders ?huidigMinLid;
+        ext:maxAantalHouders ?huidigMaxLid.
+    }
+    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018>.
+    OPTIONAL {
+      ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
+        ext:maxAantalHouders ?huidigMaxVoorzitter.
+    }
+  }
+  BIND (?ocmw AS ?graph)
+}
+
 # Process nb members RMW
 DELETE {
   GRAPH ?graph {
@@ -220,60 +280,6 @@ WHERE {
         ext:maxAantalHouders ?huidigMaxLid.
     }
     ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a>.
-    OPTIONAL {
-      ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
-        ext:maxAantalHouders ?huidigMaxVoorzitter.
-    }
-  }
-  BIND (?h AS ?graph)
-  FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
-}
-
-# Process nb members Vast Bureau
-DELETE {
-  GRAPH ?graph {
-    ?mandaatLid ext:minAantalHouders ?huidigMinLid;
-        ext:maxAantalHouders ?huidigMaxLid.
-    ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
-        ext:maxAantalHouders ?huidigMaxVoorzitter.
-  }
-}
-INSERT {
-  GRAPH ?graph {
-    ?mandaatLid ext:minAantalHouders ?min;
-        ext:maxAantalHouders ?max.
-    ?mandaatVoorzitter ext:minAantalHouders 1;
-        ext:maxAantalHouders 1.
-  }
-}
-WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp/load> {
-    ?row a ext:NbMembersObject;
-         ext:bestuurseenheid ?naam1;
-         ext:leden_max ?max;
-         ext:leden_min ?min;
-         ext:mandaat "vast bureau".
-    FILTER (isNumeric(?max) && isNumeric(?min))
-  }
-  GRAPH ?g {
-    ?bestuurseenheid a besluit:Bestuurseenheid;
-      skos:prefLabel ?naam2;
-      besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>.
-    ?bestuursperiode a ext:Bestuursperiode;
-      skos:prefLabel "2025 - heden".
-  }
-  GRAPH ?h {
-    ?bestuursorgaan a besluit:Bestuursorgaan;
-      besluit:bestuurt ?bestuurseenheid;
-      ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
-    ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
-      org:hasPost ?mandaat.
-    ?mandaatLid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017>.
-    OPTIONAL {
-      ?mandaatLid ext:minAantalHouders ?huidigMinLid;
-        ext:maxAantalHouders ?huidigMaxLid.
-    }
-    ?mandaatVoorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018>.
     OPTIONAL {
       ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
         ext:maxAantalHouders ?huidigMaxVoorzitter.

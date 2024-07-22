@@ -55,3 +55,58 @@ WHERE {
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
 }
+
+# Process nb members cbs
+DELETE {
+  GRAPH ?graph {
+    ?mandaatSchepen ext:minAantalHouders ?huidigMinSchepen;
+        ext:maxAantalHouders ?huidigMaxSchepen.
+    ?mandaatBurgemeester ext:minAantalHouders ?huidigMinBurgemeester;
+        ext:maxAantalHouders ?huidigMaxBurgemeester.
+  }
+}
+INSERT {
+  GRAPH ?graph {
+    ?mandaatSchepen ext:minAantalHouders ?min;
+        ext:maxAantalHouders ?max.
+    ?mandaatBurgemeester ext:minAantalHouders 1;
+        ext:maxAantalHouders 1.
+    ?mandaatAangewezenBurgemeester ext:minAantalHouders 1;
+        ext:maxAantalHouders 1.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/tmp/load> {
+    ?row a ext:NbMembersObject;
+         ext:bestuurseenheid ?naam1;
+         ext:leden_max ?max;
+         ext:leden_min ?min;
+         ext:mandaat "schepenen".
+    FILTER (isNumeric(?max) && isNumeric(?min))
+  }
+  GRAPH ?g {
+    ?bestuurseenheid a besluit:Bestuurseenheid;
+      skos:prefLabel ?naam2;
+      besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>.
+    ?bestuursperiode a ext:Bestuursperiode;
+      skos:prefLabel "2025 - heden".
+  }
+  GRAPH ?h {
+    ?bestuursorgaan a besluit:Bestuursorgaan;
+      besluit:bestuurt ?bestuurseenheid;
+      ^mandaat:isTijdspecialisatieVan ?bestuursorgaanIT.
+    ?bestuursorgaanIT ext:heeftBestuursperiode ?bestuursperiode;
+      org:hasPost ?mandaat.
+    ?mandaatSchepen org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014>;
+      ext:minAantalHouders ?huidigMinSchepen;
+      ext:maxAantalHouders ?huidigMaxSchepen.
+    ?mandaatBurgemeester org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013>;
+      ext:minAantalHouders ?huidigMinBurgemeester;
+      ext:maxAantalHouders ?huidigMaxBurgemeester.
+    ?mandaatAangewezenBurgemeester org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a>;
+      ext:minAantalHouders ?huidigMinAangewezenBurgemeester;
+      ext:maxAantalHouders ?huidigMaxAangewezenBurgemeester.
+  }
+  BIND (?h AS ?graph)
+  FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
+}

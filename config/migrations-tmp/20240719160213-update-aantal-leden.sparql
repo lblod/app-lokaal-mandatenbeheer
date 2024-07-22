@@ -71,7 +71,7 @@ DELETE {
 }
 INSERT {
   GRAPH ?graph {
-    ?mandaatSchepen ext:minAantalHouders ?min;
+    ?mandaatSchepen ext:minAantalHouders 2;
         ext:maxAantalHouders ?max.
     ?mandaatBurgemeester ext:minAantalHouders 1;
         ext:maxAantalHouders 1.

@@ -63,8 +63,7 @@ INSERT {
   GRAPH ?g {
     ?oldMandaat org:role ?role.
   }
-    ?role skos:prefLabel ?mandaatLabel.
 
-    BIND(SHA256(CONCAT("f2373ae0-661f-45b8-8bd3-42b33e10c1a2", ":2025-01-01:", STR(?mandaatLabel), STR(?bestuursorgaanLabel))) AS ?uuid) .
-    BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", STR(?uuid))) AS ?mandaat) .
+  BIND(SHA256(CONCAT("f2373ae0-661f-45b8-8bd3-42b33e10c1a2", ":2025-01-01:", STR(?oldMandaat))) AS ?uuid) .
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", STR(?uuid))) AS ?mandaat) .
 }

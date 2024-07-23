@@ -22,6 +22,9 @@ INSERT {
     ?mandaatVoorzitter ext:minAantalHouders 1;
         ext:maxAantalHouders 1.
   }
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
+    ?row ext:succes true.
+  }
 }
 WHERE {
   GRAPH <http://mu.semte.ch/graph/tmp/load> {
@@ -68,6 +71,8 @@ DELETE {
         ext:maxAantalHouders ?huidigMaxSchepen.
     ?mandaatBurgemeester ext:minAantalHouders ?huidigMinBurgemeester;
         ext:maxAantalHouders ?huidigMaxBurgemeester.
+    ?mandaatAangewezenBurgemeester ext:minAantalHouders ?huidigMinAangewezenBurgemeester;
+        ext:maxAantalHouders ?huidigMaxAangewezenBurgemeester.
   }
 }
 INSERT {
@@ -76,8 +81,13 @@ INSERT {
         ext:maxAantalHouders ?max.
     ?mandaatBurgemeester ext:minAantalHouders 1;
         ext:maxAantalHouders 1.
+  }
+  GRAPH ?graph {
     ?mandaatAangewezenBurgemeester ext:minAantalHouders 1;
         ext:maxAantalHouders 1.
+  }
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
+    ?row ext:succes true.
   }
 }
 WHERE {
@@ -116,7 +126,7 @@ WHERE {
     }
     ?mandaatAangewezenBurgemeester org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a>.
     OPTIONAL {
-      ?mandaat mandaatAangewezenBurgemeester ext:minAantalHouders ?huidigMinAangewezenBurgemeester;
+      ?mandaatAangewezenBurgemeester ext:minAantalHouders ?huidigMinAangewezenBurgemeester;
         ext:maxAantalHouders ?huidigMaxAangewezenBurgemeester.
     }
   }
@@ -126,7 +136,7 @@ WHERE {
 
 # Process nb members Vast Bureau -> Mirrors CBS
 DELETE {
-  GRAPH ?graph {
+  GRAPH ?ocmw {
     ?mandaatLid ext:minAantalHouders ?huidigMinLid;
         ext:maxAantalHouders ?huidigMaxLid.
     ?mandaatVoorzitter ext:minAantalHouders ?huidigMinVoorzitter;
@@ -134,7 +144,7 @@ DELETE {
   }
 }
 INSERT {
-  GRAPH ?graph {
+  GRAPH ?ocmw {
     ?mandaatLid ext:minAantalHouders ?huidigMinSchepen;
         ext:maxAantalHouders ?huidigMaxSchepen.
     ?mandaatVoorzitter ext:minAantalHouders 1;
@@ -201,6 +211,9 @@ INSERT {
     ?mandaatVoorzitter ext:minAantalHouders 1;
         ext:maxAantalHouders 1.
   }
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
+    ?row ext:succes true.
+  }
 }
 WHERE {
   GRAPH <http://mu.semte.ch/graph/tmp/load> {
@@ -256,6 +269,9 @@ INSERT {
     ?mandaatVoorzitter ext:minAantalHouders 1;
         ext:maxAantalHouders 1.
   }
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
+    ?row ext:succes true.
+  }
 }
 WHERE {
   GRAPH <http://mu.semte.ch/graph/tmp/load> {
@@ -310,6 +326,9 @@ INSERT {
         ext:maxAantalHouders ?max.
     ?mandaatVoorzitter ext:minAantalHouders 1;
         ext:maxAantalHouders 1.
+  }
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
+    ?row ext:succes true.
   }
 }
 WHERE {

@@ -1,0 +1,21 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT DISTINCT ?naam WHERE {
+  GRAPH <http://mu.semte.ch/graph/tmp/load> {
+    ?row a ext:NbMembersObject;
+         ext:bestuurseenheid ?naam;
+         ext:leden_max ?max;
+         ext:leden_min ?min;
+         ext:mandaat ?mandaat.
+    OPTIONAL {
+      ?row ext:succes ?success.
+    }
+    FILTER (!BOUND(?success) && (isNumeric(?max) || isNumeric(?min)))
+  }
+}

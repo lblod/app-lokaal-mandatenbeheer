@@ -1,0 +1,5 @@
+This directory contains some utility scripts
+
+# nb-members
+
+When adding number of members to mandates, we start from a excel file with different sheets containing different data for each bestuursorgaan for which we want to set minima and maxima of mandates. First we split this data in multiple csv files, this is what `split_excel.py` does and then we can convert these different csv files to a turtle file. This can be done by executing `parse_nb_members_csv.py` multiple times, these all write to one turtle file, which can then be added as a migration on which the query `20240719160213-update-aantal-leden.sparql` can be run.

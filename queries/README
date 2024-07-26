@@ -1,7 +1,13 @@
 This directory contains some utility queries
 
 # anonymize
+
 this anonimizes PII data in a database. Be sure to replace the salts in the queries.
 
 # reduce
+
 this reduces the size of a large database to only a couple of bestuurseenheden to have a realistic but small dataset.
+
+# nb-members
+
+There are a few queries in the migration folder local that set the number of members of specific mandates. This is based on a csv file that is converted to a turtle file (see scripts for these) which is then parsed. After parsing it can be useful to check which csv-rows were unsuccessful. The query `check-unsuccessful-aantal-leden.sparql` checks this.

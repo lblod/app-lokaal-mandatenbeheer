@@ -16,5 +16,6 @@
 docker-compose.override.yml
 .htpasswd
 .env
+node_modules
 
 config/login

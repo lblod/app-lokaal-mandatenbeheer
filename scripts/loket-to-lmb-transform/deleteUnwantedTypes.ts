@@ -1,5 +1,5 @@
-import { BATCH_SIZE, sparqlOptions } from './constants';
-import { querySudo, updateSudo } from '@lblod/mu-auth-sudo';
+import { BATCH_SIZE, sparqlOptions } from "./constants";
+import { querySudo, updateSudo } from "@lblod/mu-auth-sudo";
 
 const desiredTypes = [
   "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
@@ -29,25 +29,52 @@ const desiredTypes = [
   "http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode",
   "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode",
   "http://mu.semte.ch/vocabularies/ext/Fractietype",
-  "http://www.w3.org/2000/01/rdf-schema#Class"
+  "http://www.w3.org/2000/01/rdf-schema#Class",
 ];
 
-async function hasUnwantedType(){
-  const res = await querySudo(`
+async function countUnwantedTypeTriples() {
+  const res = await querySudo(
+    `
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+    SELECT (COUNT(*) as ?count) {
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s a ?type .
+        ?s ?p ?o .
+        FILTER(?p != rdf:type && ?type NOT IN (${desiredTypes
+          .map((type) => `<${type}>`)
+          .join(",")}))
+      }
+    }
+  `,
+    {},
+    sparqlOptions
+  );
+  return parseInt(res.results.bindings[0].count.value);
+}
+
+async function hasUnwantedType() {
+  const res = await querySudo(
+    `
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
     ASK {
       GRAPH <http://mu.semte.ch/graphs/public> {
         ?s a ?type .
         ?s ?p ?o .
-        FILTER(?p != rdf:type && ?type NOT IN (${desiredTypes.map(type => `<${type}>`).join(',')}))
+        FILTER(?p != rdf:type && ?type NOT IN (${desiredTypes
+          .map((type) => `<${type}>`)
+          .join(",")}))
       }
     }
-  `, {}, sparqlOptions);
+  `,
+    {},
+    sparqlOptions
+  );
   return res.boolean;
 }
 
-async function deleteBatchOfUnwantedTypes(){
+async function deleteBatchOfUnwantedTypes() {
   const update = `
   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
@@ -60,7 +87,9 @@ async function deleteBatchOfUnwantedTypes(){
   WHERE {
     GRAPH <http://mu.semte.ch/graphs/public> {
       { ?s a ?thing. }
-      FILTER(?thing NOT IN (${desiredTypes.map(type => `<${type}>`).join(',')}))
+      FILTER(?thing NOT IN (${desiredTypes
+        .map((type) => `<${type}>`)
+        .join(",")}))
       {
         ?s ?p ?o.
         FILTER (?p != rdf:type)
@@ -68,27 +97,52 @@ async function deleteBatchOfUnwantedTypes(){
         ?oo ?pp ?s.
       }
     }
-  } LIMIT ${BATCH_SIZE}`
+  } LIMIT ${BATCH_SIZE}`;
 
   await updateSudo(update, {}, sparqlOptions);
 }
 
-async function hasUnWantedTypeDeclaration(){
-  const res = await querySudo(`
+async function countUnWantedTypeDeclarations() {
+  const res = await querySudo(
+    `
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+    SELECT (COUNT(*) as ?count) {
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s a ?type .
+        FILTER(?type NOT IN (${desiredTypes
+          .map((type) => `<${type}>`)
+          .join(",")}))
+      }
+    }
+  `,
+    {},
+    sparqlOptions
+  );
+  return parseInt(res.results.bindings[0].count.value);
+}
+
+async function hasUnWantedTypeDeclaration() {
+  const res = await querySudo(
+    `
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
     ASK {
       GRAPH <http://mu.semte.ch/graphs/public> {
         ?s a ?type .
-        FILTER(?type NOT IN (${desiredTypes.map(type => `<${type}>`).join(',')}))
+        FILTER(?type NOT IN (${desiredTypes
+          .map((type) => `<${type}>`)
+          .join(",")}))
       }
     }
-  `, {}, sparqlOptions);
+  `,
+    {},
+    sparqlOptions
+  );
   return res.boolean;
-
 }
 
-async function deleteBatchOfUnwantedTypeDeclarations(){
+async function deleteBatchOfUnwantedTypeDeclarations() {
   const update = `
   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
@@ -100,25 +154,42 @@ async function deleteBatchOfUnwantedTypeDeclarations(){
   WHERE {
     GRAPH <http://mu.semte.ch/graphs/public> {
       { ?s a ?thing. }
-      FILTER(?thing NOT IN (${desiredTypes.map(type => `<${type}>`).join(',')}))
+      FILTER(?thing NOT IN (${desiredTypes
+        .map((type) => `<${type}>`)
+        .join(",")}))
     }
-  } LIMIT ${BATCH_SIZE}`
+  } LIMIT ${BATCH_SIZE}`;
 
   await updateSudo(update, {}, sparqlOptions);
 }
 
-
-export async function deleteUnwantedTypes(){
-  process.stdout.write('Deleting unwanted type triples...');
-  while(await hasUnwantedType()){
+export async function deleteUnwantedTypes() {
+  console.log("Deleting unwanted type triples...");
+  let count = await countUnwantedTypeTriples();
+  let deleted = 0;
+  while (await hasUnwantedType()) {
     await deleteBatchOfUnwantedTypes();
-    process.stdout.write('.');
+    deleted += BATCH_SIZE;
+    console.log(
+      `Deleted ${deleted}/${count} unwanted type triples... (${(
+        (deleted / count) *
+        100
+      ).toFixed(2)}%)`
+    );
   }
-  console.log('done!');
-  process.stdout.write('Deleting unwanted type declarations...');
-  while(await hasUnWantedTypeDeclaration()){
+  console.log("done!");
+  console.log("Deleting unwanted type declarations...");
+  count = await countUnWantedTypeDeclarations();
+  deleted = 0;
+  while (await hasUnWantedTypeDeclaration()) {
     await deleteBatchOfUnwantedTypeDeclarations();
-    process.stdout.write('.');
+    deleted += BATCH_SIZE;
+    console.log(
+      `Deleted ${deleted}/${count} unwanted type declarations...(${(
+        (deleted / count) *
+        100
+      ).toFixed(2)}%)`
+    );
   }
-  console.log('done!');
+  console.log("done!");
 }

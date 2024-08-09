@@ -11,7 +11,7 @@ const desiredTypes = [
   "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
   "http://www.w3.org/2004/02/skos/core#Concept",
   "http://www.w3.org/ns/adms#Identifier",
-  "http://www.w3.org/ns/locn#Address",
+  // "http://www.w3.org/ns/locn#Address",
   "http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing",
   "http://www.w3.org/ns/prov#Location",
   "http://publications.europa.eu/ontology/euvoc#Country",

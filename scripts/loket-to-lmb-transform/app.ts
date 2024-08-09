@@ -1,3 +1,4 @@
+import { deleteUnwantedInstances } from "./deleteUnwantedInstances";
 import { deleteUnwantedTypes } from "./deleteUnwantedTypes";
 import { dropUnimportantGraphs } from "./dropUnimportantGraphs";
 import { moveOutOfPublic } from "./moveTypesOutOfPublic";
@@ -12,6 +13,7 @@ async function transform() {
   await dropUnimportantGraphs();
   await deleteUnwantedTypes();
   await moveOutOfPublic();
+  await deleteUnwantedInstances();
   console.log("done transforming!");
 }
 

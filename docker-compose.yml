@@ -30,7 +30,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/sparql-parser:latest
+    image: semtech/sparql-parser:0.0.6
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
       DATABASE_OVERLOAD_RECOVERY: "true"
@@ -190,6 +190,7 @@ services:
       LDES_ENDPOINT: "http://ldes-backend"
     volumes:
       - ./config/ldes-delta-pusher/:/config/
+      - ./data/ldes-feed/:/data/
     restart: always
     labels:
       - "logging=true"

@@ -40,6 +40,9 @@ services:
     ports:
       - "8890:8890"
     restart: "no"
+    networks:
+      - default
+      - debug
   deltanotifier:
     restart: "no"
     networks:
@@ -81,10 +84,22 @@ services:
       DEBUG: "true"
   ldes-backend:
     restart: "no"
-    environment:
-      BASE_URL: "http://localhost/streams/ldes/"
     ports:
       - "6666:80"
+    # when running with local consumer in loket
+    networks:
+      - debug
+      - default
+    environment:
+      BASE_URL: "http://localhost/"
+      FOLDER_DEPTH: 1
+      PAGE_RESOURCES_COUNT: 20
+      LDES_STREAM_PREFIX: "http://localhost/"
+      TIME_TREE_RELATION_PATH: "http://www.w3.org/ns/prov#generatedAtTime"
+      CACHE_SIZE: 10
+      DATA_FOLDER: "/data"
+      ENABLE_AUTH: "false"
+
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:

@@ -6,7 +6,7 @@
   "author": "redpencil.io",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.14.13",
+    "@types/node": "^20.14.15",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",

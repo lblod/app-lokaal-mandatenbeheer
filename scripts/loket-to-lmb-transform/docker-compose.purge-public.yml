@@ -1,0 +1,32 @@
+services:
+  transformer:
+    image: local-js-template
+    #build: ./
+    restart: 'no'
+    labels:
+      - 'logging=true'
+    environment:
+      - NODE_ENV=development
+      - NO_BABEL_NODE=true
+      - SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES=500
+      - LOG_SPARQL_ALL=false
+      - DEBUG_AUTH_HEADERS=false
+      - DELETE_UNWANTED_TYPES=true
+    ports:
+      - '8083:80'
+      - '9224:9229'
+    volumes:
+      - ./config:/config
+      - ./:/app
+      - ./data:/data
+      # ignore app/dist because this is where we map the built files to, otherwise we get an infinite loop of creating files (on mac)
+      - /app/dist
+      - ./dist:/build/
+    networks:
+      - debug
+
+networks:
+  debug:
+    external: true
+  deltas-sync:
+    external: true

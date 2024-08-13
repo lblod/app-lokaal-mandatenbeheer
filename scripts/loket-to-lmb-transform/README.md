@@ -16,3 +16,10 @@ There are a lot of graphs that are not interesting to us in the existing databas
 ### Refusal to drop a graph
 
 Even in batches of 100, there has been instances where the database stubbornly refused to drop a graph (the query to check for unimportant graphs returned 1 instance but when inspecting that graph using a similar query, it was empty ??). In that case either ignore the graph (it will not be part of the dump as it has no triples) or restart the process
+
+### Duration
+This transformation can take quite a long time. You will notice that there are other docker compose files in this repo `docker-compose.export.yml` and `docker-compose.purge-public.yml`, which were experiments of speeding up this process.
+
+Export would only take the interesting graphs out of the virtuoso as nq files. However the public graph is so large that this proved slower than the alternative.
+
+Purge Public would try and remove useless types out of the public graph first, but the difference is minimal.

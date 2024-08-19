@@ -1,8 +1,0 @@
-PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-SELECT ((COUNT (DISTINCT ?uuid)) AS ?count) WHERE {
-    GRAPH <http://mu.semte.ch/application> {
-    <http://data.lblod.info/id/bestuursorganen/75c51c04fe18067f56b8327affb07e0dac7e2890f90b23d2e72d2979946854ba> org:hasPost ?resource. ?resource mu:uuid ?uuid;           a ?class. VALUES ?class {mandaat:Mandaat}. 
-  }
-}

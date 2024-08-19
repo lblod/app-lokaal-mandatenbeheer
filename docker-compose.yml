@@ -225,3 +225,14 @@ services:
       - ./config/sparql-authorization-wrapper:/config
     restart: always
     logging: *default-logging
+
+  rekenhof-service:
+    image: semtech/mu-javascript-template
+    ports:
+      - "1234:80"
+    environment:
+      NODE_ENV: "development"
+    links: 
+      - virtuoso:database
+    volumes:
+      - ./rekenhof-service/:/app/

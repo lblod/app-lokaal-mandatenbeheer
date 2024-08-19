@@ -10,7 +10,7 @@ ext:beleidsdomeinCodeF
     form:displayType displayTypes:mandatarisBeleidsdomein;
     ext:extendsGroup ext:editMandatarisPG;
     sh:name "Beleidsdomein";
-    sh:order 100;
+    sh:order 601;
     sh:path mandaat:beleidsdomein;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
 

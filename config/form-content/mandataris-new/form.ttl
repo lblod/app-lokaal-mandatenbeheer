@@ -11,7 +11,7 @@ ext:persoonF
     form:displayType displayTypes:personSelector;
     ext:extendsGroup ext:editMandatarisPG;
     sh:name "Persoon";
-    sh:order 2;
+    sh:order 1;
     sh:path mandaat:isBestuurlijkeAliasVan;
     form:validatedBy 
         [

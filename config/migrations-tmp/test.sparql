@@ -1,0 +1,41 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+     PREFIX org: <http://www.w3.org/ns/org#>
+     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+ 
+     SELECT DISTINCT ?currentMandaatLabel ?linkedBestuursfunctie ?test WHERE {
+       GRAPH ?g {
+         ?mandataris a mandaat:Mandataris ;
+           mu:uuid """f019ba12-ef01-44c9-8713-9d07dc321abb""" ;
+           org:holds ?mandaat .
+         ?mandaat a mandaat:Mandaat ;
+           org:role ?currentBestuursfunctie .
+           OPTIONAL {
+            ?mandataris mandaat:einde ?test.
+           }
+       }
+       GRAPH ?h {
+         ?currentBestuursfunctie skos:prefLabel ?currentMandaatLabel .
+        #  OPTIONAL {
+        #  ?linkedBestuursfunctie skos:prefLabel ?linkedMandaatLabel .
+        #  }
+         BIND (?currentBestuursfunctie as ?tmpBestuursfunctie)
+         # Use COALESCE to handle cases where no linkedMandaatLabel is found
+        BIND(COALESCE(?linkedMandaatLabel, "No match found") AS ?finalLinkedMandaatLabel)
+       }
+       OPTIONAL {
+       VALUES (?tmpBestuursfunctie ?linkedBestuursfunctie) {
+         (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011>)
+ (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015>)
+ (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012>)
+ (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016>)
+ (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014>)
+ (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017>)
+ (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013>)
+ (<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018>)
+       }
+         ?linkedBestuursfunctie skos:prefLabel ?linkedMandaatLabel .
+
+       }
+     }
+     LIMIT 1

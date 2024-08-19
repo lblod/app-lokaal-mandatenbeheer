@@ -1,0 +1,31 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+SELECT ?s WHERE {
+    GRAPH <http://mu.semte.ch/application> {
+        ?s mu:uuid """f5c28f23-c664-42ec-b840-7af42ea855a3""". 
+    }
+}
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+SELECT ((COUNT (DISTINCT ?uuid)) AS ?count) WHERE {
+    GRAPH <http://mu.semte.ch/application> {
+        <http://data.lblod.info/id/bestuursorganen/f5c28f23-c664-42ec-b840-7af42ea855a3> org:hasPost ?resource. ?resource mu:uuid ?uuid;           a ?class. VALUES ?class {mandaat:Mandaat}. 
+    }
+}
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+SELECT DISTINCT ?uuid WHERE {
+    GRAPH <http://mu.semte.ch/application> {
+        <http://data.lblod.info/id/bestuursorganen/f5c28f23-c664-42ec-b840-7af42ea855a3> org:hasPost ?resource. ?resource mu:uuid ?uuid;           a ?class. VALUES ?class {mandaat:Mandaat}. 
+    }
+} GROUP BY ?uuid OFFSET 0 LIMIT 20
+
+
+CONSTRUCT {
+
+} WHERE {
+
+}

@@ -2,19 +2,14 @@
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 @prefix displayTypes: <http://lblod.data.gift/display-types/>.
-@prefix schema: <http://schema.org/>.
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
-@prefix org: <http://www.w3.org/ns/org#>.
 @prefix extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>.
 
 ext:persoonF
     a form:Field;
     form:displayType displayTypes:personSelector;
-    sh:group ext:mandatarisPG;
+    ext:extendsGroup ext:editMandatarisPG;
     sh:name "Persoon";
     sh:order 2;
     sh:path mandaat:isBestuurlijkeAliasVan;
@@ -25,86 +20,6 @@ ext:persoonF
             sh:path mandaat:isBestuurlijkeAliasVan;
             sh:resultMessage "Persoon is verplicht."
     ].
-ext:mandaatF
-    a form:Field;
-    form:displayType displayTypes:mandatarisMandaatSelector;
-    sh:group ext:mandatarisPG;
-    sh:name "Mandaat";
-    sh:order 3;
-    sh:path org:holds;
-    form:validatedBy 
-        [
-            a form:RequiredConstraint;
-            form:grouping form:Bag;
-            sh:path org:holds;
-            sh:resultMessage "Mandaat is verplicht."
-    ].
-ext:mandatarisStatusCodeF
-    a form:Field;
-    form:displayType displayTypes:mandatarisStatusCodeSelector;
-    sh:group ext:mandatarisPG;
-    sh:name "Status";
-    sh:order 4;
-    sh:path mandaat:status;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""";
-    form:validatedBy 
-        [
-            a form:RequiredConstraint;
-            form:grouping form:Bag;
-            sh:path mandaat:status;
-            sh:resultMessage "Status is verplicht."
-    ].
-ext:rangordeF
-    a form:Field;
-    form:displayType displayTypes:mandatarisRangorde;
-    sh:group ext:mandatarisPG;
-    sh:name "Rangorde";
-    sh:order 6;
-    sh:path mandaat:rangorde;
-    form:validatedBy [
-      a ext:ValidRangorde;
-      form:grouping form:MatchSome;
-      sh:severity sh:Warning;
-      sh:resultMessage "Er werd geen geldige rangorde herkend";
-      sh:path mandaat:rangorde
-    ].
-ext:startF
-    a form:Field;
-    form:displayType displayTypes:dateTime;
-    sh:group ext:mandatarisPG;
-    sh:name "Start";
-    sh:order 7;
-    sh:path mandaat:start;
-    form:validatedBy 
-        [
-            a form:RequiredConstraint;
-            form:grouping form:Bag;
-            sh:path mandaat:start;
-            sh:resultMessage "Startdatum is verplicht."
-    ].
-ext:eindeF
-    a form:Field;
-    form:displayType displayTypes:dateTime;
-    sh:group ext:mandatarisPG;
-    sh:name "Einde";
-    sh:order 8;
-    sh:path mandaat:einde.
-ext:fractieF
-    a form:Field;
-    form:displayType displayTypes:mandatarisFractieSelector;
-    sh:group ext:mandatarisPG;
-    sh:name "Fractie";
-    sh:order 9;
-    sh:path ( org:hasMembership org:organisation );
-    form:validatedBy 
-        [
-            a form:RequiredConstraint;
-            form:grouping form:Bag;
-            sh:path ( org:hasMembership org:organisation );
-            sh:resultMessage "Dit veld is verplicht."
-    ].
-ext:mandatarisPG
-    a form:PropertyGroup; sh:name ""; sh:order 1.
 
 ext:hiddenPublicationStatusF
     a form:Field;
@@ -113,31 +28,11 @@ ext:hiddenPublicationStatusF
     sh:path extlmb:hasPublicationStatus.
 
 <http://data.lblod.info/id/lmb/forms/mandataris-new>
-    a form:Form, form:TopLevelForm;
+    a form:Extension;
     form:includes
         ext:persoonF,
-        ext:mandaatF,
-        ext:mandatarisStatusCodeF,
-        ext:rangordeF,
-        ext:startF,
-        ext:eindeF,
-        ext:fractieF,
         ext:hiddenPublicationStatusF;
-    sh:group ext:mandatarisPG;
-    form:initGenerator ext:mandatarisG;
-    form:targetType mandaat:Mandataris;
-    form:targetLabel mu:uuid;
-    ext:prefix <http://data.lblod.info/id/mandatarissen/>;
+    ext:extendsForm <http://data.lblod.info/id/lmb/forms/mandataris-edit>;
     ext:withHistory true;
     mu:uuid "2522a2e2-5242-4b6d-98ee-c5bd709fceaa".
 
-ext:mandatarisG a form:Generator;
-  form:prototype [
-    form:shape [
-      a mandaat:Mandataris;
-      org:hasMembership [
-        a org:Membership
-      ]
-    ]
-  ];
-  form:dataGenerator form:addMuUuid.

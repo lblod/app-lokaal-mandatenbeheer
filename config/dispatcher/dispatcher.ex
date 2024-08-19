@@ -324,6 +324,14 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # Rekenhof api
+  #################################################################
+
+  match "/rekenhof-api/*path", %{layer: :api_services, accept: %{any: true}} do
+    forward(conn, path, "http://rekenhof-service/")
+  end
+
+  #################################################################
   # LDES
   #################################################################
   get "/streams/ldes/abb/*path" do

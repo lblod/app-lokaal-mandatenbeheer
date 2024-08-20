@@ -196,7 +196,7 @@ services:
     links:
       - virtuoso:database
   ldes-backend:
-    image: redpencil/fragmentation-producer:0.4.0
+    image: redpencil/fragmentation-producer:0.4.1
     restart: always
     logging: *default-logging
     labels:

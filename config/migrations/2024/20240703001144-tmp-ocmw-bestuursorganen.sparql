@@ -1,5 +1,5 @@
-prefix mandaat:	<http://data.vlaanderen.be/ns/mandaat#> 
-prefix besluit:	<http://data.vlaanderen.be/ns/besluit#> 
+prefix mandaat:	<http://data.vlaanderen.be/ns/mandaat#>
+prefix besluit:	<http://data.vlaanderen.be/ns/besluit#>
 prefix ext: <http://mu.semte.ch/vocabularies/ext/>
 prefix extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
 prefix skos: <http://www.w3.org/2004/02/skos/core#>
@@ -7,17 +7,24 @@ prefix bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/Bestuurseenhe
 prefix org: <http://www.w3.org/ns/org#>
 prefix mu: <http://mu.semte.ch/vocabularies/core/>
 
+# Note: this will create fake bestuursorgaan instances for the ocmw bestuursorganen and put them in the gemeente graph
+# so they can be processed during the installation meeting prep.
+#
+# The resulting mandataris instances WILL be put on the LDES but that is fine because:
+# - their publication status is draft
+# - they are linked to the correct Mandaat instance (shared by both the fake and real bestuursorgaan)
+
 INSERT {
   GRAPH ?k {
     ?bestuursorgaanURI besluit:bestuurt ?bestuurseenheidGemeente;
-          a besluit:Bestuursorgaan;  
-          mu:uuid ?uuid;  
+          a besluit:Bestuursorgaan;
+          mu:uuid ?uuid;
           ext:origineleBestuurseenheid ?bestuurseenheidOCMW;
           skos:prefLabel ?naam;
           besluit:classificatie ?classificatie.
     ?bestuursorgaanInTijdURI mandaat:isTijdspecialisatieVan ?bestuursorgaanURI;
-          a besluit:Bestuursorgaan;  
-          mu:uuid ?uuidInTijd;  
+          a besluit:Bestuursorgaan;
+          mu:uuid ?uuidInTijd;
           ext:origineleBestuursorgaan ?bestuursorgaanInTijd;
           ext:heeftBestuursperiode ?bestuursperiode;
           org:hasPost ?mandaat.
@@ -38,11 +45,11 @@ WHERE {
   }
   GRAPH ?h {
     ?bestuursorgaan besluit:bestuurt ?bestuurseenheidOCMW;
-          mu:uuid ?bestuursorgaanId;  
+          mu:uuid ?bestuursorgaanId;
           skos:prefLabel ?naam;
           besluit:classificatie ?classificatie.
     ?bestuursorgaanInTijd a besluit:Bestuursorgaan;
-          mu:uuid ?bestuursorgaanInTijdId;  
+          mu:uuid ?bestuursorgaanInTijdId;
           ext:heeftBestuursperiode ?bestuursperiode;
           mandaat:isTijdspecialisatieVan ?bestuursorgaan.
     OPTIONAL {

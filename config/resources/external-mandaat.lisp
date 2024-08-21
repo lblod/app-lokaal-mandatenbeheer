@@ -146,7 +146,10 @@
               (nationality :via ,(s-prefix "persoon:heeftNationaliteit")
                             :as "nationalities")
               (fractie :via ,(s-prefix "extlmb:currentFracties")
-                            :as "current-fracties"))
+                            :as "current-fracties")
+              (verkiezingsresultaat :via ,(s-prefix "mandaat:isResultaatVan")
+                            :inverse t
+                            :as "verkiezingsresultaten"))
   :has-one `((geboorte :via ,(s-prefix "persoon:heeftGeboorte")
                        :as "geboorte")
              (identificator :via ,(s-prefix "adms:identifier")

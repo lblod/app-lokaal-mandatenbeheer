@@ -31,3 +31,4 @@
 (add-prefix "extlmb" "http://mu.semte.ch/vocabularies/ext/lmb/")
 (add-prefix "eli" "http://data.europa.eu/eli/ontology#")
 (add-prefix "nao" "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#")
+(add-prefix "lmb" "http://lblod.data.gift/vocabularies/lmb/")

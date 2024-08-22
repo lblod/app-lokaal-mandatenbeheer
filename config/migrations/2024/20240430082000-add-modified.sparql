@@ -10,6 +10,7 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 PREFIX schema: <http://schema.org/>
 PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 INSERT {
   GRAPH ?g {
@@ -30,7 +31,7 @@ WHERE {
       dct:PeriodOfTime
       adms:Idenfifier
       besluit:Bestuursorgaan
-      ext:Installatievergadering
+      lmb:Installatievergadering
       schema:ContactPoint
       locn:Address
     }

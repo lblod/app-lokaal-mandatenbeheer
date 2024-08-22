@@ -5,11 +5,12 @@
 @prefix conceptschemes: <http://lblod.data.gift/concept-schemes/>.
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix ivs: <http://data.lblod.info/id/concept/InstallatievergaderingStatus/>.
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>.
 
 
 # Installatievergadering status concept scheme
 conceptschemes:installatievergadering-status
-  rdf:type 
+  rdf:type
     skos:ConceptScheme,
 	  rdfs:Class;
   mu:uuid "65ca3991-0337-4603-98a1-e8e1c7b6842f";
@@ -17,27 +18,27 @@ conceptschemes:installatievergadering-status
 
 # Installatievergadering status concepts
 ivs:b54dbe98-d618-4af7-9f01-791aa90774e4
-  rdf:type 
+  rdf:type
     skos:Concept,
-    ext:InstallatievergaderingStatus;
+    lmb:InstallatievergaderingStatus;
   skos:inScheme conceptschemes:installatievergadering-status;
   skos:topConceptOf conceptschemes:installatievergadering-status;
   skos:prefLabel "Te behandelen";
   mu:uuid "b54dbe98-d618-4af7-9f01-791aa90774e4".
 
 ivs:a40b8f8a-8de2-4710-8d9b-3fc43a4b740e
-  rdf:type 
+  rdf:type
     skos:Concept,
-    ext:InstallatievergaderingStatus;
+    lmb:InstallatievergaderingStatus;
   skos:inScheme conceptschemes:installatievergadering-status;
   skos:topConceptOf conceptschemes:installatievergadering-status;
   skos:prefLabel "Klaar voor vergadering";
   mu:uuid "a40b8f8a-8de2-4710-8d9b-3fc43a4b740e".
 
 ivs:c9fc3292-1576-4a82-8dcd-60795e22131f
-  rdf:type 
+  rdf:type
     skos:Concept,
-    ext:InstallatievergaderingStatus;
+    lmb:InstallatievergaderingStatus;
   skos:inScheme conceptschemes:installatievergadering-status;
   skos:topConceptOf conceptschemes:installatievergadering-status;
   skos:prefLabel "Behandeld";

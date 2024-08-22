@@ -5,7 +5,7 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
 
-    mps:588ce330-4abb-4448-9776-a17d9305df07 
+    mps:588ce330-4abb-4448-9776-a17d9305df07
       sh:order "1"^^xsd:integer.
 
     mps:d3b12468-3720-4cb0-95b4-6aa2996ab188

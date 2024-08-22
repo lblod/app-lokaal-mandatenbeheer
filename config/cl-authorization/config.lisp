@@ -58,6 +58,7 @@
   :schema "http://schema.org/"
   :skos "http://www.w3.org/2004/02/skos/core#"
   :extlmb "http://mu.semte.ch/vocabularies/ext/lmb/"
+  :lmb "http://lblod.data.gift/vocabularies/lmb/"
 )
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
@@ -67,7 +68,7 @@
   ("besluit:Bestuurseenheid" -> _)
   ("ext:BestuurseenheidClassificatieCode" -> _)
   ("ext:BestuursorgaanClassificatieCode" -> _)
-  ("ext:Bestuursperiode" -> _)
+  ("lmb:Bestuursperiode" -> _)
   ("ext:Fractietype" -> _)
   ("ext:BestuursfunctieCode" -> _)
   ("ext:MandatarisStatusCode" -> _)
@@ -85,7 +86,7 @@
   ("skos:Concept" -> _)
   ("m8g:PeriodOfTime" -> _)
   ("foaf:Document" -> _)
-  ("extlmb:MandatarisPublicationStatusCode" -> _))
+  ("lmb:MandatarisPublicationStatusCode" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("musession:Session" -> _))
@@ -114,8 +115,8 @@
   ("dct:PeriodOfTime" -> _)
   ("ext:Form" -> _)
   ("ext:Extension" -> _)
-  ("ext:Installatievergadering" -> _)
-  ("ext:InstallatievergaderingStatus" -> _)
+  ("lmb:Installatievergadering" -> _)
+  ("lmb:InstallatievergaderingStatus" -> _)
   ("mandaat:RechtstreekseVerkiezing" -> _)
   ("mandaat:Kandidatenlijst" -> _)
   ("ext:KandidatenlijstLijsttype" -> _)

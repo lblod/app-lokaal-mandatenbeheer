@@ -1,10 +1,10 @@
-PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 INSERT {
   GRAPH ?h {
-    ?boit ext:heeftBestuursperiode ?bestuursperiode.
+    ?boit lmb:heeftBestuursperiode ?bestuursperiode.
   }
 }
 WHERE {
@@ -17,10 +17,10 @@ WHERE {
     }
   }
 
-  ?bestuursperiode a ext:Bestuursperiode;
-  ext:startYear ?startYear.
+  ?bestuursperiode a lmb:Bestuursperiode;
+  lmb:startYear ?startYear.
   OPTIONAL {
-    ?bestuursperiode ext:endYear ?endYear.
+    ?bestuursperiode lmb:endYear ?endYear.
   }
   FILTER (?startYear = year(?start)).
   FILTER (!bound(?end) || ?endYear = year(?end)).

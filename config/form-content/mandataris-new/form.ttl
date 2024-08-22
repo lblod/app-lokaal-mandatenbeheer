@@ -4,7 +4,7 @@
 @prefix displayTypes: <http://lblod.data.gift/display-types/>.
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
-@prefix extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>.
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>.
 
 ext:persoonF
     a form:Field;
@@ -25,7 +25,7 @@ ext:hiddenPublicationStatusF
     a form:Field;
     sh:name "Publication status [hidden input]";
     sh:order 5001;
-    sh:path extlmb:hasPublicationStatus.
+    sh:path lmb:hasPublicationStatus.
 
 <http://data.lblod.info/id/lmb/forms/mandataris-new>
     a form:Extension;

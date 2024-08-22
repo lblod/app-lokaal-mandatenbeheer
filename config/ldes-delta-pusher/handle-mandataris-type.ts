@@ -10,7 +10,7 @@ export const toMandatarisDraftState = async (subjects: string[]) => {
   const matches = await query(`
       PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
       PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-      PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
+      PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
       SELECT DISTINCT ?s ?publicationStatus
       WHERE {
@@ -18,7 +18,7 @@ export const toMandatarisDraftState = async (subjects: string[]) => {
         VALUES ?s { ${[...subjects]
           .map((subject) => `<${subject}>`)
           .join(" ")} }
-        OPTIONAL { ?s extlmb:hasPublicationStatus ?publicationStatus. }
+        OPTIONAL { ?s lmb:hasPublicationStatus ?publicationStatus. }
       }
     `);
   return matches.results.bindings;

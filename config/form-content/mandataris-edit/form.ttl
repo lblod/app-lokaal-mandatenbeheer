@@ -17,7 +17,7 @@ ext:mandaatF
     sh:name "Mandaat";
     sh:order 200;
     sh:path org:holds;
-    form:validatedBy 
+    form:validatedBy
         [
             a form:RequiredConstraint;
             form:grouping form:Bag;
@@ -32,7 +32,7 @@ ext:mandatarisStatusCodeF
     sh:order 300;
     sh:path mandaat:status;
     form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""";
-    form:validatedBy 
+    form:validatedBy
         [
             a form:RequiredConstraint;
             form:grouping form:Bag;
@@ -67,7 +67,7 @@ ext:startF
     sh:name "Start";
     sh:order 700;
     sh:path mandaat:start;
-    form:validatedBy 
+    form:validatedBy
         [
             a form:RequiredConstraint;
             form:grouping form:Bag;
@@ -88,7 +88,7 @@ ext:fractieF
     sh:name "Fractie";
     sh:order 900;
     sh:path ( org:hasMembership org:organisation );
-    form:validatedBy 
+    form:validatedBy
         [
             a form:RequiredConstraint;
             form:grouping form:Bag;
@@ -135,7 +135,8 @@ ext:editMandatarisPG
 ext:mandatarisG a form:Generator;
   form:prototype [
     form:shape [
-      org:hasMembership [
+        a mandaat:Mandataris;
+        org:hasMembership [
         a org:Membership
       ]
     ]

@@ -15,7 +15,7 @@ ext:mandaatF
     form:displayType displayTypes:mandatarisMandaatSelector;
     sh:group ext:editMandatarisPG;
     sh:name "Mandaat";
-    sh:order 200;
+    sh:order 100;
     sh:path org:holds;
     form:validatedBy
         [

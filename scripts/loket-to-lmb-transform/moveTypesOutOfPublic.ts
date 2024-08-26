@@ -16,6 +16,7 @@ PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
 PREFIX schema: <http://schema.org/>
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX temp: <http://mu.semte.ch/graph/temp/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 `;
 
 async function moveBestuursorgaan() {
@@ -36,7 +37,7 @@ async function moveBestuursorgaan() {
       ?orgaan a besluit:Bestuursorgaan.
       {
         ?orgaan ?p ?o.
-        VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+        VALUES ?p { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
                     besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
       }
       UNION
@@ -73,7 +74,7 @@ async function moveBestuursorgaanInTijd() {
       ?orgaanInTijd a besluit:Bestuursorgaan.
       {
         ?orgaanInTijd ?p ?o.
-        VALUES ?p { rdf:type mu:uuid dct:modified ext:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
+        VALUES ?p { rdf:type mu:uuid dct:modified lmb:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
                     mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie ext:heeftBestuursperiode }
       }
       UNION

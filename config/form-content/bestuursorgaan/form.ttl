@@ -10,6 +10,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
 @prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>.
 
 ext:naamF
     a form:Field;
@@ -18,7 +19,7 @@ ext:naamF
     sh:name "Naam";
     sh:order 1;
     sh:path skos:prefLabel;
-    form:validatedBy 
+    form:validatedBy
         [
             a form:RequiredConstraint;
             form:grouping form:Bag;
@@ -39,7 +40,7 @@ ext:deactivatedAtF
     sh:group ext:bestuursorgaanPG;
     sh:name "Actief";
     sh:order 3;
-    sh:path ext:deactivatedAt.
+    sh:path lmb:deactivatedAt.
 ext:hiddenBestuurseenheidF
     a form:Field;
     sh:name "Bestuurseenheid [hidden input]";

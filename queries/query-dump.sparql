@@ -193,11 +193,11 @@ INSERT {
     {
       ?bestuursorgaan a besluit:Bestuursorgaan;
                 ?p ?o.
-      VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
             besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
       ?fakeBestuursorgaan a besluit:Bestuursorgaan;
                     ?pp ?oo.
-      VALUES ?pp { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?pp { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
             besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
     }
     UNION
@@ -222,7 +222,7 @@ INSERT {
     ?orgaanInTijd a besluit:Bestuursorgaan.
     {
       ?orgaanInTijd ?p ?o.
-      VALUES ?p { rdf:type mu:uuid dct:modified ext:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
+      VALUES ?p { rdf:type mu:uuid dct:modified lmb:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
             mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie lmb:heeftBestuursperiode }
     }
     UNION
@@ -341,6 +341,7 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX schema: <http://schema.org/>
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX temp: <http://mu.semte.ch/graph/temp/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 # Inserting bestuurseenheid
 # Should stay in public graph
@@ -405,10 +406,10 @@ INSERT {
     ?fakeOrgaan a besluit:Bestuursorgaan.
     {
       ?orgaan ?p ?o.
-      VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
                   besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
       ?fakeOrgaan ?pp ?oo.
-      VALUES ?pp { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?pp { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
                    besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
     }
     UNION
@@ -435,7 +436,7 @@ INSERT {
     ?orgaanInTijd a besluit:Bestuursorgaan.
     {
       ?orgaanInTijd ?p ?o.
-      VALUES ?p { rdf:type mu:uuid dct:modified ext:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
+      VALUES ?p { rdf:type mu:uuid dct:modified lmb:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
                   mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie lmb:heeftBestuursperiode }
     }
     UNION

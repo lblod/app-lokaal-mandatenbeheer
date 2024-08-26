@@ -1,4 +1,4 @@
-prefix mandaat:	<http://data.vlaanderen.be/ns/mandaat#> 
+prefix mandaat:	<http://data.vlaanderen.be/ns/mandaat#>
 prefix bestuursorgaan: <http://data.lblod.info/id/bestuursorganen/>
 prefix verkiezingen: <http://data.lblod.info/id/rechtstreekse-verkiezingen/>
 prefix xsd:	<http://www.w3.org/2001/XMLSchema#>
@@ -7,7 +7,6 @@ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
 DELETE {
   GRAPH ?g {
-    ?verkiezing mandaat:steltSamen ?oldBestuursorgaanInDeTijd .
     ?verkiezing mandaat:datum ?datum .
   }
 }

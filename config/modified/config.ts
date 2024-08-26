@@ -11,7 +11,7 @@ export const interestingTypes = [
   "http://purl.org/dc/terms/PeriodOfTime",
   "http://www.w3.org/ns/adms#Identifier",
   "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-  "http://mu.semte.ch/vocabularies/ext/Installatievergadering",
+  "http://lblod.data.gift/vocabularies/lmb/Installatievergadering",
   "http://schema.org/ContactPoint",
   "http://www.w3.org/ns/locn#Address",
 ];

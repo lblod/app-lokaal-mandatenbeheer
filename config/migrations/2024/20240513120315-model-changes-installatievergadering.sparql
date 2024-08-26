@@ -1,6 +1,7 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 DELETE {
   GRAPH ?g {
@@ -9,15 +10,15 @@ DELETE {
 }
 INSERT {
   GRAPH ?g {
-    ?installatieVergadering ext:heeftBestuurseenheid ?bestuurseenheid;
-                            ext:heeftBestuursperiode ?periode.
+    ?installatieVergadering lmb:heeftBestuurseenheid ?bestuurseenheid;
+                            lmb:heeftBestuursperiode ?periode.
   }
 }
 WHERE {
   GRAPH ?g {
     ?installatieVergadering ext:hasBestuursorgaanInDeTijd ?bestuursorgaanInDeTijd.
     ?bestuursorgaanInDeTijd mandaat:isTijdspecialisatieVan ?orgaan.
-    ?bestuursorgaanInDeTijd ext:heeftBestuursperiode ?periode.
+    ?bestuursorgaanInDeTijd lmb:heeftBestuursperiode ?periode.
     ?orgaan besluit:bestuurt ?bestuurseenheid.
   }
 }

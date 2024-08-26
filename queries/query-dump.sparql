@@ -1,18 +1,18 @@
 
 
-# SELECT DISTINCT ?p 
-# WHERE { 
+# SELECT DISTINCT ?p
+# WHERE {
 #   ?bestuurseenheid a besluit:Bestuurseenheid.
-#   { VALUES ?p { 
+#   { VALUES ?p {
 #     besluit:werkingsgebied
 #     ext:inProvincie
 #     besluit:classificatie # this probably needs to stay in public
 #     ext:contactVoor
 #     besluit:bestuurt
 #     ext:origineleBestuurseenheid
-#    } ?bestuurseenheid ?p ?o. } 
-#   UNION 
-#   { VALUES ?pp { besluit:werkingsgebied } 
+#    } ?bestuurseenheid ?p ?o. }
+#   UNION
+#   { VALUES ?pp { besluit:werkingsgebied }
 #     ?o a prov:Location.
 #     ?o ?pp ?oo. }
 # }
@@ -20,6 +20,7 @@
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 CONSTRUCT {
   ?s ?p ?o.
@@ -28,7 +29,7 @@ WHERE {
   ?s a besluit:Bestuurseenheid;
        ?p ?o.
   {
-    VALUES ?p { 
+    VALUES ?p {
       besluit:werkingsgebied
       ext:inProvincie
       besluit:classificatie # this probably needs to stay in public
@@ -37,7 +38,7 @@ WHERE {
       ext:origineleBestuurseenheid
     }
   } UNION {
-    VALUES ?pp { besluit:werkingsgebied } 
+    VALUES ?pp { besluit:werkingsgebied }
     ?o a prov:Location.
     ?o ?pp ?oo.
   }
@@ -47,6 +48,7 @@ WHERE {
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 CONSTRUCT {
   ?s ?p ?o.
@@ -79,7 +81,7 @@ WHERE {
     SELECT ?type ?predicate ?g (COUNT (DISTINCT ?target) AS ?count)
     WHERE {
       GRAPH ?g {
-        ?s a ?type; 
+        ?s a ?type;
            ?predicate ?target.
         FILTER (strstarts( str(?g), "http://mu.semte.ch/graphs/organizations/" ))
         FILTER (strends( str(?g), "LoketLB-mandaatGebruiker" ))
@@ -116,7 +118,7 @@ INSERT {
     ?s a besluit:Bestuurseenheid;
       mu:uuid ?id;
       ?p ?o.
-  } 
+  }
   FILTER ( strstarts( str(?g), "http://mu.semte.ch/graphs/organizations/") || str(?g) = "http://mu.semte.ch/graphs/public" )
   BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?targetGraph)
 }
@@ -132,7 +134,6 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
 PREFIX schema: <http://schema.org/>
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX temp: <http://mu.semte.ch/graph/temp/>
@@ -192,11 +193,11 @@ INSERT {
     {
       ?bestuursorgaan a besluit:Bestuursorgaan;
                 ?p ?o.
-      VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
             besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
       ?fakeBestuursorgaan a besluit:Bestuursorgaan;
                     ?pp ?oo.
-      VALUES ?pp { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?pp { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
             besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
     }
     UNION
@@ -221,8 +222,8 @@ INSERT {
     ?orgaanInTijd a besluit:Bestuursorgaan.
     {
       ?orgaanInTijd ?p ?o.
-      VALUES ?p { rdf:type mu:uuid dct:modified ext:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
-            mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie ext:heeftBestuursperiode }      
+      VALUES ?p { rdf:type mu:uuid dct:modified lmb:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
+            mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie lmb:heeftBestuursperiode }
     }
     UNION
     {
@@ -245,7 +246,7 @@ INSERT {
     ?mandaat a mandaat:Mandaat.
     {
       ?mandaat ?p ?o.
-      VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders 
+      VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders
                   org:role }
     }
     UNION
@@ -277,7 +278,7 @@ INSERT {
     ?verkiezing a mandaat:RechtstreekseVerkiezing.
     {
       ?verkiezing ?p ?o.
-      VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid 
+      VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid
                   mandaat:steltSamen }
     }
     UNION
@@ -337,10 +338,10 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
 PREFIX schema: <http://schema.org/>
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX temp: <http://mu.semte.ch/graph/temp/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 # Inserting bestuurseenheid
 # Should stay in public graph
@@ -405,10 +406,10 @@ INSERT {
     ?fakeOrgaan a besluit:Bestuursorgaan.
     {
       ?orgaan ?p ?o.
-      VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
                   besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
       ?fakeOrgaan ?pp ?oo.
-      VALUES ?pp { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?pp { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
                    besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
     }
     UNION
@@ -435,8 +436,8 @@ INSERT {
     ?orgaanInTijd a besluit:Bestuursorgaan.
     {
       ?orgaanInTijd ?p ?o.
-      VALUES ?p { rdf:type mu:uuid dct:modified ext:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
-                  mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie ext:heeftBestuursperiode }      
+      VALUES ?p { rdf:type mu:uuid dct:modified lmb:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
+                  mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie lmb:heeftBestuursperiode }
     }
     UNION
     {
@@ -459,7 +460,7 @@ INSERT {
     ?mandaat a mandaat:Mandaat.
     {
       ?mandaat ?p ?o.
-      VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders 
+      VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders
                   org:role }
     }
     UNION
@@ -491,7 +492,7 @@ INSERT {
     ?verkiezing a mandaat:RechtstreekseVerkiezing.
     {
       ?verkiezing ?p ?o.
-      VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid 
+      VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid
                   mandaat:steltSamen }
     }
     UNION

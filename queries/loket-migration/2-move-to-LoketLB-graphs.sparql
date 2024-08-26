@@ -8,10 +8,10 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
 PREFIX schema: <http://schema.org/>
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX temp: <http://mu.semte.ch/graph/temp/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 # Define the LoketLB-mandaatGebruiker graphs
 INSERT {
@@ -41,7 +41,7 @@ INSERT {
     ?orgaan a besluit:Bestuursorgaan.
     {
       ?orgaan ?p ?o.
-      VALUES ?p { rdf:type mu:uuid skos:prefLabel ext:deactivatedAt
+      VALUES ?p { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
                   besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
     }
     UNION
@@ -64,8 +64,8 @@ INSERT {
     ?orgaanInTijd a besluit:Bestuursorgaan.
     {
       ?orgaanInTijd ?p ?o.
-      VALUES ?p { rdf:type mu:uuid dct:modified ext:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
-                  mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie ext:heeftBestuursperiode }      
+      VALUES ?p { rdf:type mu:uuid dct:modified lmb:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
+                  mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie lmb:heeftBestuursperiode }
     }
     UNION
     {
@@ -88,7 +88,7 @@ INSERT {
     ?mandaat a mandaat:Mandaat.
     {
       ?mandaat ?p ?o.
-      VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders 
+      VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders
                   org:role }
     }
     UNION
@@ -120,7 +120,7 @@ INSERT {
     ?verkiezing a mandaat:RechtstreekseVerkiezing.
     {
       ?verkiezing ?p ?o.
-      VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid 
+      VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid
                   mandaat:steltSamen }
     }
     UNION

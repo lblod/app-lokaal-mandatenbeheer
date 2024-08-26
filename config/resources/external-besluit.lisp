@@ -80,7 +80,7 @@
 (define-resource bestuursorgaan ()
   :class (s-prefix "besluit:Bestuursorgaan")
   :properties `((:naam :string ,(s-prefix "skos:prefLabel"))
-                (:deactivated-at :date ,(s-prefix "ext:deactivatedAt"))
+                (:deactivated-at :date ,(s-prefix "lmb:deactivatedAt"))
                 (:binding-einde :date ,(s-prefix "mandaat:bindingEinde"))
                 (:binding-start :date ,(s-prefix "mandaat:bindingStart")))
   :has-one `((bestuurseenheid :via ,(s-prefix "besluit:bestuurt")
@@ -93,7 +93,7 @@
                              :as "is-tijdsspecialisatie-van")
              (bestuursorgaan :via ,(s-prefix "ext:origineleBestuursorgaan")
                               :as "original-bestuursorgaan")
-             (bestuursperiode :via ,(s-prefix "ext:heeftBestuursperiode")
+             (bestuursperiode :via ,(s-prefix "lmb:heeftBestuursperiode")
                              :as "heeft-bestuursperiode")
              (rechtstreekse-verkiezing :via ,(s-prefix "mandaat:steltSamen")
                                        :inverse t
@@ -108,13 +108,13 @@
   :on-path "bestuursorganen")
 
 (define-resource bestuursperiode (concept)
-  :class (s-prefix "ext:Bestuursperiode")
-  :properties `((:start :integer ,(s-prefix "ext:startYear"))
-                (:einde :integer ,(s-prefix "ext:endYear")))
-  :has-many `((bestuursorgaan :via ,(s-prefix "ext:heeftBestuursperiode")
+  :class (s-prefix "lmb:Bestuursperiode")
+  :properties `((:start :integer ,(s-prefix "lmb:startYear"))
+                (:einde :integer ,(s-prefix "lmb:endYear")))
+  :has-many `((bestuursorgaan :via ,(s-prefix "lmb:heeftBestuursperiode")
                        :inverse t
                        :as "heeft-bestuursorganen-in-tijd")
-             (installatievergadering :via ,(s-prefix "ext:heeftBestuursperiode")
+             (installatievergadering :via ,(s-prefix "lmb:heeftBestuursperiode")
                        :inverse t
                        :as "installatievergaderingen"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Bestuursperiode/")

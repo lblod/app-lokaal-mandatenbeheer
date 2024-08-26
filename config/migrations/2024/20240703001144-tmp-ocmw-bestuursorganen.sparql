@@ -6,6 +6,7 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
 prefix org: <http://www.w3.org/ns/org#>
 prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 # Note: this will create fake bestuursorgaan instances for the ocmw bestuursorganen and put them in the gemeente graph
 # so they can be processed during the installation meeting prep.
@@ -26,7 +27,7 @@ INSERT {
           a besluit:Bestuursorgaan;
           mu:uuid ?uuidInTijd;
           ext:origineleBestuursorgaan ?bestuursorgaanInTijd;
-          ext:heeftBestuursperiode ?bestuursperiode;
+          lmb:heeftBestuursperiode ?bestuursperiode;
           org:hasPost ?mandaat.
     ?mandaat ?pp ?oo .
   }
@@ -39,8 +40,8 @@ WHERE {
     ?bestuurseenheidOCMW a besluit:Bestuurseenheid;
           besluit:classificatie bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000002;
           besluit:werkingsgebied ?werkingsgebied.
-    ?bestuursperiode a ext:Bestuursperiode;
-          ext:startYear "2025"^^xsd:integer.
+    ?bestuursperiode a lmb:Bestuursperiode;
+          lmb:startYear "2025"^^xsd:integer.
     ?classificatie skos:inScheme extlmb:gemeente-bestuursorgaan-codes.
   }
   GRAPH ?h {
@@ -50,7 +51,7 @@ WHERE {
           besluit:classificatie ?classificatie.
     ?bestuursorgaanInTijd a besluit:Bestuursorgaan;
           mu:uuid ?bestuursorgaanInTijdId;
-          ext:heeftBestuursperiode ?bestuursperiode;
+          lmb:heeftBestuursperiode ?bestuursperiode;
           mandaat:isTijdspecialisatieVan ?bestuursorgaan.
     OPTIONAL {
 	    ?bestuursorgaanInTijd org:hasPost ?mandaat.

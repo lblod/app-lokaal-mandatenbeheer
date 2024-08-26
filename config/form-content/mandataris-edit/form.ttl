@@ -9,6 +9,7 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/> .
 
 ext:mandaatF
     a form:Field;
@@ -105,11 +106,11 @@ ext:linkTobesluitF
         a form:UriConstraint;
         form:grouping form:MatchEvery;
         sh:order 1;
-        sh:path ext:linkToBesluit;
+        sh:path lmb:linkToBesluit;
         sh:resultMessage
             "Gelieve een geldige URL op te geven. Zorg dat vooraan in de link altijd http://, https://, ftp:// of sftp:// staat."@nl
     ];
-    sh:path ext:linkToBesluit.
+    sh:path lmb:linkToBesluit.
 ext:editMandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 

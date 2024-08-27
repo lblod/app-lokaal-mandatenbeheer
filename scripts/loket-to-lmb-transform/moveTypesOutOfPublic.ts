@@ -37,7 +37,7 @@ async function moveBestuursorgaan() {
       ?orgaan a besluit:Bestuursorgaan.
       {
         ?orgaan ?p ?o.
-        VALUES ?p { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt
+        VALUES ?p { rdf:type mu:uuid skos:prefLabel lmb:deactivatedAt dct:modified
                     besluit:bestuurt ext:origineleBestuurseenheid besluit:classificatie ext:origineleBestuursorgaan }
       }
       UNION
@@ -75,7 +75,7 @@ async function moveBestuursorgaanInTijd() {
       {
         ?orgaanInTijd ?p ?o.
         VALUES ?p { rdf:type mu:uuid dct:modified lmb:deactivatedAt mandaat:bindingEinde mandaat:bindingStart
-                    mandaat:isTijdspecialisatieVan org:hasPost lblodlg:heeftBestuursfunctie ext:heeftBestuursperiode }
+                    mandaat:isTijdspecialisatieVan org:hasPost ext:heeftBestuursperiode }
       }
       UNION
       {
@@ -111,7 +111,7 @@ async function moveMandaat() {
       {
         ?mandaat ?p ?o.
         VALUES ?p { rdf:type mu:uuid mandaat:aantalHouders
-                    org:role }
+                    org:role dct:modified }
       }
       UNION
       {
@@ -145,7 +145,7 @@ async function moveVerkiezing() {
       {
         ?verkiezing ?p ?o.
         VALUES ?p { rdf:type mu:uuid mandaat:datum dct:valid
-                    mandaat:steltSamen }
+                    mandaat:steltSamen dct:modified }
       }
       UNION
       {
@@ -179,7 +179,7 @@ async function moveKandidatenLijst() {
       ?kandidatenlijst a mandaat:Kandidatenlijst.
       {
         ?kandidatenlijst ?p ?o.
-        VALUES ?p { rdf:type mu:uuid skos:prefLabel mandaat:lijstnummer
+        VALUES ?p { rdf:type mu:uuid skos:prefLabel mandaat:lijstnummer dct:modified
                     mandaat:lijsttype mandaat:behoortTot mandaat:heeftKandidaat ext:produceertFractie }
       }
       UNION
@@ -213,7 +213,7 @@ async function moveVerkiezingsResultaat() {
     GRAPH <http://mu.semte.ch/graphs/public> {
       ?resultaat a mandaat:Verkiezingsresultaat;
                 ?p ?o.
-      VALUES ?p { rdf:type mu:uuid mandaat:aantalNaamstemmen mandaat:plaatsRangorde
+      VALUES ?p { rdf:type mu:uuid mandaat:aantalNaamstemmen mandaat:plaatsRangorde dct:modified
                   mandaat:isResultaatVan mandaat:isResultaatVoor mandaat:gevolg }
     }
   }`;

@@ -105,6 +105,8 @@
   ("persoon:Geboorte" -> _)
   ("org:Membership" -> _)
   ("besluit:Besluit" -> _)
+  ("besluit:Artikel" -> _)
+  ("eli:LegalResource" -> _)
   ("besluit:Bestuursorgaan" -> _)
   ("mandaat:Mandataris" -> _)
   ("mandaat:Mandaat" -> _)

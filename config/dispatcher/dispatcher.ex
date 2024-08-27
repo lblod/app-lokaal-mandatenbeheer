@@ -109,6 +109,15 @@ defmodule Dispatcher do
   #################################################################
   # Mandaat resources
   #################################################################
+  match "/besluiten/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/besluiten/")
+  end
+  match "/artikels/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/artikels/")
+  end
+  match "/rechtsgronden/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/rechtsgronden/")
+  end
   match "/fracties/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/fracties/")
   end

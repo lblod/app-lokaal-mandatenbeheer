@@ -1,0 +1,36 @@
+{
+  "name": "loket-to-lmb-transform",
+  "version": "0.0.0",
+  "description": "Script to transform a loket db to a lmb db",
+  "main": "app.js",
+  "author": "redpencil.io",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.14.15",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0"
+  },
+  "scripts": {
+    "lint:js": "eslint . --cache --ext .ts",
+    "lint:js:fix": "eslint . --cache --ext .ts --fix",
+    "release": "release-it",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@lblod/mu-auth-sudo": "^0.6.1",
+    "body-parser": "^1.19.0",
+    "cron": "^1.8.2",
+    "crypto-js": "^4.0.0",
+    "csv-parse": "^5.5.6",
+    "express-promise-router": "^4.1.1",
+    "lodash.groupby": "^4.6.0",
+    "lodash.uniq": "^4.5.0",
+    "moment": "^2.29.1",
+    "multer": "^1.4.5-lts.1",
+    "release-it": "^15.4.1",
+    "uuid": "^8.3.1"
+  }
+}

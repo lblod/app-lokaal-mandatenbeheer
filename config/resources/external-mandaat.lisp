@@ -104,7 +104,13 @@
              (mandataris :via ,(s-prefix "owl:sameAs")
                          :as "duplicate-of")
              (mandataris-publication-status-code :via ,(s-prefix "lmb:hasPublicationStatus")
-                         :as "publication-status"))
+                         :as "publication-status")
+             (rechtsgrond :via ,(s-prefix "mandaat:bekrachtigtAanstellingVan")
+                         :inverse t
+                         :as "aanstelling-bekrachtigd-door")
+             (rechtsgrond :via ,(s-prefix "mandaat:bekrachtigtOntslagVan")
+                         :inverse t
+                         :as "ontslag-bekrachtigd-door"))
   :resource-base (s-url "http://data.lblod.info/id/mandatarissen/")
   :features '(include-uri)
   :on-path "mandatarissen")

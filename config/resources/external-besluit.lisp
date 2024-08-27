@@ -9,7 +9,7 @@
     (:bekrachtigt-aanstelling-van :string ,(s-prefix "mandaat:bekrachtigtAanstellingVan"))
     (:bekrachtigt-ontslag-van :string ,(s-prefix "mandaat:bekrachtigtOntslagVan"))
   )
-  :resource-base (s-url "http://data.lblod.info/id/rechtsgronden-abstractie/")
+  :resource-base (s-url "http://data.lblod.info/id/rechtsgronden/")
   :features '(include-uri)
   :on-path "rechtsgronden"
 )

@@ -3,7 +3,11 @@ export default [
     match: {
       predicate: {
         type: 'uri',
-        value: 'http://mu.semte.ch/vocabularies/ext/bekrachtigtAanstellingVan',
+        value: 'http://data.vlaanderen.be/ns/mandaat#bekrachtigtAanstellingVan',
+      },
+      predicate: {
+        type: 'uri',
+        value: 'http://data.vlaanderen.be/ns/mandaat#bekrachtigtOntslagVan',
       },
       graph: {
         type: 'uri',

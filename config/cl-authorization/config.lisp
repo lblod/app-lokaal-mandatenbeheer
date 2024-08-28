@@ -99,6 +99,12 @@
   ("foaf:OnlineAccount" -> _)
   ("adms:Identifier" -> _))
 
+(define-graph consumer-decisions ("http://mu.semte.ch/graphs/besluiten-consumed")
+  ("besluit:Besluit" -> _)
+  ("besluit:Artikel" -> _)
+  ("mandaat:Mandataris" -> _)
+  ("person:Person" -> _)
+)
 (define-graph organization-mandatendatabank ("http://mu.semte.ch/graphs/organizations/")
   ("contacthub:AgentInPositie" -> _)
   ("mandaat:Fractie" -> _)
@@ -196,4 +202,7 @@
 
 (grant (read write)
        :to-graph organization-mandatendatabank
+       :for-allowed-group "mandaat-gebruiker")
+(grant (read write)
+       :to-graph consumer-decisions
        :for-allowed-group "mandaat-gebruiker")

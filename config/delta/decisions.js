@@ -11,7 +11,7 @@ export default [
       },
       graph: {
         type: 'uri',
-        value: 'http://mu.semte.ch/graphs/besluiten-consumed',
+        value: 'http://mu.semte.ch/graphs/besluiten-consumed974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4/LoketLB-mandaatGebruiker',
       },
     },
     callback: {

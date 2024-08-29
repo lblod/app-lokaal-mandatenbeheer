@@ -20,5 +20,6 @@ WHERE {
   ?bestuursorgaan skos:prefLabel ?label1 ;
     skos:prefLabel ?label2 .
   FILTER (?label1 != ?label2)
+  # You need to configure here which label you want to keep, these two cases cover our current database.
   FILTER ((STRENDS(?label1, "-edit")) || STRENDS(?label2, "(voor fusie)"))
 }

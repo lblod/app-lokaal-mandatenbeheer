@@ -1,6 +1,5 @@
 import { Changeset } from "../types";
-import { query } from "mu";
-import { InterestingSubject, LDES_TYPE, publish } from "./publisher";
+import { InterestingSubject, publish } from "./publisher";
 import { log } from "./logger";
 
 type SubjectFilter = (subjects: string[]) => Promise<InterestingSubject[]>;

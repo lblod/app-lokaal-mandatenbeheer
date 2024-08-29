@@ -1,0 +1,24 @@
+ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+  GRAPH ?g {
+    ?bestuursorgaan skos:prefLabel ?label1.
+  }
+}
+WHERE {
+  {
+    SELECT ?g ?bestuursorgaan WHERE {
+      GRAPH ?g {
+        ?bestuursorgaan a besluit:Bestuursorgaan ;
+          skos:prefLabel ?o .
+      }
+    }
+    GROUP BY ?g ?bestuursorgaan
+    HAVING (COUNT(?o) > 1)
+  }
+  ?bestuursorgaan skos:prefLabel ?label1 ;
+    skos:prefLabel ?label2 .
+  FILTER (?label1 != ?label2)
+  FILTER ((STRENDS(?label1, "-edit")) || STRENDS(?label2, "(voor fusie)"))
+}

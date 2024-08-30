@@ -1,18 +1,24 @@
 import { Changeset } from "../types";
 import { query } from "mu";
-import {
-  InterestingSubject,
-  publishInterestingSubjects,
-} from "./handle-types-util";
+import { publishInterestingSubjects } from "./handle-types-util";
+import { InterestingSubject, LDES_TYPE, TypesWithFilter } from "./publisher";
 
-const regularTypesToLDESMapping = {
+const regularTypesToLDESMapping: {
+  [key: string]: LDES_TYPE | TypesWithFilter;
+} = {
   "http://data.vlaanderen.be/ns/mandaat#Fractie": "public",
   "http://www.w3.org/ns/org#Membership": "public",
   "http://data.vlaanderen.be/ns/mandaat#Mandaat": "public",
-  "http://www.w3.org/ns/person#Person": "public",
+  "http://www.w3.org/ns/person#Person": {
+    public: {
+      filter: `FILTER(?p NOT IN (<http://data.vlaanderen.be/ns/persoon#heeftGeboorte>, <http://www.w3.org/ns/adms#identifier>, <http://data.vlaanderen.be/ns/persoon#geslacht>))`,
+    },
+    abb: {},
+    internal: {},
+  },
   "http://purl.org/dc/terms/PeriodOfTime": "public",
   "http://www.w3.org/ns/adms#Identifier": "abb",
-  "http://data.vlaanderen.be/ns/persoon#Geboorte": "public",
+  "http://data.vlaanderen.be/ns/persoon#Geboorte": "abb",
   "http://schema.org/ContactPoint": "abb",
   "http://www.w3.org/ns/locn#Address": "abb",
 };

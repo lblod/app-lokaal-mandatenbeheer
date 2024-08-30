@@ -2,11 +2,18 @@ import { query, sparqlEscapeUri, sparqlEscape } from "mu";
 import { LDES_ENDPOINT } from "../config";
 import fetch from "node-fetch";
 import { log } from "./logger";
+
 export type LDES_TYPE = "public" | "abb" | "internal";
+export type TypesWithFilter = {
+  [key in LDES_TYPE]: {
+    filter?: string;
+  };
+};
 export type InterestingSubject = {
   uri: string;
   type: string;
-  ldesType: LDES_TYPE;
+  ldesType: LDES_TYPE | TypesWithFilter;
+  filter?: string;
 };
 
 const fetchSubjectData = async (
@@ -22,6 +29,8 @@ const fetchSubjectData = async (
       ${properties.map((p) => sparqlEscapeUri(p)).join("\n")}
     }`;
   }
+  const filter =
+    typeof subject.ldesType === "object" ? subject.ldesType[target].filter : "";
   const data = await query(`
     CONSTRUCT {
       <${subject.uri}> ?p ?o .
@@ -30,6 +39,7 @@ const fetchSubjectData = async (
         <${subject.uri}> ?p ?o .
       }
       ${predicateLimiter}
+      ${filter}
       FILTER NOT EXISTS {
         ?g a <http://mu.semte.ch/vocabularies/ext/FormHistory> .
       }
@@ -180,7 +190,12 @@ const streamTargets: Record<LDES_TYPE, string[]> = {
  * @param subject the uri of the subject to fetch data for and publish
  */
 export const publish = async (subject: InterestingSubject) => {
-  const targets = streamTargets[subject.ldesType] || [];
+  let targets;
+  if (typeof subject.ldesType === "string") {
+    targets = streamTargets[subject.ldesType];
+  } else {
+    targets = Object.keys(subject.ldesType);
+  }
   await Promise.all(
     targets.map(async (target) => {
       const data = await fetchSubjectData(subject, target);

@@ -232,6 +232,4 @@ services:
       - "1234:80"
     environment:
       NODE_ENV: "development"
-    links: 
-      - virtuoso:database
 

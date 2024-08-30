@@ -3,6 +3,7 @@ import { deleteUnwantedTypes } from "./deleteUnwantedTypes";
 import { dropUnimportantGraphs } from "./dropUnimportantGraphs";
 import { moveOutOfPublic } from "./moveTypesOutOfPublic";
 import { writeImportantGraphs } from "./writeImportantGraphs";
+import { anonymize } from "./anonymize";
 
 async function transform() {
   console.log(
@@ -19,11 +20,13 @@ async function transform() {
 }
 
 let job = Promise.resolve();
-if(process.env.WRITE_IMPORTANT_GRAPHS === "true"){
+if (process.env.WRITE_IMPORTANT_GRAPHS === "true") {
   job = writeImportantGraphs();
-}else if(process.env.DELETE_UNWANTED_TYPES === "true"){
+} else if (process.env.DELETE_UNWANTED_TYPES === "true") {
   job = deleteUnwantedTypes();
-} else{
+} else if (process.env.ANONYMIZE === "true") {
+  job = anonymize();
+} else {
   job = transform();
 }
 job.catch((e) => console.log(e));

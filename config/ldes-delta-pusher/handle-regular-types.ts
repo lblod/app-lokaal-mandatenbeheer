@@ -21,6 +21,7 @@ const regularTypesToLDESMapping: {
   "http://data.vlaanderen.be/ns/persoon#Geboorte": "abb",
   "http://schema.org/ContactPoint": "abb",
   "http://www.w3.org/ns/locn#Address": "abb",
+  "http://www.w3.org/ns/activitystreams#Tombstone": "public",
 };
 
 export const getLdesForRegularType = (type: string) => {

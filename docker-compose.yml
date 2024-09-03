@@ -30,7 +30,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/sparql-parser:latest
+    image: semtech/sparql-parser:0.0.7
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
       DATABASE_OVERLOAD_RECOVERY: "true"
@@ -79,7 +79,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.23.0
+    image: semtech/mu-cl-resources:feature-more-backtrace
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -165,7 +165,7 @@ services:
     restart: always
     logging: *default-logging
   modified:
-    image: lblod/track-modified-service:0.0.0
+    image: lblod/track-modified-service:0.0.1
     labels:
       - "logging=true"
     volumes:

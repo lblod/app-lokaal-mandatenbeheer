@@ -30,7 +30,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/sparql-parser:0.0.7
+    image: semtech/sparql-parser:0.0.8
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
       DATABASE_OVERLOAD_RECOVERY: "true"
@@ -41,6 +41,7 @@ services:
       QUERY_MAX_EXECUTION_TIME: 605000
     volumes:
       - ./config/cl-authorization:/config
+      - ./data/mu-auth:/data
     labels:
       - "logging=true"
     restart: always
@@ -133,12 +134,6 @@ services:
     image: nginx:1.15.2
     volumes:
       - ./config/sink/sink.conf:/etc/nginx/conf.d/default.conf
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-  person-uri-for-social-security-number:
-    image: lblod/person-uri-for-social-security-number-service:0.4.0
     labels:
       - "logging=true"
     restart: always

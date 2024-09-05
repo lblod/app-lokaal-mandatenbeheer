@@ -29,15 +29,21 @@ const fetchSubjectData = async (
       ${properties.map((p) => sparqlEscapeUri(p)).join("\n")}
     }`;
   }
+
   const filter =
     typeof subject.ldesType === "object" ? subject.ldesType[target].filter : "";
+  // we are also publishing the bestuuseenheid with our data so consuming apps easily know where to put the concept
   const data = await query(`
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     CONSTRUCT {
       <${subject.uri}> ?p ?o .
+      <${subject.uri}> ext:relatedTo ?bestuurseenheid .
     } WHERE {
       GRAPH ?g {
         <${subject.uri}> ?p ?o .
+        ?org a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>.
       }
+      ?g ext:ownedBy ?bestuurseenheid .
       ${predicateLimiter}
       ${filter}
       FILTER NOT EXISTS {

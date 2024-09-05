@@ -183,7 +183,7 @@ services:
     image: redpencil/ldes-delta-pusher:0.4.0
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
-      LDES_BASE: "http://lmb.lblod.info/streams/ldes"
+      LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes/"
       MAX_PAGE_SIZE_BYTES: 10000000
       INITIAL_STATE_LIMIT: 10000
       # for catching up after restart
@@ -207,10 +207,10 @@ services:
     labels:
       - "logging=true"
     environment:
-      BASE_URL: "https://lmb.lblod.info/streams/ldes/"
+      BASE_URL: "https://dev.mandatenbeheer.lblod.info/streams/ldes/"
       FOLDER_DEPTH: 1
       PAGE_RESOURCES_COUNT: 20
-      LDES_STREAM_PREFIX: "http://lmb.lblod.info/streams/ldes/"
+      LDES_STREAM_PREFIX: "https://dev.mandatenbeheer.lblod.info/streams/ldes/"
       TIME_TREE_RELATION_PATH: "http://www.w3.org/ns/prov#generatedAtTime"
       CACHE_SIZE: 10
       DATA_FOLDER: "/data"

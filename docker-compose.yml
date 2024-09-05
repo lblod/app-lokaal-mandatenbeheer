@@ -180,10 +180,10 @@ services:
   # LDES
   ##############################################################################
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:0.4.0
+    image: redpencil/ldes-delta-pusher:0.4.1
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
-      LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes/"
+      LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"
       MAX_PAGE_SIZE_BYTES: 10000000
       INITIAL_STATE_LIMIT: 10000
       # for catching up after restart

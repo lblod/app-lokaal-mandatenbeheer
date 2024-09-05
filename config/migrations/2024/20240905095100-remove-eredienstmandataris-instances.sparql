@@ -1,0 +1,10 @@
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+}WHERE {
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+  ?s a <http://data.lblod.info/vocabularies/erediensten/EredienstMandataris>.
+}

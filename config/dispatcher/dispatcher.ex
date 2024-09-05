@@ -296,10 +296,6 @@ defmodule Dispatcher do
   #################################################################
   # Extra services
   #################################################################
-  match "/rrn/*path", %{layer: :api_services, accept: %{any: true}} do
-    forward(conn, path, "http://person-uri-for-social-security-number/")
-  end
-
   match "/form-content/*path", %{layer: :api_services, accept: %{any: true}} do
     forward(conn, path, "http://form-content/")
   end

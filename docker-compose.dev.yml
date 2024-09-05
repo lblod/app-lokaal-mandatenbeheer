@@ -59,8 +59,6 @@ services:
     restart: "no"
   sink:
     restart: "no"
-  person-uri-for-social-security-number:
-    restart: "no"
   form-content:
     restart: "no"
     profiles:

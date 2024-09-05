@@ -42,8 +42,8 @@ const fetchSubjectData = async (
       GRAPH ?g {
         <${subject.uri}> ?p ?o .
         ?org a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>.
-        ?org <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .
       }
+      ?g ext:ownedBy ?bestuurseenheid .
       ${predicateLimiter}
       ${filter}
       FILTER NOT EXISTS {

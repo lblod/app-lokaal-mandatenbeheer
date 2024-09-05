@@ -1,0 +1,10 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?org besluit:bestuurt ?bestuurseenheid.
+  }
+}

@@ -37,8 +37,8 @@ WHERE {
      mu:uuid ?id;
      skos:prefLabel ?naam;
      besluit:classificatie/skos:prefLabel ?classificatie.
-     # provincies, gemeentes, ocmws en districten
-     FILTER (?bestuurseenheidscodes IN ( bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000000, bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001, bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000002, bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000003 ))
+     # provincies, gemeentes, ocmws en districten en Politieraad
+     FILTER (?bestuurseenheidscodes IN ( bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000000, bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001, bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000002, bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000003, bestuurseenheidscode:a3922c6d-425b-474f-9a02-ffb71a436bfc ))
      BIND(CONCAT(?classificatie, " ", ?naam) as ?volledigeNaam)
      BIND(MD5(?volledigeNaam) as ?uuidPersoon)
      BIND(MD5(CONCAT(?volledigeNaam,"ACCOUNT")) as ?uuidAccount)

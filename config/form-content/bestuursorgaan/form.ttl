@@ -48,7 +48,7 @@ ext:hiddenBestuurseenheidF
     sh:path besluit:bestuurt.
 
 ext:bestuursorgaanPG
-    a form:PropertyGroup; sh:name "Bestuursorgaan"; sh:order 1.
+    a form:PropertyGroup; sh:name ""; sh:order 1.
 
 <http://data.lblod.info/id/lmb/forms/bestuursorgaan>
     a form:Form, form:TopLevelForm;

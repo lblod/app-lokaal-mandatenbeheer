@@ -29,9 +29,8 @@ const fetchSubjectData = async (
       ${properties.map((p) => sparqlEscapeUri(p)).join("\n")}
     }`;
   }
-
   const filter =
-    typeof subject.ldesType === "object" ? subject.ldesType[target].filter : "";
+    typeof subject.ldesType === "object" && subject.ldesType[target].filter ? subject.ldesType[target].filter : "";
   // we are also publishing the bestuuseenheid with our data so consuming apps easily know where to put the concept
   const data = await query(`
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>

@@ -1,0 +1,21 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+  GRAPH ?graph {
+    ?mandataris lmb:effectiefAt "2024-09-18T13:13:00.007Z"^^xsd:dateTime.
+  }
+}
+WHERE {
+  GRAPH ?graph {
+    ?mandataris a mandaat:Mandataris;
+      mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>. # Effectief mandataris-status-code
+  }
+  FILTER NOT EXISTS {
+    ?graph a <http://mu.semte.ch/vocabularies/ext/FormHistory>
+  }
+  FILTER NOT EXISTS {
+    ?graph a <http://mu.semte.ch/graphs/public>
+  }
+}

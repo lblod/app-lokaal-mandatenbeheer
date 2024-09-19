@@ -99,3 +99,21 @@ services:
     restart: "no"
   authorization-wrapper:
     restart: "no"
+  deliver-email:
+    image: local-deliver-email-service:latest
+    restart: "no"
+    ports:
+      - 8888:80
+      - 9223:9229
+    environment:
+      NODE_ENV: "development"
+      WELL_KNOWN_SERVICE: "test"
+      EMAIL_CRON_PATTERN: "* * * * *"
+      CRON_FREQUENCY,: "* * * * *"
+      LOG_ERRORS: true
+      MAILBOX_URI: 'http://data.lblod.info/id/mailboxes/1'
+      SECURE_CONNECTION: "true"
+      EMAIL_ADDRESS: "mymail@test.com"
+      EMAIL_PASSWORD: "myemailpassword"
+      FROM_NAME: "Testmailer"
+

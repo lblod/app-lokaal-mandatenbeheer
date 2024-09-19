@@ -234,3 +234,21 @@ services:
       - ./config/sparql-authorization-wrapper:/config
     restart: always
     logging: *default-logging
+  deliver-email:
+    image: redpencil/deliver-email-service:0.3.3
+    profiles:
+      - send-emails
+    environment:
+      MAILBOX_URI: 'http://data.lblod.info/id/mailboxes/1'
+      SECURE_CONNECTION: "true"
+      EMAIL_PROTOCOL: "smtp"
+      EMAIL_ADDRESS: "mymail@myservice.com"
+      EMAIL_PASSWORD: "myemailpassword"
+      FROM_NAME: "Lokaal Mandatenbeheer"
+      NODE_ENV: "production"
+    labels:
+      - "logging=true"
+    restart: always
+    volumes:
+      - ./data/mail:/share
+    logging: *default-logging

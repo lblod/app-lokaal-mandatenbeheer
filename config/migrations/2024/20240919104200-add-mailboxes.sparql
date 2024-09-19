@@ -1,0 +1,45 @@
+# FROM https://github.com/aatauil/app-deliver-email/blob/master/config/migrations/20190122110800-mailbox-folders.sparql
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/system/email> {
+    <http://data.lblod.info/id/mailboxes/1> a <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox>;
+       <http://mu.semte.ch/vocabularies/core/uuid> "cf9cb7e4-9a00-4855-9ee0-e8e3bbeba9e9";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart> <http://data.lblod.info/id/mail-folders/1>;
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart> <http://data.lblod.info/id/mail-folders/2>;
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart> <http://data.lblod.info/id/mail-folders/3>;
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart> <http://data.lblod.info/id/mail-folders/4>;
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart> <http://data.lblod.info/id/mail-folders/5>;
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart> <http://data.lblod.info/id/mail-folders/6>.
+
+    <http://data.lblod.info/id/mail-folders/1> a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder>;
+       <http://mu.semte.ch/vocabularies/core/uuid> "891c67e5-4719-47f8-aec2-d898ba2c09e8";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title> "inbox";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#description> "Your incoming mail goes here.".
+
+    <http://data.lblod.info/id/mail-folders/2> a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder>;
+       <http://mu.semte.ch/vocabularies/core/uuid> "786a8cb0-4452-40f5-b8d8-046dd2d63281";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title> "outbox";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#description> "Your outgoing mail goes here.".
+
+    <http://data.lblod.info/id/mail-folders/3> a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder>;
+       <http://mu.semte.ch/vocabularies/core/uuid> "a6fb03f9-11be-4401-9d8f-b4dc0e9df5ee";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title> "sentbox";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#description> "Your sent mail goes here.".
+
+
+    <http://data.lblod.info/id/mail-folders/4> a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder>;
+       <http://mu.semte.ch/vocabularies/core/uuid> "a430a848-e595-49fa-bc11-f5579605877f";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title> "sending";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#description> "Your mail goes here while being sent.".
+
+    <http://data.lblod.info/id/mail-folders/5> a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder>;
+       <http://mu.semte.ch/vocabularies/core/uuid> "0cb108a9-1c0d-4c0a-bf53-60e304116e47";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title> "drafts";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#description> "Your draft goes here.".
+
+    <http://data.lblod.info/id/mail-folders/6> a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder>;
+       <http://mu.semte.ch/vocabularies/core/uuid> "70c0baba-17a0-11eb-adc1-0242ac120002";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title> "failbox";
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#description> "Your email that failed while sending goes here.".
+
+  }
+}

@@ -10,7 +10,7 @@ INSERT {
 WHERE {
   GRAPH ?graph {
     ?mandataris a mandaat:Mandataris;
-      mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>. # Effectief mandataris-status-code
+      lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/d3b12468-3720-4cb0-95b4-6aa2996ab188> . # Effectief mandataris-publication-status-code
   }
   FILTER NOT EXISTS {
     ?graph a <http://mu.semte.ch/vocabularies/ext/FormHistory>

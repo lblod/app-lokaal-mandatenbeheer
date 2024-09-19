@@ -5,6 +5,7 @@ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX ivs: <http://data.lblod.info/id/concept/InstallatievergaderingStatus/>
 PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 INSERT {
   GRAPH ?g {
@@ -27,7 +28,7 @@ WHERE {
   SELECT ?bestuursperiode WHERE {
   ?bestuursorgaan besluit:bestuurt ?bestuurseenheid.
   ?currentBestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
-      mandaat:bindingStart "2025-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime ;
       lmb:heeftBestuursperiode ?bestuursperiode.
   }
   LIMIT 1

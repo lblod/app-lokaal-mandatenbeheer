@@ -33,7 +33,7 @@ WHERE {
       generiek:isTijdspecialisatieVan ?bestuursorgaan ;
       mu:uuid ?uuid .
     OPTIONAL {
-      ?bestuurorgaanIT org:hasPost ?mandaat .
+      ?bestuursorgaanIT org:hasPost ?mandaat .
       ?mandaat a mandaat:Mandaat ;
         mu:uuid ?mandaatUuid ;
         org:role ?role .

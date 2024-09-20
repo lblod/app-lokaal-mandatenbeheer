@@ -246,6 +246,8 @@ services:
       EMAIL_PASSWORD: "myemailpassword"
       FROM_NAME: "Lokaal Mandatenbeheer"
       NODE_ENV: "production"
+      EMAIL_CRON_PATTERN: "0 8 * * 1-5" # Every weekday at 8am
+      CRON_FREQUENCY,: "0 8 * * 1-5"
     labels:
       - "logging=true"
     restart: always

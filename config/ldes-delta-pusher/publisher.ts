@@ -98,6 +98,7 @@ const modelProperties = {
     "http://www.w3.org/ns/org#memberOf",
     "http://www.w3.org/ns/org#linkedTo",
     "http://mu.semte.ch/vocabularies/ext/isFractietype",
+    "http://mu.semte.ch/vocabularies/ext/geproduceerdDoor"
   ],
   "http://www.w3.org/ns/org#Membership": [
     "http://www.w3.org/ns/org#organisation",

@@ -108,11 +108,6 @@ services:
     image: lblod/impersonation-service:0.2.0
     restart: always
     logging: *default-logging
-    environment:
-      - NODE_ENV=development
-    ports:
-      - "3000:80"
-      - "9222:9229"
   file:
     image: semtech/mu-file-service:3.4.0
     volumes:

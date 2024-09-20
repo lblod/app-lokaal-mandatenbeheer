@@ -26,6 +26,13 @@ services:
     ports:
       - "90:80"
     restart: "no"
+  impersonation:
+    restart: "no"
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:80"
+      - "9222:9229"
   dispatcher:
     restart: "no"
     networks:

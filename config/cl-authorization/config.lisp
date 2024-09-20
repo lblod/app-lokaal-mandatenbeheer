@@ -35,6 +35,8 @@
 (defparameter *rights* nil
   "All known GRANT instances connecting ACCESS-SPECIFICATION to GRAPH.")
 
+(type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
+
 (define-prefixes
   :astreams "http://www.w3.org/ns/activitystreams#"
   :adms "http://www.w3.org/ns/adms#"
@@ -146,9 +148,35 @@
                          muAccount:account/ext:sessionRole ?session_role.
           }")
 
+(supply-allowed-group "admin"
+  :parameters ()
+  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      SELECT DISTINCT ?session_role ?session_group WHERE {
+        VALUES ?session_role {
+          \"LoketLB-admin\"
+        }
+        VALUES ?session_id {
+          <SESSION_ID>
+        }
+        {
+          ?session_id ext:sessionRole ?session_role ;
+            ext:sessionGroup/mu:uuid ?session_group .
+        } UNION {
+          ?session_id ext:originalSessionRole ?session_role ;
+            ext:originalSessionGroup ?session_group.
+        }
+      }
+      LIMIT 1"
+)
+
 (grant (read)
        :to-graph organization-mandatendatabank
        :for-allowed-group "vendor")
+
+(grant (read write)
+       :to-graph sessions
+       :for-allowed-group "admin")
 
 (supply-allowed-group "authenticated"
   :parameters ()

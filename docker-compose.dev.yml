@@ -108,12 +108,6 @@ services:
     environment:
       NODE_ENV: "development"
       WELL_KNOWN_SERVICE: "test"
-      EMAIL_CRON_PATTERN: "* * * * *"
+      EMAIL_CRON_PATTERN: "* * * * *" # Every minute
       CRON_FREQUENCY,: "* * * * *"
       LOG_ERRORS: true
-      MAILBOX_URI: 'http://data.lblod.info/id/mailboxes/1'
-      SECURE_CONNECTION: "true"
-      EMAIL_ADDRESS: "mymail@test.com"
-      EMAIL_PASSWORD: "myemailpassword"
-      FROM_NAME: "Testmailer"
-

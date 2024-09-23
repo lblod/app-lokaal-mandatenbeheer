@@ -51,7 +51,9 @@
                                                  :as "classificatie")
              (bestuurseenheid-contact :via ,(s-prefix "ext:contactVoor")
                                           :inverse t
-                                          :as "contact"))
+                                          :as "contact")
+             (bestuurseenheid :via ,(s-prefix "org:linkedTo")
+                                    :as "is-associated-with"))
   :has-many `((bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
                               :inverse t
                               :as "bestuursorganen")

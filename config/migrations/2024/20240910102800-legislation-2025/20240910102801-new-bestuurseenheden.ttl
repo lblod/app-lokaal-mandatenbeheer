@@ -148,7 +148,7 @@ ns5:fd41f573-7d9a-4d9f-b7d0-d5b6114d1622	rdf:type	ns3:Organization ,
 	ns3:classification	<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ;
 	skos:prefLabel	"Beveren-Kruibeke-Zwijndrecht" ;
 	ns3:linkedTo	<http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9> ;
-	ns1:werkingsgebied	ns6:b97c1b58-6431-4509-ab94-3300d27759a8 .
+	ns1:werkingsgebied	ns6:b97c1b58-6431-4509-ab94-3300d27759a8 ;
 	ns7:uuid	"fd41f573-7d9a-4d9f-b7d0-d5b6114d1622" .
 <http://data.lblod.info/id/bestuursorganen/6cde76c5-7e01-4d8a-97f6-a29cde21e39c>	rdf:type	ns1:Bestuursorgaan ;
 	ns3:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9> ;

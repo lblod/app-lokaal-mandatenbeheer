@@ -35,5 +35,6 @@ SELECT DISTINCT * WHERE {
     ?bestuursorgaan a besluit:Bestuursorgaan ;
       ?p ?o .
     FILTER (?p IN (mu:uuid, rdf:type, skos:prefLabel, besluit:bestuurt, org:classification))
+    FILTER NOT EXISTS { ?bestuursorgaan generiek:isTijdsspecialisatieVan ?value . }
   }
 }

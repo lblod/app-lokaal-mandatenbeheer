@@ -93,7 +93,7 @@ async function deleteUnwantedMandatarissen() {
   await updateSudo(query, {}, sparqlOptions);
 }
 
-async function deleteUnwantedPersons(){
+async function deleteUnwantedPersons() {
   const query = `
     PREFIX person: <http://www.w3.org/ns/person#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
@@ -138,10 +138,10 @@ async function deleteUnwantedBestuurseenheden() {
         ?org besluit:bestuurt ?s.
       }
     } `;
-    await updateSudo(query, {}, sparqlOptions);
+  await updateSudo(query, {}, sparqlOptions);
 }
 
-async function deleteUnwantedGeboorten(){
+async function deleteUnwantedGeboorten() {
   const query = `
   PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
   DELETE {
@@ -161,7 +161,7 @@ async function deleteUnwantedGeboorten(){
   await updateSudo(query, {}, sparqlOptions);
 }
 
-async function deleteUnwantedIdentifiers(){
+async function deleteUnwantedIdentifiers() {
   const query = `
     PREFIX adms: <http://www.w3.org/ns/adms#>
     DELETE {
@@ -181,7 +181,7 @@ async function deleteUnwantedIdentifiers(){
   await updateSudo(query, {}, sparqlOptions);
 }
 
-export async function deleteUnwantedInstances(){
+export async function deleteUnwantedInstances() {
   console.log("Deleting unwanted instances...");
   await deleteUnwantedBestuursOrgs();
   await deleteUnwantedMandates();

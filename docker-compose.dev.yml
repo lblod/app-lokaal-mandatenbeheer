@@ -11,7 +11,7 @@ services:
     ports:
       - "443:443"
   mocklogin:
-    image: lblod/mock-login-service:0.3.1
+    image: lblod/mock-login-service:0.5.0
   frontend:
     restart: "no"
     ports:
@@ -26,6 +26,13 @@ services:
     ports:
       - "90:80"
     restart: "no"
+  impersonation:
+    restart: "no"
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:80"
+      - "9222:9229"
   dispatcher:
     restart: "no"
     networks:
@@ -40,6 +47,9 @@ services:
     ports:
       - "8890:8890"
     restart: "no"
+    networks:
+      - default
+      - debug
   deltanotifier:
     restart: "no"
     networks:

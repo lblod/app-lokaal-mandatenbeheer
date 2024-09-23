@@ -5,9 +5,9 @@
 
 (define-resource rechtsgrond () 
   :class (s-prefix "eli:LegalResource")
-  :properties `(
-    (:bekrachtigt-aanstelling-van :string ,(s-prefix "mandaat:bekrachtigtAanstellingVan"))
-    (:bekrachtigt-ontslag-van :string ,(s-prefix "mandaat:bekrachtigtOntslagVan"))
+  :has-one `(
+    (mandataris :via ,(s-prefix "mandaat:bekrachtigtAanstellingVan") :as "bekrachtigt-aanstelling-van")
+    (mandataris :via ,(s-prefix "mandaat:bekrachtigtOntslagVan") :as "bekrachtigt-ontslag-van")
   )
   :resource-base (s-url "http://data.lblod.info/id/rechtsgronden/")
   :features '(include-uri)

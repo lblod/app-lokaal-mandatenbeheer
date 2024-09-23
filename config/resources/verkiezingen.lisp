@@ -45,7 +45,8 @@
               (verkiezingsresultaat :via ,(s-prefix "mandaat:isResultaatVoor")
                                     :inverse t
                                     :as "resultaten")
-              (fractie :via ,(s-prefix "ext:produceertFractie")
+              (fractie :via ,(s-prefix "ext:geproduceerdDoor")
+                                    :inverse t
                                     :as "resulterende-fracties"))
   :resource-base (s-url "http://data.lblod.info/id/kandidatenlijsten/")
   :features '(include-uri)

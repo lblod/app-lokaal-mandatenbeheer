@@ -6,16 +6,16 @@ PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
 # Beveren-Kruibeke-Zwijndrecht
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality org:linkedTo ?ocmw .
     ?ocmw org:linkedTo ?municipality
   }
 } WHERE {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality a besluit:Bestuurseenheid .
   }
 
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality adms:identifier ?municipalityId .
     ?municipalityId skos:notation ?municipalityKboNotation .
     FILTER(?municipalityKboNotation IN ("KBO nummer", "KBO nummer"@nl))
@@ -31,16 +31,16 @@ INSERT {
 ;
 # Nazareth-De Pinte
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality org:linkedTo ?ocmw .
     ?ocmw org:linkedTo ?municipality
   }
 } WHERE {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality a besluit:Bestuurseenheid .
   }
 
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality adms:identifier ?municipalityId .
     ?municipalityId skos:notation ?municipalityKboNotation .
     FILTER(?municipalityKboNotation IN ("KBO nummer", "KBO nummer"@nl))
@@ -56,16 +56,16 @@ INSERT {
 ;
 # Pajottegem
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality org:linkedTo ?ocmw .
     ?ocmw org:linkedTo ?municipality
   }
 } WHERE {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality a besluit:Bestuurseenheid .
   }
 
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality adms:identifier ?municipalityId .
     ?municipalityId skos:notation ?municipalityKboNotation .
     FILTER(?municipalityKboNotation IN ("KBO nummer", "KBO nummer"@nl))
@@ -81,16 +81,16 @@ INSERT {
 ;
 # Merelbeke-Melle
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality org:linkedTo ?ocmw .
     ?ocmw org:linkedTo ?municipality
   }
 } WHERE {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality a besluit:Bestuurseenheid .
   }
 
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality adms:identifier ?municipalityId .
     ?municipalityId skos:notation ?municipalityKboNotation .
     FILTER(?municipalityKboNotation IN ("KBO nummer", "KBO nummer"@nl))

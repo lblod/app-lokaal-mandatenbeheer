@@ -13,7 +13,7 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
 INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
       <http://www.w3.org/ns/org#Organization> ,
       <http://purl.org/dc/terms/Agent> .
@@ -23,7 +23,7 @@ INSERT DATA {
       org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
   }
 
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> regorg:orgStatus <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> . # In oprichting
 
     <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> owl:sameAs <http://data.vlaanderen.be/doc/organisatie/OVO053387> .
@@ -61,7 +61,7 @@ INSERT DATA {
 ;
 # scope
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> besluit:werkingsgebied <http://data.lblod.info/id/werkingsgebieden/62fef519-b1de-4a0f-911a-c63a5365c17b> .
     <http://data.lblod.info/id/werkingsgebieden/62fef519-b1de-4a0f-911a-c63a5365c17b> a prov:Location ;
       mu:uuid """62fef519-b1de-4a0f-911a-c63a5365c17b""" ;
@@ -69,11 +69,11 @@ INSERT {
       ext:werkingsgebiedNiveau "Gemeente" .
   }
 
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     <http://data.lblod.info/id/werkingsgebieden/62fef519-b1de-4a0f-911a-c63a5365c17b> geo:sfWithin ?locatedWithin .
   }
 } WHERE {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?locatedWithin a <http://www.w3.org/ns/prov#Location> ;
       rdfs:label ?label .
     FILTER (STR(?label) = """Regio Gent""")
@@ -85,7 +85,7 @@ INSERT {
 ;
 ## Burgemeester
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/a4cb3685-80fe-479e-a5a2-867ed5e3b932> a besluit:Bestuursorgaan ;
       mu:uuid """a4cb3685-80fe-479e-a5a2-867ed5e3b932""" ;
@@ -107,7 +107,7 @@ INSERT {
 ;
 ## Gemeenteraad
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/9c337100-8c65-45de-8bef-919993501c5f> a besluit:Bestuursorgaan ;
       mu:uuid """9c337100-8c65-45de-8bef-919993501c5f""" ;
@@ -129,7 +129,7 @@ INSERT {
 ;
 ## College van Burgemeester en Schepenen
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/9ccc9b4c-1616-42ec-a29a-335cac1aa0f5> a besluit:Bestuursorgaan ;
       mu:uuid """9ccc9b4c-1616-42ec-a29a-335cac1aa0f5""" ;
@@ -151,7 +151,7 @@ INSERT {
 ;
 ## Algemeen directeur
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/18755cfe-a761-48b1-aea8-03bc39f5bd32> a besluit:Bestuursorgaan ;
       mu:uuid """18755cfe-a761-48b1-aea8-03bc39f5bd32""" ;
@@ -173,7 +173,7 @@ INSERT {
 ;
 ## Adjunct-algemeen directeur
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/54c039ee-cbb3-4cc4-9f93-076b7c40f917> a besluit:Bestuursorgaan ;
       mu:uuid """54c039ee-cbb3-4cc4-9f93-076b7c40f917""" ;
@@ -195,7 +195,7 @@ INSERT {
 ;
 ## Financieel directeur
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/465e2ec7-bbcd-4a26-a975-2a7654c5bf82> a besluit:Bestuursorgaan ;
       mu:uuid """465e2ec7-bbcd-4a26-a975-2a7654c5bf82""" ;
@@ -217,7 +217,7 @@ INSERT {
 ;
 ## Adjunct-financieel directeur
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/ef988a35-7789-4a6e-9c95-eaa3fa9b0bdd> a besluit:Bestuursorgaan ;
       mu:uuid """ef988a35-7789-4a6e-9c95-eaa3fa9b0bdd""" ;
@@ -241,11 +241,11 @@ INSERT {
 #
 ;
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?province org:hasSubOrganization <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> .
   }
 } WHERE {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?province skos:prefLabel """Oost-Vlaanderen""" .
   }
 }

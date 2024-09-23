@@ -13,7 +13,7 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
 INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     <http://data.lblod.info/id/bestuurseenheden/7d53f659-3a3b-44b1-9e77-3ea067678c0e> a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
       <http://www.w3.org/ns/org#Organization> ,
       <http://purl.org/dc/terms/Agent> .
@@ -62,7 +62,7 @@ INSERT DATA {
 ;
 ## Voorzitter van het Bijzonder Comité voor de Sociale Dienst
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/dbeab922-9e02-4612-8dc7-62327c3eb894> a besluit:Bestuursorgaan ;
       mu:uuid """dbeab922-9e02-4612-8dc7-62327c3eb894""" ;
@@ -84,7 +84,7 @@ INSERT {
 ;
 ## Raad voor Maatschappelijk Welzijn
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/093ca80d-1040-4551-bb98-b122b34b8593> a besluit:Bestuursorgaan ;
       mu:uuid """093ca80d-1040-4551-bb98-b122b34b8593""" ;
@@ -106,7 +106,7 @@ INSERT {
 ;
 ## Vast Bureau
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/891bfe31-6471-4999-b91f-9adfc47e3130> a besluit:Bestuursorgaan ;
       mu:uuid """891bfe31-6471-4999-b91f-9adfc47e3130""" ;
@@ -128,7 +128,7 @@ INSERT {
 ;
 ## Bijzonder Comité voor de Sociale Dienst
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     # Abstract governing body
     <http://data.lblod.info/id/bestuursorganen/ee93c337-089c-488e-a1b6-24a3d5eef2ba> a besluit:Bestuursorgaan ;
       mu:uuid """ee93c337-089c-488e-a1b6-24a3d5eef2ba""" ;
@@ -152,11 +152,11 @@ INSERT {
 #
 ;
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?province org:hasSubOrganization <http://data.lblod.info/id/bestuurseenheden/7d53f659-3a3b-44b1-9e77-3ea067678c0e> .
   }
 } WHERE {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?province skos:prefLabel """Oost-Vlaanderen""" .
   }
 }

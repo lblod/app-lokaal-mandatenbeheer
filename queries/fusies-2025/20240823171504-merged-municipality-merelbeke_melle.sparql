@@ -68,16 +68,6 @@ INSERT {
       rdfs:label """Merelbeke-Melle""" ;
       ext:werkingsgebiedNiveau "Gemeente" .
   }
-
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    <http://data.lblod.info/id/werkingsgebieden/62fef519-b1de-4a0f-911a-c63a5365c17b> geo:sfWithin ?locatedWithin .
-  }
-} WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    ?locatedWithin a <http://www.w3.org/ns/prov#Location> ;
-      rdfs:label ?label .
-    FILTER (STR(?label) = """Regio Gent""")
-  }
 }
 #
 # Governing bodies
@@ -149,93 +139,6 @@ INSERT {
     BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
 }
 ;
-## Algemeen directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/18755cfe-a761-48b1-aea8-03bc39f5bd32> a besluit:Bestuursorgaan ;
-      mu:uuid """18755cfe-a761-48b1-aea8-03bc39f5bd32""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/0ec9419b-3b92-4ff6-ab94-b4f3fb5dbbf7> a besluit:Bestuursorgaan ;
-      mu:uuid """0ec9419b-3b92-4ff6-ab94-b4f3fb5dbbf7""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/18755cfe-a761-48b1-aea8-03bc39f5bd32> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
-}
-;
-## Adjunct-algemeen directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/54c039ee-cbb3-4cc4-9f93-076b7c40f917> a besluit:Bestuursorgaan ;
-      mu:uuid """54c039ee-cbb3-4cc4-9f93-076b7c40f917""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/a702008e-6cc6-43d4-97ec-dfd2654ee7ff> a besluit:Bestuursorgaan ;
-      mu:uuid """a702008e-6cc6-43d4-97ec-dfd2654ee7ff""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/54c039ee-cbb3-4cc4-9f93-076b7c40f917> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
-}
-;
-## Financieel directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/465e2ec7-bbcd-4a26-a975-2a7654c5bf82> a besluit:Bestuursorgaan ;
-      mu:uuid """465e2ec7-bbcd-4a26-a975-2a7654c5bf82""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/654da80f-b6a8-4364-bc37-d6ec73d58930> a besluit:Bestuursorgaan ;
-      mu:uuid """654da80f-b6a8-4364-bc37-d6ec73d58930""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/465e2ec7-bbcd-4a26-a975-2a7654c5bf82> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
-}
-;
-## Adjunct-financieel directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/ef988a35-7789-4a6e-9c95-eaa3fa9b0bdd> a besluit:Bestuursorgaan ;
-      mu:uuid """ef988a35-7789-4a6e-9c95-eaa3fa9b0bdd""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/58010896-7f0c-4940-a51f-e6dde6006cbb> a besluit:Bestuursorgaan ;
-      mu:uuid """58010896-7f0c-4940-a51f-e6dde6006cbb""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/ef988a35-7789-4a6e-9c95-eaa3fa9b0bdd> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
-}
 #
 # Related province
 #

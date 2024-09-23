@@ -68,16 +68,6 @@ INSERT {
       rdfs:label """Beveren-Kruibeke-Zwijndrecht""" ;
       ext:werkingsgebiedNiveau "Gemeente" .
   }
-
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    <http://data.lblod.info/id/werkingsgebieden/b97c1b58-6431-4509-ab94-3300d27759a8> geo:sfWithin ?locatedWithin .
-  }
-} WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    ?locatedWithin a <http://www.w3.org/ns/prov#Location> ;
-      rdfs:label ?label .
-    FILTER (STR(?label) = """Waasland""")
-  }
 }
 #
 # Governing bodies
@@ -145,94 +135,6 @@ INSERT {
   }
 } WHERE {
     <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Beveren-Kruibeke-Zwijndrecht") as ?governingBodyLabel)
-}
-;
-## Algemeen directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/0f443d37-f3d4-4f2a-b982-f96d6f66dcb7> a besluit:Bestuursorgaan ;
-      mu:uuid """0f443d37-f3d4-4f2a-b982-f96d6f66dcb7""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/137e17a6-0c4a-4e74-b9e1-cacd7b5dfb4c> a besluit:Bestuursorgaan ;
-      mu:uuid """137e17a6-0c4a-4e74-b9e1-cacd7b5dfb4c""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/0f443d37-f3d4-4f2a-b982-f96d6f66dcb7> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Beveren-Kruibeke-Zwijndrecht") as ?governingBodyLabel)
-}
-;
-## Adjunct-algemeen directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/7c3c5f0d-c063-4c3e-9e05-cb21cec6241e> a besluit:Bestuursorgaan ;
-      mu:uuid """7c3c5f0d-c063-4c3e-9e05-cb21cec6241e""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/bf1ec4f9-f771-4749-853b-68b2a75deb5e> a besluit:Bestuursorgaan ;
-      mu:uuid """bf1ec4f9-f771-4749-853b-68b2a75deb5e""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/7c3c5f0d-c063-4c3e-9e05-cb21cec6241e> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Beveren-Kruibeke-Zwijndrecht") as ?governingBodyLabel)
-}
-;
-## Financieel directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/4da12f2e-aa9d-47e9-9028-e14fa45a8237> a besluit:Bestuursorgaan ;
-      mu:uuid """4da12f2e-aa9d-47e9-9028-e14fa45a8237""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/f6049c75-6071-4a17-aeea-cae6448c2392> a besluit:Bestuursorgaan ;
-      mu:uuid """f6049c75-6071-4a17-aeea-cae6448c2392""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/4da12f2e-aa9d-47e9-9028-e14fa45a8237> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Beveren-Kruibeke-Zwijndrecht") as ?governingBodyLabel)
-}
-;
-## Adjunct-financieel directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/a7657784-69d7-40e5-85b4-ffc0e997c72e> a besluit:Bestuursorgaan ;
-      mu:uuid """a7657784-69d7-40e5-85b4-ffc0e997c72e""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/5275a3c5-4131-4df3-8c39-71d0c32387f7> a besluit:Bestuursorgaan ;
-      mu:uuid """5275a3c5-4131-4df3-8c39-71d0c32387f7""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/a7657784-69d7-40e5-85b4-ffc0e997c72e> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> skos:prefLabel ?classificationLabel .
 
     BIND(CONCAT(?classificationLabel, " ", "Beveren-Kruibeke-Zwijndrecht") as ?governingBodyLabel)
 }

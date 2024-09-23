@@ -68,16 +68,6 @@ INSERT {
       rdfs:label """Pajottegem""" ;
       ext:werkingsgebiedNiveau "Gemeente" .
   }
-
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    <http://data.lblod.info/id/werkingsgebieden/92398c49-30d5-46b2-af90-37f135c89e47> geo:sfWithin ?locatedWithin .
-  }
-} WHERE {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    ?locatedWithin a <http://www.w3.org/ns/prov#Location> ;
-      rdfs:label ?label .
-    FILTER (STR(?label) = """Halle-Vilvoorde""")
-  }
 }
 #
 # Governing bodies
@@ -145,94 +135,6 @@ INSERT {
   }
 } WHERE {
     <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
-}
-;
-## Algemeen directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/8c37e188-2acc-480e-b5f4-c4af2054c4d5> a besluit:Bestuursorgaan ;
-      mu:uuid """8c37e188-2acc-480e-b5f4-c4af2054c4d5""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/add1e4eb-9ec7-4ea6-af82-335aa76b7d48> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/72dbebf2-87a1-459e-8fb1-08ea13fcb6e3> a besluit:Bestuursorgaan ;
-      mu:uuid """72dbebf2-87a1-459e-8fb1-08ea13fcb6e3""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/8c37e188-2acc-480e-b5f4-c4af2054c4d5> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
-}
-;
-## Adjunct-algemeen directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/ad8d1860-b70d-49de-ab76-756fcb3dfcda> a besluit:Bestuursorgaan ;
-      mu:uuid """ad8d1860-b70d-49de-ab76-756fcb3dfcda""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/add1e4eb-9ec7-4ea6-af82-335aa76b7d48> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/e64442d8-46cd-46fd-81f3-92eb7b19d5de> a besluit:Bestuursorgaan ;
-      mu:uuid """e64442d8-46cd-46fd-81f3-92eb7b19d5de""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/ad8d1860-b70d-49de-ab76-756fcb3dfcda> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
-}
-;
-## Financieel directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/89d66dad-6452-48fb-8faf-bae62a2ee984> a besluit:Bestuursorgaan ;
-      mu:uuid """89d66dad-6452-48fb-8faf-bae62a2ee984""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/add1e4eb-9ec7-4ea6-af82-335aa76b7d48> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/5d2dc5f5-7991-4b21-9bd8-a00e4fe464f3> a besluit:Bestuursorgaan ;
-      mu:uuid """5d2dc5f5-7991-4b21-9bd8-a00e4fe464f3""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/89d66dad-6452-48fb-8faf-bae62a2ee984> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> skos:prefLabel ?classificationLabel .
-
-    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
-}
-;
-## Adjunct-financieel directeur
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/tmp> {
-    # Abstract governing body
-    <http://data.lblod.info/id/bestuursorganen/4669614e-3d37-4988-bff2-ef09d23e9325> a besluit:Bestuursorgaan ;
-      mu:uuid """4669614e-3d37-4988-bff2-ef09d23e9325""" ;
-      skos:prefLabel ?governingBodyLabel ;
-      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/add1e4eb-9ec7-4ea6-af82-335aa76b7d48> ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> .
-
-    # Timed specialisation for governing body
-    <http://data.lblod.info/id/bestuursorganen/1f8fcbb5-0344-42a4-96c5-e3a3ef910a3b> a besluit:Bestuursorgaan ;
-      mu:uuid """1f8fcbb5-0344-42a4-96c5-e3a3ef910a3b""" ;
-      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/4669614e-3d37-4988-bff2-ef09d23e9325> ;
-      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
-  }
-} WHERE {
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> skos:prefLabel ?classificationLabel .
 
     BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
 }

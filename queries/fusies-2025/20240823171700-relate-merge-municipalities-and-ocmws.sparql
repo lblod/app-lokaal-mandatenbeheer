@@ -8,7 +8,7 @@ PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality org:linkedTo ?ocmw .
-    ?ocmw org:linkedTo ?municipality
+    ?ocmw org:linkedTo ?municipality .
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/tmp> {
@@ -33,7 +33,7 @@ INSERT {
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality org:linkedTo ?ocmw .
-    ?ocmw org:linkedTo ?municipality
+    ?ocmw org:linkedTo ?municipality .
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/tmp> {
@@ -58,7 +58,7 @@ INSERT {
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality org:linkedTo ?ocmw .
-    ?ocmw org:linkedTo ?municipality
+    ?ocmw org:linkedTo ?municipality .
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/tmp> {
@@ -83,7 +83,7 @@ INSERT {
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/tmp> {
     ?municipality org:linkedTo ?ocmw .
-    ?ocmw org:linkedTo ?municipality
+    ?ocmw org:linkedTo ?municipality .
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/tmp> {

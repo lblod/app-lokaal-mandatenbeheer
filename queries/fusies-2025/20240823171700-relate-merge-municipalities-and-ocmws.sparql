@@ -1,0 +1,105 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+# Beveren-Kruibeke-Zwijndrecht
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality org:linkedTo ?ocmw .
+    ?ocmw org:linkedTo ?municipality
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality a besluit:Bestuurseenheid .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality adms:identifier ?municipalityId .
+    ?municipalityId skos:notation ?municipalityKboNotation .
+    FILTER(?municipalityKboNotation IN ("KBO nummer", "KBO nummer"@nl))
+    ?municipalityId generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator """1010783451""" .
+
+    ?ocmw a besluit:Bestuurseenheid ;
+    adms:identifier ?ocmwId .
+    ?ocmwId skos:notation ?ocmwKboNotation .
+    FILTER(?ocmwKboNotation IN ("KBO nummer", "KBO nummer"@nl))
+    ?ocmwId generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator """1010783748""" .
+  }
+}
+;
+# Nazareth-De Pinte
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality org:linkedTo ?ocmw .
+    ?ocmw org:linkedTo ?municipality
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality a besluit:Bestuurseenheid .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality adms:identifier ?municipalityId .
+    ?municipalityId skos:notation ?municipalityKboNotation .
+    FILTER(?municipalityKboNotation IN ("KBO nummer", "KBO nummer"@nl))
+    ?municipalityId generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator """1010781867""" .
+
+    ?ocmw a besluit:Bestuurseenheid ;
+    adms:identifier ?ocmwId .
+    ?ocmwId skos:notation ?ocmwKboNotation .
+    FILTER(?ocmwKboNotation IN ("KBO nummer", "KBO nummer"@nl))
+    ?ocmwId generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator """1010782461""" .
+  }
+}
+;
+# Pajottegem
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality org:linkedTo ?ocmw .
+    ?ocmw org:linkedTo ?municipality
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality a besluit:Bestuurseenheid .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality adms:identifier ?municipalityId .
+    ?municipalityId skos:notation ?municipalityKboNotation .
+    FILTER(?municipalityKboNotation IN ("KBO nummer", "KBO nummer"@nl))
+    ?municipalityId generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator """1010784540""" .
+
+    ?ocmw a besluit:Bestuurseenheid ;
+    adms:identifier ?ocmwId .
+    ?ocmwId skos:notation ?ocmwKboNotation .
+    FILTER(?ocmwKboNotation IN ("KBO nummer", "KBO nummer"@nl))
+    ?ocmwId generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator """1010784738""" .
+  }
+}
+;
+# Merelbeke-Melle
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality org:linkedTo ?ocmw .
+    ?ocmw org:linkedTo ?municipality
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality a besluit:Bestuurseenheid .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality adms:identifier ?municipalityId .
+    ?municipalityId skos:notation ?municipalityKboNotation .
+    FILTER(?municipalityKboNotation IN ("KBO nummer", "KBO nummer"@nl))
+    ?municipalityId generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator """1010775830""" .
+
+    ?ocmw a besluit:Bestuurseenheid ;
+    adms:identifier ?ocmwId .
+    ?ocmwId skos:notation ?ocmwKboNotation .
+    FILTER(?ocmwKboNotation IN ("KBO nummer", "KBO nummer"@nl))
+    ?ocmwId generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator """1010776127""" .
+  }
+}

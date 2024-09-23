@@ -1,0 +1,128 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+
+    <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+      <http://www.w3.org/ns/org#Organization> ,
+      <http://purl.org/dc/terms/Agent> .
+    <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> mu:uuid "4b44e6f1-113b-4692-b149-44a889b215f2" ;
+      skos:prefLabel """Borsbeek""" ;
+      regorg:legalName """Borsbeek""" ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003> .
+
+    <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> regorg:orgStatus <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> . # In oprichting
+
+    # Placeholder for KBO number
+    <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> adms:identifier <http://data.lblod.info/id/identificatoren/a7b2c84b-8151-4d88-982b-0ec87ea2e793> .
+    <http://data.lblod.info/id/identificatoren/a7b2c84b-8151-4d88-982b-0ec87ea2e793> a adms:Identifier ;
+      mu:uuid """a7b2c84b-8151-4d88-982b-0ec87ea2e793""" ;
+      skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/79a9898b-bb86-4158-83c4-f4b9ba632e5c> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/79a9898b-bb86-4158-83c4-f4b9ba632e5c> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """79a9898b-bb86-4158-83c4-f4b9ba632e5c""" .
+
+    # Placeholder for OVO number
+    <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> adms:identifier <http://data.lblod.info/id/identificatoren/535f3065-3530-4577-b8d2-200d68d0ddeb> .
+    <http://data.lblod.info/id/identificatoren/535f3065-3530-4577-b8d2-200d68d0ddeb> a adms:Identifier ;
+      mu:uuid """535f3065-3530-4577-b8d2-200d68d0ddeb""" ;
+      skos:notation "OVO-nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/5e8ca2f4-c1cc-4a55-90ef-0c4298467cee> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/5e8ca2f4-c1cc-4a55-90ef-0c4298467cee> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """5e8ca2f4-c1cc-4a55-90ef-0c4298467cee""" .
+
+    # Placeholder for SharePoint identifier
+    <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> adms:identifier <http://data.lblod.info/id/identificatoren/03a56007-e297-434e-833d-12b8cd0c59a6> .
+    <http://data.lblod.info/id/identificatoren/03a56007-e297-434e-833d-12b8cd0c59a6> a adms:Identifier ;
+      mu:uuid """03a56007-e297-434e-833d-12b8cd0c59a6""" ;
+      skos:notation "SharePoint identificator" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/9e274975-6c33-4568-9286-c4b2b6a6b94c> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/9e274975-6c33-4568-9286-c4b2b6a6b94c> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """9e274975-6c33-4568-9286-c4b2b6a6b94c""" .
+  }
+}
+#
+# Governing bodies
+#
+;
+## Districtsraad
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/cd7165a1-3c93-411b-9ef4-393103ebbd7e> a besluit:Bestuursorgaan ;
+      mu:uuid """cd7165a1-3c93-411b-9ef4-393103ebbd7e""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/547c5e2a-fa22-4c0c-b142-9df2d7602e20> a besluit:Bestuursorgaan ;
+      mu:uuid """547c5e2a-fa22-4c0c-b142-9df2d7602e20""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/cd7165a1-3c93-411b-9ef4-393103ebbd7e> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " Borsbeek") as ?governingBodyLabel)
+}
+;
+## Districtsburgemeester
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/7135d957-2452-43a2-8a3c-608fe87e5e6e> a besluit:Bestuursorgaan ;
+      mu:uuid """7135d957-2452-43a2-8a3c-608fe87e5e6e""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/d8cedeff-a243-41f9-90ea-15867149aefd> a besluit:Bestuursorgaan ;
+      mu:uuid """d8cedeff-a243-41f9-90ea-15867149aefd""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/7135d957-2452-43a2-8a3c-608fe87e5e6e> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " Borsbeek") as ?governingBodyLabel)
+}
+;
+## Districtscollege
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/e91bec2e-e0c1-4b56-9fb2-417c3289afbd> a besluit:Bestuursorgaan ;
+      mu:uuid """e91bec2e-e0c1-4b56-9fb2-417c3289afbd""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/570a7769-89e0-4f40-aa1a-da17755f3bf4> a besluit:Bestuursorgaan ;
+      mu:uuid """570a7769-89e0-4f40-aa1a-da17755f3bf4""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/e91bec2e-e0c1-4b56-9fb2-417c3289afbd> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " Borsbeek") as ?governingBodyLabel)
+}
+#
+# Related municipality
+#
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+     <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c> org:hasSubOrganization <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> . # Relate to Antwerp municipality
+  }
+}

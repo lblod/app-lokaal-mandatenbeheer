@@ -1,0 +1,251 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+      <http://www.w3.org/ns/org#Organization> ,
+      <http://purl.org/dc/terms/Agent> .
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> mu:uuid "1ca65d65-54ff-4b44-b750-bd70c91191af" ;
+      skos:prefLabel """Nazareth-De Pinte""" ;
+      regorg:legalName """Nazareth-De Pinte""" ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> regorg:orgStatus <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> . # In oprichting
+
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> owl:sameAs <http://data.vlaanderen.be/doc/organisatie/OVO053388> .
+
+    # KBO number
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> adms:identifier <http://data.lblod.info/id/identificatoren/83f40c64-2178-4dc8-820b-43bd14a27aa3> .
+    <http://data.lblod.info/id/identificatoren/83f40c64-2178-4dc8-820b-43bd14a27aa3> a adms:Identifier ;
+      mu:uuid """83f40c64-2178-4dc8-820b-43bd14a27aa3""" ;
+      skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/795c170b-3c31-4033-acf2-c36194428548> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/795c170b-3c31-4033-acf2-c36194428548> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """795c170b-3c31-4033-acf2-c36194428548""" ;
+      generiek:lokaleIdentificator """1010781867""" .
+
+    # OVO number
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> adms:identifier <http://data.lblod.info/id/identificatoren/590acb28-c339-4075-b597-bcd3e6bdb785> .
+    <http://data.lblod.info/id/identificatoren/590acb28-c339-4075-b597-bcd3e6bdb785> a adms:Identifier ;
+      mu:uuid """590acb28-c339-4075-b597-bcd3e6bdb785""" ;
+      skos:notation "OVO-nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4c04fbf7-a906-40aa-b9a4-21ad8d7b53fe> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/4c04fbf7-a906-40aa-b9a4-21ad8d7b53fe> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """4c04fbf7-a906-40aa-b9a4-21ad8d7b53fe""" ;
+      generiek:lokaleIdentificator """OVO053388""" .
+
+    # Placeholder for SharePoint identifier
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> adms:identifier <http://data.lblod.info/id/identificatoren/fe08eaf9-2444-4ef3-981a-08011a70cb26> .
+    <http://data.lblod.info/id/identificatoren/fe08eaf9-2444-4ef3-981a-08011a70cb26> a adms:Identifier ;
+      mu:uuid "fe08eaf9-2444-4ef3-981a-08011a70cb26" ;
+      skos:notation "SharePoint identificator" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/64e6c3c9-10df-4cc1-b342-2aeadb8cf702> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/64e6c3c9-10df-4cc1-b342-2aeadb8cf702> a generiek:GestructureerdeIdentificator ;
+      mu:uuid "64e6c3c9-10df-4cc1-b342-2aeadb8cf702" .
+  }
+}
+;
+# scope
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> besluit:werkingsgebied <http://data.lblod.info/id/werkingsgebieden/41362ab2-5130-4160-b76b-4bfa5d9a1f59> .
+    <http://data.lblod.info/id/werkingsgebieden/41362ab2-5130-4160-b76b-4bfa5d9a1f59> a prov:Location ;
+      mu:uuid """41362ab2-5130-4160-b76b-4bfa5d9a1f59""" ;
+      rdfs:label """Nazareth-De Pinte""" ;
+      ext:werkingsgebiedNiveau "Gemeente" .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <http://data.lblod.info/id/werkingsgebieden/41362ab2-5130-4160-b76b-4bfa5d9a1f59> geo:sfWithin ?locatedWithin .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?locatedWithin a <http://www.w3.org/ns/prov#Location> ;
+      rdfs:label ?label .
+    FILTER (STR(?label) = """Regio Gent""")
+  }
+}
+#
+# Governing bodies
+#
+;
+## Burgemeester
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/0598ba1e-3bbc-4ff7-896e-a53db4d382c9> a besluit:Bestuursorgaan ;
+      mu:uuid """0598ba1e-3bbc-4ff7-896e-a53db4d382c9""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/b2a885d8-7ea3-476a-a55f-8359dc05263f> a besluit:Bestuursorgaan ;
+      mu:uuid """b2a885d8-7ea3-476a-a55f-8359dc05263f""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/0598ba1e-3bbc-4ff7-896e-a53db4d382c9> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Nazareth-De Pinte") as ?governingBodyLabel)
+}
+;
+## Gemeenteraad
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/4bc6b373-dd44-4c30-ad5b-47f9a28f3b08> a besluit:Bestuursorgaan ;
+      mu:uuid """4bc6b373-dd44-4c30-ad5b-47f9a28f3b08""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/281b5474-0f6d-4ac8-94ef-55afd338d3f8> a besluit:Bestuursorgaan ;
+      mu:uuid """281b5474-0f6d-4ac8-94ef-55afd338d3f8""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/4bc6b373-dd44-4c30-ad5b-47f9a28f3b08> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Nazareth-De Pinte") as ?governingBodyLabel)
+}
+;
+## College van Burgemeester en Schepenen
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/4b1cd816-114a-48c8-b722-d050fd5a37a1> a besluit:Bestuursorgaan ;
+      mu:uuid """4b1cd816-114a-48c8-b722-d050fd5a37a1""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/4a89eba8-120f-4184-accb-7b616173eb0d> a besluit:Bestuursorgaan ;
+      mu:uuid """4a89eba8-120f-4184-accb-7b616173eb0d""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/4b1cd816-114a-48c8-b722-d050fd5a37a1> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Nazareth-De Pinte") as ?governingBodyLabel)
+}
+;
+## Algemeen directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/d6ca08bc-d2ee-457b-98e0-22dd615a8328> a besluit:Bestuursorgaan ;
+      mu:uuid """d6ca08bc-d2ee-457b-98e0-22dd615a8328""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/201c9989-8666-4165-9b75-7d70b20164ad> a besluit:Bestuursorgaan ;
+      mu:uuid """201c9989-8666-4165-9b75-7d70b20164ad""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/d6ca08bc-d2ee-457b-98e0-22dd615a8328> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Nazareth-De Pinte") as ?governingBodyLabel)
+}
+;
+## Adjunct-algemeen directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/8c0823e7-1bb4-4b85-81c6-ac3849b6adea> a besluit:Bestuursorgaan ;
+      mu:uuid """8c0823e7-1bb4-4b85-81c6-ac3849b6adea""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/0806b591-cd6d-4ce5-890c-755e68e0e385> a besluit:Bestuursorgaan ;
+      mu:uuid """0806b591-cd6d-4ce5-890c-755e68e0e385""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/8c0823e7-1bb4-4b85-81c6-ac3849b6adea> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Nazareth-De Pinte") as ?governingBodyLabel)
+}
+;
+## Financieel directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/70f3a246-3b86-4962-8dc2-d993fccb1542> a besluit:Bestuursorgaan ;
+      mu:uuid """70f3a246-3b86-4962-8dc2-d993fccb1542""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/f51a9df3-133a-4647-945c-cc66c804d8e1> a besluit:Bestuursorgaan ;
+      mu:uuid """f51a9df3-133a-4647-945c-cc66c804d8e1""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/70f3a246-3b86-4962-8dc2-d993fccb1542> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Nazareth-De Pinte") as ?governingBodyLabel)
+}
+;
+## Adjunct-financieel directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/5839fc61-05c5-49d4-a982-35cd79ef36aa> a besluit:Bestuursorgaan ;
+      mu:uuid """5839fc61-05c5-49d4-a982-35cd79ef36aa""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/7a8c2a61-8d58-4024-a11e-c2ff69179657> a besluit:Bestuursorgaan ;
+      mu:uuid """7a8c2a61-8d58-4024-a11e-c2ff69179657""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/5839fc61-05c5-49d4-a982-35cd79ef36aa> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Nazareth-De Pinte") as ?governingBodyLabel)
+}
+#
+# Related province
+#
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province org:hasSubOrganization <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?province skos:prefLabel """Oost-Vlaanderen""" .
+  }
+}

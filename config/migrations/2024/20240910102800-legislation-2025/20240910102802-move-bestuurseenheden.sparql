@@ -27,8 +27,8 @@ WHERE {
 # Bestuurseenheden
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/public> {
-		besluit:classificatie ?classificatie ;
-		?s ?p ?o .
+		?s besluit:classificatie ?classificatie ;
+		  ?p ?o .
 	}
 }
 WHERE {
@@ -43,8 +43,8 @@ WHERE {
 # Bestuursorganen
 INSERT {
   GRAPH ?graph {
-		besluit:classificatie ?classificatie ;
-		?s ?p ?o .
+		?s besluit:classificatie ?classificatie ;
+		  ?p ?o .
 	}
 }
 WHERE {

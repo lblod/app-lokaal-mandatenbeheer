@@ -1,0 +1,16 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
+    ?ocmw besluit:werkingsgebied ?werkingsgebied .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
+    ?municipality a besluit:Bestuurseenheid ;
+      besluit:classificatie bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001 ;
+      besluit:werkingsgebied ?werkingsgebied ;
+      org:linkedTo ?ocmw .
+  }
+}

@@ -239,7 +239,7 @@ services:
     restart: always
     logging: *default-logging
   deliver-email:
-    image: redpencil/deliver-email-service:0.3.3
+    image: redpencil/deliver-email-service:0.4.0
     profiles:
       - send-emails
     environment:

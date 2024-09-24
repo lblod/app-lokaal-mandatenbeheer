@@ -100,7 +100,6 @@ services:
   authorization-wrapper:
     restart: "no"
   deliver-email:
-    image: local-deliver-email-service:latest
     restart: "no"
     ports:
       - 8888:80

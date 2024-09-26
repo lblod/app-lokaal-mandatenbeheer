@@ -199,6 +199,7 @@ services:
 
     volumes:
       - ./config/ldes-delta-pusher/:/config/
+      - ./data/ldes-feed/:/data/
     restart: always
     labels:
       - "logging=true"

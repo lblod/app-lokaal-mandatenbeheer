@@ -1,0 +1,1108 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns1:	<http://data.lblod.info/id/bestuursorganen/> .
+@prefix ns2:	<http://data.vlaanderen.be/ns/besluit#> .
+@prefix ns3:	<http://mu.semte.ch/vocabularies/core/> .
+@prefix ns4:	<http://www.w3.org/ns/org#> .
+@prefix ns5:	<http://data.lblod.info/id/mandaten/> .
+@prefix ns6:	<https://data.vlaanderen.be/ns/generiek#> .
+@prefix xsd:	<http://www.w3.org/2001/XMLSchema#> .
+@prefix ns8:	<http://data.vlaanderen.be/ns/mandaat#> .
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#> .
+@prefix ns10:	<http://data.lblod.info/id/bestuurseenheden/> .
+
+ns1:f851350d702fda86897d831bed917e8f1c0f7ce8e2ddbd5046f29e464a2c596f
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"f851350d702fda86897d831bed917e8f1c0f7ce8e2ddbd5046f29e464a2c596f" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/5341ce35bbe76519da31a337b6914d928c630ba9b394ab8a7de2ac5337d7b0fe> , ns5:f6f5d48e7e7140c51d5200c979ac36a9225369daa4ebc36cb593d4beaff5165a ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/075fe8306362528ca6340811c403eeb758d9e797a9071aa47b331f4050a38908> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/86410304361ee3ae44f147ab7069c393b25f1e28d2767df530a76250eab5b713>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"86410304361ee3ae44f147ab7069c393b25f1e28d2767df530a76250eab5b713" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/7725d6028776f6b574dbf16ba542b4992b66cd58d1df688def90967f661b1ebe> , <http://data.lblod.info/id/mandaten/30b716e56ca35c26f374f188798c3bd88edefa05d72e81ac1ea254fbfdd872c6> ;
+	ns6:isTijdspecialisatieVan	ns1:d0532e5bb2ecff58d0b8b04f2d8a0e6f0ab767209428a1ec4a0b58cd7d23dd4a ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:d9028bf80c1d8d3c4b87221952388bd70b22e771acee13b8978c48526ed04f79
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"d9028bf80c1d8d3c4b87221952388bd70b22e771acee13b8978c48526ed04f79" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/6b4f34ee059768cf302fec1b1c3e989a79cc41a3903b7a49afec100579e9dc6d> , ns5:b15463caaa9b73a12c88c84651dea151d4a60f5aa1354ef1d6e8b1d768f16926 ;
+	ns6:isTijdspecialisatieVan	ns1:ded4eb89c31b49d6a4e54c0f81c81d6d8ba354435624b3689c2391c0ee972af5 ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:bab2ab18f7e205668ee7ef1e3a56fc45464a908eb6e362bdb1f04a8bd2ed0b80
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"bab2ab18f7e205668ee7ef1e3a56fc45464a908eb6e362bdb1f04a8bd2ed0b80" ;
+	ns4:hasPost	ns5:df2400eab6e46175ccb51ab97575189620e22187be1d072d56504ed7e16bd3b2 , <http://data.lblod.info/id/mandaten/30d12dbd714eae24f84b996678c7c34ca55b723399c10ecb572d43e83e0aeeee> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/21fe9ea3f26627b781026fec5d7b938658aeb9cbe9c8cee7417d195e7f8544f5> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/78d25283d84ad24d95bc083c8843c8199ed3b5e5fea1623c0a5dade0dc171908>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"78d25283d84ad24d95bc083c8843c8199ed3b5e5fea1623c0a5dade0dc171908" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/76e7291ec58b0de90bc2146253e8f77d643dc23e308e5a255e88cc9cc6b8bd4e> , <http://data.lblod.info/id/mandaten/249709513a92fa3f5c49db585b5ebbebb33bdde0cddac0e040dcf3413862aa3c> ;
+	ns6:isTijdspecialisatieVan	ns1:e1f57f0bbc7d6358c5e0d79b603650df7e6f064f37433869b727fab9110d808d ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/6ece957fddf5e4de0a7b13163a2e07418fc26acff7ae9285ad9fcba9f0ddf192>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"6ece957fddf5e4de0a7b13163a2e07418fc26acff7ae9285ad9fcba9f0ddf192" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/9f94c47bbbf27d9907d53d96a51afc3cd752e6130fcc864aaf7cea76f47fcc19> , ns5:fe093f2aa7aff7dd65119ed6f84166bc746951a17090f54a361c6fc80729f6f2 ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/49f13f5071c5967ce8d574a3aa1c22b80fc5e794277015afd0aac7f803775f2a> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/489ae13940a47e32d428a856602e9dca74554c99fe55fba985e5994024fd47a6>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"489ae13940a47e32d428a856602e9dca74554c99fe55fba985e5994024fd47a6" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/5344a4516ac271c82959b37cb3bb8c204cac65d58da7ff5e0035e42827b320da> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/01993899287fb075d4e97e1cfea88879b42094e191ca2b29dd1dace4e66560d4> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/7b6866da5f84d5d5c5e583b0e48c03a7fa9d72cbb920da3a542c301b7d32cf67>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"7b6866da5f84d5d5c5e583b0e48c03a7fa9d72cbb920da3a542c301b7d32cf67" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/7ef8966ec340c3e53abb47e2a797eb1b84e9d807002223c3780821669352b907> , <http://data.lblod.info/id/mandaten/9a712ae32f9a06183b42fba62077817fb2df99755c48ed648c3bfa22e5ce8a0b> ;
+	ns6:isTijdspecialisatieVan	ns1:d98ba40e8ef1dac4a6393a08afffa3140ea846e9008d441d61e7135e9e24e6c6 ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/8790b741cf9817728052fa953a23ff515b79fa366ed14e52e2a3a157be699f32>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"8790b741cf9817728052fa953a23ff515b79fa366ed14e52e2a3a157be699f32" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/0001e21b494df8277dd27d80b575addd8ea1f85dd1056c3e4973be9888ecc328> , ns5:cb67829a916d96392cbaafeee108217248776191bb9e293a62d5c6eb6152091f ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/8f8b50216d68d1c23fe5add87a73c1c43cb47079b38316e36d5bcda329fca327> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/70419998de2d0019feeb1231ed95b027e9c799288d789d91279061164acb2338>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"70419998de2d0019feeb1231ed95b027e9c799288d789d91279061164acb2338" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/5201b7a6d78608e0e1545f7d356d4444919edca56fca754e8f2054ae79e54b57> ;
+	ns6:isTijdspecialisatieVan	ns1:ac33ad3f0df97e4c3b1fdd09e514a04cb7a9332d385cd455307ed63fcd63d39b ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/61df5e57c33b08f3f22ffc8ec48ac72ffad2cf7f3a578a9a76247ec99c4dfe0e>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"61df5e57c33b08f3f22ffc8ec48ac72ffad2cf7f3a578a9a76247ec99c4dfe0e" ;
+	ns4:hasPost	ns5:deaac848b61034502fcd93b95f09e8bdf44ec1ccc7cc497ca9f201493e6a10e4 ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/8d0a1580636604cf1a708e0542ce08df52ac6b27fe9b83f97c94ddba50dc84ee> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/1d0ad03bccdfa92f5a2e9c019758cfc085d1922e0999944eb23b15e167d6e573>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"1d0ad03bccdfa92f5a2e9c019758cfc085d1922e0999944eb23b15e167d6e573" ;
+	ns4:hasPost	ns5:deaac848b61034502fcd93b95f09e8bdf44ec1ccc7cc497ca9f201493e6a10e4 , ns5:f5036a1cbb2cd0bdf99c1d7a9c641e3e8c252fb872368410bcfd4acfb1bd2c1e ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/4c3f5e06a827580cab2d21a09a804f59885ab7c0b52312949a1322128bbf16d3> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/667697e3cd4950eb8049969aeb178f43438833768b4d228197934464ac4245cf>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"667697e3cd4950eb8049969aeb178f43438833768b4d228197934464ac4245cf" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/4d64c8b4df991ca64f2ef2ea7ce3a37015cc41e658556c33ecda2aa52e0270b7> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/454952ccfa60bfbe74d7dcaab4f558c32026439b8e7ac6da690308c553f9214c> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/89848aadf74701b59c59907b70b5e048101886273bf38e0caa7381a336f43ba2>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"89848aadf74701b59c59907b70b5e048101886273bf38e0caa7381a336f43ba2" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/5201b7a6d78608e0e1545f7d356d4444919edca56fca754e8f2054ae79e54b57> , ns5:de2156f16230ce8ddcbd24166d116772d7977dd00bf7c09334010e33b4b2d599 ;
+	ns6:isTijdspecialisatieVan	ns1:d7dbd2b143094018c8b9bf261e115aa43e151d48dcadf56e99e0f0fe67b8559c ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:c23e9a5acb428ed8e36100beba5218e6e78eeee703a55cd764f1e6441a497f03
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"c23e9a5acb428ed8e36100beba5218e6e78eeee703a55cd764f1e6441a497f03" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/3c5c7fc8f484b9597680d73a2cfefc9a0d13ed49c8506c0a3b5e0af1bcb8cc21> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/8da2fd280b430ac626e37fe5bb326d78f4ea11e1b809ea2c52255a5c60e2735f> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/67b3552306d6d00ce7b0528e8e4822cbf01f387b10257ac02b4e6f2caa925c42>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"67b3552306d6d00ce7b0528e8e4822cbf01f387b10257ac02b4e6f2caa925c42" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/5344a4516ac271c82959b37cb3bb8c204cac65d58da7ff5e0035e42827b320da> , <http://data.lblod.info/id/mandaten/5284d74e25eb8d04843bee950c02a02efe953f4943e33bbdcdc92a4a596c28ad> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/13fc286fd72663eda5800162a9019eab7e842f0891da095dac94e7b69bb816ad> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/3588b7339ac99987e39d4c2a13b08f4a73d00ae56ddb3c9e8cd1d4ae857d0b8e>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"3588b7339ac99987e39d4c2a13b08f4a73d00ae56ddb3c9e8cd1d4ae857d0b8e" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/76e7291ec58b0de90bc2146253e8f77d643dc23e308e5a255e88cc9cc6b8bd4e> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/46ac2dbeb5478311accffafd2e6d1e6a0c3967869c698310470f27f0979f6ced> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/2e121923afd299b44309c18d7fa7962c9757fb6d80c7a8f8c7bbbdde07f3c1dc>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"2e121923afd299b44309c18d7fa7962c9757fb6d80c7a8f8c7bbbdde07f3c1dc" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/9c9d5fb038b3a680e8031ca04b567486641461e90356012cf3f7cedfad2c4f71> , <http://data.lblod.info/id/mandaten/69734aca9dc9a1d74c90d47f2981b3288772942fae88e81561fda05129695a7b> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/22b5002f303475e5ead5b0ea572794ac64518e846c30e8dd13f5ff9966e30bd1> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/7b5be2d079985d9fefd3b0814b73ed1a0cd37541d2886468092c6d9f4ba19760>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"7b5be2d079985d9fefd3b0814b73ed1a0cd37541d2886468092c6d9f4ba19760" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/51a03708ca08347bf5a63966b5fe5959180654f31844aadb4602bced32531491> , <http://data.lblod.info/id/mandaten/6e28da1830fdd9202b5ca7fad8d894c8ce2af903d9c23ecc721698c21ee7abef> ;
+	ns6:isTijdspecialisatieVan	ns1:b1ddacc7863d5764650ff14c663d769eeb2935035ae60f75d92657299e437e0d ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:c07d6e45819835411b5f7c72d393b2209904ad9a0f05380e3710eabea7bf3d0c
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"c07d6e45819835411b5f7c72d393b2209904ad9a0f05380e3710eabea7bf3d0c" ;
+	ns4:hasPost	ns5:b7615706e23f3755ec6d6d0980d43b55b5145353a8ac9fcbb76a4df9a3a95ceb , <http://data.lblod.info/id/mandaten/7267c5497ce7e3ab9c26a3d35155c5ecbceed42561dadb3369d71705bb1d846f> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/3b9108822cdeb01e6857dbb29c0254044e573cc52c4db233452a538b5d29ba73> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:cbf16527b916dbae8a0ef187febf23dd134336a438ba4f105e6b3868ff5b2788
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"cbf16527b916dbae8a0ef187febf23dd134336a438ba4f105e6b3868ff5b2788" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/4d64c8b4df991ca64f2ef2ea7ce3a37015cc41e658556c33ecda2aa52e0270b7> , <http://data.lblod.info/id/mandaten/43abf5f3ac1d7b4b483de76ea77bc1c9a68683d948414502784d153eb2852fa9> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/4e9568f74a8839b37b4a02b45be8d97cdbbe178d555a48592eeceda21abf50ef> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/93bc609dfe6744771318fd94b7424a8898ea8ac92c6d95115478de443fb9898f>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"93bc609dfe6744771318fd94b7424a8898ea8ac92c6d95115478de443fb9898f" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/97c41470c8e63f4709f2aba2697732627330f1c9ef3fda53d813bbf4dbd509c9> ;
+	ns6:isTijdspecialisatieVan	ns1:ccbd6477804e936617731eb049d407de164e36080ff509d7d402fad7c65cfc96 ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/668e0dc2639b7cb309b783ca5886ac72f20747944a82b6f105a465c59a09728a>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"668e0dc2639b7cb309b783ca5886ac72f20747944a82b6f105a465c59a09728a" ;
+	ns4:hasPost	ns5:b7615706e23f3755ec6d6d0980d43b55b5145353a8ac9fcbb76a4df9a3a95ceb ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/202fa76d46f2234c5c90eae1c08bf76b8e1b6ba48c983184613c601ec37650c1> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:b2fdc06171c2450f36a457197ec2a6a26f5a1603bd6bf5dbbb4b2c376e7039b4
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"b2fdc06171c2450f36a457197ec2a6a26f5a1603bd6bf5dbbb4b2c376e7039b4" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/86d372c5084679ac50ab93c3432b25f4fe4007fb1078e6e194bc7c8cbb618d03> , <http://data.lblod.info/id/mandaten/0d47ac3db910ca07ae5f07dc3873688def00d97689c1d5a3df8677037bd78349> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/5973204f8f20a1563e8549e1bf2c0a780effc3fb82376dc13ef6507b931d09bd> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:a35fe4dea9cdd7851cd5c545c5b0351f1bab720b4db209b7a3fe2d2ef5f77d6c
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"a35fe4dea9cdd7851cd5c545c5b0351f1bab720b4db209b7a3fe2d2ef5f77d6c" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/6b4f34ee059768cf302fec1b1c3e989a79cc41a3903b7a49afec100579e9dc6d> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/503789833b5bb5376076cedbd2cc70405cd6477b13ddd0632635ebdacf4b94a1> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/93eee06e53ef07ef4af7134b3492a3e3d2c3e79df6a86c0bf607a77da4d03403>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"93eee06e53ef07ef4af7134b3492a3e3d2c3e79df6a86c0bf607a77da4d03403" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/3c5c7fc8f484b9597680d73a2cfefc9a0d13ed49c8506c0a3b5e0af1bcb8cc21> , ns5:ec5d62d2498c7580d8b8117489d7a9d138c48c02444337d16fc13bcc23f688f1 ;
+	ns6:isTijdspecialisatieVan	ns1:bf8e80585fb7bce69c299c6ea39da6625d384cfde5db82ef1025aebb6829a01b ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:be1bd2e3be023a17c1bcc71b06f3d7df85380acd3a5ffdea47da7514ef8d4f1b
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"be1bd2e3be023a17c1bcc71b06f3d7df85380acd3a5ffdea47da7514ef8d4f1b" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/97c41470c8e63f4709f2aba2697732627330f1c9ef3fda53d813bbf4dbd509c9> , ns5:f0b1f55f65c0737dc985a4812039bc859a2560eafb2c12a351ee215775ef91fb ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/14398cf66e94a2ad6e27c8ebf74fb798e80de8680ce8748ccfe56166e668c358> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/5341ce35bbe76519da31a337b6914d928c630ba9b394ab8a7de2ac5337d7b0fe>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"5341ce35bbe76519da31a337b6914d928c630ba9b394ab8a7de2ac5337d7b0fe" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+ns5:f6f5d48e7e7140c51d5200c979ac36a9225369daa4ebc36cb593d4beaff5165a
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"f6f5d48e7e7140c51d5200c979ac36a9225369daa4ebc36cb593d4beaff5165a" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/7725d6028776f6b574dbf16ba542b4992b66cd58d1df688def90967f661b1ebe>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"7725d6028776f6b574dbf16ba542b4992b66cd58d1df688def90967f661b1ebe" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/30b716e56ca35c26f374f188798c3bd88edefa05d72e81ac1ea254fbfdd872c6>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"30b716e56ca35c26f374f188798c3bd88edefa05d72e81ac1ea254fbfdd872c6" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns5:df2400eab6e46175ccb51ab97575189620e22187be1d072d56504ed7e16bd3b2
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"df2400eab6e46175ccb51ab97575189620e22187be1d072d56504ed7e16bd3b2" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/30d12dbd714eae24f84b996678c7c34ca55b723399c10ecb572d43e83e0aeeee>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"30d12dbd714eae24f84b996678c7c34ca55b723399c10ecb572d43e83e0aeeee" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/9f94c47bbbf27d9907d53d96a51afc3cd752e6130fcc864aaf7cea76f47fcc19>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"9f94c47bbbf27d9907d53d96a51afc3cd752e6130fcc864aaf7cea76f47fcc19" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns5:fe093f2aa7aff7dd65119ed6f84166bc746951a17090f54a361c6fc80729f6f2
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"fe093f2aa7aff7dd65119ed6f84166bc746951a17090f54a361c6fc80729f6f2" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/7ef8966ec340c3e53abb47e2a797eb1b84e9d807002223c3780821669352b907>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"7ef8966ec340c3e53abb47e2a797eb1b84e9d807002223c3780821669352b907" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/9a712ae32f9a06183b42fba62077817fb2df99755c48ed648c3bfa22e5ce8a0b>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"9a712ae32f9a06183b42fba62077817fb2df99755c48ed648c3bfa22e5ce8a0b" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/0001e21b494df8277dd27d80b575addd8ea1f85dd1056c3e4973be9888ecc328>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"0001e21b494df8277dd27d80b575addd8ea1f85dd1056c3e4973be9888ecc328" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns5:cb67829a916d96392cbaafeee108217248776191bb9e293a62d5c6eb6152091f
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"cb67829a916d96392cbaafeee108217248776191bb9e293a62d5c6eb6152091f" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/9c9d5fb038b3a680e8031ca04b567486641461e90356012cf3f7cedfad2c4f71>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"9c9d5fb038b3a680e8031ca04b567486641461e90356012cf3f7cedfad2c4f71" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/69734aca9dc9a1d74c90d47f2981b3288772942fae88e81561fda05129695a7b>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"69734aca9dc9a1d74c90d47f2981b3288772942fae88e81561fda05129695a7b" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/51a03708ca08347bf5a63966b5fe5959180654f31844aadb4602bced32531491>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"51a03708ca08347bf5a63966b5fe5959180654f31844aadb4602bced32531491" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/6e28da1830fdd9202b5ca7fad8d894c8ce2af903d9c23ecc721698c21ee7abef>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"6e28da1830fdd9202b5ca7fad8d894c8ce2af903d9c23ecc721698c21ee7abef" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/86d372c5084679ac50ab93c3432b25f4fe4007fb1078e6e194bc7c8cbb618d03>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"86d372c5084679ac50ab93c3432b25f4fe4007fb1078e6e194bc7c8cbb618d03" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/0d47ac3db910ca07ae5f07dc3873688def00d97689c1d5a3df8677037bd78349>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"0d47ac3db910ca07ae5f07dc3873688def00d97689c1d5a3df8677037bd78349" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns5:eed65a019f3023c2884a854db0282905c5950204c30afabb83415768cd96ac8b
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"eed65a019f3023c2884a854db0282905c5950204c30afabb83415768cd96ac8b" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/1f67064969cbcfc3329af6e67831658cb4a382fc9eca002854b11dc38d847d22>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"1f67064969cbcfc3329af6e67831658cb4a382fc9eca002854b11dc38d847d22" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/5344a4516ac271c82959b37cb3bb8c204cac65d58da7ff5e0035e42827b320da>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"5344a4516ac271c82959b37cb3bb8c204cac65d58da7ff5e0035e42827b320da" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/5201b7a6d78608e0e1545f7d356d4444919edca56fca754e8f2054ae79e54b57>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"5201b7a6d78608e0e1545f7d356d4444919edca56fca754e8f2054ae79e54b57" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+ns5:deaac848b61034502fcd93b95f09e8bdf44ec1ccc7cc497ca9f201493e6a10e4
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"deaac848b61034502fcd93b95f09e8bdf44ec1ccc7cc497ca9f201493e6a10e4" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/4d64c8b4df991ca64f2ef2ea7ce3a37015cc41e658556c33ecda2aa52e0270b7>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"4d64c8b4df991ca64f2ef2ea7ce3a37015cc41e658556c33ecda2aa52e0270b7" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/3c5c7fc8f484b9597680d73a2cfefc9a0d13ed49c8506c0a3b5e0af1bcb8cc21>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"3c5c7fc8f484b9597680d73a2cfefc9a0d13ed49c8506c0a3b5e0af1bcb8cc21" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/76e7291ec58b0de90bc2146253e8f77d643dc23e308e5a255e88cc9cc6b8bd4e>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"76e7291ec58b0de90bc2146253e8f77d643dc23e308e5a255e88cc9cc6b8bd4e" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/97c41470c8e63f4709f2aba2697732627330f1c9ef3fda53d813bbf4dbd509c9>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"97c41470c8e63f4709f2aba2697732627330f1c9ef3fda53d813bbf4dbd509c9" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+ns5:b7615706e23f3755ec6d6d0980d43b55b5145353a8ac9fcbb76a4df9a3a95ceb
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"b7615706e23f3755ec6d6d0980d43b55b5145353a8ac9fcbb76a4df9a3a95ceb" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/6b4f34ee059768cf302fec1b1c3e989a79cc41a3903b7a49afec100579e9dc6d>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"6b4f34ee059768cf302fec1b1c3e989a79cc41a3903b7a49afec100579e9dc6d" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+ns5:c88da288b1c4b01024a70d2a981b4e8ad2a4aea13fa26f87701c52f0052de95b
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"c88da288b1c4b01024a70d2a981b4e8ad2a4aea13fa26f87701c52f0052de95b" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+ns5:b15463caaa9b73a12c88c84651dea151d4a60f5aa1354ef1d6e8b1d768f16926
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"b15463caaa9b73a12c88c84651dea151d4a60f5aa1354ef1d6e8b1d768f16926" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/mandaten/249709513a92fa3f5c49db585b5ebbebb33bdde0cddac0e040dcf3413862aa3c>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"249709513a92fa3f5c49db585b5ebbebb33bdde0cddac0e040dcf3413862aa3c" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns5:f5036a1cbb2cd0bdf99c1d7a9c641e3e8c252fb872368410bcfd4acfb1bd2c1e
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"f5036a1cbb2cd0bdf99c1d7a9c641e3e8c252fb872368410bcfd4acfb1bd2c1e" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns5:de2156f16230ce8ddcbd24166d116772d7977dd00bf7c09334010e33b4b2d599
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"de2156f16230ce8ddcbd24166d116772d7977dd00bf7c09334010e33b4b2d599" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/mandaten/5284d74e25eb8d04843bee950c02a02efe953f4943e33bbdcdc92a4a596c28ad>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"5284d74e25eb8d04843bee950c02a02efe953f4943e33bbdcdc92a4a596c28ad" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/mandaten/7267c5497ce7e3ab9c26a3d35155c5ecbceed42561dadb3369d71705bb1d846f>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"7267c5497ce7e3ab9c26a3d35155c5ecbceed42561dadb3369d71705bb1d846f" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/mandaten/43abf5f3ac1d7b4b483de76ea77bc1c9a68683d948414502784d153eb2852fa9>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"43abf5f3ac1d7b4b483de76ea77bc1c9a68683d948414502784d153eb2852fa9" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns5:ec5d62d2498c7580d8b8117489d7a9d138c48c02444337d16fc13bcc23f688f1
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ec5d62d2498c7580d8b8117489d7a9d138c48c02444337d16fc13bcc23f688f1" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns5:f0b1f55f65c0737dc985a4812039bc859a2560eafb2c12a351ee215775ef91fb
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"f0b1f55f65c0737dc985a4812039bc859a2560eafb2c12a351ee215775ef91fb" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/mandaten/413b5380e0c4ff4aaee335d3892388a7b0cad75d6ddb1a9463240530591f4689>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"413b5380e0c4ff4aaee335d3892388a7b0cad75d6ddb1a9463240530591f4689" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns1:cd7165a1-3c93-411b-9ef4-393103ebbd7e
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"cd7165a1-3c93-411b-9ef4-393103ebbd7e" ;
+	skos:prefLabel	"Districtsraad Borsbeek" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> .
+<http://data.lblod.info/id/bestuursorganen/547c5e2a-fa22-4c0c-b142-9df2d7602e20>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"547c5e2a-fa22-4c0c-b142-9df2d7602e20" ;
+	ns4:hasPost	ns5:eed65a019f3023c2884a854db0282905c5950204c30afabb83415768cd96ac8b , <http://data.lblod.info/id/mandaten/1f67064969cbcfc3329af6e67831658cb4a382fc9eca002854b11dc38d847d22> ;
+	ns6:isTijdspecialisatieVan	ns1:cd7165a1-3c93-411b-9ef4-393103ebbd7e ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/7135d957-2452-43a2-8a3c-608fe87e5e6e>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"7135d957-2452-43a2-8a3c-608fe87e5e6e" ;
+	skos:prefLabel	"Districtsburgemeester Borsbeek" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> .
+ns1:d8cedeff-a243-41f9-90ea-15867149aefd
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"d8cedeff-a243-41f9-90ea-15867149aefd" ;
+	ns4:hasPost	ns5:c88da288b1c4b01024a70d2a981b4e8ad2a4aea13fa26f87701c52f0052de95b ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/7135d957-2452-43a2-8a3c-608fe87e5e6e> ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+ns1:e91bec2e-e0c1-4b56-9fb2-417c3289afbd
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"e91bec2e-e0c1-4b56-9fb2-417c3289afbd" ;
+	skos:prefLabel	"Districtscollege Borsbeek" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> .
+<http://data.lblod.info/id/bestuursorganen/570a7769-89e0-4f40-aa1a-da17755f3bf4>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"570a7769-89e0-4f40-aa1a-da17755f3bf4" ;
+	ns4:hasPost	ns5:c88da288b1c4b01024a70d2a981b4e8ad2a4aea13fa26f87701c52f0052de95b , <http://data.lblod.info/id/mandaten/413b5380e0c4ff4aaee335d3892388a7b0cad75d6ddb1a9463240530591f4689> ;
+	ns6:isTijdspecialisatieVan	ns1:e91bec2e-e0c1-4b56-9fb2-417c3289afbd ;
+	ns8:bindingStart	"2025-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/76f6ab4cf5cd3a866e5205619b3fd0b6bb83425ceb2af155f4ace42bcb593eeb>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"76f6ab4cf5cd3a866e5205619b3fd0b6bb83425ceb2af155f4ace42bcb593eeb" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/37f81001bdea028a362871909c5863577cd4649d05d4493e3b59e8626e610dec>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"37f81001bdea028a362871909c5863577cd4649d05d4493e3b59e8626e610dec" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/bestuursorganen/075fe8306362528ca6340811c403eeb758d9e797a9071aa47b331f4050a38908>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"075fe8306362528ca6340811c403eeb758d9e797a9071aa47b331f4050a38908" ;
+	skos:prefLabel	"Districtsraad Ekeren" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/33a1886b07b64ebe3a0e6c5ed8086f030ef1109492cb254832a716dd7e1b8d7b> .
+ns5:b5965cdbf63c901df9676d27e51a2574bbc56bca594c50e06ca76d9d62934fbd
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"b5965cdbf63c901df9676d27e51a2574bbc56bca594c50e06ca76d9d62934fbd" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/94f688b19c3d5866c53fa207f9f63b537faa1386b37c10b9422151400794f025>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"94f688b19c3d5866c53fa207f9f63b537faa1386b37c10b9422151400794f025" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/2e32271b720e6859979843a92d9a0e2fff828675d44d11c29a89b618f54e628d>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"2e32271b720e6859979843a92d9a0e2fff828675d44d11c29a89b618f54e628d" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+<http://data.lblod.info/id/mandaten/921252544a628db71251497cf760fc527d13079b368bd9166a2176086a1983b5>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"921252544a628db71251497cf760fc527d13079b368bd9166a2176086a1983b5" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns5:cf0f1193b09e720476846d5cbebb136cdf399c2e760631838732c455ef2cdf3c
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"cf0f1193b09e720476846d5cbebb136cdf399c2e760631838732c455ef2cdf3c" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+ns5:d574ef2741d84f3a27a86e46b15e4c706914d21c5be796cbb4e10db240daf965
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"d574ef2741d84f3a27a86e46b15e4c706914d21c5be796cbb4e10db240daf965" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/17aae0f924dcb7cc3a51f709ade46813cf3fc7b16324295b1f046c90cc26a684>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"17aae0f924dcb7cc3a51f709ade46813cf3fc7b16324295b1f046c90cc26a684" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns1:d639f1dac32e6b74de8825663bac423d362ade273175be818fcf85399991fb4b
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"d639f1dac32e6b74de8825663bac423d362ade273175be818fcf85399991fb4b" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/6ed50cbe329eb7949dc6c15cb2f6b90523628ce3d1d6ff217a5606674d1e4c28> , <http://data.lblod.info/id/mandaten/654c4fca1febe747b14c2e751184265e88f907575ca1ef5541f6d68b6ab7fb2b> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	ns1:d0532e5bb2ecff58d0b8b04f2d8a0e6f0ab767209428a1ec4a0b58cd7d23dd4a ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/6ed50cbe329eb7949dc6c15cb2f6b90523628ce3d1d6ff217a5606674d1e4c28>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"6ed50cbe329eb7949dc6c15cb2f6b90523628ce3d1d6ff217a5606674d1e4c28" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/654c4fca1febe747b14c2e751184265e88f907575ca1ef5541f6d68b6ab7fb2b>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"654c4fca1febe747b14c2e751184265e88f907575ca1ef5541f6d68b6ab7fb2b" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns1:d0532e5bb2ecff58d0b8b04f2d8a0e6f0ab767209428a1ec4a0b58cd7d23dd4a
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"d0532e5bb2ecff58d0b8b04f2d8a0e6f0ab767209428a1ec4a0b58cd7d23dd4a" ;
+	skos:prefLabel	"Districtsraad Antwerpen" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/5be3ff820769b385a32e499d17bbf1f15feeacb65381d5384841732dd4a1209b> .
+ns5:b6f54d827b049453a9f8bfed5103915536ef1b21798a4868c763de81b4b40253
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"b6f54d827b049453a9f8bfed5103915536ef1b21798a4868c763de81b4b40253" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/0cf4a33024c48a960752b8852428c3e2c73c4f43c2c3be90a05a1422fc97c19d>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"0cf4a33024c48a960752b8852428c3e2c73c4f43c2c3be90a05a1422fc97c19d" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/69ddeea65bd753d72efbff1dfa744ec82e4ecddf683f078260a8c1424e07e38b>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"69ddeea65bd753d72efbff1dfa744ec82e4ecddf683f078260a8c1424e07e38b" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/8a971a248f2fe322d90bc321970613ff3b0eae52928fba5629a913b53049ec60>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"8a971a248f2fe322d90bc321970613ff3b0eae52928fba5629a913b53049ec60" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns5:a02136c2a8d750871e3c0a5e523d9b5497134903e8394393a15e69d8d83110f7
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"a02136c2a8d750871e3c0a5e523d9b5497134903e8394393a15e69d8d83110f7" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/mandaten/6a9f4e0052f5015c426b3332e195444358ab5f6928ece8238fbafb31c9834ab4>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"6a9f4e0052f5015c426b3332e195444358ab5f6928ece8238fbafb31c9834ab4" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/5fdc9fb56336a9a14594b96887e16f8113db1b18b42ca97c73927115bf5158bd>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"5fdc9fb56336a9a14594b96887e16f8113db1b18b42ca97c73927115bf5158bd" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/1e21d1d0a08fe849ff4a00d57e05eba1e4e0bb61fceba841d01631f69ddfaaeb>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"1e21d1d0a08fe849ff4a00d57e05eba1e4e0bb61fceba841d01631f69ddfaaeb" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+ns5:ec9e54b3c8cad4d0fd607fad3a8b55d340aed0d2fb3d62111e42cb265dfd3e60
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ec9e54b3c8cad4d0fd607fad3a8b55d340aed0d2fb3d62111e42cb265dfd3e60" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+<http://data.lblod.info/id/mandaten/5ea9416b445b01db42ff1efe1943012184de677c0561aab5c18820a44567c220>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"5ea9416b445b01db42ff1efe1943012184de677c0561aab5c18820a44567c220" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/bestuursorganen/7d0483ae65a03719bbe77f9d7ca6efa7c220ddfdfa2d60fdf16adf3230403b2e>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"7d0483ae65a03719bbe77f9d7ca6efa7c220ddfdfa2d60fdf16adf3230403b2e" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/6f054e1e6f3ff7f2ab73e00fb747629cc4572ab08ca5fd0e401550de0722adba> , <http://data.lblod.info/id/mandaten/19e6190196791c9004284b587c8fa3d6a554bd91d48bbeb46218c745f186d43c> ;
+	ns6:isTijdspecialisatieVan	ns1:ded4eb89c31b49d6a4e54c0f81c81d6d8ba354435624b3689c2391c0ee972af5 ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/6f054e1e6f3ff7f2ab73e00fb747629cc4572ab08ca5fd0e401550de0722adba>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"6f054e1e6f3ff7f2ab73e00fb747629cc4572ab08ca5fd0e401550de0722adba" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/19e6190196791c9004284b587c8fa3d6a554bd91d48bbeb46218c745f186d43c>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"19e6190196791c9004284b587c8fa3d6a554bd91d48bbeb46218c745f186d43c" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns1:ded4eb89c31b49d6a4e54c0f81c81d6d8ba354435624b3689c2391c0ee972af5
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"ded4eb89c31b49d6a4e54c0f81c81d6d8ba354435624b3689c2391c0ee972af5" ;
+	skos:prefLabel	"Districtscollege Wilrijk" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/73e8904d83f7324e39abc0adf639b0e48bc52533c4c243b6419cac8fb70784cf> .
+ns5:e1e5fb4d09d8b713670810b7f690ecfccca6c2e6398cfabec2c29e3a2a97f8b2
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"e1e5fb4d09d8b713670810b7f690ecfccca6c2e6398cfabec2c29e3a2a97f8b2" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+ns5:c91fc68b37dc16eb445a891094a11985bf69219c227ef8f05504ad36cefaa69d
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"c91fc68b37dc16eb445a891094a11985bf69219c227ef8f05504ad36cefaa69d" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/54c0ee96a37c1cd5fa7a4124297d84464ae399f5b94faf15f92ef086ae706a55>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"54c0ee96a37c1cd5fa7a4124297d84464ae399f5b94faf15f92ef086ae706a55" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/4d7ad5a48786cc850c49cf1a6d0603b1e02dbacd8529239852596c8976ea602d>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"4d7ad5a48786cc850c49cf1a6d0603b1e02dbacd8529239852596c8976ea602d" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns5:ff5500824c6579f56afcd863c3d9bb4f870c2238a43df02333cc787521353fe3
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ff5500824c6579f56afcd863c3d9bb4f870c2238a43df02333cc787521353fe3" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/20f019ef08a7bfce78f655f58aec2a695a849db65ccbc94a016571570a279f0f>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"20f019ef08a7bfce78f655f58aec2a695a849db65ccbc94a016571570a279f0f" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/4ebdd8d35c59e4c758deba05debd2acdc86ac340ac76d4003ccc71ffe8967147>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"4ebdd8d35c59e4c758deba05debd2acdc86ac340ac76d4003ccc71ffe8967147" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/bestuursorganen/21fe9ea3f26627b781026fec5d7b938658aeb9cbe9c8cee7417d195e7f8544f5>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"21fe9ea3f26627b781026fec5d7b938658aeb9cbe9c8cee7417d195e7f8544f5" ;
+	skos:prefLabel	"Districtsraad Deurne" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/43e3009526dac139a0abdcf75c1ddc5fa3fe9217391d6f64f7b7a30a99a4cda6> .
+<http://data.lblod.info/id/mandaten/18c986f929d8b3301ecc468c0100eda9654dc27be042e87f0bd4b3af9e8b36eb>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"18c986f929d8b3301ecc468c0100eda9654dc27be042e87f0bd4b3af9e8b36eb" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+ns1:e1f57f0bbc7d6358c5e0d79b603650df7e6f064f37433869b727fab9110d808d
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"e1f57f0bbc7d6358c5e0d79b603650df7e6f064f37433869b727fab9110d808d" ;
+	skos:prefLabel	"Districtscollege Berendrecht-Zandvliet-Lillo" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/859f08dcfbc8f68bac0879e7baf6463b260b6f4c16b734d0d1986f5f3af0407b> .
+ns5:d7187902b50c1923158ef1c1a0018adb4456c0a76b0677158038b8f023a8b97a
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"d7187902b50c1923158ef1c1a0018adb4456c0a76b0677158038b8f023a8b97a" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns5:b0fcdee9b9b74669f7c5cf983f34910dac462c5d9c27aa9e5c5f52630afaa01c
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"b0fcdee9b9b74669f7c5cf983f34910dac462c5d9c27aa9e5c5f52630afaa01c" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+<http://data.lblod.info/id/mandaten/76bf3ab4652ed02b3e356c80d30fc51b7b99c0a3bf6e5f5f4b1a899f03c1f3f2>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"76bf3ab4652ed02b3e356c80d30fc51b7b99c0a3bf6e5f5f4b1a899f03c1f3f2" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+ns5:ffa67f31eec0b794fad2cebee927ef483eb59bf3ec8df90b8620409b80d9fdd4
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ffa67f31eec0b794fad2cebee927ef483eb59bf3ec8df90b8620409b80d9fdd4" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/9507bb2b0caead29e672228f3580cc8e01ac91a27cf3e38d53f1b676eaa8850e>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"9507bb2b0caead29e672228f3580cc8e01ac91a27cf3e38d53f1b676eaa8850e" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+ns1:cb8193d3d5e9eb9b82562dd55f150a9ba1ae7c14018763a91d49a0e779cae5a8
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"cb8193d3d5e9eb9b82562dd55f150a9ba1ae7c14018763a91d49a0e779cae5a8" ;
+	ns4:hasPost	ns5:b9d8dd227757d9c153a89942b6a5c156fc47b0f6de9b73420bee05b084a61b65 , ns5:ecc3041697d32a72c28502468ca17006dd3c731c8a292874db1b23bc8cf23732 ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/49f13f5071c5967ce8d574a3aa1c22b80fc5e794277015afd0aac7f803775f2a> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+ns5:b9d8dd227757d9c153a89942b6a5c156fc47b0f6de9b73420bee05b084a61b65
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"b9d8dd227757d9c153a89942b6a5c156fc47b0f6de9b73420bee05b084a61b65" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns5:ecc3041697d32a72c28502468ca17006dd3c731c8a292874db1b23bc8cf23732
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ecc3041697d32a72c28502468ca17006dd3c731c8a292874db1b23bc8cf23732" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/bestuursorganen/49f13f5071c5967ce8d574a3aa1c22b80fc5e794277015afd0aac7f803775f2a>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"49f13f5071c5967ce8d574a3aa1c22b80fc5e794277015afd0aac7f803775f2a" ;
+	skos:prefLabel	"Districtsraad Berendrecht-Zandvliet-Lillo" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/859f08dcfbc8f68bac0879e7baf6463b260b6f4c16b734d0d1986f5f3af0407b> .
+ns5:b8f4fc3c39dc1c8636857cca240d0242b128fa59341be569c20f4fd2ee0bb838
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"b8f4fc3c39dc1c8636857cca240d0242b128fa59341be569c20f4fd2ee0bb838" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+ns5:a4b6d32545ec0c8cd4abb62066134030defd0768bd929603cc3279129a44bde6
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"a4b6d32545ec0c8cd4abb62066134030defd0768bd929603cc3279129a44bde6" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+ns1:f1cc4787660e4654d1f564ee3c2264abfd4300fc88700658f946ef9f6eeeb236
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"f1cc4787660e4654d1f564ee3c2264abfd4300fc88700658f946ef9f6eeeb236" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/5fdc9fb56336a9a14594b96887e16f8113db1b18b42ca97c73927115bf5158bd> , ns5:ffa67f31eec0b794fad2cebee927ef483eb59bf3ec8df90b8620409b80d9fdd4 ;
+	ns6:isTijdspecialisatieVan	ns1:d0532e5bb2ecff58d0b8b04f2d8a0e6f0ab767209428a1ec4a0b58cd7d23dd4a ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns5:a1a504055dcaf673499f1bafea8652abd04da43f6a75295253cb2bdf2b3dbda6
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"a1a504055dcaf673499f1bafea8652abd04da43f6a75295253cb2bdf2b3dbda6" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+ns5:ae3eb9ef368d1b2f4735bf2d4c43b33f413684c4104c6352e5393701e1e27526
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ae3eb9ef368d1b2f4735bf2d4c43b33f413684c4104c6352e5393701e1e27526" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+<http://data.lblod.info/id/mandaten/73407d9c6b5108b64a6c7dd3fad6e598c8709cc7ede48c1e8f0e38182b5daca9>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"73407d9c6b5108b64a6c7dd3fad6e598c8709cc7ede48c1e8f0e38182b5daca9" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+<http://data.lblod.info/id/mandaten/748a6ae590a07e89e65f809785413a848f2e79c1b8de40319f3c9a4481ce76b9>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"748a6ae590a07e89e65f809785413a848f2e79c1b8de40319f3c9a4481ce76b9" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/bestuursorganen/50aaa6372776e18c6c4d7a82c29ba1af65b6d42e00dd4828fc989b9dccd601e4>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"50aaa6372776e18c6c4d7a82c29ba1af65b6d42e00dd4828fc989b9dccd601e4" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/9507bb2b0caead29e672228f3580cc8e01ac91a27cf3e38d53f1b676eaa8850e> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/01993899287fb075d4e97e1cfea88879b42094e191ca2b29dd1dace4e66560d4> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/01993899287fb075d4e97e1cfea88879b42094e191ca2b29dd1dace4e66560d4>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"01993899287fb075d4e97e1cfea88879b42094e191ca2b29dd1dace4e66560d4" ;
+	skos:prefLabel	"Districtsburgemeester Antwerpen" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/5be3ff820769b385a32e499d17bbf1f15feeacb65381d5384841732dd4a1209b> .
+ns5:a8ada90b9fe9c408b27f26195570ae78df39f125f80c124a855550e156f18e49
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"a8ada90b9fe9c408b27f26195570ae78df39f125f80c124a855550e156f18e49" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+ns1:e217e05996790113ebb84a2ad12af31e7dbb7154248ea48fe084590d2e3fcb7d
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"e217e05996790113ebb84a2ad12af31e7dbb7154248ea48fe084590d2e3fcb7d" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/20f019ef08a7bfce78f655f58aec2a695a849db65ccbc94a016571570a279f0f> , <http://data.lblod.info/id/mandaten/5fe92f0e9b6804efb71e3868e3b5f808c809b0ff0681052d533669f4e94597bc> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	ns1:d98ba40e8ef1dac4a6393a08afffa3140ea846e9008d441d61e7135e9e24e6c6 ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/5fe92f0e9b6804efb71e3868e3b5f808c809b0ff0681052d533669f4e94597bc>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"5fe92f0e9b6804efb71e3868e3b5f808c809b0ff0681052d533669f4e94597bc" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+ns1:d98ba40e8ef1dac4a6393a08afffa3140ea846e9008d441d61e7135e9e24e6c6
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"d98ba40e8ef1dac4a6393a08afffa3140ea846e9008d441d61e7135e9e24e6c6" ;
+	skos:prefLabel	"Districtsraad Merksem" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	ns10:f1ad80291fbdc1f0b9b25d729ecc608a8e28fdddab01a1b8e135c841c75586e2 .
+ns5:b17322320669c058cee82e0e3619c5d48d315200d33af845b12c8b54e96e1ef7
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"b17322320669c058cee82e0e3619c5d48d315200d33af845b12c8b54e96e1ef7" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> .
+ns5:ebdbd94d5c94096352bbb9a308efbaf533f4f271f1f3b95bfc551e00ee33a5b6
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ebdbd94d5c94096352bbb9a308efbaf533f4f271f1f3b95bfc551e00ee33a5b6" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+<http://data.lblod.info/id/bestuursorganen/8f8b50216d68d1c23fe5add87a73c1c43cb47079b38316e36d5bcda329fca327>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"8f8b50216d68d1c23fe5add87a73c1c43cb47079b38316e36d5bcda329fca327" ;
+	skos:prefLabel	"Districtsraad Hoboken" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	ns10:a2ee394059cce91526392e73e4de974d90caffb92f70cde23b9e9e1a965526fa .
+<http://data.lblod.info/id/mandaten/355cbc50e3ae9f34f72b1e2fa5f2addac3432ee0ab289e084c02e6731456b52e>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"355cbc50e3ae9f34f72b1e2fa5f2addac3432ee0ab289e084c02e6731456b52e" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+ns1:ac33ad3f0df97e4c3b1fdd09e514a04cb7a9332d385cd455307ed63fcd63d39b
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"ac33ad3f0df97e4c3b1fdd09e514a04cb7a9332d385cd455307ed63fcd63d39b" ;
+	skos:prefLabel	"Districtsburgemeester Hoboken" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	ns10:a2ee394059cce91526392e73e4de974d90caffb92f70cde23b9e9e1a965526fa .
+ns5:ebe2ae0f2c188c82eef14edd0a71575da72f8aae7eb8d1c07a986b11180b4fd1
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ebe2ae0f2c188c82eef14edd0a71575da72f8aae7eb8d1c07a986b11180b4fd1" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+ns5:e7dbede34925633def1e27b43042b2f362a5efd30054c3e05bc2c84741cce2e4
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"e7dbede34925633def1e27b43042b2f362a5efd30054c3e05bc2c84741cce2e4" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+ns5:c3463306d5982c83bcfc98d8edffa3e23ec76651fdb6ed6d2bf330a5dd7838f0
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"c3463306d5982c83bcfc98d8edffa3e23ec76651fdb6ed6d2bf330a5dd7838f0" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+ns5:a88bf296937b420881f8a96bf7774faa7a41749407ffa35f51e84caabd12ce3e
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"a88bf296937b420881f8a96bf7774faa7a41749407ffa35f51e84caabd12ce3e" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+ns5:ae3f25f964116fe99846d801fdad7ac5d3cfef1097958e394e95cab1595f230d
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"ae3f25f964116fe99846d801fdad7ac5d3cfef1097958e394e95cab1595f230d" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/mandaten/034d738d331fb02e472e576ff1c70e4ca9b1de42d6325d8b8ed98a2f3e5c7998>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"034d738d331fb02e472e576ff1c70e4ca9b1de42d6325d8b8ed98a2f3e5c7998" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/bestuursorganen/9b9f7ca5349ccfcc8b22ef9b2847a63f4d34aa4f149af33c73012fdbd273fedd>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"9b9f7ca5349ccfcc8b22ef9b2847a63f4d34aa4f149af33c73012fdbd273fedd" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/54c0ee96a37c1cd5fa7a4124297d84464ae399f5b94faf15f92ef086ae706a55> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/8d0a1580636604cf1a708e0542ce08df52ac6b27fe9b83f97c94ddba50dc84ee> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/8d0a1580636604cf1a708e0542ce08df52ac6b27fe9b83f97c94ddba50dc84ee>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"8d0a1580636604cf1a708e0542ce08df52ac6b27fe9b83f97c94ddba50dc84ee" ;
+	skos:prefLabel	"Districtsburgemeester Borgerhout" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	ns10:e7a75861661ee14ebe2bca0c79bda8b23f2f943d00a9693d2bff401a8f8dea65 .
+ns1:e8b0231ef5a3e01395d3f8b7e4e42f7b8295824db1fcbb624389088cdef2eeb5
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"e8b0231ef5a3e01395d3f8b7e4e42f7b8295824db1fcbb624389088cdef2eeb5" ;
+	ns4:hasPost	ns5:ebdbd94d5c94096352bbb9a308efbaf533f4f271f1f3b95bfc551e00ee33a5b6 , <http://data.lblod.info/id/mandaten/1c98acbf006e29b2e6f96f618f2b473aa11d4c81125a84dad98fdbed879ba280> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/4c3f5e06a827580cab2d21a09a804f59885ab7c0b52312949a1322128bbf16d3> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/1c98acbf006e29b2e6f96f618f2b473aa11d4c81125a84dad98fdbed879ba280>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"1c98acbf006e29b2e6f96f618f2b473aa11d4c81125a84dad98fdbed879ba280" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+<http://data.lblod.info/id/bestuursorganen/4c3f5e06a827580cab2d21a09a804f59885ab7c0b52312949a1322128bbf16d3>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"4c3f5e06a827580cab2d21a09a804f59885ab7c0b52312949a1322128bbf16d3" ;
+	skos:prefLabel	"Districtscollege Borgerhout" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	ns10:e7a75861661ee14ebe2bca0c79bda8b23f2f943d00a9693d2bff401a8f8dea65 .
+<http://data.lblod.info/id/bestuursorganen/454952ccfa60bfbe74d7dcaab4f558c32026439b8e7ac6da690308c553f9214c>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"454952ccfa60bfbe74d7dcaab4f558c32026439b8e7ac6da690308c553f9214c" ;
+	skos:prefLabel	"Districtsburgemeester Berchem" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	ns10:fb56bc40ce36390d2f12fc2057c89d4b6bc5b3217eabd41995b6401318ff648a .
+<http://data.lblod.info/id/bestuursorganen/90e232d8f8c8c27cf966d4d19cf13925c12e0d2a617316ae9ce8751e0b3043db>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"90e232d8f8c8c27cf966d4d19cf13925c12e0d2a617316ae9ce8751e0b3043db" ;
+	ns4:hasPost	ns5:b6f54d827b049453a9f8bfed5103915536ef1b21798a4868c763de81b4b40253 , <http://data.lblod.info/id/mandaten/6a9f4e0052f5015c426b3332e195444358ab5f6928ece8238fbafb31c9834ab4> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/21fe9ea3f26627b781026fec5d7b938658aeb9cbe9c8cee7417d195e7f8544f5> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/905263c315a35035a944a65db525591170d63adcac089dc7fc48a0e67b933ce1>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"905263c315a35035a944a65db525591170d63adcac089dc7fc48a0e67b933ce1" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> .
+ns1:bb287597fb634b970e394464bbcd17429614ab86dd7b119624111b60006a50f3
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"bb287597fb634b970e394464bbcd17429614ab86dd7b119624111b60006a50f3" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/69ddeea65bd753d72efbff1dfa744ec82e4ecddf683f078260a8c1424e07e38b> , ns5:ae3f25f964116fe99846d801fdad7ac5d3cfef1097958e394e95cab1595f230d ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/075fe8306362528ca6340811c403eeb758d9e797a9071aa47b331f4050a38908> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+ns1:d7dbd2b143094018c8b9bf261e115aa43e151d48dcadf56e99e0f0fe67b8559c
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"d7dbd2b143094018c8b9bf261e115aa43e151d48dcadf56e99e0f0fe67b8559c" ;
+	skos:prefLabel	"Districtscollege Hoboken" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	ns10:a2ee394059cce91526392e73e4de974d90caffb92f70cde23b9e9e1a965526fa .
+<http://data.lblod.info/id/mandaten/346239ed9515d41990cb55cb4c2e10999e4f1d41c179a0b6b95c60890add5b8a>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"346239ed9515d41990cb55cb4c2e10999e4f1d41c179a0b6b95c60890add5b8a" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/mandaten/789b07caac89ad8e4f5f508de56c191904f88e37dc64d5f6f895cac9e009b388>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"789b07caac89ad8e4f5f508de56c191904f88e37dc64d5f6f895cac9e009b388" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+<http://data.lblod.info/id/bestuursorganen/803fa4db6ba0be9c1ae9e818395d29e597635090f59fd1a353c67d9dca9184c1>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"803fa4db6ba0be9c1ae9e818395d29e597635090f59fd1a353c67d9dca9184c1" ;
+	ns4:hasPost	ns5:c2ff773c43a10b5aa4386361eef6cf0391bd101a17be39f9008b60ad18e4960f ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/8da2fd280b430ac626e37fe5bb326d78f4ea11e1b809ea2c52255a5c60e2735f> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns5:c2ff773c43a10b5aa4386361eef6cf0391bd101a17be39f9008b60ad18e4960f
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"c2ff773c43a10b5aa4386361eef6cf0391bd101a17be39f9008b60ad18e4960f" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+<http://data.lblod.info/id/bestuursorganen/8da2fd280b430ac626e37fe5bb326d78f4ea11e1b809ea2c52255a5c60e2735f>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"8da2fd280b430ac626e37fe5bb326d78f4ea11e1b809ea2c52255a5c60e2735f" ;
+	skos:prefLabel	"Districtsburgemeester Deurne" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/43e3009526dac139a0abdcf75c1ddc5fa3fe9217391d6f64f7b7a30a99a4cda6> .
+ns1:f9472e4ae7b5b6ab4e9df46b144d49b81c7f96ab62707155dbed61d6a169bb5f
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"f9472e4ae7b5b6ab4e9df46b144d49b81c7f96ab62707155dbed61d6a169bb5f" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/9507bb2b0caead29e672228f3580cc8e01ac91a27cf3e38d53f1b676eaa8850e> , <http://data.lblod.info/id/mandaten/1cef17799593d7f4d676c3081fb2f8b353f55589e66fd393eb85390ec2448593> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/13fc286fd72663eda5800162a9019eab7e842f0891da095dac94e7b69bb816ad> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/1cef17799593d7f4d676c3081fb2f8b353f55589e66fd393eb85390ec2448593>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"1cef17799593d7f4d676c3081fb2f8b353f55589e66fd393eb85390ec2448593" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/bestuursorganen/13fc286fd72663eda5800162a9019eab7e842f0891da095dac94e7b69bb816ad>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"13fc286fd72663eda5800162a9019eab7e842f0891da095dac94e7b69bb816ad" ;
+	skos:prefLabel	"Districtscollege Antwerpen" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/5be3ff820769b385a32e499d17bbf1f15feeacb65381d5384841732dd4a1209b> .
+<http://data.lblod.info/id/mandaten/624ffad8c22c8f7a3ad4ae7ed01d1364f4a908f61ad64b55462111853ed9ca28>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"624ffad8c22c8f7a3ad4ae7ed01d1364f4a908f61ad64b55462111853ed9ca28" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/bestuursorganen/9efb84c2070c6327944532ed8c4d491b7614afcc6014e8a67e86173a5219b907>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"9efb84c2070c6327944532ed8c4d491b7614afcc6014e8a67e86173a5219b907" ;
+	ns4:hasPost	ns5:ec9e54b3c8cad4d0fd607fad3a8b55d340aed0d2fb3d62111e42cb265dfd3e60 , ns5:a8ada90b9fe9c408b27f26195570ae78df39f125f80c124a855550e156f18e49 ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	ns1:ded4eb89c31b49d6a4e54c0f81c81d6d8ba354435624b3689c2391c0ee972af5 ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+ns5:c82d31f3e8d5c0b50c741e2bd9da0915dbf7b8c664186fbb02814192c38c1207
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"c82d31f3e8d5c0b50c741e2bd9da0915dbf7b8c664186fbb02814192c38c1207" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+ns5:e90ad4cc0d4cfbc2e72e9017b313d0328e3947f286b2c1e4b6da1c4c15744eb0
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"e90ad4cc0d4cfbc2e72e9017b313d0328e3947f286b2c1e4b6da1c4c15744eb0" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> .
+<http://data.lblod.info/id/bestuursorganen/46ac2dbeb5478311accffafd2e6d1e6a0c3967869c698310470f27f0979f6ced>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"46ac2dbeb5478311accffafd2e6d1e6a0c3967869c698310470f27f0979f6ced" ;
+	skos:prefLabel	"Districtsburgemeester Berendrecht-Zandvliet-Lillo" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/859f08dcfbc8f68bac0879e7baf6463b260b6f4c16b734d0d1986f5f3af0407b> .
+<http://data.lblod.info/id/mandaten/1552c48f674f1a5c3e325c9d1176ca64fb40c8a768407301679933bae5d1b30c>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"1552c48f674f1a5c3e325c9d1176ca64fb40c8a768407301679933bae5d1b30c" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/bestuursorganen/22b5002f303475e5ead5b0ea572794ac64518e846c30e8dd13f5ff9966e30bd1>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"22b5002f303475e5ead5b0ea572794ac64518e846c30e8dd13f5ff9966e30bd1" ;
+	skos:prefLabel	"Districtsraad Borgerhout" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	ns10:e7a75861661ee14ebe2bca0c79bda8b23f2f943d00a9693d2bff401a8f8dea65 .
+<http://data.lblod.info/id/mandaten/9284f974e17d3a796440894de8dc6b772bf4870fda72caca3144dba731d92e89>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"9284f974e17d3a796440894de8dc6b772bf4870fda72caca3144dba731d92e89" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+ns1:ad4e52116efe8fa10eb2eb6d7bdf940ab7debfc2a9d5acca823b16faed963047
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"ad4e52116efe8fa10eb2eb6d7bdf940ab7debfc2a9d5acca823b16faed963047" ;
+	ns4:hasPost	ns5:cf0f1193b09e720476846d5cbebb136cdf399c2e760631838732c455ef2cdf3c , ns5:e90ad4cc0d4cfbc2e72e9017b313d0328e3947f286b2c1e4b6da1c4c15744eb0 ;
+	ns6:isTijdspecialisatieVan	ns1:d7dbd2b143094018c8b9bf261e115aa43e151d48dcadf56e99e0f0fe67b8559c ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/9f5594689119ad8e9fd3c85d3ced3b52d40309899d2b366ce9a5c0a569888a50>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"9f5594689119ad8e9fd3c85d3ced3b52d40309899d2b366ce9a5c0a569888a50" ;
+	ns4:hasPost	ns5:ff5500824c6579f56afcd863c3d9bb4f870c2238a43df02333cc787521353fe3 , ns5:a1a504055dcaf673499f1bafea8652abd04da43f6a75295253cb2bdf2b3dbda6 ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/22b5002f303475e5ead5b0ea572794ac64518e846c30e8dd13f5ff9966e30bd1> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+ns1:dda07bde08781bbd52f00193785b53a193a8857def82bb6a216057cad4f0757a
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"dda07bde08781bbd52f00193785b53a193a8857def82bb6a216057cad4f0757a" ;
+	ns4:hasPost	ns5:b5965cdbf63c901df9676d27e51a2574bbc56bca594c50e06ca76d9d62934fbd , <http://data.lblod.info/id/mandaten/76bf3ab4652ed02b3e356c80d30fc51b7b99c0a3bf6e5f5f4b1a899f03c1f3f2> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	ns1:b1ddacc7863d5764650ff14c663d769eeb2935035ae60f75d92657299e437e0d ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+ns1:b1ddacc7863d5764650ff14c663d769eeb2935035ae60f75d92657299e437e0d
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"b1ddacc7863d5764650ff14c663d769eeb2935035ae60f75d92657299e437e0d" ;
+	skos:prefLabel	"Districtsraad Berchem" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	ns10:fb56bc40ce36390d2f12fc2057c89d4b6bc5b3217eabd41995b6401318ff648a .
+<http://data.lblod.info/id/bestuursorganen/8da6108c05225cc4bb5d3a386ed26c72fd3a27bddc295babbb669adbc5520009>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"8da6108c05225cc4bb5d3a386ed26c72fd3a27bddc295babbb669adbc5520009" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/2e32271b720e6859979843a92d9a0e2fff828675d44d11c29a89b618f54e628d> , ns5:e1e5fb4d09d8b713670810b7f690ecfccca6c2e6398cfabec2c29e3a2a97f8b2 ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	ns1:e1f57f0bbc7d6358c5e0d79b603650df7e6f064f37433869b727fab9110d808d ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+ns1:c2e8bf556a307023d49d35c3359e14bef3b5f4f8d9c4c422889342a0cab697ae
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"c2e8bf556a307023d49d35c3359e14bef3b5f4f8d9c4c422889342a0cab697ae" ;
+	ns4:hasPost	ns5:ae3eb9ef368d1b2f4735bf2d4c43b33f413684c4104c6352e5393701e1e27526 , ns5:a88bf296937b420881f8a96bf7774faa7a41749407ffa35f51e84caabd12ce3e ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/3b9108822cdeb01e6857dbb29c0254044e573cc52c4db233452a538b5d29ba73> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/3b9108822cdeb01e6857dbb29c0254044e573cc52c4db233452a538b5d29ba73>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"3b9108822cdeb01e6857dbb29c0254044e573cc52c4db233452a538b5d29ba73" ;
+	skos:prefLabel	"Districtscollege Merksem" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	ns10:f1ad80291fbdc1f0b9b25d729ecc608a8e28fdddab01a1b8e135c841c75586e2 .
+<http://data.lblod.info/id/bestuursorganen/2f1e4ec0f10c60d76a51fcecb7107005531e32e188edeb6d68b4bb739914367f>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"2f1e4ec0f10c60d76a51fcecb7107005531e32e188edeb6d68b4bb739914367f" ;
+	ns4:hasPost	ns5:a02136c2a8d750871e3c0a5e523d9b5497134903e8394393a15e69d8d83110f7 , <http://data.lblod.info/id/mandaten/670123bd68c27c4c3a898f1e41f550ba4180e2015cbd0f73c798ff06b108de74> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/3b9108822cdeb01e6857dbb29c0254044e573cc52c4db233452a538b5d29ba73> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/670123bd68c27c4c3a898f1e41f550ba4180e2015cbd0f73c798ff06b108de74>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"670123bd68c27c4c3a898f1e41f550ba4180e2015cbd0f73c798ff06b108de74" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> .
+ns1:d9da260ce14f74f24645cfdf74863e04e58bde3d21d721a52d67449a001c61fa
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"d9da260ce14f74f24645cfdf74863e04e58bde3d21d721a52d67449a001c61fa" ;
+	ns4:hasPost	ns5:d7187902b50c1923158ef1c1a0018adb4456c0a76b0677158038b8f023a8b97a , <http://data.lblod.info/id/mandaten/9d6735b8a50d5110baf56a5c6b0e6ad2e6996bdace36aea84a3d05c8220713c5> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/8f8b50216d68d1c23fe5add87a73c1c43cb47079b38316e36d5bcda329fca327> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/9d6735b8a50d5110baf56a5c6b0e6ad2e6996bdace36aea84a3d05c8220713c5>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"9d6735b8a50d5110baf56a5c6b0e6ad2e6996bdace36aea84a3d05c8220713c5" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/bestuursorganen/2fb4cae64d0ff6870e72f8ed695079c4ea8a20328ddabad5d5fc997226647020>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"2fb4cae64d0ff6870e72f8ed695079c4ea8a20328ddabad5d5fc997226647020" ;
+	ns4:hasPost	ns5:b8f4fc3c39dc1c8636857cca240d0242b128fa59341be569c20f4fd2ee0bb838 , <http://data.lblod.info/id/mandaten/789b07caac89ad8e4f5f508de56c191904f88e37dc64d5f6f895cac9e009b388> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/4e9568f74a8839b37b4a02b45be8d97cdbbe178d555a48592eeceda21abf50ef> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/4e9568f74a8839b37b4a02b45be8d97cdbbe178d555a48592eeceda21abf50ef>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"4e9568f74a8839b37b4a02b45be8d97cdbbe178d555a48592eeceda21abf50ef" ;
+	skos:prefLabel	"Districtscollege Berchem" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	ns10:fb56bc40ce36390d2f12fc2057c89d4b6bc5b3217eabd41995b6401318ff648a .
+ns1:e13acf7221656e08768e717d01691d8ad27964f6d5de0c6c50dc4536f7d1248f
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"e13acf7221656e08768e717d01691d8ad27964f6d5de0c6c50dc4536f7d1248f" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/5ea9416b445b01db42ff1efe1943012184de677c0561aab5c18820a44567c220> , ns5:e7dbede34925633def1e27b43042b2f362a5efd30054c3e05bc2c84741cce2e4 ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/8f8b50216d68d1c23fe5add87a73c1c43cb47079b38316e36d5bcda329fca327> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/87432658dd5076297b04f80426c2431289803d60647fb1255152eba028159ccd>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"87432658dd5076297b04f80426c2431289803d60647fb1255152eba028159ccd" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/346239ed9515d41990cb55cb4c2e10999e4f1d41c179a0b6b95c60890add5b8a> ;
+	ns6:isTijdspecialisatieVan	ns1:ccbd6477804e936617731eb049d407de164e36080ff509d7d402fad7c65cfc96 ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns1:ccbd6477804e936617731eb049d407de164e36080ff509d7d402fad7c65cfc96
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"ccbd6477804e936617731eb049d407de164e36080ff509d7d402fad7c65cfc96" ;
+	skos:prefLabel	"Districtsburgemeester Ekeren" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/33a1886b07b64ebe3a0e6c5ed8086f030ef1109492cb254832a716dd7e1b8d7b> .
+ns5:aba3368807b731c0acef0062453f167117d8225160003c062be462f125b11a55
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"aba3368807b731c0acef0062453f167117d8225160003c062be462f125b11a55" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+<http://data.lblod.info/id/bestuursorganen/202fa76d46f2234c5c90eae1c08bf76b8e1b6ba48c983184613c601ec37650c1>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"202fa76d46f2234c5c90eae1c08bf76b8e1b6ba48c983184613c601ec37650c1" ;
+	skos:prefLabel	"Districtsburgemeester Merksem" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	ns10:f1ad80291fbdc1f0b9b25d729ecc608a8e28fdddab01a1b8e135c841c75586e2 .
+ns1:fff08ae43cefbbfffe7cc50027aeff1ed525866eeaa27a8ff014265de36abca8
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"fff08ae43cefbbfffe7cc50027aeff1ed525866eeaa27a8ff014265de36abca8" ;
+	ns4:hasPost	ns5:d574ef2741d84f3a27a86e46b15e4c706914d21c5be796cbb4e10db240daf965 , ns5:cbbac02d9ceb5180a0c4101e17c933d5764f0842adfe1743d469ee012d72155d ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/22b5002f303475e5ead5b0ea572794ac64518e846c30e8dd13f5ff9966e30bd1> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns5:cbbac02d9ceb5180a0c4101e17c933d5764f0842adfe1743d469ee012d72155d
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"cbbac02d9ceb5180a0c4101e17c933d5764f0842adfe1743d469ee012d72155d" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+ns1:c376cb1f6b3a297df46ad97ffdd507278ed1c4ab48526175de9910686c9141d4
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"c376cb1f6b3a297df46ad97ffdd507278ed1c4ab48526175de9910686c9141d4" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/921252544a628db71251497cf760fc527d13079b368bd9166a2176086a1983b5> , <http://data.lblod.info/id/mandaten/624ffad8c22c8f7a3ad4ae7ed01d1364f4a908f61ad64b55462111853ed9ca28> ;
+	ns6:isTijdspecialisatieVan	ns1:d98ba40e8ef1dac4a6393a08afffa3140ea846e9008d441d61e7135e9e24e6c6 ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns1:cb4c03d67b950ca1eb38213b9c9997d4dc61352f3447044e674124cffe958918
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"cb4c03d67b950ca1eb38213b9c9997d4dc61352f3447044e674124cffe958918" ;
+	ns4:hasPost	ns5:ebe2ae0f2c188c82eef14edd0a71575da72f8aae7eb8d1c07a986b11180b4fd1 , ns5:aba3368807b731c0acef0062453f167117d8225160003c062be462f125b11a55 ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/13fc286fd72663eda5800162a9019eab7e842f0891da095dac94e7b69bb816ad> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+ns1:bc29cd950cc82ecc3359c6e0a19f3f90d600609a209a4c26b1561339a8ee8e46
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"bc29cd950cc82ecc3359c6e0a19f3f90d600609a209a4c26b1561339a8ee8e46" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/37f81001bdea028a362871909c5863577cd4649d05d4493e3b59e8626e610dec> , <http://data.lblod.info/id/mandaten/1552c48f674f1a5c3e325c9d1176ca64fb40c8a768407301679933bae5d1b30c> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/5973204f8f20a1563e8549e1bf2c0a780effc3fb82376dc13ef6507b931d09bd> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/5973204f8f20a1563e8549e1bf2c0a780effc3fb82376dc13ef6507b931d09bd>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"5973204f8f20a1563e8549e1bf2c0a780effc3fb82376dc13ef6507b931d09bd" ;
+	skos:prefLabel	"Districtsraad Wilrijk" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/73e8904d83f7324e39abc0adf639b0e48bc52533c4c243b6419cac8fb70784cf> .
+ns1:b504e0089ec6fa110254c935e5a4ebd669ec98b55cda8f94898c5c4799859bd9
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"b504e0089ec6fa110254c935e5a4ebd669ec98b55cda8f94898c5c4799859bd9" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/17aae0f924dcb7cc3a51f709ade46813cf3fc7b16324295b1f046c90cc26a684> , <http://data.lblod.info/id/mandaten/54c0ee96a37c1cd5fa7a4124297d84464ae399f5b94faf15f92ef086ae706a55> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/4c3f5e06a827580cab2d21a09a804f59885ab7c0b52312949a1322128bbf16d3> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/79e636b9055dff587fc07987f8fa0d70659b61c9541110c1285ad0c4db0b9d63>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"79e636b9055dff587fc07987f8fa0d70659b61c9541110c1285ad0c4db0b9d63" ;
+	ns4:hasPost	ns5:a4b6d32545ec0c8cd4abb62066134030defd0768bd929603cc3279129a44bde6 , ns5:b17322320669c058cee82e0e3619c5d48d315200d33af845b12c8b54e96e1ef7 ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/5973204f8f20a1563e8549e1bf2c0a780effc3fb82376dc13ef6507b931d09bd> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/52a350de71e2aefa444a4946b642a6e5bb7f4a9c83d3b276218ddc35fb2ff326>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"52a350de71e2aefa444a4946b642a6e5bb7f4a9c83d3b276218ddc35fb2ff326" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/034d738d331fb02e472e576ff1c70e4ca9b1de42d6325d8b8ed98a2f3e5c7998> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/46ac2dbeb5478311accffafd2e6d1e6a0c3967869c698310470f27f0979f6ced> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns1:a29966987202412bbf5e548aa5489c821550fdcb7a9be044750228b699367c07
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"a29966987202412bbf5e548aa5489c821550fdcb7a9be044750228b699367c07" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/94f688b19c3d5866c53fa207f9f63b537faa1386b37c10b9422151400794f025> , <http://data.lblod.info/id/mandaten/4ebdd8d35c59e4c758deba05debd2acdc86ac340ac76d4003ccc71ffe8967147> ;
+	ns6:isTijdspecialisatieVan	ns1:b1ddacc7863d5764650ff14c663d769eeb2935035ae60f75d92657299e437e0d ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/mandaten/7e44fbb9f36c539c3133ed6dab2dd025d873c6dd84b2542cd0d176e4d7dd7e3d>
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"7e44fbb9f36c539c3133ed6dab2dd025d873c6dd84b2542cd0d176e4d7dd7e3d" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> .
+ns1:c0c2ee9444920cf259bb80589cc00b9e5f904b4319d17c47c3452d1a51c0c8b1
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"c0c2ee9444920cf259bb80589cc00b9e5f904b4319d17c47c3452d1a51c0c8b1" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/76f6ab4cf5cd3a866e5205619b3fd0b6bb83425ceb2af155f4ace42bcb593eeb> , <http://data.lblod.info/id/mandaten/0cf4a33024c48a960752b8852428c3e2c73c4f43c2c3be90a05a1422fc97c19d> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/21fe9ea3f26627b781026fec5d7b938658aeb9cbe9c8cee7417d195e7f8544f5> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns1:ef9441f4d525654aae03a697454a9f07eef2d7ba522d8290378065c7222fe3a4
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"ef9441f4d525654aae03a697454a9f07eef2d7ba522d8290378065c7222fe3a4" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/18c986f929d8b3301ecc468c0100eda9654dc27be042e87f0bd4b3af9e8b36eb> , <http://data.lblod.info/id/mandaten/7e44fbb9f36c539c3133ed6dab2dd025d873c6dd84b2542cd0d176e4d7dd7e3d> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	ns1:d7dbd2b143094018c8b9bf261e115aa43e151d48dcadf56e99e0f0fe67b8559c ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+ns5:dbdf2260e2b1d7bb385dbdf70883a77a43accfd03484e3fba2f1ae717d03e897
+	rdf:type	ns4:Post , ns8:Mandaat ;
+	ns3:uuid	"dbdf2260e2b1d7bb385dbdf70883a77a43accfd03484e3fba2f1ae717d03e897" ;
+	ns4:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> .
+<http://data.lblod.info/id/bestuursorganen/394a8769cfc3d61a3705366c1083eded76acaa2ed92ee8c6d50f6509ae5c8c0c>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"394a8769cfc3d61a3705366c1083eded76acaa2ed92ee8c6d50f6509ae5c8c0c" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/6f054e1e6f3ff7f2ab73e00fb747629cc4572ab08ca5fd0e401550de0722adba> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/503789833b5bb5376076cedbd2cc70405cd6477b13ddd0632635ebdacf4b94a1> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/503789833b5bb5376076cedbd2cc70405cd6477b13ddd0632635ebdacf4b94a1>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"503789833b5bb5376076cedbd2cc70405cd6477b13ddd0632635ebdacf4b94a1" ;
+	skos:prefLabel	"Districtsburgemeester Wilrijk" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/73e8904d83f7324e39abc0adf639b0e48bc52533c4c243b6419cac8fb70784cf> .
+ns1:dd08e3656ac6ff16956b90380585c04463e49282b213e0450e0c57e35ece6525
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"dd08e3656ac6ff16956b90380585c04463e49282b213e0450e0c57e35ece6525" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/670123bd68c27c4c3a898f1e41f550ba4180e2015cbd0f73c798ff06b108de74> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/202fa76d46f2234c5c90eae1c08bf76b8e1b6ba48c983184613c601ec37650c1> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns1:ee161cea6b17b27698dcd77d909721f77927eece703c89ac63c33fd6ab122a2a
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"ee161cea6b17b27698dcd77d909721f77927eece703c89ac63c33fd6ab122a2a" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/9284f974e17d3a796440894de8dc6b772bf4870fda72caca3144dba731d92e89> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/454952ccfa60bfbe74d7dcaab4f558c32026439b8e7ac6da690308c553f9214c> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/995fa5417ef0288727699d4ae6ca069adc53b1bb4ce202a896455afc02824524>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"995fa5417ef0288727699d4ae6ca069adc53b1bb4ce202a896455afc02824524" ;
+	ns4:hasPost	ns5:b0fcdee9b9b74669f7c5cf983f34910dac462c5d9c27aa9e5c5f52630afaa01c , ns5:dbdf2260e2b1d7bb385dbdf70883a77a43accfd03484e3fba2f1ae717d03e897 ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/075fe8306362528ca6340811c403eeb758d9e797a9071aa47b331f4050a38908> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/8acdfc96828c5e689df826612dc44ee4d6d206689e0aff2679b174f50f9ef7d6>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"8acdfc96828c5e689df826612dc44ee4d6d206689e0aff2679b174f50f9ef7d6" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/748a6ae590a07e89e65f809785413a848f2e79c1b8de40319f3c9a4481ce76b9> , <http://data.lblod.info/id/mandaten/034d738d331fb02e472e576ff1c70e4ca9b1de42d6325d8b8ed98a2f3e5c7998> ;
+	ns6:isTijdspecialisatieVan	ns1:e1f57f0bbc7d6358c5e0d79b603650df7e6f064f37433869b727fab9110d808d ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/452601d2202e2f4bca2334884a128c7560e096e441aa733e60d3d1655e519f26>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"452601d2202e2f4bca2334884a128c7560e096e441aa733e60d3d1655e519f26" ;
+	ns4:hasPost	ns5:cf0f1193b09e720476846d5cbebb136cdf399c2e760631838732c455ef2cdf3c ;
+	ns6:isTijdspecialisatieVan	ns1:ac33ad3f0df97e4c3b1fdd09e514a04cb7a9332d385cd455307ed63fcd63d39b ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns1:c168b479f432b5cdbae1602af6f56315b3a31b1abac7bd925841146f5010d8a5
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"c168b479f432b5cdbae1602af6f56315b3a31b1abac7bd925841146f5010d8a5" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/4d7ad5a48786cc850c49cf1a6d0603b1e02dbacd8529239852596c8976ea602d> , ns5:c2ff773c43a10b5aa4386361eef6cf0391bd101a17be39f9008b60ad18e4960f ;
+	ns6:isTijdspecialisatieVan	ns1:bf8e80585fb7bce69c299c6ea39da6625d384cfde5db82ef1025aebb6829a01b ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns1:bf8e80585fb7bce69c299c6ea39da6625d384cfde5db82ef1025aebb6829a01b
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"bf8e80585fb7bce69c299c6ea39da6625d384cfde5db82ef1025aebb6829a01b" ;
+	skos:prefLabel	"Districtscollege Deurne" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/43e3009526dac139a0abdcf75c1ddc5fa3fe9217391d6f64f7b7a30a99a4cda6> .
+<http://data.lblod.info/id/bestuursorganen/2830e8b62dc4245d365d357f9a77eb1cd507bc6dcd6b3878186a7bdc2bd2849a>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"2830e8b62dc4245d365d357f9a77eb1cd507bc6dcd6b3878186a7bdc2bd2849a" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/1e21d1d0a08fe849ff4a00d57e05eba1e4e0bb61fceba841d01631f69ddfaaeb> , <http://data.lblod.info/id/mandaten/73407d9c6b5108b64a6c7dd3fad6e598c8709cc7ede48c1e8f0e38182b5daca9> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	ns1:bf8e80585fb7bce69c299c6ea39da6625d384cfde5db82ef1025aebb6829a01b ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/4552f50eedeb315e459ea3cd83cf7271bbca1d8584ae2f09c6376849e606825d>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"4552f50eedeb315e459ea3cd83cf7271bbca1d8584ae2f09c6376849e606825d" ;
+	ns4:hasPost	ns5:c91fc68b37dc16eb445a891094a11985bf69219c227ef8f05504ad36cefaa69d , ns5:c82d31f3e8d5c0b50c741e2bd9da0915dbf7b8c664186fbb02814192c38c1207 ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/49f13f5071c5967ce8d574a3aa1c22b80fc5e794277015afd0aac7f803775f2a> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/0824182d82f33addd08aa9905e590514f0a71ed4ab965a331355e894534aa9fb>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"0824182d82f33addd08aa9905e590514f0a71ed4ab965a331355e894534aa9fb" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/355cbc50e3ae9f34f72b1e2fa5f2addac3432ee0ab289e084c02e6731456b52e> , <http://data.lblod.info/id/mandaten/346239ed9515d41990cb55cb4c2e10999e4f1d41c179a0b6b95c60890add5b8a> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/14398cf66e94a2ad6e27c8ebf74fb798e80de8680ce8748ccfe56166e668c358> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/14398cf66e94a2ad6e27c8ebf74fb798e80de8680ce8748ccfe56166e668c358>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"14398cf66e94a2ad6e27c8ebf74fb798e80de8680ce8748ccfe56166e668c358" ;
+	skos:prefLabel	"Districtscollege Ekeren" ;
+	ns4:classification	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> ;
+	ns2:bestuurt	<http://data.lblod.info/id/bestuurseenheden/33a1886b07b64ebe3a0e6c5ed8086f030ef1109492cb254832a716dd7e1b8d7b> .
+<http://data.lblod.info/id/bestuursorganen/683b59ecb5b7a75bf4b0be461151f8631a0b17e8f3ba394e4164233945a54f49>
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"683b59ecb5b7a75bf4b0be461151f8631a0b17e8f3ba394e4164233945a54f49" ;
+	ns4:hasPost	<http://data.lblod.info/id/mandaten/8a971a248f2fe322d90bc321970613ff3b0eae52928fba5629a913b53049ec60> , <http://data.lblod.info/id/mandaten/9284f974e17d3a796440894de8dc6b772bf4870fda72caca3144dba731d92e89> ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/4e9568f74a8839b37b4a02b45be8d97cdbbe178d555a48592eeceda21abf50ef> ;
+	ns8:bindingStart	"2019-01-01T00:00:00"^^xsd:dateTime .
+ns1:d74f7ea63c7fd6f97b4c226ee100bb88ef7095d5371592986cac30baebdf78a3
+	rdf:type	ns2:Bestuursorgaan ;
+	ns3:uuid	"d74f7ea63c7fd6f97b4c226ee100bb88ef7095d5371592986cac30baebdf78a3" ;
+	ns4:hasPost	ns5:c3463306d5982c83bcfc98d8edffa3e23ec76651fdb6ed6d2bf330a5dd7838f0 , <http://data.lblod.info/id/mandaten/905263c315a35035a944a65db525591170d63adcac089dc7fc48a0e67b933ce1> ;
+	ns8:bindingEinde	"2019-01-01T00:00:00"^^xsd:dateTime ;
+	ns6:isTijdspecialisatieVan	<http://data.lblod.info/id/bestuursorganen/14398cf66e94a2ad6e27c8ebf74fb798e80de8680ce8748ccfe56166e668c358> ;
+	ns8:bindingStart	"2012-10-14T00:00:00"^^xsd:dateTime .

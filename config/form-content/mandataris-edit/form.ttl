@@ -96,21 +96,6 @@ ext:fractieF
             sh:path ( org:hasMembership org:organisation );
             sh:resultMessage "Dit veld is verplicht."
     ].
-ext:linkTobesluitF
-    a form:Field;
-    form:displayType displayTypes:defaultInput;
-    sh:group ext:editMandatarisPG;
-    sh:name "Link naar besluit";
-    sh:order 1000;
-    form:validatedBy [
-        a form:UriConstraint;
-        form:grouping form:MatchEvery;
-        sh:order 1;
-        sh:path lmb:linkToBesluit;
-        sh:resultMessage
-            "Gelieve een geldige URL op te geven. Zorg dat vooraan in de link altijd http://, https://, ftp:// of sftp:// staat."@nl
-    ];
-    sh:path lmb:linkToBesluit.
 ext:editMandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 
@@ -123,8 +108,7 @@ ext:editMandatarisPG
         ext:startF,
         ext:eindeF,
         ext:replacementF,
-        ext:fractieF,
-        ext:linkTobesluitF;
+        ext:fractieF;
     sh:group ext:editMandatarisPG;
     form:initGenerator ext:mandatarisG;
     form:targetType mandaat:Mandataris;

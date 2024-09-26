@@ -293,6 +293,10 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://login/sessions/")
   end
 
+  match "/impersonations/*path" do
+    forward conn, path, "http://impersonation/impersonations/"
+  end
+
   #################################################################
   # Extra services
   #################################################################

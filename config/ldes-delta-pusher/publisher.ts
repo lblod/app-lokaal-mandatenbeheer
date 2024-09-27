@@ -48,6 +48,7 @@ const fetchSubjectData = async (
       FILTER NOT EXISTS {
         ?g a <http://mu.semte.ch/vocabularies/ext/FormHistory> .
       }
+      FILTER ( ?g != <http://mu.semte.ch/graphs/besluiten-consumed> )
     }
   `);
   return data.results.bindings.map(bindingToTriple).join("\n");

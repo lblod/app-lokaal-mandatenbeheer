@@ -17,7 +17,7 @@ INSERT DATA {
 
     orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 mu:uuid "aa5f804a-2ad0-422d-9569-ea93496f5b69" ;
         # can be selected and marked as "Andere" in case they want to create some other kind of orgaan
-        skos:prefLabel "Orgaan" ;
+        skos:prefLabel "Ander Orgaan" ;
         a skos:Concept , ext:BestuursorgaanClassificatieCode ;
         skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
         skos:topConceptOf lbcs:LokaalOrgaanClassificatieCode .

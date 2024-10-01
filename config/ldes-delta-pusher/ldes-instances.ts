@@ -64,102 +64,102 @@ export const ldesInstances = {
     graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
     graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
   },
-  // abb: {
-  //   entities: {
-  //     "http://data.vlaanderen.be/ns/mandaat#Mandataris": {
-  //       specialType: true,
-  //       healingPredicates: ["http://purl.org/dc/terms/modified"],
-  //     },
-  //     "http://data.vlaanderen.be/ns/mandaat#Fractie": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://www.w3.org/ns/org#Membership": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://www.w3.org/ns/person#Person": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://purl.org/dc/terms/PeriodOfTime": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://www.w3.org/ns/adms#Identifier": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://data.vlaanderen.be/ns/persoon#Geboorte": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://data.vlaanderen.be/ns/besluit#Artikel": {
-  //       specialType: true,
-  //       healingPredicates: [
-  //         // this is the minimal config, one could also check all predicates per type, something like this:
-  //         "http://purl.org/dc/terms/modified",
-  //       ],
-  //     },
-  //     "http://data.vlaanderen.be/ns/besluit#Besluit": {
-  //       specialType: true,
-  //       healingPredicates: [
-  //         // this is the minimal config, one could also check all predicates per type, something like this:
-  //         "http://purl.org/dc/terms/modified",
-  //       ],
-  //     },
-  //     "http://www.w3.org/ns/activitystreams#Tombstone": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //   },
-  //   graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
-  //   graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
-  // },
-  // internal: {
-  //   entities: {
-  //     "http://data.vlaanderen.be/ns/mandaat#Mandataris": {
-  //       specialType: true,
-  //       healingPredicates: ["http://purl.org/dc/terms/modified"],
-  //     },
-  //     "http://data.vlaanderen.be/ns/mandaat#Fractie": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://www.w3.org/ns/org#Membership": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://www.w3.org/ns/person#Person": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://purl.org/dc/terms/PeriodOfTime": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://www.w3.org/ns/adms#Identifier": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://data.vlaanderen.be/ns/persoon#Geboorte": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //     "http://data.vlaanderen.be/ns/besluit#Artikel": {
-  //       specialType: true,
-  //       healingPredicates: [
-  //         // this is the minimal config, one could also check all predicates per type, something like this:
-  //         "http://purl.org/dc/terms/modified",
-  //       ],
-  //     },
-  //     "http://data.vlaanderen.be/ns/besluit#Besluit": {
-  //       specialType: true,
-  //       healingPredicates: [
-  //         // this is the minimal config, one could also check all predicates per type, something like this:
-  //         "http://purl.org/dc/terms/modified",
-  //       ],
-  //     },
-  //     "http://www.w3.org/ns/activitystreams#Tombstone": [
-  //       "http://purl.org/dc/terms/modified",
-  //     ],
-  //   },
-  //   graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
-  //   graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
-  // },
+  abb: {
+    entities: {
+      "http://data.vlaanderen.be/ns/mandaat#Mandataris": {
+        specialType: true,
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
+      "http://data.vlaanderen.be/ns/mandaat#Fractie": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://www.w3.org/ns/org#Membership": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://www.w3.org/ns/person#Person": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://purl.org/dc/terms/PeriodOfTime": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://www.w3.org/ns/adms#Identifier": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://data.vlaanderen.be/ns/persoon#Geboorte": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://data.vlaanderen.be/ns/besluit#Artikel": {
+        specialType: true,
+        healingPredicates: [
+          // this is the minimal config, one could also check all predicates per type, something like this:
+          "http://purl.org/dc/terms/modified",
+        ],
+      },
+      "http://data.vlaanderen.be/ns/besluit#Besluit": {
+        specialType: true,
+        healingPredicates: [
+          // this is the minimal config, one could also check all predicates per type, something like this:
+          "http://purl.org/dc/terms/modified",
+        ],
+      },
+      "http://www.w3.org/ns/activitystreams#Tombstone": [
+        "http://purl.org/dc/terms/modified",
+      ],
+    },
+    graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
+    graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
+  },
+  internal: {
+    entities: {
+      "http://data.vlaanderen.be/ns/mandaat#Mandataris": {
+        specialType: true,
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
+      "http://data.vlaanderen.be/ns/mandaat#Fractie": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://www.w3.org/ns/org#Membership": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://www.w3.org/ns/person#Person": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://purl.org/dc/terms/PeriodOfTime": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://www.w3.org/ns/adms#Identifier": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://data.vlaanderen.be/ns/persoon#Geboorte": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://data.vlaanderen.be/ns/besluit#Artikel": {
+        specialType: true,
+        healingPredicates: [
+          // this is the minimal config, one could also check all predicates per type, something like this:
+          "http://purl.org/dc/terms/modified",
+        ],
+      },
+      "http://data.vlaanderen.be/ns/besluit#Besluit": {
+        specialType: true,
+        healingPredicates: [
+          // this is the minimal config, one could also check all predicates per type, something like this:
+          "http://purl.org/dc/terms/modified",
+        ],
+      },
+      "http://www.w3.org/ns/activitystreams#Tombstone": [
+        "http://purl.org/dc/terms/modified",
+      ],
+    },
+    graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
+    graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
+  },
 };
 
 export const defaultProperties = [

@@ -14,6 +14,7 @@ export const interestingTypes = [
   "http://lblod.data.gift/vocabularies/lmb/Installatievergadering",
   "http://schema.org/ContactPoint",
   "http://www.w3.org/ns/locn#Address",
+  "http://www.w3.org/ns/activitystreams#Tombstone",
 ];
 
 export const filterModifiedSubjects = "";

@@ -1,0 +1,29 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?org besluit:bestuurt ?bestuurseenheid.
+  }
+};
+# some graphs contained bestuurseenheden that were not of the correct type, these have been removed but their graphs and content remained
+# that's dangerous because we don't own this information, so we remove them here
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+  FILTER(STRSTARTS(STR(?g), "http://mu.semte.ch/graphs/organizations/") && STRENDS(STR(?g), "LoketLB-mandaatGebruiker"))
+
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.
+    }
+  }
+}

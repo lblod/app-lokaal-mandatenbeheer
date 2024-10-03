@@ -1,5 +1,6 @@
 # had to split this query into several because virtuoso didn't like the number of optionals i used...
 # mandataris
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 DELETE {
   GRAPH ?g {
     ?mandataris ?manp ?mano.
@@ -54,5 +55,19 @@ DELETE {
   ?orgInT <http://data.vlaanderen.be/ns/mandaat#bindingEinde> ?einde.
   GRAPH ?g {
     ?orgInT ?p ?o.
+  }
+};
+# link to verkiezing
+DELETE {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?huidigBestuursorgaanInDeTijd .
+  }
+
+} WHERE {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?huidigBestuursorgaanInDeTijd .
+  }
+  FILTER NOT EXISTS {
+    ?huidigBestuursorgaanInDeTijd a ?thing.
   }
 }

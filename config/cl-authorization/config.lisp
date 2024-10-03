@@ -86,7 +86,6 @@
   ("org:Role" -> _)
   ("skos:ConceptScheme" -> _)
   ("skos:Concept" -> _)
-  ("m8g:PeriodOfTime" -> _)
   ("foaf:Document" -> _)
   ("lmb:MandatarisPublicationStatusCode" -> _))
 
@@ -116,7 +115,6 @@
   ("org:Post" -> _)
   ("person:Person" -> _)
   ("adms:Identifier" -> _)
-  ("dct:PeriodOfTime" -> _)
   ("ext:Form" -> _)
   ("ext:Extension" -> _)
   ("lmb:Installatievergadering" -> _)

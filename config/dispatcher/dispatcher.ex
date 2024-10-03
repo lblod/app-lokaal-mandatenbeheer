@@ -174,10 +174,6 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/identificatoren/")
   end
 
-  match "/tijdsintervallen/*path", %{layer: :resources, accept: %{json: true}} do
-    forward(conn, path, "http://cache/tijdsintervallen/")
-  end
-
   #################################################################
   # Contact resources
   #################################################################

@@ -130,6 +130,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/geboortes/")
   end
 
+  match "/lidmaatschappen/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/lidmaatschappen/")
+  end
+
   match "/mandaten/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/mandaten/")
   end

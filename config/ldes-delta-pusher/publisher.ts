@@ -30,7 +30,9 @@ const fetchSubjectData = async (
     }`;
   }
   const filter =
-    typeof subject.ldesType === "object" && subject.ldesType[target].filter ? subject.ldesType[target].filter : "";
+    typeof subject.ldesType === "object" && subject.ldesType[target].filter
+      ? subject.ldesType[target].filter
+      : "";
   // we are also publishing the bestuuseenheid with our data so consuming apps easily know where to put the concept
   const data = await query(`
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -98,7 +100,7 @@ const modelProperties = {
     "http://www.w3.org/ns/org#memberOf",
     "http://www.w3.org/ns/org#linkedTo",
     "http://mu.semte.ch/vocabularies/ext/isFractietype",
-    "http://mu.semte.ch/vocabularies/ext/geproduceerdDoor"
+    "http://mu.semte.ch/vocabularies/ext/geproduceerdDoor",
   ],
   "http://www.w3.org/ns/org#Membership": [
     "http://www.w3.org/ns/org#organisation",
@@ -180,7 +182,7 @@ const sparqlEscapeObject = (bindingObject): string => {
     : sparqlEscape(bindingObject.value, escapeType);
 };
 
-const bindingToTriple = (binding) =>
+export const bindingToTriple = (binding) =>
   `${sparqlEscapeUri(binding.s.value)} ${sparqlEscapeUri(
     binding.p.value
   )} ${sparqlEscapeObject(binding.o)} .`;
@@ -213,6 +215,37 @@ export const publish = async (subject: InterestingSubject) => {
       return sendLDESRequest(target, data).catch((e) => {
         log(
           `Error publishing data for subject ${subject.uri} to LDES endpoint ${subject.ldesType}: ${e}`,
+          "error"
+        );
+      });
+    })
+  );
+};
+
+/**
+ * Publish the given triples to the given ldesType
+ * @param subject the uri of the subject for which extra data is published
+ * @param data the triples to publish on the given endpoint
+ */
+export const publishTriples = async (
+  subject: InterestingSubject,
+  data: string
+) => {
+  let targets;
+  if (typeof subject.ldesType === "string") {
+    targets = streamTargets[subject.ldesType];
+  } else {
+    targets = Object.keys(subject.ldesType);
+  }
+  await Promise.all(
+    targets.map(async (target) => {
+      log(
+        `[${target}] Publishing extra data for subject ${subject.uri}:\n${data}`,
+        "debug"
+      );
+      return sendLDESRequest(target, data).catch((e) => {
+        log(
+          `Error publishing extra data for subject ${subject.uri} to LDES endpoint ${subject.ldesType}: ${e}`,
           "error"
         );
       });

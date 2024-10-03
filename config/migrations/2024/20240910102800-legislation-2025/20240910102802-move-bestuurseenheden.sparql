@@ -1,0 +1,60 @@
+PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+
+# Werkingsgebieden
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+		?s ?p ?o .
+	}
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
+    ?s a prov:Location ;
+      ?p ?o .
+    FILTER (?p IN (mu:uuid, rdf:type, rdfs:label, ext:werkingsgebiedNiveau))
+  }
+}
+
+# Bestuurseenheden
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+		?s besluit:classificatie ?classificatie ;
+		  ?p ?o .
+	}
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
+    ?s a besluit:Bestuurseenheid ;
+			org:classification ?classificatie ;
+      ?p ?o .
+    FILTER (?p IN (mu:uuid, rdf:type, skos:prefLabel, besluit:werkingsgebied, org:linkedTo))
+  }
+}
+
+# Bestuursorganen
+INSERT {
+  GRAPH ?graph {
+		?s besluit:classificatie ?classificatie ;
+		  ?p ?o .
+	}
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/tmp> {
+    ?s a besluit:Bestuursorgaan ;
+			org:classification ?classificatie ;
+			besluit:bestuurt ?bestuurseenheid ;
+      ?p ?o .
+		?bestuurseenheid mu:uuid ?id .
+    FILTER (?p IN (mu:uuid, rdf:type, skos:prefLabel, besluit:bestuurt))
+  }
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?graph)
+}

@@ -15,8 +15,7 @@
                               :as "bestuurseenheid")
              (fractietype :via ,(s-prefix "ext:isFractietype")
                           :as "fractietype")
-             (kandidatenlijst :via ,(s-prefix "ext:produceertFractie")
-                          :inverse t
+             (kandidatenlijst :via ,(s-prefix "ext:geproduceerdDoor")
                           :as "originele-kandidatenlijst"))
   :features '(include-uri)
   :on-path "fracties")

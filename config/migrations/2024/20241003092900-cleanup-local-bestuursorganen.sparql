@@ -1,0 +1,73 @@
+# had to split this query into several because virtuoso didn't like the number of optionals i used...
+# mandataris
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+DELETE {
+  GRAPH ?g {
+    ?mandataris ?manp ?mano.
+  }
+} WHERE {
+  ?orgInT <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> .
+  ?orgInT <http://data.vlaanderen.be/ns/mandaat#bindingEinde> ?einde.
+  GRAPH ?g {
+    ?orgInT <http://www.w3.org/ns/org#hasPost> ?mdt.
+    ?mandataris <http://www.w3.org/ns/org#holds> ?mdt.
+    ?mandataris ?manp ?mano.
+  }
+};
+# fractions and memberships
+DELETE {
+  GRAPH ?g {
+    ?fractie ?fp ?fo.
+    ?lidmaatschap ?lp ?lo.
+  }
+} WHERE {
+  ?orgInT <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> .
+  ?orgInT <http://data.vlaanderen.be/ns/mandaat#bindingEinde> ?einde.
+  GRAPH ?g {
+    ?fractie <http://www.w3.org/ns/org#memberOf> ?orgInT.
+    ?fractie ?fp ?fo.
+    OPTIONAL {
+      ?lidmaatschap <http://www.w3.org/ns/org#organisation> ?fractie.
+      ?lidmaatschap ?lp ?lo.
+    }
+  }
+};
+# mandates
+DELETE {
+  GRAPH ?g {
+    ?mandaat ?mp ?mo.
+  }
+} WHERE {
+  ?orgInT <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> .
+  ?orgInT <http://data.vlaanderen.be/ns/mandaat#bindingEinde> ?einde.
+  GRAPH ?g {
+    ?orgInT <http://www.w3.org/ns/org#hasPost> ?mandaat.
+    ?mandaat ?mp ?mo.
+  }
+};
+# org itself
+DELETE {
+  GRAPH ?g {
+    ?orgInT ?p ?o.
+  }
+} WHERE {
+  ?orgInT <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> .
+  ?orgInT <http://data.vlaanderen.be/ns/mandaat#bindingEinde> ?einde.
+  GRAPH ?g {
+    ?orgInT ?p ?o.
+  }
+};
+# link to verkiezing
+DELETE {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?huidigBestuursorgaanInDeTijd .
+  }
+
+} WHERE {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?huidigBestuursorgaanInDeTijd .
+  }
+  FILTER NOT EXISTS {
+    ?huidigBestuursorgaanInDeTijd a ?thing.
+  }
+}

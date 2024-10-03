@@ -1,0 +1,29 @@
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH ?boiGraph {
+    ?bestuursorgaan mandaat:bindingEinde ?einde .
+  }
+}
+INSERT {
+  GRAPH ?boiGraph {
+    ?bestuursorgaan mandaat:bindingEinde "2025-01-01T00:00:00Z"^^xsd:dateTime .
+  }
+}
+WHERE {
+ GRAPH ?publicGraph {
+  ?bestuursperiode a lmb:Bestuursperiode ;
+    lmb:startYear 2019 ;
+    lmb:endYear  2025 .
+ }
+ GRAPH ?boiGraph {
+  ?bestuursorgaan a besluit:Bestuursorgaan ;
+    lmb:heeftBestuursperiode ?bestuursperiode .
+    OPTIONAL {
+      ?bestuursorgaan mandaat:bindingEinde ?einde .
+    }
+ }
+}

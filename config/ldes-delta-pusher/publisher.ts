@@ -29,9 +29,8 @@ const fetchSubjectData = async (
       ${properties.map((p) => sparqlEscapeUri(p)).join("\n")}
     }`;
   }
-
   const filter =
-    typeof subject.ldesType === "object" ? subject.ldesType[target].filter : "";
+    typeof subject.ldesType === "object" && subject.ldesType[target].filter ? subject.ldesType[target].filter : "";
   // we are also publishing the bestuuseenheid with our data so consuming apps easily know where to put the concept
   const data = await query(`
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -49,6 +48,7 @@ const fetchSubjectData = async (
       FILTER NOT EXISTS {
         ?g a <http://mu.semte.ch/vocabularies/ext/FormHistory> .
       }
+      FILTER ( ?g != <http://mu.semte.ch/graphs/besluiten-consumed> )
     }
   `);
   return data.results.bindings.map(bindingToTriple).join("\n");
@@ -98,6 +98,7 @@ const modelProperties = {
     "http://www.w3.org/ns/org#memberOf",
     "http://www.w3.org/ns/org#linkedTo",
     "http://mu.semte.ch/vocabularies/ext/isFractietype",
+    "http://mu.semte.ch/vocabularies/ext/geproduceerdDoor"
   ],
   "http://www.w3.org/ns/org#Membership": [
     "http://www.w3.org/ns/org#organisation",

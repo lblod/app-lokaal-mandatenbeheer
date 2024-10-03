@@ -104,6 +104,10 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  impersonation:
+    image: lblod/impersonation-service:0.2.0
+    restart: always
+    logging: *default-logging
   file:
     image: semtech/mu-file-service:3.4.0
     volumes:
@@ -113,12 +117,13 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-lokaal-mandatenbeheer:0.1.0
+    image: lblod/frontend-lokaal-mandatenbeheer:0.1.3
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
     environment:
+      EMBER_ENVIRONMENT_NAME: "PROD"
       EMBER_AUTHENTICATION_ENABLED: "true"
   filehost:
     image: nginx:1.15.2
@@ -146,7 +151,7 @@ services:
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.0.8
+    image: lblod/mandataris-service:0.0.9
     labels:
       - "logging=true"
     restart: always
@@ -195,6 +200,7 @@ services:
 
     volumes:
       - ./config/ldes-delta-pusher/:/config/
+      - ./data/ldes-feed/:/data/
     restart: always
     labels:
       - "logging=true"

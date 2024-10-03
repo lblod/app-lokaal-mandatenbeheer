@@ -8,7 +8,6 @@ export const interestingTypes = [
   "http://data.vlaanderen.be/ns/mandaat#Mandaat",
   "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
   "http://www.w3.org/ns/person#Person",
-  "http://purl.org/dc/terms/PeriodOfTime",
   "http://www.w3.org/ns/adms#Identifier",
   "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
   "http://lblod.data.gift/vocabularies/lmb/Installatievergadering",

@@ -123,6 +123,7 @@ services:
     restart: always
     logging: *default-logging
     environment:
+      EMBER_ENVIRONMENT_NAME: "PROD"
       EMBER_AUTHENTICATION_ENABLED: "true"
   filehost:
     image: nginx:1.15.2

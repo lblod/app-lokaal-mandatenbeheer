@@ -17,6 +17,7 @@ const desiredTypes = [
   "http://publications.europa.eu/ontology/euvoc#Country",
   "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
   "http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode",
+  "http://data.europa.eu/m8g/PeriodOfTime",
   "http://www.w3.org/2004/02/skos/core#ConceptScheme",
   "http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode",
   "http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode",

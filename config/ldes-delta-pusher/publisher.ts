@@ -119,6 +119,10 @@ const modelProperties = {
     "http://www.w3.org/ns/adms#identifier",
     "http://data.vlaanderen.be/ns/persoon#geslacht",
   ],
+  "http://purl.org/dc/terms/PeriodOfTime": [
+    "http://data.vlaanderen.be/ns/generiek#begin",
+    "http://data.vlaanderen.be/ns/generiek#einde",
+  ],
   "http://www.w3.org/ns/adms#Identifier": [
     "http://www.w3.org/2004/02/skos/core#notation",
   ],

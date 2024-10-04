@@ -16,6 +16,7 @@ const regularTypesToLDESMapping: {
     abb: {},
     internal: {},
   },
+  "http://purl.org/dc/terms/PeriodOfTime": "public",
   "http://www.w3.org/ns/adms#Identifier": "abb",
   "http://data.vlaanderen.be/ns/persoon#Geboorte": "abb",
   "http://schema.org/ContactPoint": "abb",

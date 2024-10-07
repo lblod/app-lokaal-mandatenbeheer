@@ -1,0 +1,36 @@
+PREFIX notificationCode: <http://lblod.data.gift/concepts/notification-codes/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX lbcs: <http://data.lblod.info/id/conceptscheme/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX code: <http://data.lblod.info/id/lb-mandaat-classificatiecode/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+
+    lbcs:LMBNotificationCodes a skos:ConceptScheme ;
+        skos:prefLabel "LMB Notificatie Codes" ;
+        mu:uuid "e4b41a51-1a2e-415d-8ed7-fa4a296c68b1" .
+
+    notificationCode:error mu:uuid "a14fd9ea-2da2-4810-b66c-a2b237d1358c" ;
+        skos:prefLabel "Error" ;
+        a skos:Concept , ext:SystemNotificationCode ;
+        skos:inScheme lbcs:LMBNotificationCodes ;
+        skos:topConceptOf lbcs:LMBNotificationCodes .
+
+    notificationCode:warning mu:uuid "20c176a3-f9d0-4563-a170-81eb4667ac8e" ;
+        skos:prefLabel "Warning" ;
+        a skos:Concept , ext:SystemNotificationCode ;
+        skos:inScheme lbcs:LMBNotificationCodes ;
+        skos:topConceptOf lbcs:LMBNotificationCodes .
+
+    notificationCode:info mu:uuid "ceca9786-6cdb-44cb-bdcd-d69a7c6d80bd" ;
+        skos:prefLabel "Info" ;
+        a skos:Concept , ext:SystemNotificationCode ;
+        skos:inScheme lbcs:LMBNotificationCodes ;
+        skos:topConceptOf lbcs:LMBNotificationCodes .
+  }
+}

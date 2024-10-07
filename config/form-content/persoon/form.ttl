@@ -19,7 +19,7 @@ ext:gebruikteVoornaamF
     sh:name "Voornaam";
     sh:order 2;
     sh:path persoon:gebruikteVoornaam;
-    form:validatedBy 
+    form:validatedBy
         [
             a form:RequiredConstraint;
             form:grouping form:Bag;
@@ -33,7 +33,7 @@ ext:achternaamF
     sh:name "Achternaam";
     sh:order 3;
     sh:path foaf:familyName;
-    form:validatedBy 
+    form:validatedBy
         [
             a form:RequiredConstraint;
             form:grouping form:Bag;
@@ -84,7 +84,7 @@ ext:possibleDuplicateF
     sh:order 5001;
     sh:path ext:possibleDuplicate.
 
-<http://data.lblod.info/id/lmb/forms/persoon> 
+<http://data.lblod.info/id/lmb/forms/persoon>
     a form:Form, form:TopLevelForm;
     form:includes
         ext:gebruikteVoornaamF,
@@ -115,3 +115,11 @@ ext:personG a form:Generator;
     ]
   ];
   form:dataGenerator form:addMuUuid.
+
+ext:geboorteUriG a form:UriGenerator;
+  form:prefix "http://data.lblod.info/id/geboortes/";
+  form:forType persoon:Geboorte.
+
+ext:identifierUriG a form:UriGenerator;
+  form:prefix "http://data.lblod.info/id/identificatoren/";
+  form:forType adms:Identifier.

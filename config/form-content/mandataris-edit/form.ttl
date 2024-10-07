@@ -140,3 +140,7 @@ ext:mandatarisG a form:Generator;
     ]
   ];
   form:dataGenerator form:addMuUuid.
+
+  ext:membershipUriG a form:UriGenerator;
+  form:prefix "http://data.lblod.info/id/lidmaatschappen/";
+  form:forType org:Membership.

@@ -1,0 +1,240 @@
+PREFIX orgaancode: <http://data.lblod.info/id/lb-orgaan-classificatiecode/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX lbcs: <http://data.lblod.info/id/conceptscheme/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX code: <http://data.lblod.info/id/lb-mandaat-classificatiecode/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+
+    lbcs:LokaalOrgaanClassificatieCode a skos:ConceptScheme ;
+        skos:prefLabel "Lokaal orgaan classificatie code" ;
+        mu:uuid "72fa7be9-c329-4531-be1f-89488bda2041" .
+
+    orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 mu:uuid "aa5f804a-2ad0-422d-9569-ea93496f5b69" ;
+        # can be selected and marked as "Andere" in case they want to create some other kind of orgaan
+        skos:prefLabel "Orgaan" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:topConceptOf lbcs:LokaalOrgaanClassificatieCode .
+
+    orgaancode:2a9af226-ce5e-422b-824d-c78583550e99 mu:uuid "2a9af226-ce5e-422b-824d-c78583550e99" ;
+        skos:prefLabel "Aandeelhoudersbestuur" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:39574cb9-0ca4-49da-82c5-468ebf1f5f50 mu:uuid "39574cb9-0ca4-49da-82c5-468ebf1f5f50" ;
+        skos:prefLabel "Adviescomité" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:9ae0afa7-eeaf-4fe1-a00f-75db18fd4a89 mu:uuid "9ae0afa7-eeaf-4fe1-a00f-75db18fd4a89" ;
+        skos:prefLabel "Beheersorgaan" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:7f7f4e20-ff35-4f26-91f5-a7faaf8f59aa mu:uuid "7f7f4e20-ff35-4f26-91f5-a7faaf8f59aa" ;
+        skos:prefLabel "Bekkenbestuur" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:26cbabc1-8767-490d-83e3-e209860b54f9 mu:uuid "26cbabc1-8767-490d-83e3-e209860b54f9" ;
+        skos:prefLabel "Beleidsgroep" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:811d1502-059f-4813-8d29-4015e0d492a5 mu:uuid "811d1502-059f-4813-8d29-4015e0d492a5" ;
+        skos:prefLabel "Bestuurlijke commissie" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:0ee41ca8-76b4-4c98-9b61-ca746b66d7c2 mu:uuid "0ee41ca8-76b4-4c98-9b61-ca746b66d7c2" ;
+        skos:prefLabel "Bijzonder onderhandelingscomité" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:298234f3-b012-47b8-8779-9b887e55861d mu:uuid "298234f3-b012-47b8-8779-9b887e55861d" ;
+        skos:prefLabel "Dagelijks bestuur" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:89e3b527-e75a-42c3-ac7a-d92f341337ba mu:uuid "89e3b527-e75a-42c3-ac7a-d92f341337ba" ;
+        skos:prefLabel "Deontologische commissie" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:e6d74eba-e698-4f48-9083-609a67aaa605 mu:uuid "e6d74eba-e698-4f48-9083-609a67aaa605" ;
+        skos:prefLabel "Financieel comité" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:b3c79d7e-b0b5-4afe-8da9-3809bd30c11d mu:uuid "b3c79d7e-b0b5-4afe-8da9-3809bd30c11d" ;
+        skos:prefLabel "GECORO" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:86035fbc-4212-42fd-9873-dda0981c72f3 mu:uuid "86035fbc-4212-42fd-9873-dda0981c72f3" ;
+        skos:prefLabel "Gemeentelijke adviesraad" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:0aecbecb-9186-4f65-a050-0719a5cb1bab mu:uuid "0aecbecb-9186-4f65-a050-0719a5cb1bab" ;
+        skos:prefLabel "Gemeenteraadscommissies" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:4af47caf-009d-44eb-acf0-b87877af7bb3 mu:uuid "4af47caf-009d-44eb-acf0-b87877af7bb3" ;
+        skos:prefLabel "Hoog overlegcomité" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:a263a2ba-c640-488f-9df3-f17b82bb8f36 mu:uuid "a263a2ba-c640-488f-9df3-f17b82bb8f36" ;
+        skos:prefLabel "Kredietcommissie" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:f3ebb3a5-023c-4e68-b039-8f62235c7a25 mu:uuid "f3ebb3a5-023c-4e68-b039-8f62235c7a25" ;
+        skos:prefLabel "Lokale actiegroep" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:dfb76d86-c05e-4cba-8aef-08a0b5fb3d96 mu:uuid "dfb76d86-c05e-4cba-8aef-08a0b5fb3d96" ;
+        skos:prefLabel "Lokale adviescommissie" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:afc54ba6-f649-4941-82e4-38b9512b072d mu:uuid "afc54ba6-f649-4941-82e4-38b9512b072d" ;
+        skos:prefLabel "Lokale adviesraad" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:d97ff21d-2158-4082-a66a-06b3c1ad554f mu:uuid "d97ff21d-2158-4082-a66a-06b3c1ad554f" ;
+        skos:prefLabel "Medezeggenschapscollege" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:9d23357b-f90a-4275-b4fd-1aeba2c1a190 mu:uuid "9d23357b-f90a-4275-b4fd-1aeba2c1a190" ;
+        skos:prefLabel "Onderhandelingscomité" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:07c3b96c-c71e-433a-88c0-b789e48452d6 mu:uuid "07c3b96c-c71e-433a-88c0-b789e48452d6" ;
+        skos:prefLabel "Planbegeleidingsgroep" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:30621334-5fec-49bb-9bd2-4f707e96b9d6 mu:uuid "30621334-5fec-49bb-9bd2-4f707e96b9d6" ;
+        skos:prefLabel "Reaffectatiecommissie" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:c2ff3adc-4caf-4ea3-acf3-932e98f206a5 mu:uuid "c2ff3adc-4caf-4ea3-acf3-932e98f206a5" ;
+        skos:prefLabel "Regionaal adviescomité" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:8ceed028-4081-47ee-a159-125445ac733a mu:uuid "8ceed028-4081-47ee-a159-125445ac733a" ;
+        skos:prefLabel "Regionale plattelandsstuurgroep" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:ce03549b-ad0b-4c24-8a78-b1bdbc976068 mu:uuid "ce03549b-ad0b-4c24-8a78-b1bdbc976068" ;
+        skos:prefLabel "Schoolraad" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:ac9c0cec-aad2-4ff7-9335-43eb59cdbf17 mu:uuid "ac9c0cec-aad2-4ff7-9335-43eb59cdbf17" ;
+        skos:prefLabel "Stuurgroep" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:5612f94e-c98b-4aa5-bd5b-812ecc9e493b mu:uuid "5612f94e-c98b-4aa5-bd5b-812ecc9e493b" ;
+        skos:prefLabel "Toewijzingsraad" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:79b34b2f-5bc5-4939-900b-3db7fc3e1ef3 mu:uuid "79b34b2f-5bc5-4939-900b-3db7fc3e1ef3" ;
+        skos:prefLabel "Vervoerregioraad" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    orgaancode:d38257af-61bb-4783-881e-b02d5501cb9d mu:uuid "d38257af-61bb-4783-881e-b02d5501cb9d" ;
+        skos:prefLabel "Zorgraad" ;
+        a skos:Concept , ext:BestuursorgaanClassificatieCode ;
+        skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    # this conceptscheme also includes some instances that are part of the bestuursorgaanclassificatiecode cs and are defined elsewhere:
+    #Directiecomité
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8> skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    #Algemene vergadering
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    #Raad van bestuur
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+    #Regionaal bestuurscomité
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/17e76b36-64a1-4db1-8927-def3064b4bf1> skos:inScheme lbcs:LokaalOrgaanClassificatieCode ;
+        skos:broader orgaancode:aa5f804a-2ad0-422d-9569-ea93496f5b69 .
+
+
+    # This concept scheme will be used to create Mandaten for Lokale Bestuursorganen.
+    # As they are very free form, we only support Voorzitter and Lid
+    # and we don't want to mix these definitions with similar ones already created elsewhere
+    # Every orgaan will have its own Voorzitter and Lid Mandaat, and these concepts will not be shared with other Orgaan instances.
+    lbcs:LokaalMandaatClassificatieCode a skos:ConceptScheme ;
+        skos:prefLabel "Lokaal mandaat classificatie code" ;
+        mu:uuid "9cc74e02-1b0b-4625-91f4-d9642dfeeefc" .
+
+
+    code:22da4572-4818-454b-bbd4-28a9ea97856c a skos:Concept, ext:BestuursfunctieCode ;
+        mu:uuid "22da4572-4818-454b-bbd4-28a9ea97856c" ;
+        skos:prefLabel "Voorzitter" ;
+        skos:inScheme lbcs:LokaalMandaatClassificatieCode ;
+        skos:topConceptOf lbcs:LokaalMandaatClassificatieCode .
+
+    code:28d0ed76-e1a3-4c90-89df-4d11587390b3 a skos:Concept, ext:BestuursfunctieCode ;
+        mu:uuid "28d0ed76-e1a3-4c90-89df-4d11587390b3" ;
+        skos:prefLabel "Lid" ;
+        skos:inScheme lbcs:LokaalMandaatClassificatieCode ;
+        skos:topConceptOf lbcs:LokaalMandaatClassificatieCode .
+  }
+}
+
+

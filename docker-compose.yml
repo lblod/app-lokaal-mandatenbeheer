@@ -117,7 +117,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-lokaal-mandatenbeheer:0.1.3
+    image: lblod/frontend-lokaal-mandatenbeheer:0.1.4
     labels:
       - "logging=true"
     restart: always

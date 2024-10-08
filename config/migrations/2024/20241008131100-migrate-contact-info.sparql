@@ -1,0 +1,18 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX schema: <http://schema.org/>
+
+INSERT {
+  GRAPH ?graph {
+    ?contact a ext:BestuurseenheidContact ;
+      ext:contactVoor ?bestuurseenheid;
+      schema:email ?email.
+  }
+}
+WHERE {
+  ?bestuurseenheid a besluit:Bestuurseenheid ;
+    mu:uuid ?id ;
+    ext:mailAdresVoorNotificaties ?email .
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?graph)
+} 

@@ -3,6 +3,11 @@ PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX schema: <http://schema.org/>
 
+DELETE {
+  Graph ?oGraph {
+    ?bestuurseenheid ext:mailAdresVoorNotificaties ?email .
+  }
+}
 INSERT {
   GRAPH ?graph {
     ?contact a ext:BestuurseenheidContact ;
@@ -13,8 +18,10 @@ INSERT {
 }
 WHERE {
   ?bestuurseenheid a besluit:Bestuurseenheid ;
-    mu:uuid ?id ;
-    ext:mailAdresVoorNotificaties ?email .
+    mu:uuid ?id .
+  GRAPH ?oGraph {
+    ?bestuurseenheid ext:mailAdresVoorNotificaties ?email .
+  }
   BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?graph)
   BIND(STRUUID() AS ?contactUuid)
   BIND(IRI(CONCAT("http://data.lblod.info/id/BestuurseenheidContact/", ?contactUuid)) AS ?contact)

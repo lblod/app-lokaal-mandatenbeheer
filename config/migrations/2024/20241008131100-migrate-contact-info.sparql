@@ -6,8 +6,9 @@ PREFIX schema: <http://schema.org/>
 INSERT {
   GRAPH ?graph {
     ?contact a ext:BestuurseenheidContact ;
-      ext:contactVoor ?bestuurseenheid;
-      schema:email ?email.
+      mu:uuid ?contactUuid ;
+      ext:contactVoor ?bestuurseenheid ;
+      schema:email ?email .
   }
 }
 WHERE {
@@ -15,4 +16,6 @@ WHERE {
     mu:uuid ?id ;
     ext:mailAdresVoorNotificaties ?email .
   BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) AS ?graph)
+  BIND(STRUUID() AS ?contactUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/BestuurseenheidContact/", ?contactUuid)) AS ?contact)
 } 

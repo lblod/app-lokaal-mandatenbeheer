@@ -1,0 +1,19 @@
+    PREFIX person: <http://www.w3.org/ns/person#>
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+    SELECT DISTINCT ?person ?voornaam ?achternaam ?geboorteDatum ?gemeente WHERE {
+      ?person a person:Person.
+      ?person persoon:gebruikteVoornaam ?voornaam.
+      ?person foaf:familyName ?achternaam.
+      OPTIONAL {
+        ?person persoon:heeftGeboorte/persoon:datum ?geboorteDatum.
+      }
+      ?kieslijst <http://data.vlaanderen.be/ns/mandaat#heeftKandidaat> ?person.
+      ?kieslijst <http://data.vlaanderen.be/ns/mandaat#behoortTot> ?verkiezing.
+      ?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?orgT.
+      ?orgT mandaat:isTijdspecialisatieVan ?org.
+      ?org besluit:bestuurt ?gemeente.
+    } limit 10

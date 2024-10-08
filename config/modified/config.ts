@@ -14,6 +14,7 @@ export const interestingTypes = [
   "http://lblod.data.gift/vocabularies/lmb/Installatievergadering",
   "http://schema.org/ContactPoint",
   "http://www.w3.org/ns/locn#Address",
+  "http://www.w3.org/ns/activitystreams#Tombstone",
 ];
 
 export const filterModifiedSubjects = "";
@@ -32,7 +33,10 @@ export async function filterDeltas(changeSets: Changeset[]) {
     changeSet.deletes.forEach(trackModifiedSubjects);
   });
 
-  const ignoredGraphPrefixes = ["http://mu.semte.ch/graphs/formHistory"];
+  const ignoredGraphPrefixes = [
+    "http://mu.semte.ch/graphs/formHistory",
+    "http://mu.semte.ch/graphs/besluiten-consumed",
+  ];
   const isGoodQuad = (quad) =>
     !subjectsWithModified.has(quad.subject.value) &&
     !ignoredGraphPrefixes.some((prefix) => quad.graph.value.startsWith(prefix));

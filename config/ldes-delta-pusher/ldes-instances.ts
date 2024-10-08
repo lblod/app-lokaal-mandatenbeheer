@@ -40,9 +40,6 @@ export const ldesInstances = {
       `,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
       },
-      "http://purl.org/dc/terms/PeriodOfTime": [
-        "http://purl.org/dc/terms/modified",
-      ],
       "http://data.vlaanderen.be/ns/besluit#Artikel": {
         specialType: true,
         healingPredicates: [
@@ -80,9 +77,6 @@ export const ldesInstances = {
         "http://purl.org/dc/terms/modified",
       ],
       "http://www.w3.org/ns/person#Person": [
-        "http://purl.org/dc/terms/modified",
-      ],
-      "http://purl.org/dc/terms/PeriodOfTime": [
         "http://purl.org/dc/terms/modified",
       ],
       "http://www.w3.org/ns/adms#Identifier": [
@@ -128,9 +122,6 @@ export const ldesInstances = {
         "http://purl.org/dc/terms/modified",
       ],
       "http://www.w3.org/ns/person#Person": [
-        "http://purl.org/dc/terms/modified",
-      ],
-      "http://purl.org/dc/terms/PeriodOfTime": [
         "http://purl.org/dc/terms/modified",
       ],
       "http://www.w3.org/ns/adms#Identifier": [
@@ -180,7 +171,6 @@ export const officialPredicates = {
   "http://www.w3.org/ns/org#Membership": [
     "http://www.w3.org/ns/org#organisation",
     "http://www.w3.org/ns/org#hasMembership",
-    "http://www.w3.org/ns/org#memberDuring",
   ],
   "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
     "http://data.vlaanderen.be/ns/mandaat#aantalHouders",
@@ -193,10 +183,6 @@ export const officialPredicates = {
     "http://data.vlaanderen.be/ns/persoon#heeftGeboorte",
     "http://www.w3.org/ns/adms#identifier",
     "http://data.vlaanderen.be/ns/persoon#geslacht",
-  ],
-  "http://purl.org/dc/terms/PeriodOfTime": [
-    "http://data.vlaanderen.be/ns/generiek#begin",
-    "http://data.vlaanderen.be/ns/generiek#einde",
   ],
   "http://www.w3.org/ns/adms#Identifier": [
     "http://www.w3.org/2004/02/skos/core#notation",

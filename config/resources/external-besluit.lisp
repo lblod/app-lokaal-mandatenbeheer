@@ -3,7 +3,7 @@
 ;; only part of the resources have been imported
 ;; in this file there have also been some additions to some resources.
 
-(define-resource rechtsgrond () 
+(define-resource rechtsgrond ()
   :class (s-prefix "eli:LegalResource")
   :properties `(
     (:bekrachtigt-aanstelling-van :string ,(s-prefix "mandaat:bekrachtigtAanstellingVan"))
@@ -88,6 +88,8 @@
   :properties `((:email :string ,(s-prefix "schema:email")))
   :resource-base (s-url "http://data.lblod.info/id/BestuurseenheidContact/")
   :features '(include-uri)
+  :has-one `((bestuurseenheid :via ,(s-prefix "ext:contactVoor")
+                              :as "bestuurseenheid"))
   :on-path "bestuurseenheid-contacten")
 
 (define-resource bestuursorgaan ()

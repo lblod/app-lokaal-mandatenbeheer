@@ -1,0 +1,29 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+INSERT {
+  GRAPH ?g {
+    ?bestuursorgaan ?bp ?bo.
+    ?bestuursorgaanInT ?bITp ?bITo.
+    ?mandaat ?mp ?mo.
+  }
+} WHERE {
+  ?bestuurseenheid a besluit:Bestuurseenheid.
+  GRAPH ?g {
+    ?bestuursorgaanExisting besluit:bestuurt ?bestuurseenheid.
+  }
+  FILTER(?g != <http://mu.semte.ch/graphs/temp/other-organs> )
+
+  ?bestuursorgaan besluit:bestuurt ?bestuurseenheid.
+  ?bestuursorgaan ext:generatedAs ?name.
+
+  ?bestuursorgaan ?bp ?bo.
+
+  ?bestuursorgaanInT mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+  ?bestuursorgaanInT ?bITp ?bITo.
+
+  ?bestuursorgaanInT org:hasPost ?mandaat.
+  ?mandaat ?mp ?mo.
+}

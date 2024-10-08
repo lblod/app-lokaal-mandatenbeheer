@@ -74,14 +74,27 @@ ext:startF
             form:grouping form:Bag;
             sh:path mandaat:start;
             sh:resultMessage "Startdatum is verplicht."
-    ].
+        ],
+        [
+            a ext:ValidMandatarisDate;
+            form:grouping form:Bag;
+            sh:path mandaat:start;
+            sh:resultMessage "Startdatum ligt niet in de bestuursperiode."
+        ].
 ext:eindeF
     a form:Field;
     form:displayType displayTypes:dateTime;
     sh:group ext:editMandatarisPG;
     sh:name "Einde";
     sh:order 800;
-    sh:path mandaat:einde.
+    sh:path mandaat:einde;
+    form:validatedBy
+        [
+            a ext:ValidMandatarisDate;
+            form:grouping form:Bag;
+            sh:path mandaat:einde;
+            sh:resultMessage "Einddatum ligt niet in de bestuursperiode."
+        ].
 ext:fractieF
     a form:Field;
     form:displayType displayTypes:mandatarisFractieSelector;
@@ -127,3 +140,7 @@ ext:mandatarisG a form:Generator;
     ]
   ];
   form:dataGenerator form:addMuUuid.
+
+  ext:membershipUriG a form:UriGenerator;
+  form:prefix "http://data.lblod.info/id/lidmaatschappen/";
+  form:forType org:Membership.

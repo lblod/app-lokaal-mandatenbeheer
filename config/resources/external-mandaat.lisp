@@ -80,7 +80,8 @@
                 (:generated-from :uri-set ,(s-prefix "ext:generatedFrom")) ;;if it e.g. comes from gelinkt-notuleren
                 (:duplication-reason :string ,(s-prefix "skos:changeNote"))
                 (:link-to-besluit :string ,(s-prefix "lmb:linkToBesluit"))
-                (:modified :datetime ,(s-prefix "dct:modified")))
+                (:modified :datetime ,(s-prefix "dct:modified"))
+                (:effectief-at :datetime ,(s-prefix "lmb:effectiefAt")))
   :has-many `((mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
                           :as "tijdelijke-vervangingen")
               (mandataris :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")

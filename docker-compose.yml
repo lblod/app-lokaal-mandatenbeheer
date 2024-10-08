@@ -117,12 +117,13 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-lokaal-mandatenbeheer:0.1.3
+    image: lblod/frontend-lokaal-mandatenbeheer:0.1.4
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
     environment:
+      EMBER_ENVIRONMENT_NAME: "PROD"
       EMBER_AUTHENTICATION_ENABLED: "true"
   filehost:
     image: nginx:1.15.2
@@ -184,10 +185,12 @@ services:
   # LDES
   ##############################################################################
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:0.4.1
+    image: redpencil/ldes-delta-pusher:0.5.0
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
       LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"
+      CRON_HEALING: "0 0 0 * * *" # Every day at midnight
+      AUTO_HEALING: "true"
       MAX_PAGE_SIZE_BYTES: 10000000
       INITIAL_STATE_LIMIT: 10000
       # for catching up after restart

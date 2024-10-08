@@ -11,8 +11,8 @@
                         :as "gebruiker")
               (notification-code :via ,(s-prefix "dct:type")
                                    :as "code"))
-  :has-many `((system-notification-links :via ,(s-prefix "ext:notificationLink")
-                     :as "links"))
+  :has-many `((system-notification-link :via ,(s-prefix "ext:notificationLink")
+                     :as "linked-items"))
   :resource-base (s-url "http://data.lblod.info/id/SystemNotification")
   :features '(include-uri)
   :on-path "system-notifications")
@@ -20,8 +20,8 @@
 (define-resource system-notification-link ()
   :class (s-prefix "ext:SystemNotificationLink")
   :properties `(
-    (:type :string ,(s-prefix "ext:linkedType"))
-    (:target :url ,(s-prefix "ext:linkedId"))
+    (:kind :string ,(s-prefix "ext:linkedType"))
+    (:target :url ,(s-prefix "ext:linkedTo"))
   )
   :has-one `((gebruiker :via ,(s-prefix "ext:notificationLink")
                         :inverse t

@@ -1,8 +1,9 @@
 import { Changeset } from "../types";
-import { InterestingSubject, publish } from "./publisher";
+import { InterestingSubject, publish, publishTriples } from "./publisher";
 import { log } from "./logger";
 
 type SubjectFilter = (subjects: string[]) => Promise<InterestingSubject[]>;
+type SubjectAddition = (subject: InterestingSubject) => Promise<string>;
 
 const mapToSubjects = (changesets: Changeset[]) => {
   const subjects = new Set<string>();
@@ -35,7 +36,8 @@ const filterInterestingSubjects = async (
 
 export const publishInterestingSubjects = async (
   changesets: Changeset[],
-  filter: SubjectFilter
+  filter: SubjectFilter,
+  addedData?: SubjectAddition
 ) => {
   const allSubjects = mapToSubjects(changesets);
   const interestingSubjects = await filterInterestingSubjects(
@@ -53,5 +55,9 @@ export const publishInterestingSubjects = async (
   let current: InterestingSubject | undefined;
   while ((current = interestingSubjects.pop())) {
     await publish(current);
+    if (addedData) {
+      const additionalTriples = await addedData(current);
+      await publishTriples(current, additionalTriples);
+    }
   }
 };

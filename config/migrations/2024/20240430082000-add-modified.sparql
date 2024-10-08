@@ -28,7 +28,6 @@ WHERE {
       mandaat:Mandaat
       ext:BeleidsdomeinCode
       person:Person
-      dct:PeriodOfTime
       adms:Idenfifier
       besluit:Bestuursorgaan
       lmb:Installatievergadering

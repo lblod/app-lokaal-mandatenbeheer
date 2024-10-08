@@ -40,9 +40,7 @@
                       :as "binnen-fractie")
              (mandataris :via ,(s-prefix "org:hasMembership")
                          :inverse t
-                         :as "lid")
-             (tijdsinterval :via ,(s-prefix "org:memberDuring")
-                            :as "lid-gedurende"))
+                         :as "lid"))
   :resource-base (s-url "http://data.lblod.info/id/lidmaatschappen/")
   :features '(include-uri)
   :on-path "lidmaatschappen")
@@ -187,12 +185,4 @@
   :resource-base (s-url "http://data.lblod.info/id/identificatoren/")
   :features '(include-uri)
   :on-path "identificatoren")
-
-(define-resource tijdsinterval ()
-  :class (s-prefix "dct:PeriodOfTime")
-  :properties `((:begin :datetime ,(s-prefix "generiek:begin"))
-                (:einde :datetime ,(s-prefix "generiek:einde")))
-  :resource-base (s-url "http://data.lblod.info/id/tijdsintervallen/")
-  :features '(include-uri)
-  :on-path "tijdsintervallen")
 

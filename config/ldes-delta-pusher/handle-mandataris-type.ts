@@ -1,5 +1,6 @@
 import { Changeset } from "../types";
-import { querySudo, sparqlEscapeUri, sparqlEscapeString } from "mu";
+import { querySudo } from "@lblod/mu-auth-sudo";
+import { sparqlEscapeUri, sparqlEscapeString } from "mu";
 import { publishInterestingSubjects } from "./handle-types-util";
 import { MANDATARIS_DRAFT_STATE } from "./utils/well-known-uris";
 import { InterestingSubject, bindingToTriple } from "./publisher";
@@ -49,7 +50,7 @@ const addTimeInterval = async (
 ): Promise<string> => {
   const tijdsintervalUuid = uuidv4();
   const tijdsintervalUri = `http://data.lblod.info/id/tijdsintervallen/${tijdsintervalUuid}`;
-  const data = await query(`
+  const data = await querySudo(`
     PREFIX dct: <http://purl.org/dc/terms/>
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
     PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>

@@ -158,6 +158,10 @@ services:
     logging: *default-logging
     volumes:
       - ./data/files/burgemeester-benoemingen:/uploads
+    environment:
+      NOTIFICATION_CRON_PATTERN: 0 8 * * 1-5
+      EMAIL_FROM_MANDATARIS_EFFECTIEF: mymail@myservice.com # Must be the same as EMAIL_ADDRESS in deliver-email service
+      SEND_EMAIL_FOR_MANDATARIS_EFFECTIEF: false
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.6.3
     labels:
@@ -237,4 +241,25 @@ services:
     volumes:
       - ./config/sparql-authorization-wrapper:/config
     restart: always
+    logging: *default-logging
+  deliver-email:
+    image: redpencil/deliver-email-service:0.4.0
+    profiles:
+      - send-emails
+    environment:
+      MAILBOX_URI: 'http://data.lblod.info/id/mailboxes/1'
+      SECURE_CONNECTION: "true"
+      EMAIL_PROTOCOL: "smtp"
+      EMAIL_ADDRESS: "mymail@myservice.com"
+      EMAIL_PASSWORD: "myemailpassword"
+      FROM_NAME: "Lokaal Mandatenbeheer"
+      WELL_KNOWN_SERVICE: "Outlook365"
+      NODE_ENV: "production"
+      EMAIL_CRON_PATTERN: "0 8 * * 1-5" # Every weekday at 8am
+      CRON_FREQUENCY,: "0 8 * * 1-5"
+    labels:
+      - "logging=true"
+    restart: always
+    volumes:
+      - ./data/mail:/share
     logging: *default-logging

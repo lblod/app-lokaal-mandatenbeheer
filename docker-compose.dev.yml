@@ -103,3 +103,14 @@ services:
     restart: "no"
   authorization-wrapper:
     restart: "no"
+  deliver-email:
+    restart: "no"
+    ports:
+      - 8888:80
+      - 9223:9229
+    environment:
+      NODE_ENV: "development"
+      WELL_KNOWN_SERVICE: "test"
+      EMAIL_CRON_PATTERN: "* * * * *" # Every minute
+      CRON_FREQUENCY,: "* * * * *"
+      LOG_ERRORS: true

@@ -107,6 +107,8 @@ services:
   impersonation:
     image: lblod/impersonation-service:0.2.0
     restart: always
+    labels:
+      - "logging=true"
     logging: *default-logging
   file:
     image: semtech/mu-file-service:3.4.0
@@ -148,6 +150,7 @@ services:
     restart: always
     labels:
       - "logging=true"
+    logging: *default-logging
     volumes:
       - ./config/form-content:/config
   mandataris:
@@ -235,19 +238,23 @@ services:
   vendor-login:
     image: lblod/vendor-login-service:1.0.0
     restart: always
+    labels:
+      - "logging=true"
     logging: *default-logging
   sparql-authorization-wrapper:
     image: lblod/sparql-authorization-wrapper-service:1.0.0
     volumes:
       - ./config/sparql-authorization-wrapper:/config
     restart: always
+    labels:
+      - "logging=true"
     logging: *default-logging
   deliver-email:
     image: redpencil/deliver-email-service:0.4.0
     profiles:
       - send-emails
     environment:
-      MAILBOX_URI: 'http://data.lblod.info/id/mailboxes/1'
+      MAILBOX_URI: "http://data.lblod.info/id/mailboxes/1"
       SECURE_CONNECTION: "true"
       EMAIL_PROTOCOL: "smtp"
       EMAIL_ADDRESS: "mymail@myservice.com"

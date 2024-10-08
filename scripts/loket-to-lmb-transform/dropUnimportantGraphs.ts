@@ -2,6 +2,8 @@ import { querySudo, updateSudo } from "@lblod/mu-auth-sudo";
 import { DROP_GRAPH_BATCH_SIZE, sparqlOptions } from "./constants";
 
 export async function dropUnimportantGraphs() {
+  console.log("keeping email addresses from loket");
+  await saveEmailInfo();
   console.log("dropping unimportant graphs");
 
   let droppedGraphs = 1;
@@ -10,6 +12,22 @@ export async function dropUnimportantGraphs() {
     console.log(`Dropped ${droppedGraphs} graphs...`);
   }
   console.log(`Dropped all unimportant graphs!`);
+}
+
+async function saveEmailInfo() {
+  // these emails are in berichtgebruiker graphs which will be purged
+  await updateSudo(
+    `
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+    INSERT {
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s ext:mailAdresVoorNotificaties ?email.
+      }
+    } WHERE {
+        ?s ext:mailAdresVoorNotificaties ?email.
+    }`
+  );
 }
 
 async function getUnimportantGraphs() {

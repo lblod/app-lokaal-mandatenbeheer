@@ -21,6 +21,8 @@ const desiredTypes = [
   "http://www.w3.org/2004/02/skos/core#ConceptScheme",
   "http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode",
   "http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode",
+  "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
+  "http://mu.semte.ch/vocabularies/ext/OrganizationClassificationCode",
   "http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode",
   "http://mu.semte.ch/vocabularies/ext/GeslachtCode",
   "http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype",
@@ -30,7 +32,82 @@ const desiredTypes = [
   "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode",
   "http://mu.semte.ch/vocabularies/ext/Fractietype",
   "http://www.w3.org/2000/01/rdf-schema#Class",
+  "http://www.w3.org/ns/org#Post",
 ];
+
+/**
+ * DANGER: the query to remove unwanted types will remove instances with at least one unwanted type!!
+ * this means we need to have ALL types defined in the interesting types query. To validate that you have
+ * INDEED all types defined, you can run a query like this:
+ *
+ * SELECT distinct ?acceptable ?other WHERE {
+ VALUES ?acceptable {
+  <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat>
+  <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>
+  <http://data.vlaanderen.be/ns/mandaat#Mandaat>
+  <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>
+  <http://xmlns.com/foaf/0.1/OnlineAccount>
+  <http://xmlns.com/foaf/0.1/Person>
+  <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>
+  <http://www.w3.org/ns/adms#Identifier>
+  <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>
+  <http://www.w3.org/ns/prov#Location>
+  <http://publications.europa.eu/ontology/euvoc#Country>
+  <http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode>
+  <http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode>
+  <http://data.europa.eu/m8g/PeriodOfTime>
+  <http://www.w3.org/2004/02/skos/core#ConceptScheme>
+  <http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode>
+  <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>
+  <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>
+  <http://mu.semte.ch/vocabularies/ext/OrganizationClassificationCode>
+  <http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode>
+  <http://mu.semte.ch/vocabularies/ext/GeslachtCode>
+  <http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype>
+  <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>
+  <http://www.w3.org/ns/org#Role>
+  <http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode>
+  <http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode>
+  <http://mu.semte.ch/vocabularies/ext/Fractietype>
+  <http://www.w3.org/2000/01/rdf-schema#Class>
+  <http://www.w3.org/ns/org#Post>
+}
+?s a ?acceptable.
+?s a ?other.
+FILTER (?other NOT IN (
+  <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat>,
+  <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>,
+  <http://data.vlaanderen.be/ns/mandaat#Mandaat>,
+  <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>,
+  <http://xmlns.com/foaf/0.1/OnlineAccount>,
+  <http://xmlns.com/foaf/0.1/Person>,
+  <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>,
+  <http://www.w3.org/2004/02/skos/core#Concept>,
+  <http://www.w3.org/ns/adms#Identifier>,
+  <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>,
+  <http://www.w3.org/ns/prov#Location>,
+  <http://publications.europa.eu/ontology/euvoc#Country>,
+  <http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode>,
+  <http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode>,
+  <http://data.europa.eu/m8g/PeriodOfTime>,
+  <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+  <http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode>,
+  <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>,
+  <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>,
+  <http://mu.semte.ch/vocabularies/ext/OrganizationClassificationCode>,
+  <http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode>,
+  <http://mu.semte.ch/vocabularies/ext/GeslachtCode>,
+  <http://mu.semte.ch/vocabularies/ext/KandidatenlijstLijsttype>,
+  <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>,
+  <http://www.w3.org/ns/org#Role>,
+  <http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode>,
+  <http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode>,
+  <http://mu.semte.ch/vocabularies/ext/Fractietype>,
+  <http://www.w3.org/2000/01/rdf-schema#Class>,
+  <http://www.w3.org/ns/org#Post>
+))
+}
+*/
 
 async function countUnwantedTypeTriples() {
   const res = await querySudo(

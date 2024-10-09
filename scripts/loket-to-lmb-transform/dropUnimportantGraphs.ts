@@ -26,7 +26,9 @@ async function saveEmailInfo() {
       }
     } WHERE {
         ?s ext:mailAdresVoorNotificaties ?email.
-    }`
+    }`,
+    {},
+    sparqlOptions
   );
 }
 

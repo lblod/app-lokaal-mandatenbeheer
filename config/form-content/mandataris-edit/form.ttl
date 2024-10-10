@@ -63,7 +63,7 @@ ext:rangordeF
     ].
 ext:startF
     a form:Field;
-    form:displayType displayTypes:dateTime;
+    form:displayType displayTypes:dateInput;
     sh:group ext:editMandatarisPG;
     sh:name "Start";
     sh:order 700;
@@ -83,7 +83,7 @@ ext:startF
         ].
 ext:eindeF
     a form:Field;
-    form:displayType displayTypes:dateTime;
+    form:displayType displayTypes:dateInput;
     sh:group ext:editMandatarisPG;
     sh:name "Einde";
     sh:order 800;

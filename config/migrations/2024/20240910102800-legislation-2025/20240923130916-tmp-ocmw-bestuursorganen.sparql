@@ -7,6 +7,7 @@ prefix bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/Bestuurseenhe
 prefix org: <http://www.w3.org/ns/org#>
 prefix mu: <http://mu.semte.ch/vocabularies/core/>
 prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 
 # Note: this will create fake bestuursorgaan instances for the ocmw bestuursorganen and put them in the gemeente graph
 # so they can be processed during the installation meeting prep.
@@ -28,6 +29,7 @@ INSERT {
           mu:uuid ?uuidInTijd;
           ext:origineleBestuursorgaan ?bestuursorgaanInTijd;
           lmb:heeftBestuursperiode ?bestuursperiode;
+          mandaat:bindingStart ?startDate;
           org:hasPost ?mandaat.
     ?mandaat ?pp ?oo .
   }
@@ -65,4 +67,5 @@ WHERE {
   BIND(SHA256(CONCAT("87fb8e46-71ed-4699-83a2-d9162ef65359", ":", STR(?bestuursorgaanInTijdId))) AS ?uuidInTijd) .
   BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuid)) AS ?bestuursorgaanURI).
   BIND(URI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidInTijd)) AS ?bestuursorgaanInTijdURI).
+  BIND (xsd:date("2025-01-01") AS ?startDate)
 }

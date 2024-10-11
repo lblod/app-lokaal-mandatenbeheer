@@ -1,0 +1,28 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT {
+  GRAPH ?g {
+    ?bestuursorgaanInTijd mandaat:bindingStart ?startDate .
+  }
+}
+WHERE {
+  ?bestuursperiod lmb:startYear 2025.
+
+  GRAPH ?g {
+    ?bestuursorgaanInTijd a besluit:Bestuursorgaan.
+    ?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+    ?bestuursorgaanInTijd lmb:heeftBestuursperiode ?bestuursperiod.
+
+    FILTER NOT EXISTS {
+      ?bestuursorgaanInTijd mandaat:bindingStart ?startDate.
+    }
+    FILTER NOT EXISTS {
+      ?bestuursorgaan ext:origineleBestuursorgaan ?origneel.
+    }
+  }
+  BIND (xsd:date("2025-01-01") AS ?startDate)
+}

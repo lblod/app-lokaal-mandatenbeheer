@@ -1,0 +1,16 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g {
+    ?fractie ext:fractieType ?type.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?fractie ext:isFractietype ?type.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?fractie ext:fractieType ?type.
+  }
+}

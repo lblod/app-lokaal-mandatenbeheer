@@ -1,0 +1,57 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g {
+    ?orgaan mandaat:bindingStart ?start.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?orgaan mandaat:bindingStart "2024-04-12T00:00:00"^^xsd:dateTime .
+  }
+}
+WHERE {
+  ?orgaan lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  GRAPH ?g {
+    ?orgaan mandaat:bindingStart ?start.
+  }
+};
+DELETE {
+  GRAPH ?g {
+    bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca lmb:endYear 2025 .
+    bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 lmb:startYear 2025 .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca lmb:endYear 2024 .
+    bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 lmb:startYear 2024 .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca lmb:endYear 2025 .
+    bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 lmb:startYear 2025 .
+  }
+};
+DELETE {
+  GRAPH ?g {
+    bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca skos:prefLabel "2019 - 2025" .
+    bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 skos:prefLabel "2025 - heden" .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca skos:prefLabel "2019 - 2024" .
+    bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 skos:prefLabel "2024 - heden" .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca skos:prefLabel "2019 - 2025" .
+    bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 skos:prefLabel "2025 - heden" .
+  }
+}

@@ -8,6 +8,9 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
 @prefix person: <http://www.w3.org/ns/person#>.
+@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
+@prefix conceptscheme: <http://data.lblod.info/id/conceptscheme/> .
+@prefix authority: <http://publications.europa.eu/resource/authority/> .
 
 ext:testFieldF
     a form:Field;
@@ -56,7 +59,8 @@ ext:testConceptSchemeSelectorF
     sh:name "testConceptSchemeSelector";
     sh:order 5;
     sh:path ext:testConceptSchemeSelector;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""".
+    fieldOption:conceptScheme conceptscheme:MandatarisStatusCode;
+    fieldOption:searchEnabled true.
 ext:testConceptSchemeMultiSelectorF
     a form:Field;
     form:displayType displayTypes:conceptSchemeMultiSelector;
@@ -64,7 +68,8 @@ ext:testConceptSchemeMultiSelectorF
     sh:name "testConceptSchemeMultiSelector";
     sh:order 6;
     sh:path ext:testConceptSchemeMultiSelector;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true}""".
+    fieldOption:conceptScheme conceptscheme:BeleidsdomeinCode;
+    fieldOption:searchEnabled true.
 ext:testConceptSchemeSelector2F
     a form:Field;
     form:displayType displayTypes:conceptSchemeMultiSelectCheckboxes;
@@ -72,7 +77,8 @@ ext:testConceptSchemeSelector2F
     sh:name "testConceptSchemeSelectorCheckboxes";
     sh:order 7;
     sh:path ext:testConceptSchemeSelector2;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BestuursorgaanClassificatieCode","searchEnabled":true}""".
+    fieldOption:conceptScheme conceptscheme:BestuursorgaanClassificatieCode;
+    fieldOption:searchEnabled true.
 ext:testConceptSchemeMultiSelector2F
     a form:Field;
     form:displayType displayTypes:conceptSchemeRadioButtons;
@@ -80,7 +86,8 @@ ext:testConceptSchemeMultiSelector2F
     sh:name "testConceptSchemeRadioButtons";
     sh:order 8;
     sh:path ext:testConceptSchemeMultiSelector2;
-    form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":true}""".
+    fieldOption:conceptScheme authority:human-sex;
+    fieldOption:searchEnabled true.
 ext:testConceptSchemeSelectorWithCreateF
     a form:Field;
     form:displayType displayTypes:conceptSchemeSelectorWithCreate;
@@ -88,7 +95,9 @@ ext:testConceptSchemeSelectorWithCreateF
     sh:name "testConceptSchemeSelectorWithCreate";
     sh:order 9;
     sh:path ext:testConceptSchemeSelectorWithCreate;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
+    fieldOption:conceptScheme conceptscheme:BeleidsdomeinCode;
+    fieldOption:searchEnabled true;
+    form:options """{"type":"beleidsdomein-code"}""".
 ext:testConceptSchemeSelectorWithCreate2F
     a form:Field;
     form:displayType displayTypes:conceptSchemeMultiSelectorWithCreate;
@@ -96,7 +105,9 @@ ext:testConceptSchemeSelectorWithCreate2F
     sh:name "testConceptSchemeMultiSelectorWithCreate";
     sh:order 10;
     sh:path ext:testConceptSchemeSelectorWithCreate2;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
+    fieldOption:conceptScheme conceptscheme:BeleidsdomeinCode;
+    fieldOption:searchEnabled true;
+    form:options """{"type":"beleidsdomein-code"}""".
 ext:testPG
     a form:PropertyGroup; sh:name "Test"; sh:order 1.
 

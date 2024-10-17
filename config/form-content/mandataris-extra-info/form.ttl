@@ -5,6 +5,8 @@
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 @prefix org: <http://www.w3.org/ns/org#> .
+@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
+@prefix conceptscheme: <http://data.lblod.info/id/conceptscheme/> .
 
 ext:beleidsdomeinCodeF
     a form:Field;
@@ -13,7 +15,9 @@ ext:beleidsdomeinCodeF
     sh:name "Beleidsdomein";
     sh:order 100;
     sh:path mandaat:beleidsdomein;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BeleidsdomeinCode","searchEnabled":true, "type":"beleidsdomein-code"}""".
+    fieldOption:conceptScheme conceptscheme:BeleidsdomeinCode;
+    fieldOption:searchEnabled true;
+    form:options """{"type":"beleidsdomein-code"}""".
 # Strictly this is not needed, but is used to check whether beleidsdomeinen should render ...
 ext:hiddenmandaatF
     a form:Field;

@@ -10,6 +10,8 @@
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix lmb: <http://lblod.data.gift/vocabularies/lmb/> .
+@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
+@prefix conceptscheme: <http://data.lblod.info/id/conceptscheme/> .
 
 ext:mandaatF
     a form:Field;
@@ -32,7 +34,8 @@ ext:mandatarisStatusCodeF
     sh:name "Status";
     sh:order 300;
     sh:path mandaat:status;
-    form:options """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/MandatarisStatusCode","searchEnabled":true}""";
+    fieldOption:conceptScheme conceptscheme:MandatarisStatusCode;
+    fieldOption:searchEnabled true;
     form:validatedBy
         [
             a form:RequiredConstraint;

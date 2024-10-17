@@ -50,7 +50,7 @@ WHERE {
     ?orgaanIt mandaat:isTijdspecialisatieVan ?orgaan ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
     OPTIONAL {
-      ?orgaan mandaat:bindingStart ?start .
+      ?orgaanIt mandaat:bindingStart ?start .
     }
   }
 }

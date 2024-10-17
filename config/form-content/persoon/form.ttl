@@ -11,6 +11,8 @@
 @prefix persoon: <http://data.vlaanderen.be/ns/persoon#>.
 @prefix adms: <http://www.w3.org/ns/adms#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
+@prefix authority: <http://publications.europa.eu/resource/authority/> .
 
 ext:gebruikteVoornaamF
     a form:Field;
@@ -74,7 +76,8 @@ ext:geslachtCodeF
     sh:name "Geslacht";
     sh:order 7;
     sh:path persoon:geslacht;
-    form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":false}""".
+    fieldOption:conceptScheme authority:human-sex;
+    fieldOption:searchEnabled false.
 ext:persoonPG
     a form:PropertyGroup; sh:name "Voeg persoon toe"; sh:order 1.
 

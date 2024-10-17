@@ -1,0 +1,29 @@
+INSERT {
+  GRAPH ?g {
+    ?persoon ?p ?o.
+    ?identifier ?idp ?ido.
+    ?geboorte ?geboortep ?geboorteo.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-2024> {
+    ?verkiezing a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>.
+    ?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan.
+    ?lijst <http://data.vlaanderen.be/ns/mandaat#behoortTot> ?verkiezing.
+    ?resultaat <http://data.vlaanderen.be/ns/mandaat#isResultaatVoor> ?lijst.
+    ?resultaat <http://data.vlaanderen.be/ns/mandaat#isResultaatVoor> ?persoon.
+    ?persoon ?p ?o.
+    OPTIONAL {
+      ?persoon <http://www.w3.org/ns/adms#identifier> ?identifier.
+      ?identifier ?idp ?ido.
+    }
+    OPTIONAL {
+      ?persoon <http://data.vlaanderen.be/ns/persoon#heeftGeboorte> ?geboorte.
+      ?geboorte ?geboortep ?geboorteo.
+    }
+  }
+  GRAPH ?g {
+    ?bestuursorgaan <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?bestuursorgaanWithoutTime.
+  }
+
+}

@@ -1,0 +1,21 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+DELETE {
+  GRAPH ?g {
+    ?verkiezing mandaat:datum "2025-01-01"^^xsd:date.
+    ?verkiezing mandaat:steltSamen ?huidigBestuursorgaanInDeTijd .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?verkiezing mandaat:datum "2018-10-14"^^xsd:date.
+  }
+}WHERE {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?huidigBestuursorgaanInDeTijd .
+  }
+  FILTER NOT EXISTS {
+    ?huidigBestuursorgaanInDeTijd mandaat:bindingStart "2019-01-01"^^xsd:date
+  }
+
+}

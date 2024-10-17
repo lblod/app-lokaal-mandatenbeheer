@@ -1,0 +1,23 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH ?g {
+    ?orgaan mandaat:bindingStart ?start.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?orgaan mandaat:bindingStart "2024-12-02T00:00:00"^^xsd:dateTime .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?orgaan lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+    OPTIONAL {
+      ?orgaan mandaat:bindingStart ?start.
+    }
+  }
+};

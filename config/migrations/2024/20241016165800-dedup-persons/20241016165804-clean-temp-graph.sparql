@@ -1,0 +1,18 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE {
+  GRAPH ?g {
+    ?s owl:sameAs ?newS.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s owl:sameAs ?newS.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s owl:sameAs ?newS.
+  }
+  FILTER (?g IN (<http://mu.semte.ch/graphs/temp/sameasPersons>, <http://mu.semte.ch/graphs/temp/sameasIdentifiers>))
+}

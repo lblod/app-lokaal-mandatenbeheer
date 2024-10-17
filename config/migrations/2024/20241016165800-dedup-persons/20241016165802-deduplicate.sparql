@@ -86,20 +86,4 @@ WHERE {
     ?s owl:sameAs ?newS.
   }
   FILTER (?g != <http://mu.semte.ch/graphs/temp/sameasIdentifiers>)
-};
-DELETE {
-  GRAPH ?g {
-    ?s owl:sameAs ?newS.
-  }
-}
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    ?s owl:sameAs ?newS.
-  }
-}
-WHERE {
-  GRAPH ?g {
-    ?s owl:sameAs ?newS.
-  }
-  FILTER (?g IN (<http://mu.semte.ch/graphs/temp/sameasPersons>, <http://mu.semte.ch/graphs/temp/sameasIdentifiers>))
 }

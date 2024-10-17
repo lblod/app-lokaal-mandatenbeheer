@@ -20,4 +20,4 @@ WHERE {
       ?orgaan mandaat:bindingStart ?start.
     }
   }
-};
+}

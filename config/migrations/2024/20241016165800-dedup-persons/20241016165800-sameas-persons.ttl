@@ -1,0 +1,194 @@
+@prefix owl:	<http://www.w3.org/2002/07/owl#> .
+<http://data.lblod.info/id/personen/62C3F88C470F7A0008000245>	owl:sameAs	<http://data.lblod.info/id/personen/782306a8-396d-49cd-8bc2-c59fd9761b03> .
+<http://data.lblod.info/id/personen/62C3F90C470F7A000800024B>	owl:sameAs	<http://data.lblod.info/id/personen/782306a8-396d-49cd-8bc2-c59fd9761b03> .
+@prefix ns1:	<http://data.lblod.info/id/personen/> .
+<http://data.lblod.info/id/personen/630483D3470F7A000800000D>	owl:sameAs	ns1:f0368931-14e7-4095-b592-4cb26d945949 .
+<http://data.lblod.info/id/personen/6319E03C9C1C5474E31C261E>	owl:sameAs	ns1:d2a8e1b1-606c-4282-97bd-9dfef0aec8b7 .
+<http://data.lblod.info/id/personen/6319E25D9C1C5474E31C2623>	owl:sameAs	ns1:d2a8e1b1-606c-4282-97bd-9dfef0aec8b7 .
+<http://data.lblod.info/id/personen/631AED0F4856EB09C4E1B1E5>	owl:sameAs	<http://data.lblod.info/id/personen/43310dbf-cfcd-427f-9343-77d28df23e9f> .
+<http://data.lblod.info/id/personen/6321698EBC7AFA9A82B90082>	owl:sameAs	<http://data.lblod.info/id/personen/9b789130-c50b-4457-9bcd-3e18b4d58d3d> .
+<http://data.lblod.info/id/personen/633FE28E55F7BE5F34A57A73>	owl:sameAs	ns1:a2b23276-7801-418e-9a46-0c19f1bfff34 .
+<http://data.lblod.info/id/personen/634665BD2C389BF7BC154D65>	owl:sameAs	ns1:a976526ad697df3f04aa99f030c60eac0366d00d218bfadafd982109e66f8b50 .
+<http://data.lblod.info/id/personen/63523C89FDE09D373242F69A>	owl:sameAs	ns1:c432e10417a68de20aa3b1b3420d1f97efa28c322ea97cca32d8f12f4c1d0bb9 .
+<http://data.lblod.info/id/personen/6357FB85FDE09D373242F834>	owl:sameAs	<http://data.lblod.info/id/personen/23558269-3e21-43b3-a5bc-7320130a93bb> .
+<http://data.lblod.info/id/personen/6359046E44D3E2E4388C8305>	owl:sameAs	ns1:f83c86fb-f391-484d-bcda-345df32eb253 .
+<http://data.lblod.info/id/personen/637272125C8CEF2DE436A604>	owl:sameAs	<http://data.lblod.info/id/personen/64b0da0713f16a468556b90a9813a0d74f62a70673825881aefa2ea2428cb78b> .
+<http://data.lblod.info/id/personen/6392F2055A77205C8C168D4D>	owl:sameAs	<http://data.lblod.info/id/personen/9560d1ec0bcb6db25aa7ba50db28921c0afc1b9eaa9cfe2b76581a4c91f8b3b4> .
+<http://data.lblod.info/id/personen/63A06C159D253F0E051E43CA>	owl:sameAs	ns1:dfdacf5f-176c-452c-b878-9e7d8e353162 .
+<http://data.lblod.info/id/personen/63A06F7C9D253F0E051E43D7>	owl:sameAs	ns1:dfdacf5f-176c-452c-b878-9e7d8e353162 .
+<http://data.lblod.info/id/personen/63B44DA84B6B4804E09363E4>	owl:sameAs	<http://data.lblod.info/id/personen/8a64df32-3310-4816-bb9b-4a014c302e44> .
+<http://data.lblod.info/id/personen/63B44F5C4B6B4804E09363E7>	owl:sameAs	<http://data.lblod.info/id/personen/8a64df32-3310-4816-bb9b-4a014c302e44> .
+<http://data.lblod.info/id/personen/63C00F5682C93176D903B7A6>	owl:sameAs	<http://data.lblod.info/id/personen/60ebc41bf0ca2ff3949593df142261609af23c31d41ca289f7a965b9ce588636> .
+<http://data.lblod.info/id/personen/63C0103982C93176D903B7A9>	owl:sameAs	<http://data.lblod.info/id/personen/60ebc41bf0ca2ff3949593df142261609af23c31d41ca289f7a965b9ce588636> .
+<http://data.lblod.info/id/personen/63C1493082C93176D903B84F>	owl:sameAs	<http://data.lblod.info/id/personen/4b21810f86899d35c314d7bb1cf79d626086bdabae53db3a1932470a759293c0> .
+<http://data.lblod.info/id/personen/63C14B6582C93176D903B852>	owl:sameAs	<http://data.lblod.info/id/personen/4b21810f86899d35c314d7bb1cf79d626086bdabae53db3a1932470a759293c0> .
+<http://data.lblod.info/id/personen/63D28150C2D1574BB357E0A4>	owl:sameAs	ns1:fd17e4fca75072eea82fa880ab18d1a186fd3a8d3c9d489bef83cd100f724097 .
+<http://data.lblod.info/id/personen/63DA2781CD74AD1FBD03908E>	owl:sameAs	<http://data.lblod.info/id/personen/79bf4cd9-b138-4361-b1c4-5de1d4eeeb84> .
+<http://data.lblod.info/id/personen/63DA63FCCD74AD1FBD039107>	owl:sameAs	<http://data.lblod.info/id/personen/79bf4cd9-b138-4361-b1c4-5de1d4eeeb84> .
+<http://data.lblod.info/id/personen/63DA65B7CD74AD1FBD039110>	owl:sameAs	<http://data.lblod.info/id/personen/0103d54c-b72a-4558-a68c-cb313cdb4668> .
+<http://data.lblod.info/id/personen/63DB6193CD74AD1FBD0391BE>	owl:sameAs	<http://data.lblod.info/id/personen/211e70452dd30e7ff151eb0cda380cf8d9c30a74d7ca2d58a920de550b1d1dee> .
+<http://data.lblod.info/id/personen/63E9F3E2F6C8975F1E17A139>	owl:sameAs	<http://data.lblod.info/id/personen/1eaf2851-6e9b-4ff7-bfe5-b74b527ab658> .
+<http://data.lblod.info/id/personen/63E9F864F6C8975F1E17A142>	owl:sameAs	<http://data.lblod.info/id/personen/1eaf2851-6e9b-4ff7-bfe5-b74b527ab658> .
+<http://data.lblod.info/id/personen/640EF96C5440073AC946A1A1>	owl:sameAs	ns1:c1da587e-488d-4ce2-96fb-1c0a758e4d87 .
+<http://data.lblod.info/id/personen/641C194A7C59A07CAC0F9832>	owl:sameAs	<http://data.lblod.info/id/personen/7a988ec4-7671-448d-afee-8d100bff5800> .
+<http://data.lblod.info/id/personen/641D7122FE3038A9D41688BF>	owl:sameAs	<http://data.lblod.info/id/personen/63098b3c4f705ab8e19f47014d890b89dfb0c95b68521d7575fb92008dd7fc02> .
+<http://data.lblod.info/id/personen/6463315ABA5B9B11C3B3BD86>	owl:sameAs	<http://data.lblod.info/id/personen/00a4272c-94d7-49ba-b109-23a2014daec0> .
+<http://data.lblod.info/id/personen/64633295BA5B9B11C3B3BD8C>	owl:sameAs	<http://data.lblod.info/id/personen/00a4272c-94d7-49ba-b109-23a2014daec0> .
+<http://data.lblod.info/id/personen/646338E5BA5B9B11C3B3BDA6>	owl:sameAs	ns1:d49f47ef-f184-4e9d-948e-bce283af1213 .
+<http://data.lblod.info/id/personen/6463394FBA5B9B11C3B3BDA9>	owl:sameAs	<http://data.lblod.info/id/personen/38bf537b-5a71-4444-99be-2b9fa7f5b533> .
+<http://data.lblod.info/id/personen/64633B3FBA5B9B11C3B3BDAD>	owl:sameAs	ns1:d49f47ef-f184-4e9d-948e-bce283af1213 .
+<http://data.lblod.info/id/personen/64633B99BA5B9B11C3B3BDB1>	owl:sameAs	<http://data.lblod.info/id/personen/38bf537b-5a71-4444-99be-2b9fa7f5b533> .
+<http://data.lblod.info/id/personen/64943DBE18E73E9FD2E7A6C7>	owl:sameAs	<http://data.lblod.info/id/personen/7b1185c3-a780-44fe-bd11-0bff565c98d2> .
+<http://data.lblod.info/id/personen/6494416618E73E9FD2E7A6CC>	owl:sameAs	<http://data.lblod.info/id/personen/7b1185c3-a780-44fe-bd11-0bff565c98d2> .
+<http://data.lblod.info/id/personen/64C7D4E73DBB9450D42ECFA6>	owl:sameAs	ns1:d8278e0d17daecc9104e88d2f60c1cf3aa9b322aec50b5d8b8fb6856f5be0db1 .
+<http://data.lblod.info/id/personen/64C8BE553DBB9450D42ECFB8>	owl:sameAs	<http://data.lblod.info/id/personen/61c6dd9d-2732-406f-bf7e-398b2b956182> .
+<http://data.lblod.info/id/personen/65116AC837572E92EC26E966>	owl:sameAs	ns1:d030963854a6c8911a22b90762611f7238458328c9b88180b1ddb5a26c875417 .
+<http://data.lblod.info/id/personen/6513DE0237572E92EC26EB4F>	owl:sameAs	ns1:c0197759-f6cd-4ae5-ab8e-ec68a28c8842 .
+<http://data.lblod.info/id/personen/652CE73C96FC0E4DDF39B098>	owl:sameAs	<http://data.lblod.info/id/personen/61FA93095DA26800080000DD> .
+<http://data.lblod.info/id/personen/652D0A0B96FC0E4DDF39B0CE>	owl:sameAs	<http://data.lblod.info/id/personen/6fe50cc7223ed1475bc3240a49341522aea1c6e19978875d1778cc7370955d4a> .
+<http://data.lblod.info/id/personen/652D0AB496FC0E4DDF39B0D0>	owl:sameAs	<http://data.lblod.info/id/personen/505836f4eb167811d3ac4b82dba213cab1423f719de3d64c421f1ac71973aa92> .
+<http://data.lblod.info/id/personen/652D0B6696FC0E4DDF39B0D6>	owl:sameAs	<http://data.lblod.info/id/personen/285dea2b97e55945ab20ce2543b06092057589d9619cb8f33009c4dfde21a20a> .
+<http://data.lblod.info/id/personen/652D0C2B96FC0E4DDF39B0D8>	owl:sameAs	<http://data.lblod.info/id/personen/2aabe8cd-b99c-4419-a93f-c06d5d6463b2> .
+<http://data.lblod.info/id/personen/652D2C5B96FC0E4DDF39B109>	owl:sameAs	<http://data.lblod.info/id/personen/6b569c8a-d761-4c93-b208-1a56fe41b1df> .
+<http://data.lblod.info/id/personen/653915250D9A7F921679CDEA>	owl:sameAs	<http://data.lblod.info/id/personen/9d28ecac-7c56-498f-83ea-88b9013f4c5c> .
+<http://data.lblod.info/id/personen/653FA6E084F6F16A1477B41C>	owl:sameAs	<http://data.lblod.info/id/personen/1ad00eecce43cbdc377ba8a1a7bfbf55d880568115e0ee8cf64f2827b3a516e6> .
+<http://data.lblod.info/id/personen/65410516DE4367CEE655D1F9>	owl:sameAs	ns1:b862d186-6e13-4548-bef8-f22a3fb86792 .
+<http://data.lblod.info/id/personen/6544B9B3B1228B3021C4A34F>	owl:sameAs	<http://data.lblod.info/id/personen/47a20334-6db4-4e2f-94f9-c9975b87f307> .
+<http://data.lblod.info/id/personen/6544BBD8B1228B3021C4A359>	owl:sameAs	<http://data.lblod.info/id/personen/6bac2f995af6a1d19176744e5660007f6c1a977274af5b1c217aa0b0ca917430> .
+<http://data.lblod.info/id/personen/656868666B73131F22099D1C>	owl:sameAs	ns1:f8ec039e39e44763bde03f1c2b6cdf56be29aaaab63f04dfdbf86b926ba60d71 .
+<http://data.lblod.info/id/personen/656DD6686B73131F22099FDD>	owl:sameAs	<http://data.lblod.info/id/personen/7d3ececabf907129b1bf02a7893fe3d13b5ec989f5169247f82971222aabd29f> .
+<http://data.lblod.info/id/personen/656DD8716B73131F22099FEA>	owl:sameAs	ns1:f078ba631a4e0e0f3c00feee5e072cd1c458b5ca9e80fe650d0af70fda250baf .
+<http://data.lblod.info/id/personen/658028C157F7646D0B4A638F>	owl:sameAs	ns1:a379bf98-f6ac-41d8-9237-4f1c66867646 .
+<http://data.lblod.info/id/personen/6580294757F7646D0B4A6393>	owl:sameAs	ns1:a379bf98-f6ac-41d8-9237-4f1c66867646 .
+<http://data.lblod.info/id/personen/659E6D3A6DF060864F820861>	owl:sameAs	ns1:b3891dc24a66d305b45697c7c6d3583c6a9a3d508d05d6858c390b4047f9ee32 .
+<http://data.lblod.info/id/personen/65A935A947E656AAFB264DB8>	owl:sameAs	<http://data.lblod.info/id/personen/3d352f42-c090-4916-ac45-915dfa613892> .
+<http://data.lblod.info/id/personen/65AE509747E656AAFB264EF1>	owl:sameAs	<http://data.lblod.info/id/personen/7dd541f507c82054faa6da607777a6405ea674dfa0e097bd24688aa3d8b1c53e> .
+<http://data.lblod.info/id/personen/65AE5F6447E656AAFB264EFF>	owl:sameAs	<http://data.lblod.info/id/personen/7dd541f507c82054faa6da607777a6405ea674dfa0e097bd24688aa3d8b1c53e> .
+<http://data.lblod.info/id/personen/6620CE39AA69EC8A8A9E0119>	owl:sameAs	<http://data.lblod.info/id/personen/866e94c14ba01af15eb6649679f48a6e5df082458ac73618eb4e592275f00bd3> .
+<http://data.lblod.info/id/personen/662F4C0CF3F2C43C12428696>	owl:sameAs	<http://data.lblod.info/id/personen/5dba8de1-0342-43d7-9fed-0629a4b25854> .
+<http://data.lblod.info/id/personen/6630925FF0F686D7CD7EF968>	owl:sameAs	<http://data.lblod.info/id/personen/0bd64b06-c6ef-41e7-97ea-45bf1b4cef63> .
+<http://data.lblod.info/id/personen/6630B4F9F0F686D7CD7EF9F6>	owl:sameAs	ns1:fe02d54f7071241aff0c924b813215f5e931c61c6972cc895140448eef7e072d .
+<http://data.lblod.info/id/personen/6630B595F0F686D7CD7EF9FD>	owl:sameAs	ns1:fe02d54f7071241aff0c924b813215f5e931c61c6972cc895140448eef7e072d .
+<http://data.lblod.info/id/personen/66334E7EC79464FC1D8E85D8>	owl:sameAs	ns1:af28e9f4e2fc6ac849214fbe12eefd591f0291bfc9e69510fcf06b8440807911 .
+<http://data.lblod.info/id/personen/664C67421F8F2C3570D406F4>	owl:sameAs	<http://data.lblod.info/id/personen/9f1689c5-4045-4dec-905e-d0b5a64f8647> .
+<http://data.lblod.info/id/personen/664C67D01F8F2C3570D406FD>	owl:sameAs	<http://data.lblod.info/id/personen/9f1689c5-4045-4dec-905e-d0b5a64f8647> .
+<http://data.lblod.info/id/personen/665585E179A0F1636172CBF9>	owl:sameAs	ns1:f287c18c-94b6-40db-b1e5-2917e68ebe7c .
+<http://data.lblod.info/id/personen/66E016A4C470D991DB7F98A5>	owl:sameAs	<http://data.lblod.info/id/personen/8b27dd33-57d4-4ff8-974c-75e0be379445> .
+<http://data.lblod.info/id/personen/66E01BF0C470D991DB7F98AA>	owl:sameAs	<http://data.lblod.info/id/personen/8b27dd33-57d4-4ff8-974c-75e0be379445> .
+<http://data.lblod.info/id/personen/66FE78786144C975BE2F91B5>	owl:sameAs	<http://data.lblod.info/id/personen/581964cb-8f3b-49bf-a026-defe0ef0ea44> .
+<http://data.lblod.info/id/personen/66FE7B476144C975BE2F91BE>	owl:sameAs	<http://data.lblod.info/id/personen/8aa87869d96d67a890c52817676d827b28af7070145e4c3f60da9636b898ead8> .
+<http://data.lblod.info/id/personen/66FE7B956144C975BE2F91C2>	owl:sameAs	<http://data.lblod.info/id/personen/8aa87869d96d67a890c52817676d827b28af7070145e4c3f60da9636b898ead8> .
+<http://data.lblod.info/id/personen/626AB531470F7A0008000220> owl:sameAs <http://data.lblod.info/id/personen/63C96978E2F788C148802352> .
+@prefix owl:	<http://www.w3.org/2002/07/owl#> .
+<http://data.lblod.info/id/personen/197d9637-30fa-42b6-89ba-c305b38f2f5f>	owl:sameAs	<http://data.lblod.info/id/personen/713773cf-b8b4-433f-b2cf-f0aac67886a1> .
+@prefix ns1:	<http://data.lblod.info/id/personen/> .
+<http://data.lblod.info/id/personen/1e207902-a5cf-4edf-9d91-b6d6c04b0381>	owl:sameAs	ns1:f8f9ed15-d827-467d-9045-28c33472fd29 .
+<http://data.lblod.info/id/personen/63C96978E2F788C148802352>	owl:sameAs	<http://data.lblod.info/id/personen/5e310417-2f8c-473d-9fae-68f1d3fe0b64> .
+<http://data.lblod.info/id/personen/63D3F5EC91B07946A656D4FA>	owl:sameAs	ns1:c900c042-e4ef-4e13-94a8-b5b66f47fd83 .
+<http://data.lblod.info/id/personen/652D2D5C96FC0E4DDF39B10D>	owl:sameAs	<http://data.lblod.info/id/personen/8b782448-9024-4694-80e0-0f9694bb2f17> .
+<http://data.lblod.info/id/personen/66CECA333851D95F396C7DCB>	owl:sameAs	<http://data.lblod.info/id/personen/75439c14-d1ef-43fe-9266-e3725471c2c5> .
+<http://data.lblod.info/id/personen/713773cf-b8b4-433f-b2cf-f0aac67886a1>	owl:sameAs	<http://data.lblod.info/id/personen/197d9637-30fa-42b6-89ba-c305b38f2f5f> .
+<http://data.lblod.info/id/personen/8009da80-519a-4fae-bac0-a037fdb028b5>	owl:sameAs	ns1:eaf359eb-1d1b-43fd-ad37-3e45affe7070 .
+ns1:eaf359eb-1d1b-43fd-ad37-3e45affe7070	owl:sameAs	<http://data.lblod.info/id/personen/8009da80-519a-4fae-bac0-a037fdb028b5> .
+ns1:f8f9ed15-d827-467d-9045-28c33472fd29	owl:sameAs	<http://data.lblod.info/id/personen/1e207902-a5cf-4edf-9d91-b6d6c04b0381> .
+<http://data.lblod.info/id/personen/6359046E44D3E2E4388C8305> owl:sameAs <http://data.lblod.info/id/personen/f83c86fb-f391-484d-bcda-345df32eb253> .
+<http://data.lblod.info/id/personen/61F67B775DA268000800012D> owl:sameAs <http://data.lblod.info/id/personen/619c18c2-7d4d-45cf-a1f5-4a51c4ef2ef6> .
+<http://data.lblod.info/id/personen/60AC9A73ABD6E000080000DE> owl:sameAs <http://data.lblod.info/id/personen/3dfa1f12ae7abc5108b81d4979db25d0b9e5023503ec4243f5aab75d4ec6890a> .
+<http://data.lblod.info/id/personen/6357FB85FDE09D373242F834> owl:sameAs <http://data.lblod.info/id/personen/23558269-3e21-43b3-a5bc-7320130a93bb> .
+<http://data.lblod.info/id/personen/626943B7470F7A0008000134> owl:sameAs <http://data.lblod.info/id/personen/75c71e1c-959c-4cbd-a689-5625e7761977> .
+<http://data.lblod.info/id/personen/63D28150C2D1574BB357E0A4> owl:sameAs <http://data.lblod.info/id/personen/fd17e4fca75072eea82fa880ab18d1a186fd3a8d3c9d489bef83cd100f724097> .
+<http://data.lblod.info/id/personen/60D08441CA2C91000800005A> owl:sameAs <http://data.lblod.info/id/personen/f6d29ac8-73f3-4962-8917-f24b97995d15> .
+<http://data.lblod.info/id/personen/615EDFEFE57546000800009F> owl:sameAs <http://data.lblod.info/id/personen/c942fec6-e3b0-450a-b390-83a9cb9740c2> .
+<http://data.lblod.info/id/personen/61FA5A0C5DA268000800003A> owl:sameAs <http://data.lblod.info/id/personen/32bc986d-25a6-4e8d-841e-63f376f3c81b> .
+<http://data.lblod.info/id/personen/60DB491BCA2C910008000653> owl:sameAs <http://data.lblod.info/id/personen/548ebece-eff0-4c54-8716-74dcc5656a64> .
+<http://data.lblod.info/id/personen/615FE799E575460008000123> owl:sameAs <http://data.lblod.info/id/personen/9d2b933e-4b9c-441c-82c6-33c66eaef64f> .
+<http://data.lblod.info/id/personen/641C194A7C59A07CAC0F9832> owl:sameAs <http://data.lblod.info/id/personen/7a988ec4-7671-448d-afee-8d100bff5800> .
+<http://data.lblod.info/id/personen/60BDE64ACA2C910008000112> owl:sameAs <http://data.lblod.info/id/personen/183668f50833f21f9fb242175fbacb6948e8345386b781898a678aad4fb79b15> .
+<http://data.lblod.info/id/personen/6513DE0237572E92EC26EB4F> owl:sameAs <http://data.lblod.info/id/personen/c0197759-f6cd-4ae5-ab8e-ec68a28c8842> .
+<http://data.lblod.info/id/personen/61B1C79BE4465300080000E7> owl:sameAs <http://data.lblod.info/id/personen/6d8a22ee-19d3-4370-af78-d2156e501b69> .
+<http://data.lblod.info/id/personen/61ADD6719790B800080001A8> owl:sameAs <http://data.lblod.info/id/personen/ba25250b-53c2-4e93-910f-5750f1fa505e> .
+<http://data.lblod.info/id/personen/61A4A020890F3E00080000B7> owl:sameAs <http://data.lblod.info/id/personen/82533db9-174d-43e1-a021-f67d65575817> .
+<http://data.lblod.info/id/personen/626A5CFF470F7A00080001A2> owl:sameAs <http://data.lblod.info/id/personen/565a852a-072c-4a90-a456-18b3195ff70f> .
+<http://data.lblod.info/id/personen/620399B65DA268000800023C> owl:sameAs <http://data.lblod.info/id/personen/0180a93f-383f-417b-b3aa-cd0ad311ce23> .
+<http://data.lblod.info/id/personen/5E450C32A3ACB60008000014> owl:sameAs <http://data.lblod.info/id/personen/f5067880-65e3-4e99-baa7-59a0434e3b49> .
+<http://data.lblod.info/id/personen/6321698EBC7AFA9A82B90082> owl:sameAs <http://data.lblod.info/id/personen/9b789130-c50b-4457-9bcd-3e18b4d58d3d> .
+<http://data.lblod.info/id/personen/63D3F5EC91B07946A656D4FA> owl:sameAs <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> .
+<http://data.lblod.info/id/personen/618A362E890F3E0008000098> owl:sameAs <http://data.lblod.info/id/personen/e676ac76-c661-4d34-824b-1000d2db8782> .
+<http://data.lblod.info/id/personen/620A4DC55DA268000800017E> owl:sameAs <http://data.lblod.info/id/personen/07d164a1-a8e0-4b1e-9c43-4f2678c6cd5a> .
+<http://data.lblod.info/id/personen/653FA6E084F6F16A1477B41C> owl:sameAs <http://data.lblod.info/id/personen/1ad00eecce43cbdc377ba8a1a7bfbf55d880568115e0ee8cf64f2827b3a516e6> .
+<http://data.lblod.info/id/personen/633FE28E55F7BE5F34A57A73> owl:sameAs <http://data.lblod.info/id/personen/a2b23276-7801-418e-9a46-0c19f1bfff34> .
+<http://data.lblod.info/id/personen/641D7122FE3038A9D41688BF> owl:sameAs <http://data.lblod.info/id/personen/63098b3c4f705ab8e19f47014d890b89dfb0c95b68521d7575fb92008dd7fc02> .
+<http://data.lblod.info/id/personen/65410516DE4367CEE655D1F9> owl:sameAs <http://data.lblod.info/id/personen/b862d186-6e13-4548-bef8-f22a3fb86792> .
+<http://data.lblod.info/id/personen/653915250D9A7F921679CDEA> owl:sameAs <http://data.lblod.info/id/personen/9d28ecac-7c56-498f-83ea-88b9013f4c5c> .
+<http://data.lblod.info/id/personen/6392F2055A77205C8C168D4D> owl:sameAs <http://data.lblod.info/id/personen/9560d1ec0bcb6db25aa7ba50db28921c0afc1b9eaa9cfe2b76581a4c91f8b3b4> .
+<http://data.lblod.info/id/personen/615D91CFE5754600080002F7> owl:sameAs <http://data.lblod.info/id/personen/7dd541f507c82054faa6da607777a6405ea674dfa0e097bd24688aa3d8b1c53e> .
+<http://data.lblod.info/id/personen/60B8E13ACA2C91000800026D> owl:sameAs <http://data.lblod.info/id/personen/c16ec07e476a2036d9d639cf1eb4ee2a87074005539c39d3c06c95c280939387> .
+<http://data.lblod.info/id/personen/6544BBD8B1228B3021C4A359> owl:sameAs <http://data.lblod.info/id/personen/6bac2f995af6a1d19176744e5660007f6c1a977274af5b1c217aa0b0ca917430> .
+<http://data.lblod.info/id/personen/65A935A947E656AAFB264DB8> owl:sameAs <http://data.lblod.info/id/personen/3d352f42-c090-4916-ac45-915dfa613892> .
+<http://data.lblod.info/id/personen/2e219617-23d9-486e-b7fe-9190d5140058> owl:sameAs <http://data.lblod.info/id/personen/68e1f83ffa9cfa8c20c37c5dd8943cceec04e192eb58f58921a3d3d80de948c7> .
+<http://data.lblod.info/id/personen/612F6754E575460008000349> owl:sameAs <http://data.lblod.info/id/personen/b1f8d7a9-23af-4248-a927-80cd28b3b267> .
+<http://data.lblod.info/id/personen/656DD8716B73131F22099FEA> owl:sameAs <http://data.lblod.info/id/personen/f078ba631a4e0e0f3c00feee5e072cd1c458b5ca9e80fe650d0af70fda250baf> .
+<http://data.lblod.info/id/personen/634665BD2C389BF7BC154D65> owl:sameAs <http://data.lblod.info/id/personen/a976526ad697df3f04aa99f030c60eac0366d00d218bfadafd982109e66f8b50> .
+<http://data.lblod.info/id/personen/60D2F048CA2C9100080002D9> owl:sameAs <http://data.lblod.info/id/personen/c507c03acf6a15a2a5a5a407545232bd6aba46a8d33f17f8f8f67a628df86c9c> .
+<http://data.lblod.info/id/personen/64C8BE553DBB9450D42ECFB8> owl:sameAs <http://data.lblod.info/id/personen/61c6dd9d-2732-406f-bf7e-398b2b956182> .
+<http://data.lblod.info/id/personen/6544B9B3B1228B3021C4A34F> owl:sameAs <http://data.lblod.info/id/personen/47a20334-6db4-4e2f-94f9-c9975b87f307> .
+<http://data.lblod.info/id/personen/60AF9DACABD6E00008000432> owl:sameAs <http://data.lblod.info/id/personen/8e77142f-27fc-4626-bddc-fe8afadc5185> .
+<http://data.lblod.info/id/personen/656DD6686B73131F22099FDD> owl:sameAs <http://data.lblod.info/id/personen/7d3ececabf907129b1bf02a7893fe3d13b5ec989f5169247f82971222aabd29f> .
+<http://data.lblod.info/id/personen/613B4FD9E5754600080000A3> owl:sameAs <http://data.lblod.info/id/personen/a730ea733dd3a854e6117fe87133306b6cf611e4fe02a8723a00ed74ce014a34> .
+<http://data.lblod.info/id/personen/63523C89FDE09D373242F69A> owl:sameAs <http://data.lblod.info/id/personen/c432e10417a68de20aa3b1b3420d1f97efa28c322ea97cca32d8f12f4c1d0bb9> .
+<http://data.lblod.info/id/personen/60D347B8CA2C9100080003FF> owl:sameAs <http://data.lblod.info/id/personen/67b15ded4a90ea6f8dcf54a8ec73cffce6dd85d563d27170e175e33fc188e5e2> .
+<http://data.lblod.info/id/personen/63C96978E2F788C148802352> owl:sameAs <http://data.lblod.info/id/personen/5e310417-2f8c-473d-9fae-68f1d3fe0b64> .
+
+<http://data.lblod.info/id/personen/626AB531470F7A0008000220> owl:sameAs <http://data.lblod.info/id/personen/5e310417-2f8c-473d-9fae-68f1d3fe0b64> .
+<http://data.lblod.info/id/personen/63C00F5682C93176D903B7A6> owl:sameAs <http://data.lblod.info/id/personen/60ebc41bf0ca2ff3949593df142261609af23c31d41ca289f7a965b9ce588636> .
+
+<http://data.lblod.info/id/personen/63C0103982C93176D903B7A9> owl:sameAs <http://data.lblod.info/id/personen/60ebc41bf0ca2ff3949593df142261609af23c31d41ca289f7a965b9ce588636> .
+<http://data.lblod.info/id/personen/63E9F3E2F6C8975F1E17A139> owl:sameAs <http://data.lblod.info/id/personen/1eaf2851-6e9b-4ff7-bfe5-b74b527ab658> .
+
+<http://data.lblod.info/id/personen/63E9F864F6C8975F1E17A142> owl:sameAs <http://data.lblod.info/id/personen/1eaf2851-6e9b-4ff7-bfe5-b74b527ab658> .
+<http://data.lblod.info/id/personen/63A06C159D253F0E051E43CA> owl:sameAs <http://data.lblod.info/id/personen/dfdacf5f-176c-452c-b878-9e7d8e353162> .
+
+<http://data.lblod.info/id/personen/63A06F7C9D253F0E051E43D7> owl:sameAs <http://data.lblod.info/id/personen/dfdacf5f-176c-452c-b878-9e7d8e353162> .
+
+<http://data.lblod.info/id/personen/6319E03C9C1C5474E31C261E> owl:sameAs <http://data.lblod.info/id/personen/2119bccf-69a8-42f6-833e-3e2b0398e68f> .
+
+<http://data.lblod.info/id/personen/6319E25D9C1C5474E31C2623> owl:sameAs <http://data.lblod.info/id/personen/2119bccf-69a8-42f6-833e-3e2b0398e68f> .
+
+<http://data.lblod.info/id/personen/62C3F88C470F7A0008000245> owl:sameAs <http://data.lblod.info/id/personen/782306a8-396d-49cd-8bc2-c59fd9761b03> .
+
+<http://data.lblod.info/id/personen/62C3F90C470F7A000800024B> owl:sameAs <http://data.lblod.info/id/personen/782306a8-396d-49cd-8bc2-c59fd9761b03> .
+<http://data.lblod.info/id/personen/658028C157F7646D0B4A638F> owl:sameAs <http://data.lblod.info/id/personen/a379bf98-f6ac-41d8-9237-4f1c66867646> .
+
+<http://data.lblod.info/id/personen/6580294757F7646D0B4A6393> owl:sameAs <http://data.lblod.info/id/personen/a379bf98-f6ac-41d8-9237-4f1c66867646> .
+<http://data.lblod.info/id/personen/646338E5BA5B9B11C3B3BDA6> owl:sameAs <http://data.lblod.info/id/personen/d49f47ef-f184-4e9d-948e-bce283af1213> .
+
+<http://data.lblod.info/id/personen/64633B3FBA5B9B11C3B3BDAD> owl:sameAs <http://data.lblod.info/id/personen/d49f47ef-f184-4e9d-948e-bce283af1213> .
+<http://data.lblod.info/id/personen/63C1493082C93176D903B84F> owl:sameAs <http://data.lblod.info/id/personen/4b21810f86899d35c314d7bb1cf79d626086bdabae53db3a1932470a759293c0> .
+
+<http://data.lblod.info/id/personen/63C14B6582C93176D903B852> owl:sameAs <http://data.lblod.info/id/personen/4b21810f86899d35c314d7bb1cf79d626086bdabae53db3a1932470a759293c0> .
+<http://data.lblod.info/id/personen/6463394FBA5B9B11C3B3BDA9> owl:sameAs <http://data.lblod.info/id/personen/38bf537b-5a71-4444-99be-2b9fa7f5b533> .
+
+<http://data.lblod.info/id/personen/64633B99BA5B9B11C3B3BDB1> owl:sameAs <http://data.lblod.info/id/personen/38bf537b-5a71-4444-99be-2b9fa7f5b533> .
+<http://data.lblod.info/id/personen/65AE5F6447E656AAFB264EFF> owl:sameAs <http://data.lblod.info/id/personen/7dd541f507c82054faa6da607777a6405ea674dfa0e097bd24688aa3d8b1c53e> .
+
+<http://data.lblod.info/id/personen/65AE509747E656AAFB264EF1> owl:sameAs <http://data.lblod.info/id/personen/7dd541f507c82054faa6da607777a6405ea674dfa0e097bd24688aa3d8b1c53e> .
+<http://data.lblod.info/id/personen/6463315ABA5B9B11C3B3BD86> owl:sameAs <http://data.lblod.info/id/personen/00a4272c-94d7-49ba-b109-23a2014daec0> .
+
+<http://data.lblod.info/id/personen/64633295BA5B9B11C3B3BD8C> owl:sameAs <http://data.lblod.info/id/personen/00a4272c-94d7-49ba-b109-23a2014daec0> .
+<http://data.lblod.info/id/personen/64943DBE18E73E9FD2E7A6C7> owl:sameAs <http://data.lblod.info/id/personen/7b1185c3-a780-44fe-bd11-0bff565c98d2> .
+
+<http://data.lblod.info/id/personen/6494416618E73E9FD2E7A6CC> owl:sameAs <http://data.lblod.info/id/personen/7b1185c3-a780-44fe-bd11-0bff565c98d2> .
+
+<http://data.lblod.info/id/personen/63DA63FCCD74AD1FBD039107> owl:sameAs <http://data.lblod.info/id/personen/79bf4cd9-b138-4361-b1c4-5de1d4eeeb84> .
+
+<http://data.lblod.info/id/personen/63DA63FCCD74AD1FBD039107> owl:sameAs <http://data.lblod.info/id/personen/79bf4cd9-b138-4361-b1c4-5de1d4eeeb84> .
+<http://data.lblod.info/id/personen/60D30AC7CA2C910008000367> owl:sameAs <http://data.lblod.info/id/personen/922fc79b978e23624b5d05a38dc7cf05fe0e4e727a7f8d7eddf69021aff66cd6> .
+
+<http://data.lblod.info/id/personen/79db2897a6aba3d3510273d1dd97c01db00d0811158cbc35796f3dad9a59ed79> owl:sameAs <http://data.lblod.info/id/personen/922fc79b978e23624b5d05a38dc7cf05fe0e4e727a7f8d7eddf69021aff66cd6> .
+
+<http://data.lblod.info/id/personen/197d9637-30fa-42b6-89ba-c305b38f2f5f> owl:sameAs <http://data.lblod.info/id/personen/713773cf-b8b4-433f-b2cf-f0aac67886a1> .
+<http://data.lblod.info/id/personen/1e207902-a5cf-4edf-9d91-b6d6c04b0381> owl:sameAs <http://data.lblod.info/id/personen/f8f9ed15-d827-467d-9045-28c33472fd29> .
+<http://data.lblod.info/id/personen/713773cf-b8b4-433f-b2cf-f0aac67886a1> owl:sameAs <http://data.lblod.info/id/personen/197d9637-30fa-42b6-89ba-c305b38f2f5f> .
+<http://data.lblod.info/id/personen/8009da80-519a-4fae-bac0-a037fdb028b5> owl:sameAs <http://data.lblod.info/id/personen/eaf359eb-1d1b-43fd-ad37-3e45affe7070> .
+<http://data.lblod.info/id/personen/eaf359eb-1d1b-43fd-ad37-3e45affe7070> owl:sameAs <http://data.lblod.info/id/personen/8009da80-519a-4fae-bac0-a037fdb028b5> .
+<http://data.lblod.info/id/personen/f8f9ed15-d827-467d-9045-28c33472fd29> owl:sameAs <http://data.lblod.info/id/personen/1e207902-a5cf-4edf-9d91-b6d6c04b0381> .

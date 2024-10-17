@@ -1,0 +1,21 @@
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX adms: <http://www.w3.org/ns/adms#>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  DELETE {
+    GRAPH ?g {
+      ?s skos:notation ?id.
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      ?s skos:notation ?newId.
+      ?s ext:addedLeadingZeroesTo ?id.
+    }
+  } WHERE{
+    ?s a adms:Identifier.
+    GRAPH ?g {
+      ?s skos:notation ?id.
+    }
+    FILTER (STRLEN(STR(?id)) < 11)
+    BIND(IF(STRLEN(STR(?id)) < 9, CONCAT("000", STR(?id)), IF(STRLEN(STR(?id)) < 10, CONCAT("00", STR(?id)), CONCAT("0", STR(?id)))) AS ?newId)
+  }

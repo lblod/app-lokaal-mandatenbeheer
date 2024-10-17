@@ -42,7 +42,8 @@ INSERT {
 WHERE {
   ?bestuurseenheid besluit:werkingsgebied / rdfs:label ?naam .
   ?bestuurseenheid besluit:classificatie ?classificatie .
-  VALUES ?classificatie { bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001 bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000002 }
+  # Gemeente, OCMW and districts
+  VALUES ?classificatie { bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001 bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000002, bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000003 }
   VALUES ?naam {"Antwerpen" "Beveren-Kruibeke-Zwijndrecht" "Bilzen" "Tongeren" "Nazareth-De Pinte" "Pajottegem" "Ham" "Hasselt" "Lochristi" "Lokeren" "Merelbeke-Melle" "Tielt" "Wingene" }
 
   GRAPH ?g {

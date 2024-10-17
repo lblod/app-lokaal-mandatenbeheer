@@ -7,7 +7,7 @@ DELETE {
 }
 WHERE {
   GRAPH ?temp {
-    ?s owl:sameAs ?newS.
+    ?oldPerson owl:sameAs ?newS.
   }
   FILTER (?temp IN (<http://mu.semte.ch/graphs/temp/sameasPersons>, <http://mu.semte.ch/graphs/temp/sameasIdentifiers>))
   GRAPH ?g {

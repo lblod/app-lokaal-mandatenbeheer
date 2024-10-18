@@ -1,0 +1,17 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+DELETE {
+  GRAPH ?g {
+    ?iv ?p ?o.
+  }
+} WHERE {
+  #district code
+  <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003> a ext:BestuurseenheidClassificatieCode .
+  ?eenheid <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003> .
+  ?iv lmb:heeftBestuurseenheid ?eenheid .
+  ?iv a lmb:Installatievergadering.
+  GRAPH ?g {
+    ?iv ?p ?o.
+  }
+}

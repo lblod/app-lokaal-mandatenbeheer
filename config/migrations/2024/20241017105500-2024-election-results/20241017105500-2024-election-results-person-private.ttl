@@ -1,0 +1,4 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns1:	<http://www.w3.org/ns/person#> .
+<http://data.lblod.info/id/personen/000184fe-0c49-4b3f-bd13-f681e71eea17>	rdf:type	ns1:Person .
+# this is a snippet of the public data and this file should be replaced by the private person data on the server

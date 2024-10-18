@@ -1,0 +1,17 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE {
+  GRAPH ?g {
+    ?oldPerson ?p ?o.
+  }
+}
+WHERE {
+  GRAPH ?temp {
+    ?oldPerson owl:sameAs ?newS.
+  }
+  FILTER (?temp IN (<http://mu.semte.ch/graphs/temp/sameasPersons>, <http://mu.semte.ch/graphs/temp/sameasIdentifiers>))
+  GRAPH ?g {
+    ?oldPerson ?p ?o.
+  }
+  FILTER (?g NOT IN (<http://mu.semte.ch/graphs/temp/sameasPersons>, <http://mu.semte.ch/graphs/temp/sameasIdentifiers>))
+}

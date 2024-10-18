@@ -1,3 +1,5 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 INSERT {
   GRAPH ?g {
     ?persoon ?p ?o.
@@ -22,8 +24,7 @@ WHERE {
       ?geboorte ?geboortep ?geboorteo.
     }
   }
-  GRAPH ?g {
-    ?bestuursorgaan <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?bestuursorgaanWithoutTime.
-  }
-
-}
+  ?bestuursorgaan <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?bestuursorgaanWithoutTime.
+  ?bestuursorgaanWithoutTime besluit:bestuurt ?bestuurseenheid.
+  ?g ext:ownedBy ?bestuurseenheid.
+} LIMIT 1000000

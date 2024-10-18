@@ -1,0 +1,17 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+INSERT {
+  GRAPH ?g {
+    ?lijst mandaat:heeftKandidaat ?persoon .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-2024> {
+    ?lijst mandaat:heeftKandidaat ?persoon .
+  }
+  GRAPH ?g {
+    ?lijst a mandaat:Kandidatenlijst .
+    ?persoon a person:Person .
+  }
+}

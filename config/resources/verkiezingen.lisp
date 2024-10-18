@@ -35,7 +35,7 @@
 (define-resource kandidatenlijst ()
   :class (s-prefix "mandaat:Kandidatenlijst")
   :properties `((:lijstnaam :string ,(s-prefix "skos:prefLabel"))
-                (:lijstnummer :number ,(s-prefix "mandaat:lijstnummer")))
+                (:lijstnummer :number ,(s-prefix "mandaat:lijstnr")))
   :has-one `((lijsttype :via ,(s-prefix "mandaat:lijsttype")
                         :as "lijsttype")
              (rechtstreekse-verkiezing :via ,(s-prefix "mandaat:behoortTot")

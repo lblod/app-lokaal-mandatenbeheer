@@ -1,0 +1,23 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+INSERT {
+  GRAPH ?g {
+    ?geboorte ?p ?o .
+  }
+} 
+WHERE {
+  GRAPH ?g {
+    ?s a person:Person .
+    ?s persoon:heeftGeboorte ?geboorte .
+  }
+  ?geboorte mu:uuid ?id ;
+    ?p ?o .
+
+  FILTER NOT EXISTS {
+    GRAPH ?g {
+      ?geboorte mu:uuid ?id .
+    }
+  }
+}

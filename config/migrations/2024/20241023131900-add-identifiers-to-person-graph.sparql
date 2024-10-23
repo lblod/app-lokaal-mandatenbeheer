@@ -1,0 +1,23 @@
+  PREFIX adms: <http://www.w3.org/ns/adms#>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX person: <http://www.w3.org/ns/person#>
+  INSERT {
+    GRAPH ?g {
+      ?s adms:identifier ?id.
+      ?id ?p ?o.
+    }
+  } WHERE {
+    GRAPH ?g {
+      ?s a person:Person.
+    }
+    ?s adms:identifier ?id.
+    ?id skos:notation ?idnr.
+    ?id ?p ?o.
+
+    FILTER NOT EXISTS {
+      GRAPH ?g {
+        ?s adms:identifier ?id.
+        ?id skos:notation ?idnr.
+      }
+    }
+  }

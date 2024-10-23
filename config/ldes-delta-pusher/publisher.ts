@@ -3,7 +3,11 @@ import { querySudo } from "@lblod/mu-auth-sudo";
 import { LDES_ENDPOINT } from "../config";
 import fetch from "node-fetch";
 import { log } from "./logger";
-import { defaultProperties, officialPredicates } from "./ldes-instances";
+import {
+  defaultProperties,
+  ldesInstances,
+  officialPredicates,
+} from "./ldes-instances";
 
 export type LDES_TYPE = "public" | "abb" | "internal";
 export type TypesWithFilter = {
@@ -35,12 +39,39 @@ const fetchSubjectData = async (
     typeof subject.ldesType === "object" && subject.ldesType[target].filter
       ? subject.ldesType[target].filter
       : "";
+  const transformPredicates =
+    ldesInstances[target].entities[subject.type].transformPredicates;
+  const transformTypes =
+    ldesInstances[target].entities[subject.type].transformTypes;
+
+  let extraConstruct = "";
+  let extraWhere = "";
+  if (transformPredicates) {
+    let mapping = "";
+    Object.keys(transformPredicates).forEach((from) => {
+      const to = transformPredicates[from];
+      mapping += `(${sparqlEscapeUri(from)} ${sparqlEscapeUri(to)})\n`;
+    });
+    extraWhere = `VALUES (?pFrom ?pTo) {
+      ${mapping}
+    }
+    BIND(IF(?p = ?pFrom, ?pTo, ?p) AS ?pNew)`;
+    extraConstruct = `<${subject.uri}> ?pNew ?o.`;
+  }
+  if (transformTypes) {
+    const extraTypes = transformTypes
+      .map((type) => `${sparqlEscapeUri(type)}`)
+      .join(", ");
+    extraConstruct = `<${subject.uri}> a ${extraTypes}.`;
+  }
+
   // we are also publishing the bestuurseenheid with our data so consuming apps easily know where to put the concept
   const data = await querySudo(`
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     CONSTRUCT {
       <${subject.uri}> ?p ?o .
       <${subject.uri}> ext:relatedTo ?bestuurseenheid .
+      ${extraConstruct}
     } WHERE {
       GRAPH ?g {
         <${subject.uri}> ?p ?o .
@@ -49,6 +80,7 @@ const fetchSubjectData = async (
       ?g ext:ownedBy ?bestuurseenheid .
       ${predicateLimiter}
       ${filter}
+      ${extraWhere}
     }
   `);
   return data.results.bindings.map(bindingToTriple).join("\n");

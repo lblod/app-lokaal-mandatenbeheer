@@ -39,6 +39,16 @@ export const ldesInstances = {
         instanceFilter: `FILTER(?p NOT IN (<http://data.vlaanderen.be/ns/persoon#heeftGeboorte>, <http://www.w3.org/ns/adms#identifier>, <http://data.vlaanderen.be/ns/persoon#geslacht>))
       `,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
+        transformPredicates: {
+          "http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam":
+            "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
+          "http://data.vlaanderen.be/ns/persoon#heeftNationaliteit":
+            "https://data.vlaanderen.be/ns/persoon#heeftNationaliteit",
+          "http://data.vlaanderen.be/ns/persoon#heeftGeboorte":
+            "https://data.vlaanderen.be/ns/persoon#heeftGeboorte",
+          "http://data.vlaanderen.be/ns/persoon#geslacht":
+            "https://data.vlaanderen.be/ns/persoon#geslacht",
+        },
       },
       "http://data.vlaanderen.be/ns/besluit#Artikel": {
         specialType: true,
@@ -76,15 +86,30 @@ export const ldesInstances = {
       "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
         "http://purl.org/dc/terms/modified",
       ],
-      "http://www.w3.org/ns/person#Person": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://www.w3.org/ns/person#Person": {
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+        transformPredicates: {
+          "http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam":
+            "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
+          "http://data.vlaanderen.be/ns/persoon#heeftNationaliteit":
+            "https://data.vlaanderen.be/ns/persoon#heeftNationaliteit",
+          "http://data.vlaanderen.be/ns/persoon#heeftGeboorte":
+            "https://data.vlaanderen.be/ns/persoon#heeftGeboorte",
+          "http://data.vlaanderen.be/ns/persoon#geslacht":
+            "https://data.vlaanderen.be/ns/persoon#geslacht",
+        },
+      },
       "http://www.w3.org/ns/adms#Identifier": [
         "http://purl.org/dc/terms/modified",
       ],
-      "http://data.vlaanderen.be/ns/persoon#Geboorte": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://data.vlaanderen.be/ns/persoon#Geboorte": {
+        transformPredicates: {
+          "http://data.vlaanderen.be/ns/persoon#datum":
+            "https://data.vlaanderen.be/ns/persoon#datum",
+        },
+        transformTypes: ["https://data.vlaanderen.be/ns/persoon#Geboorte"],
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
       "http://data.vlaanderen.be/ns/besluit#Artikel": {
         specialType: true,
         healingPredicates: [
@@ -121,15 +146,30 @@ export const ldesInstances = {
       "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
         "http://purl.org/dc/terms/modified",
       ],
-      "http://www.w3.org/ns/person#Person": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://www.w3.org/ns/person#Person": {
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+        transformPredicates: {
+          "http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam":
+            "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
+          "http://data.vlaanderen.be/ns/persoon#heeftNationaliteit":
+            "https://data.vlaanderen.be/ns/persoon#heeftNationaliteit",
+          "http://data.vlaanderen.be/ns/persoon#heeftGeboorte":
+            "https://data.vlaanderen.be/ns/persoon#heeftGeboorte",
+          "http://data.vlaanderen.be/ns/persoon#geslacht":
+            "https://data.vlaanderen.be/ns/persoon#geslacht",
+        },
+      },
       "http://www.w3.org/ns/adms#Identifier": [
         "http://purl.org/dc/terms/modified",
       ],
-      "http://data.vlaanderen.be/ns/persoon#Geboorte": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://data.vlaanderen.be/ns/persoon#Geboorte": {
+        transformPredicates: {
+          "http://data.vlaanderen.be/ns/persoon#datum":
+            "https://data.vlaanderen.be/ns/persoon#datum",
+        },
+        transformTypes: ["https://data.vlaanderen.be/ns/persoon#Geboorte"],
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
       "http://data.vlaanderen.be/ns/besluit#Artikel": {
         specialType: true,
         healingPredicates: [

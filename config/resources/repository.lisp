@@ -4,8 +4,8 @@
 
 (add-prefix "besluit" "http://data.vlaanderen.be/ns/besluit#")
 (add-prefix "mandaat" "http://data.vlaanderen.be/ns/mandaat#")
-(add-prefix "persoon" "http://data.vlaanderen.be/ns/persoon#") ;;  TODO: this is incorrect, should be https
-(add-prefix "generiek" "http://data.vlaanderen.be/ns/generiek#") ;; TODO: this is incorrect, should be https
+(add-prefix "persoon" "http://data.vlaanderen.be/ns/persoon#") ;;  TODO: this is incorrect, should be https. This has been solved on the ldes level
+(add-prefix "generiek" "http://data.vlaanderen.be/ns/generiek#") ;; TODO: this is incorrect, should be https. This is not used in items that we publish so not our jurisdiction
 
 (add-prefix "dct" "http://purl.org/dc/terms/")
 (add-prefix "adms" "http://www.w3.org/ns/adms#")

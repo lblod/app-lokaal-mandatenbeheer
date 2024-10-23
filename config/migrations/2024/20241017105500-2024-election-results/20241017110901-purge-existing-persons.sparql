@@ -1,8 +1,6 @@
-INSERT {
+DELETE {
   GRAPH ?g {
-    ?persoon ?p ?o.
-    ?identifier ?idp ?ido.
-    ?geboorte ?geboortep ?geboorteo.
+    ?persoon ?p ?oOld.
   }
 }
 WHERE {
@@ -13,17 +11,9 @@ WHERE {
     ?resultaat <http://data.vlaanderen.be/ns/mandaat#isResultaatVoor> ?lijst.
     ?resultaat <http://data.vlaanderen.be/ns/mandaat#isResultaatVan> ?persoon.
     ?persoon ?p ?o.
-    OPTIONAL {
-      ?persoon <http://www.w3.org/ns/adms#identifier> ?identifier.
-      ?identifier ?idp ?ido.
-    }
-    OPTIONAL {
-      ?persoon <http://data.vlaanderen.be/ns/persoon#heeftGeboorte> ?geboorte.
-      ?geboorte ?geboortep ?geboorteo.
-    }
   }
   GRAPH ?g {
     ?bestuursorgaan <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?bestuursorgaanWithoutTime.
+    ?persoon ?p ?oOld.
   }
-
 }

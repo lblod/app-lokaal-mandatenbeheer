@@ -74,4 +74,29 @@ WHERE {
   }
   FILTER (STRENDS(?orgaanNaam, ?eenheidsNaam))
   BIND (REPLACE(?orgaanNaam, ?eenheidsNaam, ?eenheidsNaamNew) AS ?orgaanNaamNew)
+};
+
+# Also update mock-login
+DELETE {
+  GRAPH ?g {
+    ?persoon foaf:familyName ?naam .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon foaf:familyName ?naamNew .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a foaf:Person;
+      foaf:firstName ?classificatieLabel;
+      foaf:familyName ?naam;
+      foaf:account ?account.
+    ?account a foaf:OnlineAccount;
+      foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+      ext:sessionRole "LoketLB-mandaatGebruiker".
+  }
+  VALUES (?naam ?naamNew) { ("Bilzen" "Bilzen-Hoeselt") ("Tongeren" "Tongeren-Borgloon") ("Ham" "Tessenderlo-Ham") }
+  FILTER (?classificatieLabel IN ( "Gemeente", "OCMW" ))
 }

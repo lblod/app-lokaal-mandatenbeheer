@@ -104,7 +104,7 @@ ext:fractieF
     sh:path ( org:hasMembership org:organisation );
     form:validatedBy
         [
-            a form:RequiredConstraint;
+            a ext:RequiredForBestuursorganen;
             form:grouping form:Bag;
             sh:path ( org:hasMembership org:organisation );
             sh:resultMessage "Dit veld is verplicht."

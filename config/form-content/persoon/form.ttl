@@ -62,7 +62,7 @@ ext:identificatorF
     ].
 ext:geboorteF
     a form:Field;
-    form:displayType displayTypes:dateInput;
+    form:displayType displayTypes:birthDateInput;
     sh:group ext:persoonPG;
     sh:name "Geboortedatum";
     sh:order 6;

@@ -58,7 +58,6 @@ WHERE {
     ?bestuurseenheid a besluit:Bestuurseenheid ;
       skos:prefLabel ?eenheidsNaam ;
       besluit:classificatie ?bestuurseenheidscodes .
-    VALUES ?eenheidsNaam { "Bilzen" "Tongeren" "Ham" }
     VALUES (?eenheidsNaam ?eenheidsNaamNew) { ("Bilzen" "Bilzen-Hoeselt") ("Tongeren" "Tongeren-Borgloon") ("Ham" "Tessenderlo-Ham") }
     FILTER (?bestuurseenheidscodes IN ( bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001, bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000002 ))
   }

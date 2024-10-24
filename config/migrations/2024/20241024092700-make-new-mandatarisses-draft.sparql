@@ -1,0 +1,35 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+DELETE {
+  GRAPH ?h {
+    # we need to delete the old fractions sadly, they don't have any of the links they should have and it's almost impossible to generate them
+    ?mandataris org:hasMembership ?membership.
+    ?membership ?p ?o.
+    ?membership org:organisation ?fractie.
+    ?fractie ?fractiep ?fractieo.
+  }
+}
+INSERT {
+  GRAPH ?h {
+    ?mandataris <http://lblod.data.gift/vocabularies/lmb/hasPublicationStatus> <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07> .
+  }
+}
+WHERE {
+  VALUES ?bestuursperiode {
+    <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>
+  }
+  GRAPH ?g {
+    ?org a besluit:Bestuursorgaan .
+    ?org <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> ?bestuursperiode .
+    ?org org:hasPost ?mandaat .
+    ?mandataris org:holds ?mandaat .
+    OPTIONAL {
+      ?mandataris org:hasMembership ?membership.
+      ?membership ?p ?o.
+      ?membership org:organisation ?fractie.
+      ?fractie ?fractiep ?fractieo.
+    }
+  }
+  # this is to get around a virtuoso bug claiming string_output_string needs a string output as argument 1, not an arg of type INTEGER (189)
+  BIND(?g as ?h)
+}

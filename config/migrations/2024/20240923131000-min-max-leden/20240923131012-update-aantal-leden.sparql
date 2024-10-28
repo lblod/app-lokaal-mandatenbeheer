@@ -40,8 +40,11 @@ WHERE {
     ?bestuurseenheid a besluit:Bestuurseenheid ;
       skos:prefLabel ?naam2 ;
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
-    ?bestuursperiode a lmb:Bestuursperiode ;
-      skos:prefLabel "2025 - heden" .
+    VALUES ?bestuursperiode {
+      # 2024-heden
+      <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>
+    }
+    ?bestuursperiode a lmb:Bestuursperiode .
   }
   GRAPH ?h {
     ?bestuursorgaan a besluit:Bestuursorgaan ;
@@ -102,8 +105,11 @@ WHERE {
     ?bestuurseenheid a besluit:Bestuurseenheid ;
       skos:prefLabel ?naam2 ;
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
-    ?bestuursperiode a lmb:Bestuursperiode ;
-      skos:prefLabel "2025 - heden" .
+    VALUES ?bestuursperiode {
+      # 2024-heden
+      <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>
+    }
+    ?bestuursperiode a lmb:Bestuursperiode .
   }
   GRAPH ?h {
     ?bestuursorgaan a besluit:Bestuursorgaan ;
@@ -158,8 +164,11 @@ WHERE {
     ?bestuurseenheidOCMW a besluit:Bestuurseenheid ;
       besluit:werkingsgebied ?werkingsgebied ;
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
-    ?bestuursperiode a lmb:Bestuursperiode ;
-      skos:prefLabel "2025 - heden" .
+    VALUES ?bestuursperiode {
+      # 2024-heden
+      <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>
+    }
+    ?bestuursperiode a lmb:Bestuursperiode .
   }
   GRAPH ?gemeente {
     ?bestuursorgaanCBS a besluit:Bestuursorgaan ;
@@ -227,8 +236,11 @@ WHERE {
     ?bestuurseenheid a besluit:Bestuurseenheid ;
       skos:prefLabel ?naam2 ;
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
-    ?bestuursperiode a lmb:Bestuursperiode ;
-      skos:prefLabel "2025 - heden" .
+    VALUES ?bestuursperiode {
+      # 2024-heden
+      <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>
+    }
+    ?bestuursperiode a lmb:Bestuursperiode .
   }
   GRAPH ?h {
     ?bestuursorgaan a besluit:Bestuursorgaan ;
@@ -285,8 +297,11 @@ WHERE {
     ?bestuurseenheid a besluit:Bestuurseenheid ;
       skos:prefLabel ?naam2 ;
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
-    ?bestuursperiode a lmb:Bestuursperiode ;
-      skos:prefLabel "2025 - heden" .
+    VALUES ?bestuursperiode {
+      # 2024-heden
+      <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>
+    }
+    ?bestuursperiode a lmb:Bestuursperiode .
   }
   GRAPH ?h {
     ?bestuursorgaan a besluit:Bestuursorgaan ;
@@ -343,8 +358,11 @@ WHERE {
     ?bestuurseenheid a besluit:Bestuurseenheid ;
       skos:prefLabel ?naam2 ;
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003> .
-    ?bestuursperiode a lmb:Bestuursperiode ;
-      skos:prefLabel "2025 - heden" .
+    VALUES ?bestuursperiode {
+      # 2024-heden
+      <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>
+    }
+    ?bestuursperiode a lmb:Bestuursperiode .
   }
   GRAPH ?h {
     ?bestuursorgaan a besluit:Bestuursorgaan ;

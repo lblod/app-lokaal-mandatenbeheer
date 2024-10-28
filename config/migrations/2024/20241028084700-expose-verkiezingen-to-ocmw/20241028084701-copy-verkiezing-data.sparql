@@ -1,0 +1,16 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+INSERT {
+  GRAPH ?ocmwG {
+    ?verkiezing ?vp ?vo.
+  }
+} WHERE {
+  GRAPH ?ocmwG {
+    ?verkiezing mandaat:steltSamen ?gemeenteOrgInTijd.
+    ?verkiezing ext:copiedForOCMW ?ocmw.
+  }
+  ?verkiezing ?vp ?vo.
+}

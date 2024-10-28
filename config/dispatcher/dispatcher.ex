@@ -250,6 +250,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://mandataris/installatievergadering-api/")
   end
 
+  get "/election-results-api/*path", %{ layer: :api_services, accept: %{any: true} } do
+    forward(conn, path, "http://mandataris/election-results-api/")
+  end
+
   post "/files/*path", %{ layer: :api_services } do
     forward(conn, path, "http://file/files/")
   end

@@ -1,0 +1,20 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/5FBF8AE5351C30000800052B> foaf:familyName ?lastname.
+    <http://data.lblod.info/id/personen/5FBF8AE5351C30000800052B> persoon:gebruikteVoornaam ?firstname.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/5FBF8AE5351C30000800052B> foaf:familyName "Willems".
+    <http://data.lblod.info/id/personen/5FBF8AE5351C30000800052B> persoon:gebruikteVoornaam "Rudolf".
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/5FBF8AE5351C30000800052B> foaf:familyName ?lastname.
+    <http://data.lblod.info/id/personen/5FBF8AE5351C30000800052B> persoon:gebruikteVoornaam ?firstname.
+  }
+}

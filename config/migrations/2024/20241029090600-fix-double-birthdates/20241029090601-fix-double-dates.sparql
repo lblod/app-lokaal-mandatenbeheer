@@ -1,0 +1,34 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE {
+  GRAPH ?g {
+    ?geb2 ?p ?o.
+    ?s persoon:heeftGeboorte ?geb2 .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?geb2 a astreams:Tombstone.
+    ?geb2 dct:modified "2024-10-28T06:40:38.258Z"^^xsd:dateTime .
+    ?geb2 astreams:deleted "2024-10-28T06:40:38.258Z"^^xsd:dateTime .
+    ?geb2 astreams:formerType persoon:Geboorte .
+    ?geb2 owl:sameAs ?geb .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/fix-birth-dates> {
+    ?s ext:correctBirthDate ?geb.
+  }
+  GRAPH ?g {
+    ?s persoon:heeftGeboorte ?geb2.
+    ?geb2 ?p ?o.
+  }
+  FILTER(?geb2 != ?geb)
+
+}

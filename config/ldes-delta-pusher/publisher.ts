@@ -75,7 +75,6 @@ const fetchSubjectData = async (
     } WHERE {
       GRAPH ?g {
         <${subject.uri}> ?p ?o .
-        ?org a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>.
       }
       ?g ext:ownedBy ?bestuurseenheid .
       ${predicateLimiter}

@@ -1,0 +1,6 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://mu.semte.ch/graphs/public> ext:ownedBy <http://mu.semte.ch/graphs/public> .
+  }
+}

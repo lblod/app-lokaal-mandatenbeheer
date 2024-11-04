@@ -332,6 +332,10 @@ defmodule Dispatcher do
     forward(conn, [], "http://mandataris/mandatarissen/" <> id)
   end
 
+  delete "/fracties/:id", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, [], "http://mandataris/fracties/" <> id)
+  end
+
   #################################################################
   # LDES
   #################################################################

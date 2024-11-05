@@ -255,4 +255,8 @@ export const officialPredicates = {
     "http://data.vlaanderen.be/ns/mandaat#bekrachtigtAanstellingVan",
     "http://data.vlaanderen.be/ns/mandaat#bekrachtigtOntslagVan",
   ],
+  "http://www.w3.org/ns/activitystreams#Tombstone": [
+    "http://www.w3.org/ns/activitystreams#deleted",
+    "http://www.w3.org/ns/activitystreams#formerType",
+  ],
 };

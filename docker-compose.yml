@@ -119,7 +119,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-lokaal-mandatenbeheer:0.2.7
+    image: lblod/frontend-lokaal-mandatenbeheer:0.2.8
     labels:
       - "logging=true"
     restart: always
@@ -154,7 +154,7 @@ services:
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.1.5
+    image: lblod/mandataris-service:0.1.4
     labels:
       - "logging=true"
     restart: always
@@ -192,7 +192,7 @@ services:
   # LDES
   ##############################################################################
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:0.6.0
+    image: redpencil/ldes-delta-pusher:0.5.0
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
       LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"

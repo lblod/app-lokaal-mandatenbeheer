@@ -69,7 +69,7 @@ ext:geboorteF
     sh:path ( persoon:heeftGeboorte persoon:datum ).
 ext:geslachtCodeF
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelectorWithoutMeta;
+    form:displayType displayTypes:genderSelector;
     sh:group ext:persoonPG;
     sh:name "Geslacht";
     sh:order 7;

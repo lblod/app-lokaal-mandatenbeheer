@@ -1,0 +1,3 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns1:	<http://www.w3.org/ns/person#> .
+<http://data.lblod.info/id/personen/3be6f949-d3fb-428f-b4c6-26ab95fad75d>	rdf:type	ns1:Person .

@@ -1,0 +1,25 @@
+# started rechtstreekse-verkiezingen-en-kandidatenlijsten at 2024-11-05T09:32:53+00:00
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/c4e4a487-208b-4407-a51b-69a516e22dc6> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/33cfc6532bd3b40de7bd5f3cdecabf5a6d1284e65d4a4ba95a4d5f3b8f62c106>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "c4e4a487-208b-4407-a51b-69a516e22dc6" .
+
+<http://data.lblod.info/id/kandidatenlijsten/6714106b-bef4-4844-a323-3b5689c7912b> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/c4e4a487-208b-4407-a51b-69a516e22dc6>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/95de36e5-8c7a-4308-af7b-75afbd943dd2>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "6714106b-bef4-4844-a323-3b5689c7912b";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "Gemeentebelangen" .
+
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/d0c74852-3c2f-4f38-beef-d03c2c3fb4fe> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/d4e43f1539f689e4551632b742c01e093e91272222e6174817713019a9160d05>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "d0c74852-3c2f-4f38-beef-d03c2c3fb4fe" .
+
+<http://data.lblod.info/id/kandidatenlijsten/f239a447-d2dd-44c8-814d-a529e3409a92> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/d0c74852-3c2f-4f38-beef-d03c2c3fb4fe>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/95de36e5-8c7a-4308-af7b-75afbd943dd2>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "f239a447-d2dd-44c8-814d-a529e3409a92";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "Team Dynamisch" .
+# finished rechtstreekse-verkiezingen-en-kandidatenlijsten at 2024-11-05T09:32:53+00:00

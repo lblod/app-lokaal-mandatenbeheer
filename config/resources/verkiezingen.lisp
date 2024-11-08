@@ -25,7 +25,7 @@
                 (:geldigheid :date ,(s-prefix "dct:valid")))
   :has-many `((bestuursorgaan :via ,(s-prefix "mandaat:steltSamen")
                              :as "bestuursorganen-in-tijd")
-              ((kandidatenlijst :via ,(s-prefix "mandaat:behoortTot")
+              (kandidatenlijst :via ,(s-prefix "mandaat:behoortTot")
                                :inverse t
                                :as "kandidatenlijsten"))
   :resource-base (s-url "http://data.lblod.info/id/rechtstreekse-verkiezingen/")

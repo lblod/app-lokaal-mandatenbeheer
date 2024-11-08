@@ -6,7 +6,7 @@ INSERT {
   }
 }
 WHERE {
-  GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-2024-zonder-strijd> {
+  GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-ocmw> {
     ?verkiezing a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>.
     ?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan.
     ?lijst <http://data.vlaanderen.be/ns/mandaat#behoortTot> ?verkiezing.

@@ -4,6 +4,7 @@ PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 PREFIX extlmb:  <http://mu.semte.ch/vocabularies/ext/lmb/>
 PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 # We link the verkiezingsresultaten to all relevant bestuursorganen for the latest bestuursperiod, except in the gemeente eenheid for faciliteitgemeentes.
 INSERT {
@@ -16,12 +17,10 @@ INSERT {
     ?ogOrgIT a besluit:Bestuursorgaan ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
     ?orgIT a besluit:Bestuursorgaan ;
-      mandaat:isTijdsspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
-      besluit:classificatie ?classificatie ;
+      mandaat:isTijdspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
+      mandaat:isTijdspecialisatieVan / besluit:classificatie ?classificatie ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
-    ?classificatie skos:inScheme ?classificatieScheme .
     ?verkiezing mandaat:steltSamen ?ogOrgIT .
-    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
     # Not BCSD
     FILTER (?classificatie != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>)
     FILTER (?ogOrgIT != ?orgIT)
@@ -29,7 +28,9 @@ INSERT {
       ?verkiezing mandaat:steltSamen ?orgIT .
     }
   }
-  GRAPH ?h {
+  GRAPH ?public {
+    ?classificatie skos:inScheme ?classificatieScheme .
+    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
     FILTER NOT EXISTS {
       ?bestuurseenheid extlmb:faciliteitenGemeente true ;
         besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
@@ -48,11 +49,9 @@ INSERT {
     ?ogOrgIT a besluit:Bestuursorgaan ;
       lmb:heeftBestuursperiode ?bestuursperiode .
     ?orgIT a besluit:Bestuursorgaan ;
-      besluit:classificatie ?classificatie ;
+      mandaat:isTijdspecialisatieVan / besluit:classificatie ?classificatie ;
       lmb:heeftBestuursperiode ?bestuursperiode .
-    ?classificatie skos:inScheme ?classificatieScheme .
     ?verkiezing mandaat:steltSamen ?ogOrgIT .
-    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
     # Not BCSD
     FILTER (?classificatie != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>)
     FILTER (?ogOrgIT != ?orgIT)
@@ -60,6 +59,10 @@ INSERT {
     FILTER NOT EXISTS {
       ?verkiezing mandaat:steltSamen ?orgIT .
     }
+  }
+  GRAPH ?public {
+    ?classificatie skos:inScheme ?classificatieScheme .
+    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
   }
 };
 
@@ -72,17 +75,15 @@ INSERT {
   GRAPH ?g {
     ?verkiezing a mandaat:RechtstreekseVerkiezing .
     ?ogOrgIT a besluit:Bestuursorgaan ;
-      mandaat:isTijdsspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
+      mandaat:isTijdspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 ;
       ext:origineleBestuursorgaan ?originOgOrgIT .
     ?orgIT a besluit:Bestuursorgaan ;
-      mandaat:isTijdsspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
-      besluit:classificatie ?classificatie ;
+      mandaat:isTijdspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
+      mandaat:isTijdspecialisatieVan / besluit:classificatie ?classificatie ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 ;
       ext:origineleBestuursorgaan ?originOrgIT .
-    ?classificatie skos:inScheme ?classificatieScheme .
     ?verkiezing mandaat:steltSamen ?ogOrgIT .
-    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
     # Not BCSD
     FILTER (?classificatie != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>)
     FILTER (?ogOrgIT != ?orgIT)
@@ -90,9 +91,11 @@ INSERT {
       ?verkiezing mandaat:steltSamen ?orgIT .
     }
   }
-  GRAPH ?h {
+  GRAPH ?public {
+    ?classificatie skos:inScheme ?classificatieScheme .
     ?bestuurseenheid extlmb:faciliteitenGemeente true ;
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
   }
 };
 
@@ -105,15 +108,13 @@ INSERT {
   GRAPH ?g {
     ?verkiezing a mandaat:RechtstreekseVerkiezing .
     ?ogOrgIT a besluit:Bestuursorgaan ;
-      mandaat:isTijdsspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
+      mandaat:isTijdspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
     ?orgIT a besluit:Bestuursorgaan ;
-      mandaat:isTijdsspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
-      besluit:classificatie ?classificatie ;
+      mandaat:isTijdspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
+      mandaat:isTijdspecialisatieVan / besluit:classificatie ?classificatie ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
-    ?classificatie skos:inScheme ?classificatieScheme .
     ?verkiezing mandaat:steltSamen ?ogOrgIT .
-    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
     # Not BCSD
     FILTER (?classificatie != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>)
     FILTER (?ogOrgIT != ?orgIT)
@@ -125,8 +126,10 @@ INSERT {
       ?orgIT ext:origineleBestuursorgaan ?originOrgIT .
     }
   }
-  GRAPH ?h {
+  GRAPH ?public {
+    ?classificatie skos:inScheme ?classificatieScheme .
     ?bestuurseenheid extlmb:faciliteitenGemeente true ;
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
   }
 };

@@ -1,6 +1,7 @@
 INSERT {
   GRAPH ?g {
     ?verkiezing ?p ?o.
+    ?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan .
     ?lijst ?lijstp ?lijsto.
     ?resultaat ?resultaatp ?resultaato.
   }
@@ -10,16 +11,21 @@ INSERT {
     ?lijst ?lijstp ?lijsto.
     ?resultaat ?resultaatp ?resultaato.
   }
+  # This makes it easier for later queries.
+  GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-ocmw> {
+    ?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?fakeGemeenteBestuursorgaan .
+  }
 }
 WHERE {
   GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-ocmw> {
     ?verkiezing a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>.
-    ?verkiezing  <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan.
+    ?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan.
     ?verkiezing ?p ?o.
     ?lijst <http://data.vlaanderen.be/ns/mandaat#behoortTot> ?verkiezing.
     ?lijst ?lijstp ?lijsto.
     ?resultaat <http://data.vlaanderen.be/ns/mandaat#isResultaatVoor> ?lijst.
     ?resultaat ?resultaatp ?resultaato.
+    FILTER ( ?p != <http://data.vlaanderen.be/ns/mandaat#steltSamen> )
   }
   GRAPH ?g {
     ?bestuursorgaan <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?bestuursorgaanWithoutTime.

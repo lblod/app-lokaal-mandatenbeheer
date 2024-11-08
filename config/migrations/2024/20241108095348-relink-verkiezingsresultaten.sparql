@@ -35,4 +35,30 @@ INSERT {
         besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
     }
   }
+};
+
+# We link the verkiezingsresultaten to all relevant bestuursorganen for previous bestuursperiodes.
+INSERT {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?orgIT.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?verkiezing a mandaat:RechtstreekseVerkiezing .
+    ?ogOrgIT a besluit:Bestuursorgaan ;
+      lmb:heeftBestuursperiode ?bestuursperiode .
+    ?orgIT a besluit:Bestuursorgaan ;
+      besluit:classificatie ?classificatie ;
+      lmb:heeftBestuursperiode ?bestuursperiode .
+    ?classificatie skos:inScheme ?classificatieScheme .
+    ?verkiezing mandaat:steltSamen ?ogOrgIT .
+    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
+    # Not BCSD
+    FILTER (?classificatie != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>)
+    FILTER (?ogOrgIT != ?orgIT)
+    FILTER (?bestuursperiode != bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 )
+    FILTER NOT EXISTS {
+      ?verkiezing mandaat:steltSamen ?orgIT .
+    }
+  }
 }

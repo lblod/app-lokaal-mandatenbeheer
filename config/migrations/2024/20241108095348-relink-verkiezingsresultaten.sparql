@@ -95,3 +95,38 @@ INSERT {
       besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
   }
 };
+
+# We link the verkiezingsresultaten to all relevant bestuursorganen for the latest bestuursperiod, for the gemeente eenheid for faciliteitgemeentes -> Only for the real ones.
+INSERT {
+  GRAPH ?g {
+    ?verkiezing mandaat:steltSamen ?orgIT.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?verkiezing a mandaat:RechtstreekseVerkiezing .
+    ?ogOrgIT a besluit:Bestuursorgaan ;
+      mandaat:isTijdsspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
+      lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
+    ?orgIT a besluit:Bestuursorgaan ;
+      mandaat:isTijdsspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
+      besluit:classificatie ?classificatie ;
+      lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
+    ?classificatie skos:inScheme ?classificatieScheme .
+    ?verkiezing mandaat:steltSamen ?ogOrgIT .
+    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
+    # Not BCSD
+    FILTER (?classificatie != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>)
+    FILTER (?ogOrgIT != ?orgIT)
+    FILTER NOT EXISTS {
+      ?verkiezing mandaat:steltSamen ?orgIT .
+    }
+    FILTER NOT EXISTS {
+      ?ogOrgIT ext:origineleBestuursorgaan ?originOgOrgIT .
+      ?orgIT ext:origineleBestuursorgaan ?originOrgIT .
+    }
+  }
+  GRAPH ?h {
+    ?bestuurseenheid extlmb:faciliteitenGemeente true ;
+      besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+};

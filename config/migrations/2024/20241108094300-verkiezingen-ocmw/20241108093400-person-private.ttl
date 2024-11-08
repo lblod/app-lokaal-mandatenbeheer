@@ -1,0 +1,4 @@
+@prefix ns0:	<http://data.vlaanderen.be/ns/mandaat#> .
+<http://data.lblod.info/id/kandidatenlijsten/012cc01d-7635-4012-a2c3-e35da366f0be>	ns0:heeftKandidaat	<http://data.lblod.info/id/personen/5C5AF69DD5BECA000B0004A2> ,
+		<http://data.lblod.info/id/personen/52593388bf9faf02d3fd0d22b98e309093c0d537cac6cb17159eabcc6b23276c> ,
+		<http://data.lblod.info/id/personen/310fb8c7ef008754ca61a89b6914f2a876c1b4af557eafeff5b5f4877cc7a944> .

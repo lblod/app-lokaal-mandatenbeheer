@@ -1,0 +1,14 @@
+DELETE {
+  GRAPH ?g {
+    ?other <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-ocmw> {
+    ?verkiezing  <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan.
+  }
+  GRAPH ?g {
+    ?other <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan.
+  }
+
+}

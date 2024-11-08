@@ -1,0 +1,26 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?graph {
+  ?mandataris mandaat:rangorde ?rangorde.
+  }
+}
+INSERT {
+  GRAPH ?graph {
+    ?mandataris mandaat:rangorde ?newLabel.
+  }
+}
+WHERE {
+  GRAPH ?graph {
+    ?mandataris a mandaat:Mandataris.
+    ?mandataris org:holds ?mandaat.
+    ?mandataris mandaat:rangorde ?rangorde.
+
+    BIND(<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011> AS ?gemeenteraad)
+    ?mandaat org:role ?gemeenteraad.
+
+    FILTER regex(str(?rangorde), "(gemeenteraadslid|Gemeenteraadslid)$")
+    BIND(REPLACE(str(?rangorde), "(gemeenteraadslid|Gemeenteraadslid)$", "lid") AS ?newLabel)
+  }
+}

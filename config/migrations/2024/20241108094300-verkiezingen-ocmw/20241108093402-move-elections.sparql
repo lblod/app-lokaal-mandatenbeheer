@@ -4,6 +4,12 @@ INSERT {
     ?lijst ?lijstp ?lijsto.
     ?resultaat ?resultaatp ?resultaato.
   }
+  GRAPH ?gGemeente {
+    ?verkiezing ?p ?o.
+    ?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?fakeGemeenteBestuursorgaan .
+    ?lijst ?lijstp ?lijsto.
+    ?resultaat ?resultaatp ?resultaato.
+  }
 }
 WHERE {
   GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-ocmw> {
@@ -17,6 +23,9 @@ WHERE {
   }
   GRAPH ?g {
     ?bestuursorgaan <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?bestuursorgaanWithoutTime.
+  }
+  GRAPH ?gGemeente {
+    ?fakeGemeenteBestuursorgaan <http://mu.semte.ch/vocabularies/ext/origineleBestuursorgaan> ?bestuursorgaan.
   }
 
 }

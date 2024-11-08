@@ -8,6 +8,7 @@ import {
   ldesInstances,
   officialPredicates,
 } from "./ldes-instances";
+import dispatch from "./dispatch";
 
 export type LDES_TYPE = "public" | "abb" | "internal";
 export type TypesWithFilter = {
@@ -139,7 +140,10 @@ const streamTargets: Record<LDES_TYPE, string[]> = {
  * @param ldesType the type of the LDES endpoint to publish to (e.g. "public" or "abb")
  * @param subject the uri of the subject to fetch data for and publish
  */
-export const publish = async (subject: InterestingSubject) => {
+export const publish = async (
+  subject: InterestingSubject,
+  additionalTriples?: string
+) => {
   let targets;
   if (typeof subject.ldesType === "string") {
     targets = streamTargets[subject.ldesType];
@@ -148,7 +152,18 @@ export const publish = async (subject: InterestingSubject) => {
   }
   await Promise.all(
     targets.map(async (target) => {
-      const data = await fetchSubjectData(subject, target);
+      if (ldesInstances[target].entities[subject.type]?.republishRelated) {
+        await republishRelated(
+          subject,
+          ldesInstances[target].entities[subject.type].republishRelated
+        );
+      }
+
+      let data = await fetchSubjectData(subject, target);
+      if (additionalTriples) {
+        data = `${data}\n${additionalTriples}`;
+      }
+
       log(
         `[${target}] Publishing data for subject ${subject.uri}:\n${data}`,
         "debug"
@@ -163,33 +178,31 @@ export const publish = async (subject: InterestingSubject) => {
   );
 };
 
-/**
- * Publish the given triples to the given ldesType
- * @param subject the uri of the subject for which extra data is published
- * @param data the triples to publish on the given endpoint
- */
-export const publishTriples = async (
+async function republishRelated(
   subject: InterestingSubject,
-  data: string
-) => {
-  let targets;
-  if (typeof subject.ldesType === "string") {
-    targets = streamTargets[subject.ldesType];
-  } else {
-    targets = Object.keys(subject.ldesType);
-  }
-  await Promise.all(
-    targets.map(async (target) => {
-      log(
-        `[${target}] Publishing extra data for subject ${subject.uri}:\n${data}`,
-        "debug"
-      );
-      return sendLDESRequest(target, data).catch((e) => {
-        log(
-          `Error publishing extra data for subject ${subject.uri} to LDES endpoint ${subject.ldesType}: ${e}`,
-          "error"
-        );
-      });
-    })
-  );
-};
+  predicates: string[]
+) {
+  const relatedSubjects = await querySudo(`
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    SELECT DISTINCT ?related ?type ?g WHERE {
+      GRAPH ?g {
+        <${subject.uri}> ?p ?related .
+        ?related a ?type .
+      }
+      ?g ext:ownedBy ?bestuurseenheid .
+      VALUES ?p { ${predicates.map((p) => sparqlEscapeUri(p)).join(" ")} }
+    }
+  `);
+  const fakeDeltas = relatedSubjects.results.bindings.map((subject) => ({
+    inserts: [
+      {
+        subject: { value: subject.related.value },
+        predicate: { value: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+        object: { value: subject.type.value },
+        graph: { value: subject.g.value },
+      },
+    ],
+    deletes: [],
+  }));
+  await dispatch(fakeDeltas);
+}

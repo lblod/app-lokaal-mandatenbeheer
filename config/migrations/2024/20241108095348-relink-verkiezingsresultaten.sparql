@@ -1,6 +1,7 @@
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX extlmb:  <http://mu.semte.ch/vocabularies/ext/lmb/>
 PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
 
 INSERT {
@@ -13,8 +14,13 @@ INSERT {
     ?ogOrgIT a besluit:Bestuursorgaan ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
     ?orgIT a besluit:Bestuursorgaan ;
+      besluit:classificatie ?classificatie .
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
+    ?classificatie skos:inScheme ?classificatieScheme .
     ?verkiezing mandaat:steltSamen ?ogOrgIT .
+    VALUES ?classificatieScheme { extlmb:gemeente-bestuursorgaan-codes extlmb:decretale-bestuursorgaan-codes }
+    # Not BCSD
+    FILTER (?classificatie != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>)
     FILTER (?ogOrgIT != ?orgIT)
     FILTER NOT EXISTS {
       ?verkiezing mandaat:steltSamen ?orgIT .

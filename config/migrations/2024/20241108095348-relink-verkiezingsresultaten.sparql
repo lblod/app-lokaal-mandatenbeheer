@@ -3,7 +3,9 @@ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 PREFIX extlmb:  <http://mu.semte.ch/vocabularies/ext/lmb/>
 PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
+# We link the verkiezingsresultaten to all relevant bestuursorganen for the latest bestuursperiod, except in the gemeente eenheid for faciliteitgemeentes.
 INSERT {
   GRAPH ?g {
     ?verkiezing mandaat:steltSamen ?orgIT.
@@ -14,7 +16,8 @@ INSERT {
     ?ogOrgIT a besluit:Bestuursorgaan ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
     ?orgIT a besluit:Bestuursorgaan ;
-      besluit:classificatie ?classificatie .
+      mandaat:isTijdsspecialisatieVan / besluit:bestuurt ?bestuurseenheid ;
+      besluit:classificatie ?classificatie ;
       lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
     ?classificatie skos:inScheme ?classificatieScheme .
     ?verkiezing mandaat:steltSamen ?ogOrgIT .
@@ -24,6 +27,12 @@ INSERT {
     FILTER (?ogOrgIT != ?orgIT)
     FILTER NOT EXISTS {
       ?verkiezing mandaat:steltSamen ?orgIT .
+    }
+  }
+  GRAPH ?h {
+    FILTER NOT EXISTS {
+      ?bestuurseenheid extlmb:faciliteitenGemeente true ;
+        besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
     }
   }
 }

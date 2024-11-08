@@ -1,0 +1,17 @@
+PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+ 
+INSERT {
+  GRAPH ?graph {
+    ?bestuurseenheid extlmb:faciliteitenGemeente true .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?bestuurseenheid a besluit:Bestuurseenheid ;
+      skos:prefLabel ?eenheidsNaam .
+    VALUES ?eenheidsNaam { "Drogenbos" "Kraainem" "Linkebeek" "Sint-Genesius-Rode" "Voeren" "Wemmel" "Wezembeek-Oppem" }
+  }
+  BIND (?g AS ?graph)
+}

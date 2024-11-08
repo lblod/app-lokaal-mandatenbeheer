@@ -2,6 +2,7 @@ import { Changeset } from "../types";
 import { handleRegularTypes } from "./handle-regular-types";
 import { handleMandatarisType } from "./handle-mandataris-type";
 import { handleDecisionType } from "./handle-decision-type";
+import { handleMembershipType } from "./handle-membership-type";
 
 export default async function dispatch(changesets: Changeset[]) {
   const nonHistoryChangesets = filterOutNonAppChanges(changesets);
@@ -9,6 +10,7 @@ export default async function dispatch(changesets: Changeset[]) {
   handleRegularTypes(nonHistoryChangesets);
   handleMandatarisType(nonHistoryChangesets);
   handleDecisionType(nonHistoryChangesets);
+  handleMembershipType(nonHistoryChangesets);
 }
 
 function filterOutNonAppChanges(changesets: Changeset[]) {

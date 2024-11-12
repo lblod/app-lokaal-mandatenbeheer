@@ -123,6 +123,8 @@ INSERT {
     }
     FILTER NOT EXISTS {
       ?ogOrgIT ext:origineleBestuursorgaan ?originOgOrgIT .
+    }
+    FILTER NOT EXISTS {
       ?orgIT ext:origineleBestuursorgaan ?originOrgIT .
     }
   }

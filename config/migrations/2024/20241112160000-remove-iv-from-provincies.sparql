@@ -1,0 +1,23 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+DELETE {
+  GRAPH ?eenheidsGraph {
+    ?installatievergadering a lmb:Installatievergadering.
+    ?installatievergadering ?p ?o.
+  }
+}
+WHERE {
+  GRAPH ?eenheidsGraph {
+    ?installatievergadering a lmb:Installatievergadering.
+    ?installatievergadering lmb:heeftBestuurseenheid ?bestuurseenheid.
+    ?installatievergadering lmb:heeftBestuursperiode ?bestuursperiode.
+  }  
+
+  ?bestuurseenheid besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>. # Provincie
+  ?bestuursperiode lmb:startYear ?startYear.
+
+  FILTER NOT EXISTS {
+    ?bestuursperiode lmb:endYear ?endYear.
+  }
+}

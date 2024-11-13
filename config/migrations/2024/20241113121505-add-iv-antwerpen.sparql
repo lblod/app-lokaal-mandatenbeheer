@@ -18,7 +18,7 @@ WHERE {
     <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c>
   }
   ?bestuurseenheid a besluit:Bestuurseenheid ;
-    besluit:classificatie ?classificatie .
+    besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
 
   {
     SELECT DISTINCT ?g WHERE {
@@ -28,8 +28,6 @@ WHERE {
     }
     LIMIT 1
   }
-
-  FILTER (?classificatie IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>))
 
   BIND(STRUUID() AS ?uuid)
   BIND(IRI(CONCAT("http://data.lblod.info/id/installatievergaderingen/", ?uuid)) AS ?installatievergadering)

@@ -1,5 +1,6 @@
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX bestuursfunctieCode: <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/>
 
 DELETE {
   GRAPH ?graph {
@@ -17,7 +18,11 @@ WHERE {
     ?mandataris org:holds ?mandaat.
     ?mandataris mandaat:rangorde ?rangorde.
 
-    BIND(<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011> AS ?gemeenteraad)
+    VALUES ?gemeenteraad {
+      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000011 # Gemeenteraadslid
+      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000012 # Voorzitter van de gemeenteraad
+      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000015 # Lid van de Raad voor Maatschappelijk Welzijn
+    }
     ?mandaat org:role ?gemeenteraad.
 
     FILTER regex(str(?rangorde), "(gemeenteraadslid|Gemeenteraadslid)$")

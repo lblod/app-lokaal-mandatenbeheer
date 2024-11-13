@@ -1,9 +1,9 @@
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
 PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
-PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX lijsttype: <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/>
 
 DELETE {
   GRAPH ?g {
@@ -14,7 +14,7 @@ DELETE {
   ?eenheid besluit:classificatie ?classificatie .
   GRAPH ?g {
     ?orgIT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid .
-    ?orgIT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> .
+    ?orgIT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
     ?verkiezing mandaat:steltSamen ?orgIT .
     ?verkiezing ?p ?o .
     ?lijst mandaat:behoortTot ?verkiezing .

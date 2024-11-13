@@ -1,0 +1,14 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g {
+    ?s dct:modified ?one.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s dct:modified ?one.
+    ?s dct:modified ?two.
+  }
+  ?g ext:ownedBy ?org.
+  FILTER (?one < ?two)
+}

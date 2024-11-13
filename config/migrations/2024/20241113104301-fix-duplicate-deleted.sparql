@@ -1,0 +1,15 @@
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g {
+    ?s astreams:deleted ?one.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s astreams:deleted ?one.
+    ?s astreams:deleted ?two.
+  }
+  ?g ext:ownedBy ?org.
+  FILTER (?one < ?two)
+}

@@ -18,17 +18,10 @@ WHERE {
     <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c>
   }
   ?bestuurseenheid a besluit:Bestuurseenheid ;
-    besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
-
-  {
-    SELECT DISTINCT ?g WHERE {
-      GRAPH ?g {
-        ?orgaan besluit:bestuurt ?bestuurseenheid .
-      }
-    }
-    LIMIT 1
-  }
+    besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+    mu:uuid ?bestuurseenheidId .
 
   BIND(STRUUID() AS ?uuid)
   BIND(IRI(CONCAT("http://data.lblod.info/id/installatievergaderingen/", ?uuid)) AS ?installatievergadering)
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", STR(?bestuurseenheidId), "/LoketLB-mandaatGebruiker")) AS ?g)
 }

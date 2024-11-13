@@ -1,0 +1,30 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX lijsttype: <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/>
+
+DELETE {
+  GRAPH ?g {
+    ?verkiezing ?p ?o .
+    ?lijst mandaat:behoortTot ?verkiezing .
+  }
+} WHERE {
+  ?eenheid a besluit:Bestuurseenheid .
+  ?eenheid besluit:classificatie ?classificatie .
+  GRAPH ?g {
+    ?orgIT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid .
+    ?orgIT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
+    ?verkiezing mandaat:steltSamen ?orgIT .
+    ?verkiezing ?p ?o .
+    ?lijst mandaat:behoortTot ?verkiezing .
+    ?lijst mandaat:lijsttype ?lijsttype .
+  }
+  FILTER (
+    (?classificatie = bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000000 && ?lijsttype != lijsttype:90e3b7d0-2fae-43a1-957e-6daa8d072be1 ) ||
+    (?classificatie = bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001 && ?lijsttype != lijsttype:95de36e5-8c7a-4308-af7b-75afbd943dd2 ) ||
+    (?classificatie = bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000002 && ?lijsttype != lijsttype:95de36e5-8c7a-4308-af7b-75afbd943dd2 && ?lijsttype != lijsttype:967a4dd2-53d7-48e8-becd-16a354580623 ) ||
+    (?classificatie = bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000003 && ?lijsttype != lijsttype:44aa08d2-fa02-42a3-8ae2-7dbfb23afdcc ) 
+  )
+}

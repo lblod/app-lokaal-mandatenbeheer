@@ -1,0 +1,21 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon ?pp ?po .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person .
+    ?res a mandaat:Verkiezingsresultaat .
+    ?res mandaat:isResultaatVan ?persoon .
+    FILTER NOT EXISTS {
+      ?res mandaat:isResultaatVoor ?lijst .
+    }
+    FILTER NOT EXISTS {
+      ?mandaat mandaat:isBestuurlijkeAliasVan ?persoon .
+    }
+    ?persoon ?pp ?po .
+  }
+}

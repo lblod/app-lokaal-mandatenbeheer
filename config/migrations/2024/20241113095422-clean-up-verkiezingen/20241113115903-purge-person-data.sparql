@@ -1,0 +1,30 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+
+DELETE {
+  GRAPH ?g {
+    ?identifier ?ip ?io .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?identifier a adms:Identifier .
+    FILTER NOT EXISTS {
+      ?persoon adms:identifier ?identifier .
+    }
+    ?identifier ?ip ?io .
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?geboorte ?gp ?go .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?geboorte a persoon:Geboorte .
+    FILTER NOT EXISTS {
+      ?persoon persoon:heeftGeboorte ?geboorte .
+    }
+    ?geboorte ?gp ?go .
+  }
+}

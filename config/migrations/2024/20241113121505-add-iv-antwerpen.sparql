@@ -1,0 +1,36 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ivs: <http://data.lblod.info/id/concept/InstallatievergaderingStatus/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+
+INSERT {
+  GRAPH ?g {
+    ?installatievergadering a lmb:Installatievergadering ;
+      mu:uuid ?uuid ;
+      lmb:hasStatus ivs:b54dbe98-d618-4af7-9f01-791aa90774e4 ;
+      lmb:heeftBestuurseenheid ?bestuurseenheid ;
+      lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 .
+  }
+}
+WHERE {
+  VALUES ?bestuurseenheid {
+    <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c>
+  }
+  ?bestuurseenheid a besluit:Bestuurseenheid ;
+    besluit:classificatie ?classificatie .
+
+  {
+    SELECT DISTINCT ?g WHERE {
+      GRAPH ?g {
+        ?orgaan besluit:bestuurt ?bestuurseenheid .
+      }
+    }
+    LIMIT 1
+  }
+
+  FILTER (?classificatie IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>))
+
+  BIND(STRUUID() AS ?uuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/installatievergaderingen/", ?uuid)) AS ?installatievergadering)
+}

@@ -8,6 +8,7 @@ PREFIX lijsttype: <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype
 DELETE {
   GRAPH ?g {
     ?verkiezing ?p ?o .
+    ?lijst mandaat:behoortTot ?verkiezing .
   }
 } WHERE {
   ?eenheid a besluit:Bestuurseenheid .

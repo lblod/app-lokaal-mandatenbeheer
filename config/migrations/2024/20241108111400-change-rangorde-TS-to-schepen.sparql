@@ -23,11 +23,10 @@ WHERE {
       bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000014 # MANDAAT_SCHEPEN_CODE
       bestuursfunctieCode:59a90e03-4f22-4bb9-8c91-132618db4b38 # MANDAAT_TOEGEVOEGDE_SCHEPEN_CODE
       bestuursfunctieCode:5ab0e9b8a3b2ca7c5e00001e # MANDAAT_DISTRICT_SCHEPEN_CODE
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000020 # MANDAAT_GEDEPUTEERDE_CODE
     } 
     ?mandaat org:role ?schepenMandaat.
 
-    FILTER regex(str(?rangorde), "(Toegevoegde schepen|Districtsschepen|Gedeputeerde)$")
-    BIND(REPLACE(str(?rangorde), "(Toegevoegde schepen|Districtsschepen|Gedeputeerde)$", "schepen") AS ?newLabel)
+    FILTER regex(str(?rangorde), "(Toegevoegde schepen|Districtsschepen|Schepen)$")
+    BIND(REPLACE(str(?rangorde), "(Toegevoegde schepen|Districtsschepen|Schepen)$", "schepen") AS ?newLabel)
   }
 }

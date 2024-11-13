@@ -1,0 +1,183 @@
+# started rechtstreekse-verkiezingen-en-kandidatenlijsten at 2024-11-08T08:35:52+00:00
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/41f34d2e-797d-4c6f-86e4-bdb5e5f2397f> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/62d49d9792909fbac9b43bb03472c484140611c328958e1514c97fa73e3efa2e>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "41f34d2e-797d-4c6f-86e4-bdb5e5f2397f" .
+
+<http://data.lblod.info/id/kandidatenlijsten/31e4d06b-9c5b-4b44-bd30-f8e666e93397> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/41f34d2e-797d-4c6f-86e4-bdb5e5f2397f>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "31e4d06b-9c5b-4b44-bd30-f8e666e93397";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "LB DROGENBOS +" .
+
+<http://data.lblod.info/id/kandidatenlijsten/7e672a74-b551-47ed-9dec-ab946e56d43d> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/41f34d2e-797d-4c6f-86e4-bdb5e5f2397f>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "9";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "7e672a74-b551-47ed-9dec-ab946e56d43d";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "go1620" .
+
+<http://data.lblod.info/id/kandidatenlijsten/ef4b1d4e-87de-49de-956b-1cfe57b66057> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/41f34d2e-797d-4c6f-86e4-bdb5e5f2397f>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "10";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "ef4b1d4e-87de-49de-956b-1cfe57b66057";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "UNION FRANCOPHONE" .
+
+<http://data.lblod.info/id/kandidatenlijsten/3c3da0c2-c5e1-401e-a06e-3246026d5069> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/41f34d2e-797d-4c6f-86e4-bdb5e5f2397f>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "11";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "3c3da0c2-c5e1-401e-a06e-3246026d5069";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "ALLIANCE FRANCOPHONE" .
+
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/77fd4519-d530-4cbd-b435-a737472745de> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/b173febc307fe2b703fc029e789b141d232fabc4e1c2c879b2852166b1df1ab7>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "77fd4519-d530-4cbd-b435-a737472745de" .
+
+<http://data.lblod.info/id/kandidatenlijsten/9961a92b-7369-43e4-a02f-40e63288183a> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/77fd4519-d530-4cbd-b435-a737472745de>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "5";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "9961a92b-7369-43e4-a02f-40e63288183a";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "N-VA" .
+
+<http://data.lblod.info/id/kandidatenlijsten/2d2c130c-06fa-49e8-a7e0-5040a19d02de> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/77fd4519-d530-4cbd-b435-a737472745de>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "2d2c130c-06fa-49e8-a7e0-5040a19d02de";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "LB KRAAINEM-UNIE" .
+
+<http://data.lblod.info/id/kandidatenlijsten/07e322a5-fd4d-457a-b572-91e29a3384ae> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/77fd4519-d530-4cbd-b435-a737472745de>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "9";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "07e322a5-fd4d-457a-b572-91e29a3384ae";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "MR-DéFI-IND" .
+
+<http://data.lblod.info/id/kandidatenlijsten/bba638e7-960d-4a87-a3ad-92af3b6e2e96> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/77fd4519-d530-4cbd-b435-a737472745de>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "10";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "bba638e7-960d-4a87-a3ad-92af3b6e2e96";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "PRO Kraainem" .
+
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/7c9377fc-4bb7-4c05-bff0-e72d2ad811d8> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/107d764775956e4780cd6c8e9db3ee77b7b955af29f093b7ff26f4122d16fe74>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "7c9377fc-4bb7-4c05-bff0-e72d2ad811d8" .
+
+<http://data.lblod.info/id/kandidatenlijsten/7af5f200-5b3e-41c7-b010-f094c7315b5a> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/7c9377fc-4bb7-4c05-bff0-e72d2ad811d8>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "7af5f200-5b3e-41c7-b010-f094c7315b5a";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "LB" .
+
+<http://data.lblod.info/id/kandidatenlijsten/ca008b98-70d3-47bf-8d05-821c9f5c2839> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/7c9377fc-4bb7-4c05-bff0-e72d2ad811d8>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "9";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "ca008b98-70d3-47bf-8d05-821c9f5c2839";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "1630LKB" .
+
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/825067a6-3efe-46f9-a1a0-3cee0f5f19d4> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/b65599273b7d17e1cbd8810f366666748439fa8fcf99583de12e20ce30155524>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "825067a6-3efe-46f9-a1a0-3cee0f5f19d4" .
+
+<http://data.lblod.info/id/kandidatenlijsten/31aea8c9-6439-4ed0-8a21-97706bdec7c6> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/825067a6-3efe-46f9-a1a0-3cee0f5f19d4>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "31aea8c9-6439-4ed0-8a21-97706bdec7c6";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "Accent 1640" .
+
+<http://data.lblod.info/id/kandidatenlijsten/384b44ba-e5e2-4d9a-a926-5c3cbdd19a15> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/825067a6-3efe-46f9-a1a0-3cee0f5f19d4>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "9";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "384b44ba-e5e2-4d9a-a926-5c3cbdd19a15";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "L.Bourgmestre/Burgem" .
+
+<http://data.lblod.info/id/kandidatenlijsten/cd16ea80-9870-4c82-9cf6-ab392e9ea802> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/825067a6-3efe-46f9-a1a0-3cee0f5f19d4>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "10";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "cd16ea80-9870-4c82-9cf6-ab392e9ea802";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "VOOR RODE" .
+
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/904eded9-e44a-42ca-a847-97466b5e2ce7> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/d3d31bfa590f6305944d0cb3181efa49da24f177b3523a90cf6016ba4dc87d39>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "904eded9-e44a-42ca-a847-97466b5e2ce7" .
+
+<http://data.lblod.info/id/kandidatenlijsten/ad7d270c-7944-4e31-9236-5ddeab0bd184> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/904eded9-e44a-42ca-a847-97466b5e2ce7>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "ad7d270c-7944-4e31-9236-5ddeab0bd184";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "R.A.L." .
+
+<http://data.lblod.info/id/kandidatenlijsten/7df13549-eaf9-4cd3-9e53-aa918cc54d90> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/904eded9-e44a-42ca-a847-97466b5e2ce7>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "9";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "7df13549-eaf9-4cd3-9e53-aa918cc54d90";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "Voerbelangen" .
+
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/6fb3c64f-5dcb-4855-b01d-963da4ee39d6> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/48300be81923d492dec019999956efdb8dfe3cf296da0f06db16c4db51f86e32>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "6fb3c64f-5dcb-4855-b01d-963da4ee39d6" .
+
+<http://data.lblod.info/id/kandidatenlijsten/cb92cb90-6c4f-4aa8-b14b-547d5208c0bc> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/6fb3c64f-5dcb-4855-b01d-963da4ee39d6>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "cb92cb90-6c4f-4aa8-b14b-547d5208c0bc";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "LB Wemmel" .
+
+<http://data.lblod.info/id/kandidatenlijsten/16690208-60b2-4034-85d8-46e121f9d1cc> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/6fb3c64f-5dcb-4855-b01d-963da4ee39d6>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "9";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "16690208-60b2-4034-85d8-46e121f9d1cc";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "WEMMEL PLUS!" .
+
+<http://data.lblod.info/id/kandidatenlijsten/0656041e-1b10-46d4-8de5-58b1b9becd9a> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/6fb3c64f-5dcb-4855-b01d-963da4ee39d6>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "10";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "0656041e-1b10-46d4-8de5-58b1b9becd9a";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "IC-GB" .
+
+<http://data.lblod.info/id/rechtstreekse-verkiezingen/6ed07c4e-53b0-4469-9fca-b9dd4f0392cb> a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>;
+  <http://data.vlaanderen.be/ns/mandaat#datum> "2024-10-13"^^<http://www.w3.org/2001/XMLSchema#date>;
+  <http://data.vlaanderen.be/ns/mandaat#steltSamen> <http://data.lblod.info/id/bestuursorganen/72e21146835cb2d716667512aa0276c0f10750c7059adc4ab5d0992029959d1c>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "6ed07c4e-53b0-4469-9fca-b9dd4f0392cb" .
+
+<http://data.lblod.info/id/kandidatenlijsten/f8527254-b500-49d3-9e36-a6aab0c81d08> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/6ed07c4e-53b0-4469-9fca-b9dd4f0392cb>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "8";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "f8527254-b500-49d3-9e36-a6aab0c81d08";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "WOplus" .
+
+<http://data.lblod.info/id/kandidatenlijsten/e93eb774-97f0-4970-a471-35b4240a15e6> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/6ed07c4e-53b0-4469-9fca-b9dd4f0392cb>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "9";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "e93eb774-97f0-4970-a471-35b4240a15e6";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "LB Wezembeek-Oppem" .
+
+<http://data.lblod.info/id/kandidatenlijsten/012cc01d-7635-4012-a2c3-e35da366f0be> a <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>;
+  <http://data.vlaanderen.be/ns/mandaat#behoortTot> <http://data.lblod.info/id/rechtstreekse-verkiezingen/6ed07c4e-53b0-4469-9fca-b9dd4f0392cb>;
+  <http://data.vlaanderen.be/ns/mandaat#lijstnr> "10";
+  <http://data.vlaanderen.be/ns/mandaat#lijsttype> <http://data.vlaanderen.be/id/concept/KandidatenlijstLijsttype/967a4dd2-53d7-48e8-becd-16a354580623>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "012cc01d-7635-4012-a2c3-e35da366f0be";
+  <http://www.w3.org/2004/02/skos/core#prefLabel> "Horizon" .
+# finished rechtstreekse-verkiezingen-en-kandidatenlijsten at 2024-11-08T08:35:52+00:00

@@ -23,9 +23,9 @@
   :class (s-prefix "mandaat:RechtstreekseVerkiezing")
   :properties `((:datum :date ,(s-prefix "mandaat:datum"))
                 (:geldigheid :date ,(s-prefix "dct:valid")))
-  :has-one `((bestuursorgaan :via ,(s-prefix "mandaat:steltSamen")
-                             :as "bestuursorgaan-in-tijd"))
-  :has-many `((kandidatenlijst :via ,(s-prefix "mandaat:behoortTot")
+  :has-many `((bestuursorgaan :via ,(s-prefix "mandaat:steltSamen")
+                             :as "bestuursorganen-in-tijd")
+              (kandidatenlijst :via ,(s-prefix "mandaat:behoortTot")
                                :inverse t
                                :as "kandidatenlijsten"))
   :resource-base (s-url "http://data.lblod.info/id/rechtstreekse-verkiezingen/")

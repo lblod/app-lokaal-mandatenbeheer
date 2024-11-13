@@ -1,0 +1,24 @@
+prefix mandaat:	<http://data.vlaanderen.be/ns/mandaat#>
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?other mandaat:steltSamen ?bestuursorgaan.
+  }
+  GRAPH ?h {
+    ?other2 mandaat:steltSamen ?fakeOrgaan.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/verkiezingen-ocmw> {
+    ?verkiezing mandaat:steltSamen ?bestuursorgaan.
+  }
+  GRAPH ?g {
+    ?other mandaat:steltSamen ?bestuursorgaan.
+  }
+  GRAPH ?h {
+    ?other2 mandaat:steltSamen ?fakeOrgaan .
+    ?fakeOrgaan ext:origineleBestuursorgaan ?bestuursorgaan .
+  }
+  FILTER (?g != <http://mu.semte.ch/graphs/temp/verkiezingen-ocmw> )
+}

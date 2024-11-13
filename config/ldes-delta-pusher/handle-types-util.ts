@@ -1,6 +1,6 @@
 import { Changeset } from "../types";
-import { InterestingSubject, publish, publishTriples } from "./publisher";
 import { log } from "./logger";
+import { InterestingSubject, publish } from "./publisher";
 
 type SubjectFilter = (subjects: string[]) => Promise<InterestingSubject[]>;
 type SubjectAddition = (subject: InterestingSubject) => Promise<string>;
@@ -54,10 +54,10 @@ export const publishInterestingSubjects = async (
   // do this serially to avoid overloading the stream endpoint
   let current: InterestingSubject | undefined;
   while ((current = interestingSubjects.pop())) {
-    await publish(current);
+    let additionalTriples = "";
     if (addedData) {
-      const additionalTriples = await addedData(current);
-      await publishTriples(current, additionalTriples);
+      additionalTriples = await addedData(current);
     }
+    await publish(current, additionalTriples);
   }
 };

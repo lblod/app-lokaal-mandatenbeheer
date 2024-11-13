@@ -3,6 +3,7 @@ export const ldesInstances = {
     entities: {
       "http://data.vlaanderen.be/ns/mandaat#Mandataris": {
         specialType: true,
+        republishRelated: ["http://www.w3.org/ns/org#hasMembership"],
         healingPredicates: [
           "http://purl.org/dc/terms/modified",
           // this is the minimal config, one could also check all predicates per type, something like this,
@@ -29,9 +30,10 @@ export const ldesInstances = {
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
         "http://purl.org/dc/terms/modified",
       ],
-      "http://www.w3.org/ns/org#Membership": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://www.w3.org/ns/org#Membership": {
+        specialType: true,
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
       "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
         "http://purl.org/dc/terms/modified",
       ],
@@ -75,14 +77,16 @@ export const ldesInstances = {
     entities: {
       "http://data.vlaanderen.be/ns/mandaat#Mandataris": {
         specialType: true,
+        republishRelated: ["http://www.w3.org/ns/org#hasMembership"],
         healingPredicates: ["http://purl.org/dc/terms/modified"],
       },
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
         "http://purl.org/dc/terms/modified",
       ],
-      "http://www.w3.org/ns/org#Membership": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://www.w3.org/ns/org#Membership": {
+        specialType: true,
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
       "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
         "http://purl.org/dc/terms/modified",
       ],
@@ -135,14 +139,16 @@ export const ldesInstances = {
     entities: {
       "http://data.vlaanderen.be/ns/mandaat#Mandataris": {
         specialType: true,
+        republishRelated: ["http://www.w3.org/ns/org#hasMembership"],
         healingPredicates: ["http://purl.org/dc/terms/modified"],
       },
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
         "http://purl.org/dc/terms/modified",
       ],
-      "http://www.w3.org/ns/org#Membership": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://www.w3.org/ns/org#Membership": {
+        specialType: true,
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
       "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
         "http://purl.org/dc/terms/modified",
       ],

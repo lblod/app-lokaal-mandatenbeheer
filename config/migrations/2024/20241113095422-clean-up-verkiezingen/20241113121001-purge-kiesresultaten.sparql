@@ -1,0 +1,15 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH ?g {
+    ?res ?rp ?ro .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?res a mandaat:Verkiezingsresultaat .
+    FILTER NOT EXISTS {
+      ?res mandaat:isResultaatVoor ?lijst .
+    }
+    ?res ?rp ?ro .
+  }
+}

@@ -28,7 +28,7 @@ WHERE {
     } 
     ?mandaat org:role ?schepenMandaat.
 
-    FILTER regex(str(?rangorde), "(Toegevoegde schepen|Districtsschepen|Schepen)$")
-    BIND(REPLACE(str(?rangorde), "(Toegevoegde schepen|Districtsschepen|Schepen)$", "schepen") AS ?newLabel)
+    FILTER regex(str(?rangorde), "Toegevoegde schepen|Districtsschepen|Schepen)$")
+    BIND(REPLACE(str(?rangorde), "Toegevoegde schepen|Districtsschepen|Schepen)$", "schepen") AS ?newLabel)
   }
 }

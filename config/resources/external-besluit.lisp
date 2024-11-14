@@ -104,6 +104,8 @@
                               :as "bestuurseenheid")
              (bestuurseenheid :via ,(s-prefix "ext:origineleBestuurseenheid")
                               :as "original-bestuurseenheid")
+             (bestuurseenheid :via ,(s-prefix "ext:isTijdelijkOrgaanIn")
+                              :as "tijdelijk-orgaan-in")
              (bestuursorgaan-classificatie-code :via ,(s-prefix "besluit:classificatie")
                                                 :as "classificatie")
              (bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")

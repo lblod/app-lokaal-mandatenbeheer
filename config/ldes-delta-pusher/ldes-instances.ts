@@ -66,9 +66,17 @@ export const ldesInstances = {
           "http://purl.org/dc/terms/modified",
         ],
       },
-      "http://www.w3.org/ns/activitystreams#Tombstone": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://www.w3.org/ns/activitystreams#Tombstone": {
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+        // this is so we don't add tombstones for things that are still in another graph as a normal type
+        healingFilter: `FILTER NOT EXISTS {
+            GRAPH ?h {
+             ?s a ?otherType.
+             FILTER(?otherType != <http://www.w3.org/ns/activitystreams#Tombstone>)
+            }
+            ?h <http://mu.semte.ch/vocabularies/ext/ownedBy> ?org.
+        }`,
+      },
     },
     graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
     graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
@@ -128,9 +136,16 @@ export const ldesInstances = {
           "http://purl.org/dc/terms/modified",
         ],
       },
-      "http://www.w3.org/ns/activitystreams#Tombstone": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://www.w3.org/ns/activitystreams#Tombstone": {
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+        healingFilter: `FILTER NOT EXISTS {
+            GRAPH ?h {
+             ?s a ?otherType.
+             FILTER(?otherType != <http://www.w3.org/ns/activitystreams#Tombstone>)
+            }
+            ?h <http://mu.semte.ch/vocabularies/ext/ownedBy> ?org.
+        }`,
+      },
     },
     graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
     graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
@@ -190,9 +205,16 @@ export const ldesInstances = {
           "http://purl.org/dc/terms/modified",
         ],
       },
-      "http://www.w3.org/ns/activitystreams#Tombstone": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://www.w3.org/ns/activitystreams#Tombstone": {
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+        healingFilter: `FILTER NOT EXISTS {
+            GRAPH ?h {
+             ?s a ?otherType.
+             FILTER(?otherType != <http://www.w3.org/ns/activitystreams#Tombstone>)
+            }
+            ?h <http://mu.semte.ch/vocabularies/ext/ownedBy> ?org.
+        }`,
+      },
     },
     graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
     graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],

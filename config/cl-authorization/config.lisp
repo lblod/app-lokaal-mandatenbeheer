@@ -136,6 +136,7 @@
        :to-graph public
        :for-allowed-group "public")
 
+; second part of union is cipal only for now
 (supply-allowed-group "vendor"
   :parameters ("session_group" "session_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>

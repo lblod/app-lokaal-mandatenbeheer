@@ -68,6 +68,7 @@ export const ldesInstances = {
       },
       "http://www.w3.org/ns/activitystreams#Tombstone": {
         healingPredicates: ["http://purl.org/dc/terms/modified"],
+        // this is so we don't add tombstones for things that are still in another graph as a normal type
         healingFilter: `FILTER NOT EXISTS {
             GRAPH ?h {
              ?s a ?otherType.

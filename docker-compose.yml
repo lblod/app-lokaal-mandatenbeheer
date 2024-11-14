@@ -198,6 +198,7 @@ services:
       LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"
       CRON_HEALING: "0 0 0 * * *" # Every day at midnight
       AUTO_HEALING: "true"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: 429,500,502,503,504
       MAX_PAGE_SIZE_BYTES: 10000000
       INITIAL_STATE_LIMIT: 10000
       # for catching up after restart

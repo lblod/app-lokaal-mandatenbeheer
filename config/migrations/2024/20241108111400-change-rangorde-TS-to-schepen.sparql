@@ -18,19 +18,19 @@ WHERE {
     ?mandataris org:holds ?mandaat.
     ?mandataris mandaat:rangorde ?rangorde.
 
-    VALUES ?bestuursfunctie {
+    VALUES ?schepenen {
       bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000014 # Schepen
       bestuursfunctieCode:59a90e03-4f22-4bb9-8c91-132618db4b38 # Toegevoegde schepen
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000017 # Lid van het Vast Bureau
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000015 # Lid van de Raad voor Maatschappelijk Welzijn
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e00001a # Voorzitter van het Bijzonder Comité voor de Sociale Dienst
       bestuursfunctieCode:5ab0e9b8a3b2ca7c5e00001e # District schepen
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000019 # Lid van het Bijzonder Comité voor de Sociale Dienst
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000011 # Gemeenteraadslid
     } 
-    ?mandaat org:role ?bestuursfunctie.
+    ?mandaat org:role ?schepenen.
 
-    FILTER(CONTAINS(LCASE(?rangorde), "schepen"))
-    BIND(REPLACE(str(?rangorde), "(?i)(toegevoegde schepen|districtsschepen|schepen)", "schepen") AS ?newLabel)
+    FILTER(
+      CONTAINS(LCASE(?rangorde), "gemeenteraadslid") ||
+      CONTAINS(LCASE(?rangorde), "lid") ||
+      CONTAINS(LCASE(?rangorde), "toegevoegde schepen") ||
+      CONTAINS(LCASE(?rangorde), "districtsschepen")
+    )
+    BIND(REPLACE(str(?rangorde), "(?i)(toegevoegde schepen|districtsschepen|schepen|lid|gemeenteraadslid)", "schepen") AS ?newLabel)
   }
 }

@@ -47,6 +47,8 @@
                              :as "werkingsgebied")
              (werkingsgebied :via ,(s-prefix "ext:inProvincie")
                              :as "provincie")
+             (bestuurseenheid :via ,(s-prefix "ext:isOCMWVoor")
+                              :as "is-ocmw-voor")
              (bestuurseenheid-classificatie-code :via ,(s-prefix "besluit:classificatie")
                                                  :as "classificatie")
              (bestuurseenheid-contact :via ,(s-prefix "ext:contactVoor")

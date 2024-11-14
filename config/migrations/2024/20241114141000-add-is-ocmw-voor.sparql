@@ -1,0 +1,16 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?ocmw ext:isOCMWVoor ?gemeente.
+    }
+  } WHERE {
+    ?gemeente a besluit:Bestuurseenheid.
+    ?ocmw a besluit:Bestuurseenheid.
+    ?gemeente skos:prefLabel ?label.
+    ?ocmw skos:prefLabel ?label.
+
+    ?gemeente besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>.
+    ?ocmw besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>.
+  }

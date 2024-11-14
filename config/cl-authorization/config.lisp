@@ -136,14 +136,24 @@
        :to-graph public
        :for-allowed-group "public")
 
+; second part of union is cipal only for now
 (supply-allowed-group "vendor"
   :parameters ("session_group" "session_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
           SELECT DISTINCT ?session_group ?session_role WHERE {
-            <SESSION_ID> muAccount:canActOnBehalfOf/mu:uuid ?session_group;
-                         muAccount:account/ext:sessionRole ?session_role.
+            VALUES ?session {
+              <SESSION_ID>
+            }
+            {{
+              ?session muAccount:canActOnBehalfOf/mu:uuid ?session_group;
+                           muAccount:account/ext:sessionRole ?session_role.
+            } UNION {
+              ?session muAccount:account <http://data.lblod.info/vendors/14db001d-ea0f-4a8a-8453-c48547347588> .
+              ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group;
+                           muAccount:account/ext:sessionRole ?session_role.
+            }}
           }")
 
 (supply-allowed-group "admin"

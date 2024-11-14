@@ -1,0 +1,19 @@
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  DELETE {
+    GRAPH ?g {
+      ?s besluit:bestuurt ?eenheid.
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      ?s ext:isTijdelijkOrgaanIn ?eenheid.
+    }
+  }
+  WHERE {
+    ?s <http://mu.semte.ch/vocabularies/ext/origineleBestuurseenheid> ?e.
+    GRAPH ?g {
+      ?s besluit:bestuurt ?eenheid.
+
+    }
+  }

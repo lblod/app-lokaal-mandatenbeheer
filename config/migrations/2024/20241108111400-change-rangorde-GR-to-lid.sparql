@@ -18,15 +18,14 @@ WHERE {
     ?mandataris org:holds ?mandaat.
     ?mandataris mandaat:rangorde ?rangorde.
 
-    VALUES ?gemeenteraad {
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000011 # Gemeenteraadslid
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000012 # Voorzitter van de gemeenteraad
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000015 # Lid van de Raad voor Maatschappelijk Welzijn
-      bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000016 # Voorzitter van de Raad voor Maatschappelijk Welzijn
-    }
-    ?mandaat org:role ?gemeenteraad.
+    ?mandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000011. # Gemeenteraadslid
 
-    FILTER(CONTAINS(LCASE(?rangorde), "gemeenteraadslid"))
-    BIND(REPLACE(str(?rangorde), "(?i)(gemeenteraadslid|Gemeenteraadslid)", "lid") AS ?newLabel)
+    FILTER(
+      CONTAINS(LCASE(?rangorde), "gemeenteraadslid") ||
+      CONTAINS(LCASE(?rangorde), "toegevoegde schepen") ||
+      CONTAINS(LCASE(?rangorde), "schepen") ||
+      CONTAINS(LCASE(?rangorde), "districtsschepen")
+    )
+    BIND(REPLACE(str(?rangorde), "(?i)(gemeenteraadslid|toegevoegde schepen|schepen|districtsschepen)", "lid") AS ?newLabel)
   }
 }

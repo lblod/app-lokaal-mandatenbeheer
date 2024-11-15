@@ -1,0 +1,88 @@
+services:
+  consumer-1:
+    image: lblod/delta-consumer:0.0.26
+    depends_on:
+      - database
+      - virtuoso
+    restart: always
+    volumes:
+      - ./config/custom-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./data/files/decisions:/consumer-files
+    environment:
+      DCR_SERVICE_NAME: 'lmb-besluiten-1'
+      DCR_SYNC_BASE_URL: 'https://lokaalbeslist-harvester-0.s.redhost.be/'
+      DCR_JOB_CREATOR_URI: 'http://lblod.data.gift/services/lokaal-mandatenbeheer/lmb-besluiten-1'
+      DCR_SYNC_DATASET_SUBJECT: 'http://data.lblod.info/datasets/delta-producer/dumps/DecisionsCacheGraphDump'
+      DCR_INITIAL_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/lmb-besluiten-1'
+      DCR_DELTA_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/lmb-besluiten-1'
+      DCR_START_FROM_DELTA_TIMESTAMP: '2024-01-12'
+      DCR_SYNC_FILES_PATH: 'sync/lmb-besluiten-1/files'
+      DCR_KEEP_DELTA_FILES: true
+      DCR_DELTA_FILE_FOLDER: 'deltas/lmb-besluiten-1/files'
+      DCR_CRON_PATTERN_DELTA_SYNC: '0 * * * *	' # Every hour
+      DCR_DISABLE_INITIAL_SYNC: false
+      SLEEP_BETWEEN_BATCHES: 1
+      BATCH_SIZE: 100
+      PARALLEL_CALLS: 20
+      DCR_WAIT_FOR_INITIAL_SYNC: false
+      DIRECT_DATABASE_ENDPOINT: http://database:8890
+  # consumer-1:
+  #   image: lblod/delta-consumer:0.0.24
+  #   depends_on:
+  #     - database
+  #     - virtuoso
+  #   restart: always
+  #   volumes:
+  #     - ./config/consumer/custom-dispatching:/config/triples-dispatching/custom-dispatching
+  #   environment:
+  #     DCR_SERVICE_NAME: consumer-1
+  #     DCR_CRON_PATTERN_DELTA_SYNC: 15 * * * *
+  #     DCR_SYNC_BASE_URL: https://lokaalbeslist-harvester-1.s.redhost.be/
+  #     DCR_SYNC_FILES_PATH: /sync/besluiten/files
+  #     DCR_SYNC_DATASET_SUBJECT: http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump
+  #     DCR_INITIAL_SYNC_JOB_OPERATION: http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten-1
+  #     DCR_DELTA_SYNC_JOB_OPERATION: http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/besluitenSyncing-1
+  #     DCR_JOB_CREATOR_URI: http://data.lblod.info/services/id/besluiten-consumer-1
+  #     DCR_DISABLE_INITIAL_SYNC: false
+  #     DIRECT_DATABASE_ENDPOINT: database
+  #     BATCH_SIZE: 500
+  # consumer-2:
+  #   image: lblod/delta-consumer:0.0.24
+  #   depends_on:
+  #     - database
+  #     - virtuoso
+  #   restart: always
+  #   volumes:
+  #     - ./config/consumer/custom-dispatching:/config/triples-dispatching/custom-dispatching
+  #   environment:
+  #     DCR_SERVICE_NAME: consumer-2
+  #     DCR_CRON_PATTERN_DELTA_SYNC: 15 * * * *
+  #     DCR_SYNC_BASE_URL: https://lokaalbeslist-harvester-2.s.redhost.be/ # QA endpoint
+  #     DCR_SYNC_FILES_PATH: /sync/besluiten/files
+  #     DCR_SYNC_DATASET_SUBJECT: http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump
+  #     DCR_INITIAL_SYNC_JOB_OPERATION: http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten-2
+  #     DCR_DELTA_SYNC_JOB_OPERATION: http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/besluitenSyncing-2
+  #     DCR_JOB_CREATOR_URI: http://data.lblod.info/services/id/besluiten-consumer-2
+  #     DCR_DISABLE_INITIAL_SYNC: false
+  #     DIRECT_DATABASE_ENDPOINT: database
+  #     BATCH_SIZE: 500
+  # consumer-3:
+  #   image: lblod/delta-consumer:0.0.24
+  #   depends_on:
+  #     - database
+  #     - virtuoso
+  #   restart: always
+  #   volumes:
+  #     - ./config/consumer/custom-dispatching:/config/triples-dispatching/custom-dispatching
+  #   environment:
+  #     DCR_SERVICE_NAME: consumer-3
+  #     DCR_CRON_PATTERN_DELTA_SYNC: 15 * * * *
+  #     DCR_SYNC_BASE_URL: https://lokaalbeslist-harvester-3.s.redhost.be/
+  #     DCR_SYNC_FILES_PATH: /sync/besluiten/files
+  #     DCR_SYNC_DATASET_SUBJECT: http://data.lblod.info/datasets/delta-producer/dumps/lblod-harvester/BesluitenCacheGraphDump
+  #     DCR_INITIAL_SYNC_JOB_OPERATION: http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/besluiten-3
+  #     DCR_DELTA_SYNC_JOB_OPERATION: http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/besluitenSyncing-3
+  #     DCR_JOB_CREATOR_URI: http://data.lblod.info/services/id/besluiten-consumer-3
+  #     DCR_DISABLE_INITIAL_SYNC: false
+  #     DIRECT_DATABASE_ENDPOINT: database
+  #     BATCH_SIZE: 500

@@ -1,0 +1,43 @@
+services:
+  consumer-1:
+    restart: no
+    deploy:
+      resources:
+        limits:
+          memory: 10g
+    environment:
+      DCR_SERVICE_NAME: "lmb-besluiten-1"
+      DCR_SYNC_BASE_URL: 'https://dev.harvesting-self-service.lblod.info' 
+      DCR_SYNC_FILES_PATH: "/sync/lmb-besluiten-1/files"
+      DCR_DELTA_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/lmb-besluiten-1'
+      DCR_JOB_CREATOR_URI: 'http://data.lblod.info/services/id/lmb-besluiten-1'
+      DCR_WAIT_FOR_INITIAL_SYNC: "false"
+      DCR_DISABLE_INITIAL_SYNC: "true"
+      DCR_CRON_PATTERN_DELTA_SYNC: '0/15 * * * * *'
+      DCR_START_FROM_DELTA_TIMESTAMP: '2024-01-12'
+      NODE_ENV: development
+    ports:
+      - 9224:9229
+  # consumer-1:
+  #   restart: no
+  #   profiles:
+  #     -consume-decisions
+  #   environment:
+  #     DCR_CRON_PATTERN_DELTA_SYNC: 0/15 * * * * *
+  #     DCR_START_FROM_DELTA_TIMESTAMP: 2024-01-12T15:51:23.478Z
+  #     DEBUG: "true"
+  # consumer-2:
+  #   restart: no
+  #   profiles:
+  #     - consume-decisions
+  #   environment:
+  #     DCR_CRON_PATTERN_DELTA_SYNC: 0/15 * * * * *
+  #     DCR_START_FROM_DELTA_TIMESTAMP: 2024-01-12T15:51:23.478Z
+  # consumer-3:
+  #   restart: no
+  #   profiles:
+  #     - consume-decisions
+  #   environment:
+  #     DCR_CRON_PATTERN_DELTA_SYNC: 0/15 * * * * *
+  #     DCR_START_FROM_DELTA_TIMESTAMP: 2024-01-12T15:51:23.478Z
+

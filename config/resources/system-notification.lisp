@@ -36,3 +36,13 @@
     :resource-base (s-url "http://data.lblod.info/id/concept/SystemNotificationCode/")
     :features '(include-uri)
     :on-path "system-notification-codes")
+
+  (define-resource global-system-message ()
+  :class (s-prefix "ext:GlobalSystemMessage")
+  :properties `(
+    (:message :string ,(s-prefix "schema:description"))
+    (:is-active :string ,(s-prefix "dct:status"))
+  )
+  :resource-base (s-url "http://data.lblod.info/id/GlobalSystemMessage/")
+  :features '(include-uri)
+  :on-path "global-system-messages")

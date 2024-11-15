@@ -100,6 +100,9 @@
   ("foaf:OnlineAccount" -> _)
   ("adms:Identifier" -> _))
 
+(define-graph common-over-application ("http://mu.semte.ch/graphs/common/")
+  ("ext:GlobalSystemMessage" -> _))
+
 (define-graph organization-mandatendatabank ("http://mu.semte.ch/graphs/organizations/")
   ("contacthub:AgentInPositie" -> _)
   ("mandaat:Fractie" -> _)
@@ -185,6 +188,14 @@
 (grant (read write)
        :to-graph sessions
        :for-allowed-group "admin")
+
+(grant (read write)
+       :to-graph common-over-application
+       :for-allowed-group "admin")
+
+(grant (read)
+       :to-graph common-over-application
+       :for-allowed-group "public")
 
 (supply-allowed-group "authenticated"
   :parameters ()

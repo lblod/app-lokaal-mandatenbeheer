@@ -343,6 +343,18 @@ defmodule Dispatcher do
   #################################################################
   # LDES
   #################################################################
+  get "/streams/ldes/checkpoints/abb/*path" do
+    forward(conn, path, "http://ldes-delta-pusher/checkpoints/abb/")
+  end
+
+  get "/streams/ldes/checkpoints/internal/*path" do
+    forward(conn, path, "http://ldes-delta-pusher/checkpoints/internal/")
+  end
+
+  get "/streams/ldes/checkpoints/public/*path" do
+    forward(conn, path, "http://ldes-delta-pusher/checkpoints/public/")
+  end
+
   get "/streams/ldes/abb/*path" do
     forward(conn, path, "http://authorization-wrapper/abb/")
   end

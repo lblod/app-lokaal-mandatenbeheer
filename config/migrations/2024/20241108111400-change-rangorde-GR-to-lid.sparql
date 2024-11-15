@@ -1,0 +1,31 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX bestuursfunctieCode: <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/>
+
+DELETE {
+  GRAPH ?graph {
+  ?mandataris mandaat:rangorde ?rangorde.
+  }
+}
+INSERT {
+  GRAPH ?graph {
+    ?mandataris mandaat:rangorde ?newLabel.
+  }
+}
+WHERE {
+  GRAPH ?graph {
+    ?mandataris a mandaat:Mandataris.
+    ?mandataris org:holds ?mandaat.
+    ?mandataris mandaat:rangorde ?rangorde.
+
+    ?mandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000011. # Gemeenteraadslid
+
+    FILTER(
+      CONTAINS(LCASE(?rangorde), "gemeenteraadslid") ||
+      CONTAINS(LCASE(?rangorde), "toegevoegde schepen") ||
+      CONTAINS(LCASE(?rangorde), "schepen") ||
+      CONTAINS(LCASE(?rangorde), "districtsschepen")
+    )
+    BIND(REPLACE(str(?rangorde), "(?i)(gemeenteraadslid|toegevoegde schepen|schepen|districtsschepen)", "lid") AS ?newLabel)
+  }
+}

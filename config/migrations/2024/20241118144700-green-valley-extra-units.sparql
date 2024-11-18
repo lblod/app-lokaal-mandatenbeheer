@@ -1,0 +1,6 @@
+PREFIX account:	<http://mu.semte.ch/vocabularies/account/>
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+    <http://data.lblod.info/vendors/42edb420-08c7-4ede-9961-bc0e527d0f3b>	account:canActOnBehalfOf	<http://data.lblod.info/id/bestuurseenheden/764278b3ceac360476b418c108d1b022b6e0cc8fb676f3f6b6b9faf78a2375ba> , <http://data.lblod.info/id/bestuurseenheden/b4aa549332cbc6e6b92d2e466b49af8111ad67b774ee4c990f98d3b77c5c6fa1> .
+  }
+}

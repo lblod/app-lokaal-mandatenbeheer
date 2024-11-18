@@ -238,6 +238,23 @@ services:
       ENABLE_AUTH: "false"
     volumes:
       - "./data/ldes-feed/:/data/"
+  decision-consumer:
+    image: redpencil/ldes-consumer:feature-stability-improvements-r1.1
+    depends_on:
+      - database
+    environment:
+      LDES_STREAM: https://dev.mandatenbeheer.lblod.info
+      LDES_ENDPOINT_VIEW: https://dev.mandatenbeheer.lblod.info/streams/ldes/public/1
+      CRON_PATTERN: "*/1 * * * *" # run the job every 1 minute
+      REPLACE_VERSIONS: true
+      MU_SPARQL_ENDPOINT: http://database:8890/sparql
+      MU_APPLICATION_GRAPH: http://mu.semte.ch/graphs/lmb/consumed-decisions
+      PERSIST_STATE: true
+      LOG_SPARQL_ALL: true
+    labels:
+        - "logging=true"
+    restart: always
+    logging: *default-logging
   ##############################################################################
   # VENDOR ENDPOINTS
   ##############################################################################

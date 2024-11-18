@@ -95,6 +95,12 @@ services:
     networks:
       - default
       - debug
+  decision-consumer:
+    restart: no
+    environment:
+      NODE_ENV: development
+      CRON_PATTERN: "* * * * *"
+      RUNONCE: true
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:

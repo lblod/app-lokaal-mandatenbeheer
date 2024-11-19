@@ -3,18 +3,18 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 
 DELETE {
-  GRAPH ?oostende {
+  GRAPH ?gemeenteOostende {
     <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> persoon:gebruikteVoornaam ?firstName.
   }
 }
 INSERT {
-  GRAPH ?oostende {
+  GRAPH ?gemeenteOostende {
     <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> persoon:gebruikteVoornaam """Dirk""".
   }
 }
 WHERE {
-  BIND (<http://mu.semte.ch/graphs/organizations/764a0c6bbc866153ae70cf75d745b9477fa010567246cfe6683b7bb8aec541b4/LoketLB-mandaatGebruiker> AS ?oostende)
-  GRAPH ?oostende {
+  BIND (<http://mu.semte.ch/graphs/organizations/764a0c6bbc866153ae70cf75d745b9477fa010567246cfe6683b7bb8aec541b4/LoketLB-mandaatGebruiker> AS ?gemeenteOostende)
+  GRAPH ?gemeenteOostende {
     <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> persoon:gebruikteVoornaam ?firstName.
   }
 }

@@ -3,18 +3,18 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 
 DELETE {
-  GRAPH ?zonnebeke {
+  GRAPH ?gemeenteZonnebeke {
     <http://data.lblod.info/id/personen/837f22280b0fe5ddb16b02ac13b842045fab931c59f9b4a7bba31bf5446e4f76> persoon:gebruikteVoornaam ?firstName.
   }
 }
 INSERT {
-  GRAPH ?zonnebeke {
+  GRAPH ?gemeenteZonnebeke {
     <http://data.lblod.info/id/personen/837f22280b0fe5ddb16b02ac13b842045fab931c59f9b4a7bba31bf5446e4f76> persoon:gebruikteVoornaam """Agnes""".
   }
 }
  WHERE {
-  BIND (<http://mu.semte.ch/graphs/organizations/7650801ef7de6598dbb2d45bb2caa877408defcc1337fa698520a25b85a300da/LoketLB-mandaatGebruiker> AS ?zonnebeke)
-  GRAPH ?zonnebeke {
+  BIND (<http://mu.semte.ch/graphs/organizations/7650801ef7de6598dbb2d45bb2caa877408defcc1337fa698520a25b85a300da/LoketLB-mandaatGebruiker> AS ?gemeenteZonnebeke)
+  GRAPH ?gemeenteZonnebeke {
     <http://data.lblod.info/id/personen/837f22280b0fe5ddb16b02ac13b842045fab931c59f9b4a7bba31bf5446e4f76> persoon:gebruikteVoornaam ?firstName.
   }
 }

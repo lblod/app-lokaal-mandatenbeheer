@@ -244,15 +244,13 @@ services:
       - database:database
       - virtuoso:virtuoso
     restart: always
-    profiles:
-      - som
     environment:
       LDES_BASE: https://mandatenbeheer.lblod.info/streams/ldes/public/
       TARGET_GRAPH: http://mu.semte.ch/graphs/lmb/consumed-decisions
       DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
       RANDOMIZE_GRAPHS: true
       BATCH_SIZE: 100
-      BYPASS_MU_AUTH: true
+      BYPASS_MU_AUTH: false
     labels:
       - "logging=true"
   ##############################################################################

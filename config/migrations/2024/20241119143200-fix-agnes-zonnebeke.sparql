@@ -1,0 +1,22 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+
+DELETE {
+  GRAPH ?zonnebeke {
+    ?persoon persoon:gebruikteVoornaam """An""".
+  }
+}
+INSERT {
+  GRAPH ?zonnebeke {
+    ?persoon persoon:gebruikteVoornaam """Agnes""".
+  }
+}
+ WHERE {
+  BIND (<http://mu.semte.ch/graphs/organizations/7650801ef7de6598dbb2d45bb2caa877408defcc1337fa698520a25b85a300da/LoketLB-mandaatGebruiker> AS ?zonnebeke)
+  GRAPH ?zonnebeke {
+    ?persoon a person:Person.
+    ?persoon persoon:gebruikteVoornaam """An""".
+    ?persoon foaf:familyName "Denorme".
+  }
+}

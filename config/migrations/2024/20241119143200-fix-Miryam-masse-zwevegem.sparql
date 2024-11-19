@@ -1,0 +1,22 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+
+DELETE {
+  GRAPH ?zwevegem {
+    ?persoon persoon:gebruikteVoornaam """Myriam""".
+  }
+}
+INSERT {
+  GRAPH ?zwevegem {
+    ?persoon persoon:gebruikteVoornaam """Miryam""".
+  }
+}
+WHERE {
+  BIND (<http://mu.semte.ch/graphs/organizations/7269d3607a761c9ce0e226e0b7ea5687324230b65a568d48c81a7acba53998fd/LoketLB-mandaatGebruiker> AS ?zwevegem)
+  GRAPH ?zwevegem {
+    ?persoon a person:Person.
+    ?persoon persoon:gebruikteVoornaam """Myriam""".
+    ?persoon foaf:familyName "Laverge".
+  }
+}

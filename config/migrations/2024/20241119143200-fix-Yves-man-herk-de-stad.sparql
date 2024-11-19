@@ -4,20 +4,17 @@ PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 
 DELETE {
   GRAPH ?herkDeStad {
-    ?persoon persoon:geslacht ?female.
+    <http://data.lblod.info/id/personen/177d33d4-8610-4f47-9a27-980c721c0725> persoon:geslacht ?female.
   }
 }
 INSERT {
   GRAPH ?herkDeStad {
-    ?persoon persoon:geslacht  <http://publications.europa.eu/resource/authority/human-sex/MALE>.
+    <http://data.lblod.info/id/personen/177d33d4-8610-4f47-9a27-980c721c0725> persoon:geslacht  <http://publications.europa.eu/resource/authority/human-sex/MALE>.
   }
 }
 WHERE {
   BIND (<http://mu.semte.ch/graphs/organizations/a9e63c13a602de3cc5463cc81eee0b8d80d14a1846d1deb82b3a2d4e7efc96af/LoketLB-mandaatGebruiker> AS ?herkDeStad)
   GRAPH ?herkDeStad {
-    ?persoon a person:Person.
-    ?persoon persoon:gebruikteVoornaam """Yves""".
-    ?persoon foaf:familyName "Luyten".
-    ?persoon persoon:geslacht ?female.
+    <http://data.lblod.info/id/personen/177d33d4-8610-4f47-9a27-980c721c0725> persoon:geslacht ?female.
   }
 }

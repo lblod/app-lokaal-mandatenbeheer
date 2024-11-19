@@ -4,19 +4,17 @@ PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 
 DELETE {
   GRAPH ?zwevegem {
-    ?persoon persoon:gebruikteVoornaam """Myriam""".
+    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> persoon:gebruikteVoornaam """Myriam""".
   }
 }
 INSERT {
   GRAPH ?zwevegem {
-    ?persoon persoon:gebruikteVoornaam """Miryam""".
+    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> persoon:gebruikteVoornaam """Miryam""".
   }
 }
 WHERE {
   BIND (<http://mu.semte.ch/graphs/organizations/7269d3607a761c9ce0e226e0b7ea5687324230b65a568d48c81a7acba53998fd/LoketLB-mandaatGebruiker> AS ?zwevegem)
   GRAPH ?zwevegem {
-    ?persoon a person:Person.
-    ?persoon persoon:gebruikteVoornaam """Myriam""".
-    ?persoon foaf:familyName "Laverge".
+    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> persoon:gebruikteVoornaam """Myriam""".
   }
 }

@@ -4,19 +4,17 @@ PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 
 DELETE {
   GRAPH ?as {
-    ?persoon foaf:familyName "Bruggemans".
+    <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> foaf:familyName ?familyName.
   }
 }
 INSERT {
   GRAPH ?as {
-    ?persoon foaf:familyName "Bruggeman".
+    <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> foaf:familyName "Bruggeman".
   }
 }
 WHERE {
   BIND (<http://mu.semte.ch/graphs/organizations/c2c19bec2f337e69a4c9838eacd88041734db523df4f7534cf407c9d380b64b8/LoketLB-mandaatGebruiker> AS ?as)
   GRAPH ?as {
-    ?persoon a person:Person.
-    ?persoon persoon:gebruikteVoornaam """Jill""".
-    ?persoon foaf:familyName "Bruggemans".
+    <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> foaf:familyName ?familyName.
   }
 }

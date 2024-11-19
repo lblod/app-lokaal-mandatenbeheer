@@ -4,19 +4,17 @@ PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 
 DELETE {
   GRAPH ?bertem {
-    ?persoon persoon:gebruikteVoornaam """Joel""".
+    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> persoon:gebruikteVoornaam """Joel""".
   }
 }
 INSERT {
   GRAPH ?bertem {
-    ?persoon persoon:gebruikteVoornaam """Joël""".
+    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> persoon:gebruikteVoornaam """Joël""".
   }
 }
 WHERE {
   BIND (<http://mu.semte.ch/graphs/organizations/7c44225c68f7535a603d3a0a0c57a6424e8baa9fd066b6b9baa636d0facddb72/LoketLB-mandaatGebruiker> AS ?bertem)
   GRAPH ?bertem {
-    ?persoon a person:Person.
-    ?persoon persoon:gebruikteVoornaam """Joel""".
-    ?persoon foaf:familyName "Vander Elst".
+    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> persoon:gebruikteVoornaam """Joel""".
   }
 }

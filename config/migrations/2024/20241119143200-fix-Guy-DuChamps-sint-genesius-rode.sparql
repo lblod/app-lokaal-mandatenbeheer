@@ -4,19 +4,17 @@ PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 
 DELETE {
   GRAPH ?sintGenesiusRode {
-    ?persoon foaf:familyName "De Champs".
+    <http://data.lblod.info/id/personen/5C7D2833D5BECA00090002C0> foaf:familyName ?familyName.
   }
 }
 INSERT {
   GRAPH ?sintGenesiusRode {
-    ?persoon foaf:familyName "Du Champs".
+    <http://data.lblod.info/id/personen/5C7D2833D5BECA00090002C0> foaf:familyName "Du Champs".
   }
 }
 WHERE {
   BIND (<http://mu.semte.ch/graphs/organizations/72af5d601b193f4fcf18154d643d89481082ecd3eff61720f1cf118057666ac5/LoketLB-mandaatGebruiker> AS ?sintGenesiusRode)
   GRAPH ?sintGenesiusRode {
-    ?persoon a person:Person.
-    ?persoon persoon:gebruikteVoornaam """Guy""".
-    ?persoon foaf:familyName "De Champs".
+    <http://data.lblod.info/id/personen/5C7D2833D5BECA00090002C0> foaf:familyName ?familyName.
   }
 }

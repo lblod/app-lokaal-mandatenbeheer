@@ -1,19 +1,28 @@
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <http://www.w3.org/2001/XMLSchema#>
+
 
 DELETE {
   GRAPH ?g {
-    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> persoon:gebruikteVoornaam """Joel""".
+    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> persoon:gebruikteVoornaam ?firstName.
+    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> dcterms:modified ?modifiedAt.
   }
 }
 INSERT {
   GRAPH ?g {
     <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> persoon:gebruikteVoornaam """Joël""".
+    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> dcterms:modified "2024-11-20T07:53:29.846Z"^^schema:dateTime.
   }
 }
 WHERE {
   GRAPH ?g {
-    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> persoon:gebruikteVoornaam """Joel""".
+    <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> persoon:gebruikteVoornaam ?firstName.
+
+    OPTIONAL {
+      <http://data.lblod.info/id/personen/36dc5fe0b7995220160e5ccce9309fd1c3bbbb56ff03c470f6a7d9a0e0aa94c7> dcterms:modified ?modifiedAt.
+    }
   }
 }

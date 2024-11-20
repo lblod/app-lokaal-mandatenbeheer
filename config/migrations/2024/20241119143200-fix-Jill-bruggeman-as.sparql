@@ -1,19 +1,28 @@
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <http://www.w3.org/2001/XMLSchema#>
+
 
 DELETE {
   GRAPH ?g {
     <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> foaf:familyName ?familyName.
+    <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> dcterms:modified ?modifiedAt.
   }
 }
 INSERT {
   GRAPH ?g {
     <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> foaf:familyName "Bruggeman".
+    <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> dcterms:modified "2024-11-20T07:53:29.846Z"^^schema:dateTime.
   }
 }
 WHERE {
   GRAPH ?g {
     <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> foaf:familyName ?familyName.
+
+    OPTIONAL {
+      <http://data.lblod.info/id/personen/c900c042-e4ef-4e13-94a8-b5b66f47fd83> dcterms:modified ?modifiedAt.
+    }
   }
 }

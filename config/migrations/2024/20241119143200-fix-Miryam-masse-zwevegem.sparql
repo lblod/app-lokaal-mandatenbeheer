@@ -1,19 +1,28 @@
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <http://www.w3.org/2001/XMLSchema#>
+
 
 DELETE {
   GRAPH ?g {
-    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> persoon:gebruikteVoornaam """Myriam""".
+    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> persoon:gebruikteVoornaam ?firstName.
+    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> dcterms:modified ?modifiedAt.
   }
 }
 INSERT {
   GRAPH ?g {
     <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> persoon:gebruikteVoornaam """Miryam""".
+    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> dcterms:modified "2024-11-20T07:53:29.846Z"^^schema:dateTime.
   }
 }
 WHERE {
   GRAPH ?g {
-    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> persoon:gebruikteVoornaam """Myriam""".
+    <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> persoon:gebruikteVoornaam ?firstName.
+
+    OPTIONAL {
+      <http://data.lblod.info/id/personen/35287d029d80bb479bf253f591a4c025220762aecf3234d27daf0c2218d88b2a> dcterms:modified ?modifiedAt.
+    }
   }
 }

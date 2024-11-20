@@ -1,0 +1,19 @@
+PREFIX generiekHttps: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?pHttp ?o.
+  }
+}WHERE {
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+  FILTER (STRSTARTS(STR(?p), STR(generiekHttps:)))
+  BIND(IRI(REPLACE(STR(?p), STR(generiekHttps:), STR(generiek:))) AS ?pHttp)
+}

@@ -77,9 +77,6 @@
   ("ext:BeleidsdomeinCode" -> _)
   ("ext:GeslachtCode" -> _)
   ("euvoc:Country" -> _)
-  ("eli:LegalResource" -> _)
-  ("mandaat:RechtsgrondAanstelling" -> _)
-  ("mandaat:RechtsgrondBeeindiging" -> _)
   ("mandaat:RechtstreekseVerkiezing" -> _)
   ("mandaat:Verkiezingsresultaat" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
@@ -132,6 +129,11 @@
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("schema:ContactPoint" -> _)
   ("locn:Address" -> _))
+
+(define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")
+  ("eli:LegalResource" -> _)
+  ("besluit:Artikel" -> _)
+  ("besluit:Besluit" -> _))
 
 (supply-allowed-group "public")
 
@@ -209,6 +211,10 @@
 
 (grant (read)                           ; you already can from "public"
        :to-graph public
+       :for-allowed-group "authenticated")
+
+(grant (read)
+       :to-graph besluiten
        :for-allowed-group "authenticated")
 
 (grant (read)

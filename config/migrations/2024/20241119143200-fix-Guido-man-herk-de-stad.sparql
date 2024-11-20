@@ -1,0 +1,28 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <http://www.w3.org/2001/XMLSchema#>
+
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/5beb0d141d8e45941de6f2a1540de85cdefd7e004bb5eee27b4098f68077982c> persoon:geslacht ?female.
+    <http://data.lblod.info/id/personen/5beb0d141d8e45941de6f2a1540de85cdefd7e004bb5eee27b4098f68077982c> dcterms:modified ?modifiedAt.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/5beb0d141d8e45941de6f2a1540de85cdefd7e004bb5eee27b4098f68077982c> persoon:geslacht <http://publications.europa.eu/resource/authority/human-sex/MALE>.
+    <http://data.lblod.info/id/personen/5beb0d141d8e45941de6f2a1540de85cdefd7e004bb5eee27b4098f68077982c> dcterms:modified "2024-11-20T07:53:29.846Z"^^schema:dateTime.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/5beb0d141d8e45941de6f2a1540de85cdefd7e004bb5eee27b4098f68077982c> persoon:geslacht ?female.
+
+    OPTIONAL {
+      <http://data.lblod.info/id/personen/5beb0d141d8e45941de6f2a1540de85cdefd7e004bb5eee27b4098f68077982c> dcterms:modified ?modifiedAt.
+    }
+  }
+}

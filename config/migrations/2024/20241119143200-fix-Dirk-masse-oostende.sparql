@@ -1,0 +1,28 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <http://www.w3.org/2001/XMLSchema#>
+
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> persoon:gebruikteVoornaam ?firstName.
+    <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> dcterms:modified ?modifiedAt.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> persoon:gebruikteVoornaam """Dirk""".
+    <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> dcterms:modified "2024-11-20T07:53:29.846Z"^^schema:dateTime.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> persoon:gebruikteVoornaam ?firstName
+
+    OPTIONAL {
+      <http://data.lblod.info/id/personen/9acb3807-1bb9-4454-b323-636ca092ef30> dcterms:modified ?modifiedAt.
+    }
+  }
+}

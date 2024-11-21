@@ -1,0 +1,57 @@
+PREFIX nao: <http://www.semanticdesktop.org/ontologies/2007/08/15/nao#>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+PREFIX extlmb: <http://mu.semte.ch/vocabularies/ext/lmb/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX form: <http://lblod.data.gift/vocabularies/forms/>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX schema: <http://schema.org/>
+PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX rm: <http://mu.semte.ch/vocabularies/logical-delete/>
+PREFIX typedLiterals: <http://mu.semte.ch/vocabularies/typed-literals/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX app: <http://mu.semte.ch/app/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+PREFIX bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX extlmb:  <http://mu.semte.ch/vocabularies/ext/lmb/>
+PREFIX bestuursorgaanClassificatieCode: <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/>
+
+SELECT ?bestuurseenheid ?name (COUNT (DISTINCT ?bestuursorgaanInTijd) AS ?count )
+WHERE {
+  ?bestuurseenheid besluit:classificatie bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001 . # Gemeente
+  ?bestuurseenheid skos:prefLabel ?name .
+
+  GRAPH ?g {
+    ?iv a lmb:Installatievergadering .
+    ?iv lmb:heeftBestuurseenheid ?bestuurseenheid .
+    ?bestuursorgaan besluit:bestuurt ?bestuurseenheid .
+    ?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan .
+    ?bestuursorgaanInTijd lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2024 - heden
+  }
+}
+GROUP BY ?bestuurseenheid ?name
+HAVING (COUNT(?bestuursorgaanInTijd) = 3)

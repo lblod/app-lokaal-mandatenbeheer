@@ -72,8 +72,6 @@ services:
     restart: "no"
   form-content:
     restart: "no"
-    profiles:
-      - nodebug
   mandataris:
     restart: "no"
     profiles:

@@ -1,0 +1,14 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+INSERT {
+  GRAPH ?g {
+   ?s dct:modified ?time.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s a  <http://www.w3.org/ns/activitystreams#Tombstone> .
+    ?s <http://www.w3.org/ns/activitystreams#deleted> ?time.
+    FILTER NOT EXISTS {
+      ?s dct:modified ?something.
+    }
+  }
+}

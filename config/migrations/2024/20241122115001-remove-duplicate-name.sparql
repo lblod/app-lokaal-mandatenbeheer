@@ -1,0 +1,22 @@
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <http://www.w3.org/2001/XMLSchema#>
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/0c5dfd05-50a5-426a-88cd-477c222807df> persoon:gebruikteVoornaam "Veysel".
+    <http://data.lblod.info/id/personen/0c5dfd05-50a5-426a-88cd-477c222807df> dcterms:modified ?modifiedAt.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/0c5dfd05-50a5-426a-88cd-477c222807df> dcterms:modified "2024-11-22T10:53:29.846Z"^^schema:dateTime.
+  }
+}
+ WHERE {
+GRAPH ?g {
+<http://data.lblod.info/id/personen/0c5dfd05-50a5-426a-88cd-477c222807df> persoon:gebruikteVoornaam "Veysel".
+   OPTIONAL {
+      <http://data.lblod.info/id/personen/0c5dfd05-50a5-426a-88cd-477c222807df> dcterms:modified ?modifiedAt.
+    }
+}
+}

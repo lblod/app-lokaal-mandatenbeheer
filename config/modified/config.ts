@@ -29,7 +29,6 @@ export async function filterDeltas(changeSets: Changeset[]) {
   };
   changeSets.map((changeSet) => {
     changeSet.inserts.forEach(trackModifiedSubjects);
-    changeSet.deletes.forEach(trackModifiedSubjects);
   });
 
   const ignoredGraphPrefixes = [

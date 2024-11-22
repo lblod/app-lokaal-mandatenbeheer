@@ -155,7 +155,6 @@ services:
       - ./config/form-content:/config
   mandataris:
     image: lblod/mandataris-service:0.3.0
-    labels:
       - "logging=true"
     restart: always
     logging: *default-logging
@@ -237,7 +236,7 @@ services:
   # VENDOR ENDPOINTS
   ##############################################################################
   vendor-login:
-    image: lblod/vendor-login-service:1.0.0
+    image: lblod/vendor-login-service:1.1.0
     restart: always
     labels:
       - "logging=true"

@@ -155,6 +155,7 @@ services:
       - ./config/form-content:/config
   mandataris:
     image: lblod/mandataris-service:0.3.0
+    labels:
       - "logging=true"
     restart: always
     logging: *default-logging

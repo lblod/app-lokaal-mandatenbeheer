@@ -245,8 +245,10 @@ services:
       - virtuoso:virtuoso
     restart: always
     environment:
-      LDES_BASE: https://mandatenbeheer.lblod.info/streams/ldes/public/
-      TARGET_GRAPH: http://mu.semte.ch/graphs/lmb/consumed-decisions
+      LDES_BASE: https://mandaten-besluiten.lblod.info/streams/ldes/public/
+      FIRST_PAGE: https://mandaten-besluiten.lblod.info/streams/ldes/public/1
+      TARGET_GRAPH: http://mu.semte.ch/graphs/consumed-decisions
+      WORKING_GRAPH: http://mu.semte.ch/graphs/consumed-decisions-tmp
       DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
       RANDOMIZE_GRAPHS: true
       BATCH_SIZE: 100

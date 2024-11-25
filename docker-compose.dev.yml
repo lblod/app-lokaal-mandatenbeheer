@@ -100,8 +100,6 @@ services:
     environment:
       NODE_ENV: development
       CRON_PATTERN: "* * * * *" # Every minute
-    ports:
-      - 9226:9229
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:

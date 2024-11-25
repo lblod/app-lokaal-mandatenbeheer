@@ -68,8 +68,16 @@ export const ldesInstances = {
       },
       "http://www.w3.org/ns/activitystreams#Tombstone": {
         healingPredicates: ["http://purl.org/dc/terms/modified"],
-        // this is so we don't add tombstones for things that are still in another graph as a normal type
-        healingFilter: `FILTER NOT EXISTS {
+        // 1) don't care about tombstones that are already present, modified date doesn't matter (old ones didn't have it)
+        // 2) don't put tombstones for things that still have another type in another application graph
+        healingFilter: `
+        FILTER NOT EXISTS {
+          GRAPH <http://mu.semte.ch/graphs/transformed-ldes-data> {
+            ?s a <http://www.w3.org/ns/activitystreams#Tombstone>.
+          }
+        }
+
+        FILTER NOT EXISTS {
             GRAPH ?h {
              ?s a ?otherType.
              FILTER(?otherType != <http://www.w3.org/ns/activitystreams#Tombstone>)
@@ -138,7 +146,16 @@ export const ldesInstances = {
       },
       "http://www.w3.org/ns/activitystreams#Tombstone": {
         healingPredicates: ["http://purl.org/dc/terms/modified"],
-        healingFilter: `FILTER NOT EXISTS {
+        // 1) don't care about tombstones that are already present, modified date doesn't matter (old ones didn't have it)
+        // 2) don't put tombstones for things that still have another type in another application graph
+        healingFilter: `
+        FILTER NOT EXISTS {
+          GRAPH <http://mu.semte.ch/graphs/transformed-ldes-data> {
+            ?s a <http://www.w3.org/ns/activitystreams#Tombstone>.
+          }
+        }
+
+        FILTER NOT EXISTS {
             GRAPH ?h {
              ?s a ?otherType.
              FILTER(?otherType != <http://www.w3.org/ns/activitystreams#Tombstone>)
@@ -207,7 +224,16 @@ export const ldesInstances = {
       },
       "http://www.w3.org/ns/activitystreams#Tombstone": {
         healingPredicates: ["http://purl.org/dc/terms/modified"],
-        healingFilter: `FILTER NOT EXISTS {
+        // 1) don't care about tombstones that are already present, modified date doesn't matter (old ones didn't have it)
+        // 2) don't put tombstones for things that still have another type in another application graph
+        healingFilter: `
+        FILTER NOT EXISTS {
+          GRAPH <http://mu.semte.ch/graphs/transformed-ldes-data> {
+            ?s a <http://www.w3.org/ns/activitystreams#Tombstone>.
+          }
+        }
+
+        FILTER NOT EXISTS {
             GRAPH ?h {
              ?s a ?otherType.
              FILTER(?otherType != <http://www.w3.org/ns/activitystreams#Tombstone>)

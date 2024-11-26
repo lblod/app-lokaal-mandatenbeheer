@@ -1,0 +1,64 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+
+DELETE {
+  GRAPH ?g {
+    ?membership org:organisation ?old.
+    ?membership dct:modified ?oldTime.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?membership org:organisation ?new.
+    ?membership dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES (?old ?new) {
+    ( <http://data.lblod.info/id/fracties/670F6F26337218FF843C7BBF> <http://data.lblod.info/id/fracties/671B4CF30C2BDDC757010368> )
+    ( <http://data.lblod.info/id/fracties/670CE39E337218FF843C7A40> <http://data.lblod.info/id/fracties/671B4CEC0C2BDDC757010366> )
+    ( <http://data.lblod.info/id/fracties/670F6F32337218FF843C7BC0> <http://data.lblod.info/id/fracties/671B4CE80C2BDDC757010365> )
+    ( <http://data.lblod.info/id/fracties/670F6F05337218FF843C7BBD> <http://data.lblod.info/id/fracties/671B4CF50C2BDDC757010369> )
+    ( <http://data.lblod.info/id/fracties/670F6F17337218FF843C7BBE> <http://data.lblod.info/id/fracties/671B4CF00C2BDDC757010367> )
+  }
+  GRAPH ?g {
+    ?membership org:organisation ?old.
+    OPTIONAL {
+      ?membership dct:modified ?oldTime.
+    }
+  }
+  BIND(NOW() as ?now)
+};
+
+DELETE {
+  GRAPH ?g {
+    ?old ?p ?o.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?old owl:sameAs ?new.
+    ?old a astreams:Tombstone.
+    ?old astreams:delated ?now.
+    ?old dct:modified ?now.
+    ?old astreams:formerType <http://data.vlaanderen.be/ns/mandaat#Fractie>.
+  }
+}
+WHERE {
+  VALUES (?old ?new) {
+    ( <http://data.lblod.info/id/fracties/670F6F26337218FF843C7BBF> <http://data.lblod.info/id/fracties/671B4CF30C2BDDC757010368> )
+    ( <http://data.lblod.info/id/fracties/670CE39E337218FF843C7A40> <http://data.lblod.info/id/fracties/671B4CEC0C2BDDC757010366> )
+    ( <http://data.lblod.info/id/fracties/670F6F32337218FF843C7BC0> <http://data.lblod.info/id/fracties/671B4CE80C2BDDC757010365> )
+    ( <http://data.lblod.info/id/fracties/670F6F05337218FF843C7BBD> <http://data.lblod.info/id/fracties/671B4CF50C2BDDC757010369> )
+    ( <http://data.lblod.info/id/fracties/670F6F17337218FF843C7BBE> <http://data.lblod.info/id/fracties/670F6F17337218FF843C7BBE> )
+  }
+  GRAPH ?g {
+    ?old ?p ?o.
+  }
+  BIND(NOW() as ?now)
+}

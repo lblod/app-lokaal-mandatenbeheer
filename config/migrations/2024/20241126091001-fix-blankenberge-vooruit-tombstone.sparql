@@ -1,0 +1,23 @@
+DELETE {
+  GRAPH ?g {
+    ?old ?p ?o.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?old owl:sameAs ?new.
+    ?old a astreams:Tombstone.
+    ?old astreams:delated ?now.
+    ?old dct:modified ?now.
+    ?old astreams:formerType <http://data.vlaanderen.be/ns/mandaat#Fractie>.
+  }
+}
+WHERE {
+  VALUES (?old ?new) {
+    ( <http://data.lblod.info/id/fracties/670F6F17337218FF843C7BBE> <http://data.lblod.info/id/fracties/671B4CF00C2BDDC757010367> )
+  }
+  GRAPH ?g {
+    ?old ?p ?o.
+  }
+  BIND(NOW() as ?now)
+}

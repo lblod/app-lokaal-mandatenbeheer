@@ -13,7 +13,8 @@ const addTimeInterval = async (
   const data = await querySudo(`
     PREFIX dct: <http://purl.org/dc/terms/>
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-    PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+    PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
+    PREFIX generiekS: <https://data.vlaanderen.be/ns/generiek#>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
@@ -22,6 +23,8 @@ const addTimeInterval = async (
         mu:uuid ${sparqlEscapeString(tijdsintervalUuid)} ;
         generiek:begin ?start ;
         generiek:einde ?einde ;
+        generiekS:begin ?start ;
+        generiekS:einde ?einde ;
         ext:relatedTo ?bestuurseenheid .
       <${subject.uri}> org:memberDuring ${sparqlEscapeUri(tijdsintervalUri)} .
     } WHERE {

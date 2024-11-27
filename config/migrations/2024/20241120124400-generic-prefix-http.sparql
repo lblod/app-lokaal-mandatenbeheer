@@ -1,0 +1,17 @@
+PREFIX generiekHttps: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
+
+INSERT {
+  GRAPH ?g {
+    ?s ?pHttp ?o.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    VALUES (?p ?pHttp) { 
+      (generiekHttps:begin generiek:begin)
+      (generiekHttps:einde generiekHttps:einde)
+    }
+    ?s ?p ?o.
+  }
+}

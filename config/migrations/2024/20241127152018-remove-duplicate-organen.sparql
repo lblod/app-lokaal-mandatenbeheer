@@ -1,0 +1,91 @@
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+  PREFIX org: <http://www.w3.org/ns/org#>
+  PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+  # First we move mandatarissen if they exist on the second organ
+  DELETE {
+    GRAPH ?g {
+      ?mandataris2 org:holds ?mandaat2 .
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      ?mandataris2 org:holds ?mandaat1 .
+    }
+  }
+  WHERE {
+    ?bestuurseenheid besluit:classificatie bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001 . # Gemeente
+    ?bestuurseenheid skos:prefLabel ?name .
+
+    GRAPH ?g {
+      ?orgaan1 besluit:bestuurt ?bestuurseenheid ;
+        ^mandaat:isTijdspecialisatieVan ?orgaanIT1 ;
+        besluit:classificatie ?classificatie ;
+        skos:prefLabel ?orgaanName .
+      ?orgaanIT1 org:hasPost ?mandaat1 ;
+        lmb:heeftBestuursperiode ?bestuursperiode .
+      ?mandaat1 org:role ?bestuursfunctieCode .
+
+      ?orgaan2 besluit:bestuurt ?bestuurseenheid ;
+        ^mandaat:isTijdspecialisatieVan ?orgaanIT2 ;
+        besluit:classificatie ?classificatie ;
+        skos:prefLabel ?orgaanName .
+      ?orgaanIT2 org:hasPost ?mandaat2 ;
+        lmb:heeftBestuursperiode ?bestuursperiode .
+      ?mandaat2 org:role ?bestuursfunctieCode ;
+        ^org:holds ?mandataris2 .
+    }
+    FILTER (?orgaan1 != ?orgaan2)
+    FILTER (?orgaan1 < ?orgaan2)
+  };
+
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+  PREFIX org: <http://www.w3.org/ns/org#>
+
+  # Secondly we remove all links to the second orgaan / orgaanIT
+  DELETE {
+    GRAPH ?g {
+      ?orgaan2 ?op ?oo .
+      ?ooo ?opp ?orgaan2 .
+
+      ?orgaanIT2 ?oip ?oio .
+      ?oioo ?oipp ?orgaanIT2 .
+
+      ?mandaat2 ?mp ?mo .
+    }
+  }
+  WHERE {
+    ?bestuurseenheid besluit:classificatie bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001 . # Gemeente
+
+    GRAPH ?g {
+      ?orgaan1 besluit:bestuurt ?bestuurseenheid ;
+        besluit:classificatie ?classificatie ;
+        skos:prefLabel ?orgaanName .
+
+      ?orgaan2 besluit:bestuurt ?bestuurseenheid ;
+        ^mandaat:isTijdspecialisatieVan ?orgaanIT2 ;
+        besluit:classificatie ?classificatie ;
+        skos:prefLabel ?orgaanName ;
+        ?op ?oo .
+      OPTIONAL {
+        ?ooo ?opp ?orgaan2 .
+      }
+
+      ?orgaanIT2 ?oip ?oio .
+      OPTIONAL {
+        ?orgaanIT2 org:hasPost ?mandaat2 .
+        ?mandaat2 ?mp ?mo .
+      }
+      OPTIONAL {
+        ?oioo ?oipp ?orgaanIT2 .
+      }
+    }
+    FILTER (?orgaan1 != ?orgaan2)
+    FILTER (?orgaan1 < ?orgaan2)
+  }

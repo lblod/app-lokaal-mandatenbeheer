@@ -5,10 +5,13 @@ INSERT {
   GRAPH ?g {
     ?s ?pHttp ?o.
   }
-}WHERE {
+}
+WHERE {
   GRAPH ?g {
+    VALUES (?p ?pHttp) { 
+      (generiekHttps:begin generiek:begin)
+      (generiekHttps:einde generiekHttps:einde)
+    }
     ?s ?p ?o.
   }
-  FILTER (STRSTARTS(STR(?p), STR(generiekHttps:)))
-  BIND(IRI(REPLACE(STR(?p), STR(generiekHttps:), STR(generiek:))) AS ?pHttp)
 }

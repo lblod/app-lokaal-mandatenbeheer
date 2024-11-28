@@ -163,7 +163,7 @@ services:
       - ./data/files/burgemeester-benoemingen:/uploads
     environment:
       NOTIFICATION_CRON_PATTERN: 0 8 * * 1-5
-      EMAIL_FROM_MANDATARIS_EFFECTIEF: mymail@myservice.com # Must be the same as EMAIL_ADDRESS in deliver-email service
+      EMAIL_FROM_MANDATARIS_EFFECTIEF: "lokaalmandatenbeheer@vlaanderen.be" # Must be the same as EMAIL_ADDRESS in deliver-email service
       SEND_EMAIL_FOR_MANDATARIS_EFFECTIEF: false
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.6.3
@@ -258,7 +258,7 @@ services:
       MAILBOX_URI: "http://data.lblod.info/id/mailboxes/1"
       SECURE_CONNECTION: "true"
       EMAIL_PROTOCOL: "smtp"
-      EMAIL_ADDRESS: "mymail@myservice.com"
+      EMAIL_ADDRESS: "lokaalmandatenbeheer@vlaanderen.be"
       EMAIL_PASSWORD: "myemailpassword"
       FROM_NAME: "Lokaal Mandatenbeheer"
       WELL_KNOWN_SERVICE: "Outlook365"

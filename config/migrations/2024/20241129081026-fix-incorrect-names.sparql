@@ -1,0 +1,128 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Leen" .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Marleen" .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Pollé" ;
+      persoon:gebruikteVoornaam "Leen" .
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/224f79149f20103bd1bb11ea7a406784a79f522e1920ab03557dee6a01907a77> }
+  ?g ext:ownedBy ?something .
+}
+;
+
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "boer Jan" .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Jan" .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Viaene" ;
+      persoon:gebruikteVoornaam "boer Jan" .
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/a21d75588cc51a5f265bdfb9ff99ff974397dd2bbd4fae01a0f2ff5b40283bc9> }
+  ?g ext:ownedBy ?something .
+}
+;
+
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Parmie Nico" .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Nico" .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Parmentier" ;
+      persoon:gebruikteVoornaam "Parmie Nico" .
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/c6fd4f2a421557ce7227e24bb5828c3f12f06f295b063a9359b67b432f9ef777> }
+  ?g ext:ownedBy ?something .
+}
+;
+
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Metser Nico" .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Nico" .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Balcaen" ;
+      persoon:gebruikteVoornaam "Metser Nico" .
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/9b8948be-afd0-4037-b2ab-683e19552c19> }
+  ?g ext:ownedBy ?something .
+}
+;
+
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon foaf:familyName "Van De Maele" .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon foaf:familyName "Van de Maele" .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Van De Maele" ;
+      persoon:gebruikteVoornaam "Antoine" .
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/6ab9381111229cc2521c559ea8e53023a02c84cbbb7b103ba1cbf13584d3bdd5> }
+  ?g ext:ownedBy ?something .
+}

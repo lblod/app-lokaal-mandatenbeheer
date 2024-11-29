@@ -1,0 +1,235 @@
+# Fix voornamen
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?s persoon:gebruikteVoornaam ?old.
+    ?s dct:modified ?oldModified.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s persoon:gebruikteVoornaam ?new.
+    ?s dct:modified ?modified.
+  }
+}
+WHERE {
+  VALUES ( ?s ?new ) {
+    ( <http://data.lblod.info/id/personen/06fb62e4d137559cf163e97f76b48373a934e48e983f4bc2554eb649b5e9276e> "Daniel" )
+    ( <http://data.lblod.info/id/personen/0a175ce93e890bb872c7b1dacfe150970714c4fecc0d908e0aedd234076f5092> "Jacky" )
+    ( <http://data.lblod.info/id/personen/09c6f1832ed6600f5c95ce7dcec3a744f5245e79fbfad17069913ef6906acf73> "Hedwig" )
+    ( <http://data.lblod.info/id/personen/0e2943c355d0f720d7cc9009404c7998688357bca3b8b5e9cbca75a2a75ec54f> "Greet" )
+    ( <http://data.lblod.info/id/personen/1bf08775fc7a73aab0a04fb7bc8772081413dcdd9d4cc3e7a22dbb2e601afd91> "Vincent" )
+    ( <http://data.lblod.info/id/personen/225aaf0bf40dd4bd2dc22731f40236814c1d3a83f56d83c5a65075ad1f6e623d> "Seppe" )
+    ( <http://data.lblod.info/id/personen/26390e38dd59ad29e2b7e21f018fee140913654a77fd4ef6120c6e317ba5224f> "Els" )
+    ( <http://data.lblod.info/id/personen/297d28cf3025200425fabcf35a3f71a609a7d7aa607d98e554fe23d0cc5412da> "Peter" )
+    ( <http://data.lblod.info/id/personen/2eb9b7234923d1a1e97755c5832c6732af68a085e8d225792498bbba4daa60df> "Maarten" )
+    ( <http://data.lblod.info/id/personen/42279431d7bcfc6f7639069f01f2463c7fa6058abd7b3aa02a59abf705b2a30a> "Annemie" )
+    ( <http://data.lblod.info/id/personen/4259060f1c5c896d8e1c5ba2207da8ae2e167298855cf30793b4f8c0eec3c07e> "Gino" )
+    ( <http://data.lblod.info/id/personen/4b21810f86899d35c314d7bb1cf79d626086bdabae53db3a1932470a759293c0> "Koen" )
+    ( <http://data.lblod.info/id/personen/4e271cf4f60634f1cbce8e50249c4ab6ad1e67b8b45a7e21732abad41eeb3e48> "Johannes" )
+    ( <http://data.lblod.info/id/personen/52ba7178fc2c462d0bf2c2b21b0a575d99f4dc83095ce7e02f82b1901c232404> "Kristien" )
+    ( <http://data.lblod.info/id/personen/58bcb1f05683ce1c6d72101c0d1bc7494ccd3c266aad9eee105ede3945229c5f> "M'" )
+    ( <http://data.lblod.info/id/personen/5db3a72db6973cfa563c6389aecaefe3aa2cc6d7bade48eca6b8aa2bd4bbdec6> "Jo" )
+    ( <http://data.lblod.info/id/personen/7ccbabc9a138892694d30b660cc9f8ba89c329a08d135c068beb18ae836511bc> "Jos" )
+    ( <http://data.lblod.info/id/personen/a081bb9039f85c1412d3bf6de52bb9a834880a9318d61696072e724762ef40b0> "Arlette" )
+    ( <http://data.lblod.info/id/personen/b279d5b4f42b6aa9df5aed81f7e7b9bffe7ddb274187c2f393ec206b0d703e4d> "Arlette" )
+    ( <http://data.lblod.info/id/personen/1c6e9ca6-cad6-468d-80c8-7afca169dc64> "Ludwig" )
+    ( <http://data.lblod.info/id/personen/25041e8b-6d6d-4150-99fd-bf474fd4a2d5> "Marc" )
+    ( <http://data.lblod.info/id/personen/29b11030-7934-44ff-a3e9-3c2601afd62e> "Maria" )
+    ( <http://data.lblod.info/id/personen/281707b0-83c1-452c-8ee4-6836cae9f066> "Fons" )
+    ( <http://data.lblod.info/id/personen/2e6c6329-88e5-46f9-bf16-6a1d3719830c> "Gordana" )
+    ( <http://data.lblod.info/id/personen/41171e79-a064-418d-971f-6c09f08223a7> "Rita" )
+    ( <http://data.lblod.info/id/personen/55fa239c-f8b6-49b9-9af2-3af156867957> "Jos" )
+    ( <http://data.lblod.info/id/personen/57bf56fa-9de3-43e0-91f8-e8154069c29f> "Kitty" )
+    ( <http://data.lblod.info/id/personen/6d1308f4-1806-4a82-b2d8-a08417744786> "Dirk" )
+    ( <http://data.lblod.info/id/personen/77246dea-dbfd-434c-ab9a-c80949b21158> "Sandra" )
+    ( <http://data.lblod.info/id/personen/954bce06-514c-4564-90c3-a7154db6b6db> "Jenny" )
+    ( <http://data.lblod.info/id/personen/9f91ba78-7c67-4243-a271-50caedf5c7e1> "Chris" )
+    ( <http://data.lblod.info/id/personen/a47bb294-fb64-49f8-8a7e-166c7173c341> "Luc" )
+    ( <http://data.lblod.info/id/personen/a931c173-3b53-489b-a8a0-aa8da42f3f9d> "Jolien" )
+    ( <http://data.lblod.info/id/personen/b1e20d9f-d2e9-4245-9268-609f2dcfdcf6> "Bart" )
+    ( <http://data.lblod.info/id/personen/b826c25c-5f0b-47df-8abe-7bb55d0e3be4> "Greta" )
+    ( <http://data.lblod.info/id/personen/b86f113cf8449f6905618924bef9e15e7abdb73114d2d98bdb8568d6d78a0597> "Wini" )
+    ( <http://data.lblod.info/id/personen/b8ea03bfab81116289383bb9e0bf964f93c72e998323c55450f5dd64eeb70378> "Jef" )
+    ( <http://data.lblod.info/id/personen/befb8f33670d9bfaf0a8de77d222c6fab1205bf2cabc503595795f1da2ed2642> "Van Cutsem" )
+    ( <http://data.lblod.info/id/personen/c3f4dadbb966f03b12aeb665cf0a8ab6b060ee20f67b301c021b25da027b6b62> "Jerry" )
+    ( <http://data.lblod.info/id/personen/c7a978ca-ddc4-4ad9-8635-f9db6fc1d79f> "Jos" )
+    ( <http://data.lblod.info/id/personen/cb26b3251613a9c3ecfe6827fc6b584c4af393ed212deafbdc81d44c037ca540> "Ronny" )
+    ( <http://data.lblod.info/id/personen/cb6517663666268a2a2bffebdbcbe46e01dc8711208dd80d1ad9a7f9ff3f45ad> "Tinnie" )
+    ( <http://data.lblod.info/id/personen/d8d145c13fa42b6e6cd8c48a0a3bf70722f25892677230d591f975cd4e03b0c2> "Els" )
+    ( <http://data.lblod.info/id/personen/dadd5a55c1707e46f8dc9728223aabcc2a0c927168f37d89f456a154b0719bc4> "Nico" )
+    ( <http://data.lblod.info/id/personen/dc023a54094ffbe0957ef9037086f0a420811fc2059db720fab2beeec386e533> "Mia" )
+    ( <http://data.lblod.info/id/personen/e824b63d06705ba62fcf6154ddd1260cb1fdc17bada9562f98bb35450f2747af> "Ludo" )
+    ( <http://data.lblod.info/id/personen/ede78e7a0e325a28201b81eebc0c8b3ad7146bd921efb2c75360ee9d417966ce> "Betty" )
+    ( <http://data.lblod.info/id/personen/f6b389bb57918b6e14a5f469f8825594d9a258513e8462044fcc09efe1d01973> "Marc" )
+    ( <http://data.lblod.info/id/personen/fa51af2d-224a-41ea-8a0b-88588a7ed492> "Walter" )
+    ( <http://data.lblod.info/id/personen/1d11fb0c-66b8-4ee2-99da-adf6ccda9adc> "J-P" )
+    ( <http://data.lblod.info/id/personen/36d8788c-d99f-4b73-be7e-a90959ed3cfa> "J P" )
+    ( <http://data.lblod.info/id/personen/9657a8c7-e597-4c36-9972-5c71a8cf295a> "J P" )
+  }
+  GRAPH ?g {
+    ?s persoon:gebruikteVoornaam ?old.
+    OPTIONAL {
+      ?s dct:modified ?oldModified.
+    }
+  }
+  BIND(NOW() AS ?modified)
+  ?g ext:ownedBy ?eenheid.
+};
+
+#Fix achternamen
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+      ?s foaf:familyName ?old.
+      ?s dct:modified ?oldModified.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s foaf:familyName ?new.
+    ?s dct:modified ?modified.
+  }
+}
+WHERE {
+  VALUES ( ?s ?new ) {
+    ( <http://data.lblod.info/id/personen/06fb62e4d137559cf163e97f76b48373a934e48e983f4bc2554eb649b5e9276e> "Liefooghe" )
+    ( <http://data.lblod.info/id/personen/0958027d5cfcf07fb58bb9ee8d248524d9f44ba0eac963f1a4a2c842a738c90a> "Bruneel" )
+    ( <http://data.lblod.info/id/personen/0b3cc928bd0fb60673a248c6e7f7edfa33690bdbb1dcac0fe0fadac8b68eafaa> "Hauterman" )
+    ( <http://data.lblod.info/id/personen/160482113c1f515b52eb26a2e2882483a26abec8caecb6fb63798e0b6811f71e> "Vansweevelt" )
+    ( <http://data.lblod.info/id/personen/17b236d17b06bb01609eab6b20285e624c361205bd0ae1f70c7af3733e2d0fe5> "Dhondt" )
+    ( <http://data.lblod.info/id/personen/16754a5dd878bd1a830288eb6e01a022f432fe6dc873266f16e7b89938e22585> "Deprez" )
+    ( <http://data.lblod.info/id/personen/18d15412a115be1cd3b5402aab16d9e504b88118de8e781fed0238bb34a45bbb> "Vandemoortele" )
+    ( <http://data.lblod.info/id/personen/20d1c1882d847c37bc34ba89d1f6be1aab57968c17f90078f03b2e3d8419e002> "Verhaeghe" )
+    ( <http://data.lblod.info/id/personen/296d7dd46e51f07a4d88aed3a1355c7dd1aef1a0156b1f86bb107c365e836809> "Malyster" )
+    ( <http://data.lblod.info/id/personen/2a275fc4165fa74af8660b5b0341ac4d09f80bab519eb0c561021b311be15328> "Follebout" )
+    ( <http://data.lblod.info/id/personen/2e9c4b7a644e4177da67ee79f8eda2bd143e9f6afd310d8cbb675d89edd51d96> "Van Der Vliet" )
+    ( <http://data.lblod.info/id/personen/3228a5106bfd6b54da4823516d40c94ddabef3e5578707ff56cade0e48134988> "Van Der Vliet" )
+    ( <http://data.lblod.info/id/personen/3be150da1a64fc4aecde316609a9f576e6356aba82ea127193482282b5fd76c6> "Stals" )
+    ( <http://data.lblod.info/id/personen/41084dc214004768570cb847b87336c1178f11aa746f9d7a9ab9a4a0cfd926ea> "Dupont" )
+    ( <http://data.lblod.info/id/personen/4ca331e9abdec0bd7861a46473a74ec1400e41630b48bea7c91589cefa05a6f1> "Blondin" )
+    ( <http://data.lblod.info/id/personen/4e271cf4f60634f1cbce8e50249c4ab6ad1e67b8b45a7e21732abad41eeb3e48> "De Backer" )
+    ( <http://data.lblod.info/id/personen/52ba7178fc2c462d0bf2c2b21b0a575d99f4dc83095ce7e02f82b1901c232404> "Hoes" )
+    ( <http://data.lblod.info/id/personen/5cb59270dce076a9e9be9a20f545f6ea2abfdc40853e03df174a3e4a2985d4c6> "Wychuyse" )
+    ( <http://data.lblod.info/id/personen/5ec31e2f94687f2a37475cd132246af1c69793f5952dfc0d98e2c0d4f42d0931> "Liétar" )
+    ( <http://data.lblod.info/id/personen/61011687c3cb6c3a3e5069e71fb74bd40d08e35ac1ce4bcf64e223a0d6e0cb45> "Raepsaet" )
+    ( <http://data.lblod.info/id/personen/6efc96c665719f3274b35dd20a11fcf20404621cf54c04ce3a69353325315d97> "K.C" )
+    ( <http://data.lblod.info/id/personen/7ab7c9e2ddffc3b627a683770666606eeadc39e18a02647ed5832da97303e512> "Matthys" )
+    ( <http://data.lblod.info/id/personen/7fba454c6a865a946df19f55e6874dfed0d9a36c5fe4cb345a8d17b5e8a963a9> "Deprez" )
+    ( <http://data.lblod.info/id/personen/8115967c8419c3e3230a5a50e271c11cb198f8575cc986d099002c48a0c7b5f6> "Lapiere" )
+    ( <http://data.lblod.info/id/personen/83b8db1b660270954c9302d53de8d2c7361f9960995cb7b7c5c297c4f1f228ae> "Lust" )
+    ( <http://data.lblod.info/id/personen/8b6ccb3198d28e28799f4e7abdc58c81f8c975e5a57c2f0aec04ae35264fbc77> "Vander Stichele" )
+    ( <http://data.lblod.info/id/personen/90e19476a36378d8a2776dce5ef082a2e41c2f889e04799b4dc5acdbca7efc9e> "Louagie" )
+    ( <http://data.lblod.info/id/personen/92b0a9a625e771aaca6ef2c1696e3dfcf4167065040592aa99482c36e5d1b9a3> "Buyse" )
+    ( <http://data.lblod.info/id/personen/a081bb9039f85c1412d3bf6de52bb9a834880a9318d61696072e724762ef40b0> "De Wachter" )
+    ( <http://data.lblod.info/id/personen/a16b76f78190dc3063445e9399bf3e57db6c9356b2fc6fbd10aa6e4739511cff> "Deleye" )
+    ( <http://data.lblod.info/id/personen/ae4bc382b5b015131a4cfc87dc53a8aa075a7f77b6fd9eb66c015be0a72214c7> "Howcutt" )
+    ( <http://data.lblod.info/id/personen/b24f5458f68dbd237037189268d013c68495cca8e79de1e9fe8b0d1fe71caf3b> "De Wilde" )
+    ( <http://data.lblod.info/id/personen/b279d5b4f42b6aa9df5aed81f7e7b9bffe7ddb274187c2f393ec206b0d703e4d> "Vierendeels" )
+    ( <http://data.lblod.info/id/personen/017f669f-43aa-458a-aa99-d4fc87560f9e> "Bruneel" )
+    ( <http://data.lblod.info/id/personen/005583b9-0f2b-4857-99b2-6eae1ff41376> "Wolter Hofmans" )
+    ( <http://data.lblod.info/id/personen/06c4bdb8-075f-4653-a2fe-e9ddaeef4c20> "Mortier" )
+    ( <http://data.lblod.info/id/personen/049178c5-ac6e-499d-8c74-7c15e6fd7df3> "Lapere" )
+    ( <http://data.lblod.info/id/personen/17fcc11b-45c2-4e87-b8ea-8cef49365332> "Willaert" )
+    ( <http://data.lblod.info/id/personen/17e37b93-39cf-47da-a021-887c31ba1b54> "Porreye" )
+    ( <http://data.lblod.info/id/personen/1f2ab27a-30f3-49ee-8506-723a2d3bf49f> "Penel" )
+    ( <http://data.lblod.info/id/personen/21c692ea-04a4-4586-948b-70182471ca60> "Vallaeys" )
+    ( <http://data.lblod.info/id/personen/2a8ddb7f-81c2-4b3d-8a44-99739cfa228a> "Lemahieu" )
+    ( <http://data.lblod.info/id/personen/3603f721-8f73-488d-87b4-574a19b21dc7> "Demeulenaere" )
+    ( <http://data.lblod.info/id/personen/4029c061-26e1-4607-beec-7d85d1efb036> "Depuydt" )
+    ( <http://data.lblod.info/id/personen/4ed28b2a-ff9e-485d-b5c7-57c539de3d7e> "Clauw" )
+    ( <http://data.lblod.info/id/personen/51096a43-8165-4846-94a4-98488c3fc81f> "Bedert" )
+    ( <http://data.lblod.info/id/personen/619CC23C890F3E00080002A7> "Sand" )
+    ( <http://data.lblod.info/id/personen/5fb8cf04-a99a-4c99-8f77-9bf5367bff28> "Wautraets" )
+    ( <http://data.lblod.info/id/personen/633b33a7-6af4-4a80-b717-8ff3a0f58a36> "Ringoot" )
+    ( <http://data.lblod.info/id/personen/652D2D5C96FC0E4DDF39B10D> "Vanbinst" )
+    ( <http://data.lblod.info/id/personen/652D2C5B96FC0E4DDF39B109> "Vertongen" )
+    ( <http://data.lblod.info/id/personen/65AE5F6447E656AAFB264EFF> "Grosjean" )
+    ( <http://data.lblod.info/id/personen/6cd87dae-cc45-44d2-a079-4a630b5f0e42> "Levecque" )
+    ( <http://data.lblod.info/id/personen/6aa9a474-b84d-45ba-b259-e93aa8429171> "Markey" )
+    ( <http://data.lblod.info/id/personen/7d25a8ee-1313-41cf-997b-20af614a93ed> "Carels" )
+    ( <http://data.lblod.info/id/personen/8eb959cb-62bb-4fdb-b482-336e3f359c07> "Coene" )
+    ( <http://data.lblod.info/id/personen/8df9745c-ec9f-4968-8f09-eea94e97e3f4> "Verbrugghe" )
+    ( <http://data.lblod.info/id/personen/9da052f8-ea9c-4a58-b983-ccc4f1a1bb8b> "Pieters" )
+    ( <http://data.lblod.info/id/personen/a1b0d4df-0080-47f7-876d-b28276d8a99d> "Gomes Urbano" )
+    ( <http://data.lblod.info/id/personen/a7921222-d65d-4bff-91fb-6eab0801d6ab> "Bogaerts" )
+    ( <http://data.lblod.info/id/personen/a71dc18f-c41a-4fed-b89d-32583d615edb> "Ballyn" )
+    ( <http://data.lblod.info/id/personen/afd4c93c-cabd-4302-bf69-15a9885c2e74> "Tourlousse" )
+    ( <http://data.lblod.info/id/personen/b26e0fac-c63c-45a8-8807-2f0f8ba06764> "Dewaele" )
+    ( <http://data.lblod.info/id/personen/b86f113cf8449f6905618924bef9e15e7abdb73114d2d98bdb8568d6d78a0597> "Caers" )
+    ( <http://data.lblod.info/id/personen/bafdafda-76ec-441c-898a-99df9559e903> "Degryse" )
+    ( <http://data.lblod.info/id/personen/bdbf9824-f326-4a5a-864a-0f3bd5b74cb6> "Crabbe" )
+    ( <http://data.lblod.info/id/personen/befb8f33670d9bfaf0a8de77d222c6fab1205bf2cabc503595795f1da2ed2642> "Guido" )
+    ( <http://data.lblod.info/id/personen/c9694551-450a-4498-adc5-2c83273fa1ff> "Lesage" )
+    ( <http://data.lblod.info/id/personen/c9b235cf-1d33-4daf-a746-a33dc75da86e> "Lanszweert" )
+    ( <http://data.lblod.info/id/personen/cc23f9bea1af812265d0f2a53b67439add9986ae1133d1e2a54b189502a9ec7f> "Verween" )
+    ( <http://data.lblod.info/id/personen/cbad6f1552a9264ea5cbbf77431e687e828bc2d275082720db242d75282f5e50> "Malyster" )
+    ( <http://data.lblod.info/id/personen/cb26b3251613a9c3ecfe6827fc6b584c4af393ed212deafbdc81d44c037ca540> "Noynaert" )
+    ( <http://data.lblod.info/id/personen/d006b58cb0a71c73cc5529e61f678c8f87e1d77dbd62809a7b7fbef36b16c2e8> "Breemersch" )
+    ( <http://data.lblod.info/id/personen/dafe89eb-1afb-4818-b7be-e3e787cf3b53> "Dolfen" )
+    ( <http://data.lblod.info/id/personen/dadd5a55c1707e46f8dc9728223aabcc2a0c927168f37d89f456a154b0719bc4> "Raskin" )
+    ( <http://data.lblod.info/id/personen/dc5211b6401b87e6c8c5de4ee5762e0a62c468d8a567a1cd81f30bed3b57b1a3> "Van Leuven" )
+    ( <http://data.lblod.info/id/personen/e487f22efe24ea3646f17ec8bbe866559ba469803d959602bb2361f762c762d0> "Verdurme" )
+    ( <http://data.lblod.info/id/personen/e88188fb-c29a-4fa7-b7bd-865fbf883195> "De Coster" )
+    ( <http://data.lblod.info/id/personen/eade770a433a884e1a8a07775c51c4fa2a281af1e3236cfbbe8c8af4caa73b2f> "O" )
+    ( <http://data.lblod.info/id/personen/edc5a623c3d16a5ed60c2fe33436394a6ae590ce7a4761258c79365606734cf4> "O" )
+    ( <http://data.lblod.info/id/personen/eee2ad0169dcbe583a13d77dcfd2d4aa95d3285f9d304b42503a3623b7160ccc> "De Bock" )
+    ( <http://data.lblod.info/id/personen/f3d9246c-6f29-48a8-87f5-c120beb9b2aa> "Ryckman" )
+    ( <http://data.lblod.info/id/personen/f5064b9dadf824c50fe0bfe183450c0be3dae51ca1d534dcea609116b06cf58c> "De Raeve" )
+    ( <http://data.lblod.info/id/personen/f6b389bb57918b6e14a5f469f8825594d9a258513e8462044fcc09efe1d01973> "Vanaudenhove" )
+    ( <http://data.lblod.info/id/personen/fec5999b232cf9e45f683fcf0182fc7763a761924deb800d9bba387aa75ca1cf> "Schollaert" )
+    ( <http://data.lblod.info/id/personen/fdc54cc7-2969-438c-8f1a-a6dede9405c3> "Moerman" )
+    ( <http://data.lblod.info/id/personen/fef09bf23d39c04153ffe155a99775b534a2c899ca7904fde550e4e60ac90f51> "Beek" )
+    ( <http://data.lblod.info/id/personen/bcaccdda-3ec4-418b-a358-8624d6e5b0a3> "O" )
+  }
+  GRAPH ?g {
+    ?s foaf:familyName ?old.
+    OPTIONAL {
+      ?s dct:modified ?oldModified.
+    }
+  }
+  BIND(NOW() AS ?modified)
+  ?g ext:ownedBy ?eenheid.
+};
+
+#Switch first name - last name Guido Van Cutsem
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?uri persoon:gebruikteVoornaam ?fname .
+    ?uri foaf:familyName ?lname .
+    ?uri dct:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?uri persoon:gebruikteVoornaam ?lname .
+    ?uri foaf:familyName ?fname .
+    ?uri dct:modified ?oldTime .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?uri a person:Person ;
+      persoon:gebruikteVoornaam ?fname ;
+      foaf:familyName ?lname .
+    OPTIONAL {
+     ?uri dct:modified ?oldTime.
+    }
+  }
+  VALUES ?uri { <http://data.lblod.info/id/personen/befb8f33670d9bfaf0a8de77d222c6fab1205bf2cabc503595795f1da2ed2642> }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}

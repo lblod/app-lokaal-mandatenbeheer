@@ -54,7 +54,6 @@ WHERE {
     ( <http://data.lblod.info/id/personen/b826c25c-5f0b-47df-8abe-7bb55d0e3be4> "Greta" )
     ( <http://data.lblod.info/id/personen/b86f113cf8449f6905618924bef9e15e7abdb73114d2d98bdb8568d6d78a0597> "Wini" )
     ( <http://data.lblod.info/id/personen/b8ea03bfab81116289383bb9e0bf964f93c72e998323c55450f5dd64eeb70378> "Jef" )
-    ( <http://data.lblod.info/id/personen/befb8f33670d9bfaf0a8de77d222c6fab1205bf2cabc503595795f1da2ed2642> "Van Cutsem" )
     ( <http://data.lblod.info/id/personen/c3f4dadbb966f03b12aeb665cf0a8ab6b060ee20f67b301c021b25da027b6b62> "Jerry" )
     ( <http://data.lblod.info/id/personen/c7a978ca-ddc4-4ad9-8635-f9db6fc1d79f> "Jos" )
     ( <http://data.lblod.info/id/personen/cb26b3251613a9c3ecfe6827fc6b584c4af393ed212deafbdc81d44c037ca540> "Ronny" )
@@ -166,7 +165,6 @@ WHERE {
     ( <http://data.lblod.info/id/personen/b86f113cf8449f6905618924bef9e15e7abdb73114d2d98bdb8568d6d78a0597> "Caers" )
     ( <http://data.lblod.info/id/personen/bafdafda-76ec-441c-898a-99df9559e903> "Degryse" )
     ( <http://data.lblod.info/id/personen/bdbf9824-f326-4a5a-864a-0f3bd5b74cb6> "Crabbe" )
-    ( <http://data.lblod.info/id/personen/befb8f33670d9bfaf0a8de77d222c6fab1205bf2cabc503595795f1da2ed2642> "Guido" )
     ( <http://data.lblod.info/id/personen/c9694551-450a-4498-adc5-2c83273fa1ff> "Lesage" )
     ( <http://data.lblod.info/id/personen/c9b235cf-1d33-4daf-a746-a33dc75da86e> "Lanszweert" )
     ( <http://data.lblod.info/id/personen/cc23f9bea1af812265d0f2a53b67439add9986ae1133d1e2a54b189502a9ec7f> "Verween" )
@@ -215,8 +213,8 @@ DELETE {
 }
 INSERT {
   GRAPH ?g {
-    ?uri persoon:gebruikteVoornaam ?lname .
-    ?uri foaf:familyName ?fname .
+    ?uri persoon:gebruikteVoornaam "Guido" .
+    ?uri foaf:familyName "Van Cutsem" .
     ?uri dct:modified ?oldTime .
   }
 }

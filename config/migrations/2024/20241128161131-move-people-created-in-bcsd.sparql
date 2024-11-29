@@ -1,0 +1,43 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+  GRAPH ?ocmw {
+    ?persoon ?pp ?po .
+    ?identifier ?ip ?io .
+    ?geboorte ?gp ?go .
+  }
+}
+WHERE {
+  GRAPH ?gemeente {
+    ?orgaan a besluit:Bestuursorgaan ;
+      ext:isTijdelijkOrgaanIn ?bestuurseenheid ;
+      ext:origineleBestuurseenheid ?orgBestuurseenheid .
+    ?orgaanIT a besluit:Bestuursorgaan ;
+      mandaat:isTijdspecialisatieVan ?orgaan ;
+      org:hasPost ?mandaat .
+    ?mandataris org:holds ?mandaat ;
+      mandaat:isBestuurlijkeAliasVan ?persoon .
+    ?persoon a person:Person ;
+      ?pp ?po .
+    OPTIONAL {
+      ?persoon adms:identifier ?identifier .
+      ?identifier ?ip ?io .
+    }
+    OPTIONAL {
+      ?persoon persoon:heeftGeboorte ?geboorte .
+      ?geboorte ?gp ?go .
+    }
+  }
+  GRAPH ?ocmw {
+    FILTER NOT EXISTS {
+      ?persoon a person:Person .
+    }
+  }
+  ?ocmw ext:ownedBy ?orgBestuurseenheid .
+}

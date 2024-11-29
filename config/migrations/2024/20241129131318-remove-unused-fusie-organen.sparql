@@ -41,7 +41,7 @@ WHERE {
         ?bestuursorgaanInTijd lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2024 - heden
       }
     }
-    GROUP BY ?bestuurseenheid ?name
+    GROUP BY ?bestuurseenheid
     HAVING (COUNT(?bestuursorgaanInTijd) = 3)
   }
 }

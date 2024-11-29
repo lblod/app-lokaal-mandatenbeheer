@@ -158,6 +158,10 @@
               ?session muAccount:account <http://data.lblod.info/vendors/14db001d-ea0f-4a8a-8453-c48547347588> .
               ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group;
                            muAccount:account/ext:sessionRole ?session_role.
+            }  UNION {
+              ?session muAccount:account <http://data.lblod.info/vendors/42edb420-08c7-4ede-9961-bc0e527d0f3b> .
+              ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group;
+                           muAccount:account/ext:sessionRole ?session_role.
             }}
           }")
 

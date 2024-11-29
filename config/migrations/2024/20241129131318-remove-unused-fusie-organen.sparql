@@ -1,0 +1,47 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX bestuurseenheidscode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX orgaancode: <http://data.lblod.info/id/lb-orgaan-classificatiecode/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+    ?iv ?ip ?io .
+    ?bestuursorgaanToRemove ?op ?oo .
+    ?bestuursorgaanITToRemove ?oitp ?oito .
+    ?mandaat ?mp ?mo .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?iv a lmb:Installatievergadering ;
+      lmb:heeftBestuurseenheid ?bestuurseenheid ;
+      ?ip ?io .
+
+    ?bestuursorgaanToRemove besluit:bestuurt ?bestuurseenheid ;
+      besluit:classificatie ?orgaanClassificatie ;
+      ?op ?oo .
+    ?bestuursorgaanITToRemove mandaat:isTijdspecialisatieVan ?bestuursorgaanToRemove ;
+      lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 ; # 2024 - heden
+      org:hasPost ?mandaat ;
+      ?oitp ?oito .
+    ?mandaat ?mp ?mo .
+  }
+  VALUES ?orgaanClassificatie { orgaancode:afc54ba6-f649-4941-82e4-38b9512b072d orgaancode:b3c79d7e-b0b5-4afe-8da9-3809bd30c11d } # Lokale adviesraad - GECORO
+  {
+    SELECT ?bestuurseenheid (COUNT (DISTINCT ?bestuursorgaanInTijd) AS ?count )
+    WHERE {
+      ?bestuurseenheid besluit:classificatie bestuurseenheidscode:5ab0e9b8a3b2ca7c5e000001 . # Gemeente
+      GRAPH ?g {
+        ?bestuursorgaan besluit:bestuurt ?bestuurseenheid .
+        ?bestuursorgaanInTijd mandaat:isTijdspecialisatieVan ?bestuursorgaan .
+        ?bestuursorgaanInTijd lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2024 - heden
+      }
+    }
+    GROUP BY ?bestuurseenheid ?name
+    HAVING (COUNT(?bestuursorgaanInTijd) = 3)
+  }
+}

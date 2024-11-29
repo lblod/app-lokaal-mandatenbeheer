@@ -212,6 +212,7 @@ services:
       - ./config/ldes-delta-pusher/:/config/
       - ./data/ldes-feed/:/data/
     restart: always
+    logging: *default-logging
     labels:
       - "logging=true"
     links:

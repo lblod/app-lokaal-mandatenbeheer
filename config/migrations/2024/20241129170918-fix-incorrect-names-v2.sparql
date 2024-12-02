@@ -1,0 +1,31 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Staaf" .
+    ?persoon dct:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Vincent" .
+    ?persoon dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Van Impe" ;
+      persoon:gebruikteVoornaam "Staaf" .
+    OPTIONAL {
+      ?persoon dct:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/076e32186a8cfe8e2e37e7fd29e84724ebdddacfe84b979386a23ce3b733d10b> }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}

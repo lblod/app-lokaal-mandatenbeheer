@@ -1,0 +1,63 @@
+ PREFIX person: <http://www.w3.org/ns/person#>
+ PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+ PREFIX dct: <http://purl.org/dc/terms/>
+
+ DELETE {
+   GRAPH ?g {
+     ?persoon persoon:gebruikteVoornaam "Kris" .
+     ?persoon dct:modified ?oldTime .
+   }
+ }
+ INSERT {
+   GRAPH ?g {
+     ?persoon persoon:gebruikteVoornaam "Krist" .
+     ?persoon dct:modified ?now .
+   }
+ }
+ WHERE {
+   GRAPH ?g {
+     ?persoon a person:Person ;
+       foaf:familyName "De Riemaeker" ;
+       persoon:gebruikteVoornaam "Kris" .
+     OPTIONAL {
+       ?persoon dct:modified ?oldTime.
+     }
+   }
+   VALUES ?persoon { <http://data.lblod.info/id/personen/5850e997-cf9e-4814-8376-b570bd2752ef> }
+   ?g ext:ownedBy ?something .
+   BIND(NOW() as ?now)
+ };
+
+ PREFIX person: <http://www.w3.org/ns/person#>
+ PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+ PREFIX dct: <http://purl.org/dc/terms/>
+
+ DELETE {
+   GRAPH ?g {
+     ?persoon persoon:gebruikteVoornaam "nathalie" .
+     ?persoon dct:modified ?oldTime .
+   }
+ }
+ INSERT {
+   GRAPH ?g {
+     ?persoon persoon:gebruikteVoornaam "Nathalie" .
+     ?persoon dct:modified ?now .
+   }
+ }
+ WHERE {
+   GRAPH ?g {
+     ?persoon a person:Person ;
+       foaf:familyName "Michiels" ;
+       persoon:gebruikteVoornaam "nathalie" .
+     OPTIONAL {
+       ?persoon dct:modified ?oldTime.
+     }
+   }
+   VALUES ?persoon { <http://data.lblod.info/id/personen/7fe7ba15-fb9e-465e-ac5d-11f8bf945d0b> }
+   ?g ext:ownedBy ?something .
+   BIND(NOW() as ?now)
+ }

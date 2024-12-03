@@ -38,7 +38,7 @@ ext:bestuursorgaanClassificatieCodeF
             a form:RequiredConstraint;
             form:grouping form:Bag;
             sh:path <http://data.vlaanderen.be/ns/besluit#classificatie>;
-            sh:resultMessage "Classificatiecode is verplicht."
+            sh:resultMessage "Type is verplicht."
     ];
     form:options """{"conceptScheme":"http://data.lblod.info/id/conceptscheme/LokaalOrgaanClassificatieCode","searchEnabled":true}""".
 ext:deactivatedAtF

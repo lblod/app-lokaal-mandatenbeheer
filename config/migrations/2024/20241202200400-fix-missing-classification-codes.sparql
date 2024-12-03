@@ -1,0 +1,17 @@
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  INSERT {
+    GRAPH ?g {
+      ?org besluit:classificatie <http://data.lblod.info/id/lb-orgaan-classificatiecode/afc54ba6-f649-4941-82e4-38b9512b072d>.
+    }
+  } WHERE {
+    GRAPH ?g {
+      ?orgT mandaat:isTijdspecialisatieVan ?org.
+      FILTER NOT EXISTS {
+        ?org besluit:classificatie ?class.
+      }
+    }
+    ?g ext:ownedBy ?someone.
+
+  }

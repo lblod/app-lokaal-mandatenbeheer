@@ -5,7 +5,14 @@ import { sparqlEscapeUri } from "mu";
 const extraConstruct = `
   ?versionedS <http://mu.semte.ch/vocabularies/ext/relatedTo> ?bestuurseenheid.
 `;
-const extraWhere = ``;
+const extraWhere = `
+  GRAPH ?g {
+    ?s a ?thing.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.
+  }
+`;
 
 export const initialization = {};
 
@@ -45,14 +52,10 @@ Object.keys(ldesInstances).forEach((stream) => {
       extraConstruct: transformedExtraConstruct,
       extraWhere: transformedExtraWhere,
       filter: "",
-      graphFilter: "",
     };
     const definition = ldesInstances[stream].entities[type];
     if (definition.instanceFilter) {
       typeConfig.filter = definition.instanceFilter;
-    }
-    if (ldesInstances[stream].graphFilter) {
-      typeConfig.graphFilter = ldesInstances[stream].graphFilter;
     }
     initializationStream[type] = typeConfig;
   });

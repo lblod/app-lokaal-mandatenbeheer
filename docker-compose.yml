@@ -192,12 +192,10 @@ services:
   # LDES
   ##############################################################################
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:1.1.1
+    image: redpencil/ldes-delta-pusher:0.6.3
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
       LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"
-      LDES_FOLDER: public # ignored as we have an ldes config that sets the stream folder
-      DATA_FOLDER: /data
       CRON_HEALING: "0 0 0 * * *" # Every day at midnight
       AUTO_HEALING: "true"
       CRON_CHECKPOINT: "0 0 5 1 * *"

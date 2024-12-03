@@ -1,7 +1,7 @@
 import { sparqlEscapeUri, sparqlEscape } from "mu";
 import { querySudo } from "@lblod/mu-auth-sudo";
-import { addData, getConfigFromEnv } from "@lblod/ldes-producer";
-import { LDES_FRAGMENTER } from "../config";
+import { LDES_ENDPOINT } from "../config";
+import fetch from "node-fetch";
 import { log } from "./logger";
 import {
   defaultProperties,
@@ -9,8 +9,6 @@ import {
   officialPredicates,
 } from "./ldes-instances";
 import dispatch from "./dispatch";
-
-const ldesProducerConfig = getConfigFromEnv();
 
 export type LDES_TYPE = "public" | "abb" | "internal";
 export type TypesWithFilter = {
@@ -88,6 +86,28 @@ const fetchSubjectData = async (
   return data.results.bindings.map(bindingToTriple).join("\n");
 };
 
+async function sendLDESRequest(type: string, body: string, retriesLeft = 3) {
+  log(`Sending data to LDES endpoint ${LDES_ENDPOINT}${type}`, "debug");
+  await fetch(`${LDES_ENDPOINT}${type}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/turtle",
+    },
+    // xsd prefix is used in the types of the result data, so it needs to be declared.
+    body: `@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n${body}`,
+  }).catch(async (e) => {
+    if (retriesLeft > 0) {
+      log(
+        `Error sending data to LDES endpoint ${type} (retrying): ${e}`,
+        "error"
+      );
+      sendLDESRequest(type, body, retriesLeft - 1);
+    } else {
+      log(`Error sending data to LDES endpoint ${type}: ${e}`, "error");
+    }
+  });
+}
+
 const datatypeNames = {
   "http://www.w3.org/2001/XMLSchema#dateTime": "dateTime",
   "http://www.w3.org/2001/XMLSchema#date": "date",
@@ -130,15 +150,12 @@ export const publish = async (
   } else {
     targets = Object.keys(subject.ldesType);
   }
-  const toRepublish: any[] = [];
   await Promise.all(
     targets.map(async (target) => {
       if (ldesInstances[target].entities[subject.type]?.republishRelated) {
-        toRepublish.push(
-          ...(await fetchRelatedToRepublish(
-            subject,
-            ldesInstances[target].entities[subject.type].republishRelated
-          ))
+        await republishRelated(
+          subject,
+          ldesInstances[target].entities[subject.type].republishRelated
         );
       }
 
@@ -151,20 +168,17 @@ export const publish = async (
         `[${target}] Publishing data for subject ${subject.uri}:\n${data}`,
         "debug"
       );
-      const safeData = `@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n${data}`;
-
-      await addData(ldesProducerConfig, {
-        contentType: "text/turtle",
-        folder: target,
-        body: safeData,
-        fragmenter: LDES_FRAGMENTER,
+      return sendLDESRequest(target, data).catch((e) => {
+        log(
+          `Error publishing data for subject ${subject.uri} to LDES endpoint ${subject.ldesType}: ${e}`,
+          "error"
+        );
       });
     })
   );
-  await republishRelated(toRepublish);
 };
 
-async function fetchRelatedToRepublish(
+async function republishRelated(
   subject: InterestingSubject,
   predicates: string[]
 ) {
@@ -180,25 +194,15 @@ async function fetchRelatedToRepublish(
     }
   `);
   const fakeDeltas = relatedSubjects.results.bindings.map((subject) => ({
-    subject: { value: subject.related.value },
-    predicate: { value: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
-    object: { value: subject.type.value },
-    graph: { value: subject.g.value },
-  }));
-  return fakeDeltas;
-}
-
-async function republishRelated(toRepublish) {
-  if (toRepublish.length === 0) {
-    return;
-  }
-  const uniqueSubjects = {};
-  toRepublish.forEach((delta) => {
-    uniqueSubjects[delta.subject.value + delta.object.value] = delta;
-  });
-  const fakeCompleteDelta = {
-    inserts: Object.values(uniqueSubjects),
+    inserts: [
+      {
+        subject: { value: subject.related.value },
+        predicate: { value: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+        object: { value: subject.type.value },
+        graph: { value: subject.g.value },
+      },
+    ],
     deletes: [],
-  };
-  await dispatch([fakeCompleteDelta]);
+  }));
+  await dispatch(fakeDeltas);
 }

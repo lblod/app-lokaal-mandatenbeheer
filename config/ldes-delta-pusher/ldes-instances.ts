@@ -1,5 +1,7 @@
 export const ldesInstances = {
   public: {
+    graphFilter:
+      "?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.",
     entities: {
       "http://data.vlaanderen.be/ns/mandaat#Mandataris": {
         specialType: true,
@@ -38,7 +40,7 @@ export const ldesInstances = {
         "http://purl.org/dc/terms/modified",
       ],
       "http://www.w3.org/ns/person#Person": {
-        instanceFilter: `FILTER(?p NOT IN (<http://data.vlaanderen.be/ns/persoon#heeftGeboorte>, <http://www.w3.org/ns/adms#identifier>, <http://data.vlaanderen.be/ns/persoon#geslacht>))
+        instanceFilter: `FILTER(?p NOT IN (<http://data.vlaanderen.be/ns/persoon#heeftGeboorte>, <http://www.w3.org/ns/adms#identifier>, <http://data.vlaanderen.be/ns/persoon#geslacht>, <https://data.vlaanderen.be/ns/persoon#geslacht>, <https://data.vlaanderen.be/ns/persoon#heeftGeboorte>))
       `,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
         transformPredicates: {
@@ -86,8 +88,6 @@ export const ldesInstances = {
         }`,
       },
     },
-    graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
-    graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
   },
   abb: {
     entities: {
@@ -164,8 +164,8 @@ export const ldesInstances = {
         }`,
       },
     },
-    graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
-    graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
+    graphFilter:
+      "?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.",
   },
   internal: {
     entities: {
@@ -242,8 +242,8 @@ export const ldesInstances = {
         }`,
       },
     },
-    graphsToExclude: ["http://mu.semte.ch/graphs/besluiten-consumed"],
-    graphTypesToExclude: ["http://mu.semte.ch/vocabularies/ext/FormHistory"],
+    graphFilter:
+      "?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.",
   },
 };
 

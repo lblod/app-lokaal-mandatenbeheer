@@ -155,13 +155,15 @@
               ?session muAccount:canActOnBehalfOf/mu:uuid ?session_group;
                            muAccount:account/ext:sessionRole ?session_role.
             } UNION {
-              ?session muAccount:account <http://data.lblod.info/vendors/14db001d-ea0f-4a8a-8453-c48547347588> .
-              ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group;
-                           muAccount:account/ext:sessionRole ?session_role.
+                ?session muAccount:account <http://data.lblod.info/vendors/14db001d-ea0f-4a8a-8453-c48547347588> .
+                ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group ;
+                                        muAccount:account/ext:sessionRole ?session_role.
+                ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/^<http://lblod.data.gift/vocabularies/lmb/heeftBestuurseenheid>/<http://lblod.data.gift/vocabularies/lmb/hasStatus> <http://data.lblod.info/id/concept/InstallatievergaderingStatus/a40b8f8a-8de2-4710-8d9b-3fc43a4b740e> .
             }  UNION {
               ?session muAccount:account <http://data.lblod.info/vendors/42edb420-08c7-4ede-9961-bc0e527d0f3b> .
               ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group;
                            muAccount:account/ext:sessionRole ?session_role.
+              ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/^<http://lblod.data.gift/vocabularies/lmb/heeftBestuurseenheid>/<http://lblod.data.gift/vocabularies/lmb/hasStatus> <http://data.lblod.info/id/concept/InstallatievergaderingStatus/a40b8f8a-8de2-4710-8d9b-3fc43a4b740e> .
             }}
           }")
 

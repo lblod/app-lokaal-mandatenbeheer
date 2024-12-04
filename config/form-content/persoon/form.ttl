@@ -12,6 +12,7 @@
 @prefix adms: <http://www.w3.org/ns/adms#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix org: <http://www.w3.org/ns/org#>.
+@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
 
 ext:gebruikteVoornaamF
     a form:Field;
@@ -95,7 +96,7 @@ ext:geslachtCodeF
       sh:resultMessage "Geslacht is verplicht."
     ].
 ext:persoonPG
-    a form:PropertyGroup; sh:name "Voeg persoon toe"; sh:order 1.
+    a form:PropertyGroup; sh:name ""; sh:order 1.
 
 ext:possibleDuplicateF
     a form:Field;

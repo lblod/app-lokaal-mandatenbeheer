@@ -11,6 +11,7 @@
 @prefix persoon: <http://data.vlaanderen.be/ns/persoon#>.
 @prefix adms: <http://www.w3.org/ns/adms#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix org: <http://www.w3.org/ns/org#>.
 
 ext:gebruikteVoornaamF
     a form:Field;
@@ -59,6 +60,12 @@ ext:identificatorF
       form:grouping form:MatchSome;
       sh:resultMessage "Vul een geldig rijksregisternummer in";
       sh:path ( adms:identifier skos:notation )
+    ],
+    [
+      a form:RequiredConstraint;
+      form:grouping form:Bag;
+      sh:path ( adms:identifier skos:notation );
+      sh:resultMessage "Rijksregisternummer is verplicht."
     ].
 ext:geboorteF
     a form:Field;
@@ -66,7 +73,13 @@ ext:geboorteF
     sh:group ext:persoonPG;
     sh:name "Geboortedatum";
     sh:order 6;
-    sh:path ( persoon:heeftGeboorte persoon:datum ).
+    sh:path ( persoon:heeftGeboorte persoon:datum );
+    form:validatedBy [
+      a form:RequiredConstraint;
+      form:grouping form:Bag;
+      sh:path ( persoon:heeftGeboorte persoon:datum );
+      sh:resultMessage "Geboortedatum is verplicht."
+    ].
 ext:geslachtCodeF
     a form:Field;
     form:displayType displayTypes:genderSelector;
@@ -74,7 +87,13 @@ ext:geslachtCodeF
     sh:name "Geslacht";
     sh:order 7;
     sh:path persoon:geslacht;
-    form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":false}""".
+    form:options """{"conceptScheme":"http://publications.europa.eu/resource/authority/human-sex","searchEnabled":false}""";
+    form:validatedBy [
+      a form:RequiredConstraint;
+      form:grouping form:Bag;
+      sh:path org:holds;
+      sh:resultMessage "Geslacht is verplicht."
+    ].
 ext:persoonPG
     a form:PropertyGroup; sh:name "Voeg persoon toe"; sh:order 1.
 

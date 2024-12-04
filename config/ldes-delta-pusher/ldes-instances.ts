@@ -40,7 +40,7 @@ export const ldesInstances = {
         "http://purl.org/dc/terms/modified",
       ],
       "http://www.w3.org/ns/person#Person": {
-        instanceFilter: `FILTER(?p NOT IN (<http://data.vlaanderen.be/ns/persoon#heeftGeboorte>, <http://www.w3.org/ns/adms#identifier>, <http://data.vlaanderen.be/ns/persoon#geslacht>))
+        instanceFilter: `FILTER(?p NOT IN (<http://data.vlaanderen.be/ns/persoon#heeftGeboorte>, <http://www.w3.org/ns/adms#identifier>, <http://data.vlaanderen.be/ns/persoon#geslacht>, <https://data.vlaanderen.be/ns/persoon#geslacht>, <https://data.vlaanderen.be/ns/persoon#heeftGeboorte>))
       `,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
         transformPredicates: {

@@ -25,12 +25,19 @@ Object.keys(ldesInstances).forEach((stream) => {
         const to = transformPredicates[from];
         mapping += `(${sparqlEscapeUri(from)} ${sparqlEscapeUri(to)})\n`;
       });
+      // if constructs are more efficient than mappings here sadly
+      const ifConstructs = Object.keys(transformPredicates).map((from) => {
+        const fromSafe = sparqlEscapeUri(from);
+        const toSafe = sparqlEscapeUri(transformPredicates[from]);
+        return `IF(?p = ${fromSafe}, ${toSafe}, `;
+      });
+      const ifConstructsString = `${ifConstructs.join("")} ?p ${")".repeat(
+        ifConstructs.length
+      )}`;
+
       transformedExtraWhere = `${extraWhere}
 
-      VALUES (?pFrom ?pTo) {
-        ${mapping}
-      }
-      BIND(IF(?p = ?pFrom, ?pTo, ?p) AS ?pNew)`;
+      BIND(${ifConstructsString} AS ?pNew)`;
       transformedExtraConstruct = `${extraConstruct}
       ?versionedS ?pNew ?o.`;
     }

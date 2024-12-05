@@ -92,7 +92,7 @@ ext:geslachtCodeF
     form:validatedBy [
       a form:RequiredConstraint;
       form:grouping form:Bag;
-      sh:path org:holds;
+      sh:path persoon:geslacht;
       sh:resultMessage "Geslacht is verplicht."
     ].
 ext:persoonPG

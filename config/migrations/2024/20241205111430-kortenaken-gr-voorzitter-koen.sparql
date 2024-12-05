@@ -1,0 +1,28 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+  DELETE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/cf8d2fffcacfd2f2e02fdd9311930b49aafb5249cd6c484971cdb4d1124e2381> . # Kim Vandepoel
+    }
+  } 
+  INSERT {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/31d28cce-0f1b-482f-96eb-9723084f4694> . # Koen Veulemans
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> a mandaat:Mandataris;
+          mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/cf8d2fffcacfd2f2e02fdd9311930b49aafb5249cd6c484971cdb4d1124e2381>; # Kim
+          org:holds ?mandaat.
+      ?mandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012>. # Voorzitter gemeenteraad
+      ?mandaat ^org:hasPost ?bestuursorgaan.
+      ?bestuursorgaan lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # 2024 - heden
+      ?bestuursorgaan mandaat:isTijdspecialisatieVan ?bestuursorgaanInTijd.
+      ?bestuursorgaanInTijd besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005>. # Gemeenteraad
+      ?bestuursorgaanInTijd besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/c1c28cd9e31c25100374482b71b951d5be9b849454b1bd7e1a5158a589bda5de>. # Gemeente Kortenaken
+    }
+  }

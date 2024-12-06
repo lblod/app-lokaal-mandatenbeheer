@@ -1,0 +1,6 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+   <http://data.lblod.info/vendors/2b7ee2e7-9162-4e91-9f9a-ecb3c89b1cdd> <http://mu.semte.ch/vocabularies/account/canActOnBehalfOf> <http://data.lblod.info/id/bestuurseenheden/665f6a3b8e4ad7766a1be93578b5d8b6312afa8600c1301388225880fe4eca53>.
+   <http://data.lblod.info/vendors/2b7ee2e7-9162-4e91-9f9a-ecb3c89b1cdd> <http://mu.semte.ch/vocabularies/account/canActOnBehalfOf> <http://data.lblod.info/id/bestuurseenheden/881c65df7571ff558932068e7b6ac5becc9ec03cf078f802f6b5088911a7538e>.
+  }
+}

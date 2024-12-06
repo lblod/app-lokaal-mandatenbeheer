@@ -165,6 +165,7 @@ services:
       NOTIFICATION_CRON_PATTERN: 0 8 * * 1-5
       EMAIL_FROM_MANDATARIS_EFFECTIEF: "lokaalmandatenbeheer@vlaanderen.be" # Must be the same as EMAIL_ADDRESS in deliver-email service
       SEND_EMAIL_FOR_MANDATARIS_EFFECTIEF: false
+      BESLUIT_STAGING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as decision-ldes-client working graph
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.6.3
     labels:
@@ -238,6 +239,23 @@ services:
       ENABLE_AUTH: "false"
     volumes:
       - "./data/ldes-feed/:/data/"
+  decision-ldes-client:
+    image: lblod/ldes-client:0.0.3
+    links:
+      - database:database
+      - virtuoso:virtuoso
+    restart: always
+    environment:
+      LDES_BASE: https://mandaten-besluiten.lblod.info/streams/ldes/public/
+      FIRST_PAGE: https://mandaten-besluiten.lblod.info/streams/ldes/public/1
+      TARGET_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as mandataris besluit staging graph
+      WORKING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed-tmp
+      DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
+      RANDOMIZE_GRAPHS: true
+      BATCH_SIZE: 100
+      BYPASS_MU_AUTH: false
+    labels:
+      - "logging=true"
   ##############################################################################
   # VENDOR ENDPOINTS
   ##############################################################################

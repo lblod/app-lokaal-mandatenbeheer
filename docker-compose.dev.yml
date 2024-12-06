@@ -95,6 +95,11 @@ services:
     networks:
       - default
       - debug
+  decision-ldes-client:
+    restart: no
+    environment:
+      NODE_ENV: development
+      CRON_PATTERN: "* * * * *" # Every minute
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:

@@ -276,3 +276,20 @@ services:
     volumes:
       - ./data/mail:/share
     logging: *default-logging
+  vendor-management-consumer:
+    image: lblod/delta-consumer:latest
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.loket.lblod.info/"
+      DCR_SYNC_LOGIN_ENDPOINT: 'https://dev.loket.lblod.info/sync/vendor-management/login' # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_SERVICE_NAME: "vendor-management-consumer"
+      DCR_SYNC_FILES_PATH: "/sync/vendor-management/files"
+      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/VendorManagementCacheGraphDump"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/vendor-management"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/vendor-management-consumer"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_KEEP_DELTA_FILES: "true"
+      DCR_DELTA_FILE_FOLDER: "/consumer-files"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/VendorManagementFileSyncing"
+      INGEST_GRAPH: "http://mu.semte.ch/graphs/automatic-submission"
+    restart: always
+    logging: *default-logging

@@ -25,3 +25,5 @@ services:
     platform: linux/amd64
   cache:
     platform: linux/amd64
+  vendor-management-consumer:
+    platform: linux/amd64

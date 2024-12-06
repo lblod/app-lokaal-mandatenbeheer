@@ -112,3 +112,5 @@ services:
       EMAIL_CRON_PATTERN: "* * * * *" # Every minute
       CRON_FREQUENCY,: "* * * * *"
       LOG_ERRORS: true
+  vendor-management-consumer:
+    restart: "no"

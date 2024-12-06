@@ -1,0 +1,20 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+  DELETE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/cf8d2fffcacfd2f2e02fdd9311930b49aafb5249cd6c484971cdb4d1124e2381> . # Kim Vandepoel
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/31d28cce-0f1b-482f-96eb-9723084f4694> . # Koen Veulemans
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/cf8d2fffcacfd2f2e02fdd9311930b49aafb5249cd6c484971cdb4d1124e2381> . # Kim Vandepoel
+    }
+  }

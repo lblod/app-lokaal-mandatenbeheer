@@ -1,0 +1,63 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon foaf:familyName "Vankeerberghen" .
+    ?persoon dct:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon foaf:familyName "Vankeerberghen-Lemaire" .
+    ?persoon dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Vankeerberghen" ;
+      persoon:gebruikteVoornaam "Lieselot" .
+    OPTIONAL {
+      ?persoon dct:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/2df328cd-6615-478d-9cda-8f1636c9eb75> }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+};
+
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon foaf:familyName "Lombi Masita" .
+    ?persoon dct:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon foaf:familyName "Lombi" .
+    ?persoon dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Lombi Masita" ;
+      persoon:gebruikteVoornaam "Jennifer" .
+    OPTIONAL {
+      ?persoon dct:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/156dc88e-a923-43d1-bc5d-333d1666ccc8> }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}

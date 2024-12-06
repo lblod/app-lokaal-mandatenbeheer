@@ -141,7 +141,6 @@
        :to-graph public
        :for-allowed-group "public")
 
-; second part of union is cipal only for now
 (supply-allowed-group "vendor"
   :parameters ("session_group" "session_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -155,15 +154,15 @@
               ?session muAccount:canActOnBehalfOf/mu:uuid ?session_group;
                            muAccount:account/ext:sessionRole ?session_role.
             } UNION {
-                ?session muAccount:account <http://data.lblod.info/vendors/14db001d-ea0f-4a8a-8453-c48547347588> .
-                ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group ;
-                                        muAccount:account/ext:sessionRole ?session_role.
-                ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/^<http://lblod.data.gift/vocabularies/lmb/heeftBestuurseenheid>/<http://lblod.data.gift/vocabularies/lmb/hasStatus> <http://data.lblod.info/id/concept/InstallatievergaderingStatus/a40b8f8a-8de2-4710-8d9b-3fc43a4b740e> .
-            }  UNION {
-              ?session muAccount:account <http://data.lblod.info/vendors/42edb420-08c7-4ede-9961-bc0e527d0f3b> .
-              ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group;
-                           muAccount:account/ext:sessionRole ?session_role.
+              ?session muAccount:account ?account.
+              ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/mu:uuid ?session_group ;
+                                      muAccount:account/ext:sessionRole ?session_role.
               ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/^<http://lblod.data.gift/vocabularies/lmb/heeftBestuurseenheid>/<http://lblod.data.gift/vocabularies/lmb/hasStatus> <http://data.lblod.info/id/concept/InstallatievergaderingStatus/a40b8f8a-8de2-4710-8d9b-3fc43a4b740e> .
+              VALUES ?account {
+                <http://data.lblod.info/vendors/14db001d-ea0f-4a8a-8453-c48547347588> # Cipal
+                <http://data.lblod.info/vendors/42edb420-08c7-4ede-9961-bc0e527d0f3b> # Green Valley
+                <http://data.lblod.info/vendors/dc62419e-1267-44e7-9562-0114e2708b6f> # Remmicom
+              }
             }}
           }")
 

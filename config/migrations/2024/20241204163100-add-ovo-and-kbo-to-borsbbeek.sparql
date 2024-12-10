@@ -1,0 +1,14 @@
+ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+ PREFIX dcterms: <http://purl.org/dc/terms/>
+ 
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> dcterms:identifier """OVO002030""" . # OVO
+      <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> dcterms:identifier """0207509229""" . # KBO
+    }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2>  a besluit:Bestuurseenheid. # Borsbeek
+  }
+}

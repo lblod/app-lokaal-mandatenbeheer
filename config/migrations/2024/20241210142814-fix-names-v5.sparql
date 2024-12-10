@@ -1,0 +1,63 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Bart" .
+    ?persoon dct:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Bartel" .
+    ?persoon dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Gees" ;
+      persoon:gebruikteVoornaam "Bart" .
+    OPTIONAL {
+      ?persoon dct:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/51feff59-28a3-460a-98ba-8d9305666a2d> }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+};
+
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Anne" .
+    ?persoon dct:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Anne-Marie" .
+    ?persoon dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Callebaut" ;
+      persoon:gebruikteVoornaam "Anne" .
+    OPTIONAL {
+      ?persoon dct:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/5e9cf528c7f2c1a59db8761b24e4d41c1b11d9b7456d1312ef8504ce8df249c7> }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}

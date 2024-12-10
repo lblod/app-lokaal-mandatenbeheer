@@ -1,0 +1,35 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+  INSERT {
+  GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/46c7189d-b14a-46b6-869e-ba35de8766c0> a mandaat:Mandataris; # New mandataris
+            mu:uuid """46c7189d-b14a-46b6-869e-ba35de8766c0""";
+          ?pRMW ?oRMW;
+          mandaat:rangorde """Negende lid""";
+          org:holds <http://data.lblod.info/id/mandaten/22241886f8991bc4f961b4dfb2dde822feb38e7787dddd9a3cab615d148705dd>; # Mandaat lid GR
+          dcterms:modified ?now; 
+          org:hasMembership <http://www.w3.org/ns/org#lidmaatschappen/2e4f143d-a663-47b4-8fa3-3e78b3117f36>. # New membership
+      <http://www.w3.org/ns/org#lidmaatschappen/2e4f143d-a663-47b4-8fa3-3e78b3117f36> a org:Membership;
+          mu:uuid """2e4f143d-a663-47b4-8fa3-3e78b3117f36""";
+          org:organisation ?fractie.
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/ab2edfde-4520-4ec3-b3e1-ce8e022dfa52> a mandaat:Mandataris; # Mandataris RMW
+          mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/cf8d2fffcacfd2f2e02fdd9311930b49aafb5249cd6c484971cdb4d1124e2381>; # Kim
+          org:holds ?mandaatRMW;
+          org:hasMembership / org:organisation ?fractie;
+          ?pRMW ?oRMW.
+      FILTER (?pRMW NOT IN (mu:uuid, dcterms:modified, org:holds ,mandaat:rangorde, org:hasMembership))
+      ?mandaatRMW org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015>. # Lid RMW
+      ?mandaatRMW ^org:hasPost ?bestuursorgaanRMW.
+      ?bestuursorgaanRMW lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # 2024 - heden
+  }
+    BIND(NOW() AS ?now)
+  }

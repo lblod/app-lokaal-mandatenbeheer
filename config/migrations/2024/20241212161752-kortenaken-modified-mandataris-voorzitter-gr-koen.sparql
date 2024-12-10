@@ -1,5 +1,6 @@
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
   DELETE {
     GRAPH ?g {
@@ -8,14 +9,16 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
   }
   INSERT {
     GRAPH ?g {
-      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> mandaat:isBestuurlijkeAliasVan ?now.
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> dcterms:modified ?now.
     }
   }
   WHERE {
     GRAPH ?g {
-      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/31d28cce-0f1b-482f-96eb-9723084f4694> . # Koen Veulemans
-      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> dcterms:modified ?modified.
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> a mandaat:Mandataris.
+      OPTIONAL {
+        <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> dcterms:modified ?modified.
+      }
     }
+    ?g ext:ownedBy ?someone.
     BIND(NOW() as ?now)
-    BIND(<http://mu.semte.ch/graphs/organizations/c1c28cd9e31c25100374482b71b951d5be9b849454b1bd7e1a5158a589bda5de/LoketLB-mandaatGebruiker> AS ?g)
   }

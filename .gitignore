@@ -2,6 +2,7 @@
 /data/publication-triplestore/*
 /data/db/*
 /data/ldes-feed/*
+/data/mu-auth/*
 /data/exports/*
 /data/toezicht-reports/*
 /data/db/virtuoso.ini

@@ -1,6 +1,5 @@
-import resource from './resource'
-import ldes from './ldes'
-import modified from './modified'
-import decisions from './decisions'
+import resource from "./resource";
+import ldes from "./ldes";
+import modified from "./modified";
 
-export default [...resource, ...ldes, ...modified, ...decisions]
+export default [...resource, ...ldes, ...modified];

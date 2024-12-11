@@ -30,7 +30,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/sparql-parser:0.0.8
+    image: semtech/sparql-parser:0.0.12
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
       DATABASE_OVERLOAD_RECOVERY: "true"
@@ -119,7 +119,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-lokaal-mandatenbeheer:0.4.3
+    image: lblod/frontend-lokaal-mandatenbeheer:0.4.4
     labels:
       - "logging=true"
     restart: always
@@ -154,7 +154,7 @@ services:
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.3.5
+    image: lblod/mandataris-service:0.4.0
     labels:
       - "logging=true"
     restart: always

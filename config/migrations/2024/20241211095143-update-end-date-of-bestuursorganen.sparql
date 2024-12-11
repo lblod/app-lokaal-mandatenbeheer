@@ -1,0 +1,29 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g { 
+    ?boit mandaat:bindingEinde ?einde.
+    ?boit dcterms:modified ?modified.
+  }
+}
+INSERT {
+  GRAPH ?g { 
+    ?boit mandaat:bindingEinde """2024-12-02"""^^xsd:date.
+    ?boit dcterms:modified ?now.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?boit mandaat:isTijdspecialisatieVan ?bo.
+    ?boit mandaat:bindingEinde ?einde.
+    ?boit mandaat:bindingStart """2019-01-01"""^^xsd:date.
+    OPTIONAL {
+      ?boit dcterms:modified ?modified.
+    }
+  }
+  ?g ext:ownedBy ?something.
+  BIND(NOW() as ?now)
+} 

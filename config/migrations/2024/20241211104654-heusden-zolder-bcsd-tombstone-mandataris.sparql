@@ -16,7 +16,8 @@ INSERT {
   }
 } WHERE {
   VALUES ?mandataris {
-    <http://data.lblod.info/id/mandatarissen/b45a4831-7104-45e2-8eb4-70f2810ca23c> # Rudi 
+    <http://data.lblod.info/id/mandatarissen/b45a4831-7104-45e2-8eb4-70f2810ca23c> # Rudi
+    <http://data.lblod.info/id/mandatarissen/6756F13EF5BE27F3D78671B0> # Rudi 2
     <http://data.lblod.info/id/mandatarissen/079dc853-e261-4f77-bd51-2e0429b7efaa> # Nico
   }
   GRAPH ?g {

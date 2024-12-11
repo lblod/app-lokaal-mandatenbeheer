@@ -1,0 +1,26 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+DELETE {
+  GRAPH ?g {
+    ?mandataris ?p ?o.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris a astreams:Tombstone.
+    ?mandataris dct:modified ?now .
+    ?mandataris astreams:deleted ?now .
+    ?mandataris astreams:formerType mandaat:Mandataris .
+  }
+} WHERE {
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/b45a4831-7104-45e2-8eb4-70f2810ca23c> # Rudi 
+    <http://data.lblod.info/id/mandatarissen/079dc853-e261-4f77-bd51-2e0429b7efaa> # Nico
+  }
+  GRAPH ?g {
+    ?mandataris ?p ?o.
+  }
+  ?g ext:ownedBy ?something.
+}

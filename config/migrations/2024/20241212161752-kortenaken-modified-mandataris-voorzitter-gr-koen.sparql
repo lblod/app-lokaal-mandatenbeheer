@@ -1,0 +1,24 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+  DELETE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> dcterms:modified ?modified.
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> dcterms:modified ?now.
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> a mandaat:Mandataris.
+      OPTIONAL {
+        <http://data.lblod.info/id/mandatarissen/6735C20E0AE786390B4DB9AF> dcterms:modified ?modified.
+      }
+    }
+    ?g ext:ownedBy ?someone.
+    BIND(NOW() as ?now)
+  }

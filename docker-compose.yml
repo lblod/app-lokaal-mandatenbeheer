@@ -313,3 +313,11 @@ services:
       DCR_SYNC_LOGIN_ENDPOINT: "https://dev.loket.lblod.info/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
     restart: always
     logging: *default-logging
+
+  rekenhof-service:
+    image: owenhstudent/lblod-rekenhof-service:latest
+    ports:
+      - "1234:80"
+    environment:
+      NODE_ENV: "development"
+

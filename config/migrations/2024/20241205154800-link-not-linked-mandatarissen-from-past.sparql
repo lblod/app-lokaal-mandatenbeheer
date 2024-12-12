@@ -12,13 +12,11 @@ INSERT {
 }  
 WHERE {
   GRAPH ?g {
-    ?mandataris a mandaat:Mandataris.
     ?mandataris org:holds ?mandaat.
     ?mandataris mandaat:start ?mandatarisStart.
     ?mandataris mandaat:status ?mandatarisStatus.
     ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon.
-    ?mandataris org:hasMembership ?membership.
-    ?membership org:organisation ?fractie.
+    ?mandataris org:hasMembership / org:organisation ?fractie.
     OPTIONAL {
       ?mandataris mandaat:einde ?mandatarisEinde.
     }
@@ -27,13 +25,11 @@ WHERE {
     ?bestuursorgaan mandaat:isTijdspecialisatieVan ?bestuursorgaanInTijd.
     ?bestuursorgaan lmb:heeftBestuursperiode ?bestuursperiode.
 
-    ?linkedMandataris a mandaat:Mandataris.
     ?linkedMandataris org:holds ?lmandaat.
     ?linkedMandataris mandaat:start ?mandatarisStart.
     ?linkedMandataris mandaat:status ?mandatarisStatus.
     ?linkedMandataris mandaat:isBestuurlijkeAliasVan ?persoon.
-    ?linkedMandataris org:hasMembership ?lmembership.
-    ?lmembership org:organisation ?fractie.
+    ?linkedMandataris org:hasMembership / org:organisation ?fractie.
     OPTIONAL {
       ?linkedMandataris mandaat:einde ?mandatarisEinde.
     }

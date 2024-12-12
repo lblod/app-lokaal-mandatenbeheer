@@ -42,6 +42,6 @@ WHERE {
   FILTER (?mandataris != ?linkedMandataris)
   BIND (<http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> AS ?bestuursperiode) # 2024 - heden
   VALUES (?bfCode ?linkedBfCode) {
-    (bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000011 bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000015) # Gemeenteraadslid | Lid RMV
+    (bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000012 bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000016) # Voorzitter Gemeenteraad | Voorzitter RMV
   }
 }

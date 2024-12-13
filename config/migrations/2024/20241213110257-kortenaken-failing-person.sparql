@@ -1,0 +1,16 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+DELETE {
+  GRAPH ?g {
+    ?mandataris ?mp ?mo .
+    ?membership ?membp ?membo .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris ?mp ?mo ;
+      org:hasMembership ?membership .
+    ?membership ?membp ?membo .
+  }
+  VALUES ?g {<http://mu.semte.ch/graphs/organizations/b20aa3d0e5aa6c75af0710d94db0a30952c0c45f62282d9d8df8a4e15a9295dd/LoketLB-mandaatGebruiker>}
+  VALUES ?mandataris { <http://data.lblod.info/id/mandatarissen/46c7189d-b14a-46b6-869e-ba35de8766c0> }
+}

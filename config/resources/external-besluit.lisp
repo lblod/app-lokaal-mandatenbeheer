@@ -8,6 +8,7 @@
   :properties `(
     (:bekrachtigt-aanstelling-van :string ,(s-prefix "mandaat:bekrachtigtAanstellingVan"))
     (:bekrachtigt-ontslag-van :string ,(s-prefix "mandaat:bekrachtigtOntslagVan"))
+    (:gepubliceerd-vanuit :string ,(s-prefix "prov:wasDerivedFrom"))
   )
   :resource-base (s-url "http://data.lblod.info/id/rechtsgronden/")
   :features '(include-uri)

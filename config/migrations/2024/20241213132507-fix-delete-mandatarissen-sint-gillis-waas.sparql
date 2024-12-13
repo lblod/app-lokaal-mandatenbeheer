@@ -1,0 +1,20 @@
+  PREFIX dct: <http://purl.org/dc/terms/>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    INSERT {
+    GRAPH ?g {
+      ?mandataris dct:modified ?now .
+      ?mandataris astreams:deleted ?now .
+    }
+  } WHERE {
+    VALUES ?mandataris {
+      <http://data.lblod.info/id/mandatarissen/a130e63a-0787-421e-a7c5-e0d5fbc3a0ca>
+      <http://data.lblod.info/id/mandatarissen/5C38515557753A0009000094>
+    }
+    GRAPH ?g {
+      ?mandataris ?p ?o.
+    }
+    ?g ext:ownedBy ?org.
+    BIND(NOW() AS ?now)
+  }

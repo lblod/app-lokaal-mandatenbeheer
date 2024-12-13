@@ -22,7 +22,7 @@
       ?fractieOCMW dct:isReplacedBy ?fractieG .
       ?membership dct:modified ?now.
       ?membership org:organisation ?fractieG.
-      ?fractieG ?p ?o.
+      ?fractieG a mandaat:Fractie.
       ?fractieG org:memberOf ?ocmwOrgInT.
   }
   }
@@ -48,5 +48,24 @@
     ?gemeenteg ext:ownedBy ?gemeenteEenheid.
     ?ocmweenheid ext:isOCMWVoor ?gemeenteEenheid.
     FILTER (?fractieOCMW != ?fractieG)
+    BIND(NOW() AS ?now)
+  };
+  INSERT {
+    GRAPH ?ocmwg {
+      ?fractieG ?p ?o.
+    }
+  } WHERE {
+   GRAPH ?ocmwg {
+      ?fractieG a mandaat:Fractie.
+       }
+    GRAPH ?gemeenteg {
+      ?fractieG a mandaat:Fractie.
+      ?fractieG org:memberOf / lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
+      ?fractieG ?p ?o.
+    }
+    ?ocmwg ext:ownedBy ?ocmweenheid.
+    ?ocmweenheid besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>. # OCMW classificatie
+    ?gemeenteg ext:ownedBy ?gemeenteEenheid.
+    ?ocmweenheid ext:isOCMWVoor ?gemeenteEenheid.
     BIND(NOW() AS ?now)
   }

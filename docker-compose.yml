@@ -309,7 +309,7 @@ services:
       DCR_DISABLE_INITIAL_SYNC: "true"
       DCR_KEEP_DELTA_FILES: "true"
       DCR_DELTA_FILE_FOLDER: "/consumer-files"
-      DCR_CRON_PATTERN_DELTA_SYNC: "0 20 0 * *" # Every day at 8 pm
+      DCR_CRON_PATTERN_DELTA_SYNC: "0 20 * * *" # Every day at 8 pm
       DCR_SYNC_LOGIN_ENDPOINT: "https://dev.loket.lblod.info/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
     restart: always
     logging: *default-logging

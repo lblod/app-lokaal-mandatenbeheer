@@ -1,0 +1,61 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/856cbc8af3fbe7390d43420e249c288596e87fbc069c601751d5c5fcd52c543b/LoketLB-mandaatGebruiker> {
+    ?mandataris ?p ?o.
+    ?membership ?mp ?mo.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/856cbc8af3fbe7390d43420e249c288596e87fbc069c601751d5c5fcd52c543b/LoketLB-mandaatGebruiker> {
+    ?mandataris a astreams:Tombstone.
+    ?mandataris dcterms:modified ?now .
+    ?mandataris astreams:deleted ?now .
+    ?mandataris astreams:formerType mandaat:Mandataris.
+
+    ?membership a astreams:Tombstone.
+    ?membership dcterms:modified ?now .
+    ?membership astreams:deleted ?now .
+    ?membership astreams:formerType org:Membership .
+  }
+}
+WHERE {
+  VALUES ?mandataris {
+    # Samenstelling Gemeenteraad Denderleeuw
+    <http://data.lblod.info/id/mandatarissen/f32c1ee8-a0de-4e42-9071-fbd6cae2ec41>
+    <http://data.lblod.info/id/mandatarissen/9011d284-f7f6-427b-80d4-f4ad74f48fdf>
+    <http://data.lblod.info/id/mandatarissen/2ddd7637-4ee8-41cc-b3a6-09ce62de6b5e>
+    <http://data.lblod.info/id/mandatarissen/82a5e685-f1fc-4b77-823e-e6798e46acbb>
+    <http://data.lblod.info/id/mandatarissen/d747c7d7-71cd-4af3-bc20-3e6b32973867>
+    <http://data.lblod.info/id/mandatarissen/2a2a05a2-0e5c-40db-a282-a24084f40684>
+    <http://data.lblod.info/id/mandatarissen/4ce5150c-8abd-47cd-a591-37023ed16bc7>
+    <http://data.lblod.info/id/mandatarissen/01c52041-5ad0-44b8-ace0-9e199140da14>
+    <http://data.lblod.info/id/mandatarissen/b113cdf1-fae3-497d-84a1-bbb6b8af9a1c>
+    <http://data.lblod.info/id/mandatarissen/300ab513-47c1-4bd0-8e9f-c0d16d76d289>
+    <http://data.lblod.info/id/mandatarissen/fd06c501-848b-4fa0-a5b5-54c9d56567bc>
+    <http://data.lblod.info/id/mandatarissen/1ca7f25b-4197-44a1-aaad-9299f86b2a0a>
+    <http://data.lblod.info/id/mandatarissen/da47fc14-5d84-410b-8422-8649ecfc42b0>
+    <http://data.lblod.info/id/mandatarissen/b1d9be19-182e-47b9-91c9-8f2f19633809>
+    # Samenstelling College van Burgemeester en Schepenen Denderleeuw
+    <http://data.lblod.info/id/mandatarissen/eff229ca-b021-49f5-97a7-36ff949f4f05>
+    <http://data.lblod.info/id/mandatarissen/53482b56-848b-4e8f-a18b-f4bd348d7b88>
+    # Samenstelling Vast Bureau Denderleeuw
+    <http://data.lblod.info/id/mandatarissen/8e590c0d-8016-473f-b990-c03bd7197e5a>
+    <http://data.lblod.info/id/mandatarissen/5ff1bac1-ba64-4a82-91a0-c8d9c72fa5f0>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/organizations/856cbc8af3fbe7390d43420e249c288596e87fbc069c601751d5c5fcd52c543b/LoketLB-mandaatGebruiker> {
+    ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon.
+    ?mandataris ?p ?o.
+
+    OPTIONAL {
+      ?mandataris org:hasMembership ?membership.
+      ?membership ?mp ?mo.
+    }
+  }
+  BIND(NOW() AS ?now)
+}

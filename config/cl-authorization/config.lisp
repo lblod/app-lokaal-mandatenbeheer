@@ -84,6 +84,9 @@
   ("skos:ConceptScheme" -> _)
   ("skos:Concept" -> _)
   ("foaf:Document" -> _)
+  ("ext:DisplayType" -> _)
+  ("ext:FormLibraryEntry" -> _)
+  ("ext:FormLibrary" -> _)
   ("lmb:MandatarisPublicationStatusCode" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
@@ -132,6 +135,7 @@
   ("ext:BestuurseenheidContact" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("schema:ContactPoint" -> _)
+  ("form:Field" -> _)a
   ("locn:Address" -> _))
 
 (define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")

@@ -13,30 +13,39 @@ INSERT {
 WHERE {
   GRAPH ?g {
     ?mandataris org:holds ?mandaat.
-    ?mandataris mandaat:start ?mandatarisStart.
-    ?mandataris mandaat:status ?mandatarisStatus.
-    ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon.
-    ?mandataris org:hasMembership / org:organisation ?fractie.
-    OPTIONAL {
-      ?mandataris mandaat:einde ?mandatarisEinde.
-    }
     ?mandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000013. # Burgemeester
+
+    ?linkedMandataris org:holds ?lmandaat.
+    ?lmandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000018. # Voorzitter Vast Bureau
+
+    FILTER (?mandataris != ?linkedMandataris)
+
+    ?mandataris mandaat:start ?mandatarisStart.
+    ?linkedMandataris mandaat:start ?mandatarisStart.
+
+    ?mandataris mandaat:status ?mandatarisStatus.
+    ?linkedMandataris mandaat:status ?mandatarisStatus.
+
+    ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon.
+    ?linkedMandataris mandaat:isBestuurlijkeAliasVan ?persoon.
+
+    ?mandataris org:hasMembership / org:organisation ?fractie.
+    ?linkedMandataris org:hasMembership / org:organisation ?fractie.
+
     ?mandaat ^org:hasPost ?bestuursorgaan.
     ?bestuursorgaan mandaat:isTijdspecialisatieVan ?bestuursorgaanInTijd.
     ?bestuursorgaan lmb:heeftBestuursperiode ?bestuursperiode.
 
-    ?linkedMandataris org:holds ?lmandaat.
-    ?linkedMandataris mandaat:start ?mandatarisStart.
-    ?linkedMandataris mandaat:status ?mandatarisStatus.
-    ?linkedMandataris mandaat:isBestuurlijkeAliasVan ?persoon.
-    ?linkedMandataris org:hasMembership / org:organisation ?fractie.
-    OPTIONAL {
-      ?linkedMandataris mandaat:einde ?mandatarisEinde.
-    }
-    ?lmandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000018. # Voorzitter Vast Bureau
     ?lmandaat ^org:hasPost ?lbestuursorgaan.
     ?lbestuursorgaan mandaat:isTijdspecialisatieVan ?lbestuursorgaanInTijd.
     ?lbestuursorgaan lmb:heeftBestuursperiode ?bestuursperiode.
+
+    OPTIONAL {
+      ?mandataris mandaat:einde ?mandatarisEinde.
+    }
+    OPTIONAL {
+      ?linkedMandataris mandaat:einde ?mandatarisEinde.
+    }
   }
   ?g ext:ownedBy ?something .
 

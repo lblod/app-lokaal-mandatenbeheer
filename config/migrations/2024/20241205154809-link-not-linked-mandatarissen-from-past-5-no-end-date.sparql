@@ -1,0 +1,48 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX bestuursfunctieCode: <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/linkedInstances> {
+    ?mandataris ext:linked ?linkedMandataris.
+  }
+}  
+WHERE {
+  GRAPH ?g {
+    ?mandataris org:holds ?mandaat.
+    ?mandaat org:role bestuursfunctieCode:7b038cc40bba10bec833ecfe6f15bc7a. # Aangewezen burgemeester
+
+    ?linkedMandataris org:holds ?lmandaat.
+    ?lmandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000018. # Voorzitter Vast Bureau
+
+    FILTER (?mandataris != ?linkedMandataris)
+
+    ?mandataris mandaat:start ?mandatarisStart.
+    ?linkedMandataris mandaat:start ?mandatarisStart.
+
+    ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon.
+    ?linkedMandataris mandaat:isBestuurlijkeAliasVan ?persoon.
+
+    ?mandataris org:hasMembership / org:organisation ?fractie.
+    ?linkedMandataris org:hasMembership / org:organisation ?fractie.
+
+    ?mandaat ^org:hasPost / lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # 2024 - heden
+    ?lmandaat ^org:hasPost / lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # 2024 - heden
+
+    OPTIONAL {
+      ?mandataris mandaat:einde ?mandatarisEinde.
+    }
+
+    OPTIONAL {
+      ?linkedMandataris mandaat:einde ?mandatarisEinde2.
+    }
+
+    FILTER (?mandatarisEinde = ?mandatarisEinde2)
+  }
+  ?g ext:ownedBy ?something .
+
+  FILTER (?mandataris != ?linkedMandataris)
+}

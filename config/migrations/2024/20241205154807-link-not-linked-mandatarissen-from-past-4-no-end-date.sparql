@@ -13,10 +13,10 @@ INSERT {
 WHERE {
   GRAPH ?g {
     ?mandataris org:holds ?mandaat.
-    ?mandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000014. # Schepen
+    ?mandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000013. # Burgemeester
 
     ?linkedMandataris org:holds ?lmandaat.
-    ?lmandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000017. # Lid Vast Bureau
+    ?lmandaat org:role bestuursfunctieCode:5ab0e9b8a3b2ca7c5e000018. # Voorzitter Vast Bureau
 
     FILTER (?mandataris != ?linkedMandataris)
 
@@ -35,9 +35,14 @@ WHERE {
     OPTIONAL {
       ?mandataris mandaat:einde ?mandatarisEinde.
     }
+
     OPTIONAL {
-      ?linkedMandataris mandaat:einde ?mandatarisEinde.
+      ?linkedMandataris mandaat:einde ?mandatarisEinde2.
     }
+
+    FILTER (?mandatarisEinde = ?mandatarisEinde2)
   }
   ?g ext:ownedBy ?something .
+
+  FILTER (?mandataris != ?linkedMandataris)
 }

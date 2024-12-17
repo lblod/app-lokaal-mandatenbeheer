@@ -1,19 +1,18 @@
 PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE {
   GRAPH ?g {
     ?persoon persoon:gebruikteVoornaam ?first .
-    ?persoon dct:modified ?oldTime .
+    ?persoon dcterms:modified ?oldTime .
   }
 }
 INSERT {
   GRAPH ?g {
     ?persoon persoon:gebruikteVoornaam "Jan" .
-    ?persoon dct:modified ?now .
+    ?persoon dcterms:modified ?now .
   }
 }
 WHERE {
@@ -21,7 +20,7 @@ WHERE {
     ?persoon a person:Person ;
       persoon:gebruikteVoornaam ?first .
     OPTIONAL {
-      ?persoon dct:modified ?oldTime.
+      ?persoon dcterms:modified ?oldTime.
     }
   }
   VALUES ?persoon { <http://data.lblod.info/id/personen/5FBF7A79351C30000800047F> } # Jan Astrid Van Puyvelde
@@ -33,13 +32,13 @@ WHERE {
 DELETE {
   GRAPH ?g {
     ?persoon persoon:gebruikteVoornaam ?first .
-    ?persoon dct:modified ?oldTime .
+    ?persoon dcterms:modified ?oldTime .
   }
 }
 INSERT {
   GRAPH ?g {
     ?persoon persoon:gebruikteVoornaam "Marieta" .
-    ?persoon dct:modified ?now .
+    ?persoon dcterms:modified ?now .
   }
 }
 WHERE {
@@ -47,7 +46,7 @@ WHERE {
     ?persoon a person:Person ;
       persoon:gebruikteVoornaam ?first .
     OPTIONAL {
-      ?persoon dct:modified ?oldTime.
+      ?persoon dcterms:modified ?oldTime.
     }
   }
   VALUES ?persoon { <http://data.lblod.info/id/personen/34792fad8a8afb641e9eb91d145efa47d0833d9a2810443bea121f6e58456f8e> } # Marieta Leopoldina Meul
@@ -55,4 +54,3 @@ WHERE {
   BIND(<http://mu.semte.ch/graphs/organizations/665f6a3b8e4ad7766a1be93578b5d8b6312afa8600c1301388225880fe4eca53/LoketLB-mandaatGebruiker> AS ?g) # Sint-Gillis-Waas
   BIND(NOW() as ?now)
 }
-

@@ -23,9 +23,6 @@ WHERE {
     ?mandataris mandaat:start ?mandatarisStart.
     ?linkedMandataris mandaat:start ?mandatarisStart.
 
-    ?mandataris mandaat:status ?mandatarisStatus.
-    ?linkedMandataris mandaat:status ?mandatarisStatus.
-
     ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon.
     ?linkedMandataris mandaat:isBestuurlijkeAliasVan ?persoon.
 

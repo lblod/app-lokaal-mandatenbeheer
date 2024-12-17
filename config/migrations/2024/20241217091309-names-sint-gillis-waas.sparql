@@ -25,7 +25,6 @@ WHERE {
   }
   VALUES ?persoon { <http://data.lblod.info/id/personen/5FBF7A79351C30000800047F> } # Jan Astrid Van Puyvelde
   ?g ext:ownedBy ?something .
-  BIND(<http://mu.semte.ch/graphs/organizations/665f6a3b8e4ad7766a1be93578b5d8b6312afa8600c1301388225880fe4eca53/LoketLB-mandaatGebruiker> AS ?g) # Sint-Gillis-Waas
   BIND(NOW() as ?now)
 };
 
@@ -51,6 +50,5 @@ WHERE {
   }
   VALUES ?persoon { <http://data.lblod.info/id/personen/34792fad8a8afb641e9eb91d145efa47d0833d9a2810443bea121f6e58456f8e> } # Marieta Leopoldina Meul
   ?g ext:ownedBy ?something .
-  BIND(<http://mu.semte.ch/graphs/organizations/665f6a3b8e4ad7766a1be93578b5d8b6312afa8600c1301388225880fe4eca53/LoketLB-mandaatGebruiker> AS ?g) # Sint-Gillis-Waas
   BIND(NOW() as ?now)
 }

@@ -1,0 +1,65 @@
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+INSERT {
+  GRAPH ?g {
+    ?eenheid ext:computedStartDateNewPeriod ?min.
+  }
+} WHERE {
+  GRAPH ?g {
+    { SELECT ?g (MIN(?start) AS ?min) WHERE {
+      GRAPH ?g {
+        ?orgInT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
+        ?orgInT org:hasPost ?mandaat.
+        ?mandaat  org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012>.
+        ?mandataris org:holds ?mandaat.
+        ?mandataris mandaat:start ?start.
+      }
+    }}
+    ?orgInT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
+  }
+  ?g ext:ownedBy ?eenheid.
+  ?eenheid skos:prefLabel ?label.
+};
+
+DELETE {
+  GRAPH ?g {
+    ?orgInT mandaat:bindingStart ?oldStart.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?orgInT mandaat:bindingStart ?computedStart.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?orgInT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+    ?orgInT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
+    ?orgInT mandaat:bindingStart ?oldStart.
+  }
+  ?eenheid ext:computedStartDateNewPeriod ?computedStart.
+  ?g ext:ownedBy ?eenheid.
+};
+DELETE {
+  GRAPH ?g {
+    ?orgInT mandaat:bindingStart ?oldStart.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?orgInT mandaat:bindingStart ?computedStart.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?orgInT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?ocmw.
+    ?orgInT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
+    ?orgInT mandaat:bindingStart ?oldStart.
+  }
+  ?eenheid ext:computedStartDateNewPeriod ?computedStart.
+  ?g ext:ownedBy ?ocmw.
+  ?ocmw ext:isOCMWVoor ?eenheid.
+
+}
+

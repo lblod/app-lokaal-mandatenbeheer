@@ -5,12 +5,11 @@ PREFIX bestuursfunctieCode: <http://data.vlaanderen.be/id/concept/Bestuursfuncti
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
-# INSERT {
-#   GRAPH <http://mu.semte.ch/graphs/linkedInstances> {
-#     ?mandataris ext:linked ?linkedMandataris.
-#   }
-# }  
-SELECT (COUNT(DISTINCT ?mandataris) AS ?count)
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/linkedInstances> {
+    ?mandataris ext:linked ?linkedMandataris.
+  }
+}  
 WHERE {
   GRAPH ?g {
     ?mandataris org:holds ?mandaat.

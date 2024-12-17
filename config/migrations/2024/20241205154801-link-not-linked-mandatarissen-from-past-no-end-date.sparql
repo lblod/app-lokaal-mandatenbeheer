@@ -30,7 +30,7 @@ WHERE {
     ?linkedMandataris org:hasMembership / org:organisation ?fractie.
 
     ?mandaat ^org:hasPost / lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # 2024 - heden
-    ?lmandaat ^org:hasPost / lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
+    ?lmandaat ^org:hasPost / lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # 2024 - heden
 
     OPTIONAL {
       ?mandataris mandaat:einde ?mandatarisEinde.

@@ -1,0 +1,54 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam ?first .
+    ?persoon dcterms:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Jan" .
+    ?persoon dcterms:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      persoon:gebruikteVoornaam ?first .
+    OPTIONAL {
+      ?persoon dcterms:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/5FBF7A79351C30000800047F> } # Jan Astrid Van Puyvelde
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+};
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam ?first .
+    ?persoon dcterms:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Marieta" .
+    ?persoon dcterms:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      persoon:gebruikteVoornaam ?first .
+    OPTIONAL {
+      ?persoon dcterms:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/34792fad8a8afb641e9eb91d145efa47d0833d9a2810443bea121f6e58456f8e> } # Marieta Leopoldina Meul
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}

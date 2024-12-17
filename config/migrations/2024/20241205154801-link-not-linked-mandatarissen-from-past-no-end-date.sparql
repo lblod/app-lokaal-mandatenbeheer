@@ -43,6 +43,4 @@ WHERE {
     FILTER (?mandatarisEinde = ?mandatarisEinde2)
   }
   ?g ext:ownedBy ?something .
-
-  BIND (<http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> AS ?bestuursperiode) # 2024 - heden
 }

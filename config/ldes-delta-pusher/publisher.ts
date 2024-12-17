@@ -101,7 +101,8 @@ const sparqlEscapeObject = (bindingObject): string => {
   const escapeType = datatypeNames[bindingObject.datatype] || "string";
   if (bindingObject.datatype === "http://www.w3.org/2001/XMLSchema#dateTime") {
     // sparqlEscape formats it slightly differently and then the comparison breaks in healing
-    return `"${bindingObject.value}"^^xsd:dateTime`;
+    const safeValue = `${bindingObject.value}`;
+    return `"${safeValue.split('"').join("")}"^^xsd:dateTime`;
   }
   return bindingObject.type === "uri"
     ? sparqlEscapeUri(bindingObject.value)

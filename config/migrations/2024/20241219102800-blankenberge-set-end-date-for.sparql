@@ -6,14 +6,12 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE {
   GRAPH ?g {
     ?mandataris mandaat:einde ?noEndDate.
-    ?mandataris mandaat:status ?status.
     ?mandataris dcterms:modified ?modified.
   }
 }
 INSERT {
   GRAPH ?g {
     ?mandataris mandaat:einde """2024-12-15"""^^xsd:date.
-    ?mandataris mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/b8866fa2-d61c-4e3d-afaf-8a29eaaa7fb9>. # Fake mandataris beeindigd status
     ?mandataris dcterms:modified ?now.
   }
 }
@@ -24,7 +22,7 @@ WHERE {
       <http://data.lblod.info/id/mandatarissen/61273BA3B7632D00080004DA> # Mitch Gees | effectief |schepen
       <http://data.lblod.info/id/mandatarissen/61B3759BE44653000800021D> # Björn Prasse | effectief | burgemeester
     }
-    ?mandataris mandaat:status ?status.
+    ?mandataris mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>. # Status effectief
     OPTIONAL {
       ?mandataris mandaat:einde ?noEndDate.
     } 

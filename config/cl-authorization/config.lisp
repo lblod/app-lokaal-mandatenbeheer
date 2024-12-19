@@ -60,6 +60,7 @@
   :schema "http://schema.org/"
   :skos "http://www.w3.org/2004/02/skos/core#"
   :extlmb "http://mu.semte.ch/vocabularies/ext/lmb/"
+  :form "http://lblod.data.gift/vocabularies/forms/"
   :lmb "http://lblod.data.gift/vocabularies/lmb/"
 )
 
@@ -118,8 +119,9 @@
   ("org:Post" -> _)
   ("person:Person" -> _)
   ("adms:Identifier" -> _)
-  ("ext:Form" -> _)
-  ("ext:Extension" -> _)
+  ("form:Form" -> _)
+  ("form:Extension" -> _)
+  ("form:Field" -> _)
   ("lmb:Installatievergadering" -> _)
   ("lmb:InstallatievergaderingStatus" -> _)
   ("mandaat:RechtstreekseVerkiezing" -> _)

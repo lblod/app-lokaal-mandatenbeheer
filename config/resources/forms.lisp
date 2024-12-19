@@ -1,7 +1,7 @@
 (define-resource form ()
   ;; Not using form:Form here, as we are only providing a wrapper for it.
   ;; The actual form:Form is contained in the formTtl.
-  :class (s-prefix "ext:Form")
+  :class (s-prefix "form:Form")
   :properties `((:target-type :url ,(s-prefix "form:targetType"))
                 (:target-label :uri-set ,(s-prefix "form:targetLabel"))
                 (:prefix :url ,(s-prefix "ext:prefix"))
@@ -16,7 +16,7 @@
 )
 
 (define-resource form-extension (form)
-  :class (s-prefix "ext:Extension")
+  :class (s-prefix "form:Extension")
   :has-one `((form :via ,(s-prefix "ext:extendsForm")
                   :as "extends-form"))
   :resource-base (s-url "http://data.lblod.info/id/lmb/forms/")

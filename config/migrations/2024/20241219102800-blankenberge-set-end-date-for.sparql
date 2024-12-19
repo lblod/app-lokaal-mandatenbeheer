@@ -1,0 +1,38 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:einde ?noEndDate.
+    ?mandataris mandaat:status ?status.
+    ?mandataris dcterms:modified ?modified.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:einde """2024-12-15"""^^xsd:date.
+    ?mandataris mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/b8866fa2-d61c-4e3d-afaf-8a29eaaa7fb9>. # Fake mandataris beeindigd status
+    ?mandataris dcterms:modified ?now.
+  }
+}
+#SELECT ?mandataris ?status
+WHERE {
+  GRAPH ?g {
+    VALUES ?mandataris {
+      <http://data.lblod.info/id/mandatarissen/61273BA3B7632D00080004DA> # Mitch Gees | effectief |schepen
+      <http://data.lblod.info/id/mandatarissen/61B3759BE44653000800021D> # Björn Prasse | effectief | burgemeester
+    }
+    ?mandataris mandaat:status ?status.
+    OPTIONAL {
+      ?mandataris mandaat:einde ?noEndDate.
+    } 
+    OPTIONAL {
+      ?mandataris dcterms:modified ?modified.
+    }
+  }
+  ?g ext:ownedBy ?eenheid.
+
+  BIND(NOW() AS ?now)
+}

@@ -60,6 +60,7 @@
   :schema "http://schema.org/"
   :skos "http://www.w3.org/2004/02/skos/core#"
   :extlmb "http://mu.semte.ch/vocabularies/ext/lmb/"
+  :form "http://lblod.data.gift/vocabularies/forms/"
   :lmb "http://lblod.data.gift/vocabularies/lmb/"
 )
 
@@ -84,6 +85,9 @@
   ("skos:ConceptScheme" -> _)
   ("skos:Concept" -> _)
   ("foaf:Document" -> _)
+  ("ext:DisplayType" -> _)
+  ("ext:FormLibraryEntry" -> _)
+  ("ext:FormLibrary" -> _)
   ("lmb:MandatarisPublicationStatusCode" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
@@ -115,8 +119,9 @@
   ("org:Post" -> _)
   ("person:Person" -> _)
   ("adms:Identifier" -> _)
-  ("ext:Form" -> _)
-  ("ext:Extension" -> _)
+  ("form:Form" -> _)
+  ("form:Extension" -> _)
+  ("form:Field" -> _)
   ("lmb:Installatievergadering" -> _)
   ("lmb:InstallatievergaderingStatus" -> _)
   ("mandaat:RechtstreekseVerkiezing" -> _)
@@ -128,6 +133,7 @@
   ("ext:BestuurseenheidContact" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("schema:ContactPoint" -> _)
+  ("form:Field" -> _)a
   ("locn:Address" -> _))
 
 (define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")

@@ -15,7 +15,6 @@ INSERT {
     ?mandataris dcterms:modified ?now.
   }
 }
-#SELECT ?mandataris ?status
 WHERE {
   GRAPH ?g {
     VALUES ?mandataris {

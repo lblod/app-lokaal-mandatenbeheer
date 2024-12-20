@@ -1,0 +1,31 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam ?first .
+    ?persoon dcterms:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Jaime" .
+    ?persoon dcterms:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      persoon:gebruikteVoornaam ?first .
+    OPTIONAL {
+      ?persoon dcterms:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/7c5e1f07-5b41-4a09-9860-afaa8dd3cb2f> } # Kerremans Jaime | Beveren-Kruibeke-Zwijndrecht
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}
+ 

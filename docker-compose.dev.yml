@@ -40,7 +40,7 @@ services:
       - default
       - debug
   database:
-    restart: always
+    restart: "no"
     networks:
       - default
       - debug

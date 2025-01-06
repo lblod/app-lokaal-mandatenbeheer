@@ -137,7 +137,7 @@
   ("ext:BestuurseenheidContact" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("schema:ContactPoint" -> _)
-  ("form:Field" -> _)a
+  ("form:Field" -> _)
   ("locn:Address" -> _))
 
 (define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")

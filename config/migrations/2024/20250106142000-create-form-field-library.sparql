@@ -1,0 +1,22 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX form: <http://lblod.data.gift/vocabularies/forms/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/lmb/form-library-entries/095d1329-a9fa-4d72-8c49-eb52aaf893de> a ext:FormLibraryEntry ;
+     mu:uuid "095d1329-a9fa-4d72-8c49-eb52aaf893de" ;
+     sh:name "Verblijfsadres" ;
+     form:displayType <http://lblod.data.gift/display-types/lmb/custom-address-input> ;
+     sh:path <https://data.vlaanderen.be/ns/persoon#verblijfsadres> ;
+     sh:order 900 .
+
+    <http://data.lblod.info/id/lmb/form-library-entries/31004e04-1b1a-4fda-80ae-612d67a14b5e> a ext:FormLibraryEntry ;
+     mu:uuid "31004e04-1b1a-4fda-80ae-612d67a14b5e" ;
+     sh:name "Geboorteplaats" ;
+     form:displayType <http://lblod.data.gift/display-types/lmb/custom-string-input> ;
+     sh:path <http://www.w3.org/ns/person#placeOfBirth> ;
+     sh:order 1000 .
+  }
+}

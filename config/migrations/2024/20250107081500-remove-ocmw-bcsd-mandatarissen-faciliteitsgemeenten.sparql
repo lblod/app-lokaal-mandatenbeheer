@@ -1,0 +1,51 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris ?p ?o.
+    ?membership ?memberP ?memberO.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris a astreams:Tombstone.
+    ?mandataris dct:modified ?now .
+    ?mandataris astreams:deleted ?now .
+    ?mandataris astreams:formerType mandaat:Mandataris .
+
+    ?membership a astreams:Tombstone.
+    ?membership dct:modified ?now .
+    ?membership astreams:deleted ?now .
+    ?membership astreams:formerType org:Membership .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    VALUES ?ocmw {
+      <http://data.lblod.info/id/bestuurseenheden/0f90ca7e2a59ef6eb584179f7d6503661f7ce3c1c1096fbf3d3a8d0b4b07d51f> # Bever
+      <http://data.lblod.info/id/bestuurseenheden/405b8adb3402d8b3ad4d22e98cb96afa3fc3da08b9eae79b82e9f3f3f1420677> # Mesen
+      <http://data.lblod.info/id/bestuurseenheden/7bb64e4a218c92f177e8abaac3a7d4ef706fb6cfa28246c397bc9a75c1773b3e> # Ronse
+      <http://data.lblod.info/id/bestuurseenheden/55320f120f1c2586e93570f0eb123242760a424c355014a41afc1f4465c5f352> # Spiere-Helkijn
+      <http://data.lblod.info/id/bestuurseenheden/785715d2822814f7dc0b3896601b5b777feb1ef9722e1c54f4cdcc697594acca> # Voeren
+    }
+    ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
+    ?boi mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+    ?boi org:hasPost ?mandaat.
+
+    ?bestuursorgaan besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>. # BCSD
+    ?bestuursorgaan besluit:bestuurt ?ocmw.
+
+    ?mandataris org:holds ?mandaat.
+    ?mandataris ?p ?o.
+    ?mandataris org:hasMembership ?membership.
+    ?membership ?memberP ?memberO.
+  }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}

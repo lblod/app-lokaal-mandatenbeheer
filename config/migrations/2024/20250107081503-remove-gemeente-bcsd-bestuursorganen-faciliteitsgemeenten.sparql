@@ -1,0 +1,49 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?boi ?p ?o.
+    ?tmpOrgaan ?bP ?bO.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?boi a astreams:Tombstone.
+    ?boi dct:modified ?now.
+    ?boi astreams:deleted ?now.
+    ?boi astreams:formerType besluit:Bestuursorgaan.
+
+    ?tmpOrgaan a astreams:Tombstone.
+    ?tmpOrgaan dct:modified ?now.
+    ?tmpOrgaan astreams:deleted ?now.
+    ?tmpOrgaan astreams:formerType besluit:Bestuursorgaan.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    VALUES ?gemeente {
+      <http://data.lblod.info/id/bestuurseenheden/79606fdb21535301a493afb83e18758d21f6499355beab0099a6265fbdc700d3> # Bever
+      <http://data.lblod.info/id/bestuurseenheden/e58e47292d23dc83547f3f272c6018439290d988dcab6d352215bad91751e1b7> # Mesen
+      <http://data.lblod.info/id/bestuurseenheden/59eaecae469f80eccaf6d36a165927eb8ee8749b9866ab1730e6b1ba45dfaaa7> # Ronse
+      <http://data.lblod.info/id/bestuurseenheden/d2ddbbea9b30242eedb334f9729dc9f9b31c9c0496009a474b407393b383ef53> # Spiere-Helkijn
+      <http://data.lblod.info/id/bestuurseenheden/f39eb137cb5c9195f92928522bbbf0d104fb54be6eb0c9c62a24d16b88b44272> # Voeren
+    }
+
+    ?tmpOrgaan ext:isTijdelijkOrgaanIn ?gemeente.
+    ?tmpOrgaan besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>. # BCSD
+    ?tmporgaan ?p ?o.
+
+    ?boi mandaat:isTijdspecialisatieVan ?tmpOrgaan.
+    ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # 2024 - heden
+    ?boi org:hasPost ?mandaat.
+    ?boi ?bP ?bO.
+  }
+  ?g ext:ownedBy ?something.
+  BIND(NOW() as ?now)
+}

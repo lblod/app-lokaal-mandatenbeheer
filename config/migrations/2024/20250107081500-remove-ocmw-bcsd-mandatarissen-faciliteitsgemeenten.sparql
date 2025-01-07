@@ -42,8 +42,8 @@ WHERE {
     ?bestuursorgaan besluit:bestuurt ?ocmw.
 
     ?mandataris org:holds ?mandaat.
-    ?mandataris ?p ?o.
     ?mandataris org:hasMembership ?membership.
+    ?mandataris ?p ?o.
     ?membership ?memberP ?memberO.
   }
   ?g ext:ownedBy ?something .

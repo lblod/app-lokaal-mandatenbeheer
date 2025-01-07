@@ -1,0 +1,37 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> a skos:ConceptScheme ;
+     mu:uuid "9a862e11-1e1a-44b5-b8bd-e1d7d73c82da" ;
+     skos:prefLabel "LMB custom display types" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-string-input> a ext:DisplayType ;
+     mu:uuid "220427c5-65c7-4be6-b84a-fc7401b465ec" ;
+     skos:prefLabel "Tekst (kort)" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-text-input> a ext:DisplayType ;
+     mu:uuid "23ff0395-2a32-4cd2-9fbb-67c262f61e03" ;
+     skos:prefLabel "Tekst (lang)" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-address-input> a ext:DisplayType ;
+     mu:uuid "b1ec9b19-68de-4d51-b4e0-b303b881f567" ;
+     skos:prefLabel "Adres" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-date-input> a ext:DisplayType ;
+     mu:uuid "fefdc16e-38b9-4c1d-89be-c86ea57795d5" ;
+     skos:prefLabel "Datum" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-number-input> a ext:DisplayType ;
+     mu:uuid "961f1670-8028-407d-a324-40113f413826" ;
+     skos:prefLabel "Getal" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-string-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+    <http://lblod.data.gift/display-types/lmb/custom-text-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+    <http://lblod.data.gift/display-types/lmb/custom-address-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+    <http://lblod.data.gift/display-types/lmb/custom-date-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+    <http://lblod.data.gift/display-types/lmb/custom-number-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+  }
+}

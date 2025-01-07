@@ -28,11 +28,12 @@ GRAPH ?g {
 WHERE {
   GRAPH ?g {
     VALUES ?gemeente {
-      <http://data.lblod.info/id/bestuurseenheden/79606fdb21535301a493afb83e18758d21f6499355beab0099a6265fbdc700d3> # Bever
-      <http://data.lblod.info/id/bestuurseenheden/e58e47292d23dc83547f3f272c6018439290d988dcab6d352215bad91751e1b7> # Mesen
-      <http://data.lblod.info/id/bestuurseenheden/59eaecae469f80eccaf6d36a165927eb8ee8749b9866ab1730e6b1ba45dfaaa7> # Ronse
-      <http://data.lblod.info/id/bestuurseenheden/d2ddbbea9b30242eedb334f9729dc9f9b31c9c0496009a474b407393b383ef53> # Spiere-Helkijn
-      <http://data.lblod.info/id/bestuurseenheden/f39eb137cb5c9195f92928522bbbf0d104fb54be6eb0c9c62a24d16b88b44272> # Voeren
+      <http://data.lblod.info/id/bestuurseenheden/72af5d601b193f4fcf18154d643d89481082ecd3eff61720f1cf118057666ac5> # Sint-Genesius-Rode
+      <http://data.lblod.info/id/bestuurseenheden/7db7a009ab84e4d98e08ec4673b94605584f65ae5ed7a1d8decb23fb990ff73f> # Linkebeek
+      <http://data.lblod.info/id/bestuurseenheden/4c1ddb45485a5dc672a57e8347318cf5d60a16fc2e527ad055d3f69654e11b5a> # Drogenbos
+      <http://data.lblod.info/id/bestuurseenheden/4fb8eb24aa9d5561f3cd7b502715fc758f41b71aafa13b872ee8aeb1d027dbe9> # Wemmel
+      <http://data.lblod.info/id/bestuurseenheden/3b1e0143755729396654f651bfed689681274839c427f9598e930d816fb7a1c8> # Kraainem
+      <http://data.lblod.info/id/bestuurseenheden/3b337ebeb02ede5e152c952e2f24aa1bff3ebbb6afb968a647cb05efe72c0237> # Wezembeek-Oppem
     }
 
     ?tmpOrgaan ext:isTijdelijkOrgaanIn ?gemeente.

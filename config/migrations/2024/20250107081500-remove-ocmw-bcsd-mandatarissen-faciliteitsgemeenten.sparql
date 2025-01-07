@@ -28,11 +28,12 @@ INSERT {
 WHERE {
   GRAPH ?g {
     VALUES ?ocmw {
-      <http://data.lblod.info/id/bestuurseenheden/0f90ca7e2a59ef6eb584179f7d6503661f7ce3c1c1096fbf3d3a8d0b4b07d51f> # Bever
-      <http://data.lblod.info/id/bestuurseenheden/405b8adb3402d8b3ad4d22e98cb96afa3fc3da08b9eae79b82e9f3f3f1420677> # Mesen
-      <http://data.lblod.info/id/bestuurseenheden/7bb64e4a218c92f177e8abaac3a7d4ef706fb6cfa28246c397bc9a75c1773b3e> # Ronse
-      <http://data.lblod.info/id/bestuurseenheden/55320f120f1c2586e93570f0eb123242760a424c355014a41afc1f4465c5f352> # Spiere-Helkijn
-      <http://data.lblod.info/id/bestuurseenheden/785715d2822814f7dc0b3896601b5b777feb1ef9722e1c54f4cdcc697594acca> # Voeren
+      <http://data.lblod.info/id/bestuurseenheden/76730bd9ab6808230335d90e9ff30ad362a3461ee0239fd978e4313bcdca44c5> # Sint-Genesius-Rode
+      <http://data.lblod.info/id/bestuurseenheden/0b5d1664b3cf08550bcfdac0f4b195ab7a46a0f1974726de864dc0edb1565ecc> # Linkebeek
+      <http://data.lblod.info/id/bestuurseenheden/9ba66c8f97bbc6dd3ba2b35d8a6bb79215facbe3e5b3d52672b785449d6f5e58> # Drogenbos
+      <http://data.lblod.info/id/bestuurseenheden/7f2c5143806d6110feb44eba2a91d58e8fd563465b94d0f6b40d13a6a1740940> # Wemmel
+      <http://data.lblod.info/id/bestuurseenheden/45f432ac38d124141638c62f7afd577ab847c3571061b45e3b0b3329f6194048> # Kraainem
+      <http://data.lblod.info/id/bestuurseenheden/f9ee0b69624bba3677b18b95110246ee9106377c948ab5d914909eac79f88bcf> # Wezembeek-Oppem
     }
     ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
     ?boi mandaat:isTijdspecialisatieVan ?bestuursorgaan.

@@ -15,15 +15,21 @@ INSERT DATA {
     <http://data.lblod.info/id/lmb/form-library-entries/7dd17cb0-ce73-4ccb-b6d3-f7723a85f083> a ext:FormLibraryEntry ;
       mu:uuid "7dd17cb0-ce73-4ccb-b6d3-f7723a85f083" ;
       sh:name "Nationaliteit" ;
-      form:displayType <http://lblod.data.gift/display-types/lmb/custom-nationality-input> ;
+      form:displayType <http://lblod.data.gift/display-types/lmb/custom-codelist-input> ;
       sh:path <https://data.vlaanderen.be/ns/persoon#heeftNationaliteit> ;
       sh:order 1000 .
 
     <http://data.lblod.info/id/lmb/form-library-entries/8991472a-db3f-4f61-b070-5da7883be37d> a ext:FormLibraryEntry ;
       mu:uuid "8991472a-db3f-4f61-b070-5da7883be37d" ;
       sh:name "Telefoonnummer" ;
-      form:displayType <http://lblod.data.gift/display-types/lmb/custom-telephone-input> ;
+      form:displayType <http://lblod.data.gift/display-types/lmb/custom-string-input> ;
       sh:path <http://schema.org/telephone> ;
-      sh:order 1000 .
-  }
+      sh:order 1000 ;
+      form:validatedBy <http://data.lblod.info/id/lmb/valid-phone-number-validation>.
+
+      <http://data.lblod.info/id/lmb/valid-phone-number-validation> a form:ValidPhoneNumber;
+          form:defaultCountry "BE";
+          form:grouping form:MatchEvery;
+          sh:order 1.
+      }
 }

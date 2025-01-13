@@ -114,6 +114,7 @@
   ("contacthub:AgentInPositie" -> _)
   ("mandaat:Fractie" -> _)
   ("persoon:Geboorte" -> _)
+  ("persoon:Overlijden" -> _)
   ("org:Membership" -> _)
   ("besluit:Besluit" -> _)
   ("besluit:Artikel" -> _)

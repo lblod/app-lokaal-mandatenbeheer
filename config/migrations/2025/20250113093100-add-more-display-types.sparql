@@ -1,6 +1,8 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX form: <http://lblod.data.gift/vocabularies/forms/>
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {

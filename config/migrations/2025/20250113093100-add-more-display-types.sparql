@@ -13,7 +13,7 @@ INSERT DATA {
     <http://data.lblod.info/id/lmb/form-library-entries/7dd17cb0-ce73-4ccb-b6d3-f7723a85f083> a ext:FormLibraryEntry ;
       mu:uuid "7dd17cb0-ce73-4ccb-b6d3-f7723a85f083" ;
       sh:name "Nationaliteit" ;
-      form:displayType <http://lblod.data.gift/display-types/lmb/custom-codelist-input> ;
+      form:displayType <http://lblod.data.gift/display-types/lmb/custom-nationality-input> ;
       sh:path <https://data.vlaanderen.be/ns/persoon#heeftNationaliteit> ;
       sh:order 1000 .
 

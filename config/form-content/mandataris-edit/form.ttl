@@ -132,14 +132,14 @@ ext:editMandatarisPG
 
 ext:mandatarisG a form:Generator;
   form:prototype [
-    form:shape [
-        a mandaat:Mandataris;
-        org:hasMembership [
-        a org:Membership
-      ]
-    ]
+    form:shape ext:mandatarisShape
   ];
   form:dataGenerator form:addMuUuid.
+
+ext:mandatarisShape a mandaat:Mandataris;
+  org:hasMembership [
+    a org:Membership
+  ].
 
   ext:membershipUriG a form:UriGenerator;
   form:prefix "http://data.lblod.info/id/lidmaatschappen/";

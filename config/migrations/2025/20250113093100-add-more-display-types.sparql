@@ -20,7 +20,7 @@ INSERT DATA {
     <http://data.lblod.info/id/lmb/form-library-entries/8991472a-db3f-4f61-b070-5da7883be37d> a ext:FormLibraryEntry ;
       mu:uuid "8991472a-db3f-4f61-b070-5da7883be37d" ;
       sh:name "Telefoonnummer" ;
-      form:displayType <http://lblod.data.gift/display-types/lmb/custom-string-input> ;
+      form:displayType <http://lblod.data.gift/display-types/lmb/custom-telephone-input> ;
       sh:path <http://schema.org/telephone> ;
       sh:order 1000 .
   }

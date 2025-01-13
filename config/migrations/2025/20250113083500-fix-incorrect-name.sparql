@@ -1,0 +1,31 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Leentje" .
+    ?persoon dcterms:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:gebruikteVoornaam "Leen" .
+    ?persoon dcterms:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Borremans" ;
+      persoon:gebruikteVoornaam "Leentje" .
+    OPTIONAL {
+      ?persoon dcterms:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/66e9379f-fbb8-4af1-960c-d7391f6f7065> }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}

@@ -1,0 +1,36 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+  DELETE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/kandidatenlijsten/b52fd081-36bf-4436-98c8-92d80e90cdb2> <http://www.w3.org/2004/02/skos/core#prefLabel> ?oldKieslijstLabel.
+      <http://data.lblod.info/id/kandidatenlijsten/b52fd081-36bf-4436-98c8-92d80e90cdb2> dct:modified ?oldKieslijstModified.
+    }
+    GRAPH ?h {
+      <http://data.lblod.info/id/fracties/67572230E7EE8C335E7E4986> <https://www.w3.org/ns/regorg#legalName> ?oldFractieLabel.
+      <http://data.lblod.info/id/fracties/67572230E7EE8C335E7E4986> dct:modified ?oldFractieModified.
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      <http://data.lblod.info/id/kandidatenlijsten/b52fd081-36bf-4436-98c8-92d80e90cdb2> <http://www.w3.org/2004/02/skos/core#prefLabel> "cd&v Tessenderlo-Ham".
+      <http://data.lblod.info/id/kandidatenlijsten/b52fd081-36bf-4436-98c8-92d80e90cdb2> dct:modified ?now.
+    }
+    GRAPH ?h {
+      <http://data.lblod.info/id/fracties/67572230E7EE8C335E7E4986> <https://www.w3.org/ns/regorg#legalName> "cd&v Tessenderlo-Ham".
+      <http://data.lblod.info/id/fracties/67572230E7EE8C335E7E4986> dct:modified ?now.
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/kandidatenlijsten/b52fd081-36bf-4436-98c8-92d80e90cdb2> <http://www.w3.org/2004/02/skos/core#prefLabel> ?oldKieslijstLabel.
+      OPTIONAL {
+        <http://data.lblod.info/id/kandidatenlijsten/b52fd081-36bf-4436-98c8-92d80e90cdb2> dct:modified ?oldKieslijstModified.
+      }
+    }
+    GRAPH ?h {
+      <http://data.lblod.info/id/fracties/67572230E7EE8C335E7E4986> <https://www.w3.org/ns/regorg#legalName> ?oldFractieLabel.
+      OPTIONAL {
+        <http://data.lblod.info/id/fracties/67572230E7EE8C335E7E4986> dct:modified ?oldFractieModified.
+      }
+    }
+    BIND(NOW() AS ?now)
+  }

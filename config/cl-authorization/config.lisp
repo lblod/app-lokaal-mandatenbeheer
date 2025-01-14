@@ -88,6 +88,7 @@
   ("ext:DisplayType" -> _)
   ("ext:FormLibraryEntry" -> _)
   ("ext:FormLibrary" -> _)
+  ("form:ValidPhoneNumber" -> _)
   ("lmb:MandatarisPublicationStatusCode" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
@@ -126,6 +127,7 @@
   ("form:Form" -> _)
   ("form:Extension" -> _)
   ("form:Field" -> _)
+  ("form:ValidPhoneNumber" -> _)
   ("lmb:Installatievergadering" -> _)
   ("lmb:InstallatievergaderingStatus" -> _)
   ("mandaat:RechtstreekseVerkiezing" -> _)
@@ -137,7 +139,6 @@
   ("ext:BestuurseenheidContact" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("schema:ContactPoint" -> _)
-  ("form:Field" -> _)
   ("locn:Address" -> _))
 
 (define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")

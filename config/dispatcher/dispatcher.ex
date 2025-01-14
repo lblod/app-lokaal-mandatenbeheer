@@ -324,7 +324,7 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/form-extensions/")
   end
 
-  match "libraries/*path", %{layer: :resources, accept: %{json: true}} do
+  match "/libraries/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/libraries/")
   end
 

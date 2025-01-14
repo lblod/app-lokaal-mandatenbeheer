@@ -12,10 +12,15 @@ INSERT DATA {
       form:displayType <http://lblod.data.gift/display-types/lmb/custom-string-input> ;
       sh:path <http://schema.org/telephone> ;
       sh:order 1000 ;
-      form:validatedBy <http://data.lblod.info/id/lmb/custom-forms/validation/valid-phone-number>.
+      form:validatedBy <http://data.lblod.info/id/lmb/custom-forms/validation/valid-phone-number>, <http://data.lblod.info/id/lmb/custom-forms/validation/is-required> .
 
-    <http://data.lblod.info/id/lmb/custom-forms/validation/valid-phone-number> a form:ValidPhoneNumber;
-      form:defaultCountry "BE";
-      form:grouping form:MatchEvery.
+    <http://data.lblod.info/id/lmb/custom-forms/validation/valid-phone-number> a form:ValidPhoneNumber ;
+      form:defaultCountry "BE" ;
+      form:grouping form:MatchEvery ;
+      sh:resultMessage "Geef een geldig telefoonnummer in." .
+
+    <http://data.lblod.info/id/lmb/custom-forms/validation/is-required> a form:RequiredConstraint ;
+      form:grouping form:Bag ;
+      sh:resultMessage "Dit veld is verplicht." .
   }
 }

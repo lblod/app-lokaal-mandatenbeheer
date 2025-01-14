@@ -89,6 +89,7 @@
   ("ext:FormLibraryEntry" -> _)
   ("ext:FormLibrary" -> _)
   ("form:ValidPhoneNumber" -> _)
+  ("form:RequiredConstraint" -> _)
   ("lmb:MandatarisPublicationStatusCode" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
@@ -124,6 +125,7 @@
   ("form:Extension" -> _)
   ("form:Field" -> _)
   ("form:ValidPhoneNumber" -> _)
+  ("form:RequiredConstraint" -> _)
   ("lmb:Installatievergadering" -> _)
   ("lmb:InstallatievergaderingStatus" -> _)
   ("mandaat:RechtstreekseVerkiezing" -> _)

@@ -1,0 +1,28 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX person: <http://www.w3.org/ns/person#>
+INSERT {
+  GRAPH ?g {
+    ?persoon ?p ?o.
+    ?id ?idp ?ido.
+    ?geb ?gebp ?gebo.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/missing-persons> {
+    ?persoon ext:neededInGraph ?g.
+  }
+  GRAPH ?h {
+    ?persoon a person:Person.
+    ?persoon ?p ?o.
+    OPTIONAL {
+      ?persoon <http://www.w3.org/ns/adms#identifier> ?id.
+      ?id ?idp ?ido.
+    }
+    OPTIONAL {
+      ?persoon <http://data.vlaanderen.be/ns/persoon#heeftGeboorte> ?geb.
+      ?geb ?gebp ?gebo.
+    }
+  }
+  ?h ext:ownedBy ?someone.
+}

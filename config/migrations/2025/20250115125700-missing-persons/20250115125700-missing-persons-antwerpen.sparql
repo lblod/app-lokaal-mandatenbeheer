@@ -1,0 +1,22 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX person: <http://www.w3.org/ns/person#>
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp/missing-persons> {
+    ?persoon ext:neededInGraph ?g.
+  }
+}WHERE {
+  GRAPH ?g {
+    ?verkiezing a <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>.
+    ?verkiezing <http://data.vlaanderen.be/ns/mandaat#steltSamen> ?bestuursorgaan.
+    ?lijst <http://data.vlaanderen.be/ns/mandaat#behoortTot> ?verkiezing.
+    ?resultaat <http://data.vlaanderen.be/ns/mandaat#isResultaatVoor> ?lijst.
+    ?resultaat <http://data.vlaanderen.be/ns/mandaat#isResultaatVan> ?persoon.
+
+    FILTER NOT EXISTS {
+      ?persoon <http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam> ?name.
+    }
+  }
+  ?g ext:ownedBy /skos:prefLabel ?label.
+  ?g ext:ownedBy / besluit:classificatie / skos:prefLabel ?clas.
+}

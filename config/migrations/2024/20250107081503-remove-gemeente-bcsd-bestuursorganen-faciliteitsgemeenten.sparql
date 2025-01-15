@@ -34,6 +34,7 @@ WHERE {
       <http://data.lblod.info/id/bestuurseenheden/4fb8eb24aa9d5561f3cd7b502715fc758f41b71aafa13b872ee8aeb1d027dbe9> # Wemmel
       <http://data.lblod.info/id/bestuurseenheden/3b1e0143755729396654f651bfed689681274839c427f9598e930d816fb7a1c8> # Kraainem
       <http://data.lblod.info/id/bestuurseenheden/3b337ebeb02ede5e152c952e2f24aa1bff3ebbb6afb968a647cb05efe72c0237> # Wezembeek-Oppem
+      <http://data.lblod.info/id/bestuurseenheden/f39eb137cb5c9195f92928522bbbf0d104fb54be6eb0c9c62a24d16b88b44272> # Voeren
     }
 
     ?tmpOrgaan ext:isTijdelijkOrgaanIn ?gemeente.

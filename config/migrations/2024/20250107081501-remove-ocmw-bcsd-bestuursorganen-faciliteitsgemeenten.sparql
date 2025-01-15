@@ -34,6 +34,7 @@ WHERE {
       <http://data.lblod.info/id/bestuurseenheden/7f2c5143806d6110feb44eba2a91d58e8fd563465b94d0f6b40d13a6a1740940> # Wemmel
       <http://data.lblod.info/id/bestuurseenheden/45f432ac38d124141638c62f7afd577ab847c3571061b45e3b0b3329f6194048> # Kraainem
       <http://data.lblod.info/id/bestuurseenheden/f9ee0b69624bba3677b18b95110246ee9106377c948ab5d914909eac79f88bcf> # Wezembeek-Oppem
+      <http://data.lblod.info/id/bestuurseenheden/785715d2822814f7dc0b3896601b5b777feb1ef9722e1c54f4cdcc697594acca> # Voeren
     }
     ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # 2024 - heden
     ?boi mandaat:isTijdspecialisatieVan ?bestuursorgaan.

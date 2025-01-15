@@ -33,11 +33,6 @@ WHERE {
       <http://data.lblod.info/id/bestuurseenheden/f39eb137cb5c9195f92928522bbbf0d104fb54be6eb0c9c62a24d16b88b44272> # Voeren
     }
     ?boi lmb:heeftBestuursperiode ?bestuursperiode.
-    FILTER(?bestuursperiode IN(
-      <http://data.lblod.info/id/concept/Bestuursperiode/a2b977a3-ce68-4e42-80a6-4397f66fc5ca>, # 2019 - 2024
-      <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> # 2024 - heden
-    ))
-
     ?boi mandaat:isTijdspecialisatieVan ?bestuursorgaan.
     ?boi ?p ?o.
 
@@ -45,7 +40,11 @@ WHERE {
 
     ?bestuursorgaan besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>. # BCSD
     ?bestuursorgaan ?bP ?bO.
+
+    FILTER(?bestuursperiode IN(
+      <http://data.lblod.info/id/concept/Bestuursperiode/a2b977a3-ce68-4e42-80a6-4397f66fc5ca>, # 2019 - 2024
+      <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> # 2024 - heden
+    ))
   }
   ?g ext:ownedBy ?something.
-  BIND(NOW() as ?now)
 }

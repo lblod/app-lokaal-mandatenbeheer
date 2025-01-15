@@ -18,9 +18,5 @@ INSERT DATA {
       form:defaultCountry "BE" ;
       form:grouping form:MatchEvery ;
       sh:resultMessage "Geef een geldig telefoonnummer in." .
-
-    <http://data.lblod.info/id/lmb/custom-forms/validation/is-required> a form:RequiredConstraint ;
-      form:grouping form:Bag ;
-      sh:resultMessage "Dit veld is verplicht." .
   }
 }

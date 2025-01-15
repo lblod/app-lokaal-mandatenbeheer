@@ -1,0 +1,23 @@
+  PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  DELETE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/personen/7bb2643a-5a8e-4b19-ba3c-92661e8e69de> persoon:gebruikteVoornaam ?old.
+      <http://data.lblod.info/id/personen/7bb2643a-5a8e-4b19-ba3c-92661e8e69de> dct:modified ?oldMod.
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      <http://data.lblod.info/id/personen/7bb2643a-5a8e-4b19-ba3c-92661e8e69de> persoon:gebruikteVoornaam "Theodoor".
+      <http://data.lblod.info/id/personen/7bb2643a-5a8e-4b19-ba3c-92661e8e69de> dct:modified ?now.
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      <http://data.lblod.info/id/personen/7bb2643a-5a8e-4b19-ba3c-92661e8e69de> persoon:gebruikteVoornaam ?old.
+      OPTIONAL {
+        <http://data.lblod.info/id/personen/7bb2643a-5a8e-4b19-ba3c-92661e8e69de> dct:modified ?oldMod.
+      }
+      BIND(NOW() AS ?now)
+    }
+  }

@@ -89,6 +89,10 @@
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("musession:Session" -> _))
 
+(define-graph impersonating-sessions ("http://mu.semte.ch/graphs/sessions/")
+  ("musession:Session" -> _))
+
+
 (define-graph view-only-modules ("http://mu.semte.ch/graphs/authenticated/public")
   ("besluit:Bestuurseenheid" -> "ext:viewOnlyModules"))
 
@@ -213,6 +217,18 @@
                          ext:sessionRole ?session_role.
           }")
 
+(supply-allowed-group "impersonating-authenticated"
+  :parameters ("session_group")
+  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+          PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+          SELECT DISTINCT ?session_group ?session_role WHERE {
+            <SESSION_ID> ext:sessionGroup/mu:uuid ?current_session_group;
+                         ext:sessionRole ?current_session_role;
+                         ext:originalSessionGroup/mu:uuid ?session_group;
+                         ext:originalSessionRole ?session_role.
+
+          }")
+
 
 (grant (read)                           ; you already can from "public"
        :to-graph public
@@ -225,6 +241,10 @@
 (grant (read)
        :to-graph sessions
        :for-allowed-group "authenticated")
+
+(grant (read)
+       :to-graph impersonating-sessions
+       :for-allowed-group "impersonating-authenticated")
 
 (grant (read)
        :to-graph view-only-modules

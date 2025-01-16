@@ -1,0 +1,74 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g {
+    ?mandataris dct:modified ?oldMod.
+  }
+  GRAPH ?h {
+    ?ocmwMandataris dct:modified ?ocmwMod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris dct:modified ?now.
+    ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon.
+  }
+  GRAPH ?h {
+    ?ocmwMandataris dct:modified ?now.
+    ?ocmwMandataris mandaat:isBestuurlijkeAliasVan ?persoon.
+  }
+}
+WHERE {
+  VALUES ( ?mandataris ?persoon ) {
+    (  <http://data.lblod.info/id/mandatarissen/b7834cc8-2d3d-484b-b75b-aea72e0ac32a> <http://data.lblod.info/id/personen/7bb2643a-5a8e-4b19-ba3c-92661e8e69de> )
+    ( <http://data.lblod.info/id/mandatarissen/f8793aef-7009-4daf-b700-3cd35c1b6755> <http://data.lblod.info/id/personen/2228a0a41a3864e83c4699e819faff1f7173f9f8428692b100774cc2d57e6cf4> )
+    ( <http://data.lblod.info/id/mandatarissen/cbb52803-d6f1-4550-b7fb-2f6396f9cb08> <http://data.lblod.info/id/personen/0d4c3fa0-2267-4834-a9aa-f9f3bbfe12ad> )
+    ( <http://data.lblod.info/id/mandatarissen/9aa79b39-1f84-457d-8c0d-cd68e5bf7762> <http://data.lblod.info/id/personen/86c3d396-08a9-431f-8448-ff415e9955a4> )
+    ( <http://data.lblod.info/id/mandatarissen/6639872d-bf50-4ef9-b0cd-18ce97dd03a0> <http://data.lblod.info/id/personen/8e936393-0091-4dc3-9b5f-d57fc793a778> )
+    ( <http://data.lblod.info/id/mandatarissen/23771038-aa0a-49d3-89e2-94d825b13d95> <http://data.lblod.info/id/personen/5c1f60f8-1cc1-406b-9506-09a7da648817> )
+    ( <http://data.lblod.info/id/mandatarissen/93b24045-5d1e-49ea-8695-23b8a288cc29> <http://data.lblod.info/id/personen/bf739b98-5498-465e-8683-8082d5000684> )
+    ( <http://data.lblod.info/id/mandatarissen/38c8d377-8843-491e-9922-0a194be60133> <http://data.lblod.info/id/personen/2228a0a41a3864e83c4699e819faff1f7173f9f8428692b100774cc2d57e6cf4>)
+  }
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris.
+    OPTIONAL {
+      ?mandataris dct:modified ?oldMod.
+    }
+  }
+  ?mandataris ext:linked ?ocmwMandataris.
+  GRAPH ?h {
+    ?ocmwMandataris a mandaat:Mandataris.
+    OPTIONAL {
+      ?ocmwMandataris dct:modified ?ocmwMod.
+    }
+  }
+  ?g ext:ownedBy ?someone.
+  ?h ext:ownedBy ?someoneElse.
+};
+DELETE {
+  GRAPH ?g {
+    ?mandataris ?p ?o.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris a <http://www.w3.org/ns/activitystreams#Tombstone> .
+    ?mandataris <http://www.w3.org/ns/activitystreams#deleted> ?now.
+    ?mandataris dct:modified ?now.
+    ?mandataris <http://www.w3.org/ns/activitystreams#formerType> mandaat:Mandataris.
+  }
+}
+WHERE {
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/9b83b360-521b-4691-91b1-5808f2491d5d>
+    <http://data.lblod.info/id/mandatarissen/b38f2925-742e-4fd0-b0fb-2354728e2899>
+    <http://data.lblod.info/id/mandatarissen/bb520f72-f2c8-4ee9-a209-f5b1257e75ed>
+    <http://data.lblod.info/id/mandatarissen/705143df-3c55-4914-8285-dddb49d11bc9>
+  }
+  GRAPH ?g {
+    ?mandataris ?p ?o.
+  }
+  BIND(NOW() AS ?now)
+  ?g ext:ownedBy ?someone.
+}

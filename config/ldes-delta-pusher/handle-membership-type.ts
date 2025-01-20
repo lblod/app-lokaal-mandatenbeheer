@@ -1,9 +1,10 @@
 import { Changeset } from "../types";
 import { querySudo } from "@lblod/mu-auth-sudo";
+import { v4 as uuidv4 } from "uuid";
 import { sparqlEscapeUri, sparqlEscapeString } from "mu";
+
 import { publishInterestingSubjects } from "./handle-types-util";
 import { InterestingSubject, bindingToTriple } from "./publisher";
-import { v4 as uuidv4 } from "uuid";
 
 const addTimeInterval = async (
   subject: InterestingSubject
@@ -26,14 +27,14 @@ const addTimeInterval = async (
         generiekS:begin ?start ;
         generiekS:einde ?einde ;
         ext:relatedTo ?bestuurseenheid .
-      <${subject.uri}> org:memberDuring ${sparqlEscapeUri(tijdsintervalUri)} .
+      ${sparqlEscapeUri(subject.uri)} org:memberDuring ${sparqlEscapeUri(tijdsintervalUri)} .
     } WHERE {
       GRAPH ?g {
         ?mandataris a mandaat:Mandataris ;
-          org:hasMembership <${subject.uri}> ;
+          org:hasMembership ${sparqlEscapeUri(subject.uri)} ;
           mandaat:start ?start .
         OPTIONAL {
-          <${subject.uri}> mandaat:einde ?einde .
+          ${sparqlEscapeUri(subject.uri)} mandaat:einde ?einde .
         }
       }
       ?g ext:ownedBy ?bestuurseenheid .
@@ -53,7 +54,7 @@ const keepMembershipTypesQuery = async (
         ?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.
 
         VALUES ?s { ${[...subjects]
-          .map((subject) => `<${subject}>`)
+          .map((subject) => sparqlEscapeUri(subject))
           .join(" ")} }
       }
     `);

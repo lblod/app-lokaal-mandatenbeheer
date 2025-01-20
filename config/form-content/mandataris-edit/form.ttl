@@ -84,11 +84,12 @@ ext:startF
         ].
 ext:eindeF
     a form:Field;
-    form:displayType displayTypes:dateEndOfDayInput;
+    form:displayType displayTypes:dateInput;
     sh:group ext:editMandatarisPG;
     sh:name "Einde";
     sh:order 800;
     sh:path mandaat:einde;
+    fieldOption:endOfDay true;
     form:validatedBy
         [
             a ext:ValidMandatarisDate;

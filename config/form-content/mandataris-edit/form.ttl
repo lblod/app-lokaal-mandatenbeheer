@@ -79,6 +79,7 @@ ext:startF
             a ext:ValidMandatarisDate;
             form:grouping form:Bag;
             sh:path mandaat:start;
+            sh:severity sh:Warning
             # sh:resultMessage "Startdatum ligt niet in de bestuursperiode."
         ].
 ext:eindeF
@@ -93,6 +94,7 @@ ext:eindeF
             a ext:ValidMandatarisDate;
             form:grouping form:Bag;
             sh:path mandaat:einde;
+            sh:severity sh:Warning
             # sh:resultMessage "Einddatum ligt niet in de bestuursperiode."
         ].
 ext:fractieF

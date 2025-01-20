@@ -1,0 +1,26 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:einde ?einde .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:einde "2025-01-12T23:00:00Z"^^xsd:dateTime .
+  }
+}
+WHERE {
+  GRAPH  ?g{
+    ?mandataris a mandaat:Mandataris ;
+      mandaat:einde ?einde ;
+      org:holds ?mandaat .
+    ?boit org:hasPost ?mandaat ;
+      mandaat:isTijdspecialisatieVan / besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> .
+  }
+  FILTER (?einde = "2025-01-13T23:00:00Z"^^xsd:dateTime || ?einde = "2024-12-31T00:00:00Z"^^xsd:dateTime)
+  VALUES ?g { <http://mu.semte.ch/graphs/organizations/3e3d8146912fb57b6f7c4c665051351b6dd1a92730f363a17bddabe58bcdeb51/LoketLB-mandaatGebruiker> }
+}

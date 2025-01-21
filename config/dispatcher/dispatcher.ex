@@ -278,6 +278,17 @@ defmodule Dispatcher do
     forward(conn, path, "http://resource/files/")
   end
 
+   #################################################################
+  # Reporting resources
+  #################################################################
+  match "/reports/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/reports/")
+  end
+
+  match "/validationresults/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/validationresults/")
+  end
+
   #################################################################
   # Login logic
   #################################################################

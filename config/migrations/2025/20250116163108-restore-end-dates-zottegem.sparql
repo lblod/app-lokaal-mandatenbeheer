@@ -1,7 +1,7 @@
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
 DELETE {
   GRAPH ?g {

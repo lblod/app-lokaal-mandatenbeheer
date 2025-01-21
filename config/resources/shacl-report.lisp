@@ -5,20 +5,22 @@
   :has-many `((validationresult :via ,(s-prefix "sh:result")
                               :as "validationresults"))
   :resource-base (s-url "http://data.lblod.info/id/reports/")
+  :features '(include-uri)
   :on-path "reports"
 )
 
 (define-resource validationresult ()
   :class (s-prefix "sh:ValidationResult")
-  :properties `((:focusNode :uri ,(s-prefix "sh:focusNode"))
-                (:resultSeverity :uri ,(s-prefix "sh:resultSeverity"))
-                (:sourceConstraintComponent :uri ,(s-prefix "sh:sourceConstraintComponent"))
-                (:sourceShape :uri ,(s-prefix "sh:sourceShape"))
-                (:resultMessage :string ,(s-prefix "sh:resultMessage"))
+  :properties `((:focus-node :string ,(s-prefix "sh:focusNode"))
+                (:result-severity :string ,(s-prefix "sh:resultSeverity"))
+                (:source-constraint-component :string ,(s-prefix "sh:sourceConstraintComponent"))
+                (:source-shape :string ,(s-prefix "sh:sourceShape"))
+                (:result-message :string ,(s-prefix "sh:resultMessage"))
                 (:value :string ,(s-prefix "sh:value"))
-                (:targetClassOfFocusNode :uri ,(s-prefix "lmb:targetClassOfFocusNode"))
+                (:target-class-of-focus-node :string ,(s-prefix "lmb:targetClassOfFocusNode"))
                 )
   :resource-base (s-url "http://data.lblod.info/id/validationresults/")
+  :features '(include-uri)
   :on-path "validationresults"
 )
 

@@ -124,6 +124,10 @@ export function enrichValidationReport(reportDataset, shapesDataset) {
         const targetClassQuads = shapesDataset.match(sourceShapeQuad.object, namedNode('http://www.w3.org/ns/shacl#targetClass'), null);
         if(!targetClassQuads.size) throw "No targetClass found on source shape";
         const [targetClassQuad] = targetClassQuads;
+        
+        // Replace blank node of ValidationResult with UUID-based URI
+        const validationResultUUID = uuid();
+        const validationResultURI = `http://data.lblod.info/id/validationresults/${validationResultUUID}`;
 
         // Add targetClass to validation result
         reportDataset.add(quad(
@@ -131,10 +135,13 @@ export function enrichValidationReport(reportDataset, shapesDataset) {
             namedNode('http://lblod.data.gift/vocabularies/lmb/targetClassOfFocusNode'),
             namedNode(targetClassQuad.object.value)
         ));
-        // Replace blank node of ValidationResult with UUID-based URI
-        const validationResultUUID = uuid();
-        const validationResultURI = `http://data.lblod.info/id/validationresults/${validationResultUUID}`;
-
+        // Add UUID
+        reportDataset.add(quad(
+            validationResultQuad.subject,
+            namedNode('http://mu.semte.ch/vocabularies/core/uuid'), 
+            literal(validationResultUUID)
+        ));
+        
         const triplesOfValidationResult = reportDataset.match(validationResultQuad.subject, null, null);
         for (const resultQuad of triplesOfValidationResult) {
             if (resultQuad.predicate.value != 'http://www.w3.org/ns/shacl#sourceConstraint') {

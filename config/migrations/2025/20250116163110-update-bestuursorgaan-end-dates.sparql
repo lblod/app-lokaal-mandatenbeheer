@@ -1,0 +1,29 @@
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+  DELETE {
+    GRAPH ?g {
+      ?bestuursorgaan mandaat:bindingEinde ?end .
+      ?bestuursorgan dct:modified ?mod .
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      ?bestuursorgaan mandaat:bindingEinde ?newEnd .
+      ?bestuursorgan dct:modified ?now .
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?bestuursorgaan a besluit:Bestuursorgaan ;
+        mandaat:bindingEinde ?end ;
+        dct:modified ?mod .
+      FILTER(?mod > "2024-01-01T00:00:00Z"^^xsd:dateTime)
+    }
+    ?g ext:ownedBy ?someone.
+    BIND(bif:dateadd('day', 1, xsd:DateTime(?end)) AS ?newEnd)
+    BIND(NOW() AS ?now)
+  }

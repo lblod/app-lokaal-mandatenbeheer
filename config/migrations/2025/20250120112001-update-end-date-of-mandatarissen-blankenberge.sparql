@@ -14,7 +14,7 @@ DELETE {
 }
 INSERT {
   GRAPH ?g { 
-    ?mandataris mandaat:einde """2024-12-15"""^^xsd:date.
+    ?mandataris mandaat:einde """2024-12-15T23:00:00Z"""^^xsd:dateTime.
     ?mandataris dcterms:modified ?now.
   }
 }

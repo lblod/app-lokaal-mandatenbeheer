@@ -11,7 +11,7 @@ DELETE {
 }
 INSERT {
   GRAPH ?g { 
-    ?boit mandaat:bindingEinde """2024-12-15"""^^xsd:date.
+    ?boit mandaat:bindingEinde """2024-12-15T23:00:00Z"""^^xsd:dateTime.
     ?boit dcterms:modified ?now.
   }
 }

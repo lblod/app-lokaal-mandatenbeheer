@@ -26,7 +26,6 @@ WHERE {
     }
 
     ?boit mandaat:bindingEinde ?einde.
-    ?boit mandaat:bindingStart """2019-01-01"""^^xsd:date.
     OPTIONAL {
       ?boit dcterms:modified ?modified.
     }

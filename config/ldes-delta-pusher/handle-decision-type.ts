@@ -1,5 +1,6 @@
 import { Changeset } from "../types";
 import { querySudo } from "@lblod/mu-auth-sudo";
+import { sparqlEscapeUri } from "mu";
 
 import { publishInterestingSubjects } from "./handle-types-util";
 import { InterestingSubject } from "./publisher";
@@ -20,9 +21,9 @@ const interestingSubjects = async (
     WHERE {
       GRAPH ?g {
         ?s a ?type .
-        VALUES ?type { ${types.map((type) => `<${type}>`).join(" ")} }
+        VALUES ?type { ${types.map((type) => sparqlEscapeUri(type)).join(" ")} }
         VALUES ?s { ${[...subjects]
-          .map((subject) => `<${subject}>`)
+          .map((subject) => sparqlEscapeUri(subject))
           .join(" ")} }
 
         ?s ?predicate ?mandataris.

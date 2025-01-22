@@ -1,5 +1,7 @@
 import { querySudo } from "@lblod/mu-auth-sudo";
+import { sparqlEscapeUri } from "mu";
 import { Changeset } from "../types";
+
 import { publishInterestingSubjects } from "./handle-types-util";
 import { InterestingSubject } from "./publisher";
 import { MANDATARIS_DRAFT_STATE } from "./utils/well-known-uris";
@@ -15,7 +17,7 @@ export const toMandatarisDraftState = async (subjects: string[]) => {
         GRAPH ?g {
           ?s a mandaat:Mandataris.
           VALUES ?s { ${[...subjects]
-            .map((subject) => `<${subject}>`)
+            .map((subject) => sparqlEscapeUri(subject))
             .join(" ")} }
           OPTIONAL { ?s lmb:hasPublicationStatus ?publicationStatus. }
         }

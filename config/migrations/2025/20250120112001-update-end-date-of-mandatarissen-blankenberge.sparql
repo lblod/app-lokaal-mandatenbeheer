@@ -14,12 +14,17 @@ DELETE {
 }
 INSERT {
   GRAPH ?g { 
-    ?mandataris mandaat:einde """2024-12-15T23:00:00Z"""^^xsd:dateTime.
+    ?mandataris mandaat:einde """2024-12-14T23:00:00Z"""^^xsd:dateTime. # 15-12-2024
     ?mandataris dcterms:modified ?now.
   }
 }
 WHERE {
   GRAPH ?g {
+    VALUES ?classificatie {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> # CBS
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> # Vast Bureau
+    }
+
     ?mandataris mandaat:einde "2024-12-01T23:00:00Z"^^xsd:dateTime.
     OPTIONAL {
       ?mandataris dcterms:modified ?modified.
@@ -29,11 +34,6 @@ WHERE {
     ?boit mandaat:isTijdspecialisatieVan ?bestuursorgaan .
     ?boit lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/a2b977a3-ce68-4e42-80a6-4397f66fc5ca>. #2019 - 2024
     ?bestuursorgaan besluit:classificatie ?classificatie .
-
-    FILTER(?classificatie IN(
-      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006>, # CBS
-      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> # Vast Bureau
-    ))
   }
   ?g ext:ownedBy ?blankenberge.
   FILTER(?blankenberge IN(

@@ -2,6 +2,9 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 DELETE {
   GRAPH ?g { 
@@ -11,17 +14,27 @@ DELETE {
 }
 INSERT {
   GRAPH ?g { 
-    ?boit mandaat:bindingEinde """2024-12-15T23:00:00Z"""^^xsd:dateTime.
+    ?boit mandaat:bindingEinde """2024-12-14T23:00:00Z"""^^xsd:dateTime. # 15-12-2024
     ?boit dcterms:modified ?now.
   }
 }
 WHERE {
   GRAPH ?g {
+    VALUES ?classificatie {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> # CBS
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> # Vast Bureau
+    }
+
     ?boit mandaat:bindingEinde ?einde.
     ?boit mandaat:bindingStart """2019-01-01"""^^xsd:date.
     OPTIONAL {
       ?boit dcterms:modified ?modified.
     }
+
+    ?mandataris org:holds / ^org:hasPost ?boit .
+    ?boit mandaat:isTijdspecialisatieVan ?bestuursorgaan .
+    ?boit lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/a2b977a3-ce68-4e42-80a6-4397f66fc5ca>. #2019 - 2024
+    ?bestuursorgaan besluit:classificatie ?classificatie .
   }
   ?g ext:ownedBy ?blankenberge.
   FILTER(?blankenberge IN(

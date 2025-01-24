@@ -1,6 +1,6 @@
 (define-resource report ()
   :class (s-prefix "sh:ValidationReport")
-  :properties `((:created :string ,(s-prefix "dct:created"))
+  :properties `((:created :datetime ,(s-prefix "dct:created"))
                 (:conforms :boolean ,(s-prefix "sh:conforms")))
   :has-many `((validationresult :via ,(s-prefix "sh:result")
                               :as "validationresults"))

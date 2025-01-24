@@ -1,17 +1,45 @@
-import { query, update, sparqlEscapeUri, uuid } from 'mu';
+import { readdir, readFile } from 'fs/promises';
+import path from 'path';
+
+import { query, update, sparqlEscapeUri, sparqlEscapeString, uuid } from 'mu';
 import {SparqlJsonParser} from "sparqljson-parse";
 
 import { Parser, Store, DataFactory } from 'n3';
-const { namedNode, literal, defaultGraph, quad } = DataFactory;
+const { namedNode, literal, quad } = DataFactory;
 
-import { report } from 'process';
+import { batchedQuery } from '../helpers.js';
 
-export async function getBestuurseenhedenUuid(bestuurseenheidClassificaties) {
+export async function mergeFilesContent(directory) {
+    try {
+        const files = await readdir(directory);
+    
+        if (files.length === 0) {
+            console.log('No files found in the directory.');
+            return;
+        }
+    
+        // Loop over files and read their contents
+        const contentPromises = files.map(async (file) => {
+            const filePath = path.join(directory, file);
+            return readFile(filePath, 'utf8');
+        });
+    
+        // Wait for all file contents to be read
+        const contents = await Promise.all(contentPromises);
+    
+        // Merge all content into a single field
+        const mergedContent = contents.join('\n');
+        return mergedContent;
+    } catch (err) {
+        console.error(`Error: ${err.message}`);
+    }
+  }
+    
+export async function getBestuurseenhedenUriAndUuid(bestuurseenheidClassificaties) {
     let sparqlValuesBestuurseenheidClassificaties =  ``;
     if (bestuurseenheidClassificaties && bestuurseenheidClassificaties.length) {
         sparqlValuesBestuurseenheidClassificaties =  `VALUES ?bestuurseenheidClassificatie {${bestuurseenheidClassificaties.map((b) => `${sparqlEscapeUri(b)} `).join('')}}`;
     }
-    // VALUES ?bestuurseenheidClassificatie { <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>  <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> }
     const queryStringBestuurseenheden = `
         PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -20,7 +48,7 @@ export async function getBestuurseenhedenUuid(bestuurseenheidClassificaties) {
         PREFIX adms: <http://www.w3.org/ns/adms#>
         PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
-        SELECT DISTINCT ?uuid
+        SELECT DISTINCT (?bestuurseenheid as ?uri) ?uuid
         WHERE {
             ?bestuurseenheid a besluit:Bestuurseenheid ;
                             mu:uuid ?uuid ;
@@ -28,28 +56,54 @@ export async function getBestuurseenhedenUuid(bestuurseenheidClassificaties) {
         
             ${sparqlValuesBestuurseenheidClassificaties}
         }
-        LIMIT 1
     `;
-    //const queryResponse = await batchedQuery(queryStringBestuurseenheden);
-    const queryResponse = await query(queryStringBestuurseenheden);
+    const queryResponse = await batchedQuery(queryStringBestuurseenheden);
+    const uriAndUuids = queryResponse.results.bindings.map((res) => { return {'uri': res.uri.value, 'uuid': res.uuid.value } });
 
-    const uuids = queryResponse.results.bindings.map((res) => res.uuid.value);
-
-    return uuids;
+    return uriAndUuids;
 }
 
-export async function executeConstructQueryOnNamedGraph(namedGraph) {
-    console.log('execute construct');
+export function generateNamedGraphFromUuid(uuid) {
+    return `http://mu.semte.ch/graphs/organizations/${uuid}/LoketLB-mandaatGebruiker`;
+}
+
+export async function executeConstructQueryOnNamedGraph(uriAndUuid, bestuursperiodeLabel) {
+    const namedGraph = generateNamedGraphFromUuid(uriAndUuid.uuid);
+
     const queryStringConstructOfGraph = `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+
     CONSTRUCT {
-        ?s ?p ?o .
+        ?bestuursorgaanInTijd  ?pBestuursorgaanInTijd ?oBestuursorgaanInTijd .
+                                ?bestuursorgaan ?pBestuursorgaan ?oBestuursorgaan .
+        ${sparqlEscapeUri(uriAndUuid.uri)} besluit:classificatie ?oBestuurseenheid .
+        ?mandataris ?pMandataris ?oMandataris .
+        ?persoon ?pPersoon ?oPersoon .
     }
     WHERE {
-        GRAPH <${namedGraph}> {
-            ?s ?p ?o .
+        ?bestuursperiode skos:prefLabel ${sparqlEscapeString(bestuursperiodeLabel)} .
+        GRAPH ${sparqlEscapeUri(namedGraph)} {    
+            ?bestuursorgaanInTijd a besluit:Bestuursorgaan ;
+                <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> ?bestuursperiode ;
+                mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
+                org:hasPost ?mandaat ;
+                ?pBestuursorgaanInTijd ?oBestuursorgaanInTijd .
+            
+            ?bestuursorgaan ?pBestuursorgaan ?oBestuursorgaan .
+
+            OPTIONAL {
+                ?mandataris org:holds ?mandaat ;
+                            mandaat:isBestuurlijkeAliasVan ?persoon ;
+                            ?pMandataris ?oMandataris .
+
+                ?persoon ?pPersoon ?oPersoon .
+           }
+            
         }
+        ${sparqlEscapeUri(uriAndUuid.uri)} besluit:classificatie ?oBestuurseenheid .
     }
-    LIMIT 1000
     `;
 
     const queryResponse = await query(queryStringConstructOfGraph);
@@ -84,7 +138,6 @@ export async function parseTurtleString(turtleString) {
     // Add all parsed quads to the store
     store.addQuads(quads);
 
-    // Return the populated store
     return store;
 }
 
@@ -99,18 +152,8 @@ export async function validateDataset(dataset, shapesDataset) {
         factory: rdf.default ,
         validations: sparqljs.validations
     });
-    // run the validation process
     const report = await validator.validate({ dataset: dataset });
-    // check if the data conforms to the given shape
-    // console.log(`conforms: ${report.conforms}`);
-    // print the report in N-Triples format
-    // console.log(`report: ${  console.log(toNT(report.dataset))    }`);
-    // get the covered quads
-    //console.log('coverage:')
-    // one quad may show up multiple times -> put it into a dataset
-    //const coverage = rdfDataset.dataset(report.coverage())
-    // print the unique quads
-    //console.log(toNT(coverage))
+
     return report;
 }
 
@@ -198,7 +241,7 @@ export function enrichValidationReport(reportDataset, shapesDataset) {
             reportDataset.add(quad(
                 namedNode(reportURI),
                 namedNode('http://purl.org/dc/terms/created'), 
-                literal(new Date())
+                literal(new Date().toISOString(),namedNode('http://www.w3.org/2001/XMLSchema#dateTime'))
             ));
             
             // Remove blank node
@@ -214,11 +257,9 @@ export function enrichValidationReport(reportDataset, shapesDataset) {
 }
 
 
-export async function saveDatasetToNamedGraph(enrichedReportDataset, namedGraph) {
-    console.log(enrichedReportDataset.toString());
-
-    for (const quad of enrichedReportDataset) {
-        const filteredDataset = enrichedReportDataset.match(quad.subject, quad.predicate, quad.object);
+export async function saveDatasetToNamedGraph(dataset, namedGraph) {
+    for (const quad of dataset) {
+        const filteredDataset = dataset.match(quad.subject, quad.predicate, quad.object);
         const queryString = `
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX prov: <http://www.w3.org/ns/prov#>
@@ -230,7 +271,6 @@ export async function saveDatasetToNamedGraph(enrichedReportDataset, namedGraph)
             }
         }
         `;
-        console.log(queryString);
         await update(queryString);
     }
 }

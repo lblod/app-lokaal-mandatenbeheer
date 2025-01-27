@@ -157,29 +157,43 @@ export async function validateDataset(dataset, shapesDataset) {
     return report;
 }
 
-export function enrichValidationReport(reportDataset, shapesDataset) {
+export function enrichValidationReport(reportDataset, shapesDataset, dataDataset) {
     const validationResults = reportDataset.match(null, namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/ns/shacl#ValidationResult'));
     for (const validationResultQuad of validationResults) {
-        // Retrieve targetClass of shape of ValidationResult
+        // Retrieve targetClass of ValidationResult using the targetClass of the shape or type of instance
         const sourceShapeQuads = reportDataset.match(validationResultQuad.subject, namedNode('http://www.w3.org/ns/shacl#sourceShape'), null);
         if(!sourceShapeQuads.size) throw "No source shape found on validation result";
         const [sourceShapeQuad] = sourceShapeQuads;
-        const targetClassQuads = shapesDataset.match(sourceShapeQuad.object, namedNode('http://www.w3.org/ns/shacl#targetClass'), null);
-        if(!targetClassQuads.size) throw "No targetClass found on source shape";
-        const [targetClassQuad] = targetClassQuads;
-        
+        const targetClassInShapeQuads = shapesDataset.match(sourceShapeQuad.object, namedNode('http://www.w3.org/ns/shacl#targetClass'), null);
+        let targetClassQuad;
+        if(!targetClassInShapeQuads.size) {
+            // Fallback by searching the class of the focus node in the dataset
+            const focusNodeQuads = reportDataset.match(validationResultQuad.subject, namedNode('http://www.w3.org/ns/shacl#focusNode'), null);
+            if(!focusNodeQuads.size) throw "No focus node found in validation result as fallback to retrieve targetClass";
+            const [focusNodeQuad] = focusNodeQuads;
+
+            const focusNodeTypeInDatasetQuads = dataDataset.match(focusNodeQuad.object, namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), null);
+            if(!focusNodeTypeInDatasetQuads.size) throw "No type of focus node found in validation result as fallback to retrieve targetClass";
+            [targetClassQuad] = focusNodeTypeInDatasetQuads;
+        } else {
+            [targetClassQuad] = targetClassInShapeQuads;
+        }
+
+        // Do not include triples of validation result when ClassConstraintComponent
+        const isClassConstraintComponent = (reportDataset.match(validationResultQuad.subject, namedNode('http://www.w3.org/ns/shacl#sourceConstraintComponent'), namedNode('http://www.w3.org/ns/shacl#ClassConstraintComponent'))).size > 0;
+
         // Replace blank node of ValidationResult with UUID-based URI
         const validationResultUUID = uuid();
         const validationResultURI = `http://data.lblod.info/id/validationresults/${validationResultUUID}`;
 
         // Add targetClass to validation result
-        reportDataset.add(quad(
+        if (!isClassConstraintComponent) reportDataset.add(quad(
             validationResultQuad.subject,
             namedNode('http://lblod.data.gift/vocabularies/lmb/targetClassOfFocusNode'),
             namedNode(targetClassQuad.object.value)
         ));
         // Add UUID
-        reportDataset.add(quad(
+        if (!isClassConstraintComponent) reportDataset.add(quad(
             validationResultQuad.subject,
             namedNode('http://mu.semte.ch/vocabularies/core/uuid'), 
             literal(validationResultUUID)
@@ -187,8 +201,8 @@ export function enrichValidationReport(reportDataset, shapesDataset) {
         
         const triplesOfValidationResult = reportDataset.match(validationResultQuad.subject, null, null);
         for (const resultQuad of triplesOfValidationResult) {
-            if (resultQuad.predicate.value != 'http://www.w3.org/ns/shacl#sourceConstraint') {
-                reportDataset.add(quad(
+            if (resultQuad.object.termType != 'BlankNode') {
+                if (!isClassConstraintComponent) reportDataset.add(quad(
                     namedNode(validationResultURI),
                     resultQuad.predicate, 
                     resultQuad.object
@@ -204,7 +218,7 @@ export function enrichValidationReport(reportDataset, shapesDataset) {
 
         const triplesPointingToValidationResult = reportDataset.match(null, null, validationResultQuad.subject);
         for (const resultQuad of triplesPointingToValidationResult) {
-            reportDataset.add(quad(
+            if (!isClassConstraintComponent) reportDataset.add(quad(
                 resultQuad.subject,
                 resultQuad.predicate, 
                 namedNode(validationResultURI)
@@ -273,4 +287,29 @@ export async function saveDatasetToNamedGraph(dataset, namedGraph) {
         `;
         await update(queryString);
     }
+}
+
+async function deletePreviousReports() {
+    const query = `
+        prefix sh: <http://www.w3.org/ns/shacl#>
+
+        delete {
+            graph ?g {
+                ?report a sh:ValidationReport ;
+                ?pReport ?oReport ;
+                sh:result ?result .
+
+                ?result ?pResult ?oResult .
+            }
+        }
+        where {
+            graph ?g {
+                ?report a sh:ValidationReport ;
+                ?pReport ?oReport ;
+                sh:result ?result .
+
+                ?result ?pResult ?oResult .
+            }
+        }
+    `;
 }

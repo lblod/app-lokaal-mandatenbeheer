@@ -41,7 +41,7 @@ export default {
         console.log(`SHACL validation took ${(endTime - startTime) / 1000} seconds.`);
 
         // Enrich validation report by removing blank nodes, adding timestamp etc.
-        const enrichedValidationReportDataset = enrichValidationReport(report.dataset, shapesDataset);
+        const enrichedValidationReportDataset = enrichValidationReport(report.dataset, shapesDataset, dataDataset);
 
         saveDatasetToNamedGraph(enrichedValidationReportDataset, generateNamedGraphFromUuid(uriAndUuid.uuid));
         console.log(`SHACL validation report saved in triple store.`);

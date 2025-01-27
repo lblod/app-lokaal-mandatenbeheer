@@ -16,6 +16,7 @@
                 (:source-constraint-component :string ,(s-prefix "sh:sourceConstraintComponent"))
                 (:source-shape :string ,(s-prefix "sh:sourceShape"))
                 (:result-message :string ,(s-prefix "sh:resultMessage"))
+                (:result-path :string ,(s-prefix "sh:resultPath"))
                 (:value :string ,(s-prefix "sh:value"))
                 (:target-class-of-focus-node :string ,(s-prefix "lmb:targetClassOfFocusNode"))
                 )

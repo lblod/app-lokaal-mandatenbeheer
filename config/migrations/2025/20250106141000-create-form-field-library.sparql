@@ -1,0 +1,45 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX form: <http://lblod.data.gift/vocabularies/forms/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/lmb/form-library-entries/095d1329-a9fa-4d72-8c49-eb52aaf893de> a ext:FormLibraryEntry ;
+     mu:uuid "095d1329-a9fa-4d72-8c49-eb52aaf893de" ;
+     sh:name "Verblijfsadres" ;
+     form:displayType <http://lblod.data.gift/display-types/lmb/custom-address-input> ;
+     sh:path <https://data.vlaanderen.be/ns/persoon#verblijfsadres> ;
+     sh:order 900 .
+
+    <http://data.lblod.info/id/lmb/form-library-entries/31004e04-1b1a-4fda-80ae-612d67a14b5e> a ext:FormLibraryEntry ;
+     mu:uuid "31004e04-1b1a-4fda-80ae-612d67a14b5e" ;
+     sh:name "Geboorteplaats" ;
+     form:displayType <http://lblod.data.gift/display-types/lmb/custom-string-input> ;
+     sh:path <http://www.w3.org/ns/person#placeOfBirth> ;
+     sh:order 1000 .
+
+    <http://data.lblod.info/id/lmb/form-library-entries/0bdd360b-c6e5-46d9-9a31-8645a4c5774c> a ext:FormLibraryEntry ;
+     mu:uuid "0bdd360b-c6e5-46d9-9a31-8645a4c5774c" ;
+     sh:name "Sterfdatum" ;
+     form:displayType <http://lblod.data.gift/display-types/lmb/custom-date-input> ;
+     sh:path <http://data.lblod.info/id/lmb/paths/574867d1-3422-41a9-8648-34dc2c443204> ;
+     ext:needsShape <http://data.lblod.info/id/lmb/shapes/d56503fc-96d4-49fc-8425-e36db36fd172> ;
+     ext:needsGenerator <http://data.lblod.info/id/lmb/generators/3afc0fad-e475-4696-ae50-3627fed41cf8> ;
+     sh:order 1000 .
+
+    <http://data.lblod.info/id/lmb/paths/574867d1-3422-41a9-8648-34dc2c443204> rdf:first <http://data.vlaanderen.be/ns/persoon#heeftOverlijden> ;
+      rdf:rest <http://data.lblod.info/id/lmb/paths/0c65e9c8-0910-490a-96e7-19b71290b91a> .
+    <http://data.lblod.info/id/lmb/paths/0c65e9c8-0910-490a-96e7-19b71290b91a> rdf:first <http://data.vlaanderen.be/ns/persoon#datum> ;
+      rdf:rest rdf:nil .
+
+    <http://data.lblod.info/id/lmb/shapes/d56503fc-96d4-49fc-8425-e36db36fd172> <http://data.vlaanderen.be/ns/persoon#heeftOverlijden> <http://data.lblod.info/id/lmb/shapes/048663a1-6b73-4346-8267-0f40e0dff9f4> .
+
+    <http://data.lblod.info/id/lmb/shapes/048663a1-6b73-4346-8267-0f40e0dff9f4> a <http://data.vlaanderen.be/ns/persoon#Overlijden> .
+
+    <http://data.lblod.info/id/lmb/generators/3afc0fad-e475-4696-ae50-3627fed41cf8> a form:UriGenerator;
+      form:prefix "http://data.lblod.info/id/overlijden/";
+      form:forType persoon:Overlijden.
+  }
+}

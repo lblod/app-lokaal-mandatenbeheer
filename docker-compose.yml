@@ -167,7 +167,7 @@ services:
       SEND_EMAIL_FOR_MANDATARIS_EFFECTIEF: false
       BESLUIT_STAGING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as decision-ldes-client working graph
   adressenregister:
-    image: lblod/adressenregister-fuzzy-search-service:0.6.3
+    image: lblod/adressenregister-fuzzy-search-service:0.8.0
     labels:
       - "logging=true"
     restart: always

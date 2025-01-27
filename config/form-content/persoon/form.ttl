@@ -124,17 +124,17 @@ ext:possibleDuplicateF
 
 ext:personG a form:Generator;
   form:prototype [
-    form:shape [
-      a person:Person;
-      persoon:heeftGeboorte [
-        a persoon:Geboorte
-      ];
-      adms:identifier [
-        a adms:Identifier
-      ]
-    ]
+    form:shape ext:personShape
   ];
   form:dataGenerator form:addMuUuid.
+
+  ext:personShape a person:Person;
+      persoon:heeftGeboorte [
+        a persoon:Geboorte
+      ] ;
+      adms:identifier [
+        a adms:Identifier
+      ] .
 
 ext:geboorteUriG a form:UriGenerator;
   form:prefix "http://data.lblod.info/id/geboortes/";

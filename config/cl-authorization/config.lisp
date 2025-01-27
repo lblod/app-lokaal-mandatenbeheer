@@ -60,6 +60,7 @@
   :schema "http://schema.org/"
   :skos "http://www.w3.org/2004/02/skos/core#"
   :extlmb "http://mu.semte.ch/vocabularies/ext/lmb/"
+  :form "http://lblod.data.gift/vocabularies/forms/"
   :lmb "http://lblod.data.gift/vocabularies/lmb/"
 )
 
@@ -84,6 +85,11 @@
   ("skos:ConceptScheme" -> _)
   ("skos:Concept" -> _)
   ("foaf:Document" -> _)
+  ("ext:DisplayType" -> _)
+  ("ext:FormLibraryEntry" -> _)
+  ("ext:FormLibrary" -> _)
+  ("form:ValidPhoneNumber" -> _)
+  ("form:RequiredConstraint" -> _)
   ("lmb:MandatarisPublicationStatusCode" -> _))
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
@@ -108,6 +114,7 @@
   ("contacthub:AgentInPositie" -> _)
   ("mandaat:Fractie" -> _)
   ("persoon:Geboorte" -> _)
+  ("persoon:Overlijden" -> _)
   ("org:Membership" -> _)
   ("besluit:Besluit" -> _)
   ("besluit:Artikel" -> _)
@@ -119,8 +126,11 @@
   ("org:Post" -> _)
   ("person:Person" -> _)
   ("adms:Identifier" -> _)
-  ("ext:Form" -> _)
-  ("ext:Extension" -> _)
+  ("form:Form" -> _)
+  ("form:Extension" -> _)
+  ("form:Field" -> _)
+  ("form:ValidPhoneNumber" -> _)
+  ("form:RequiredConstraint" -> _)
   ("lmb:Installatievergadering" -> _)
   ("lmb:InstallatievergaderingStatus" -> _)
   ("mandaat:RechtstreekseVerkiezing" -> _)

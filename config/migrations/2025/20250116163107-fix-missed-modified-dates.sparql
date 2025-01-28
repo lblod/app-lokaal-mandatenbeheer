@@ -1,0 +1,33 @@
+  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  DELETE {
+    GRAPH ?g {
+      ?mandataris dct:modified ?oldMod.
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      ?mandataris dct:modified "2024-01-01T00:00:01Z"^^xsd:dateTime.
+    }
+  }
+  WHERE {
+    VALUES ?mandataris {
+      # these mandataris instances had a different end date in pre-prod
+      # but didn't have a new modified date set.
+      <http://data.lblod.info/id/mandatarissen/5C3496489E5B640009000BD4>
+      <http://data.lblod.info/id/mandatarissen/5C3CA11557753A0009000673>
+      <http://data.lblod.info/id/mandatarissen/5C3CA69B57753A0009000724>
+      <http://data.lblod.info/id/mandatarissen/5CA46136D5BECA000C0003B2>
+      <http://data.lblod.info/id/mandatarissen/5D6E1FFDA3ACB6000800017E>
+      <http://data.lblod.info/id/mandatarissen/5D6E2926A3ACB60008000190>
+      <http://data.lblod.info/id/mandatarissen/5D6E2E0FA3ACB600080001B5>
+      <http://data.lblod.info/id/mandatarissen/5D6E3182A3ACB600080001C5>
+      <http://data.lblod.info/id/mandatarissen/5DDFB1F0A3ACB600080007EA>
+      <http://data.lblod.info/id/mandatarissen/5DDFB250A3ACB600080007ED>
+    }
+    GRAPH ?g {
+      ?mandataris dct:modified ?oldMod.
+    }
+    ?g ext:ownedBy ?someone.
+  }

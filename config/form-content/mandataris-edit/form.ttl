@@ -10,6 +10,7 @@
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix lmb: <http://lblod.data.gift/vocabularies/lmb/> .
+@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
 
 ext:mandaatF
     a form:Field;
@@ -89,6 +90,7 @@ ext:eindeF
     sh:name "Einde";
     sh:order 800;
     sh:path mandaat:einde;
+    fieldOption:endOfDay true;
     form:validatedBy
         [
             a ext:ValidMandatarisDate;

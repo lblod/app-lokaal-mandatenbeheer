@@ -73,8 +73,8 @@
 (define-resource mandataris ()
   :class (s-prefix "mandaat:Mandataris")
   :properties `((:rangorde :string ,(s-prefix "mandaat:rangorde"))
-                (:start :date ,(s-prefix "mandaat:start"))
-                (:einde :date ,(s-prefix "mandaat:einde"))
+                (:start :datetime ,(s-prefix "mandaat:start"))
+                (:einde :datetime ,(s-prefix "mandaat:einde"))
                 (:datum-eedaflegging :datetime ,(s-prefix "ext:datumEedaflegging"))
                 (:datum-ministrieel-besluit :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
                 (:generated-from :uri-set ,(s-prefix "ext:generatedFrom")) ;;if it e.g. comes from gelinkt-notuleren

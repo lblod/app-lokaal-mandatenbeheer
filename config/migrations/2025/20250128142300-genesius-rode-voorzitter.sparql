@@ -1,0 +1,30 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/799b160b867e7a85d06c798eb6af1e45ae6584a3155930b521a70dd744e60edd> . # Pierre Rolin
+    ?mandataris dcterms:modified ?modified .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/56dd92cfdd9f958f4bb3424839552d29da4de800e6ba31cca64b9eb0f16d8b18> . # Anne Sobrie
+    ?mandataris dcterms:modified ?now.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/799b160b867e7a85d06c798eb6af1e45ae6584a3155930b521a70dd744e60edd> . # Pierre Rolin
+
+    OPTIONAL {
+      ?mandataris dcterms:modified ?modified .
+    }
+  }
+  ?g ext:ownedBy ?something .
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/67336719D2F339806D1226B7>
+  }
+  BIND(NOW() as ?now)
+}

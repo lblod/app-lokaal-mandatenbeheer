@@ -1,0 +1,22 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+INSERT {
+  GRAPH ?g {
+    ?mandataris org:hasMembership ?lidmaatschap ;
+      dct:modified ?now .
+    ?lidmaatschap a org:Membership ;
+      dct:modified ?now ;
+      org:organisation ?fractie ;
+      mu:uuid ?id .
+  }
+}
+WHERE {
+  BIND(STRUUID() AS ?id)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/lidmaatschappen/", ?id)) AS ?lidmaatschap)
+  BIND(NOW() as ?now)
+  VALUES ?g {<http://mu.semte.ch/graphs/organizations/a2ee394059cce91526392e73e4de974d90caffb92f70cde23b9e9e1a965526fa/LoketLB-mandaatGebruiker>}
+  VALUES ?mandataris {<http://data.lblod.info/id/mandatarissen/1e9ab73b-dac0-4ea6-9741-46d7933f02ea>}
+  VALUES ?fractie {<http://data.lblod.info/id/fracties/c2879297-ca57-408f-953a-e119f5c7ddae>}
+}

@@ -1,43 +1,14 @@
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX person: <http://www.w3.org/ns/person#>
-PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX regorg: <https://www.w3.org/ns/regorg#>
-PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
-PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
-
-INSERT {
-  GRAPH ?g {
-    ?mandataris org:hasMembership ?lidmaatschap ;
-      dct:modified ?now .
-    ?lidmaatschap a org:Membership ;
-      dct:modified ?now ;
-      org:organisation ?fractie ;
-      mu:uuid ?id .
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organizations/a2ee394059cce91526392e73e4de974d90caffb92f70cde23b9e9e1a965526fa/LoketLB-mandaatGebruiker> {
+    <http://data.lblod.info/id/mandatarissen/1e9ab73b-dac0-4ea6-9741-46d7933f02ea> org:hasMembership <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> .
+    <http://data.lblod.info/id/mandatarissen/1e9ab73b-dac0-4ea6-9741-46d7933f02ea> dct:modified "2025-01-30T13:54:23.444284"^^xsd:dateTime .
+    <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> a org:Membership .
+    <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> mu:uuid "B61B2B12-DF11-11EF-BC01-8152F78DE954" .
+    <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> dct:modified "2025-01-30T13:54:23.444284"^^xsd:dateTime .
+    <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> org:organisation <http://data.lblod.info/id/fracties/c2879297-ca57-408f-953a-e119f5c7ddae> .
   }
-}
-WHERE {
-  GRAPH ?g {
-    ?mandataris a mandaat:Mandataris ;
-      org:holds ?mandaat ;
-      mandaat:isBestuurlijkeAliasVan ?persoon .
-    ?persoon a person:Person ;
-      persoon:gebruikteVoornaam "Kathelijne" ;
-      foaf:familyName "Toen" .
-    ?mandaat a mandaat:Mandaat ;
-      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> ; # Districtsburgemeester
-      ^org:hasPost / lmb:heeftBestuursperiode ?bestuursperiode .
-    ?fractie a mandaat:Fractie ;
-      regorg:legalName "N-VA" ;
-      org:memberOf / lmb:heeftBestuursperiode ?bestuursperiode .
-  }
-  VALUES ?g {<http://mu.semte.ch/graphs/organizations/a2ee394059cce91526392e73e4de974d90caffb92f70cde23b9e9e1a965526fa/LoketLB-mandaatGebruiker>}
-  VALUES ?bestuursperiode {bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7} # 2025 - heden
-
-  BIND(STRUUID() AS ?id)
-  BIND(IRI(CONCAT("http://data.lblod.info/id/lidmaatschappen/", ?id)) AS ?lidmaatschap)
-  BIND(NOW() as ?now)
 }

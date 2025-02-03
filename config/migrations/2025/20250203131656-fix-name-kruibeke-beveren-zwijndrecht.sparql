@@ -2,7 +2,6 @@ PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
 DELETE {
   GRAPH ?g {

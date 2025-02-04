@@ -234,7 +234,7 @@ defmodule Dispatcher do
   match "/system-notifications/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/system-notifications/")
   end
-  
+
   match "/global-system-messages/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/global-system-messages/")
   end
@@ -333,6 +333,22 @@ defmodule Dispatcher do
 
   match "/form-extensions/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/form-extensions/")
+  end
+
+  match "/libraries/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/libraries/")
+  end
+
+  match "/library-entries/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/library-entries/")
+  end
+
+  match "/display-types/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/display-types/")
+  end
+
+  match "/form-fields/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/form-fields/")
   end
 
   #################################################################

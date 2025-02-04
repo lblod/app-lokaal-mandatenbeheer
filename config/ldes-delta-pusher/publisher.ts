@@ -1,6 +1,7 @@
-import { sparqlEscapeUri, sparqlEscape } from "mu";
+import { sparqlEscapeUri, sparqlEscape, sparqlEscapeString } from "mu";
 import { querySudo } from "@lblod/mu-auth-sudo";
 import { addData, getConfigFromEnv } from "@lblod/ldes-producer";
+
 import { LDES_FRAGMENTER } from "../config";
 import { log } from "./logger";
 import {
@@ -59,25 +60,25 @@ const fetchSubjectData = async (
       ${mapping}
     }
     BIND(IF(?p = ?pFrom, ?pTo, ?p) AS ?pNew)`;
-    extraConstruct = `<${subject.uri}> ?pNew ?o.`;
+    extraConstruct = `${sparqlEscapeUri(subject.uri)} ?pNew ?o.`;
   }
   if (transformTypes) {
     const extraTypes = transformTypes
-      .map((type) => `${sparqlEscapeUri(type)}`)
+      .map((type) => sparqlEscapeUri(type))
       .join(", ");
-    extraConstruct = `<${subject.uri}> a ${extraTypes}.`;
+    extraConstruct = `${sparqlEscapeUri(subject.uri)} a ${extraTypes}.`;
   }
 
   // we are also publishing the bestuurseenheid with our data so consuming apps easily know where to put the concept
   const data = await querySudo(`
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     CONSTRUCT {
-      <${subject.uri}> ?p ?o .
-      <${subject.uri}> ext:relatedTo ?bestuurseenheid .
+      ${sparqlEscapeUri(subject.uri)} ?p ?o .
+      ${sparqlEscapeUri(subject.uri)} ext:relatedTo ?bestuurseenheid .
       ${extraConstruct}
     } WHERE {
       GRAPH ?g {
-        <${subject.uri}> ?p ?o .
+        ${sparqlEscapeUri(subject.uri)} ?p ?o .
       }
       ?g ext:ownedBy ?bestuurseenheid .
       ${predicateLimiter}
@@ -102,7 +103,7 @@ const sparqlEscapeObject = (bindingObject): string => {
   if (bindingObject.datatype === "http://www.w3.org/2001/XMLSchema#dateTime") {
     // sparqlEscape formats it slightly differently and then the comparison breaks in healing
     const safeValue = `${bindingObject.value}`;
-    return `"${safeValue.split('"').join("")}"^^xsd:dateTime`;
+    return `${sparqlEscapeString(safeValue.split('"').join(""))}^^xsd:dateTime`;
   }
   return bindingObject.type === "uri"
     ? sparqlEscapeUri(bindingObject.value)
@@ -177,7 +178,7 @@ async function fetchRelatedToRepublish(
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     SELECT DISTINCT ?related ?type ?g WHERE {
       GRAPH ?g {
-        <${subject.uri}> ?p ?related .
+        ${sparqlEscapeUri(subject.uri)} ?p ?related .
         ?related a ?type .
       }
       ?g ext:ownedBy ?bestuurseenheid .

@@ -119,7 +119,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-lokaal-mandatenbeheer:0.4.7
+    image: lblod/frontend-lokaal-mandatenbeheer:0.5.1
     labels:
       - "logging=true"
     restart: always
@@ -146,7 +146,7 @@ services:
     restart: always
     logging: *default-logging
   form-content:
-    image: lblod/form-content-service:0.0.8
+    image: lblod/form-content-service:0.0.9
     restart: always
     labels:
       - "logging=true"
@@ -154,7 +154,7 @@ services:
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.5.0
+    image: lblod/mandataris-service:0.5.2
     labels:
       - "logging=true"
     restart: always
@@ -167,7 +167,7 @@ services:
       SEND_EMAIL_FOR_MANDATARIS_EFFECTIEF: false
       BESLUIT_STAGING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as decision-ldes-client working graph
   adressenregister:
-    image: lblod/adressenregister-fuzzy-search-service:0.6.3
+    image: lblod/adressenregister-fuzzy-search-service:0.8.0
     labels:
       - "logging=true"
     restart: always

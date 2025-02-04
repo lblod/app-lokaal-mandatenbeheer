@@ -1,5 +1,7 @@
-import { Changeset } from "../types";
 import { querySudo } from "@lblod/mu-auth-sudo";
+import { sparqlEscapeUri } from "mu";
+import { Changeset } from "../types";
+
 import { publishInterestingSubjects } from "./handle-types-util";
 import { InterestingSubject, LDES_TYPE, TypesWithFilter } from "./publisher";
 import { ldesInstances } from "./ldes-instances";
@@ -42,9 +44,9 @@ const keepRegularTypesQuery = async (
         }
         ?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?bestuurseenheid.
 
-        VALUES ?type { ${types.map((type) => `<${type}>`).join(" ")} }
+        VALUES ?type { ${types.map((type) => sparqlEscapeUri(type)).join(" ")} }
         VALUES ?s { ${[...subjects]
-          .map((subject) => `<${subject}>`)
+          .map((subject) => sparqlEscapeUri(subject))
           .join(" ")} }
       }
     `);

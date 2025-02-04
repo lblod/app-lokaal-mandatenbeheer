@@ -1,0 +1,14 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organizations/a2ee394059cce91526392e73e4de974d90caffb92f70cde23b9e9e1a965526fa/LoketLB-mandaatGebruiker> {
+    <http://data.lblod.info/id/mandatarissen/1e9ab73b-dac0-4ea6-9741-46d7933f02ea> org:hasMembership <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> .
+    <http://data.lblod.info/id/mandatarissen/1e9ab73b-dac0-4ea6-9741-46d7933f02ea> dct:modified "2025-01-30T13:54:23.444284"^^xsd:dateTime .
+    <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> a org:Membership .
+    <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> mu:uuid "B61B2B12-DF11-11EF-BC01-8152F78DE954" .
+    <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> dct:modified "2025-01-30T13:54:23.444284"^^xsd:dateTime .
+    <http://data.lblod.info/id/lidmaatschappen/B61B2B12-DF11-11EF-BC01-8152F78DE954> org:organisation <http://data.lblod.info/id/fracties/c2879297-ca57-408f-953a-e119f5c7ddae> .
+  }
+}

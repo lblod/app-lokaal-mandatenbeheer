@@ -10,6 +10,7 @@
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix lmb: <http://lblod.data.gift/vocabularies/lmb/> .
+@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
 
 ext:mandaatF
     a form:Field;
@@ -79,6 +80,7 @@ ext:startF
             a ext:ValidMandatarisDate;
             form:grouping form:Bag;
             sh:path mandaat:start;
+            sh:severity sh:Warning
             # sh:resultMessage "Startdatum ligt niet in de bestuursperiode."
         ].
 ext:eindeF
@@ -88,11 +90,13 @@ ext:eindeF
     sh:name "Einde";
     sh:order 800;
     sh:path mandaat:einde;
+    fieldOption:endOfDay true;
     form:validatedBy
         [
             a ext:ValidMandatarisDate;
             form:grouping form:Bag;
             sh:path mandaat:einde;
+            sh:severity sh:Warning
             # sh:resultMessage "Einddatum ligt niet in de bestuursperiode."
         ].
 ext:fractieF
@@ -132,14 +136,14 @@ ext:editMandatarisPG
 
 ext:mandatarisG a form:Generator;
   form:prototype [
-    form:shape [
-        a mandaat:Mandataris;
-        org:hasMembership [
-        a org:Membership
-      ]
-    ]
+    form:shape ext:mandatarisShape
   ];
   form:dataGenerator form:addMuUuid.
+
+ext:mandatarisShape a mandaat:Mandataris;
+  org:hasMembership [
+    a org:Membership
+  ].
 
   ext:membershipUriG a form:UriGenerator;
   form:prefix "http://data.lblod.info/id/lidmaatschappen/";

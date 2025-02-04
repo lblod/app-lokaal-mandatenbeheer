@@ -44,7 +44,7 @@ sh:sparql [
             }
             
             FILTER(?mandataris1 != ?mandataris2)
-
+            
             BIND(strdt(substr(str(?startMandataris1), 1, 10), xsd:date) as ?startMandataris1Date)
             BIND(strdt(substr(str(?eindeMandataris1), 1, 10), xsd:date) as ?eindeMandataris1Date)
             BIND(strdt(substr(str(?startMandataris2), 1, 10), xsd:date) as ?startMandataris2Date)

@@ -1,0 +1,29 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/bestuurseenheden/79606fdb21535301a493afb83e18758d21f6499355beab0099a6265fbdc700d3> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/0f90ca7e2a59ef6eb584179f7d6503661f7ce3c1c1096fbf3d3a8d0b4b07d51f> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/4c1ddb45485a5dc672a57e8347318cf5d60a16fc2e527ad055d3f69654e11b5a> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/9ba66c8f97bbc6dd3ba2b35d8a6bb79215facbe3e5b3d52672b785449d6f5e58> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/dfd76f1550853dc2b4bc8d763c7b378c8c8c81588dd4ba3e0ef05cfd0a456927> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/d7dd13304150f5fe65bd239093ef08dfae107864d26299ac91240a88782aed54> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/3b1e0143755729396654f651bfed689681274839c427f9598e930d816fb7a1c8> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/45f432ac38d124141638c62f7afd577ab847c3571061b45e3b0b3329f6194048> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/7db7a009ab84e4d98e08ec4673b94605584f65ae5ed7a1d8decb23fb990ff73f> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/0b5d1664b3cf08550bcfdac0f4b195ab7a46a0f1974726de864dc0edb1565ecc> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/e58e47292d23dc83547f3f272c6018439290d988dcab6d352215bad91751e1b7> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/405b8adb3402d8b3ad4d22e98cb96afa3fc3da08b9eae79b82e9f3f3f1420677> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/59eaecae469f80eccaf6d36a165927eb8ee8749b9866ab1730e6b1ba45dfaaa7> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/7bb64e4a218c92f177e8abaac3a7d4ef706fb6cfa28246c397bc9a75c1773b3e> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/72af5d601b193f4fcf18154d643d89481082ecd3eff61720f1cf118057666ac5> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/76730bd9ab6808230335d90e9ff30ad362a3461ee0239fd978e4313bcdca44c5> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/d2ddbbea9b30242eedb334f9729dc9f9b31c9c0496009a474b407393b383ef53> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/55320f120f1c2586e93570f0eb123242760a424c355014a41afc1f4465c5f352> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/f39eb137cb5c9195f92928522bbbf0d104fb54be6eb0c9c62a24d16b88b44272> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/785715d2822814f7dc0b3896601b5b777feb1ef9722e1c54f4cdcc697594acca> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/4fb8eb24aa9d5561f3cd7b502715fc758f41b71aafa13b872ee8aeb1d027dbe9> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/7f2c5143806d6110feb44eba2a91d58e8fd563465b94d0f6b40d13a6a1740940> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/3b337ebeb02ede5e152c952e2f24aa1bff3ebbb6afb968a647cb05efe72c0237> ext:faciliteitengemeente true .
+    <http://data.lblod.info/id/bestuurseenheden/f9ee0b69624bba3677b18b95110246ee9106377c948ab5d914909eac79f88bcf> ext:faciliteitengemeente true .
+  }
+}

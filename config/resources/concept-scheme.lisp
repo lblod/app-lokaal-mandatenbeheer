@@ -17,7 +17,9 @@
 
 (define-resource concept ()
   :class (s-prefix "skos:Concept")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `(
+              (:label :string ,(s-prefix "skos:prefLabel"))
+              (:id :string ,(s-prefix "mu:uuid")))
   :has-many `((concept-scheme :via ,(s-prefix "skos:inScheme")
                               :as "concept-schemes")
               (concept-scheme :via ,(s-prefix "skos:topConceptOf")

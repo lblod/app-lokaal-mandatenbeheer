@@ -1,6 +1,8 @@
 (define-resource concept-scheme ()
   :class (s-prefix "skos:ConceptScheme")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `(
+              (:label :string ,(s-prefix "skos:prefLabel"))
+              (:id :string ,(s-prefix "mu:uuid")))
   :has-many `((concept :via ,(s-prefix "skos:inScheme")
                        :inverse t
                        :as "concepts")

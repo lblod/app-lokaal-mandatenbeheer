@@ -2,7 +2,8 @@
   :class (s-prefix "skos:ConceptScheme")
   :properties `(
               (:label :string ,(s-prefix "skos:prefLabel"))
-              (:id :string ,(s-prefix "mu:uuid")))
+              (:id :string ,(s-prefix "mu:uuid"))
+              (:is-read-only :boolean ,(s-prefix "ext:1")))
   :has-many `((concept :via ,(s-prefix "skos:inScheme")
                        :inverse t
                        :as "concepts")

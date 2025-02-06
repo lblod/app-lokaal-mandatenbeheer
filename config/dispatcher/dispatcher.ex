@@ -220,11 +220,11 @@ defmodule Dispatcher do
   #################################################################
   # Concept scheme resources
   #################################################################
-  get "/concept-schemes/*path", %{layer: :resources, accept: %{json: true}} do
+  match "/concept-schemes/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/concept-schemes/")
   end
 
-  get "/concepts/*path", %{layer: :resources, accept: %{json: true}} do
+  match "/concepts/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/concepts/")
   end
 

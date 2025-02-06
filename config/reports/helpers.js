@@ -289,27 +289,50 @@ export async function saveDatasetToNamedGraph(dataset, namedGraph) {
     }
 }
 
-async function deletePreviousReports() {
-    const query = `
-        prefix sh: <http://www.w3.org/ns/shacl#>
+export async function deletePreviousReports(namedGraph) {
+    const queryString = `
+    PREFIX dct: <http://purl.org/dc/terms/>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX sh: <http://www.w3.org/ns/shacl#>
 
-        delete {
-            graph ?g {
-                ?report a sh:ValidationReport ;
-                ?pReport ?oReport ;
-                sh:result ?result .
-
-                ?result ?pResult ?oResult .
-            }
+    SELECT ?reportUri  
+    WHERE {
+        GRAPH ${sparqlEscapeUri(namedGraph)} {
+            ?reportUri a sh:ValidationReport ;
+                dct:created ?created .
         }
-        where {
-            graph ?g {
-                ?report a sh:ValidationReport ;
-                ?pReport ?oReport ;
-                sh:result ?result .
+    }
+    ORDER BY DESC(?created)
+    `;
 
-                ?result ?pResult ?oResult .
-            }
+    const response = await query(queryString);
+
+    if (response.results.bindings.length) {
+        response.results.bindings.shift(); // don't remove latest report
+        for (const binding of response.results.bindings) {
+            await deleteReportInDatabase(binding.reportUri.value, namedGraph);
+        }
+        console.log("All reports deleted")
+    }
+}
+
+async function deleteReportInDatabase(reportUri, namedGraph) {
+    const queryString = `
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX prov: <http://www.w3.org/ns/prov#>
+        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+        PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+        PREFIX sh: <http://www.w3.org/ns/shacl#>
+
+        DELETE WHERE {
+        GRAPH ${sparqlEscapeUri(namedGraph)} {
+            ${sparqlEscapeUri(reportUri)} sh:result ?result ;
+            ?preport ?oreport .
+
+            ?result ?presult ?oresult .
+        }
         }
     `;
+    await query(queryString);
 }

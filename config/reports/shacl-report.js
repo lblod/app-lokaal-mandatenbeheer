@@ -1,4 +1,7 @@
-import { mergeFilesContent, getBestuurseenhedenUriAndUuid, executeConstructQueryOnNamedGraph, parseTurtleString, validateDataset, enrichValidationReport, saveDatasetToNamedGraph, generateNamedGraphFromUuid } from "./helpers.js";
+import { mergeFilesContent, getBestuurseenhedenUriAndUuid, executeConstructQueryOnNamedGraph, parseTurtleString, validateDataset, enrichValidationReport, saveDatasetToNamedGraph, generateNamedGraphFromUuid, deletePreviousReports } from "./helpers.js";
+import env from 'env-var';
+
+const ONLY_KEEP_LATEST_REPORT = process.env.ONLY_KEEP_LATEST_REPORT != undefined ? env.get('ONLY_KEEP_LATEST_REPORT').asBool() : false;
 
 const reportName = "ShaclReport";
 
@@ -20,7 +23,7 @@ export default {
     ]
     // Configure the bestuursperiode to validate
     const bestuursperiodeLabel = '2019 - 2024';
-
+    
     // Retrieve URI and UUID of bestuurseenheden
     const uriAndUuids = await getBestuurseenhedenUriAndUuid(interestedBestuurseenheidClassificaties);
 
@@ -45,6 +48,10 @@ export default {
 
         saveDatasetToNamedGraph(enrichedValidationReportDataset, generateNamedGraphFromUuid(uriAndUuid.uuid));
         console.log(`SHACL validation report saved in triple store.`);
+
+        if(ONLY_KEEP_LATEST_REPORT) {
+          await deletePreviousReports(generateNamedGraphFromUuid(uriAndUuid.uuid));
+        }        
       } catch (error) {
           console.error('Error:', error);
       }

@@ -21,7 +21,8 @@ INSERT {
   }
 }
 WHERE {
-  SELECT DISTINCT ?g ?previousBOIT ?bindingEinde ?modified ?now (MIN(?start) AS ?earliestStart) WHERE {
+  {
+  SELECT DISTINCT ?g ?previousBOIT ?bindingEinde ?modified (MIN(?start) AS ?earliestStart) WHERE {
     GRAPH ?g {
       ?bestuursorgaan a besluit:Bestuursorgaan ;
         skos:prefLabel ?label ;
@@ -43,8 +44,9 @@ WHERE {
     }
     ?classificatie skos:inScheme extlmb:gemeente-bestuursorgaan-codes .
     ?g ext:ownedBy ?bestuurseenheid .
-    BIND(NOW() as ?now)
   }
-  GROUP BY ?g ?previousBOIT ?bindingEinde ?modified ?now
+  GROUP BY ?g ?previousBOIT ?bindingEinde ?modified
   ORDER BY ASC(?earliestStart)
+  }
+  BIND(NOW() as ?now)
 }

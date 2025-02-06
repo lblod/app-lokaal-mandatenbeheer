@@ -10,18 +10,18 @@ PREFIX dct: <http://purl.org/dc/terms/>
 
 DELETE {
   GRAPH ?g {
-    ?bestuursorgaanIT mandaat:bindingStart ?bindingStart .
-    ?bestuursorgaanIT dct:modified ?modified .
+    ?previousBOIT mandaat:bindingEinde ?bindingEinde .
+    ?previousBOIT dct:modified ?modified .
   }
 }
 INSERT {
   GRAPH ?g {
-    ?bestuursorgaanIT mandaat:bindingStart ?earliestStart .
-    ?bestuursorgaanIT dct:modified ?now .
+    ?previousBOIT mandaat:bindingEinde ?earliestStart .
+    ?previousBOIT dct:modified ?now .
   }
 }
 WHERE {
-  SELECT DISTINCT ?g ?bestuursorgaanIT ?bindingStart ?modified ?now (MIN(?start) AS ?earliestStart) WHERE {
+  SELECT DISTINCT ?g ?previousBOIT ?bindingEinde ?modified ?now (MIN(?start) AS ?earliestStart) WHERE {
     GRAPH ?g {
       ?bestuursorgaan a besluit:Bestuursorgaan ;
         skos:prefLabel ?label ;
@@ -30,11 +30,14 @@ WHERE {
         mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
         lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 ; # 2025 - heden
         org:hasPost / ^org:holds ?mandataris .
+      ?previousBOIT a besluit:Bestuursorgaan ;
+        mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
+        lmb:heeftBestuursperiode bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca . # 2019 - heden
       OPTIONAL {
-        ?bestuursorgaanIT mandaat:bindingStart ?bindingStart .
+        ?previousBOIT mandaat:bindingEinde ?bindingEinde .
       }
       OPTIONAL {
-        ?bestuursorgaanIT dct:modified ?modified .
+        ?previousBOIT dct:modified ?modified .
       }
       ?mandataris mandaat:start ?start .
     }
@@ -42,6 +45,6 @@ WHERE {
     ?g ext:ownedBy ?bestuurseenheid .
     BIND(NOW() as ?now)
   }
-  GROUP BY ?g ?bestuursorgaanIT ?bindingStart ?modified ?now
+  GROUP BY ?g ?previousBOIT ?bindingEinde ?modified ?now
   ORDER BY ASC(?earliestStart)
 }

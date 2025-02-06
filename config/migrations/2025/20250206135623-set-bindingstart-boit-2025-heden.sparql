@@ -43,7 +43,6 @@ WHERE {
     ?g ext:ownedBy ?bestuurseenheid .
   }
   GROUP BY ?g ?bestuursorgaanIT ?bindingStart ?modified
-  ORDER BY ASC(?earliestStart)
   }
   BIND(NOW() as ?now)
 }

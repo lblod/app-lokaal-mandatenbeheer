@@ -46,7 +46,6 @@ WHERE {
     ?g ext:ownedBy ?bestuurseenheid .
   }
   GROUP BY ?g ?previousBOIT ?bindingEinde ?modified
-  ORDER BY ASC(?earliestStart)
   }
   BIND(NOW() as ?now)
 }

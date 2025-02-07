@@ -1,0 +1,43 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+# insert voorzitter
+INSERT {
+  GRAPH ?g {
+    ?orgT org:hasPost ?mandaat.
+    ?mandaat org:role <http://data.lblod.info/id/lb-mandaat-classificatiecode/22da4572-4818-454b-bbd4-28a9ea97856c>.
+    ?mandaat a mandaat:Mandaat.
+    ?mandaat mu:uuid ?id.
+  }
+}WHERE {
+  ?org <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/1afce932-53c1-46d8-8aab-90dcc331e67d>.
+  GRAPH ?g {
+    ?orgT mandaat:isTijdspecialisatieVan ?org.
+  }
+  BIND(STRUUID() AS ?id)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?id)) AS ?mandaat)
+};
+# insert lid
+  INSERT {
+  GRAPH ?g {
+    ?orgT org:hasPost ?mandaat.
+    ?mandaat org:role <http://data.lblod.info/id/lb-mandaat-classificatiecode/28d0ed76-e1a3-4c90-89df-4d11587390b3>.
+    ?mandaat a mandaat:Mandaat.
+    ?mandaat mu:uuid ?id.
+  }
+}WHERE {
+  ?org <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/1afce932-53c1-46d8-8aab-90dcc331e67d>.
+  GRAPH ?g {
+    ?orgT mandaat:isTijdspecialisatieVan ?org.
+  }
+  BIND(STRUUID() AS ?id)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?id)) AS ?mandaat)
+};
+# link blankenberge and zuienkerke
+INSERT DATA {
+  GRAPH <http://mu.semete.ch/graphs/public> {
+    <http://data.lblod.info/id/bestuurseenheden/af76592773d5172af4a57454ea5c3d94578379048cd7c37a4da016a07a91bb54> ext:deeltBestuurVan <http://data.lblod.info/id/bestuurseenheden/05354d6fcc016d06f988a0e044fb160be7573550c11fe414b3c011961150a686>.
+    <http://data.lblod.info/id/bestuurseenheden/6377f53f54990033c90de6101e263f4d9e41eb7c3e4f70dec48caccefc253760> ext:deeltBestuurVan <http://data.lblod.info/id/bestuurseenheden/05354d6fcc016d06f988a0e044fb160be7573550c11fe414b3c011961150a686>.
+  }
+}

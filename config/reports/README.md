@@ -23,9 +23,15 @@ The report can access some helper functions that you can import from
   * The `bestuurseenheidClassificaties` argument is the array of strings of bestuurseenheidclassificatie SKOS concept URIs (see [scheme](https://data.vlaanderen.be/doc/conceptscheme/BestuursorgaanClassificatieCode))
   * The output array contains objects with an `uri` and `id` key.
 
+* `convertConstructQueryResponseToStore(queryResponse)`: it returns an N3 Store containing all triples of SPARQL query response.
+  * The `queryResponse` argument is an SPARQL JSON result object of a SPARQL CONSTRUCT query
+
 * `executeConstructQueryOnNamedGraph(uriAndUuid, bestuursperiodeLabel)`: it returns an N3 Store containing all triples of the bestuurseenheid in a certain bestuursperiode.
   * The `uriAndUuid` argument is an object with an `uri` and `id` of a bestuurseenheid
   * The `bestuursperiodeLabel` is a string of a bestuursperiode
+
+* `deletePreviousReports(namedGraph)`: it deletes all, except the latest, SHACL reports and validation results contained within a named graph
+  * The `namedGraph` argument is a string containg the `uri` of a named graph
 
 * `parseTurtleString(turtleString)`: it returns an N3 Store containing all triples of the turtle string.
   * The `turtleString` argument is a string of data in Turtle format
@@ -34,33 +40,6 @@ The report can access some helper functions that you can import from
   * The `dataset` argument is an RDF/JS Dataset containing the triples that need to be validated
   * The `shapesDataset` argument is an RDF/JS Dataset containing the SHACL validation triples that are used for the validation
 
-
 * `saveDatasetToNamedGraph(dataset, namedGraph)`: it inserts the triples of a RDF/JS dataset in the named graph of the triple store.
   * The `dataset` argument is an RDF/JS Dataset containing the triples (e.g. the dataset of the SHACL report)
   * The `namedGraph` argument is a string containing the URI of the named graph to be used in the SPARQL INSERT query
-
-## Note
-
-The loket-report-generation-service must have the rdf-ext and shacl-engine depencies. 
-Until these dependencies have been added (see [PR](https://github.com/lblod/loket-report-generation-service/pull/12)), you must add these dependencies to your local build:
-
-```
-git clone git@github.com:lblod/loket-report-generation-service.git
-cd loket-report-generation-service
-npm install rdf-ext shacl-engine
-```
-
-Mount the local version in `docker-compose.override.yml`:
-
-```
-  report-generation:
-    restart: "no"
-    ports:
-      - 8889:80
-      - 9224:9229
-    environment:
-        NODE_ENV: "development"
-    volumes:
-      - ../loket-report-generation-service/:/app/
-```
-

@@ -1,0 +1,22 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+DELETE {
+  GRAPH ?g {
+    ?mandataris dct:modified ?earlier.
+  }
+}WHERE {
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris.
+    ?mandataris dct:modified ?oldest.
+    ?mandataris dct:modified ?earlier.
+
+    FILTER(?earlier < ?oldest)
+
+    FILTER NOT EXISTS {
+      ?mandataris dct:modified ?older.
+      FILTER(?older > ?oldest)
+    }
+  }
+  ?g ext:ownedBy ?someone.
+}

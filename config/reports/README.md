@@ -12,7 +12,7 @@ The `shacl-report.js` file loads data for each Bestuurseenheid, because we want 
 
 All SHACL files that reside inside the `./config/shacl` folder will be merged into one shape. 
 
-Note: if you have multiple shapes with the same target class (e.g. Mandataris), make sure to use the same node shape URI. This way, all validations on an instance will be performed in one run.
+Note: if you have multiple SPARQL-based constraints with the same target class (e.g. Mandataris), make sure to use a separate node shape URI per SPARQL query. Otherwise, we are not able to fetch the target class of the source shape for every validation result.
 
 ## helper.js
 

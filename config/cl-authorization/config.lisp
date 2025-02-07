@@ -146,6 +146,8 @@
   ("locn:Address" -> _)
   ("sh:ValidationResult" -> _)
   ("sh:ValidationReport" -> _))
+  ("skos:ConceptScheme" -> _)
+  ("skos:Concept" -> _))
 
 (define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")
   ("eli:LegalResource" -> _)

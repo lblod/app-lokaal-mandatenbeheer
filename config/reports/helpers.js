@@ -107,13 +107,15 @@ export async function executeConstructQueryOnNamedGraph(uriAndUuid, bestuursperi
     `;
 
     const queryResponse = await query(queryStringConstructOfGraph);
+    return convertConstructQueryResponseToStore(queryResponse);
+}
+
+export function convertConstructQueryResponseToStore(queryResponse) {
     const sparqlJsonParser = new SparqlJsonParser();
     const rdfJsObjects = sparqlJsonParser.parseJsonResults(queryResponse);
 
-    // Create an N3 store
     const store = new Store();
 
-    // Add RDFJS objects to the store
     rdfJsObjects.forEach((quad) => {
         store.addQuad(
             quad.s,
@@ -122,8 +124,6 @@ export async function executeConstructQueryOnNamedGraph(uriAndUuid, bestuursperi
             quad.g || undefined // Optional: Include a graph if your RDFJS object contains it
         );
     });
-
-    console.log(`Store contains ${store.size} triples.`);
 
     return store;
 }

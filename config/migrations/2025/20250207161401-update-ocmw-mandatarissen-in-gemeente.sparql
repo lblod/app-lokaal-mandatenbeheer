@@ -9,6 +9,7 @@ DELETE {
 INSERT {
   GRAPH ?h {
     ?s ?pOCMW ?oOCMW.
+    ?s ext:oldModified ?ocmwMod.
   }
 }WHERE {
   ?s a mandaat:Mandataris.

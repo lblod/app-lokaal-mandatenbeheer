@@ -3,7 +3,8 @@
   :properties `(
               (:label :string ,(s-prefix "skos:prefLabel"))
               (:id :string ,(s-prefix "mu:uuid"))
-              (:is-read-only :boolean ,(s-prefix "ext:1")))
+              (:is-read-only :boolean ,(s-prefix "lmb:isReadOnly"))
+              (:created-at :datetime ,(s-prefix "dct:created")))
   :has-many `((concept :via ,(s-prefix "skos:inScheme")
                        :inverse t
                        :as "concepts")

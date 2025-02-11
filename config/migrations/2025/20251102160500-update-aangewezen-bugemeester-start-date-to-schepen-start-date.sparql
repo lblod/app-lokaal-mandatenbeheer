@@ -1,0 +1,45 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?aangewezenBurgemeesterMandataris mandaat:startDate ?aangewezenBurgemeesterStartDate .
+    ?aangewezenBurgemeesterMandataris dcterms:modified ?modified .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?aangewezenBurgemeesterMandataris mandaat:startDate ?schepenStartDate .
+    ?aangewezenBurgemeesterMandataris dcterms:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?aangewezenBurgemeesterMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a> . # Aangewezen burgemeester
+    ?boi org:hasPost ?aangewezenBurgemeesterMandaat .
+    ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
+
+    OPTIONAL {  
+      ?aangewezenBurgemeesterMandaat dcterms:modified ?modified .
+    }
+    
+    ?mandataris org:holds ?aangewezenBurgemeesterMandaat . 
+    ?mandataris mandaat:start ?aangewezenBurgemeesterStartDate .
+    
+    ?schepenMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> . # Schepen
+    ?boi org:hasPost ?schepenMandaat .
+    ?schepenMandataris org:holds ?schepenMandaat . 
+    ?schepenMandataris mandaat:start ?schepenStartDate .
+
+    FILTER NOT EXISTS {
+      ?schepenMandataris2 org:holds ?schepenMandaat . 
+      ?schepenMandataris2  mandaat:start ?schepenStartDate2 .
+      FILTER(?schepenStartDate < ?schepenStartDate2 && ?aangewezenBurgemeesterStartDate != ?schepenStartDate)
+    }
+  }
+  ?g ext:ownedBy ?someone .
+  BIND(NOW() as ?now)
+}

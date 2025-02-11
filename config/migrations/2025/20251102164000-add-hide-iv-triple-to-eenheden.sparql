@@ -1,0 +1,15 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+  GRAPH ?g {
+    ?bestuurseenheid ext:voorbereidingVerborgen true .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?bestuurseenheid a besluit:Bestuurseenheid .
+  }
+  ?g ext:ownedBy ?someone .
+  BIND(?someone as ?bestuurseenheid)
+}

@@ -1,0 +1,21 @@
+{
+  "version": "0.1",
+  "scripts": [
+    {
+      "documentation": {
+        "command": "ldes-republish",
+        "description": "Trigger concepts on the ldes stream by sending fake delta messages to its endpoint. Sends the data in scripts/ldes-republish/data.ttl as supposed inserts in the public graph.",
+        "arguments": []
+      },
+      "environment": {
+        "image": "nvdk/ruby-semantic-works-cli",
+        "interactive": true,
+        "script": "ldes-republish/run.rb",
+        "join_networks": true
+      },
+      "mounts": {
+        "./scripts/ldes-republish": "/app/"
+      }
+    }
+  ]
+}

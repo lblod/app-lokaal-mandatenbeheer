@@ -1,0 +1,129 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+#sint-martens-latem schepenen
+DELETE {
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit ?oldLink.
+    ?mandataris dct:modified ?oldMod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit "https://sint-martens-latem-echo.cipalschaubroeck.be/raadpleegomgeving/zittingen/56f523a1-5d37-40b2-a529-be4745d23cf6/agendapunten/82ffcbda-44b4-4c31-80e9-592e2c655018".
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/b80b05bb-8d61-439b-b081-f73f216e59bf>
+    <http://data.lblod.info/id/mandatarissen/8b00ba0d-3b96-480e-9067-0e7728a3c187>
+    <http://data.lblod.info/id/mandatarissen/c07005a5-9ba8-4281-b110-99c03dbc8c7e>
+    <http://data.lblod.info/id/mandatarissen/4701bc08-debc-4260-8c0e-53a5acb04f46>
+  }
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit ?oldLink.
+    ?mandataris dct:modified ?oldMod.
+  }
+  ?g ext:ownedBy ?someone.
+};
+# gent gr
+DELETE {
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit ?oldLink.
+    ?mandataris dct:modified ?oldMod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit "https://ebesluitvorming.gent.be/zittingen/24.1206.2152.7425/notulen".
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/6737447A274DE4C74A9FE531>
+    <http://data.lblod.info/id/mandatarissen/6737447F274DE4C74A9FE536>
+    <http://data.lblod.info/id/mandatarissen/67374480274DE4C74A9FE537>
+    <http://data.lblod.info/id/mandatarissen/67374481274DE4C74A9FE538>
+    <http://data.lblod.info/id/mandatarissen/67374481274DE4C74A9FE539>
+    <http://data.lblod.info/id/mandatarissen/67374482274DE4C74A9FE53A>
+    <http://data.lblod.info/id/mandatarissen/67374483274DE4C74A9FE53B>
+    <http://data.lblod.info/id/mandatarissen/67374484274DE4C74A9FE53D>
+    <http://data.lblod.info/id/mandatarissen/6737448A274DE4C74A9FE544>
+    <http://data.lblod.info/id/mandatarissen/6737446C274DE4C74A9FE521>
+    <http://data.lblod.info/id/mandatarissen/6737446F274DE4C74A9FE525>
+    <http://data.lblod.info/id/mandatarissen/67374473274DE4C74A9FE529>
+    <http://data.lblod.info/id/mandatarissen/67374490274DE4C74A9FE54B>
+    <http://data.lblod.info/id/mandatarissen/67374491274DE4C74A9FE54D>
+    <http://data.lblod.info/id/mandatarissen/67374492274DE4C74A9FE54E>
+    <http://data.lblod.info/id/mandatarissen/67374487274DE4C74A9FE541>
+    <http://data.lblod.info/id/mandatarissen/6737448C274DE4C74A9FE545>
+    <http://data.lblod.info/id/mandatarissen/6737448D274DE4C74A9FE546>
+    <http://data.lblod.info/id/mandatarissen/67374477274DE4C74A9FE52D>
+    <http://data.lblod.info/id/mandatarissen/67374477274DE4C74A9FE52E>
+    <http://data.lblod.info/id/mandatarissen/67374469274DE4C74A9FE51C>
+    <http://data.lblod.info/id/mandatarissen/67374469274DE4C74A9FE51D>
+    <http://data.lblod.info/id/mandatarissen/6737446B274DE4C74A9FE51F>
+    <http://data.lblod.info/id/mandatarissen/6737446C274DE4C74A9FE520>
+    <http://data.lblod.info/id/mandatarissen/6737446D274DE4C74A9FE522>
+    <http://data.lblod.info/id/mandatarissen/6737446E274DE4C74A9FE523>
+    <http://data.lblod.info/id/mandatarissen/6737446E274DE4C74A9FE524>
+    <http://data.lblod.info/id/mandatarissen/67374472274DE4C74A9FE528>
+    <http://data.lblod.info/id/mandatarissen/6737447C274DE4C74A9FE532>
+    <http://data.lblod.info/id/mandatarissen/6737447D274DE4C74A9FE533>
+    <http://data.lblod.info/id/mandatarissen/6737447F274DE4C74A9FE535>
+    <http://data.lblod.info/id/mandatarissen/67374493274DE4C74A9FE54F>
+    <http://data.lblod.info/id/mandatarissen/6737447E274DE4C74A9FE534>
+    <http://data.lblod.info/id/mandatarissen/67374483274DE4C74A9FE53C>
+    <http://data.lblod.info/id/mandatarissen/67374470274DE4C74A9FE526>
+    <http://data.lblod.info/id/mandatarissen/67374479274DE4C74A9FE530>
+    <http://data.lblod.info/id/mandatarissen/67374487274DE4C74A9FE540>
+    <http://data.lblod.info/id/mandatarissen/67374494274DE4C74A9FE550>
+    <http://data.lblod.info/id/mandatarissen/6737446A274DE4C74A9FE51E>
+    <http://data.lblod.info/id/mandatarissen/67374471274DE4C74A9FE527>
+    <http://data.lblod.info/id/mandatarissen/67374475274DE4C74A9FE52A>
+    <http://data.lblod.info/id/mandatarissen/67374476274DE4C74A9FE52C>
+    <http://data.lblod.info/id/mandatarissen/67374486274DE4C74A9FE53F>
+    <http://data.lblod.info/id/mandatarissen/67374489274DE4C74A9FE543>
+    <http://data.lblod.info/id/mandatarissen/6737448E274DE4C74A9FE548>
+    <http://data.lblod.info/id/mandatarissen/6737448F274DE4C74A9FE549>
+    <http://data.lblod.info/id/mandatarissen/6737448F274DE4C74A9FE54A>
+    <http://data.lblod.info/id/mandatarissen/67374491274DE4C74A9FE54C>
+    <http://data.lblod.info/id/mandatarissen/aa30f95e-f5bc-4401-b9b7-94a76f2ba461>
+    <http://data.lblod.info/id/mandatarissen/67374485274DE4C74A9FE53E>
+    <http://data.lblod.info/id/mandatarissen/67374488274DE4C74A9FE542>
+    <http://data.lblod.info/id/mandatarissen/6737448D274DE4C74A9FE547>
+    <http://data.lblod.info/id/mandatarissen/076911ce-042e-475b-a233-00721b4772e1>
+  }
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit ?oldLink.
+    ?mandataris dct:modified ?oldMod.
+  }
+  ?g ext:ownedBy ?someone.
+};
+# hooglede
+DELETE {
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit ?oldLink.
+    ?mandataris dct:modified ?oldMod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit "https://hooglede-echo.cipalschaubroeck.be/raadpleegomgeving/zittingen/bfe4cee2-199c-43ec-a099-67dc87bfdd06".
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/679CA72E5B882A2E939F1EC2>
+    <http://data.lblod.info/id/mandatarissen/679CA7BA5B882A2E939F1EC6>
+  }
+  GRAPH ?g {
+    ?mandataris lmb:linkToBesluit ?oldLink.
+    ?mandataris dct:modified ?oldMod.
+  }
+  ?g ext:ownedBy ?someone.
+}

@@ -313,3 +313,8 @@ services:
       DCR_SYNC_LOGIN_ENDPOINT: "https://dev.loket.lblod.info/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
     restart: always
     logging: *default-logging
+  project-scripts:
+    image: semtech/simple-script-store:1.0.0
+    volumes:
+      - ./scripts/:/app/scripts/
+    restart: "no"

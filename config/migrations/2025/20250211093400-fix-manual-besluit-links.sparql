@@ -27,6 +27,7 @@ WHERE {
     ?mandataris dct:modified ?oldMod.
   }
   ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
 };
 # gent gr
 DELETE {
@@ -102,6 +103,7 @@ WHERE {
     ?mandataris dct:modified ?oldMod.
   }
   ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
 };
 # hooglede
 DELETE {
@@ -126,4 +128,5 @@ WHERE {
     ?mandataris dct:modified ?oldMod.
   }
   ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
 }

@@ -1,0 +1,58 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris ?p ?o .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris a astreams:Tombstone.
+    ?mandataris dct:modified ?now .
+    ?mandataris astreams:deleted ?now .
+    ?mandataris astreams:formerType mandaat:Mandataris.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris .
+    ?mandataris ?p ?o .
+  }
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/00243cc7-853d-429f-88b5-c6d7484e25da>
+    <http://data.lblod.info/id/mandatarissen/0b2e6600-c47c-48d0-b344-9940ddb17d64>
+    <http://data.lblod.info/id/mandatarissen/67961551BD122F1E47C5446C>
+    <http://data.lblod.info/id/mandatarissen/671B5C8A0C2BDDC757010389>
+    <http://data.lblod.info/id/mandatarissen/679614C3BD122F1E47C5446A>
+    <http://data.lblod.info/id/mandatarissen/679613EBBD122F1E47C54469>
+  }
+  ?g ext:ownedBy ?bestuurseenheid .
+  BIND(NOW() AS ?now)
+}
+
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+
+DELETE {
+  GRAPH ?h {
+    ?o ?p ?mandataris .
+  }
+}
+WHERE {
+  GRAPH ?h {
+    ?o ?p ?mandataris .
+  }
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/00243cc7-853d-429f-88b5-c6d7484e25da>
+    <http://data.lblod.info/id/mandatarissen/0b2e6600-c47c-48d0-b344-9940ddb17d64>
+    <http://data.lblod.info/id/mandatarissen/67961551BD122F1E47C5446C>
+    <http://data.lblod.info/id/mandatarissen/671B5C8A0C2BDDC757010389>
+    <http://data.lblod.info/id/mandatarissen/679614C3BD122F1E47C5446A>
+    <http://data.lblod.info/id/mandatarissen/679613EBBD122F1E47C54469>
+  }
+}

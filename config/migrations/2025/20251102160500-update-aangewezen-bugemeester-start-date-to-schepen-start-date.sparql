@@ -6,14 +6,14 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE {
   GRAPH ?g {
-    ?aangewezenBurgemeesterMandataris mandaat:startDate ?aangewezenBurgemeesterStartDate .
-    ?aangewezenBurgemeesterMandataris dcterms:modified ?modified .
+    ?mandataris mandaat:startDate ?aangewezenBurgemeesterStartDate .
+    ?mandataris dcterms:modified ?modified .
   }
 }
 INSERT {
   GRAPH ?g {
-    ?aangewezenBurgemeesterMandataris mandaat:startDate ?schepenStartDate .
-    ?aangewezenBurgemeesterMandataris dcterms:modified ?now .
+    ?mandataris mandaat:startDate ?schepenStartDate .
+    ?mandataris dcterms:modified ?now .
   }
 }
 WHERE {

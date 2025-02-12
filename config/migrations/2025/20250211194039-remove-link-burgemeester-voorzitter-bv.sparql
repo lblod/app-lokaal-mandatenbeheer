@@ -1,0 +1,45 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX org: <http://www.w3.org/ns/org#>
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/linkedInstances> {
+    ?mandataris1 ext:linked ?mandataris2 .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris1 a mandaat:Mandataris ;
+      org:holds / org:role ?bestuursfunctie .
+  }
+  VALUES ?bestuursfunctie {
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013>  # Burgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a>  # Aangewezen Burgemeester
+  }
+  GRAPH <http://mu.semte.ch/graphs/linkedInstances> {
+    ?mandataris1 ext:linked ?mandataris2 .
+  }
+  ?g ext:ownedBy ?someone .
+};
+
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX org: <http://www.w3.org/ns/org#>
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/linkedInstances> {
+    ?mandataris2 ext:linked ?mandataris1 .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris2 a mandaat:Mandataris ;
+      org:holds / org:role ?bestuursfunctie .
+  }
+  VALUES ?bestuursfunctie {
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013>  # Burgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a>  # Aangewezen Burgemeester
+  }
+  GRAPH <http://mu.semte.ch/graphs/linkedInstances> {
+    ?mandataris1 ext:linked ?mandataris2 .
+  }
+  ?g ext:ownedBy ?someone .
+}

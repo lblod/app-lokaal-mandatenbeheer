@@ -1,0 +1,34 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris dct:modified ?oldModified ;
+      mandaat:einde ?einde .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris .
+    OPTIONAL {
+      ?mandataris mandaat:einde ?einde .
+    }
+    OPTIONAL {
+      ?mandataris dct:modified ?oldModified .
+    }
+  }
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/9cde15bf-6236-494e-a1c5-f6e17a95bc1c>
+    <http://data.lblod.info/id/mandatarissen/bd654fe9-2887-4e00-adc9-2814aa9366ee>
+    <http://data.lblod.info/id/mandatarissen/2e489465-eae9-4e1e-9caf-4eac5f8d39ab>
+    <http://data.lblod.info/id/mandatarissen/138ccdfb-e440-4318-aa8d-a47ccc51d731>
+  }
+  ?g ext:ownedBy ?gemeente .
+  BIND (NOW() AS ?now)
+}

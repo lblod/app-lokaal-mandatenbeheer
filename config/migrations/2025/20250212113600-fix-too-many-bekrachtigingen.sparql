@@ -32,6 +32,7 @@ WHERE {
   ?g ext:ownedBy ?someone.
   ?orgInT lmb:heeftBestuursperiode ?period.
   VALUES ?period {
+    # previous two periods
     <http://data.lblod.info/id/concept/Bestuursperiode/a2b977a3-ce68-4e42-80a6-4397f66fc5ca>
     <http://data.lblod.info/id/concept/Bestuursperiode/845dbc7f-139e-4632-b200-f90e180f1dba>
   }

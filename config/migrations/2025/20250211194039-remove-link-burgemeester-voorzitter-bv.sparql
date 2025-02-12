@@ -19,7 +19,7 @@ WHERE {
     ?mandataris1 ext:linked ?mandataris2 .
   }
   ?g ext:ownedBy ?someone .
-}
+};
 
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>

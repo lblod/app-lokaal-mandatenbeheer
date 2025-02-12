@@ -31,7 +31,7 @@ WHERE {
   }
   ?g ext:ownedBy ?bestuurseenheid .
   BIND(NOW() AS ?now)
-}
+};
 
 DELETE {
   GRAPH ?h {

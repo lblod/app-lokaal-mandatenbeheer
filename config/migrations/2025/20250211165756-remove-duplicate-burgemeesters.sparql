@@ -28,6 +28,7 @@ WHERE {
     <http://data.lblod.info/id/mandatarissen/671B5C8A0C2BDDC757010389>
     <http://data.lblod.info/id/mandatarissen/679614C3BD122F1E47C5446A>
     <http://data.lblod.info/id/mandatarissen/679613EBBD122F1E47C54469>
+    <http://data.lblod.info/id/mandatarissen/2846af43-d05c-4101-ae8a-df7ad5a99579>
   }
   ?g ext:ownedBy ?bestuurseenheid .
   BIND(NOW() AS ?now)
@@ -49,5 +50,6 @@ WHERE {
     <http://data.lblod.info/id/mandatarissen/671B5C8A0C2BDDC757010389>
     <http://data.lblod.info/id/mandatarissen/679614C3BD122F1E47C5446A>
     <http://data.lblod.info/id/mandatarissen/679613EBBD122F1E47C54469>
+    <http://data.lblod.info/id/mandatarissen/2846af43-d05c-4101-ae8a-df7ad5a99579>
   }
 }

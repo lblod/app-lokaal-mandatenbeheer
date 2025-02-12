@@ -43,6 +43,7 @@
                 (:wil-mail-ontvangen :boolean ,(s-prefix "ext:wilMailOntvangen")) ;;Voorkeur in berichtencentrum
                 (:mail-adres :string ,(s-prefix "ext:mailAdresVoorNotificaties"))
                 (:is-trial-user :boolean ,(s-prefix "ext:isTrailUser"))
+                (:hide-legislatuur :boolean ,(s-prefix "ext:voorbereidingVerborgen"))
                 (:view-only-modules :string-set ,(s-prefix "ext:viewOnlyModules")))
   :has-one `((werkingsgebied :via ,(s-prefix "besluit:werkingsgebied")
                              :as "werkingsgebied")

@@ -90,12 +90,14 @@ WHERE {
       <http://data.lblod.info/id/mandatarissen/6720DC2AFDAA900F9C540741>
       <http://data.lblod.info/id/mandatarissen/673B14B577B88F09E678E4D7>
     }
-    ?boi org:hasPost ?aangewezenBurgemeesterMandaat .
-    ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
-
     ?mandataris org:holds ?aangewezenBurgemeesterMandaat .
     ?mandataris mandaat:start ?aangewezenBurgemeesterStartDate .
+    OPTIONAL {
+      ?mandataris dcterms:modified ?modified .
+    }
 
+    ?boi org:hasPost ?aangewezenBurgemeesterMandaat .
+    ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
     {
       SELECT ?boi (MIN(?schepenStartDate) AS ?minStartDate)
       WHERE {

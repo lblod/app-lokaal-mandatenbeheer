@@ -6,7 +6,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE {
   GRAPH ?g {
-    ?mandataris mandaat:start ?aangewezenBurgemeesterStartDate .
+    ?mandataris mandaat:start ?voorzitterStartDate .
     ?mandataris dcterms:modified ?modified .
   }
 }

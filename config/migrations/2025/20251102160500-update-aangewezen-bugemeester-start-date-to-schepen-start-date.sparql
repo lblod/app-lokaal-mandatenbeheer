@@ -112,4 +112,5 @@ WHERE {
     }
   }
   ?g ext:ownedBy ?eenheid .
+  BIND(NOW() as ?now)
 }

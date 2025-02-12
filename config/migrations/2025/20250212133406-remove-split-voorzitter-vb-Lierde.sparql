@@ -1,0 +1,54 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+DELETE {
+  GRAPH ?g {
+    ?removedMandataris ?p ?o .
+    ?remainingMandataris lmb:hasPublicationStatus ?oldStatus .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?removedMandataris a astreams:Tombstone .
+    ?removedMandataris dct:modified ?now .
+    ?removedMandataris astreams:deleted ?now .
+    ?removedMandataris astreams:formerType mandaat:Mandataris.
+    ?removedMandataris owl:sameAs ?remainingMandataris .
+
+    ?remainingMandataris lmb:hasPublicationStatus ?newStatus .
+    ?remainingMandataris dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?remainingMandataris a mandaat:Mandataris ;
+      lmb:hasPublicationStatus ?oldStatus .
+    ?removedMandataris a mandaat:Mandataris ;
+      ?p ?o ;
+      lmb:hasPublicationStatus ?newStatus .
+  }
+  VALUES (?removedMandataris ?remainingMandataris) {
+    ( <http://data.lblod.info/id/mandatarissen/ef0241b8-b99f-4824-a355-1c0d9fa063d3> <http://data.lblod.info/id/mandatarissen/56c5b8ca-8ad0-40b7-9c2e-5537318bcf7d>)
+  }
+  ?g ext:ownedBy ?bestuurseenheid .
+  BIND(NOW() AS ?now)
+};
+
+
+DELETE {
+  GRAPH ?h {
+    ?o ?p ?mandataris .
+  }
+}
+WHERE {
+  GRAPH ?h {
+    ?o ?p ?mandataris .
+  }
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/ef0241b8-b99f-4824-a355-1c0d9fa063d3>
+  }
+}

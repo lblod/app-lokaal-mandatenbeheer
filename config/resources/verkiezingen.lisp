@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Installatievergaderingen ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-resource installatievergadering ()
   :class (s-prefix "lmb:Installatievergadering")
-  :properties `((:is-hidden :boolean ,(s-prefix "ext:voorbereidingVerborgen")))
   :has-one `((installatievergadering-status :via ,(s-prefix "lmb:hasStatus")
                                             :as "status")
              (bestuurseenheid :via ,(s-prefix "lmb:heeftBestuurseenheid")

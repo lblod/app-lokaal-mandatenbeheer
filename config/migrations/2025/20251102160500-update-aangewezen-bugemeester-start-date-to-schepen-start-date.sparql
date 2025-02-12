@@ -6,40 +6,52 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE {
   GRAPH ?g {
-    ?mandataris mandaat:startDate ?aangewezenBurgemeesterStartDate .
+    ?mandataris mandaat:start ?startDate .
     ?mandataris dcterms:modified ?modified .
   }
 }
 INSERT {
   GRAPH ?g {
-    ?mandataris mandaat:startDate ?schepenStartDate .
+    ?mandataris mandaat:start ?oldestStartDate .
     ?mandataris dcterms:modified ?now .
   }
 }
 WHERE {
-  GRAPH ?g {
-    ?aangewezenBurgemeesterMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a> . # Aangewezen burgemeester
-    ?boi org:hasPost ?aangewezenBurgemeesterMandaat .
-    ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
+  {
+    SELECT DISTINCT ?mandataris ?g (MIN(?schepenStartDate) AS ?oldestStartDate)
+    WHERE {
+      GRAPH ?g {
+        VALUES ?mandataris {
+          <http://data.lblod.info/id/mandatarissen/67234993AE5F6D098DC007ED>
+          <http://data.lblod.info/id/mandatarissen/672E1CE5D456831DB328892A>
+          <http://data.lblod.info/id/mandatarissen/67349878F5EE8564CFAD9B85>
+          <http://data.lblod.info/id/mandatarissen/673B47ADBE4A66FE75F1DD0D>
+          <http://data.lblod.info/id/mandatarissen/672A2640A12BA678FC887469>
+          <http://data.lblod.info/id/mandatarissen/673DA1DBFA0EDA29ED949B2D>
+          <http://data.lblod.info/id/mandatarissen/67488AC575F41FD3A91CDAF7>
+          <http://data.lblod.info/id/mandatarissen/6721E76FFDAA900F9C5408BE>
+          <http://data.lblod.info/id/mandatarissen/67335EFAD2F339806D122628>
+          <http://data.lblod.info/id/mandatarissen/672A4999BB97C1379BFE1338>
+        }
 
-    OPTIONAL {  
-      ?aangewezenBurgemeesterMandaat dcterms:modified ?modified .
-    }
-    
-    ?mandataris org:holds ?aangewezenBurgemeesterMandaat . 
-    ?mandataris mandaat:start ?aangewezenBurgemeesterStartDate .
-    
-    ?schepenMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> . # Schepen
-    ?boi org:hasPost ?schepenMandaat .
-    ?schepenMandataris org:holds ?schepenMandaat . 
-    ?schepenMandataris mandaat:start ?schepenStartDate .
+        ?mandataris org:holds ?mandaat . 
+        ?mandataris mandaat:start ?startDate .
+        OPTIONAL {  
+          ?mandataris dcterms:modified ?modified .
+        }
 
-    FILTER NOT EXISTS {
-      ?schepenMandataris2 org:holds ?schepenMandaat . 
-      ?schepenMandataris2  mandaat:start ?schepenStartDate2 .
-      FILTER(?schepenStartDate < ?schepenStartDate2 && ?aangewezenBurgemeesterStartDate != ?schepenStartDate)
+        ?boi org:hasPost ?mandaat .
+        ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
+
+        ?schepenMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> . # Schepen
+        ?boi org:hasPost ?schepenMandaat .
+
+        ?schepenMandataris org:holds ?schepenMandaat . 
+        ?schepenMandataris mandaat:start ?schepenStartDate .
+      }
+      ?g ext:ownedBy ?someone .
     }
+    GROUP BY ?mandataris ?g
   }
-  ?g ext:ownedBy ?someone .
   BIND(NOW() as ?now)
 }

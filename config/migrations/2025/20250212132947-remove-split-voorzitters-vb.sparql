@@ -17,6 +17,7 @@ INSERT {
     ?removedMandataris astreams:deleted ?now .
     ?removedMandataris astreams:formerType mandaat:Mandataris.
     ?removedMandataris owl:sameAs ?remainingMandataris .
+
     ?remainingMandataris dct:modified ?now .
   }
 }

@@ -1,0 +1,26 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?gemeenteG {
+    ?s ?p ?o.
+    ?member ?mp ?mo
+  }
+
+}WHERE {
+  GRAPH ?gemeenteG {
+    ?s a mandaat:Mandataris.
+    ?s ?p ?o.
+    OPTIONAL {
+      ?s org:hasMembership ?member.
+      ?member ?mp ?mo.
+    }
+  }
+  GRAPH ?ocmwG {
+    ?s a mandaat:Mandataris.
+  }
+  ?gemeenteG ext:ownedBy ?gemeente.
+  ?ocmwG ext:ownedBy ?ocmw.
+  ?ocmw ext:isOCMWVoor ?gemeente.
+  ?gemeente ext:voorbereidingVerborgen "true"^^xsd:boolean .
+}

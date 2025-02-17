@@ -1,32 +1,34 @@
 import { readdir, readFile } from 'fs/promises';
 import path from 'path';
 
-import { query, update, sparqlEscapeUri, sparqlEscapeString, uuid } from 'mu';
+import { sparqlEscapeUri, sparqlEscapeString, uuid } from 'mu';
 import {SparqlJsonParser} from "sparqljson-parse";
 
 import { Parser, Store, DataFactory } from 'n3';
 const { namedNode, literal, quad } = DataFactory;
+
+import { querySudo, updateSudo } from '@lblod/mu-auth-sudo';
 
 import { batchedQuery } from '../helpers.js';
 
 export async function mergeFilesContent(directory) {
     try {
         const files = await readdir(directory);
-    
+
         if (files.length === 0) {
             console.log('No files found in the directory.');
             return;
         }
-    
+
         // Loop over files and read their contents
         const contentPromises = files.map(async (file) => {
             const filePath = path.join(directory, file);
             return readFile(filePath, 'utf8');
         });
-    
+
         // Wait for all file contents to be read
         const contents = await Promise.all(contentPromises);
-    
+
         // Merge all content into a single field
         const mergedContent = contents.join('\n');
         return mergedContent;
@@ -34,7 +36,7 @@ export async function mergeFilesContent(directory) {
         console.error(`Error: ${err.message}`);
     }
   }
-    
+
 export async function getBestuurseenhedenUriAndUuid(bestuurseenheidClassificaties) {
     let sparqlValuesBestuurseenheidClassificaties =  ``;
     if (bestuurseenheidClassificaties && bestuurseenheidClassificaties.length) {
@@ -53,7 +55,7 @@ export async function getBestuurseenhedenUriAndUuid(bestuurseenheidClassificatie
             ?bestuurseenheid a besluit:Bestuurseenheid ;
                             mu:uuid ?uuid ;
                             besluit:classificatie ?bestuurseenheidClassificatie .
-        
+
             ${sparqlValuesBestuurseenheidClassificaties}
         }
     `;
@@ -84,13 +86,13 @@ export async function executeConstructQueryOnNamedGraph(uriAndUuid, bestuursperi
     }
     WHERE {
         ?bestuursperiode skos:prefLabel ${sparqlEscapeString(bestuursperiodeLabel)} .
-        GRAPH ${sparqlEscapeUri(namedGraph)} {    
+        GRAPH ${sparqlEscapeUri(namedGraph)} {
             ?bestuursorgaanInTijd a besluit:Bestuursorgaan ;
                 <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> ?bestuursperiode ;
                 mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
                 org:hasPost ?mandaat ;
                 ?pBestuursorgaanInTijd ?oBestuursorgaanInTijd .
-            
+
             ?bestuursorgaan ?pBestuursorgaan ?oBestuursorgaan .
 
             OPTIONAL {
@@ -100,13 +102,13 @@ export async function executeConstructQueryOnNamedGraph(uriAndUuid, bestuursperi
 
                 ?persoon ?pPersoon ?oPersoon .
            }
-            
+
         }
         ${sparqlEscapeUri(uriAndUuid.uri)} besluit:classificatie ?oBestuurseenheid .
     }
     `;
 
-    const queryResponse = await query(queryStringConstructOfGraph);
+    const queryResponse = await querySudo(queryStringConstructOfGraph);
     return convertConstructQueryResponseToStore(queryResponse);
 }
 
@@ -147,7 +149,7 @@ export async function validateDataset(dataset, shapesDataset) {
     const rdf = await (eval('import("rdf-ext")'));
     const shacl = await (eval('import("shacl-engine")'));
     const sparqljs = await (eval('import("shacl-engine/sparql.js")'));
-    
+
     const validator = new shacl.Validator(shapesDataset, {
         factory: rdf.default ,
         validations: sparqljs.validations
@@ -195,40 +197,40 @@ export function enrichValidationReport(reportDataset, shapesDataset, dataDataset
         // Add UUID
         if (!isClassConstraintComponent) reportDataset.add(quad(
             validationResultQuad.subject,
-            namedNode('http://mu.semte.ch/vocabularies/core/uuid'), 
+            namedNode('http://mu.semte.ch/vocabularies/core/uuid'),
             literal(validationResultUUID)
         ));
-        
+
         const triplesOfValidationResult = reportDataset.match(validationResultQuad.subject, null, null);
         for (const resultQuad of triplesOfValidationResult) {
             if (resultQuad.object.termType != 'BlankNode') {
                 if (!isClassConstraintComponent) reportDataset.add(quad(
                     namedNode(validationResultURI),
-                    resultQuad.predicate, 
+                    resultQuad.predicate,
                     resultQuad.object
                 ));
             }
             // Remove blank node
             reportDataset.delete(quad(
                 validationResultQuad.subject,
-                resultQuad.predicate, 
+                resultQuad.predicate,
                 resultQuad.object
-            ));  
+            ));
         }
 
         const triplesPointingToValidationResult = reportDataset.match(null, null, validationResultQuad.subject);
         for (const resultQuad of triplesPointingToValidationResult) {
             if (!isClassConstraintComponent) reportDataset.add(quad(
                 resultQuad.subject,
-                resultQuad.predicate, 
+                resultQuad.predicate,
                 namedNode(validationResultURI)
             ));
             // Remove blank node
             reportDataset.delete(quad(
                 resultQuad.subject,
-                resultQuad.predicate, 
+                resultQuad.predicate,
                 validationResultQuad.subject
-            ));  
+            ));
         }
     }
 
@@ -242,28 +244,28 @@ export function enrichValidationReport(reportDataset, shapesDataset, dataDataset
         for (const resultQuad of triplesOfValidationReport) {
             reportDataset.add(quad(
                 namedNode(reportURI),
-                resultQuad.predicate, 
+                resultQuad.predicate,
                 resultQuad.object
             ));
             // Add UUID
             reportDataset.add(quad(
                 namedNode(reportURI),
-                namedNode('http://mu.semte.ch/vocabularies/core/uuid'), 
+                namedNode('http://mu.semte.ch/vocabularies/core/uuid'),
                 literal(reportUUID)
             ));
             // Add creation time stamp
             reportDataset.add(quad(
                 namedNode(reportURI),
-                namedNode('http://purl.org/dc/terms/created'), 
+                namedNode('http://purl.org/dc/terms/created'),
                 literal(new Date().toISOString(),namedNode('http://www.w3.org/2001/XMLSchema#dateTime'))
             ));
-            
+
             // Remove blank node
             reportDataset.delete(quad(
                 validationReportQuad.subject,
-                resultQuad.predicate, 
+                resultQuad.predicate,
                 resultQuad.object
-            ));  
+            ));
         }
     }
 
@@ -285,7 +287,7 @@ export async function saveDatasetToNamedGraph(dataset, namedGraph) {
             }
         }
         `;
-        await update(queryString);
+        await updateSudo(queryString);
     }
 }
 
@@ -296,7 +298,7 @@ export async function deletePreviousReports(namedGraph) {
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
     PREFIX sh: <http://www.w3.org/ns/shacl#>
 
-    SELECT ?reportUri  
+    SELECT ?reportUri
     WHERE {
         GRAPH ${sparqlEscapeUri(namedGraph)} {
             ?reportUri a sh:ValidationReport ;
@@ -306,7 +308,7 @@ export async function deletePreviousReports(namedGraph) {
     ORDER BY DESC(?created)
     `;
 
-    const response = await query(queryString);
+    const response = await querySudo(queryString);
 
     if (response.results.bindings.length) {
         response.results.bindings.shift(); // don't remove latest report
@@ -334,5 +336,5 @@ async function deleteReportInDatabase(reportUri, namedGraph) {
         }
         }
     `;
-    await query(queryString);
+    await querySudo(queryString);
 }

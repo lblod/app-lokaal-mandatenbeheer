@@ -193,12 +193,10 @@ services:
   # REPORTING
   ################################################################################
   report-generation:
-    image: lblod/loket-report-generation-service:0.8.2
+    image: lblod/loket-report-generation-service:0.8.3
     environment:
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/reports"
       ONLY_KEEP_LATEST_REPORT: "true"
-    links:
-      - virtuoso:database
     volumes:
       - ./data/files:/share
       - ./config/reports:/config

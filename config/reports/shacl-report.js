@@ -22,16 +22,16 @@ export default {
         'http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002'
     ]
     // Configure the bestuursperiode to validate
-    const bestuursperiodeLabel = '2019 - 2024';
-    
+    const bestuursperiodeLabel = '2024 - heden';
+
     // Retrieve URI and UUID of bestuurseenheden
     const uriAndUuids = await getBestuurseenhedenUriAndUuid(interestedBestuurseenheidClassificaties);
 
     // Read all SHACL files in the shacl folder
     const shape = await mergeFilesContent('./config/shacl');
     const shapesDataset = await parseTurtleString(shape);
-    
-    // Validate for each bestuurseenheid 
+
+    // Validate for each bestuurseenheid
     for (const uriAndUuid of uriAndUuids) {
       try {
         // Retrieve all triples within the bestuurseenheid graph limited to the bestuursperiode
@@ -51,7 +51,7 @@ export default {
 
         if(ONLY_KEEP_LATEST_REPORT) {
           await deletePreviousReports(generateNamedGraphFromUuid(uriAndUuid.uuid));
-        }        
+        }
       } catch (error) {
           console.error('Error:', error);
       }

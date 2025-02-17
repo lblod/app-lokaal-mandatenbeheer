@@ -75,12 +75,30 @@ export function generateNamedGraphFromUuid(uuid) {
   return `http://mu.semte.ch/graphs/organizations/${uuid}/LoketLB-mandaatGebruiker`;
 }
 
-export async function executeConstructQueryOnNamedGraph(
+export async function executeConstructQueriesOnNamedGraph(
   uriAndUuid,
   bestuursperiodeLabel
 ) {
   const namedGraph = generateNamedGraphFromUuid(uriAndUuid.uuid);
+  const store = new Store();
+  const bestuursorganen = await addBestuursorgaanAndMandatarissen(
+    uriAndUuid,
+    store,
+    namedGraph,
+    bestuursperiodeLabel
+  );
+  await addPersonen(store, namedGraph, bestuursorganen);
+  await addFracties(store, namedGraph, bestuursorganen);
+  await addLidmaatschappen(store, namedGraph, bestuursorganen);
+  return store;
+}
 
+async function addBestuursorgaanAndMandatarissen(
+  uriAndUuid,
+  store,
+  namedGraph,
+  bestuursperiodeLabel
+) {
   const queryStringConstructOfGraph = `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
@@ -93,7 +111,6 @@ export async function executeConstructQueryOnNamedGraph(
           uriAndUuid.uri
         )} besluit:classificatie ?oBestuurseenheid .
         ?mandataris ?pMandataris ?oMandataris .
-        ?persoon ?pPersoon ?oPersoon .
     }
     WHERE {
         ?bestuursperiode skos:prefLabel ${sparqlEscapeString(
@@ -110,10 +127,7 @@ export async function executeConstructQueryOnNamedGraph(
 
             OPTIONAL {
                 ?mandataris org:holds ?mandaat ;
-                            mandaat:isBestuurlijkeAliasVan ?persoon ;
                             ?pMandataris ?oMandataris .
-
-                ?persoon ?pPersoon ?oPersoon .
            }
 
         }
@@ -124,14 +138,116 @@ export async function executeConstructQueryOnNamedGraph(
     `;
 
   const queryResponse = await querySudo(queryStringConstructOfGraph);
-  return convertConstructQueryResponseToStore(queryResponse);
+  const bestuursorganen = queryResponse.results.bindings
+    .filter((res) => {
+      return (
+        res.p.value === "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" &&
+        res.o.value === "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan"
+      );
+    })
+    .map((res) => {
+      return res.s.value;
+    });
+  await addConstructQueryResponseToStore(store, queryResponse);
+  return bestuursorganen;
 }
 
-export function convertConstructQueryResponseToStore(queryResponse) {
+async function addPersonen(store, namedGraph, bestuursorgaanUris) {
+  const safeBestuursorganen = bestuursorgaanUris
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
+  const queryStringConstructOfGraph = `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+    PREFIX adms: <http://www.w3.org/ns/adms#>
+
+    CONSTRUCT {
+        ?persoon ?pPersoon ?oPersoon .
+        ?geboorte ?pGeboorte ?oGeboorte .
+        ?identifier ?pIdentifier ?oIdentifier.
+    }
+    WHERE {
+        GRAPH ${sparqlEscapeUri(namedGraph)} {
+            VALUES ?bestuursorgaanInTijd {
+                ${safeBestuursorganen}
+            }
+            ?bestuursorgaanInTijd org:hasPost / ^org:holds / mandaat:isBestuurlijkeAliasVan ?persoon.
+            ?persoon ?pPersoon ?oPersoon .
+            OPTIONAL {
+                ?persoon persoon:geboorte ?geboorte .
+                ?geboorte ?pGeboorte ?oGeboorte .
+            }
+            OPTIONAL {
+                ?persoon adms:identifier ?identifier .
+                ?identifier ?pIdentifier ?oIdentifier .
+            }
+        }
+    }`;
+
+  const queryResponse = await querySudo(queryStringConstructOfGraph);
+  await addConstructQueryResponseToStore(store, queryResponse);
+}
+
+async function addFracties(store, namedGraph, bestuursorgaanUris) {
+  const safeBestuursorganen = bestuursorgaanUris
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
+  const queryStringConstructOfGraph = `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+
+    CONSTRUCT {
+        ?fractie ?p ?o .
+    }
+    WHERE {
+        GRAPH ${sparqlEscapeUri(namedGraph)} {
+            VALUES ?bestuursorgaanInTijd {
+                ${safeBestuursorganen}
+            }
+            ?bestuursorgaanInTijd ^org:memberOf ?fractie.
+            ?fractie ?p ?o .
+        }
+    }`;
+
+  const queryResponse = await querySudo(queryStringConstructOfGraph);
+  await addConstructQueryResponseToStore(store, queryResponse);
+}
+
+async function addLidmaatschappen(store, namedGraph, bestuursorgaanUris) {
+  const safeBestuursorganen = bestuursorgaanUris
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
+  const queryStringConstructOfGraph = `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+
+    CONSTRUCT {
+        ?lidmaatschap ?p ?o .
+    }
+    WHERE {
+        GRAPH ${sparqlEscapeUri(namedGraph)} {
+            VALUES ?bestuursorgaanInTijd {
+                ${safeBestuursorganen}
+            }
+            ?bestuursorgaanInTijd org:hasPost / ^org:holds / org:hasMembership ?lidmaatschap.
+            ?lidmaatschap ?p ?o .
+        }
+    }`;
+
+  const queryResponse = await querySudo(queryStringConstructOfGraph);
+  await addConstructQueryResponseToStore(store, queryResponse);
+}
+
+function addConstructQueryResponseToStore(store, queryResponse) {
+  console.log(
+    `Adding ${queryResponse.results.bindings.length} triples to the store`
+  );
   const sparqlJsonParser = new SparqlJsonParser();
   const rdfJsObjects = sparqlJsonParser.parseJsonResults(queryResponse);
-
-  const store = new Store();
 
   rdfJsObjects.forEach((quad) => {
     store.addQuad(

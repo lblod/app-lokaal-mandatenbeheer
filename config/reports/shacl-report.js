@@ -5,9 +5,9 @@ import {
   parseTurtleString,
   validateDataset,
   enrichValidationReport,
-  saveDatasetToNamedGraph,
-  generateNamedGraphFromUuid,
+  saveDatasetToNamedGraphs,
   deletePreviousReports,
+  getNamedGraphsForBestuurseenheidId,
 } from "./helpers.js";
 import env from "env-var";
 
@@ -32,7 +32,8 @@ export default {
     // Configure here the bestuurseenheidclassificaties (gemeente, OCMW) to validate
     const interestedBestuurseenheidClassificaties = [
       "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001",
-      "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002",
+      // since we also include the ocmw data when validating the gemeente, we don't need to validate ocmw separately
+      // "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002",
     ];
     // Configure the bestuursperiode to validate
     const bestuursperiodeLabel = "2024 - heden";
@@ -70,16 +71,15 @@ export default {
           dataDataset
         );
 
-        saveDatasetToNamedGraph(
-          enrichedValidationReportDataset,
-          generateNamedGraphFromUuid(uriAndUuid.uuid)
+        const namedGraphs = await getNamedGraphsForBestuurseenheidId(
+          uriAndUuid.uuid
         );
+
+        saveDatasetToNamedGraphs(enrichedValidationReportDataset, namedGraphs);
         console.log(`SHACL validation report saved in triple store.`);
 
         if (ONLY_KEEP_LATEST_REPORT) {
-          await deletePreviousReports(
-            generateNamedGraphFromUuid(uriAndUuid.uuid)
-          );
+          await deletePreviousReports(namedGraphs);
         }
       } catch (error) {
         console.error("Error:", error);

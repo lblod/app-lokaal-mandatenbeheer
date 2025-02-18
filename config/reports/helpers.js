@@ -4,7 +4,7 @@ import path from "path";
 import { sparqlEscapeUri, sparqlEscapeString, uuid } from "mu";
 import { SparqlJsonParser } from "sparqljson-parse";
 
-import { Parser, Store, DataFactory } from "n3";
+import { Parser, Store, DataFactory, Writer } from "n3";
 const { namedNode, literal, quad } = DataFactory;
 
 import { querySudo, updateSudo } from "@lblod/mu-auth-sudo";
@@ -75,30 +75,57 @@ export function generateNamedGraphFromUuid(uuid) {
   return `http://mu.semte.ch/graphs/organizations/${uuid}/LoketLB-mandaatGebruiker`;
 }
 
+export async function getNamedGraphsForBestuurseenheidId(uuid) {
+  const sparqlQuery = `
+        PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+        SELECT ?graph WHERE {
+          ?graph ext:ownedBy ?someone.
+          VALUES ?uuid {
+            ${sparqlEscapeString(uuid)}
+          }
+          { { ?someone mu:uuid ?uuid. }
+            UNION
+            { ?someone ext:isOCMWVoor / mu:uuid ?uuid. }
+            UNION
+            { ?someone ^ext:isOCMWVoor / mu:uuid ?uuid. }
+          }
+        }
+    `;
+  const queryResponse = await querySudo(sparqlQuery);
+  return queryResponse.results.bindings.map((res) => res.graph.value);
+}
+
 export async function executeConstructQueriesOnNamedGraph(
   uriAndUuid,
   bestuursperiodeLabel
 ) {
-  const namedGraph = generateNamedGraphFromUuid(uriAndUuid.uuid);
+  const namedGraphs = await getNamedGraphsForBestuurseenheidId(uriAndUuid.uuid);
   const store = new Store();
   const bestuursorganen = await addBestuursorgaanAndMandatarissen(
     uriAndUuid,
     store,
-    namedGraph,
+    namedGraphs,
     bestuursperiodeLabel
   );
-  await addPersonen(store, namedGraph, bestuursorganen);
-  await addFracties(store, namedGraph, bestuursorganen);
-  await addLidmaatschappen(store, namedGraph, bestuursorganen);
+  await addPersonen(store, namedGraphs, bestuursorganen);
+  await addFracties(store, namedGraphs, bestuursorganen);
+  await addMandaten(store, namedGraphs, bestuursorganen);
+  await addLidmaatschappen(store, namedGraphs, bestuursorganen);
+
   return store;
 }
 
 async function addBestuursorgaanAndMandatarissen(
   uriAndUuid,
   store,
-  namedGraph,
+  namedGraphs,
   bestuursperiodeLabel
 ) {
+  const safeNamedGraphs = namedGraphs
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
   const queryStringConstructOfGraph = `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
@@ -116,7 +143,10 @@ async function addBestuursorgaanAndMandatarissen(
         ?bestuursperiode skos:prefLabel ${sparqlEscapeString(
           bestuursperiodeLabel
         )} .
-        GRAPH ${sparqlEscapeUri(namedGraph)} {
+        VALUES ?graph {
+            ${safeNamedGraphs}
+        }
+        GRAPH ?graph {
             ?bestuursorgaanInTijd a besluit:Bestuursorgaan ;
                 <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> ?bestuursperiode ;
                 mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
@@ -152,7 +182,10 @@ async function addBestuursorgaanAndMandatarissen(
   return bestuursorganen;
 }
 
-async function addPersonen(store, namedGraph, bestuursorgaanUris) {
+async function addPersonen(store, namedGraphs, bestuursorgaanUris) {
+  const safeNamedGraphs = namedGraphs
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
   const safeBestuursorganen = bestuursorgaanUris
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
@@ -169,7 +202,10 @@ async function addPersonen(store, namedGraph, bestuursorgaanUris) {
         ?identifier ?pIdentifier ?oIdentifier.
     }
     WHERE {
-        GRAPH ${sparqlEscapeUri(namedGraph)} {
+        VALUES ?graph {
+            ${safeNamedGraphs}
+        }
+        GRAPH ?graph {
             VALUES ?bestuursorgaanInTijd {
                 ${safeBestuursorganen}
             }
@@ -190,7 +226,10 @@ async function addPersonen(store, namedGraph, bestuursorgaanUris) {
   await addConstructQueryResponseToStore(store, queryResponse);
 }
 
-async function addFracties(store, namedGraph, bestuursorgaanUris) {
+async function addFracties(store, namedGraphs, bestuursorgaanUris) {
+  const safeNamedGraphs = namedGraphs
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
   const safeBestuursorganen = bestuursorgaanUris
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
@@ -203,7 +242,10 @@ async function addFracties(store, namedGraph, bestuursorgaanUris) {
         ?fractie ?p ?o .
     }
     WHERE {
-        GRAPH ${sparqlEscapeUri(namedGraph)} {
+        VALUES ?graph {
+            ${safeNamedGraphs}
+        }
+        GRAPH ?graph {
             VALUES ?bestuursorgaanInTijd {
                 ${safeBestuursorganen}
             }
@@ -216,7 +258,43 @@ async function addFracties(store, namedGraph, bestuursorgaanUris) {
   await addConstructQueryResponseToStore(store, queryResponse);
 }
 
-async function addLidmaatschappen(store, namedGraph, bestuursorgaanUris) {
+async function addMandaten(store, namedGraphs, bestuursorgaanUris) {
+  const safeNamedGraphs = namedGraphs
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
+  const safeBestuursorganen = bestuursorgaanUris
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
+  const queryStringConstructOfGraph = `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+
+    CONSTRUCT {
+        ?mandaat ?p ?o .
+    }
+    WHERE {
+        VALUES ?graph {
+            ${safeNamedGraphs}
+        }
+        GRAPH ?graph {
+            VALUES ?bestuursorgaanInTijd {
+                ${safeBestuursorganen}
+            }
+            ?bestuursorgaanInTijd org:hasPost ?mandaat.
+            ?mandaat ?p ?o .
+        }
+    }`;
+
+  const queryResponse = await querySudo(queryStringConstructOfGraph);
+  await addConstructQueryResponseToStore(store, queryResponse);
+}
+
+async function addLidmaatschappen(store, namedGraphs, bestuursorgaanUris) {
+  const safeNamedGraphs = namedGraphs
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
+
   const safeBestuursorganen = bestuursorgaanUris
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
@@ -229,7 +307,10 @@ async function addLidmaatschappen(store, namedGraph, bestuursorgaanUris) {
         ?lidmaatschap ?p ?o .
     }
     WHERE {
-        GRAPH ${sparqlEscapeUri(namedGraph)} {
+        GRAPH ?graph {
+            VALUES ?safeNamedGraphs {
+                ${safeNamedGraphs}
+            }
             VALUES ?bestuursorgaanInTijd {
                 ${safeBestuursorganen}
             }
@@ -316,15 +397,17 @@ export function enrichValidationReport(
       null
     );
     let targetClassQuad;
+    let targetIdQuad;
+    const focusNodeQuads = reportDataset.match(
+      validationResultQuad.subject,
+      namedNode("http://www.w3.org/ns/shacl#focusNode"),
+      null
+    );
     if (!targetClassInShapeQuads.size) {
       // Fallback by searching the class of the focus node in the dataset
-      const focusNodeQuads = reportDataset.match(
-        validationResultQuad.subject,
-        namedNode("http://www.w3.org/ns/shacl#focusNode"),
-        null
-      );
-      if (!focusNodeQuads.size)
+      if (!focusNodeQuads.size) {
         throw "No focus node found in validation result as fallback to retrieve targetClass";
+      }
       const [focusNodeQuad] = focusNodeQuads;
 
       const focusNodeTypeInDatasetQuads = dataDataset.match(
@@ -332,8 +415,9 @@ export function enrichValidationReport(
         namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
         null
       );
-      if (!focusNodeTypeInDatasetQuads.size)
+      if (!focusNodeTypeInDatasetQuads.size) {
         throw "No type of focus node found in validation result as fallback to retrieve targetClass";
+      }
       [targetClassQuad] = focusNodeTypeInDatasetQuads;
     } else {
       [targetClassQuad] = targetClassInShapeQuads;
@@ -350,6 +434,26 @@ export function enrichValidationReport(
     // Replace blank node of ValidationResult with UUID-based URI
     const validationResultUUID = uuid();
     const validationResultURI = `http://data.lblod.info/id/validationresults/${validationResultUUID}`;
+
+    if (focusNodeQuads.size) {
+      const [focusNodeQuad] = focusNodeQuads;
+      [targetIdQuad] = dataDataset.match(
+        focusNodeQuad.object,
+        namedNode("http://mu.semte.ch/vocabularies/core/uuid"),
+        null
+      );
+      if (targetIdQuad) {
+        reportDataset.add(
+          quad(
+            validationResultQuad.subject,
+            namedNode(
+              "http://lblod.data.gift/vocabularies/lmb/targetIdOfFocusNode"
+            ),
+            targetIdQuad.object
+          )
+        );
+      }
+    }
 
     // Add targetClass to validation result
     if (!isClassConstraintComponent)
@@ -476,29 +580,43 @@ export function enrichValidationReport(
   return reportDataset;
 }
 
-export async function saveDatasetToNamedGraph(dataset, namedGraph) {
+export async function saveDatasetToNamedGraphs(dataset, namedGraphs) {
+  const writer = new Writer({ format: "N-Triples" });
   for (const quad of dataset) {
-    const filteredDataset = dataset.match(
-      quad.subject,
-      quad.predicate,
-      quad.object
-    );
-    const queryString = `
+    writer.addQuad(quad);
+  }
+
+  const triples = await new Promise((resolve, reject) => {
+    writer.end((error, result) => {
+      if (error) {
+        console.log("Error while writing to store");
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+  const queryString = `
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX prov: <http://www.w3.org/ns/prov#>
         PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+        PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
-        INSERT DATA {
-            GRAPH ${sparqlEscapeUri(namedGraph)} {
-                ${filteredDataset.toString()}
+        INSERT {
+            GRAPH ?g {
+                ${triples}
             }
+        } WHERE {
+          VALUES ?g {
+            ${namedGraphs.map((g) => sparqlEscapeUri(g)).join("\n")}
+          }
+          ?g ext:ownedBy ?someone .
         }
         `;
-    await updateSudo(queryString);
-  }
+  await updateSudo(queryString);
 }
 
-export async function deletePreviousReports(namedGraph) {
+export async function deletePreviousReports(namedGraphs) {
   const queryString = `
     PREFIX dct: <http://purl.org/dc/terms/>
     PREFIX prov: <http://www.w3.org/ns/prov#>
@@ -507,7 +625,10 @@ export async function deletePreviousReports(namedGraph) {
 
     SELECT ?reportUri
     WHERE {
-        GRAPH ${sparqlEscapeUri(namedGraph)} {
+        VALUES ?g {
+          ${namedGraphs.map((g) => sparqlEscapeUri(g)).join("\n")}
+        }
+        GRAPH ?g {
             ?reportUri a sh:ValidationReport ;
                 dct:created ?created .
         }
@@ -520,13 +641,13 @@ export async function deletePreviousReports(namedGraph) {
   if (response.results.bindings.length) {
     response.results.bindings.shift(); // don't remove latest report
     for (const binding of response.results.bindings) {
-      await deleteReportInDatabase(binding.reportUri.value, namedGraph);
+      await deleteReportInDatabase(binding.reportUri.value, namedGraphs);
     }
     console.log("All reports deleted");
   }
 }
 
-async function deleteReportInDatabase(reportUri, namedGraph) {
+async function deleteReportInDatabase(reportUri, namedGraphs) {
   const queryString = `
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX prov: <http://www.w3.org/ns/prov#>
@@ -534,13 +655,24 @@ async function deleteReportInDatabase(reportUri, namedGraph) {
         PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
         PREFIX sh: <http://www.w3.org/ns/shacl#>
 
-        DELETE WHERE {
-        GRAPH ${sparqlEscapeUri(namedGraph)} {
+        DELETE {
+          GRAPH ?g {
             ${sparqlEscapeUri(reportUri)} sh:result ?result ;
             ?preport ?oreport .
 
             ?result ?presult ?oresult .
+          }
         }
+        WHERE {
+          VALUES ?g {
+            ${namedGraphs.map((g) => sparqlEscapeUri(g)).join("\n")}
+          }
+          GRAPH ?g {
+            ${sparqlEscapeUri(reportUri)} sh:result ?result ;
+            ?preport ?oreport .
+
+            ?result ?presult ?oresult .
+          }
         }
     `;
   await querySudo(queryString);

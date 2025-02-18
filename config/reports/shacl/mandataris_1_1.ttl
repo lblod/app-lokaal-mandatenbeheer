@@ -34,7 +34,7 @@ sh:sparql [
         FILTER NOT EXISTS {
             $this mandaat:status ?mandatarisStatusCode .
         }
-    
+
         BIND ("Mandataris heeft geen status." as ?value)
     }""" ;
         sh:message "Mandataris heeft geen status."

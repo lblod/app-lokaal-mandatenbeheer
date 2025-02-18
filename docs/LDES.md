@@ -15,13 +15,21 @@ LMB will be the sole owner of Mandataris instances: it will be the place where M
 
 As GN will not be allowed to create Mandataris instances, it needs to be supplied with draft Mandataris instances in order to link a Besluit to them in order for them to be made official. This means we need to create these draft Mandataris instances in LMB too. We can do this with a boolean flag. However, in our LDES feeds, they shouldn't be called Mandataris (or be in the Mandataris LDES feed) until they are no longer in the draft state. The URI for these draft Mandataris instances will need to be the same as the final instance, because otherwise, GN cannot link a besluit to the Mandataris.
 
-We will watch the Besluit instances published by GN for links between a Besluit and a Mandataris through mandaat:bekrachtigtAanstellingVan so we can automatically mark a mandataris as official. NOTE: this predicate is currently not being published correctly.
+We will watch the Besluit instances published by GN for links between a Besluit and a Mandataris through `mandaat:bekrachtigtAanstellingVan` so we can automatically mark a mandataris as official. NOTE: this predicate is currently not being published correctly.
 
-However, there is no guarantee that the besluit will be created in GN. Therefore it should be possible to mark a mandataris as official (as opposed to draft) manually, even if no event was received from GN. In that case, a link to the meeting notes of the corresponding meeting can be provided manually as well.
+However, there is no guarantee that the besluit will be created in GN. Therefore it should be possible to mark a mandataris as official (as opposed to draft) manually, even if no event was received from GN. In that case, a link to the meeting notes of the corresponding meeting can be provided manually.
 
 ### Publishing to Vlaamse Mandatendatabank
 
-LMB extracts the Mandaten scope from Loket. Therefore, it should also pick up the role of sharing this information with the central publication system, specifically the Vlaamse Mandaten Databank (VMDB). This will also be done through the public LDES stream. Currently though, our LDES stream is being picked up by Loket, which then publishes deltas for consumption by the mandatendatabank.
+LMB extracts the Mandaten scope from Loket. Therefore, it should also pick up the role of sharing this information with the central publication system, specifically the Vlaamse Mandaten Databank (VMDB). This is done through the public LDES stream. Currently though, our LDES stream is being picked up by Loket, which then publishes deltas for consumption by the mandatendatabank.
+
+## Published streams
+
+This application publishes 3 streams:
+
+- **public**: a public stream with limited information. This stream contains the information sent to abb but removes sensitive information like RRN numbers of person entities
+- **abb**: a stream to be used by ABB consumers. This is to be secured in the future and holds all instances that are part of the Mandatendatabank model: mandaat:Mandataris, mandaat:Fractie, org:Membership, mandaat:Mandaat, person:Person, dct:PeriodOfTime, adms:Identifier, persoon:Geboorte, schema:ContactPoint, locn:Address. It only exposes the properties known to the model + dct:modified, mu:uuid and rdf:type.
+- **public**: a stream to be used internally. Currently this exposes the same model instances as the abb stream but with all of their properties.
 
 ## Types exposed on LDES feed
 
@@ -38,7 +46,7 @@ VMDB will be interested in instances of the following types:
 - **schema:ContactPoint:** to model the contact point of the Mandataris above
 - **locn:Address:** to model the address of the Mandataris above
 
-The only predicates that are shared about these concepts are predicates that are defined in the application profiles for [mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/), and [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/).
+The public and abb streams only contain predicates that are defined in the application profiles for [mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/), and [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/). The internal stream has no restrictions on which predicates are published.
 
 ## Mandataris as a Versioned Entity
 
@@ -62,14 +70,6 @@ This presents the question of how this peripheral knowledge reaches these differ
 - we can make an interface (API, not LDES) where they just fetch the latest version.
 
 The current state of LMB uses migrations for sharing peripheral knowledge.
-
-## Published streams
-
-This application publishes 3 streams:
-
-- **public**: a public stream with limited information. This stream contains the information sent to abb but removes sensitive information like RRN numbers of person entities
-- **abb**: a stream to be used by ABB consumers. This is to be secured in the future and holds all instances that are part of the Mandatendatabank model: mandaat:Mandataris, mandaat:Fractie, org:Membership, mandaat:Mandaat, person:Person, dct:PeriodOfTime, adms:Identifier, persoon:Geboorte, schema:ContactPoint, locn:Address. It only exposes the properties known to the model + dct:modified, mu:uuid and rdf:type.
-- **public**: a stream to be used internally. Currently this exposes the same model instances as the abb stream but with all of their properties.
 
 ## LDES setup
 

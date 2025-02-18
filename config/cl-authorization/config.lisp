@@ -62,6 +62,7 @@
   :extlmb "http://mu.semte.ch/vocabularies/ext/lmb/"
   :form "http://lblod.data.gift/vocabularies/forms/"
   :lmb "http://lblod.data.gift/vocabularies/lmb/"
+  :sh "http://www.w3.org/ns/shacl#"
 )
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
@@ -142,7 +143,9 @@
   ("ext:BestuurseenheidContact" -> _)
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("schema:ContactPoint" -> _)
-  ("locn:Address" -> _))
+  ("locn:Address" -> _)
+  ("sh:ValidationResult" -> _)
+  ("sh:ValidationReport" -> _))
 
 (define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")
   ("eli:LegalResource" -> _)

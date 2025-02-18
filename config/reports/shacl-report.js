@@ -1,7 +1,20 @@
-import { mergeFilesContent, getBestuurseenhedenUriAndUuid, executeConstructQueryOnNamedGraph, parseTurtleString, validateDataset, enrichValidationReport, saveDatasetToNamedGraph, generateNamedGraphFromUuid, deletePreviousReports } from "./helpers.js";
-import env from 'env-var';
+import {
+  mergeFilesContent,
+  getBestuurseenhedenUriAndUuid,
+  executeConstructQueriesOnNamedGraph,
+  parseTurtleString,
+  validateDataset,
+  enrichValidationReport,
+  saveDatasetToNamedGraphs,
+  deletePreviousReports,
+  getNamedGraphsForBestuurseenheidId,
+} from "./helpers.js";
+import env from "env-var";
 
-const ONLY_KEEP_LATEST_REPORT = process.env.ONLY_KEEP_LATEST_REPORT != undefined ? env.get('ONLY_KEEP_LATEST_REPORT').asBool() : false;
+const ONLY_KEEP_LATEST_REPORT =
+  process.env.ONLY_KEEP_LATEST_REPORT != undefined
+    ? env.get("ONLY_KEEP_LATEST_REPORT").asBool()
+    : false;
 
 const reportName = "ShaclReport";
 
@@ -18,42 +31,58 @@ export default {
 
     // Configure here the bestuurseenheidclassificaties (gemeente, OCMW) to validate
     const interestedBestuurseenheidClassificaties = [
-        'http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001',
-        'http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002'
-    ]
+      "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001",
+      // since we also include the ocmw data when validating the gemeente, we don't need to validate ocmw separately
+      // "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002",
+    ];
     // Configure the bestuursperiode to validate
-    const bestuursperiodeLabel = '2024 - heden';
+    const bestuursperiodeLabel = "2024 - heden";
 
     // Retrieve URI and UUID of bestuurseenheden
-    const uriAndUuids = await getBestuurseenhedenUriAndUuid(interestedBestuurseenheidClassificaties);
+    const uriAndUuids = await getBestuurseenhedenUriAndUuid(
+      interestedBestuurseenheidClassificaties
+    );
 
     // Read all SHACL files in the shacl folder
-    const shape = await mergeFilesContent('./config/shacl');
+    const shape = await mergeFilesContent("./config/shacl");
     const shapesDataset = await parseTurtleString(shape);
 
     // Validate for each bestuurseenheid
     for (const uriAndUuid of uriAndUuids) {
       try {
         // Retrieve all triples within the bestuurseenheid graph limited to the bestuursperiode
-        const dataDataset = await executeConstructQueryOnNamedGraph(uriAndUuid, bestuursperiodeLabel);
+        const dataDataset = await executeConstructQueriesOnNamedGraph(
+          uriAndUuid,
+          bestuursperiodeLabel
+        );
 
-        console.log('Running SHACL validation...');
+        console.log("Running SHACL validation...");
         const startTime = Date.now();
         const report = await validateDataset(dataDataset, shapesDataset);
         const endTime = Date.now();
-        console.log(`SHACL validation took ${(endTime - startTime) / 1000} seconds.`);
+        console.log(
+          `SHACL validation took ${(endTime - startTime) / 1000} seconds.`
+        );
 
         // Enrich validation report by removing blank nodes, adding timestamp etc.
-        const enrichedValidationReportDataset = enrichValidationReport(report.dataset, shapesDataset, dataDataset);
+        const enrichedValidationReportDataset = enrichValidationReport(
+          report.dataset,
+          shapesDataset,
+          dataDataset
+        );
 
-        saveDatasetToNamedGraph(enrichedValidationReportDataset, generateNamedGraphFromUuid(uriAndUuid.uuid));
+        const namedGraphs = await getNamedGraphsForBestuurseenheidId(
+          uriAndUuid.uuid
+        );
+
+        saveDatasetToNamedGraphs(enrichedValidationReportDataset, namedGraphs);
         console.log(`SHACL validation report saved in triple store.`);
 
-        if(ONLY_KEEP_LATEST_REPORT) {
-          await deletePreviousReports(generateNamedGraphFromUuid(uriAndUuid.uuid));
+        if (ONLY_KEEP_LATEST_REPORT) {
+          await deletePreviousReports(namedGraphs);
         }
       } catch (error) {
-          console.error('Error:', error);
+        console.error("Error:", error);
       }
     }
   },

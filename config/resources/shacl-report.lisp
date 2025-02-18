@@ -12,6 +12,8 @@
 (define-resource validationresult ()
   :class (s-prefix "sh:ValidationResult")
   :properties `((:focus-node :string ,(s-prefix "sh:focusNode"))
+                ;; else we would need a polymorphic relation of any type and I don't think resources can do that
+                (:focus-node-id :string ,(s-prefix "lmb:targetIdOfFocusNode"))
                 (:result-severity :string ,(s-prefix "sh:resultSeverity"))
                 (:source-constraint-component :string ,(s-prefix "sh:sourceConstraintComponent"))
                 (:source-shape :string ,(s-prefix "sh:sourceShape"))

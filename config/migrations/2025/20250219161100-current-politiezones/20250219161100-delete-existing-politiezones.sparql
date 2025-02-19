@@ -1,0 +1,30 @@
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  DELETE {
+    GRAPH ?g {
+      ?org ?p ?o.
+      ?orgt ?pt ?ot.
+    }
+  }
+  WHERE {
+    ?politiezone besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> .
+    GRAPH ?g {
+      ?org besluit:bestuurt ?politiezone.
+      ?org ?p ?o.
+      OPTIONAL {
+        ?orgT mandaat:isTijdspecialisatieVan ?org.
+        ?orgT ?pt ?ot.
+      }
+    }
+  };
+  DELETE {
+    GRAPH ?g {
+      ?politiezone ?p ?o.
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?politiezone besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> .
+      ?politiezone ?p ?o.
+    }
+  }

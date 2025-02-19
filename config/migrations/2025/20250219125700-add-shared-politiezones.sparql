@@ -1,0 +1,352 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ns0:	<http://mu.semte.ch/vocabularies/ext/>
+PREFIX ns1:	<http://data.lblod.info/id/bestuurseenheden/>
+# insert voorzitter
+INSERT {
+  GRAPH ?g {
+    ?orgT org:hasPost ?mandaat.
+    ?mandaat org:role <http://data.lblod.info/id/lb-mandaat-classificatiecode/22da4572-4818-454b-bbd4-28a9ea97856c>.
+    ?mandaat a mandaat:Mandaat.
+    ?mandaat mu:uuid ?id.
+  }
+}WHERE {
+  ?org <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/1afce932-53c1-46d8-8aab-90dcc331e67d>.
+  GRAPH ?g {
+    ?orgT mandaat:isTijdspecialisatieVan ?org.
+  }
+  BIND(STRUUID() AS ?id)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?id)) AS ?mandaat)
+};
+# insert lid
+  INSERT {
+  GRAPH ?g {
+    ?orgT org:hasPost ?mandaat.
+    ?mandaat org:role <http://data.lblod.info/id/lb-mandaat-classificatiecode/28d0ed76-e1a3-4c90-89df-4d11587390b3>.
+    ?mandaat a mandaat:Mandaat.
+    ?mandaat mu:uuid ?id.
+  }
+}WHERE {
+  ?org <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/1afce932-53c1-46d8-8aab-90dcc331e67d>.
+  GRAPH ?g {
+    ?orgT mandaat:isTijdspecialisatieVan ?org.
+  }
+  BIND(STRUUID() AS ?id)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?id)) AS ?mandaat)
+};
+# link blankenberge and zuienkerke
+INSERT DATA {
+  GRAPH <http://mu.semete.ch/graphs/public> {
+    <http://data.lblod.info/id/bestuurseenheden/003e84121111866af60611a59e13d4c478718f60472655936edec1e352a34c5f>	ns0:deeltBestuurVan	ns1:cdcd4403-d4cd-4400-80a3-9882d79933f4 .
+    <http://data.lblod.info/id/bestuurseenheden/00eb231f51bd6b4f5dcc6536b2d09a174ea8583f5bf28b10bc4fc769a07e511d>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7cb2089a8c6746d514711908abfd38414a2b01f6ad9a83f28be2e835888b3da7> .
+    <http://data.lblod.info/id/bestuurseenheden/011a6ad0efca0b7e03ca9b99bd6c636a26cbde49aa0d6844b9ebc434dc58216c>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/0610b306e95fae751dc07050565e987f31ba06420863bc44616b2e05452d8822> .
+    <http://data.lblod.info/id/bestuurseenheden/01f5df79d1c889c5fb42592a72d7aa50bcfc77a8d04c7f2015df993b0e479835>	ns0:deeltBestuurVan	ns1:cdcd4403-d4cd-4400-80a3-9882d79933f4 .
+    <http://data.lblod.info/id/bestuurseenheden/02c739446ed9f2585fd96cb4c25743106462a589aa6d6f3e5feb088f025e6851>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/25572d6c63bc386d742bbb6ac0d8ddc739dc0599e156c6eac68aca492390840e> .
+    <http://data.lblod.info/id/bestuurseenheden/0327a51548f73607f8a5ec11b36711a3c96703686ad93a3d632718c135c295db>	ns0:deeltBestuurVan	ns1:c16d166294750ae2c48acae9855a49cd3280a3597c0d8f3257021c68fdede345 .
+    <http://data.lblod.info/id/bestuurseenheden/03ff483dadbae6e23f785f5b428248911bec4f5b3ce2559e960d0d8f32f15619>	ns0:deeltBestuurVan	ns1:dbfedd56289924d8a7cc26a5aada392281547e053a10c0678238fc08a219fb6e .
+    <http://data.lblod.info/id/bestuurseenheden/05441122597e0b20b61a8968ea1247c07f9014aad1f1f0709d0b1234e3dfbc2f>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E848329299CC832892A1B> .
+    <http://data.lblod.info/id/bestuurseenheden/0584f1096c6eb744a680d13e4974ff85744ec9aa163e31833acaa694c8c9c6c8>	ns0:deeltBestuurVan	ns1:dad37923-85b4-4c30-8bd6-050061bde51c .
+    <http://data.lblod.info/id/bestuurseenheden/08e1b1e460bc9a9dfbd6570ab96a6b4813fbd4d9df2294dad86b11d9e4093d32>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    <http://data.lblod.info/id/bestuurseenheden/0916618d3560fe5a168ef536c25ffaddb15ef6ce43105d3ed20df38615803c77>	ns0:deeltBestuurVan	ns1:bb9a9db9c00189c27a851f0b772772675cba77e2463ab734477d00e4294db5df .
+    <http://data.lblod.info/id/bestuurseenheden/09f5b10fbd078fcb1e0e4910d32e47146a5eb31d8138dcbaec798309e64dd059>	ns0:deeltBestuurVan	ns1:e7692f99-9a36-43e3-af78-b320390318dc .
+    <http://data.lblod.info/id/bestuurseenheden/0a3ba641d653b436b14fde37bb6eab4f1054aa0586eb98021b723d58f6ce82fb>	ns0:deeltBestuurVan	ns1:b2fdc615ffb131e53a200e14c74ac92d4ed6dac176e3e6ea2c79d227835077c9 .
+    <http://data.lblod.info/id/bestuurseenheden/0a71e2b47c58e6d13ac628f733863543b791869395afcfe5b5c82c98ff894e3d>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/306340a51c1504e59f1c3b85c1ba1b62de8c70cb94d3998f27819761bcee5a98> .
+    <http://data.lblod.info/id/bestuurseenheden/0bb11f642e87a81479446ebe4938947cbc35da5f7516a3d5a9667b67d5024574>	ns0:deeltBestuurVan	ns1:e39d8bf95a03ade08ef25a79ebc050abfc81a69731f1de66fe6d031d27135aac .
+    <http://data.lblod.info/id/bestuurseenheden/0c2d775df43f87d2048eb26c322d1bc9423e0a3f0ee7ceefd2011cdb077f12df>	ns0:deeltBestuurVan	ns1:da737a74e5094054c3bb3ef077839626a02eb79d148e15cfeee18e10c18ba55a .
+    <http://data.lblod.info/id/bestuurseenheden/0c4cf1788b1bf8838ed9c7fe9839e49a1120b2dd1d005a52bc4f718c25ca06fb>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/68ad1301fbb5f209b4ef0fe2b11e77c7bea6011f5e28f8f6875597a7b08f0f1e> .
+    <http://data.lblod.info/id/bestuurseenheden/0d2e643f4635d2b4d2fc75241a1624013b274c7ffbe8f8a5f36f2bf250336863>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/90688b32e0808b6ebbb7b36030526750236527e8019414449065f57ea384ce71> .
+    <http://data.lblod.info/id/bestuurseenheden/0efaaec80a4ad0328aebadee1ad36a787adff5e31490795ea411fb3644be7f60>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/46616861cfaae13b550a36ae5c05187638df0873024f13043d3f40f24cabf4e6> .
+    <http://data.lblod.info/id/bestuurseenheden/0f8e458aac514d1966ff7594b23fe784dba93ccff5d63fdfa279879eb007233a>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/80a9ab8eb46716ab23c597d13313ce24b17884ffcbdf00d216b877d57a52ade4> .
+    <http://data.lblod.info/id/bestuurseenheden/0fa622b92c507c69fa6d4aa4ab8fc79eac8f841b4fecfb1ad27245bfb6310f50>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/31bceaaaa3f4019e85edfe0e509340aa30554d0f3bb343616841c20641788b6e> .
+    <http://data.lblod.info/id/bestuurseenheden/104f32d7fb8d4b8b61b71717301656f136fe046eabaf126fb3325896b5c2d625>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E848329299CC832892A1B> .
+    <http://data.lblod.info/id/bestuurseenheden/1086df7c6c150e427fc56e2239eed2b7e2d9d4a97abb24c00e951ec89f9bcbec>	ns0:deeltBestuurVan	ns1:a62fddadcb0a8fb878c3edbdc71a4eb1e6c419b212d41a8bd589fb1a370eb112 .
+    <http://data.lblod.info/id/bestuurseenheden/11e23f966461f4740579b5ac2745421c6a3c3f42a9dbd4df7bd3d3f21e44f129>	ns0:deeltBestuurVan	ns1:fa52110c7c3e70feab724980e2d991a97712a1deeeb25b168ef6de7b16de41ae .
+    <http://data.lblod.info/id/bestuurseenheden/1313d4a58f9ecf52cc7e274e3549a759b35e731973cc9f5e07562e5650f594dd>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/9cb5a65d9190da4bb96d0f59882cbcfb34248d354e6bd27101fccba186f4c7b7> .
+    <http://data.lblod.info/id/bestuurseenheden/13eec34a405a478eab20b99eb813f2d0f409c0f8b28960b229637b394b82f880>	ns0:deeltBestuurVan	ns1:c7d15b793e42f0024e56ae7a89d02f8d6f491ec42cd2ece4c856ee24b154559d .
+    <http://data.lblod.info/id/bestuurseenheden/1490ca18f894573f76065dc4fdfa2f9c0bcb00964a6af2e21ff8a81e9f1d1198>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/08b6bdc2c34dacae28168cf967ef2e13384f032a147ddaea7f1145eff4f0d161> .
+    <http://data.lblod.info/id/bestuurseenheden/156dad76d5d8e30d26b501d715fd237b38cbae60e76753a09d897fd317ab914c>	ns0:deeltBestuurVan	ns1:f4838c2bb548a35f92a6ddcf725676b9f137f3fcb11e6737caa7cab1f1314e27 .
+    <http://data.lblod.info/id/bestuurseenheden/169b6bfa2d8ee340f266af26d1a6055182214082dca720b8817d3893692f3068>	ns0:deeltBestuurVan	ns1:c7778ecc532ee037ab821de348f7c6d98ed5b2401abce2e7da64687290c08962 .
+    <http://data.lblod.info/id/bestuurseenheden/17e71437ad9e1abbfd416b7bcb1485c0e6e21ac4f65f2a1584eb0985e246b1c9>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/622fa725ba8455b01817c8e48974edeab56607018fce5c1cb3694306d3e7005c> .
+    <http://data.lblod.info/id/bestuurseenheden/18eb574437cc9fa5af24990f495aaed7af868d33341faf60cffa2ee0e57dc914>	ns0:deeltBestuurVan	ns1:f5094b8d7f26d69d04ba2c469a09e0c6dc08a78615c9483fd97d6d029e064121 .
+    <http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E959629299CC832892A24> .
+    <http://data.lblod.info/id/bestuurseenheden/19a90656ebde5754d524ca8a17d06b857a6392b0b3db57dd24f899a1b71eda7d>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/08b125860dd7716256dd35ba2e38a009206555f29adc44642c655450a471ebef> .
+    <http://data.lblod.info/id/bestuurseenheden/1b11f7f11c3c74c54acf86b8c1a9b8b2865e22b8973818486045a5d3aa8dff14>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81dd243d-f66c-4157-b105-5407aa83cb62> .
+    <http://data.lblod.info/id/bestuurseenheden/1b17382556917a15828249872bc4f913a24f7656cd5722be270f0e31b9ff0c06>	ns0:deeltBestuurVan	ns1:e4f4aa293734f92302439270cf98805e4b617088cb19144b558db2dff087d886 .
+    <http://data.lblod.info/id/bestuurseenheden/1b983548dc44e39bc920a7a8ec1901b692a664865d5fee5133ae96e7281eca6f>	ns0:deeltBestuurVan	ns1:dbfedd56289924d8a7cc26a5aada392281547e053a10c0678238fc08a219fb6e .
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af>	ns0:deeltBestuurVan	ns1:c16d166294750ae2c48acae9855a49cd3280a3597c0d8f3257021c68fdede345 .
+    <http://data.lblod.info/id/bestuurseenheden/1cb4914d7d6a57869d4d9cf68abe20151334b30694e6a7546c155c5beaa6ac8a>	ns0:deeltBestuurVan	ns1:f4838c2bb548a35f92a6ddcf725676b9f137f3fcb11e6737caa7cab1f1314e27 .
+    <http://data.lblod.info/id/bestuurseenheden/1d2b18c49b345b619afdaaae22a13bf31156ef06417399fd59bbc321f15d228b>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/11feae29e6178a2b58ac73bb639360d58248e3e438f2201f219b95b58c6b4ef4> .
+    <http://data.lblod.info/id/bestuurseenheden/1ed8e751e664569fe2792f523f234e66bdc42d9c01736d850ae59e1b2177d70b>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/306340a51c1504e59f1c3b85c1ba1b62de8c70cb94d3998f27819761bcee5a98> .
+    <http://data.lblod.info/id/bestuurseenheden/1f1e0b8819cb311774b62e85f5d701fcd0a50410894da331687b66b4ce3e96c5>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/11feae29e6178a2b58ac73bb639360d58248e3e438f2201f219b95b58c6b4ef4> .
+    <http://data.lblod.info/id/bestuurseenheden/20b0849eb27533844f4f6c7acb3b8a5bee02a6d2dd5abbc74e07dcfb720716a2>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/2ca642d589b8012fe65bf54df3a87f740acac78624a902ad378dc4ee6c50a848> .
+    <http://data.lblod.info/id/bestuurseenheden/23bb41cfe7b4cb3af101ef96bf9ef0466d19997c0e100123722371d369d580b1>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E848329299CC832892A1B> .
+    <http://data.lblod.info/id/bestuurseenheden/23d04e951dabc6c108803eac7e8faf08c639ba6984d1cda170f09fbd8a511855>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/96d87c4956c98414938dd5fceeb05f65feebf21fbe5918e6d23bc2b58a7fc716> .
+    <http://data.lblod.info/id/bestuurseenheden/243e6582a03e891c3a30a3e5db7552c83e703a609f82e1c5db8844a7ad1c8924>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e0e2e69be463a4628f87bffe7dc6206aa6daa4a5516fb4ce11907f57d77079> .
+    <http://data.lblod.info/id/bestuurseenheden/2564e21e3650f91625189ccb7eb055e47754a0633c54c7582a899171fef60c52>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e3e46f7cf031133152e763eaa26cab3df81f842f9912a25c69c445f0c428b8> .
+    <http://data.lblod.info/id/bestuurseenheden/25c9ed309395f3dafc25ae14e5fd515a729f260eda74fa2ab8b3cb02adb85c84>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5018524f9ceca4f9e21764f9e8e4e63d1ad6890c338c090d0dd074faccf1bfb2> .
+    <http://data.lblod.info/id/bestuurseenheden/25fc615f81f2032ee7126108474e842b418c890c3755f9e1efc58ac6dc59d1fc>	ns0:deeltBestuurVan	ns1:dce9ffab7edf87d670ce7ec399084fc2e12c6b5bb300b865e87c5237beae4ae0 .
+    <http://data.lblod.info/id/bestuurseenheden/26721daac0558a8a9efee4fc9d1141733844b3a6eb0813401546eb805a978182>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/414f3538e482d3c1c21382ca22de18998ca1d3f5b517ced85946ecf90143149c> .
+    <http://data.lblod.info/id/bestuurseenheden/26e9007dd8e6316c45488b1c4d5ceff1707d25e67b892f82c166ee889c0c2e41>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/0610b306e95fae751dc07050565e987f31ba06420863bc44616b2e05452d8822> .
+    <http://data.lblod.info/id/bestuurseenheden/28346950e285b8b816133fece5ac9408097c3f190c7f32573cf0c640d6c34b1a>	ns0:deeltBestuurVan	ns1:eed6ef4fd7723fca33613bb9c9570825be3f8e50c32ce9456ded3d54bc624370 .
+    <http://data.lblod.info/id/bestuurseenheden/290c4b53b407dcb12457bd32c9c33e521f9a43e8743a64b02294c72d114ec6b7>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/31bceaaaa3f4019e85edfe0e509340aa30554d0f3bb343616841c20641788b6e> .
+    <http://data.lblod.info/id/bestuurseenheden/2ac1bb2a7d7bbd98e2e7a24be2c67e42171788a71c2436a33060626593bb2f78>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/9cb5a65d9190da4bb96d0f59882cbcfb34248d354e6bd27101fccba186f4c7b7> .
+    <http://data.lblod.info/id/bestuurseenheden/2ad0d123f4a81787572342c394a1917b81752f42d802d1e013941f56b53bdd2a>	ns0:deeltBestuurVan	ns1:d5d6693850ba1a749739c4574e7c75a98820629fdbbbbb143b7a4f7c279247ea .
+    <http://data.lblod.info/id/bestuurseenheden/2d6f7aa09c55d347a56da51c583f762843fca5da4acd824ee2dede879a197a7a>	ns0:deeltBestuurVan	ns1:a31131dd72b614c89184b331821c10a0f8feb109881a1b164749e9c8941c5e6b .
+    <http://data.lblod.info/id/bestuurseenheden/2f003f9d0696af25e0864d01b3a40d3d38249d14f253edbafe2ff106237abf1c>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/41e3bb71cb1fe2763a64ce47ee758fbeb532fbd4348281f34a86a5f88dd71980> .
+    <http://data.lblod.info/id/bestuurseenheden/2f980d9d54c35e0a61137da4eacfe4bef20246e18983449ce15dcd3d2a83f509>	ns0:deeltBestuurVan	ns1:fa52110c7c3e70feab724980e2d991a97712a1deeeb25b168ef6de7b16de41ae .
+    <http://data.lblod.info/id/bestuurseenheden/2fb596ee22eb20999478e63cfb8f270ab00e4336e34442c031471293ca6f92e8>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/8a72024e99b1e083aca28a026122ad2bc517372bc18e95210fb54f080136e3f8> .
+    <http://data.lblod.info/id/bestuurseenheden/304af9edc6185856c8b005c8d33276581b84b2c90cb2a48a0584e3802b7a9813>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/0610b306e95fae751dc07050565e987f31ba06420863bc44616b2e05452d8822> .
+    <http://data.lblod.info/id/bestuurseenheden/30ffe6401585d30b839b382a730c253255d88403dd5baf70b4a3e60f1bd03cc0>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7ddda00fc45a0994092bc26f30d97352b7586676438d5557b3f5cc336daab063> .
+    <http://data.lblod.info/id/bestuurseenheden/319016d52cb54b416721b0c5fc74f211fdd4dd576d13a34aa9210759401dc7f2>	ns0:deeltBestuurVan	ns1:b77b75f239b9a14e40750981aa88976e46df7ddf83c3554103409a4a2291fea3 .
+    <http://data.lblod.info/id/bestuurseenheden/319db6e275f281d0280da90d6f6aba3462f4e47b6f53a34639feb91015a5822b>	ns0:deeltBestuurVan	ns1:cdcd4403-d4cd-4400-80a3-9882d79933f4 .
+    <http://data.lblod.info/id/bestuurseenheden/32ff6774dcd0547c842f7b065f7b1f9441fba0ea2b2586700a0426795787b2f5>	ns0:deeltBestuurVan	ns1:c747c462297c0fd1d31076b8f5b20e23aa3309ccb0f5b0b072097aa7612950e9 .
+    <http://data.lblod.info/id/bestuurseenheden/3499c07d07336622b8880bd8fd9bd49667f88d6998755cb1dc31f58012248b43>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e0e2e69be463a4628f87bffe7dc6206aa6daa4a5516fb4ce11907f57d77079> .
+    <http://data.lblod.info/id/bestuurseenheden/353234a365664e581db5c2f7cc07add2534b47b8e1ab87c821fc6e6365e6bef5>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5187962dfd40789953d4fbde3634751ee90b48b17147c585ccf4f2ac1ee72fd3> .
+    <http://data.lblod.info/id/bestuurseenheden/36f1c660b51e5809170f17ce6bf420a9ad7bf596f049d0d2f2c638f107e8c509>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/306340a51c1504e59f1c3b85c1ba1b62de8c70cb94d3998f27819761bcee5a98> .
+    <http://data.lblod.info/id/bestuurseenheden/38dc63f50a4f7ea61ef741d8944a874a59ba84b69b9ff3e73f69680da2c6ef37>	ns0:deeltBestuurVan	ns1:bb9a9db9c00189c27a851f0b772772675cba77e2463ab734477d00e4294db5df .
+    <http://data.lblod.info/id/bestuurseenheden/393a7495daffabe3dabd5d341673287cedc58485c3c8bc273cbd058e735dfee2>	ns0:deeltBestuurVan	ns1:c16d166294750ae2c48acae9855a49cd3280a3597c0d8f3257021c68fdede345 .
+    <http://data.lblod.info/id/bestuurseenheden/3b1e0143755729396654f651bfed689681274839c427f9598e930d816fb7a1c8>	ns0:deeltBestuurVan	ns1:beff71011cde3ac0ee0d94b592462be141cc9f0deb5c6ea996ea191bf79ae2fe .
+    <http://data.lblod.info/id/bestuurseenheden/3b337ebeb02ede5e152c952e2f24aa1bff3ebbb6afb968a647cb05efe72c0237>	ns0:deeltBestuurVan	ns1:beff71011cde3ac0ee0d94b592462be141cc9f0deb5c6ea996ea191bf79ae2fe .
+    <http://data.lblod.info/id/bestuurseenheden/3b6163727a5930106e631885999aa8e1dbd24eaf1931367b7f38123a89f14f10>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    <http://data.lblod.info/id/bestuurseenheden/3be4b70020a4e13d92d67de7e0624d365cf0909ca69eeedf6f95b0690c96f076>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/97a393c64a3c30e619bc115ab8b2bbe0bd7a83265ebb8960c0f1154b9628d340> .
+    <http://data.lblod.info/id/bestuurseenheden/3e3d8146912fb57b6f7c4c665051351b6dd1a92730f363a17bddabe58bcdeb51>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/08b125860dd7716256dd35ba2e38a009206555f29adc44642c655450a471ebef> .
+    <http://data.lblod.info/id/bestuurseenheden/3e58880a542424b73f85c9ffba8837b0da40d8c43e936c92603cde2015f5cdae>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5ba4a42bd459dda75ce452a253ddc09547174265456ad1e3f9389a3ff139a1f9> .
+    <http://data.lblod.info/id/bestuurseenheden/3eb8c9fae32d02359dcd7b22e2a74e67a5b48388df31ad819c27c688fedd10b0>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7cb2089a8c6746d514711908abfd38414a2b01f6ad9a83f28be2e835888b3da7> .
+    <http://data.lblod.info/id/bestuurseenheden/3f1ec7f1afc4cc466bb3a7fe5bc43199bf600963ec3231e1480a23d103a438a7>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/477e468496131b7d35f145b0361bca5c2cad577fd9ec27d385d703942dc944d0> .
+    <http://data.lblod.info/id/bestuurseenheden/3f2f378a666a52e74cb283fa75718e27d7f3adbf16ffcab02dac203a9f756721>	ns0:deeltBestuurVan	ns1:b5aee7f43fc9c5d0df74e2cbb9214c03c425cf026b1fd77dd1e3b08e5fc7f875 .
+    <http://data.lblod.info/id/bestuurseenheden/416aada66520f1b6f4eb79177cefa7c5815bfb85fd455431c1ef91fd333769fd>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/11feae29e6178a2b58ac73bb639360d58248e3e438f2201f219b95b58c6b4ef4> .
+    <http://data.lblod.info/id/bestuurseenheden/421187a1c73dac9514080c9eee61d018a1fb93977cf7aa96bff64f35dfd08961>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E966229299CC832892A2D> .
+    <http://data.lblod.info/id/bestuurseenheden/42887f141929197c227828071ec7dec4cb5435794fedfc7fcf901648e0ea4742>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81334af3-1b6f-4308-aca3-107121462d56> .
+    <http://data.lblod.info/id/bestuurseenheden/43d5a7c66986ee2e88090b3988ea0179ad4abf5bbfb8864fc44012aa181d0e4d>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/46616861cfaae13b550a36ae5c05187638df0873024f13043d3f40f24cabf4e6> .
+    <http://data.lblod.info/id/bestuurseenheden/4411539b345d3b7ffa3f9ac54fce0fc381e579b999c46cb11c7d9af03aa04a79>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E959629299CC832892A24> .
+    <http://data.lblod.info/id/bestuurseenheden/44c5d81bf86b888159e3c2ee2cf3fd39e4afd58c73edc27245111c8a32bf5fa0>	ns0:deeltBestuurVan	ns1:d5d6693850ba1a749739c4574e7c75a98820629fdbbbbb143b7a4f7c279247ea .
+    <http://data.lblod.info/id/bestuurseenheden/47368dce85e1d529ee837f53d1822243e7c235f0a9cac6ffe5620bb1d6758a31>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    <http://data.lblod.info/id/bestuurseenheden/475062d945c58733894b4c506471bf7ce43c6fffde9a83bd5e390ad040203781>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5dab8a7b0656aaf0db13044fcafc0088f9f0b7776c294a6e9abfdbf7420effae> .
+    <http://data.lblod.info/id/bestuurseenheden/476ddecbaf169d4c9af3ca8ed6725f4efebdfdb9647fe82ec4406496c6e930d9>	ns0:deeltBestuurVan	ns1:b5aee7f43fc9c5d0df74e2cbb9214c03c425cf026b1fd77dd1e3b08e5fc7f875 .
+    <http://data.lblod.info/id/bestuurseenheden/47857958-7d00-47e0-ae83-00d914eca93f>	ns0:deeltBestuurVan	ns1:e7692f99-9a36-43e3-af78-b320390318dc .
+    <http://data.lblod.info/id/bestuurseenheden/479540ea9de26a669c2c7e6cf5c98a2102c1771c48f63808e0e9b41db24dd575>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81dd243d-f66c-4157-b105-5407aa83cb62> .
+    <http://data.lblod.info/id/bestuurseenheden/484b4d65dee04db442889741026527199e484ad1249a9a96401b45718d6d497b>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/90688b32e0808b6ebbb7b36030526750236527e8019414449065f57ea384ce71> .
+    <http://data.lblod.info/id/bestuurseenheden/48fc71248bff17e9a5ca8f2c5c95d38ea551084b82e944cf7121749555ea00c9>	ns0:deeltBestuurVan	ns1:a31131dd72b614c89184b331821c10a0f8feb109881a1b164749e9c8941c5e6b .
+    <http://data.lblod.info/id/bestuurseenheden/4968b47120d51c329a12c6bd6742ab220cbef8f6720da3ad8e6a499150a1168d>	ns0:deeltBestuurVan	ns1:e65a70ecf702fb23f1447e234eab584fe788e9618fb7d52cd1d562718207b499 .
+    <http://data.lblod.info/id/bestuurseenheden/4a617484e231a6bde8dc15060a02642cf1730faa9c0e1dce0b7e6e29985deb04>	ns0:deeltBestuurVan	ns1:ff7d80dc-ec00-43ac-ac7e-d51694df37ff .
+    <http://data.lblod.info/id/bestuurseenheden/4adb22348ac4f9e8aa3872c9366df56df12fcb49a854eac06b4c6ab3625bb75f>	ns0:deeltBestuurVan	ns1:d6fe7204ffe4c6c227156eb34caddcd860f911cc98728f9593d9cd7d28d3161d .
+    <http://data.lblod.info/id/bestuurseenheden/4b93b99b2a80c6ce4e64850589a8c0163fc055b074b061a64add3e1af303f1fe>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E966229299CC832892A2D> .
+    <http://data.lblod.info/id/bestuurseenheden/4c1ddb45485a5dc672a57e8347318cf5d60a16fc2e527ad055d3f69654e11b5a>	ns0:deeltBestuurVan	ns1:a691d36ff95b67005d30d5fb89594dab69ec7fdbf975ffdcd36ef9bb39efb06d .
+    <http://data.lblod.info/id/bestuurseenheden/4e6d15d5c7fd95c996087bb13cdee985f0b550256be745024d5facd1485df284>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7271a57b8249b4dd3175f50ea96c66ff536eff057c6bc0acfe40281e2a91ddc2> .
+    <http://data.lblod.info/id/bestuurseenheden/4f0eb4436c88cf831c35f84e7c34ce32f9ee4e99c5139aff62990e5e531aa1e7>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E959629299CC832892A24> .
+    <http://data.lblod.info/id/bestuurseenheden/4fb8eb24aa9d5561f3cd7b502715fc758f41b71aafa13b872ee8aeb1d027dbe9>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/90688b32e0808b6ebbb7b36030526750236527e8019414449065f57ea384ce71> .
+    <http://data.lblod.info/id/bestuurseenheden/4fd07fa6c794ef12a12c17976570c2bae5fe62dcc373a09032276397ae153f04>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81083789b63917e32ab90ef1a45adf893f370ee38da2e0542e5c035db4f60794> .
+    <http://data.lblod.info/id/bestuurseenheden/4ff28976ce6eb2a8d6bd19346f5b4de202c53bc5b33904205c8cc580877e4769>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e3e46f7cf031133152e763eaa26cab3df81f842f9912a25c69c445f0c428b8> .
+    <http://data.lblod.info/id/bestuurseenheden/5116efa8-e96e-46a2-aba6-c077e9056a96>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/65EB0324E77A4F2289F6B63D> .
+    <http://data.lblod.info/id/bestuurseenheden/514bd3d6ba551d4b2a7e866c7dafd65e371acd75240dc92610590c5804c641df>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7271a57b8249b4dd3175f50ea96c66ff536eff057c6bc0acfe40281e2a91ddc2> .
+    <http://data.lblod.info/id/bestuurseenheden/51689560fe677738ed03e8a14dc01723d0f865c488f5f47c388622f332241e2d>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/9cb5a65d9190da4bb96d0f59882cbcfb34248d354e6bd27101fccba186f4c7b7> .
+    <http://data.lblod.info/id/bestuurseenheden/52cc723a-9717-496d-9897-c6774cf124e4>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E966229299CC832892A2D> .
+    <http://data.lblod.info/id/bestuurseenheden/530983bec9d00f1ab745b2eec290d35200c1011c592bd5694782680bf055092b>	ns0:deeltBestuurVan	ns1:a31131dd72b614c89184b331821c10a0f8feb109881a1b164749e9c8941c5e6b .
+    <http://data.lblod.info/id/bestuurseenheden/53eb88088ce2822bcef97df5f71154045e113b750c6b97b29793a29c4f0ac7b4>	ns0:deeltBestuurVan	ns1:a32dc005ecbc001abd3338cdacb111895d3053b313654136ef1903035c10a53c .
+    <http://data.lblod.info/id/bestuurseenheden/54c9a2a4a577fc2f6888bdf2b43d439ae59ae26a3db344546c7a713f2aab2bce>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/19ac0fa207989c27c3391e327aee16435475292296f010867945bf2987f95477> .
+    <http://data.lblod.info/id/bestuurseenheden/55155a78bd145df7bfa3caaa17ba491fb4dd238f4f4d2c5485bff1be96ca3036>	ns0:deeltBestuurVan	ns1:d847f2f345c5e58882e0e468c31de8868e71a73f4cbfa63823de17da3c7f1942 .
+    <http://data.lblod.info/id/bestuurseenheden/56423901b281897688074e6ce6811a6a33eec4070da7e22c4fae65050d7b712f>	ns0:deeltBestuurVan	ns1:b6fb86dcca01c89d6787801c958d6b8551f3755ec6f1c35bb97c0cf37b9ddc2c .
+    <http://data.lblod.info/id/bestuurseenheden/5679c9292547a19a6186dfccb4047045f8a9c4d24435a6daf45226b3d675558f>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7ddda00fc45a0994092bc26f30d97352b7586676438d5557b3f5cc336daab063> .
+    <http://data.lblod.info/id/bestuurseenheden/571b85dc585067ac92f9de90133e747c75f3f7e7948087ae193583b9f0fe1141>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81dd243d-f66c-4157-b105-5407aa83cb62> .
+    <http://data.lblod.info/id/bestuurseenheden/57b1646f-bf4c-4dc4-8bc9-6ec8a6486018>	ns0:deeltBestuurVan	ns1:dad37923-85b4-4c30-8bd6-050061bde51c .
+    <http://data.lblod.info/id/bestuurseenheden/59eaecae469f80eccaf6d36a165927eb8ee8749b9866ab1730e6b1ba45dfaaa7>	ns0:deeltBestuurVan	ns1:f398f3ebafe08244f84eac783b61eac71c60bd39b8ca9ee8d9c2a4dc8638a772 .
+    <http://data.lblod.info/id/bestuurseenheden/5a4b2b4f1de1f3b91b0348a7eb6d6aa0ef9420b8ec31374970c9ffe933a79515>	ns0:deeltBestuurVan	ns1:fa52110c7c3e70feab724980e2d991a97712a1deeeb25b168ef6de7b16de41ae .
+    <http://data.lblod.info/id/bestuurseenheden/5a7f00816df0382694760a86baf23bb6c72a7ab5de0eb7f6db8c38a24b9c9aba>	ns0:deeltBestuurVan	ns1:dbfedd56289924d8a7cc26a5aada392281547e053a10c0678238fc08a219fb6e .
+    <http://data.lblod.info/id/bestuurseenheden/5a8f9c6bde6c6b01bee07d9dbed16a8b685851865d5083edbf617a4dbd2e51ce>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7b6bbae823b20191525038cd52089d22128163fb3c7f851ce56149938628d941> .
+    <http://data.lblod.info/id/bestuurseenheden/5d6fcfda3248cb295893be604a9d3e31f0899b2daebb3bd3b30b371d098ee635>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/95871bddebd4ad93db54cb1b40d41af29f7ce08f0b59698b0540be129a9a3433> .
+    <http://data.lblod.info/id/bestuurseenheden/5d814bf5ab1e7ef33db393cb938315910c262743afed3a464e93c1aa25f12e20>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/414f3538e482d3c1c21382ca22de18998ca1d3f5b517ced85946ecf90143149c> .
+    <http://data.lblod.info/id/bestuurseenheden/5db8cd4f01b90c3dfc31f5d2b5e931cfdd9116a779790ee55cb71cd314c5a4bb>	ns0:deeltBestuurVan	ns1:a31131dd72b614c89184b331821c10a0f8feb109881a1b164749e9c8941c5e6b .
+    <http://data.lblod.info/id/bestuurseenheden/5ee75cb5b6f031391189ad0f6ce6fefbc35f7fbfe1e50b7ab57dcab25ccfa139>	ns0:deeltBestuurVan	ns1:e7692f99-9a36-43e3-af78-b320390318dc .
+    <http://data.lblod.info/id/bestuurseenheden/5efa0b9c06f5b70b071e539047bd847dff555b9ce51c1b86b263018a610f5820>	ns0:deeltBestuurVan	ns1:a32dc005ecbc001abd3338cdacb111895d3053b313654136ef1903035c10a53c .
+    <http://data.lblod.info/id/bestuurseenheden/6025a5d1ca2262a784f002edd8ce9ca9073ae3d5ebc6b6b5531f05a29e9250af>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E959629299CC832892A24> .
+    <http://data.lblod.info/id/bestuurseenheden/6093f33e8eacb798481b1f826416eaf310552e9568e74804f59c69dada2187e4>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/80a9ab8eb46716ab23c597d13313ce24b17884ffcbdf00d216b877d57a52ade4> .
+    <http://data.lblod.info/id/bestuurseenheden/61c1066c653e5450f2b0a25baeaf60a14a8df400fc421caca07014b0efb55c96>	ns0:deeltBestuurVan	ns1:b2fdc615ffb131e53a200e14c74ac92d4ed6dac176e3e6ea2c79d227835077c9 .
+    <http://data.lblod.info/id/bestuurseenheden/6377f53f54990033c90de6101e263f4d9e41eb7c3e4f70dec48caccefc253760>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/05354d6fcc016d06f988a0e044fb160be7573550c11fe414b3c011961150a686> .
+    <http://data.lblod.info/id/bestuurseenheden/644341a5338a39472f7d096f3c1619ca0e8325a560f681f58896fa843cb17d2c>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/80a9ab8eb46716ab23c597d13313ce24b17884ffcbdf00d216b877d57a52ade4> .
+    <http://data.lblod.info/id/bestuurseenheden/6463c55877def582f642cb5b3b4a7eab60d8d8dd9779fc45d87e4c8aa5d9a07e>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/479036ca47b011e16fefafbe4d3512a44c564804dc26d331ce4dcbe0fa3366d2> .
+    <http://data.lblod.info/id/bestuurseenheden/64670f8facf973e783fc7dcf5bdb8db91d3460f1a54a262f113c2230b3685af7>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/95871bddebd4ad93db54cb1b40d41af29f7ce08f0b59698b0540be129a9a3433> .
+    <http://data.lblod.info/id/bestuurseenheden/665f6a3b8e4ad7766a1be93578b5d8b6312afa8600c1301388225880fe4eca53>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E959629299CC832892A24> .
+    <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/097191c539cc02e6044671221f3ea0a8428c7fbc8dbdd5f38ee8f02ca51c6082> .
+    <http://data.lblod.info/id/bestuurseenheden/696a100b72d304a89de34ac2f10c9ebbfc82268297f201feca5d60b51c8b883a>	ns0:deeltBestuurVan	ns1:e4f4aa293734f92302439270cf98805e4b617088cb19144b558db2dff087d886 .
+    <http://data.lblod.info/id/bestuurseenheden/698c9e2b9495736610180524294fa5f583cc9fd9da535aa6caba1cb29f0e53b0>	ns0:deeltBestuurVan	ns1:d8d1b52a9170168ad481f2495652e1b9753aea23385f79710abd86549f1373fa .
+    <http://data.lblod.info/id/bestuurseenheden/69af2347b1d0a9a39dbcf0ea4d94b9eaa15edb0c7d2dba56bbd9c39ab1c80e9f>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E966229299CC832892A2D> .
+    <http://data.lblod.info/id/bestuurseenheden/69e815e62d4698903b7db1df39f372317439cb28a8c4ca62aa6bfd1acaa62266>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/0594a740b99274c7347f3492ae4d05f9b05d057a1cbad30683634296e189cc38> .
+    <http://data.lblod.info/id/bestuurseenheden/6a56d8c050b6c2a76912c5f6ec3859b939de6d990815f35403e5be41a7703a44>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5ba4a42bd459dda75ce452a253ddc09547174265456ad1e3f9389a3ff139a1f9> .
+    <http://data.lblod.info/id/bestuurseenheden/6adc5e4321b234c5e026c9b785435c791733fe13655cb3dad402af6b73534516>	ns0:deeltBestuurVan	ns1:a32dc005ecbc001abd3338cdacb111895d3053b313654136ef1903035c10a53c .
+    <http://data.lblod.info/id/bestuurseenheden/6af55cecaea3621f53bb32417a36ed6e3d41b2aa5b9f6d62ab3d80cc8ec11539>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E959629299CC832892A24> .
+    <http://data.lblod.info/id/bestuurseenheden/6cec176758a515b339ebca3b863b8f2b7caf7da58d329ebceee830ab6518bd86>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/165a9a64a6b84a278806b11c3f760f48198990168f591cf7a7462beb0f2cb16b> .
+    <http://data.lblod.info/id/bestuurseenheden/6d323b27377e803eccb4261e8014f5198bba924b7ec3d7d7fa2d2a3a41f7e0f2>	ns0:deeltBestuurVan	ns1:d847f2f345c5e58882e0e468c31de8868e71a73f4cbfa63823de17da3c7f1942 .
+    <http://data.lblod.info/id/bestuurseenheden/6e7e9f3e54866ceeafcbee973e2799e4d1cc8c3970f92af29fd2d66d475c2b3b>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/4ffd00c0ba7ceab20db24832a4b9963112ed66914dcca05f3e5dc8b8b9d4479d> .
+    <http://data.lblod.info/id/bestuurseenheden/6eb63a95ebb0e5fcb9e59b25a264977107e690a46a89755da1637d1427693560>	ns0:deeltBestuurVan	ns1:fa52110c7c3e70feab724980e2d991a97712a1deeeb25b168ef6de7b16de41ae .
+    <http://data.lblod.info/id/bestuurseenheden/7004c5cca97f47f3ea5fd5d011983bed0257432c4dd317c4ebdf1f1d7035890a>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/08b125860dd7716256dd35ba2e38a009206555f29adc44642c655450a471ebef> .
+    <http://data.lblod.info/id/bestuurseenheden/70628fa6e628db4151087aff35bab9b21d2b3701ce3f59f133128daf0c9d14ef>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    <http://data.lblod.info/id/bestuurseenheden/70b79f6678036bf05e970aa3885d1779f143d4eab63ecf339ea6263e7e76ad1d>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/97a393c64a3c30e619bc115ab8b2bbe0bd7a83265ebb8960c0f1154b9628d340> .
+    <http://data.lblod.info/id/bestuurseenheden/71d2d00fdfc37c325895247f203ff4e4ed04cdb756413f5837d64854cc91f7c6>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/65EB0324E77A4F2289F6B63D> .
+    <http://data.lblod.info/id/bestuurseenheden/71e6c6f58d20f6db457245a70394f2d63f601a32f8ccbc7e443e98f8d06b0b0e>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/25572d6c63bc386d742bbb6ac0d8ddc739dc0599e156c6eac68aca492390840e> .
+    <http://data.lblod.info/id/bestuurseenheden/71f6925a4b895c2a91dce039c87d227809edcda82963714814141b1e41631b08>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5d55c0281e70d053158a06a7898bb3e1a89ed48cf111c4b6fc2a9502ebafcade> .
+    <http://data.lblod.info/id/bestuurseenheden/7269d3607a761c9ce0e226e0b7ea5687324230b65a568d48c81a7acba53998fd>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7b6bbae823b20191525038cd52089d22128163fb3c7f851ce56149938628d941> .
+    <http://data.lblod.info/id/bestuurseenheden/72af5d601b193f4fcf18154d643d89481082ecd3eff61720f1cf118057666ac5>	ns0:deeltBestuurVan	ns1:a691d36ff95b67005d30d5fb89594dab69ec7fdbf975ffdcd36ef9bb39efb06d .
+    <http://data.lblod.info/id/bestuurseenheden/72f67d3444ab98d389f85fa57939aad373269bfe15dd47aa6c1a9a24ce1a746b>	ns0:deeltBestuurVan	ns1:ee07affaf869f10517967da1ba7e79151646a1f3621b3cbca591cec2b8c549b7 .
+    <http://data.lblod.info/id/bestuurseenheden/73840d393bd94828f0903e8357c7f328d4bf4b8fbd63adbfa443e784f056a589>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7cb2089a8c6746d514711908abfd38414a2b01f6ad9a83f28be2e835888b3da7> .
+    <http://data.lblod.info/id/bestuurseenheden/75b2e9d02e7790b6c0a23a3885df7e3069723b219091025dddd67ef84ff24c87>	ns0:deeltBestuurVan	ns1:da737a74e5094054c3bb3ef077839626a02eb79d148e15cfeee18e10c18ba55a .
+    <http://data.lblod.info/id/bestuurseenheden/763adc09114dd8d54a1c8bfabeaec5e5ce543d858c3dff057a1c39f9103249a0>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/52bda330e11552b586106748bf652e5dd41163670d5c4226b2c02bfa2f579946> .
+    <http://data.lblod.info/id/bestuurseenheden/764278b3ceac360476b418c108d1b022b6e0cc8fb676f3f6b6b9faf78a2375ba>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7271a57b8249b4dd3175f50ea96c66ff536eff057c6bc0acfe40281e2a91ddc2> .
+    <http://data.lblod.info/id/bestuurseenheden/764a0c6bbc866153ae70cf75d745b9477fa010567246cfe6683b7bb8aec541b4>	ns0:deeltBestuurVan	ns1:b7e07299d7acf9e78f802915227b243c31fc56eadfb575039b81fb871eec9755 .
+    <http://data.lblod.info/id/bestuurseenheden/7650801ef7de6598dbb2d45bb2caa877408defcc1337fa698520a25b85a300da>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    <http://data.lblod.info/id/bestuurseenheden/780e50a94a76c850a8f88c7e01427de38b445dcc6ebe79815a6d0f44adc530bc>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e0e2e69be463a4628f87bffe7dc6206aa6daa4a5516fb4ce11907f57d77079> .
+    <http://data.lblod.info/id/bestuurseenheden/788f5e9af7c2e5e158bb9b72d7cababff6d4a871c5b63f346c8fcedefed33905>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/165a9a64a6b84a278806b11c3f760f48198990168f591cf7a7462beb0f2cb16b> .
+    <http://data.lblod.info/id/bestuurseenheden/78ea1cc22fb4b7760f81755a9a6b0de8daf21268c91ff44bdbec308d514cb88c>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/46616861cfaae13b550a36ae5c05187638df0873024f13043d3f40f24cabf4e6> .
+    <http://data.lblod.info/id/bestuurseenheden/79606fdb21535301a493afb83e18758d21f6499355beab0099a6265fbdc700d3>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7cb2089a8c6746d514711908abfd38414a2b01f6ad9a83f28be2e835888b3da7> .
+    <http://data.lblod.info/id/bestuurseenheden/7aa957d6377d45bf9e2a1dbaf7524d01b1999cf0cc5bc8c4f4a2380e13ef096e>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/97028faf77fd95eb5016a13c19f3a3a8ccf97c6c937398ba96976e52d171dbd8> .
+    <http://data.lblod.info/id/bestuurseenheden/7c44225c68f7535a603d3a0a0c57a6424e8baa9fd066b6b9baa636d0facddb72>	ns0:deeltBestuurVan	ns1:cdcd4403-d4cd-4400-80a3-9882d79933f4 .
+    <http://data.lblod.info/id/bestuurseenheden/7c51e88f8a89d42e054368a7c5da3c16ecce3b86ea63918a0d7e1d46fbdde2b9>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5dab8a7b0656aaf0db13044fcafc0088f9f0b7776c294a6e9abfdbf7420effae> .
+    <http://data.lblod.info/id/bestuurseenheden/7d457bc3985fbb70ba748c121043c89d498a3926e8c59ffdf9438c2896791248>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/0594a740b99274c7347f3492ae4d05f9b05d057a1cbad30683634296e189cc38> .
+    <http://data.lblod.info/id/bestuurseenheden/7d47cc2df885086cee43dc51b76668d566a324dc7e021180ec80788bfb76124c>	ns0:deeltBestuurVan	ns1:a31131dd72b614c89184b331821c10a0f8feb109881a1b164749e9c8941c5e6b .
+    <http://data.lblod.info/id/bestuurseenheden/7d7122bd82f165e091a36c830d041b59aa48e4be9ea0aa06dc4c67ef381b7505>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7e526f7f2d12f55a06620b512401826b6855ed478ff0693e04fba59cabba3c4d> .
+    <http://data.lblod.info/id/bestuurseenheden/7db7a009ab84e4d98e08ec4673b94605584f65ae5ed7a1d8decb23fb990ff73f>	ns0:deeltBestuurVan	ns1:a691d36ff95b67005d30d5fb89594dab69ec7fdbf975ffdcd36ef9bb39efb06d .
+    <http://data.lblod.info/id/bestuurseenheden/800ce18716ba451af47c2e05c2a7bdd29ab9305eaa61068629c1ea2ae6c08f4c>	ns0:deeltBestuurVan	ns1:a31131dd72b614c89184b331821c10a0f8feb109881a1b164749e9c8941c5e6b .
+    <http://data.lblod.info/id/bestuurseenheden/80c5a6a8789862c171c8d33ae28cb0649b4a0186114eb49ed36dc28ea515604b>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/97a393c64a3c30e619bc115ab8b2bbe0bd7a83265ebb8960c0f1154b9628d340> .
+    <http://data.lblod.info/id/bestuurseenheden/842737db3afe0bad6a72bbbdeee376fe49abe721975d549d81bb22c70bc7002d>	ns0:deeltBestuurVan	ns1:a32dc005ecbc001abd3338cdacb111895d3053b313654136ef1903035c10a53c .
+    <http://data.lblod.info/id/bestuurseenheden/856cbc8af3fbe7390d43420e249c288596e87fbc069c601751d5c5fcd52c543b>	ns0:deeltBestuurVan	ns1:c5726151c11e3ec6dd94a158ead5e9bd9e4a7307ab76e4f64da20fc526d481aa .
+    <http://data.lblod.info/id/bestuurseenheden/8620c62b9e51d2275c98cb724ce4b6784b432db8e1e0376ac70cbda098ea0d0a>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/97a393c64a3c30e619bc115ab8b2bbe0bd7a83265ebb8960c0f1154b9628d340> .
+    <http://data.lblod.info/id/bestuurseenheden/8662dc060c121e9d69101062f67daeef8370d38bfe86533752b9e54190dd0e2f>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7b6bbae823b20191525038cd52089d22128163fb3c7f851ce56149938628d941> .
+    <http://data.lblod.info/id/bestuurseenheden/8745182191882c1185893960aecc2ed4f91825d7a5ea2e62e9f2d7acca082a5e>	ns0:deeltBestuurVan	ns1:d8d1b52a9170168ad481f2495652e1b9753aea23385f79710abd86549f1373fa .
+    <http://data.lblod.info/id/bestuurseenheden/87548df6451c56b75e1064613f01fa92bb0c1d9b1e0d9019336fabd39e54ace0>	ns0:deeltBestuurVan	ns1:ee07affaf869f10517967da1ba7e79151646a1f3621b3cbca591cec2b8c549b7 .
+    <http://data.lblod.info/id/bestuurseenheden/8af37430f91603017873dbc1390eccf364bf82854f7358e9c9845498b184660f>	ns0:deeltBestuurVan	ns1:ff7d80dc-ec00-43ac-ac7e-d51694df37ff .
+    <http://data.lblod.info/id/bestuurseenheden/8c1b2274fccbaac94935cb2ae499430bddc052c3982a425a77c454cb615dea2d>	ns0:deeltBestuurVan	ns1:c7778ecc532ee037ab821de348f7c6d98ed5b2401abce2e7da64687290c08962 .
+    <http://data.lblod.info/id/bestuurseenheden/8d7de878-db13-4fe1-8d74-bb8c9a690d90>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/77801115dec7f63400134c21d897a41bddb775eb438d81b354ad18fb6d7ab956> .
+    <http://data.lblod.info/id/bestuurseenheden/8da71bf3f06102d4c2e45daa597622ffd1c13ca150ddd12f6258e02855cdaeb5>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81334af3-1b6f-4308-aca3-107121462d56> .
+    <http://data.lblod.info/id/bestuurseenheden/8df96cc548c53410332620ec1adae4591bd5340127b1332c4b902c5c3afe260d>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/93389f5157ceb037c5e38d7b8119cef632528b870e91e209c033bc2eac220cc1> .
+    <http://data.lblod.info/id/bestuurseenheden/8ef1e4a43efd913e6b09b0ddea344b7b5d723a344ad559389a55ae1ff0bebc8f>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/93389f5157ceb037c5e38d7b8119cef632528b870e91e209c033bc2eac220cc1> .
+    <http://data.lblod.info/id/bestuurseenheden/8fb90f367f105c14f37a7062d6732696dc2efc292f87fd5045548a0da407dbe4>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/805a977a29725d94f50bf7f0d91a0de1a727c4eec88940e90035f71c6c9b1655> .
+    <http://data.lblod.info/id/bestuurseenheden/8fd5ea9aeb61c45ec79986650bee55142b2f8a599d5d611dd578114216a58430>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/477e468496131b7d35f145b0361bca5c2cad577fd9ec27d385d703942dc944d0> .
+    <http://data.lblod.info/id/bestuurseenheden/8fd72c4cd5f095c508af05e3406aa63114279e8bde54e9f5b83a59c7794dac72>	ns0:deeltBestuurVan	ns1:d6fe7204ffe4c6c227156eb34caddcd860f911cc98728f9593d9cd7d28d3161d .
+    <http://data.lblod.info/id/bestuurseenheden/920b64f03ced3fc044fcdf5493bbb99573a4213f921dc92509581cea87d7a80f>	ns0:deeltBestuurVan	ns1:da737a74e5094054c3bb3ef077839626a02eb79d148e15cfeee18e10c18ba55a .
+    <http://data.lblod.info/id/bestuurseenheden/92349192bc0054f415dc7dddabcd0effd189279fb0e7a0e2b9ab8b1aa8bf73ee>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/04e7a09c988feed3cf8df1c51aafe0f0a50811e325f5f5ab8e1b9750f48630fd> .
+    <http://data.lblod.info/id/bestuurseenheden/929c049597e4961ea84051927af6be67062da4fc8ed9b755fc33b1597b8cdc7c>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/90688b32e0808b6ebbb7b36030526750236527e8019414449065f57ea384ce71> .
+    <http://data.lblod.info/id/bestuurseenheden/92fd2a12bdcc24f8e6ef34de765d54b3d7a0412b69c0877836cbe3098a5caf57>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E966229299CC832892A2D> .
+    <http://data.lblod.info/id/bestuurseenheden/931a2bf4f5c461d8c3636b446fa642693d4535d865d3af068e87d25ddc93374e>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7cb2089a8c6746d514711908abfd38414a2b01f6ad9a83f28be2e835888b3da7> .
+    <http://data.lblod.info/id/bestuurseenheden/933e3d37deb3e75dba5869d264132550be0f8e2cd08ee71556b9dc6860279257>	ns0:deeltBestuurVan	ns1:c7778ecc532ee037ab821de348f7c6d98ed5b2401abce2e7da64687290c08962 .
+    <http://data.lblod.info/id/bestuurseenheden/93bf61e0c1a48a58c1f6af804e087221de46fc492b30e3a7194b0b098356ab82>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/805a977a29725d94f50bf7f0d91a0de1a727c4eec88940e90035f71c6c9b1655> .
+    <http://data.lblod.info/id/bestuurseenheden/94433cd9ac2dd4ef0ccda4e07f35217fb6531adbb80d8382915f89f585d00890>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e3e46f7cf031133152e763eaa26cab3df81f842f9912a25c69c445f0c428b8> .
+    <http://data.lblod.info/id/bestuurseenheden/955a75560dd7c57fb9b882b0e92826ab06d77f1a4fc2722b4421389d47a247f3>	ns0:deeltBestuurVan	ns1:e39d8bf95a03ade08ef25a79ebc050abfc81a69731f1de66fe6d031d27135aac .
+    <http://data.lblod.info/id/bestuurseenheden/9574bd4a68b1f9243f10b6e5e5c973f4e957c96cd15f57057d2966036fb1a7fd>	ns0:deeltBestuurVan	ns1:ee07affaf869f10517967da1ba7e79151646a1f3621b3cbca591cec2b8c549b7 .
+    <http://data.lblod.info/id/bestuurseenheden/95e51e4c874a9db9ab6fef81453b1d64531c4c5daaff47b24d266e3ac032d759>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    <http://data.lblod.info/id/bestuurseenheden/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4>	ns0:deeltBestuurVan	ns1:e5f3c3f23f6791de122a5e6f1af83543651d272eba40e138c2fdf91ec05f8a40 .
+    <http://data.lblod.info/id/bestuurseenheden/985774e5593009ffa08804ffad482f0dee8490f1cdfde072116cd60e4528892e>	ns0:deeltBestuurVan	ns1:fa52110c7c3e70feab724980e2d991a97712a1deeeb25b168ef6de7b16de41ae .
+    <http://data.lblod.info/id/bestuurseenheden/995409aaafd41e4ad476aafc658669c794b3bd993ace46f08fd799c4d1151ff3>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/95871bddebd4ad93db54cb1b40d41af29f7ce08f0b59698b0540be129a9a3433> .
+    <http://data.lblod.info/id/bestuurseenheden/99a87e5fe755c1fbb0b7f5763c08e95561a02a358dd7dd0851d35496bec98203>	ns0:deeltBestuurVan	ns1:bb9a9db9c00189c27a851f0b772772675cba77e2463ab734477d00e4294db5df .
+    <http://data.lblod.info/id/bestuurseenheden/99da98a7a0087d3429b084ebfc4eb5d488c593790d4d5af7253982a2e21a6a5f>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/19ac0fa207989c27c3391e327aee16435475292296f010867945bf2987f95477> .
+    <http://data.lblod.info/id/bestuurseenheden/99ed6eee81a7aca47517cbffb46eaba38f3987eeb4ad32c020898644769eb615>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e3e46f7cf031133152e763eaa26cab3df81f842f9912a25c69c445f0c428b8> .
+    <http://data.lblod.info/id/bestuurseenheden/9a187d228c5c22e402cb2186f731a5b7cce9549d3fac1e667ce59a3cb80b76c0>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7b1c9132de06d5b3626e7118dc16c7f129d7c911b3298a0f4609725372e64588> .
+    <http://data.lblod.info/id/bestuurseenheden/9db1b46874a57fe63c08fb5f16b117e6f61fdd98e7f64f745d0fceb9d3731169>	ns0:deeltBestuurVan	ns1:ff7d80dc-ec00-43ac-ac7e-d51694df37ff .
+    ns1:a0393ba99ecc1a0e05d93966aaad42b07980efa5dc90f72106f3fb5954215e18	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7ddda00fc45a0994092bc26f30d97352b7586676438d5557b3f5cc336daab063> .
+    ns1:a0b451f349f1609834f2236ed8149e4f254e9aae1a897c531a99b9b0bbac0899	ns0:deeltBestuurVan	ns1:c7d15b793e42f0024e56ae7a89d02f8d6f491ec42cd2ece4c856ee24b154559d .
+    ns1:a10d7dc2599e3ab6854fc83d1023224eda8cfbc62017d4a1a82bedef7a03b8e4	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/1db0e6fb09e60db1e8534b20c69abb03584870612717a454937717be9b7fd019> .
+    ns1:a1f8ddebe40f6a09270fbe460e71ebb7adda7b1ac2e5c4ccb3fd6e9dda2162b6	ns0:deeltBestuurVan	ns1:a62fddadcb0a8fb878c3edbdc71a4eb1e6c419b212d41a8bd589fb1a370eb112 .
+    ns1:a277d61f41cf0025df3e51df800c9551a27c80e2515c32aabbbbbc2c818852eb	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7e526f7f2d12f55a06620b512401826b6855ed478ff0693e04fba59cabba3c4d> .
+    ns1:a3bd0845853278f478f90b14436d3efa99e73249a84d462f0ddc2e5b6e37a156	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/19ac0fa207989c27c3391e327aee16435475292296f010867945bf2987f95477> .
+    ns1:a4509bc9057f893f626626a7eadd0c713eea564c9c948efdafdfae9a1c153771	ns0:deeltBestuurVan	ns1:c5726151c11e3ec6dd94a158ead5e9bd9e4a7307ab76e4f64da20fc526d481aa .
+    ns1:a510e5ebd5798668f45080e36762539bd3bc5d5b5f05c5e1e7ecaf27e481ad31	ns0:deeltBestuurVan	ns1:b2fdc615ffb131e53a200e14c74ac92d4ed6dac176e3e6ea2c79d227835077c9 .
+    ns1:a605a770e69d0af2d501614a41b446c76328d2f32165be238458468fbd5f8b88	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/67b25dc29ad301f607aed564241d318de74be7dc1ec15202a67111d7a86becf9> .
+    ns1:a6fae65d377aa9e3f2575d4bc0f7cf53df2b5e80ca1823433885557ff0b18834	ns0:deeltBestuurVan	ns1:a31131dd72b614c89184b331821c10a0f8feb109881a1b164749e9c8941c5e6b .
+    ns1:a71e8220eac329de3fca638aa1b8236309730ef15de41e7f84820d50b582a5ca	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81334af3-1b6f-4308-aca3-107121462d56> .
+    ns1:a863212dae496f3c67044c214843841e636f373fb1c97a46fef3ef82d77ac925	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/95871bddebd4ad93db54cb1b40d41af29f7ce08f0b59698b0540be129a9a3433> .
+    ns1:a9e63c13a602de3cc5463cc81eee0b8d80d14a1846d1deb82b3a2d4e7efc96af	ns0:deeltBestuurVan	ns1:ff7d80dc-ec00-43ac-ac7e-d51694df37ff .
+    ns1:add1e4eb-9ec7-4ea6-af82-335aa76b7d48	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7cb2089a8c6746d514711908abfd38414a2b01f6ad9a83f28be2e835888b3da7> .
+    ns1:af76592773d5172af4a57454ea5c3d94578379048cd7c37a4da016a07a91bb54	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/05354d6fcc016d06f988a0e044fb160be7573550c11fe414b3c011961150a686> .
+    ns1:af8969752f6b28c66b6bc402d7987fa38774901ac72b95c5cb7976570487c3c9	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/08b6bdc2c34dacae28168cf967ef2e13384f032a147ddaea7f1145eff4f0d161> .
+    ns1:b070cde79629e0c3c5ed3d693fe06b6b066f75299244c224edb42a54fdfad265	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81083789b63917e32ab90ef1a45adf893f370ee38da2e0542e5c035db4f60794> .
+    ns1:b2ee8ae754844119d83712a384587b6086358c0673645a27bca3a66e845bce84	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E966229299CC832892A2D> .
+    ns1:b36da606fba6dd4dc99ae1ef5f4a52bba3268d33f4bc2cd1e65b87f01f35101a	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e3e46f7cf031133152e763eaa26cab3df81f842f9912a25c69c445f0c428b8> .
+    ns1:b40be11d4f04a2e0fff76e8feae92471963c063e2d65a68210dab2707ac62726	ns0:deeltBestuurVan	ns1:d847f2f345c5e58882e0e468c31de8868e71a73f4cbfa63823de17da3c7f1942 .
+    ns1:b4277a54dbd53cd3928c139c916eb58b03c7196c97c8d30f21b52200cb5156b9	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/4ffd00c0ba7ceab20db24832a4b9963112ed66914dcca05f3e5dc8b8b9d4479d> .
+    ns1:b456cda7fa9b2b176adb216e5598aeeb60ff19753a5a08ade6ffd32e9a0ead89	ns0:deeltBestuurVan	ns1:bb9a9db9c00189c27a851f0b772772675cba77e2463ab734477d00e4294db5df .
+    ns1:b45815b052363cc4b1c89eeb8dd6ae4dbf8433883d314b4c1d88c96a8d912212	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81334af3-1b6f-4308-aca3-107121462d56> .
+    ns1:b47cda1a1458dc4935e118b6fffbdfbc55eba2659fc9321c61be0de63b5a27e3	ns0:deeltBestuurVan	ns1:c747c462297c0fd1d31076b8f5b20e23aa3309ccb0f5b0b072097aa7612950e9 .
+    ns1:b4aa8ca2a4daa74ef8297b0b4dba2ad292e73da5337e20c65066860279751307	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7b6bbae823b20191525038cd52089d22128163fb3c7f851ce56149938628d941> .
+    ns1:b4ff2bb483e5a18fed7b115a2da7af8447e1a3bec4283fb5cf480810608a1e76	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/41e3bb71cb1fe2763a64ce47ee758fbeb532fbd4348281f34a86a5f88dd71980> .
+    ns1:b80c00718ab23cc3676202e24a5ec9a92823d38ca970c0fd4ff6e3754b721d36	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/93389f5157ceb037c5e38d7b8119cef632528b870e91e209c033bc2eac220cc1> .
+    ns1:b8bb293d-aa22-4b43-bda4-0b6af76e9493	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/93389f5157ceb037c5e38d7b8119cef632528b870e91e209c033bc2eac220cc1> .
+    ns1:b942231860865ab0c4108651b117f69a755a04186df97e767707e5d95955ebbd	ns0:deeltBestuurVan	ns1:d5d6693850ba1a749739c4574e7c75a98820629fdbbbbb143b7a4f7c279247ea .
+    ns1:ba4d960fe3e01984e15fd0b141028bab8f2b9b240bf1e5ab639ba0d7fe4dc522	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/254bbfb6c31a668446c339c0996864d23c3fe129a5aa05e274b463cbbb4a4bc2> .
+    ns1:bab5de8f12aa24ded31c67cc00b626705d1336a63f5711c1c70a8438daa6da1b	ns0:deeltBestuurVan	ns1:da737a74e5094054c3bb3ef077839626a02eb79d148e15cfeee18e10c18ba55a .
+    ns1:bb749fce340952ed57a7055edbec4c7a0aec9b2623ab5c41997eb4b013287997	ns0:deeltBestuurVan	ns1:e7692f99-9a36-43e3-af78-b320390318dc .
+    ns1:bc1d9bf8b47dad5cc29db38c5510f1c91399302b27e928719ac1286637406f25	ns0:deeltBestuurVan	ns1:c747c462297c0fd1d31076b8f5b20e23aa3309ccb0f5b0b072097aa7612950e9 .
+    ns1:bc50bb1ff28814ab2441a22fe111d895742098d8a61d7f648efbd9ffd48446ed	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e0e2e69be463a4628f87bffe7dc6206aa6daa4a5516fb4ce11907f57d77079> .
+    ns1:bcf3f79bcb96133312dbdc63dd157caabd3329358ed4440a03ce6d6fc6af09d2	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/77801115dec7f63400134c21d897a41bddb775eb438d81b354ad18fb6d7ab956> .
+    ns1:bd2cfcb37561afe84b4f8b1894bf7e0f204b21931b6f9ae1d5dbbafcb6681c9b	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/1db0e6fb09e60db1e8534b20c69abb03584870612717a454937717be9b7fd019> .
+    ns1:be278471a2a318edba32e7ac4294c0eafbe4c8077a34dcbb9c2e43211d4a78a6	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81dd243d-f66c-4157-b105-5407aa83cb62> .
+    ns1:bf2ed8893d2ec4689b4c60b0b236edf11f381e247c535f0b12d132fc80ca1ad0	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    ns1:bfdf2304f758f547ffb7c7afd4e6358290778642104f73910eadb0fb103152fe	ns0:deeltBestuurVan	ns1:ff7d80dc-ec00-43ac-ac7e-d51694df37ff .
+    ns1:c0b6b5cf198cd939251dff8ed052177cfff245074c6b8d43394c8c97f7b6e945	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/93389f5157ceb037c5e38d7b8119cef632528b870e91e209c033bc2eac220cc1> .
+    ns1:c1c28cd9e31c25100374482b71b951d5be9b849454b1bd7e1a5158a589bda5de	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e0e2e69be463a4628f87bffe7dc6206aa6daa4a5516fb4ce11907f57d77079> .
+    ns1:c26acb21f9fef0843d93523827562f96a6ccd939dfa43ad1dd70dcb8064c40a4	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/80a9ab8eb46716ab23c597d13313ce24b17884ffcbdf00d216b877d57a52ade4> .
+    ns1:c2c19bec2f337e69a4c9838eacd88041734db523df4f7534cf407c9d380b64b8	ns0:deeltBestuurVan	ns1:e7692f99-9a36-43e3-af78-b320390318dc .
+    ns1:c362abc58ac4579ff417824ce620962ac57bc344b34fe8f51d21b35ef54da36d	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E959629299CC832892A24> .
+    ns1:c42e0bde83126aaa67ed2c4b3ff5f5b42ae5023075e707c85369345195c79a43	ns0:deeltBestuurVan	ns1:f4838c2bb548a35f92a6ddcf725676b9f137f3fcb11e6737caa7cab1f1314e27 .
+    ns1:c5b139c66d86282381b3eb0ae4da68252d6eaf974e310fa5d200601b7cb69070	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E848329299CC832892A1B> .
+    ns1:c5dbb08e35e2d090a05d119fef4cc161b5ee1f322698cb8ea3c8c6643a521cf2	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/9cb5a65d9190da4bb96d0f59882cbcfb34248d354e6bd27101fccba186f4c7b7> .
+    ns1:c648ea5d12626ee3364a02debb223908a71e68f53d69a7a7136585b58a083e77	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/35454115a5e3a31059e0c4fd55906df42c75885b0233c1f17eb4bcef6e696908> .
+    ns1:c69192b973a3ca11531b9657b3ee20aa6688fa33ea1ef1392310fec751980ab2	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7cb2089a8c6746d514711908abfd38414a2b01f6ad9a83f28be2e835888b3da7> .
+    ns1:c6ce52f7a484e12c7f385f1116766fa9a8d1a1798e4e265a77a8881a2bda9b60	ns0:deeltBestuurVan	ns1:bb9a9db9c00189c27a851f0b772772675cba77e2463ab734477d00e4294db5df .
+    ns1:c73ee91f068da28ed1f16fb057f38808e7c0d29f4c5b8b9d7b2eec235ed4d5a4	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5dab8a7b0656aaf0db13044fcafc0088f9f0b7776c294a6e9abfdbf7420effae> .
+    ns1:c7ff21a1a6c315ca5aec2b136ffcf0d9d285dd37a1d5b10d8d134bb714e8d774	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/4ffd00c0ba7ceab20db24832a4b9963112ed66914dcca05f3e5dc8b8b9d4479d> .
+    ns1:c8f33e80-6f19-4ba1-a758-9d85f42d28d4	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81dd243d-f66c-4157-b105-5407aa83cb62> .
+    ns1:c94741a612946db4bffa00439a515a831c7d4de0d09d79538af2a1dd781500ca	ns0:deeltBestuurVan	ns1:e39d8bf95a03ade08ef25a79ebc050abfc81a69731f1de66fe6d031d27135aac .
+    ns1:ca02bb76e04d7d3ac3282e39ec861a89f8a8c6c7e0d907373953fa8001c9c35b	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    ns1:cb2a6e0a490ee881ddd0d9ded7f2b3d1dc2df7e57a19d014caac054bfa355f5a	ns0:deeltBestuurVan	ns1:d8cb6ca314f27d657f4043f27110632e63a9520070728922d3c958f51d70c281 .
+    ns1:ccda2ffa758045bf3a9df27463b2a0bb12da6324f5f40ba7691e14932ebfa638	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/39e3e46f7cf031133152e763eaa26cab3df81f842f9912a25c69c445f0c428b8> .
+    ns1:cd64084b7a4eed361bc4f6194a95a708564b6962f068a68d2e535c7d2dcb4820	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/46616861cfaae13b550a36ae5c05187638df0873024f13043d3f40f24cabf4e6> .
+    ns1:ce5950d88624248728b62bb587d934da5aee55f5fd5a9d3f569b3a1310390395	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/2ca642d589b8012fe65bf54df3a87f740acac78624a902ad378dc4ee6c50a848> .
+    ns1:cf8131ac6fcc41224b895fde6e18def464a16012f05d3c078da2637e0f1674ee	ns0:deeltBestuurVan	ns1:a32dc005ecbc001abd3338cdacb111895d3053b313654136ef1903035c10a53c .
+    ns1:d03795d069b5de6a386ad04bdb0970ef079eaac1be473414bcb63a6c9eaed4d0	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81083789b63917e32ab90ef1a45adf893f370ee38da2e0542e5c035db4f60794> .
+    ns1:d168033a9bac278fa744c425e078eeabd304397f953feaaf5327b4e039aecacb	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5ba4a42bd459dda75ce452a253ddc09547174265456ad1e3f9389a3ff139a1f9> .
+    ns1:d2d0cd89d307fb651e2d0d064a89134dbc2f26b0ffacd92d2d71e9683468a206	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/479036ca47b011e16fefafbe4d3512a44c564804dc26d331ce4dcbe0fa3366d2> .
+    ns1:d2ddbbea9b30242eedb334f9729dc9f9b31c9c0496009a474b407393b383ef53	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/7b6bbae823b20191525038cd52089d22128163fb3c7f851ce56149938628d941> .
+    ns1:d3000e1841d968dd70d4534bf216699d830d146ccc1f88b902b0793caad9daf2	ns0:deeltBestuurVan	ns1:d8d1b52a9170168ad481f2495652e1b9753aea23385f79710abd86549f1373fa .
+    ns1:d408e63f6ebbdfb20dbc63f8f8a4f91f2fe4eb23fa2496f9ca102ec583e9e022	ns0:deeltBestuurVan	ns1:f4838c2bb548a35f92a6ddcf725676b9f137f3fcb11e6737caa7cab1f1314e27 .
+    ns1:d59bf99ac29e71796ad7bdfe68cf74709c63721691d9680e0ea7636070f7513c	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/5dab8a7b0656aaf0db13044fcafc0088f9f0b7776c294a6e9abfdbf7420effae> .
+    ns1:d7187635377e73d8cdd7e2743257bf93742a82f700e6839eb12a3e3705ac36c5	ns0:deeltBestuurVan	ns1:e7692f99-9a36-43e3-af78-b320390318dc .
+    ns1:d760812063231cc45ced3fa65a7cd54920329178c8df7e891aa12db442e6606a	ns0:deeltBestuurVan	ns1:e7692f99-9a36-43e3-af78-b320390318dc .
+    ns1:d7d9ef5babd2876ad492a71c2019f02cf90c813c00befcf3682ba49186d0f4b1	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/77801115dec7f63400134c21d897a41bddb775eb438d81b354ad18fb6d7ab956> .
+    ns1:d8247b68bb62c768c36308fbd7203c58038e249b8363da29d223aa6cd97cf242	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/0b1af0370213e4b8ea5c3d5a2ccadcfce1149d092da47a3e447fe383050f9506> .
+    ns1:d82b46992186c404b09e13b47502a8ab420c8f72316f1819847b1be44ba6314e	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/477e468496131b7d35f145b0361bca5c2cad577fd9ec27d385d703942dc944d0> .
+    ns1:d8f7f1849303f3bd250d476ee5b44456d42b4d2f79f8f72b0be754484cb5fda4	ns0:deeltBestuurVan	ns1:ff7d80dc-ec00-43ac-ac7e-d51694df37ff .
+    ns1:d90c540e25805c2ba9efc77ca016e4f24102c44496f9590a3a5c769bd6dffa74	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/68ad1301fbb5f209b4ef0fe2b11e77c7bea6011f5e28f8f6875597a7b08f0f1e> .
+    ns1:d9267014daa2764a9edd3b176678b56f57474ffe162363795690e5c684c6eab1	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/622fa725ba8455b01817c8e48974edeab56607018fce5c1cb3694306d3e7005c> .
+    ns1:d93451bf-e89a-4528-80f3-f0a1c19361a8	ns0:deeltBestuurVan	ns1:dad37923-85b4-4c30-8bd6-050061bde51c .
+    ns1:d9f7c0ab4920fdecf3f9a60b92e921b5ca07248fcb0eac2113eb97392ddd6c6c	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E966229299CC832892A2D> .
+    ns1:da17a1c564c4f0aecbe800efaedcee7428e80c127b4a1bc829519b375ad20707	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81334af3-1b6f-4308-aca3-107121462d56> .
+    ns1:dac6ed961e62f29e2706c8213c6c5ee28d07bb719e564bcd47157499561e613b	ns0:deeltBestuurVan	ns1:ff7d80dc-ec00-43ac-ac7e-d51694df37ff .
+    ns1:dbf74e8b71e474626b7a7566e6b74db3a73790e8b991a385d404e2267378635e	ns0:deeltBestuurVan	ns1:e7692f99-9a36-43e3-af78-b320390318dc .
+    ns1:dcacdef6115b1c15bbaf8559ad4fbc3b694a12af37c178ac54227a630d2ead34	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/97028faf77fd95eb5016a13c19f3a3a8ccf97c6c937398ba96976e52d171dbd8> .
+    ns1:dfd76f1550853dc2b4bc8d763c7b378c8c8c81588dd4ba3e0ef05cfd0a456927	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E848329299CC832892A1B> .
+    ns1:e3293ebdd5233f4afc47124685940336937eb18f5692edb22fe8850cb38cc7b3	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/46616861cfaae13b550a36ae5c05187638df0873024f13043d3f40f24cabf4e6> .
+    ns1:e39bc997aa6dd9f240277735efd745b6a0422614d2b36cf01825c86b1b91a9ee	ns0:deeltBestuurVan	ns1:c16d166294750ae2c48acae9855a49cd3280a3597c0d8f3257021c68fdede345 .
+    ns1:e3fc7eb1c6f50aa4277e0ae180b002eddf243dab630e9278996df9951316da68	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/77801115dec7f63400134c21d897a41bddb775eb438d81b354ad18fb6d7ab956> .
+    ns1:e40c7c891fb462d2128235f88fede078846d942da5688e4f9cdfb5bb04844d84	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/782682349b24078a97dc181bdb7dc62fb2cabc072878fc75a29f4ed70c86250d> .
+    ns1:e41ffa04f94bb450a79793020e70d55b5fee5033a5280277998608a9d0913117	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/80a9ab8eb46716ab23c597d13313ce24b17884ffcbdf00d216b877d57a52ade4> .
+    ns1:e580b3ee33ff28d93f803e7f70cdb1d99bf6ae9d56b0f630fd7b6837adf8cd4c	ns0:deeltBestuurVan	ns1:b6fb86dcca01c89d6787801c958d6b8551f3755ec6f1c35bb97c0cf37b9ddc2c .
+    ns1:e58e47292d23dc83547f3f272c6018439290d988dcab6d352215bad91751e1b7	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    ns1:e84ba36959d82fc95bb17b25d2e70c135d8805737ba27bab572af670a2768338	ns0:deeltBestuurVan	ns1:e4f4aa293734f92302439270cf98805e4b617088cb19144b558db2dff087d886 .
+    ns1:e971816acb021c37576835e6a96922442628956fd029d885fd849c9f07414469	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/96d87c4956c98414938dd5fceeb05f65feebf21fbe5918e6d23bc2b58a7fc716> .
+    ns1:e9e0287a3a974fba665e2649242a3607b8db35ca22085baf9ec26972b6e6a86c	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/2ca642d589b8012fe65bf54df3a87f740acac78624a902ad378dc4ee6c50a848> .
+    ns1:f0326d3687d05c2e41ddbfaee635ce7ecb00eddc81454e58eb5fc8c66f511629	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/81dd243d-f66c-4157-b105-5407aa83cb62> .
+    ns1:f08dca136aca8cfd86913c6e452ca3b763d618b52aec02f8864443942c50277a	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/0610b306e95fae751dc07050565e987f31ba06420863bc44616b2e05452d8822> .
+    ns1:f0cc06aca0893bc875d3254bf753f2357f67f2895871347a0dd05628b0ce77c2	ns0:deeltBestuurVan	ns1:a62fddadcb0a8fb878c3edbdc71a4eb1e6c419b212d41a8bd589fb1a370eb112 .
+    ns1:f39eb137cb5c9195f92928522bbbf0d104fb54be6eb0c9c62a24d16b88b44272	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/92609bcab00475b084e747cb49f942abfb9e737ab023a999c69baf60acb8c06d> .
+    ns1:f4641f7ba21f1a575993f1b523fb581af12269164006abeab121886037ac0cad	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/97a393c64a3c30e619bc115ab8b2bbe0bd7a83265ebb8960c0f1154b9628d340> .
+    ns1:f4a187c72e551b9d7745e3b8602b11f12ce0fd5399c7f8aebbd4f8f42dc9c028	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/68ad1301fbb5f209b4ef0fe2b11e77c7bea6011f5e28f8f6875597a7b08f0f1e> .
+    ns1:f881bb13d3a1ae27056d085fc041792beb3b4b3d1adf1ee3399a7184b71f6863	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/1298cc0fec62af4dcaa86b44d43fe7e3ee3632247e66e8fccd87c0e5c7b7742f> .
+    ns1:f8ad83ae8d0d96983b5bddb3c2cb768323b4f5103d95c111f6143c9109034aab	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/677E966229299CC832892A2D> .
+    ns1:f8b1c302857125ca3cb8cb7a7305ba2e00a19452bb4fb99df1d9b081302b9da9	ns0:deeltBestuurVan	ns1:c16d166294750ae2c48acae9855a49cd3280a3597c0d8f3257021c68fdede345 .
+    ns1:f923867abb64ec787e987ad25b3bae8bcf38dce127e3a664ad18b30e18d70986	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/195d911f1417b20a4b715b1a54e8ae6e92b9a23cde908f2fb03a0081910d8fce> .
+    ns1:fb4ab93def093fcefdcbafe1055941c02bb109290fffb9cd9012d549aed480b8	ns0:deeltBestuurVan	ns1:f5094b8d7f26d69d04ba2c469a09e0c6dc08a78615c9483fd97d6d029e064121 .
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>	ns0:deeltBestuurVan	<http://data.lblod.info/id/bestuurseenheden/08b6bdc2c34dacae28168cf967ef2e13384f032a147ddaea7f1145eff4f0d161> .
+
+    <http://data.lblod.info/id/bestuurseenheden/05099fa1f6524b8b994d86f61549455d2c00b2a956d5308683ac2d1f810fc729> ns0:deeltBestuurVan <http://data.lblod.info/id/bestuurseenheden/08b6bdc2c34dacae28168cf967ef2e13384f032a147ddaea7f1145eff4f0d161> .
+  }
+}

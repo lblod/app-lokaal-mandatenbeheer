@@ -3,6 +3,8 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/public> {
@@ -39,4 +41,18 @@ WHERE {
   ?s mu:uuid ?id.
   BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) as ?g)
 };
+# op data contained multiple labels sometimes
+DELETE {
+  GRAPH ?g {
+    ?s skos:prefLabel ?label2.
+  }
+}
+WHERE {
+  ?s besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/1afce932-53c1-46d8-8aab-90dcc331e67d>.
+  GRAPH ?g {
+    ?s skos:prefLabel ?label.
+    ?s skos:prefLabel ?label2.
+  }
+  FILTER(?label2 < ?label)
+}
 DROP SILENT GRAPH <http://mu.semte.ch/graphs/temp/politiezone-op>

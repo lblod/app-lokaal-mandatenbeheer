@@ -285,6 +285,23 @@
             FILTER( ?session_role = \"LoketLB-mandaatGebruiker\" )
           }")
 
+(supply-allowed-group "politieraad-lezer"
+  :parameters ("session_group" "session_role")
+  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+          PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+          SELECT DISTINCT ?session_group ?session_role WHERE {
+            <SESSION_ID> ext:sessionGroup ?original_session_group;
+                         ext:sessionRole ?session_role.
+            ?original_session_group ext:deeltBestuurVan/mu:uuid ?session_group.
+
+            FILTER( ?session_role = \"LoketLB-mandaatGebruiker\" )
+          }")
+
+(grant (read)
+        :to-graph organization-mandatendatabank
+        :for-allowed-group "politieraad-lezer")
+
+
 (grant (read write)
        :to-graph organization-mandatendatabank
        :for-allowed-group "mandaat-gebruiker")

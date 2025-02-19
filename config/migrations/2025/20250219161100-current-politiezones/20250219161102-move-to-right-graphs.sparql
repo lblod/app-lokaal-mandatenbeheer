@@ -1,0 +1,58 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/politiezone-op> {
+    ?s besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> .
+    ?s ?p ?o.
+  }
+};
+INSERT {
+  GRAPH ?g {
+    ?org ?p ?o.
+    ?orgT ?pt ?ot.
+    ?orgT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68>.
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?g ext:ownedBy ?s.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/politiezone-op> {
+    ?s besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> .
+
+    ?org besluit:bestuurt ?s.
+    ?org ?p ?o.
+    OPTIONAL {
+      ?orgT mandaat:isTijdspecialisatieVan ?org.
+      ?orgT ?pt ?ot.
+    }
+  }
+  ?s mu:uuid ?id.
+  BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?id, "/LoketLB-mandaatGebruiker")) as ?g)
+};
+# op data contained multiple labels sometimes
+DELETE {
+  GRAPH ?g {
+    ?s skos:prefLabel ?label2.
+  }
+}
+WHERE {
+  ?s besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/1afce932-53c1-46d8-8aab-90dcc331e67d>.
+  GRAPH ?g {
+    ?s skos:prefLabel ?label.
+    ?s skos:prefLabel ?label2.
+  }
+  FILTER(?label2 < ?label)
+}
+DROP SILENT GRAPH <http://mu.semte.ch/graphs/temp/politiezone-op>

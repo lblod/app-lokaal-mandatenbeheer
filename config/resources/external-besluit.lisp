@@ -44,6 +44,7 @@
                 (:mail-adres :string ,(s-prefix "ext:mailAdresVoorNotificaties"))
                 (:is-trial-user :boolean ,(s-prefix "ext:isTrailUser"))
                 (:hide-legislatuur :boolean ,(s-prefix "ext:voorbereidingVerborgen"))
+                (:is-lokaal-beheerd :boolean ,(s-prefix "ext:isLokaalBeheerd"))
                 (:view-only-modules :string-set ,(s-prefix "ext:viewOnlyModules")))
   :has-one `((werkingsgebied :via ,(s-prefix "besluit:werkingsgebied")
                              :as "werkingsgebied")

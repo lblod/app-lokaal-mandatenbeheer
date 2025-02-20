@@ -1,14 +1,13 @@
 # LDES in LMB
 
-> [!CAUTION]
-> This section contains the specification of how we will be using LDES. This is not implemented yet and unproven. A PoC implementation will be created in the sprint of 26-02 -> 08-03
-
 ## LDES Feeds Produced by LMB
 
 We will be using LDES to sync with different partners:
 
 - the Meeting notes system (e.g. Gelinkt Notuleren, but it could be a vendor specific provider too, for easy writing the text below will use GN to denote any software taking the role of the Notulering-system)
 - the Vlaamse Mandatendatabank
+- interested vendors
+- interested local users at the side of the local government
 
 ### Draft Mandataris instances for GN
 
@@ -16,32 +15,38 @@ LMB will be the sole owner of Mandataris instances: it will be the place where M
 
 As GN will not be allowed to create Mandataris instances, it needs to be supplied with draft Mandataris instances in order to link a Besluit to them in order for them to be made official. This means we need to create these draft Mandataris instances in LMB too. We can do this with a boolean flag. However, in our LDES feeds, they shouldn't be called Mandataris (or be in the Mandataris LDES feed) until they are no longer in the draft state. The URI for these draft Mandataris instances will need to be the same as the final instance, because otherwise, GN cannot link a besluit to the Mandataris.
 
-We should also **watch** the LDES feed from GN for instances of Besluit with the right type (the one that makes a mandataris official) that are linked to a Mandataris (which on our side will be in draft). If we find such a Besluit, we should switch the Mandataris to official and create that link on our end too.
+We will watch the Besluit instances published by GN for links between a Besluit and a Mandataris through `mandaat:bekrachtigtAanstellingVan` so we can automatically mark a mandataris as official. NOTE: this predicate is currently not being published correctly.
 
-However, there is no guarantee that the besluit will be created in GN. Therefore it should be possible to mark a mandataris as official (as opposed to draft) manually, even if no event was received from GN. In that case, a link to the meeting notes of the corresponding meeting can be provided manually as well.
+However, there is no guarantee that the besluit will be created in GN. Therefore it should be possible to mark a mandataris as official (as opposed to draft) manually, even if no event was received from GN. In that case, a link to the meeting notes of the corresponding meeting can be provided manually.
 
 ### Publishing to Vlaamse Mandatendatabank
 
-LMB extracts the Mandaten and Leidinggevenden scope from Loket. Therefore, it should also pick up the role of sharing this information with the central publication system, specifically the Vlaamse Mandaten Databank (VMDB). This will also be done through an LDES stream.
+LMB extracts the Mandaten scope from Loket. Therefore, it should also pick up the role of sharing this information with the central publication system, specifically the Vlaamse Mandaten Databank (VMDB). This is done through the public LDES stream. Currently though, our LDES stream is being picked up by Loket, which then publishes deltas for consumption by the mandatendatabank.
 
-Since suppliers of the meeting note software (filling the role of Gelinkt Notuleren) understand SPARQL and are currently using a SPARQL endpoint on Loket for syncing, we should use the same principle for the draft Mandataris instances. This means that we expect the Vlaamse Mandatendatabank to also listen to our Draft Mandataris LDES feed and internalize this information into their SPARQL endpoint OR that we listen to the local LDES feeds in the central Loket version of LMB and provide the sparql endpoint there.
+## Published streams
+
+This application publishes 3 streams:
+
+- **public**: a public stream with limited information. This stream contains the information sent to abb but removes sensitive information like RRN numbers of person entities
+- **abb**: a stream to be used by ABB consumers. This is to be secured in the future and holds all instances that are part of the Mandatendatabank model: mandaat:Mandataris, mandaat:Fractie, org:Membership, mandaat:Mandaat, person:Person, dct:PeriodOfTime, adms:Identifier, persoon:Geboorte, schema:ContactPoint, locn:Address. It only exposes the properties known to the model + dct:modified, mu:uuid and rdf:type.
+- **public**: a stream to be used internally. Currently this exposes the same model instances as the abb stream but with all of their properties.
 
 ## Types exposed on LDES feed
 
 VMDB will be interested in instances of the following types:
 
-- **mandaat:Mandataris:** but only the Mandataris instances in the official state
+- **mandaat:Mandataris:** the abb and internal streams contain all Mandatarissen, the public stream does not contain Mandatarissen in the draft publication state.
 - **mandaat:Fractie:** as the local government can define their own instances of Fracties to link a Mandataris to
 - **org:Membership:** when used to define the membership of a Mandataris of a Fractie
+- **dct:PeriodOfTime** this is inferred from the Membership and the Mandataris as a membership is supposed to have a PeriodOfTime with the same start and end as the Mandataris.
 - **ext:BeleidsdomeinCode:** as a mandataris can be linked to these concepts and a local government can define their own set of concepts here
 - **person:Person:** normally, the Person a Mandataris links to can be found in the election results and so this information should be globally available (and non-modifiable). However, there are cases where an unelected person can still be called in to assume a Decretaal mandaat. These are also published so the Person a Mandataris links to has meaning. This also happens for the head of OCMW organisation, who can be made schepen. Luckily, there is an api to get the uri of a person given the RRN. Person still needs to be on the LDES, but this likely means we need to secure our LDES with an authorization layer as there can be no personal info on our public LDES feed
 - **persoon:Geboorte:** as part of the Person information above
 - **adms:Identifier:** as part of the Person information above
 - **schema:ContactPoint:** to model the contact point of the Mandataris above
 - **locn:Address:** to model the address of the Mandataris above
-- **ext:DraftMandataris:** a type to model the draft Mandataris instances for GN and make it clear that they are different from the mandaat:Mandataris instances that are ready to be published
 
-The only predicates that are shared about these concepts are predicates that are defined in the application profiles for [mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/), [leidinggevenden](https://lblod.github.io/pages-vendors/#/docs/leidinggevenden) and [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/).
+The public and abb streams only contain predicates that are defined in the application profiles for [mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/), and [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/). The internal stream has no restrictions on which predicates are published.
 
 ## Mandataris as a Versioned Entity
 
@@ -64,13 +69,7 @@ This presents the question of how this peripheral knowledge reaches these differ
 - an LDES as discussed earlier. We can use the caching headers here to clarify that the resource isn't expected to change for another month or so. We can also terminate an LDES when we know no more data is going to change, e.g. for election results.
 - we can make an interface (API, not LDES) where they just fetch the latest version.
 
-## Published streams
-
-This application will publish 3 streams:
-
-- **public**: a public stream with limited information. This stream contains the information sent to abb but removes sensitive information like RRN numbers of person entities
-- **abb**: a stream to be used by ABB consumers. This is to be secured in the future and holds all instances that are part of the Mandatendatabank model: mandaat:Mandataris, mandaat:Fractie, org:Membership, mandaat:Mandaat, person:Person, dct:PeriodOfTime, adms:Identifier, persoon:Geboorte, schema:ContactPoint, locn:Address. It only exposes the properties known to the model + dct:modified, mu:uuid and rdf:type.
-- **public**: a stream to be used internally. Currently this exposes the same model instances as the abb stream but with all of their properties.
+The current state of LMB uses migrations for sharing peripheral knowledge.
 
 ## LDES setup
 

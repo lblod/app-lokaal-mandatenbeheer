@@ -119,7 +119,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-lokaal-mandatenbeheer:0.5.1
+    image: lblod/frontend-lokaal-mandatenbeheer:0.5.4
     labels:
       - "logging=true"
     restart: always
@@ -154,7 +154,7 @@ services:
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.5.2
+    image: lblod/mandataris-service:0.5.4
     labels:
       - "logging=true"
     restart: always
@@ -189,11 +189,26 @@ services:
     logging: *default-logging
     volumes:
       - ./config/authorization-wrapper:/config
+  ################################################################################
+  # REPORTING
+  ################################################################################
+  report-generation:
+    image: lblod/loket-report-generation-service:0.8.3
+    environment:
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/reports"
+      ONLY_KEEP_LATEST_REPORT: "true"
+    volumes:
+      - ./data/files:/share
+      - ./config/reports:/config
+    restart: always
+    labels:
+      - "logging=true"
+    logging: *default-logging
   ##############################################################################
   # LDES
   ##############################################################################
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:1.2.1
+    image: redpencil/ldes-delta-pusher:1.2.2
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
       LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"
@@ -313,3 +328,8 @@ services:
       DCR_SYNC_LOGIN_ENDPOINT: "https://dev.loket.lblod.info/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
     restart: always
     logging: *default-logging
+  project-scripts:
+    image: semtech/simple-script-store:1.0.0
+    volumes:
+      - ./scripts/:/app/scripts/
+    restart: "no"

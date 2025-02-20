@@ -1,0 +1,58 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_1_2_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ];
+sh:sparql [
+    sh:select """
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+                
+    select $this ?value
+    where {
+        $this a mandaat:Mandataris ;
+            org:holds/^org:hasPost ?bestuursorgaanInTijd ;
+            mandaat:start ?startMandataris .
+        OPTIONAL {
+            $this mandaat:einde ?eindeMandataris .
+        }
+
+        ?bestuursorgaanInTijd mandaat:bindingStart ?startBestuursorgaan ;
+                              mandaat:bindingEinde ?eindeBestuursorgaan .
+
+        BIND(strdt(substr(str(?startMandataris), 1, 10), xsd:date) as ?startMandatarisDate)
+        BIND(strdt(substr(str(?eindeMandataris), 1, 10), xsd:date) as ?eindeMandatarisDate)
+        BIND(strdt(substr(str(?startBestuursorgaan), 1, 10), xsd:date) as ?startBestuursorgaanDate)
+        BIND(strdt(substr(str(?eindeBestuursorgaan), 1, 10), xsd:date) as ?eindeBestuursorgaanDate)
+        
+        BIND((?startMandatarisDate >= ?startBestuursorgaanDate && ?startMandatarisDate <= ?eindeBestuursorgaanDate) AS ?startValid)
+        BIND(if(!bound(?eindeMandatarisDate), true, ?eindeMandatarisDate >= ?startBestuursorgaanDate && ?eindeMandatarisDate <= ?eindeBestuursorgaanDate) as ?eindeValid)
+        
+        FILTER(!?startValid || !?eindeValid)
+       
+        BIND (concat("Start mandataris: ", str(?startMandatarisDate), " Einde mandataris: ", str(?eindeMandatarisDate), " Start bestuursorgaan: ", str(?startBestuursorgaanDate), " Einde bestuursorgaan: ", str(?eindeBestuursorgaanDate)) as ?value)
+    }
+    """ ;
+        sh:message "Mandataris heeft start- en einddatum die buiten de bindingStart en bindingEinde van het bestuursorgaan vallen."
+] .
+
+

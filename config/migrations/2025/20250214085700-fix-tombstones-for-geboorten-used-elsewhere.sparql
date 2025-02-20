@@ -1,0 +1,39 @@
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  DELETE {
+    GRAPH ?h {
+      ?s a <http://www.w3.org/ns/activitystreams#Tombstone>.
+    }
+  }
+  WHERE {
+    GRAPH ?h {
+      ?s a <http://www.w3.org/ns/activitystreams#Tombstone>.
+      ?s a <http://data.vlaanderen.be/ns/persoon#Geboorte>.
+    }
+    ?h ext:ownedBy ?someone.
+  };
+  DELETE {
+    GRAPH ?g {
+      ?s ?p ?o.
+    }
+    GRAPH ?h {
+      ?s dct:modified ?mod.
+    }
+  }
+  INSERT {
+    GRAPH ?h {
+      ?s dct:modified ?now.
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s a <http://www.w3.org/ns/activitystreams#Tombstone>.
+      ?s ?p ?o.
+    }
+    GRAPH ?h {
+      ?s a <http://data.vlaanderen.be/ns/persoon#Geboorte>.
+      ?s dct:modified ?mod.
+    }
+    BIND(NOW() AS ?now)
+    ?h ext:ownedBy ?someone.
+  }

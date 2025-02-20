@@ -1,0 +1,58 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris ?p ?o .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris a astreams:Tombstone.
+    ?mandataris dct:modified ?now .
+    ?mandataris astreams:deleted ?now .
+    ?mandataris astreams:formerType mandaat:Mandataris .
+
+    ?mandataris owl:sameAs ?remainingMandataris .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris .
+    ?mandataris ?p ?o .
+  }
+  VALUES ( ?mandataris ?remainingMandataris) {
+    ( <http://data.lblod.info/id/mandatarissen/00243cc7-853d-429f-88b5-c6d7484e25da> <http://data.lblod.info/id/mandatarissen/cd898126-90e1-48c1-854c-0437b3850784> )
+    ( <http://data.lblod.info/id/mandatarissen/0b2e6600-c47c-48d0-b344-9940ddb17d64> <http://data.lblod.info/id/mandatarissen/79f69184-23b1-492e-806d-985a57acd336> )
+    ( <http://data.lblod.info/id/mandatarissen/67961551BD122F1E47C5446C> <http://data.lblod.info/id/mandatarissen/679615A8BD122F1E47C5446E> )
+    ( <http://data.lblod.info/id/mandatarissen/671B5C8A0C2BDDC757010389> <http://data.lblod.info/id/mandatarissen/6c99e80f-969e-4844-a88a-55ba305a51bc> )
+    ( <http://data.lblod.info/id/mandatarissen/679614C3BD122F1E47C5446A> <http://data.lblod.info/id/mandatarissen/679615A8BD122F1E47C5446E> )
+    ( <http://data.lblod.info/id/mandatarissen/679613EBBD122F1E47C54469> <http://data.lblod.info/id/mandatarissen/679615A8BD122F1E47C5446E> )
+    ( <http://data.lblod.info/id/mandatarissen/2846af43-d05c-4101-ae8a-df7ad5a99579> <http://data.lblod.info/id/mandatarissen/957bf176-6002-42aa-93fb-bcff8debcefb> )
+  }
+  ?g ext:ownedBy ?bestuurseenheid .
+  BIND(NOW() AS ?now)
+};
+
+DELETE {
+  GRAPH ?h {
+    ?o ?p ?mandataris .
+  }
+}
+WHERE {
+  GRAPH ?h {
+    ?o ?p ?mandataris .
+  }
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/00243cc7-853d-429f-88b5-c6d7484e25da>
+    <http://data.lblod.info/id/mandatarissen/0b2e6600-c47c-48d0-b344-9940ddb17d64>
+    <http://data.lblod.info/id/mandatarissen/67961551BD122F1E47C5446C>
+    <http://data.lblod.info/id/mandatarissen/671B5C8A0C2BDDC757010389>
+    <http://data.lblod.info/id/mandatarissen/679614C3BD122F1E47C5446A>
+    <http://data.lblod.info/id/mandatarissen/679613EBBD122F1E47C54469>
+    <http://data.lblod.info/id/mandatarissen/2846af43-d05c-4101-ae8a-df7ad5a99579>
+  }
+}

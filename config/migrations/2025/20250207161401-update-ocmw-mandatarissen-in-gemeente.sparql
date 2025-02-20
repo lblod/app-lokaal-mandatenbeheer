@@ -1,0 +1,28 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+DELETE {
+  GRAPH ?h {
+    ?s ?pGemeente ?oGemeente.
+  }
+}
+INSERT {
+  GRAPH ?h {
+    ?s ?pOCMW ?oOCMW.
+    ?s ext:oldModified ?gemeenteMod.
+  }
+}WHERE {
+  ?s a mandaat:Mandataris.
+  GRAPH ?g {
+    ?s dct:modified ?ocmwMod.
+    ?s ?pOCMW ?oOCMW.
+  }
+  ?g ext:ownedBy ?ocmw.
+  GRAPH ?h {
+    ?s dct:modified ?gemeenteMod.
+    ?s ?pGemeente ?oGemeente.
+  }
+  FILTER(?gemeenteMod < ?ocmwMod)
+  ?h ext:ownedBy ?gemeente.
+  ?ocmw ext:isOCMWVoor ?gemeente.
+}

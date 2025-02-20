@@ -1,0 +1,65 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_1_4_8_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ];
+  sh:property [
+		sh:name "isBestuurlijkeAliasVan" ;
+		sh:description "De persoon die de mandatarisrol vervult." ;
+		sh:path <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ;
+		sh:class <http://www.w3.org/ns/person#Person> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "bekleedt" ;
+		sh:description "Het mandaat dat deze mandataris bekleedt." ;
+		sh:path <http://www.w3.org/ns/org#holds> ;
+		sh:class <http://data.vlaanderen.be/ns/mandaat#Mandaat> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "start" ;
+		sh:description "Tijdstip vanaf wanneer de mandataris het mandaat opneemt." ;
+		sh:path <http://data.vlaanderen.be/ns/mandaat#start> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "status" ;
+		sh:description "De gesteldheid van de mandataris." ;
+		sh:path <http://data.vlaanderen.be/ns/mandaat#status> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "publicatiestatus" ;
+		sh:description "De publicatiestatus van de mandataris." ;
+		sh:path <http://lblod.data.gift/vocabularies/lmb/hasPublicationStatus> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] .
+
+

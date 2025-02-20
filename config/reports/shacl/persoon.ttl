@@ -1,0 +1,61 @@
+ @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/persoon_shape>
+a sh:NodeShape ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ];
+sh:targetClass <http://www.w3.org/ns/person#Person> ;
+sh:sparql [
+    sh:select """
+        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+                    
+        select $this ?value
+        where {
+            ?mandataris1 mandaat:isBestuurlijkeAliasVan $this ;
+                            org:holds ?mandaat ;
+                            mandaat:start ?startMandataris1 .
+            OPTIONAL {
+                ?mandataris1 mandaat:einde ?eindeMandataris1 .
+            }
+
+            ?mandataris2 mandaat:isBestuurlijkeAliasVan $this ;
+                            org:holds ?mandaat ;
+                            mandaat:start ?startMandataris2 .
+            OPTIONAL {
+                ?mandataris2 mandaat:einde ?eindeMandataris2 .
+            }
+            
+            FILTER(?mandataris1 != ?mandataris2)
+            
+            BIND(strdt(substr(str(?startMandataris1), 1, 10), xsd:date) as ?startMandataris1Date)
+            BIND(strdt(substr(str(?eindeMandataris1), 1, 10), xsd:date) as ?eindeMandataris1Date)
+            BIND(strdt(substr(str(?startMandataris2), 1, 10), xsd:date) as ?startMandataris2Date)
+            BIND(strdt(substr(str(?eindeMandataris2), 1, 10), xsd:date) as ?eindeMandataris2Date)
+
+            BIND((?startMandataris1Date >= ?startMandataris2Date && ?startMandataris1Date <= ?eindeMandataris2Date) AS ?startOverlapt)
+            BIND((?eindeMandataris1Date >= ?startMandataris2Date && ?eindeMandataris1Date <= ?eindeMandataris2Date) AS ?eindeOverlapt)
+
+            FILTER(?startOverlapt || ?eindeOverlapt)
+            
+            BIND (concat("mandaat: ", str(?mandaat), ", overlappende mandatarissen: ", str(?mandataris1), " en ", str(?mandataris2)) as ?value)
+        }""" ;    
+        sh:message 'Persoon heeft voor 1 mandaat overlappende/meerdere mandatarissen'
+] .

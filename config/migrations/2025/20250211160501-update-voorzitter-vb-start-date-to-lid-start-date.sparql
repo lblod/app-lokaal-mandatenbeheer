@@ -1,0 +1,126 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?voorzitterStartDate .
+    ?mandataris dcterms:modified ?modified .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?minStartDate .
+    ?mandataris dcterms:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    VALUES ?mandataris {
+      <http://data.lblod.info/id/mandatarissen/b8252431-29e0-4c0c-b083-52d1afc87ad6>
+      <http://data.lblod.info/id/mandatarissen/adb62ead-c1a6-4876-a42c-fe279e19fa80>
+      <http://data.lblod.info/id/mandatarissen/2282a9ff-d591-4272-b2d0-bbc1d4109f95>
+      <http://data.lblod.info/id/mandatarissen/ef0241b8-b99f-4824-a355-1c0d9fa063d3>
+      <http://data.lblod.info/id/mandatarissen/398f8e4d-38d9-488d-a182-62a91208ec23>
+      <http://data.lblod.info/id/mandatarissen/989c4247-9629-412b-bd09-0a075daaad9e>
+      <http://data.lblod.info/id/mandatarissen/b5a5b1fe-3778-45ca-b64d-747e618c45b7>
+      <http://data.lblod.info/id/mandatarissen/4d1a1f25-f59e-499d-940e-4d34c81ba4ed>
+      <http://data.lblod.info/id/mandatarissen/c360f03a-1de8-4c5e-833d-da35e0a2c7ee>
+      <http://data.lblod.info/id/mandatarissen/906a6d2a-8f04-4797-bde0-3b0df577ea7b>
+      <http://data.lblod.info/id/mandatarissen/0b212f5d-2db8-4c42-b56b-72363de75c41>
+      <http://data.lblod.info/id/mandatarissen/8f7cb521-769c-413f-9010-052e6fd63487>
+      <http://data.lblod.info/id/mandatarissen/4061ed03-03af-49ad-80ca-93e67b21eb34>
+      <http://data.lblod.info/id/mandatarissen/2521f182-547b-49cc-9f26-c77fc76a359e>
+      <http://data.lblod.info/id/mandatarissen/75fe6e1f-79be-4676-8439-79ed1627fa02>
+      <http://data.lblod.info/id/mandatarissen/375a01d8-fab4-4ebd-81f3-3b39948d5ad5>
+      <http://data.lblod.info/id/mandatarissen/0947a557-527d-4b91-b8e6-cdb5cc24a082>
+      <http://data.lblod.info/id/mandatarissen/93eebb1d-9f5b-4406-a538-bcd2e84842bc>
+      <http://data.lblod.info/id/mandatarissen/4ec2feb9-5128-40ce-8dd5-7c6f3091e381>
+      <http://data.lblod.info/id/mandatarissen/d0dc62c6-7368-41b8-ac64-c9663279c83b>
+      <http://data.lblod.info/id/mandatarissen/7d22ac8a-8d71-4b68-b9b5-32deb6ed5812>
+      <http://data.lblod.info/id/mandatarissen/1e8ab41b-750d-4c3c-ad9c-c2d3a5566f76>
+      <http://data.lblod.info/id/mandatarissen/b0495df3-1359-4770-a410-beade05d1e93>
+      <http://data.lblod.info/id/mandatarissen/45c3ac72-aada-4a71-96d4-ddc3a81facb3>
+      <http://data.lblod.info/id/mandatarissen/c467c1bf-d97a-47b0-9fb9-a130c3808747>
+      <http://data.lblod.info/id/mandatarissen/52df8a05-2454-41b0-8d53-c108731ed176>
+      <http://data.lblod.info/id/mandatarissen/4e84d00f-29ed-41be-9881-5248cf45012a>
+      <http://data.lblod.info/id/mandatarissen/88e66be9-636f-4ecd-93ae-f540767a03d7>
+      <http://data.lblod.info/id/mandatarissen/80d256b5-771a-48aa-8fc6-e3104113da9a>
+      <http://data.lblod.info/id/mandatarissen/afb2393a-01a1-4cda-b9c2-81f84c6def5f>
+      <http://data.lblod.info/id/mandatarissen/699c7e38-8781-46c9-9087-a2d5073f6fdc>
+      <http://data.lblod.info/id/mandatarissen/ca7869dc-a4ec-4c7e-91ca-883fe790b36a>
+      <http://data.lblod.info/id/mandatarissen/2dbc5e14-51e2-4891-ab5e-1800e0e62020>
+      <http://data.lblod.info/id/mandatarissen/e3c1f2f1-989c-4a03-a30e-d343e3f70c97>
+      <http://data.lblod.info/id/mandatarissen/c21da5df-da71-4892-8cfe-4e58b717f995>
+      <http://data.lblod.info/id/mandatarissen/cd6c1a1b-488a-4e6e-9ee0-568064e8d390>
+      <http://data.lblod.info/id/mandatarissen/44b0d381-8980-4028-b30f-386a375b35a8>
+      <http://data.lblod.info/id/mandatarissen/223efb28-82b6-4590-93a1-4db472306cee>
+      <http://data.lblod.info/id/mandatarissen/15abb197-6a8d-4f37-8bf0-f021ae9f1752>
+      <http://data.lblod.info/id/mandatarissen/0027e41a-1f0c-45fb-9a06-13a7f29afc36>
+      <http://data.lblod.info/id/mandatarissen/9a5a337b-a599-4287-a1f0-a40fbaf8083e>
+      <http://data.lblod.info/id/mandatarissen/d8e4f871-0a4c-45d2-92d6-27873d820610>
+      <http://data.lblod.info/id/mandatarissen/f4a29620-d10c-4900-9c69-b910789cf010>
+      <http://data.lblod.info/id/mandatarissen/d2a7844b-aa94-4f61-892e-33670b9a84fe>
+      <http://data.lblod.info/id/mandatarissen/c7e889fa-d8bb-42d5-8a92-c1a4a56f7505>
+      <http://data.lblod.info/id/mandatarissen/2cde4815-9f67-4442-993c-c51c91e7eaef>
+      <http://data.lblod.info/id/mandatarissen/8ff83a65-b34d-4922-b53c-7ec47af3048e>
+      <http://data.lblod.info/id/mandatarissen/15233ef5-a6bf-407f-ae9f-ce2a7434144a>
+      <http://data.lblod.info/id/mandatarissen/74a686af-ff6b-4286-a3b5-f3d291c9e8e9>
+      <http://data.lblod.info/id/mandatarissen/8682a433-1cf2-4026-a406-d3cdcec7b0cc>
+      <http://data.lblod.info/id/mandatarissen/d5a2cf62-d3be-4c49-b358-5f34199686f5>
+      <http://data.lblod.info/id/mandatarissen/2e022d11-c9d0-4a98-9a6c-710b74a97285>
+      <http://data.lblod.info/id/mandatarissen/ac96a1a2-5592-4056-abf6-bdf541ab39a9>
+      <http://data.lblod.info/id/mandatarissen/67346E86841B069B8FB61046>
+      <http://data.lblod.info/id/mandatarissen/6876f146-8820-4012-92c9-0daf5561d6c0>
+      <http://data.lblod.info/id/mandatarissen/750bab7e-b5a2-4a06-b0e3-1bdf0d50cd68>
+      <http://data.lblod.info/id/mandatarissen/627a6aa7-f7b6-4473-bb1f-6d67bbc823d5>
+      <http://data.lblod.info/id/mandatarissen/dc9610ea-4c83-467d-890e-9d1e86da4545>
+      <http://data.lblod.info/id/mandatarissen/7c3361c9-737b-46fc-ad49-cf06326b2aaf>
+      <http://data.lblod.info/id/mandatarissen/c30a2096-413d-48e5-863e-a86a7adc2e97>
+      <http://data.lblod.info/id/mandatarissen/5b8c4367-0676-4eaf-97fa-9f74bdf62436>
+      <http://data.lblod.info/id/mandatarissen/6bc37a7c-eaee-482f-a48e-a95091a82252>
+      <http://data.lblod.info/id/mandatarissen/2446a5c0-233e-4d06-81bb-0dcc05749b4a>
+      <http://data.lblod.info/id/mandatarissen/5ee751f1-b9cd-44d9-ae39-215b2f54b8e3>
+      <http://data.lblod.info/id/mandatarissen/e7fccb87-2f23-42be-addd-b3f3fdfc9fb0>
+      <http://data.lblod.info/id/mandatarissen/37a1a36e-4751-4ab8-b750-425f827fe9ee>
+      <http://data.lblod.info/id/mandatarissen/0fe2c3fc-d5fe-4a2e-9253-f127680c6f5d>
+      <http://data.lblod.info/id/mandatarissen/e1727624-3564-4cd4-a6c1-c6b1010a046c>
+      <http://data.lblod.info/id/mandatarissen/d99ea79c-2048-49ef-bb38-ccd51107ef55>
+      <http://data.lblod.info/id/mandatarissen/eb5ff1e0-790b-4a61-8657-445cc649d97b>
+      <http://data.lblod.info/id/mandatarissen/4190569b-7d4a-4959-aa23-693b2e66441d>
+      <http://data.lblod.info/id/mandatarissen/9421cdb2-7ac7-45da-9664-e94536628eec>
+      <http://data.lblod.info/id/mandatarissen/5066b178-f372-4396-88d0-edfd1a4f7bf0>
+      <http://data.lblod.info/id/mandatarissen/8bf59c05-1cb2-4428-abe5-783e44ffdae1>
+      <http://data.lblod.info/id/mandatarissen/82681945-048a-423c-9b64-54d9601a6ac3>
+      <http://data.lblod.info/id/mandatarissen/12848d07-ebe6-4fb6-88b5-fd6fc8b77a29>
+      <http://data.lblod.info/id/mandatarissen/ce36ae07-c6df-48f4-9a03-9e0f14f97ed1>
+      <http://data.lblod.info/id/mandatarissen/dc0fee46-b767-4189-9a87-368ddb951e26>
+      <http://data.lblod.info/id/mandatarissen/d0b9f4d0-afbd-4290-b74b-2ddf5567c583>
+    }
+    ?mandataris org:holds ?voorzitterMandaat .
+    ?mandataris mandaat:start ?voorzitterStartDate .
+    OPTIONAL {
+      ?mandataris dcterms:modified ?modified .
+    }
+
+    ?boi org:hasPost ?voorzitterMandaat .
+    ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
+    { 
+      SELECT ?boi (MIN(?lidStartDate) AS ?minStartDate) WHERE {
+        ?boi org:hasPost ?lidMandaat .
+        ?lidMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> . # Lid - Vast Bureau
+        ?lidMandataris org:holds ?lidMandaat .
+        ?lidMandataris mandaat:start ?lidStartDate .
+      } GROUP BY ?boi
+    }
+    FILTER(?voorzitterStartDate != ?minStartDate)
+    FILTER NOT EXISTS {
+      ?mandataris2 org:holds ?voorzitterMandaat .
+      FILTER(?mandataris != ?mandataris2)
+    }
+  }
+  ?g ext:ownedBy ?eenheid.
+  BIND(NOW() as ?now)
+}

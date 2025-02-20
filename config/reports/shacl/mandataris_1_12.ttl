@@ -1,0 +1,66 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_1_12_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
+        sh:prefix "generiek" ;
+    ] ];
+sh:sparql [
+    sh:select """
+        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+        PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+        select $this ?value
+        where {
+            ?gemeenteraadInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> ;
+                                org:hasPost ?mandaatGemeenteraad ;
+                                mandaat:bindingStart ?startGemeenteraadInTijd .
+            
+            ?mandaatGemeenteraad org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012> .
+
+            $this a mandaat:Mandataris ;
+                org:holds ?mandaatGemeenteraad ;
+                mandaat:isBestuurlijkeAliasVan ?persoon .
+
+            FILTER NOT EXISTS {
+                    ?raadVoorMaatschappelijkWelzijnInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> ;
+                                        org:hasPost ?mandaatRaadVoorMaatschappelijkWelzijn ;
+                                        mandaat:bindingStart ?startGemeenteraadInTijd .
+
+                    ?mandaatRaadVoorMaatschappelijkWelzijn org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016> .
+                        
+                    ?alsMandatarisRaadVoorMaatschappelijkWelzijn a mandaat:Mandataris ;
+                        org:holds ?mandaatRaadVoorMaatschappelijkWelzijn ;
+                        mandaat:isBestuurlijkeAliasVan ?persoon .
+            }
+        
+            BIND ("" as ?value)
+        }
+    """ ;
+        sh:message "Mandataris voorzitter van de gemeenteraad zetelt niet als voorzitter van het ocmw."
+] .
+
+

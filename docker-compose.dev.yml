@@ -104,6 +104,10 @@ services:
     restart: "no"
   sparql-authorization-wrapper:
     restart: "no"
+  report-generation:
+    restart: "no"
+    ports:
+      - 8889:80
   authorization-wrapper:
     restart: "no"
   deliver-email:

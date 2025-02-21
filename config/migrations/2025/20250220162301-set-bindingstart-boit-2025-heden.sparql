@@ -25,7 +25,6 @@ WHERE {
   SELECT DISTINCT ?g ?bestuursorgaanIT ?bindingStart ?modified (MIN(?start) AS ?earliestStart) WHERE {
     GRAPH ?g {
       ?bestuursorgaan a besluit:Bestuursorgaan ;
-        skos:prefLabel ?label ;
         besluit:classificatie ?classificatie .
       ?bestuursorgaanIT a besluit:Bestuursorgaan ;
         mandaat:isTijdspecialisatieVan ?bestuursorgaan ;

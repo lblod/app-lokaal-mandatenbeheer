@@ -41,6 +41,7 @@ WHERE {
     }
     ?classificatie skos:inScheme extlmb:gemeente-bestuursorgaan-codes .
     ?g ext:ownedBy ?bestuurseenheid .
+    ?bestuurseenheid ext:voorbereidingVerborgen true .
   }
   GROUP BY ?g ?bestuursorgaanIT ?bindingStart ?modified
   }

@@ -20,11 +20,11 @@ WHERE {
   }
   BIND(NOW() AS ?now)
   VALUES (?mandataris ?start) {
-    (<http://data.lblod.info/id/mandatarissen/a42a5194-1059-4d36-b69d-0216d076d0b7> "2024-12-05T00:00:00"^^xsd:dateTime)
-    (<http://data.lblod.info/id/mandatarissen/5dfb3796-c5d1-4c5a-a398-ce31eba16999> "2024-12-05T00:00:00"^^xsd:dateTime)
-    (<http://data.lblod.info/id/mandatarissen/dd8e9e6f-e843-4418-a963-8e4f75019df0> "2024-12-05T00:00:00"^^xsd:dateTime)
-    (<http://data.lblod.info/id/mandatarissen/3404e976-8aaa-4154-be80-b0200e8805ff> "2024-12-05T00:00:00"^^xsd:dateTime)
-    (<http://data.lblod.info/id/mandatarissen/13b613b5-664b-4b7b-88cc-0518d9c62973> "2024-12-05T00:00:00"^^xsd:dateTime)
-    (<http://data.lblod.info/id/mandatarissen/fac56a27-0a0a-429c-9649-22c1696114cd> "2024-12-05T00:00:00"^^xsd:dateTime)
+    (<http://data.lblod.info/id/mandatarissen/a42a5194-1059-4d36-b69d-0216d076d0b7> "2024-12-05T23:00:00Z"^^xsd:dateTime)
+    (<http://data.lblod.info/id/mandatarissen/5dfb3796-c5d1-4c5a-a398-ce31eba16999> "2024-12-05T23:00:00Z"^^xsd:dateTime)
+    (<http://data.lblod.info/id/mandatarissen/dd8e9e6f-e843-4418-a963-8e4f75019df0> "2024-12-05T23:00:00Z"^^xsd:dateTime)
+    (<http://data.lblod.info/id/mandatarissen/3404e976-8aaa-4154-be80-b0200e8805ff> "2024-12-05T23:00:00Z"^^xsd:dateTime)
+    (<http://data.lblod.info/id/mandatarissen/13b613b5-664b-4b7b-88cc-0518d9c62973> "2024-12-05T23:00:00Z"^^xsd:dateTime)
+    (<http://data.lblod.info/id/mandatarissen/fac56a27-0a0a-429c-9649-22c1696114cd> "2024-12-05T23:00:00Z"^^xsd:dateTime)
   }
 }

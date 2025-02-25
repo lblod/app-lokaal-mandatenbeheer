@@ -5,7 +5,7 @@ PREFIX dct: <http://purl.org/dc/terms/>
 
 DELETE {
   GRAPH ?g {
-    ?mandataris lmb:hasPublicationStatus ?draftStatus .
+    ?mandataris lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07> . # Draft publication status
     ?mandataris dct:modified ?modified .
   }
 }

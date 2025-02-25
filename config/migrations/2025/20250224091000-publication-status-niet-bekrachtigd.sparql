@@ -1,0 +1,20 @@
+PREFIX mps: <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    mps:d3b12468-3720-4cb0-95b4-6aa2996ab188 skos:prefLabel ?label .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    mps:d3b12468-3720-4cb0-95b4-6aa2996ab188 skos:prefLabel "Niet bekrachtigd" .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    mps:d3b12468-3720-4cb0-95b4-6aa2996ab188 a lmb:MandatarisPublicationStatusCode  . # Effectief status
+    mps:d3b12468-3720-4cb0-95b4-6aa2996ab188 skos:prefLabel ?label .
+  }
+}

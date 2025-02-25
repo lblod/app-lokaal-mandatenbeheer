@@ -27,11 +27,18 @@ ext:hiddenPublicationStatusF
     sh:order 5001;
     sh:path lmb:hasPublicationStatus.
 
+ext:hiddenEffectiefAtF
+    a form:Field;
+    sh:name "Effectief at [hidden input]";
+    sh:order 5002;
+    sh:path lmb:effectiefAt.
+
 <http://data.lblod.info/id/lmb/forms/mandataris-new>
     a form:Extension;
     form:includes
         ext:persoonF,
-        ext:hiddenPublicationStatusF;
+        ext:hiddenPublicationStatusF,
+        ext:hiddenEffectiefAtF;
     ext:extendsForm <http://data.lblod.info/id/lmb/forms/mandataris-edit>;
     ext:withHistory true;
     mu:uuid "2522a2e2-5242-4b6d-98ee-c5bd709fceaa".

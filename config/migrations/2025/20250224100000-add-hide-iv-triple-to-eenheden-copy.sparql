@@ -1,0 +1,16 @@
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+  GRAPH ?g {
+    ?bestuurseenheid ext:voorbereidingVerborgen "true"^^xsd:boolean .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?iv lmb:hasStatus <http://data.lblod.info/id/concept/InstallatievergaderingStatus/c9fc3292-1576-4a82-8dcd-60795e22131f> . # Behandeld
+  }
+  ?g ext:ownedBy ?someone .
+  BIND(?someone AS ?bestuurseenheid)
+}

@@ -34,7 +34,7 @@ WHERE {
     }
     ?g ext:ownedBy ?eenheid .
   } UNION {
-    SELECT DISTINCT ?mandataris {
+    SELECT DISTINCT ?mandataris ?modified {
       ?iv lmb:hasStatus <http://data.lblod.info/id/concept/InstallatievergaderingStatus/c9fc3292-1576-4a82-8dcd-60795e22131f> . # Behandeld
 
       ?mandataris lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07> . # Draft publication status

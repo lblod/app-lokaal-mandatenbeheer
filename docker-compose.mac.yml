@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   identifier:
-    image: mu-identifier:mac
+    image: benfidlers/mu-identifier:1.10.3-arm64
   dispatcher:
     platform: linux/amd64
   virtuoso:

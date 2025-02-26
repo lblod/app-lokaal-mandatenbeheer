@@ -1,0 +1,32 @@
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+DELETE {
+  GRAPH ?g {
+    ?geboorte dct:modified ?oldModified .
+    ?geboorte persoon:datum ?oldDatum .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?geboorte dct:modified ?now .
+    ?geboorte persoon:datum ?newDatum .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?geboorte a persoon:Geboorte ;
+      persoon:datum ?oldDatum .
+    OPTIONAL {
+      ?geboorte dct:modified ?oldModified .
+    }
+  }
+  VALUES (?geboorte ?newDatum) {
+    ( <http://data.lblod.info/id/geboortes/2c06c082-87ed-41e3-b117-35343314805c> "1975-01-01"^^xsd:date )
+    ( <http://data.lblod.info/id/geboortes/3dfd43ec-eee3-4304-a355-36122a2a4afc> "1983-01-01"^^xsd:date )
+    ( <http://data.lblod.info/id/geboortes/864bd358-9881-46f2-a839-bd3a47cb636d> "1964-02-12"^^xsd:date )
+    ( <http://data.lblod.info/id/geboortes/4dac0186-fec9-4297-ab5e-85ef828350e5> "1972-01-01"^^xsd:date )
+    ( <http://data.lblod.info/id/geboortes/e60c78f8-7d6e-4410-a5e2-2e5134099fed> "1944-12-04"^^xsd:date )
+  }
+  BIND(NOW() AS ?now)
+}

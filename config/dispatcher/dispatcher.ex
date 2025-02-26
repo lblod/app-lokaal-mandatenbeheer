@@ -319,6 +319,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://form-content/")
   end
 
+  match "/concept-scheme-api/*path", %{layer: :api_services, accept: %{any: true}} do
+    forward(conn, path, "http://concept-scheme/")
+  end
+
   match "/adressenregister/*path" do
     forward(conn, path, "http://adressenregister/")
   end

@@ -256,9 +256,6 @@ services:
       - "./data/ldes-feed/:/data/"
   decision-ldes-client:
     image: lblod/ldes-client:0.0.3
-    links:
-      - database:database
-      - virtuoso:virtuoso
     restart: always
     environment:
       LDES_BASE: https://mandaten-besluiten.lblod.info/streams/ldes/public/
@@ -272,6 +269,26 @@ services:
     labels:
       - "logging=true"
     logging: *default-logging
+  op-ldes-client:
+    image: lblod/ldes-client:0.0.3
+    restart: always
+    environment:
+      LDES_BASE: https://data.lblod.info/op/ldes/
+      FIRST_PAGE: https://data.lblod.info/op/ldes/1
+      # this is a default, most concepts will be assigned to their graph based on corresponding bestuurseenheid
+      TARGET_GRAPH: http://mu.semte.ch/graphs/public
+      WORKING_GRAPH: http://mu.semte.ch/graphs/op-consumed-tmp
+      DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
+      CRON_PATTERN: "30 * * * *"
+      RANDOMIZE_GRAPHS: true
+      BATCH_SIZE: 100
+      BYPASS_MU_AUTH: false
+    volumes:
+      - ./config/op-ldes-client:/config
+    labels:
+      - "logging=true"
+    logging: *default-logging
+
   ##############################################################################
   # VENDOR ENDPOINTS
   ##############################################################################

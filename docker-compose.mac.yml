@@ -1,8 +1,6 @@
-version: '3.7'
-
 services:
   identifier:
-    image: mu-identifier:mac
+    image: benfidlers/mu-identifier:1.10.3-arm64
   dispatcher:
     platform: linux/amd64
   virtuoso:
@@ -28,4 +26,24 @@ services:
   vendor-management-consumer:
     platform: linux/amd64
   report-generation:
+    platform: linux/amd64
+  adressenregister:
+    platform: linux/amd64
+  ldes-backend:
+    platform: linux/amd64
+  vendor-login:
+    platform: linux/amd64
+  authorization-wrapper:
+    platform: linux/amd64
+  sparql-authorization-wrapper:
+    platform: linux/amd64
+  database:
+    platform: linux/amd64
+  project-scripts:
+    platform: linux/amd64
+  impersonation:
+    platform: linux/amd64
+  ldes-delta-pusher:
+    platform: linux/amd64
+  decision-ldes-client:
     platform: linux/amd64

@@ -76,6 +76,7 @@ async function moveBestuursorgaanAndMandate(connectionOptions) {
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
     DELETE {
       GRAPH ?targetGraph {
@@ -106,6 +107,7 @@ async function moveBestuursorgaanAndMandate(connectionOptions) {
       OPTIONAL {
         GRAPH ?targetGraph {
           ?s ?pOld ?oOld.
+          FILTER(?pOld NOT IN (ext:isTijdelijkOrgaanIn, ext:origineleBestuurseenheid, lmb:heeftBestuursperiode, lmb:deactivatedAt ))
         }
       }
     }`,

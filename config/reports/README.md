@@ -51,3 +51,62 @@ The service can be configured with the following environment variables:
 - `BESTUURSEENHEID_URI` [string]: the URI of a bestuurseenheid to filter on. By default, all bestuurseenheden are retrieved to validate. E.g. `http://data.lblod.info/id/bestuurseenheden/0a3ba641d653b436b14fde37bb6eab4f1054aa0586eb98021b723d58f6ce82fb`
 - `BESTUURSPERIODE_LABEL` [string]: the label of the bestuursperiode to filter on. By default: `2024 - heden`. E.g. `2024 - heden`
 - `SHAPE_URI` [string]: the URI of the SHACL shape to specifically validate with. By default, all shapes are validated in the shacl folder. E.g. `http://example.org/mandataris_1_12_shape`
+
+## Testing new shapes
+
+The easiest way to test new shapes is by following these steps:
+
+- don't run the reporting service container in development mode (makes validation much slower)
+- create a SHACL shape in a Turtle file inside the `shacl` folder
+- configure the parameters mentioned above to limit validation to one bestuurseenheid and the shape you want to test
+- send an HTTP POST to `http://localhost:8889/reports` to start the validation service, with body:
+```
+{
+  "data": {
+    "attributes": {
+      "reportName": "ShaclReport"
+   }
+  }
+}
+```
+
+Screening the results can be done using:
+- go to `http://localhost:8890/sparql` and retrieve the latest report with following SPARQL query:
+
+```
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+CONSTRUCT {
+ ?report a sh:ValidationReport ;
+    sh:result ?result ;
+  ?preport ?oreport .
+
+  ?result ?presult ?oresult .
+}
+WHERE {
+  GRAPH ?g {
+    ?report a sh:ValidationReport ;
+      ?preport ?oreport .
+
+    OPTIONAL {
+      ?report sh:result ?result .
+      ?result ?presult ?oresult .
+    }
+
+    {
+      SELECT ?report ?g
+      WHERE {
+        GRAPH ?g {
+          ?report a sh:ValidationReport ;
+            dct:created ?created .
+        }
+      }
+      ORDER BY DESC(?created)
+      LIMIT 1
+    }
+  }
+}
+```
+
+- Go to the LMB frontend `http://localhost:4200`, log in with the configured bestuurseenheid, and go to the report route `http://localhost:4200/report` to visualize and further analyze the instances with validation errors. 

@@ -220,6 +220,18 @@ defmodule Dispatcher do
   #################################################################
   # Concept scheme resources
   #################################################################
+  match "/concept-scheme-api/*path", %{layer: :api_services, accept: %{any: true}} do
+    forward(conn, path, "http://concept-scheme/")
+  end
+
+  delete "/concept-schemes/:id", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, [], "http://concept-scheme-api/concept-scheme/" <> id)
+  end
+
+  delete "/concepts/:id", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, [], "http://concept-scheme-api/concept/" <> id)
+  end
+
   match "/concept-schemes/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/concept-schemes/")
   end
@@ -317,10 +329,6 @@ defmodule Dispatcher do
   #################################################################
   match "/form-content/*path", %{layer: :api_services, accept: %{any: true}} do
     forward(conn, path, "http://form-content/")
-  end
-
-  match "/concept-scheme-api/*path", %{layer: :api_services, accept: %{any: true}} do
-    forward(conn, path, "http://concept-scheme/")
   end
 
   match "/adressenregister/*path" do

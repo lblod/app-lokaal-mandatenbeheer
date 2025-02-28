@@ -1,0 +1,60 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_1_16_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
+        sh:prefix "generiek" ;
+    ] ];
+sh:sparql [
+    sh:select """
+        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+        PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+        select $this ?value
+        where {
+            $this a mandaat:Mandataris ;
+                    mandaat:isBestuurlijkeAliasVan ?vervangendePersoon ;
+                    org:holds ?mandaat ;
+                    mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> ;
+                    mandaat:start ?startVervanging .
+            
+            ?verhinderdeMandataris a mandaat:Mandataris ;
+                    mandaat:isBestuurlijkeAliasVan ?verhinderdePersoon ;
+                    org:holds ?mandaat ;
+                    mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/c301248f-0199-45ca-b3e5-4c596731d5fe> ;
+                    mandaat:start ?momentVanVerhindering .
+
+            FILTER (?vervangendePersoon != ?verhinderdePersoon)
+
+            FILTER(?startVervanging != ?momentVanVerhindering)
+
+            BIND (concat("Start van vervangende mandataris (", str(?startVervanging), ") heeft niet de startdatum van de verhinderde mandataris (", str(?momentVanVerhindering), ").") as ?value)
+        }
+    """ ;
+        sh:message "Deze mandataris vervangt een verhinderde persoon, maar heeft niet de startdatum van verhinderde mandataris."
+] .
+
+

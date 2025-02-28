@@ -43,3 +43,11 @@ The report can access some helper functions that you can import from
 * `saveDatasetToNamedGraph(dataset, namedGraph)`: it inserts the triples of a RDF/JS dataset in the named graph of the triple store.
   * The `dataset` argument is an RDF/JS Dataset containing the triples (e.g. the dataset of the SHACL report)
   * The `namedGraph` argument is a string containing the URI of the named graph to be used in the SPARQL INSERT query
+
+## Configuration
+
+The service can be configured with the following environment variables:
+
+- `BESTUURSEENHEID_URI` [string]: the URI of a bestuurseenheid to filter on. By default, all bestuurseenheden are retrieved to validate. E.g. `http://data.lblod.info/id/bestuurseenheden/0a3ba641d653b436b14fde37bb6eab4f1054aa0586eb98021b723d58f6ce82fb`
+- `BESTUURSPERIODE_LABEL` [string]: the label of the bestuursperiode to filter on. By default: `2024 - heden`. E.g. `2024 - heden`
+- `SHAPE_URI` [string]: the URI of the SHACL shape to specifically validate with. By default, all shapes are validated in the shacl folder. E.g. `http://example.org/mandataris_1_12_shape`

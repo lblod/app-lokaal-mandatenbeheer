@@ -558,7 +558,7 @@ export function enrichValidationReport(
   for (const validationReportQuad of validationReports) {
     const reportUUID = uuid();
     const reportURI = `http://data.lblod.info/id/reports/${reportUUID}`;
-
+    const reportCreatedAt = new Date().toISOString();
     const triplesOfValidationReport = reportDataset.match(
       validationReportQuad.subject,
       null,
@@ -582,7 +582,7 @@ export function enrichValidationReport(
           namedNode(reportURI),
           namedNode("http://purl.org/dc/terms/created"),
           literal(
-            new Date().toISOString(),
+            reportCreatedAt,
             namedNode("http://www.w3.org/2001/XMLSchema#dateTime")
           )
         )

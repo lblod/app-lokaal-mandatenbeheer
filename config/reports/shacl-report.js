@@ -50,6 +50,13 @@ export default {
     // Validate for each bestuurseenheid
     for (const uriAndUuid of uriAndUuids) {
       try {
+        const namedGraphs = await getNamedGraphsForBestuurseenheidId(
+          uriAndUuid.uuid
+        );
+
+        if (ONLY_KEEP_LATEST_REPORT) {
+          await deletePreviousReports(namedGraphs);
+        }
         // Retrieve all triples within the bestuurseenheid graph limited to the bestuursperiode
         const dataDataset = await executeConstructQueriesOnNamedGraph(
           uriAndUuid,
@@ -69,10 +76,6 @@ export default {
           report.dataset,
           shapesDataset,
           dataDataset
-        );
-
-        const namedGraphs = await getNamedGraphsForBestuurseenheidId(
-          uriAndUuid.uuid
         );
 
         saveDatasetToNamedGraphs(enrichedValidationReportDataset, namedGraphs);

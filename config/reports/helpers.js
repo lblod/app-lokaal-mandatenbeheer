@@ -623,7 +623,7 @@ export async function deletePreviousReports(namedGraphs) {
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
     PREFIX sh: <http://www.w3.org/ns/shacl#>
 
-    SELECT ?reportUri
+    SELECT DISTINCT ?reportUri
     WHERE {
         VALUES ?g {
           ${namedGraphs.map((g) => sparqlEscapeUri(g)).join("\n")}

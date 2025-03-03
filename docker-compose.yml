@@ -166,6 +166,11 @@ services:
       EMAIL_FROM_MANDATARIS_EFFECTIEF: "lokaalmandatenbeheer@vlaanderen.be" # Must be the same as EMAIL_ADDRESS in deliver-email service
       SEND_EMAIL_FOR_MANDATARIS_EFFECTIEF: false
       BESLUIT_STAGING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as decision-ldes-client working graph
+  person:
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.8.0
     labels:

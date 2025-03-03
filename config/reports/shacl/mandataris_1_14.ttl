@@ -36,8 +36,7 @@ sh:sparql [
         select $this ?value
         where {
             ?burgemeesterInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> ;
-                                org:hasPost ?mandaatBurgemeester ;
-                                mandaat:bindingStart ?startBurgemeesterInTijd .
+                                org:hasPost ?mandaatBurgemeester .
 
             $this a mandaat:Mandataris ;
                 org:holds ?mandaatBurgemeester ;
@@ -45,8 +44,7 @@ sh:sparql [
 
         FILTER NOT EXISTS {
                 ?vastBureauInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> ;
-                                    org:hasPost ?mandaatVastBureau ;
-                                    mandaat:bindingStart ?startBurgemeesterInTijd .
+                                    org:hasPost ?mandaatVastBureau .
 
                 ?mandaatVastBureau org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018> .
 

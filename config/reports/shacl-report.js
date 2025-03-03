@@ -44,6 +44,10 @@ const cronFunction = async () => {
   const shape = await mergeFilesContent("./config/shacl");
   const shapesDataset = await parseTurtleString(shape);
 
+  console.log(
+    `Will process ${uriAndUuids.length} bestuurseenheden during this run`
+  );
+
   // Validate for each bestuurseenheid
   for (const uriAndUuid of uriAndUuids) {
     try {
@@ -77,7 +81,7 @@ const cronFunction = async () => {
         dataDataset
       );
 
-      saveDatasetToNamedGraphs(enrichedValidationReportDataset, namedGraphs);
+      await saveDatasetToNamedGraphs(enrichedValidationReportDataset, namedGraphs);
       console.log(`SHACL validation report saved in triple store.`);
 
       if (ONLY_KEEP_LATEST_REPORT) {
@@ -86,7 +90,11 @@ const cronFunction = async () => {
     } catch (error) {
       console.error("Error:", error);
     }
+    console.log(
+      `SHACL validation for bestuurseenheid ${uriAndUuid.uuid} done.`
+    );
   }
+  console.log(`Done processing ${uriAndUuids.length} bestuurseenheden.`);
 };
 
 export default {

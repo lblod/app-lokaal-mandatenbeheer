@@ -1,6 +1,6 @@
 import {
   mergeFilesContent,
-  getBestuurseenhedenUriAndUuid,
+  getBestuurseenhedenUriAndUuidsToProcess,
   executeConstructQueriesOnNamedGraph,
   parseTurtleString,
   validateDataset,
@@ -39,7 +39,7 @@ export default {
     const bestuursperiodeLabel = "2024 - heden";
 
     // Retrieve URI and UUID of bestuurseenheden
-    const uriAndUuids = await getBestuurseenhedenUriAndUuid(
+    const uriAndUuids = await getBestuurseenhedenUriAndUuidsToProcess(
       interestedBestuurseenheidClassificaties
     );
 

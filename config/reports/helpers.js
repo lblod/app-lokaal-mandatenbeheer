@@ -1,3 +1,4 @@
+import env from "env-var";
 import { readdir, readFile } from "fs/promises";
 import path from "path";
 
@@ -9,7 +10,10 @@ const { namedNode, literal, quad } = DataFactory;
 
 import { querySudo, updateSudo } from "@lblod/mu-auth-sudo";
 
-import { batchedQuery } from "../helpers.js";
+const BATCH_SIZE =
+  process.env.BATCH_SIZE != undefined
+    ? env.get("BATCH_SIZE").asIntPositive()
+    : 50;
 
 export async function mergeFilesContent(directory) {
   try {
@@ -37,7 +41,7 @@ export async function mergeFilesContent(directory) {
   }
 }
 
-export async function getBestuurseenhedenUriAndUuid(
+export async function getBestuurseenhedenUriAndUuidsToProcess(
   bestuurseenheidClassificaties
 ) {
   let sparqlValuesBestuurseenheidClassificaties = ``;
@@ -53,6 +57,8 @@ export async function getBestuurseenhedenUriAndUuid(
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX adms: <http://www.w3.org/ns/adms#>
         PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+        PREFIX sh: <http://www.w3.org/ns/shacl#>
+        PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
         SELECT DISTINCT (?bestuurseenheid as ?uri) ?uuid
         WHERE {
@@ -60,10 +66,25 @@ export async function getBestuurseenhedenUriAndUuid(
                             mu:uuid ?uuid ;
                             besluit:classificatie ?bestuurseenheidClassificatie .
 
+            {
+              SELECT ?bestuurseenheid MAX(?created) as ?latestCreated WHERE {
+                GRAPH ?g {
+                  ?org besluit:bestuurt ?bestuurseenheid .
+                  OPTIONAL {
+                    ?report a sh:ValidationReport ;
+                            dct:created ?created .
+                  }
+
+                  BIND(COALESCE(?created, "2000-01-01T00:00:00"^^xsd:dateTime) as ?safeCreated)
+                }
+                ?g ext:ownedBy ?bestuurseenheid.
+              } GROUP BY ?bestuurseenheid
+            }
+
             ${sparqlValuesBestuurseenheidClassificaties}
-        }
+        } ORDER BY ASC(?safeCreated) LIMIT ${BATCH_SIZE}
     `;
-  const queryResponse = await batchedQuery(queryStringBestuurseenheden);
+  const queryResponse = await sudoQuery(queryStringBestuurseenheden);
   const uriAndUuids = queryResponse.results.bindings.map((res) => {
     return { uri: res.uri.value, uuid: res.uuid.value };
   });

@@ -1,0 +1,57 @@
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX dcterms: <http://purl.org/dc/terms/>
+  PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+  PREFIX org: <http://www.w3.org/ns/org#>
+  DELETE {
+    GRAPH ?g {
+      ?mandataris ?p ?o.
+      ?oo ?pp ?mandataris.
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      ?mandataris a astreams:Tombstone.
+      ?mandataris dcterms:modified ?now .
+      ?mandataris astreams:deleted ?now .
+      ?mandataris astreams:formerType mandaat:Mandataris.
+    }
+  }
+  WHERE {
+    VALUES ?mandataris {
+      <http://data.lblod.info/id/mandatarissen/6729EE4CA12BA678FC887300>
+      <http://data.lblod.info/id/mandatarissen/a7cf4859-fc58-4d6b-bd90-3157d2f21764>
+      <http://data.lblod.info/id/mandatarissen/6756CA55F5BE27F3D7867198>
+      <http://data.lblod.info/id/mandatarissen/af8d135e-b7ac-4254-8a8e-9d2b4a484066>
+      <http://data.lblod.info/id/mandatarissen/229f2edc-548a-4373-bdae-9cebef6bffa4>
+      <http://data.lblod.info/id/mandatarissen/4cd25744e41ceff8bc297ebccbc857ef0a55c3f4d6d0272febc290648be1dc07>
+      <http://data.lblod.info/id/mandatarissen/621C9F354E82A00008000037>
+      <http://data.lblod.info/id/mandatarissen/6752C6D5F0B2DA314DF3848C>
+      <http://data.lblod.info/id/mandatarissen/6752C6D6F0B2DA314DF3848D>
+      <http://data.lblod.info/id/mandatarissen/671B4CC80C2BDDC757010363>
+      <http://data.lblod.info/id/mandatarissen/672C906D48D724F0D013C354>
+      <http://data.lblod.info/id/mandatarissen/a33e5344-88d4-421d-8bdc-a47db415ea27>
+      <http://data.lblod.info/id/mandatarissen/a1e0e6cf-06a7-4711-b0e4-2ccd62402d03>
+      <http://data.lblod.info/id/mandatarissen/c63ddbba-777c-4b9d-85dd-9a45f99aff15>
+      <http://data.lblod.info/id/mandatarissen/76ac297e-46fd-4ef9-8469-0018ee7b8a20>
+      <http://data.lblod.info/id/mandatarissen/e56fd51f-5702-4bf9-8eec-e86e2be40e17>
+      <http://data.lblod.info/id/mandatarissen/ec2490a1-eb6f-4be0-94e2-d69182fe7c4a>
+      <http://data.lblod.info/id/mandatarissen/0e73c176-70ef-40af-b675-9c4c929494cd>
+      <http://data.lblod.info/id/mandatarissen/2dbbbfff-7c18-4855-8a1e-cd5f41a1f43b>
+      <http://data.lblod.info/id/mandatarissen/1915a386-d18a-4863-b9da-3b9ed8e77653>
+      <http://data.lblod.info/id/mandatarissen/6729EE47A12BA678FC8872FA>
+      <http://data.lblod.info/id/mandatarissen/6756CA56F5BE27F3D7867199>
+      <http://data.lblod.info/id/mandatarissen/dff9e473-b08a-4d81-9d5b-3c9e50f3c273>
+      <http://data.lblod.info/id/mandatarissen/7f78c4e9-ddd9-4e87-a331-f5b4e23f137d>
+      <http://data.lblod.info/id/mandatarissen/671B4CC90C2BDDC757010364>
+
+    }
+    GRAPH ?g {
+      ?mandataris ?p ?o.
+      OPTIONAL {
+        ?oo ?pp ?mandataris.
+      }
+    }
+    ?g ext:ownedBy ?someone.
+    BIND(NOW() AS ?now)
+  }

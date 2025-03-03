@@ -36,9 +36,8 @@ sh:sparql [
         select $this ?value
         where {
             ?gemeenteraadInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> ;
-                                org:hasPost ?mandaatGemeenteraad ;
-                                mandaat:bindingStart ?startGemeenteraadInTijd .
-            
+                                org:hasPost ?mandaatGemeenteraad .
+
             ?mandaatGemeenteraad org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012> .
 
             $this a mandaat:Mandataris ;
@@ -47,16 +46,15 @@ sh:sparql [
 
             FILTER NOT EXISTS {
                     ?raadVoorMaatschappelijkWelzijnInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> ;
-                                        org:hasPost ?mandaatRaadVoorMaatschappelijkWelzijn ;
-                                        mandaat:bindingStart ?startGemeenteraadInTijd .
+                                        org:hasPost ?mandaatRaadVoorMaatschappelijkWelzijn .
 
                     ?mandaatRaadVoorMaatschappelijkWelzijn org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016> .
-                        
+
                     ?alsMandatarisRaadVoorMaatschappelijkWelzijn a mandaat:Mandataris ;
                         org:holds ?mandaatRaadVoorMaatschappelijkWelzijn ;
                         mandaat:isBestuurlijkeAliasVan ?persoon .
             }
-        
+
             BIND ("" as ?value)
         }
     """ ;

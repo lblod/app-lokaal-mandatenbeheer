@@ -67,7 +67,7 @@ export async function getBestuurseenhedenUriAndUuidsToProcess(
                             besluit:classificatie ?bestuurseenheidClassificatie .
 
             {
-              SELECT ?bestuurseenheid MAX(?created) as ?latestCreated WHERE {
+              SELECT ?bestuurseenheid (MAX(?safeCreated) AS ?latestCreated) WHERE {
                 GRAPH ?g {
                   ?org besluit:bestuurt ?bestuurseenheid .
                   OPTIONAL {
@@ -82,9 +82,9 @@ export async function getBestuurseenhedenUriAndUuidsToProcess(
             }
 
             ${sparqlValuesBestuurseenheidClassificaties}
-        } ORDER BY ASC(?safeCreated) LIMIT ${BATCH_SIZE}
+        } ORDER BY ASC(?latestCreated) LIMIT ${BATCH_SIZE}
     `;
-  const queryResponse = await sudoQuery(queryStringBestuurseenheden);
+  const queryResponse = await querySudo(queryStringBestuurseenheden);
   const uriAndUuids = queryResponse.results.bindings.map((res) => {
     return { uri: res.uri.value, uuid: res.uuid.value };
   });

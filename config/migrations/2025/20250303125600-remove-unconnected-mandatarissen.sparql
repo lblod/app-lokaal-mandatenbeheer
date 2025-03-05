@@ -22,9 +22,7 @@
       <http://data.lblod.info/id/mandatarissen/6729EE4CA12BA678FC887300>
       <http://data.lblod.info/id/mandatarissen/a7cf4859-fc58-4d6b-bd90-3157d2f21764>
       <http://data.lblod.info/id/mandatarissen/6756CA55F5BE27F3D7867198>
-      <http://data.lblod.info/id/mandatarissen/af8d135e-b7ac-4254-8a8e-9d2b4a484066>
       <http://data.lblod.info/id/mandatarissen/229f2edc-548a-4373-bdae-9cebef6bffa4>
-      <http://data.lblod.info/id/mandatarissen/4cd25744e41ceff8bc297ebccbc857ef0a55c3f4d6d0272febc290648be1dc07>
       <http://data.lblod.info/id/mandatarissen/621C9F354E82A00008000037>
       <http://data.lblod.info/id/mandatarissen/6752C6D5F0B2DA314DF3848C>
       <http://data.lblod.info/id/mandatarissen/6752C6D6F0B2DA314DF3848D>
@@ -44,6 +42,9 @@
       <http://data.lblod.info/id/mandatarissen/dff9e473-b08a-4d81-9d5b-3c9e50f3c273>
       <http://data.lblod.info/id/mandatarissen/7f78c4e9-ddd9-4e87-a331-f5b4e23f137d>
       <http://data.lblod.info/id/mandatarissen/671B4CC90C2BDDC757010364>
+      <http://data.lblod.info/id/mandatarissen/229f2edc-548a-4373-bdae-9cebef6bffa4>
+      <http://data.lblod.info/id/mandatarissen/621C9F354E82A00008000037>
+      <http://data.lblod.info/id/mandatarissen/67C58845A31B96AA0A576303>
 
     }
     GRAPH ?g {
@@ -51,6 +52,26 @@
       OPTIONAL {
         ?oo ?pp ?mandataris.
       }
+    }
+    ?g ext:ownedBy ?someone.
+    BIND(NOW() AS ?now)
+  };
+  DELETE {
+    GRAPH ?g {
+      ?mandataris mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/2e219617-23d9-486e-b7fe-9190d5140058> .
+      ?mandataris dcterms:modified ?oldMod.
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      ?mandataris mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/68e1f83ffa9cfa8c20c37c5dd8943cceec04e192eb58f58921a3d3d80de948c7> .
+      ?mandataris dcterms:modified ?now.
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?mandataris mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/2e219617-23d9-486e-b7fe-9190d5140058> .
+      ?mandataris dcterms:modified ?oldMod.
     }
     ?g ext:ownedBy ?someone.
     BIND(NOW() AS ?now)

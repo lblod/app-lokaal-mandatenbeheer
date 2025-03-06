@@ -76,6 +76,8 @@ services:
     restart: "no"
     profiles:
       - nodebug
+  concept-scheme:
+    restart: 'no'
   modified:
     restart: "no"
     profiles:

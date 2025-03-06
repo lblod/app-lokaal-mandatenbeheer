@@ -1,9 +1,7 @@
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 DELETE {
   GRAPH ?g {
     ?mandataris mandaat:einde ?end.

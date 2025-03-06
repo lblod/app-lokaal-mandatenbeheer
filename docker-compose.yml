@@ -171,6 +171,9 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+    environment:
+      RATE_LIMIT: 1000
+      RATE_LIMIT_TIME_SPAN: 30000
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.8.0
     labels:

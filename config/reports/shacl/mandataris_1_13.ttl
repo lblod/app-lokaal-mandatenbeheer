@@ -36,23 +36,21 @@ sh:sparql [
         select $this ?value
         where {
             ?collegeInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> ;
-                                org:hasPost ?mandaatCollege ;
-                                mandaat:bindingStart ?startCollegeInTijd .
-            
+                                org:hasPost ?mandaatCollege .
+
             $this a mandaat:Mandataris ;
                 org:holds ?mandaatCollege ;
                 mandaat:isBestuurlijkeAliasVan ?persoon .
 
         FILTER NOT EXISTS {
                 ?vastBureauInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> ;
-                                    org:hasPost ?mandaatVastBureau ;
-                                    mandaat:bindingStart ?startCollegeInTijd .
-                    
+                                    org:hasPost ?mandaatVastBureau .
+
                 ?alsMandatarisVastBureau a mandaat:Mandataris ;
                     org:holds ?mandaatVastBureau ;
                     mandaat:isBestuurlijkeAliasVan ?persoon .
         }
-        
+
         BIND ("" as ?value)
         }
     """ ;

@@ -36,7 +36,7 @@ async function replaceBestuurseenheden(connectionOptions) {
     }
     INSERT {
       GRAPH <http://mu.semte.ch/graphs/public> {
-        ?s ?pNew ?oNew.
+        ?s ?pNewReal ?oNew.
         ?s besluit:classificatie ?bestuurseenheidClassification.
       }
     } WHERE {
@@ -56,6 +56,10 @@ async function replaceBestuurseenheden(connectionOptions) {
           VERSION_PREDICATE
         )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
       }
+      VALUES ( ?pNewReplace ?pNewReplaced ) {
+        ( org:classification besluit:classificatie )
+      }
+      BIND(IF(?pNew = ?pNewReplace, ?pNewReplaced, ?pNew) AS ?pNewReal)
       OPTIONAL {
         GRAPH <http://mu.semte.ch/graphs/public> {
           ?s ?pOld ?oOld.
@@ -78,6 +82,7 @@ async function moveBestuursorgaanAndMandate(connectionOptions) {
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+    PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
     DELETE {
       GRAPH ?targetGraph {
@@ -86,7 +91,7 @@ async function moveBestuursorgaanAndMandate(connectionOptions) {
     }
     INSERT {
       GRAPH ?targetGraph {
-        ?s ?pNew ?oNew.
+        ?s ?pNewReal ?oNew.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
@@ -108,9 +113,14 @@ async function moveBestuursorgaanAndMandate(connectionOptions) {
       OPTIONAL {
         GRAPH ?targetGraph {
           ?s ?pOld ?oOld.
-          FILTER(?pOld NOT IN (ext:isTijdelijkOrgaanIn, ext:origineleBestuurseenheid, lmb:heeftBestuursperiode, lmb:deactivatedAt ))
+          FILTER(?pOld NOT IN (ext:isTijdelijkOrgaanIn, ext:origineleBestuurseenheid, lmb:heeftBestuursperiode, lmb:deactivatedAt, ext:origineleBestuursorgaan ))
         }
       }
+      VALUES ( ?pNewReplace ?pNewReplaced ) {
+        ( generiek:isTijdspecialisatieVan mandaat:isTijdspecialisatieVan )
+        ( org:classification besluit:classificatie )
+      }
+      BIND(IF(?pNew = ?pNewReplace, ?pNewReplaced, ?pNew) AS ?pNewReal)
     }`,
     {},
     connectionOptions

@@ -144,6 +144,8 @@
   ("ext:VerkiezingsresultaatGevolgCode" -> _)
   ("schema:ContactPoint" -> _)
   ("locn:Address" -> _)
+  ("skos:ConceptScheme" -> _)
+  ("skos:Concept" -> _)
   ("sh:ValidationResult" -> _)
   ("sh:ValidationReport" -> _))
 

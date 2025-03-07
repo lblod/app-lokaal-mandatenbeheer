@@ -255,7 +255,7 @@ services:
     volumes:
       - "./data/ldes-feed/:/data/"
   decision-ldes-client:
-    image: lblod/ldes-client:0.0.3
+    image: lblod/ldes-client:0.0.4
     restart: always
     environment:
       LDES_BASE: https://mandaten-besluiten.lblod.info/streams/ldes/public/
@@ -270,7 +270,7 @@ services:
       - "logging=true"
     logging: *default-logging
   op-ldes-client:
-    image: lblod/ldes-client:0.0.3
+    image: lblod/ldes-client:0.0.4
     restart: always
     environment:
       LDES_BASE: https://data.lblod.info/op/ldes/

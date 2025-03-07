@@ -20,6 +20,7 @@ async function replaceExistingData() {
   }
   await replaceBestuurseenheden(options);
   await moveBestuursorgaanAndMandate(options);
+  await moveLocations(options);
 }
 
 async function replaceBestuurseenheden(connectionOptions) {
@@ -108,6 +109,50 @@ async function moveBestuursorgaanAndMandate(connectionOptions) {
         GRAPH ?targetGraph {
           ?s ?pOld ?oOld.
           FILTER(?pOld NOT IN (ext:isTijdelijkOrgaanIn, ext:origineleBestuurseenheid, lmb:heeftBestuursperiode, lmb:deactivatedAt ))
+        }
+      }
+    }`,
+    {},
+    connectionOptions
+  );
+}
+
+async function moveLocations(connectionOptions) {
+  await updateSudo(
+    `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+
+    DELETE {
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s ?pOld ?oOld.
+      }
+    }
+    INSERT {
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        ?s ?pNew ?oNew.
+      }
+    } WHERE {
+      GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
+        ?stream <https://w3id.org/tree#member> ?versionedMember .
+        ?versionedMember ${sparqlEscapeUri(VERSION_PREDICATE)} ?s .
+        VALUES ?type {
+          prov:Location
+        }
+        ?versionedMember a ?type.
+        ?versionedMember ?pNew ?oNew.
+        FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
+          VERSION_PREDICATE
+        )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
+      }
+      OPTIONAL {
+        GRAPH <http://mu.semte.ch/graphs/public> {
+          ?s ?pOld ?oOld.
         }
       }
     }`,

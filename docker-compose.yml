@@ -178,6 +178,10 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  merge-person:
+    labels:
+      - "logging=true"
+    restart: always
   modified:
     image: lblod/track-modified-service:0.0.1
     labels:

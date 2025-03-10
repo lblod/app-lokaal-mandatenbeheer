@@ -85,6 +85,8 @@ services:
       - nodebug
   adressenregister:
     restart: "no"
+  merge-person:
+    restart: no
   ldes-delta-pusher:
     restart: "no"
     environment:

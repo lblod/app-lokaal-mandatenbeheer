@@ -178,7 +178,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  merge-person:
+  merge-person-cron:
     labels:
       - "logging=true"
     restart: always

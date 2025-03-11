@@ -85,7 +85,7 @@ services:
       - nodebug
   adressenregister:
     restart: "no"
-  merge-person:
+  merge-person-cron:
     restart: no
   ldes-delta-pusher:
     restart: "no"

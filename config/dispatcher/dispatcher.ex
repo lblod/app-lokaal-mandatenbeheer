@@ -335,10 +335,6 @@ defmodule Dispatcher do
     forward(conn, path, "http://adressenregister/")
   end
 
-  match "/merge-person-api/*path", %{layer: :api_services, accept: %{any: true}} do
-    forward(conn, path, "http://merge-person/")
-  end
-
   #################################################################
   # Forms
   #################################################################

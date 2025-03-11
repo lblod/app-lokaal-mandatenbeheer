@@ -1,0 +1,15 @@
+PREFIX nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
+PREFIX mailFolders: <http://data.lblod.info/id/mail-folders/>
+
+DELETE {
+  GRAPH ?g {
+    ?mail ?p ?o .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mail a nmo:Email .
+    ?mail nmo:isPartOf mailFolders:2 .
+    ?mail ?p ?o .
+  }
+}

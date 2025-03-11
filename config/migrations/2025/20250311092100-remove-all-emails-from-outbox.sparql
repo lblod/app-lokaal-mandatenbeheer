@@ -9,7 +9,7 @@ DELETE {
 WHERE {
   GRAPH ?g {
     ?mail a nmo:Email .
-    ?mail nmo:isPartOf mailFolders:2 .
+    ?mail nmo:isPartOf mailFolders:2 . # Outbox
     ?mail ?p ?o .
   }
 }

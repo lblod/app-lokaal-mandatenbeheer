@@ -1,0 +1,61 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_1_19_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
+        sh:prefix "generiek" ;
+    ] ];
+sh:sparql [
+    sh:select """
+        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+        PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+        select $this ?value
+        where {
+            $this a mandaat:Mandataris ;
+                    org:holds/org:role ?mandaatClassificatie ;
+                    mandaat:isBestuurlijkeAliasVan ?persoon .
+            
+            ?persoon <http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam> ?voornaam ;
+                <http://xmlns.com/foaf/0.1/familyName> ?achternaam .
+
+            ?mandaatClassificatie skos:prefLabel ?mandaatClassificatieLabel .
+
+            VALUES ?mandaatClassificatie { <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> 
+            <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/59a90e03-4f22-4bb9-8c91-132618db4b38>
+            <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011> }
+
+            FILTER NOT EXISTS {
+                $this mandaat:rangorde ?rangorde .
+            }
+            
+            BIND (concat(?voornaam, " ", ?achternaam, " (", ?mandaatClassificatieLabel, ")") as ?value)
+        }
+    """ ;
+        sh:message "Deze mandataris heeft een classificatie schepen, toegevoegde schepen of gemeenteraadslid, maar heeft geen rangorde."
+] .
+
+

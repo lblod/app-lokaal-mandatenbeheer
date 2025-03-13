@@ -24,6 +24,10 @@ sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
         sh:prefix "generiek" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+        sh:prefix "skos" ;
     ] ];
 sh:sparql [
     sh:select """
@@ -32,12 +36,18 @@ sh:sparql [
         PREFIX org: <http://www.w3.org/ns/org#>
         PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
         PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
-
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        
         select $this ?value
         where {
             $this a mandaat:Mandataris ;
                     lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6> ;
                     mandaat:isBestuurlijkeAliasVan ?persoon .
+            
+            $this org:holds/org:role/skos:prefLabel ?mandaatLabel .
+
+            ?bestuursorgaan org:hasPost ?mandaat ;
+                    lmb:heeftBestuursperiode/skos:prefLabel ?bestuursperiodeLabel .
 
             ?persoon <http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam> ?voornaam ;
                 <http://xmlns.com/foaf/0.1/familyName> ?achternaam .
@@ -52,7 +62,7 @@ sh:sparql [
                 }
             }
             
-            BIND (concat("Mandataris ", ?voornaam, " ", ?achternaam, " heeft geen link naar een besluit.") as ?value)
+            BIND (concat("Mandataris ", ?voornaam, " ", ?achternaam, " (", ?bestuursperiodeLabel ") heeft geen link naar een besluit.") as ?value)
         }
     """ ;
         sh:message "Deze mandataris met publicatiestatus bekrachtigd heeft steeds een link naar een besluit (of een lmb:linkToBesluit als het besluit niet als linked data is gepubliceerd)"

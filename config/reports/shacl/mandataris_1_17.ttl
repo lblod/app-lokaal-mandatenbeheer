@@ -24,6 +24,10 @@ sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
         sh:prefix "generiek" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+        sh:prefix "skos" ;
     ] ];
 sh:sparql [
     sh:select """
@@ -32,6 +36,7 @@ sh:sparql [
         PREFIX org: <http://www.w3.org/ns/org#>
         PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
         PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
         select $this ?value
         where {

@@ -18,6 +18,9 @@
       ?s a mandaat:Mandataris.
       ?s lmb:linkToBesluit ?besluit.
       ?s lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/d3b12468-3720-4cb0-95b4-6aa2996ab188> .
+      OPTIONAL {
+        ?s dct:modified ?oldMod.
+      }
     }
     BIND(NOW() AS ?now)
     ?g ext:ownedBy ?someone.

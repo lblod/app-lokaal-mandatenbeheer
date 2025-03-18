@@ -167,6 +167,7 @@ services:
       SEND_EMAIL_FOR_MANDATARIS_EFFECTIEF: false
       BESLUIT_STAGING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as decision-ldes-client working graph
   concept-scheme:
+    image: lblod/concept-scheme-service:0.0.2
     labels:
       - "logging=true"
     restart: always

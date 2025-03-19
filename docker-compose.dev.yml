@@ -87,8 +87,6 @@ services:
     restart: "no"
   merge-person-cron:
     restart: no
-    profiles:
-      - nodebug
   ldes-delta-pusher:
     restart: "no"
     environment:

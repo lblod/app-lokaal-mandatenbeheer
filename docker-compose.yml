@@ -155,7 +155,7 @@ services:
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.5.8
+    image: lblod/mandataris-service:0.5.9
     labels:
       - "logging=true"
     restart: always

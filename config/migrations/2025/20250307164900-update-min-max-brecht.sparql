@@ -1,0 +1,37 @@
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+DELETE {
+  GRAPH ?g {
+<http://data.lblod.info/id/mandaten/4798ccfe6ede00664cd065146da01bc39899e2d3bee6159c4c32f175c218d7a2> lmb:minAantalHouders 6;
+  lmb:maxAantalHouders 6.
+  }
+}
+INSERT {
+  GRAPH ?g {
+<http://data.lblod.info/id/mandaten/4798ccfe6ede00664cd065146da01bc39899e2d3bee6159c4c32f175c218d7a2> lmb:minAantalHouders 5;
+  lmb:maxAantalHouders 5.
+  }
+}
+WHERE {
+  GRAPH ?g {
+<http://data.lblod.info/id/mandaten/4798ccfe6ede00664cd065146da01bc39899e2d3bee6159c4c32f175c218d7a2> lmb:minAantalHouders 6;
+  lmb:maxAantalHouders 6.
+  }
+};
+DELETE {
+  GRAPH ?g {
+<http://data.lblod.info/id/mandaten/68021f6bbdb0835e116b252030c420fc15de36732dc50a50bb76e119bd273ec8> lmb:minAantalHouders 6;
+  lmb:maxAantalHouders 6.
+  }
+}
+INSERT {
+  GRAPH ?g {
+<http://data.lblod.info/id/mandaten/68021f6bbdb0835e116b252030c420fc15de36732dc50a50bb76e119bd273ec8> lmb:minAantalHouders 5;
+  lmb:maxAantalHouders 5.
+  }
+}
+WHERE {
+  GRAPH ?g {
+<http://data.lblod.info/id/mandaten/68021f6bbdb0835e116b252030c420fc15de36732dc50a50bb76e119bd273ec8> lmb:minAantalHouders 6;
+  lmb:maxAantalHouders 6.
+  }
+}

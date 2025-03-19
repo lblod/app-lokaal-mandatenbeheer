@@ -178,6 +178,13 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  merge-person-cron:
+    image: lblod/merge-person-service:1.0.0
+    labels:
+      - "logging=true"
+    restart: always
+    depends_on:
+      - virtuoso
   modified:
     image: lblod/track-modified-service:0.0.1
     labels:

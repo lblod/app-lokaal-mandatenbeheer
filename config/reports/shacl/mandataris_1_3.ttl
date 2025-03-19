@@ -3,7 +3,7 @@
 
 <http://example.org/mandataris_1_3_shape>
 a sh:NodeShape ;
-sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;

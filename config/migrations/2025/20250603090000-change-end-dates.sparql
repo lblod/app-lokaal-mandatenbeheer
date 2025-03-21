@@ -1,0 +1,27 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:einde ?end.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:einde ?newEnd.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris.
+    ?mandataris dct:modified ?mod.
+    ?mandataris mandaat:einde ?end.
+    FILTER(?mod > "2024-01-01T00:00:00Z"^^xsd:dateTime)
+  }
+  ?g ext:ownedBy ?someone.
+  BIND(bif:dateadd('second', -1, xsd:DateTime(?end)) AS ?newEnd)
+  BIND(NOW() AS ?now)
+}

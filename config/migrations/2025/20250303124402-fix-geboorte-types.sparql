@@ -1,0 +1,30 @@
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?geboorte persoon:datum ?oldDate .
+    ?geboorte dct:modified ?oldModified .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?geboorte persoon:datum ?newDate .
+    ?geboorte dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graph/tmp/geboortes> {
+    ?geboorte persoon:oldDate ?oldDate .
+    ?geboorte persoon:newDate ?newDate .
+  }
+  GRAPH ?g {
+    ?geboorte persoon:datum ?oldDate .
+    OPTIONAL {
+      ?geboorte dct:modified ?oldModified .
+    }
+    BIND(NOW() AS ?now)
+  }
+  ?g ext:ownedBy ?bestuurseenheid
+}

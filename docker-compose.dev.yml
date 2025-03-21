@@ -40,6 +40,7 @@ services:
       - default
       - debug
   database:
+    image: semtech/sparql-parser:feature-ordered-data-modification-queries
     restart: "no"
     networks:
       - default
@@ -76,12 +77,16 @@ services:
     restart: "no"
     profiles:
       - nodebug
+  concept-scheme:
+    restart: "no"
   modified:
     restart: "no"
     profiles:
       - nodebug
   adressenregister:
     restart: "no"
+  merge-person-cron:
+    restart: no
   ldes-delta-pusher:
     restart: "no"
     environment:

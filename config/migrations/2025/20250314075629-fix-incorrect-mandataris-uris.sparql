@@ -1,0 +1,130 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g {
+    ?oldUri ?p ?o .
+    ?ss ?pp ?oldUri .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?newUri ?p ?o .
+    ?ss ?pp ?newUri .
+
+    ?oldUri a astreams:Tombstone .
+    ?oldUri dct:modified ?now .
+    ?oldUri astreams:deleted ?now .
+    ?oldUri astreams:formerType mandaat:Mandataris .
+    ?oldUri owl:sameAs ?newUri .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?oldUri ?p ?o .
+    ?ss ?pp ?oldUri .
+  }
+  ?g ext:ownedBy ?bestuurseenheid .
+  BIND(NOW() AS ?now)
+  VALUES (?oldUri ?newUri) {
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/96f07a58-950a-4174-9888-89b063b96f13> <http://data.lblod.info/id/mandatarissen/96f07a58-950a-4174-9888-89b063b96f13>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/2a5473ce-3f69-44f6-977b-a73736c4771a> <http://data.lblod.info/id/mandatarissen/2a5473ce-3f69-44f6-977b-a73736c4771a>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/015bfae6-71f5-4f07-88e2-78a0658f1a5d> <http://data.lblod.info/id/mandatarissen/015bfae6-71f5-4f07-88e2-78a0658f1a5d>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/5ce1dde8-3915-4d32-9781-f9d72b6bb87e> <http://data.lblod.info/id/mandatarissen/5ce1dde8-3915-4d32-9781-f9d72b6bb87e>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/2dbd6279-8e27-4113-89f6-70397af66ddd> <http://data.lblod.info/id/mandatarissen/2dbd6279-8e27-4113-89f6-70397af66ddd>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/8695e005-dc0d-44e1-a752-9a1562bc7b14> <http://data.lblod.info/id/mandatarissen/8695e005-dc0d-44e1-a752-9a1562bc7b14>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/b35c9082-94b1-430c-b931-e94a80a97a11> <http://data.lblod.info/id/mandatarissen/b35c9082-94b1-430c-b931-e94a80a97a11>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/718ec45d-8854-4f7c-ab2a-7f402b7e4833> <http://data.lblod.info/id/mandatarissen/718ec45d-8854-4f7c-ab2a-7f402b7e4833>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/a7986b74-d607-4c7c-b0f2-0c2eac647454> <http://data.lblod.info/id/mandatarissen/a7986b74-d607-4c7c-b0f2-0c2eac647454>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/b074607e-c3b0-4388-bd06-e9d54c1fc8a4> <http://data.lblod.info/id/mandatarissen/b074607e-c3b0-4388-bd06-e9d54c1fc8a4>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/6a3efc60-d272-4d84-85af-010e0ccbace6> <http://data.lblod.info/id/mandatarissen/6a3efc60-d272-4d84-85af-010e0ccbace6>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/66dc839e-9d7d-40a9-a789-207838a8fda5> <http://data.lblod.info/id/mandatarissen/66dc839e-9d7d-40a9-a789-207838a8fda5>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/2c4b4f09-807d-496b-b623-20717dd18418> <http://data.lblod.info/id/mandatarissen/2c4b4f09-807d-496b-b623-20717dd18418>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/82170940-883f-472e-9646-de9a20b0298b> <http://data.lblod.info/id/mandatarissen/82170940-883f-472e-9646-de9a20b0298b>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/ac4d85c5-aaef-4daa-ae04-87c46a0d0f60> <http://data.lblod.info/id/mandatarissen/ac4d85c5-aaef-4daa-ae04-87c46a0d0f60>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/b9ba624e-55c5-4716-85c0-8a847cbcebb8> <http://data.lblod.info/id/mandatarissen/b9ba624e-55c5-4716-85c0-8a847cbcebb8>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/483a8021-db03-4fd3-86d1-6764a5067f36> <http://data.lblod.info/id/mandatarissen/483a8021-db03-4fd3-86d1-6764a5067f36>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/fbff97f4-795c-4794-890a-36bd2e2bf1c0> <http://data.lblod.info/id/mandatarissen/fbff97f4-795c-4794-890a-36bd2e2bf1c0>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/4f8a1ea9-88ec-45c1-9cf1-172f4b2797e7> <http://data.lblod.info/id/mandatarissen/4f8a1ea9-88ec-45c1-9cf1-172f4b2797e7>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/4eab3600-83f9-4bbb-a6e6-a5062f54e658> <http://data.lblod.info/id/mandatarissen/4eab3600-83f9-4bbb-a6e6-a5062f54e658>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/6aae99ab-b4e4-4964-b5bc-4553bc4bdbfe> <http://data.lblod.info/id/mandatarissen/6aae99ab-b4e4-4964-b5bc-4553bc4bdbfe>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/0762f192-de43-47c8-8d80-9d4938a63cef> <http://data.lblod.info/id/mandatarissen/0762f192-de43-47c8-8d80-9d4938a63cef>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/a221eba5-489c-4966-a424-9ce7edf617b2> <http://data.lblod.info/id/mandatarissen/a221eba5-489c-4966-a424-9ce7edf617b2>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/fd795450-210b-4692-8d9e-b77a3248b3ce> <http://data.lblod.info/id/mandatarissen/fd795450-210b-4692-8d9e-b77a3248b3ce>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/53bbd808-8598-44e8-bc13-b945b286e226> <http://data.lblod.info/id/mandatarissen/53bbd808-8598-44e8-bc13-b945b286e226>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/0417aebd-ebf3-45ee-a7eb-5df7f316e885> <http://data.lblod.info/id/mandatarissen/0417aebd-ebf3-45ee-a7eb-5df7f316e885>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/514277b7-c787-4a6b-97fa-9fb2eea936e3> <http://data.lblod.info/id/mandatarissen/514277b7-c787-4a6b-97fa-9fb2eea936e3>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/cf1ff055-2f2e-4ddb-992b-eee3e880f891> <http://data.lblod.info/id/mandatarissen/cf1ff055-2f2e-4ddb-992b-eee3e880f891>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/55e3fc74-5f04-4a2a-9a2a-a464ffb4cb5a> <http://data.lblod.info/id/mandatarissen/55e3fc74-5f04-4a2a-9a2a-a464ffb4cb5a>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/4a2f12f1-c15c-4688-b263-b4faf191e11d> <http://data.lblod.info/id/mandatarissen/4a2f12f1-c15c-4688-b263-b4faf191e11d>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/d651b53c-c050-46a5-b6b8-81a610c2adb8> <http://data.lblod.info/id/mandatarissen/d651b53c-c050-46a5-b6b8-81a610c2adb8>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/58ef887e-efb5-42a6-83cf-76bec4ef7b53> <http://data.lblod.info/id/mandatarissen/58ef887e-efb5-42a6-83cf-76bec4ef7b53>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/a80c34f6-91a6-4034-baee-7d4ba4104b49> <http://data.lblod.info/id/mandatarissen/a80c34f6-91a6-4034-baee-7d4ba4104b49>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/477c293c-2a78-4b9f-994b-b87af085916f> <http://data.lblod.info/id/mandatarissen/477c293c-2a78-4b9f-994b-b87af085916f>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/df6b8768-8a96-41b7-bf2c-a7e16c7738cf> <http://data.lblod.info/id/mandatarissen/df6b8768-8a96-41b7-bf2c-a7e16c7738cf>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/8d17736f-dc3e-4833-949d-2fc19f34826c> <http://data.lblod.info/id/mandatarissen/8d17736f-dc3e-4833-949d-2fc19f34826c>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/ddf69e0c-f9f5-4d33-b937-946c80a2fb05> <http://data.lblod.info/id/mandatarissen/ddf69e0c-f9f5-4d33-b937-946c80a2fb05>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/8f87ed38-1569-42ca-897e-d34b042d3247> <http://data.lblod.info/id/mandatarissen/8f87ed38-1569-42ca-897e-d34b042d3247>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/0412af4f-b9f7-4adc-a291-c2a1b5cc8e18> <http://data.lblod.info/id/mandatarissen/0412af4f-b9f7-4adc-a291-c2a1b5cc8e18>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/177b113a-d684-4bb6-8c39-dc5be02b23c8> <http://data.lblod.info/id/mandatarissen/177b113a-d684-4bb6-8c39-dc5be02b23c8>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/89605883-7ec0-4642-971f-ec1b2b7c482f> <http://data.lblod.info/id/mandatarissen/89605883-7ec0-4642-971f-ec1b2b7c482f>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/512c6138-fac5-4462-a355-02a06f8d1042> <http://data.lblod.info/id/mandatarissen/512c6138-fac5-4462-a355-02a06f8d1042>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/48b982f8-4c65-4683-8377-add7286787b9> <http://data.lblod.info/id/mandatarissen/48b982f8-4c65-4683-8377-add7286787b9>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/6055ce8e-a51b-4377-a6e1-396088d814be> <http://data.lblod.info/id/mandatarissen/6055ce8e-a51b-4377-a6e1-396088d814be>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/c6bc0554-fc5d-4d89-8577-1b98312f877e> <http://data.lblod.info/id/mandatarissen/c6bc0554-fc5d-4d89-8577-1b98312f877e>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/1e727aeb-3e98-4f7a-b6bd-cb00e857c126> <http://data.lblod.info/id/mandatarissen/1e727aeb-3e98-4f7a-b6bd-cb00e857c126>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/c4018ad2-3d4b-43d6-92a5-68851883c133> <http://data.lblod.info/id/mandatarissen/c4018ad2-3d4b-43d6-92a5-68851883c133>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/bc53237e-4b12-41af-96d6-5ab783271bcf> <http://data.lblod.info/id/mandatarissen/bc53237e-4b12-41af-96d6-5ab783271bcf>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/bbb34347-bf18-4a3b-b59b-d7ec903ba77e> <http://data.lblod.info/id/mandatarissen/bbb34347-bf18-4a3b-b59b-d7ec903ba77e>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/4ca15f17-d0b4-4e91-af07-1ef9000d54a1> <http://data.lblod.info/id/mandatarissen/4ca15f17-d0b4-4e91-af07-1ef9000d54a1>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/c838fc1c-989c-417d-81f1-374f002cc1a5> <http://data.lblod.info/id/mandatarissen/c838fc1c-989c-417d-81f1-374f002cc1a5>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/99231525-e9a6-4e1b-b865-8bb301749375> <http://data.lblod.info/id/mandatarissen/99231525-e9a6-4e1b-b865-8bb301749375>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/cb3335ea-a3ad-4489-8a8e-4466aca009ce> <http://data.lblod.info/id/mandatarissen/cb3335ea-a3ad-4489-8a8e-4466aca009ce>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/6bf55408-d4b5-42bf-8124-4859cfed2cb0> <http://data.lblod.info/id/mandatarissen/6bf55408-d4b5-42bf-8124-4859cfed2cb0>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/79aed569-5e24-4876-90db-1b6f5f0033b1> <http://data.lblod.info/id/mandatarissen/79aed569-5e24-4876-90db-1b6f5f0033b1>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/f8df94f2-1862-4a53-8993-0d7e5bc5a9e4> <http://data.lblod.info/id/mandatarissen/f8df94f2-1862-4a53-8993-0d7e5bc5a9e4>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/f456f21a-500a-4e2b-94e4-c6af5a38a848> <http://data.lblod.info/id/mandatarissen/f456f21a-500a-4e2b-94e4-c6af5a38a848>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/71dc455b-f331-4442-91a6-ff7103b19fa2> <http://data.lblod.info/id/mandatarissen/71dc455b-f331-4442-91a6-ff7103b19fa2>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/61ae2479-707b-45af-be5e-30cecd7d91f4> <http://data.lblod.info/id/mandatarissen/61ae2479-707b-45af-be5e-30cecd7d91f4>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/112851ea-7c91-4652-80ef-803c12c61ec6> <http://data.lblod.info/id/mandatarissen/112851ea-7c91-4652-80ef-803c12c61ec6>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/3c630a33-e713-4f98-af48-93fa13647082> <http://data.lblod.info/id/mandatarissen/3c630a33-e713-4f98-af48-93fa13647082>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/bf217198-a1de-4b46-b805-d216728a5b45> <http://data.lblod.info/id/mandatarissen/bf217198-a1de-4b46-b805-d216728a5b45>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/97944e4f-bee0-4d1c-b343-eaefc272d18f> <http://data.lblod.info/id/mandatarissen/97944e4f-bee0-4d1c-b343-eaefc272d18f>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/7a74067f-6f9d-46e0-a1c2-e8f25b9365cd> <http://data.lblod.info/id/mandatarissen/7a74067f-6f9d-46e0-a1c2-e8f25b9365cd>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/dc41d234-f634-46cf-99f2-40ff62fdd487> <http://data.lblod.info/id/mandatarissen/dc41d234-f634-46cf-99f2-40ff62fdd487>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/bec53cec-a653-4e48-8568-58b03e7c2c13> <http://data.lblod.info/id/mandatarissen/bec53cec-a653-4e48-8568-58b03e7c2c13>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/ba217018-bd63-4970-9d8d-fe7f25d5ee5d> <http://data.lblod.info/id/mandatarissen/ba217018-bd63-4970-9d8d-fe7f25d5ee5d>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/3d62d7b0-3879-4fd6-a077-619c7f5d26c7> <http://data.lblod.info/id/mandatarissen/3d62d7b0-3879-4fd6-a077-619c7f5d26c7>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/9001160d-2878-44f5-9f08-9171b3f41973> <http://data.lblod.info/id/mandatarissen/9001160d-2878-44f5-9f08-9171b3f41973>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/fb3851ca-4b08-469c-bb2a-cf3ace9b9307> <http://data.lblod.info/id/mandatarissen/fb3851ca-4b08-469c-bb2a-cf3ace9b9307>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/89a642cd-872f-4d10-b36c-36dd083101af> <http://data.lblod.info/id/mandatarissen/89a642cd-872f-4d10-b36c-36dd083101af>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/1e7c005b-c780-4dc0-8358-c62a31fb1622> <http://data.lblod.info/id/mandatarissen/1e7c005b-c780-4dc0-8358-c62a31fb1622>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/2fab9401-a22a-4a55-b6cf-1d0f6d76ccb7> <http://data.lblod.info/id/mandatarissen/2fab9401-a22a-4a55-b6cf-1d0f6d76ccb7>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/9a4939b6-30b3-4104-9ef6-cd02d636669d> <http://data.lblod.info/id/mandatarissen/9a4939b6-30b3-4104-9ef6-cd02d636669d>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/b88c826c-9a40-40b6-be54-98cfdd4dbe23> <http://data.lblod.info/id/mandatarissen/b88c826c-9a40-40b6-be54-98cfdd4dbe23>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/a47e15fd-8dd9-42de-b44d-aa119ec20c09> <http://data.lblod.info/id/mandatarissen/a47e15fd-8dd9-42de-b44d-aa119ec20c09>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/ee438648-1fc4-4ca8-b26a-2c0918d0e5fe> <http://data.lblod.info/id/mandatarissen/ee438648-1fc4-4ca8-b26a-2c0918d0e5fe>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/ea1d297d-a506-4b0a-a5dc-2afbfc2ac312> <http://data.lblod.info/id/mandatarissen/ea1d297d-a506-4b0a-a5dc-2afbfc2ac312>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/a23b204c-6e86-4753-a085-847afda4ca6c> <http://data.lblod.info/id/mandatarissen/a23b204c-6e86-4753-a085-847afda4ca6c>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/8266700b-6029-418a-9f8a-4f653e70fea7> <http://data.lblod.info/id/mandatarissen/8266700b-6029-418a-9f8a-4f653e70fea7>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/5d82640c-9766-4f5e-ba44-832ba4584c04> <http://data.lblod.info/id/mandatarissen/5d82640c-9766-4f5e-ba44-832ba4584c04>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/6e27e7a6-74e4-4654-a3df-5d53a1155241> <http://data.lblod.info/id/mandatarissen/6e27e7a6-74e4-4654-a3df-5d53a1155241>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/57860248-5594-4dbb-98c0-c6b7d8c2c267> <http://data.lblod.info/id/mandatarissen/57860248-5594-4dbb-98c0-c6b7d8c2c267>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/855e303c-404c-484f-83cd-fd34c6aff1d1> <http://data.lblod.info/id/mandatarissen/855e303c-404c-484f-83cd-fd34c6aff1d1>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/ea258ccb-96b0-4dd5-8cf1-1179f0be104a> <http://data.lblod.info/id/mandatarissen/ea258ccb-96b0-4dd5-8cf1-1179f0be104a>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/7254574f-7a3a-4a41-a086-245925101db4> <http://data.lblod.info/id/mandatarissen/7254574f-7a3a-4a41-a086-245925101db4>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/b2f00b62-a1a6-49d3-ad64-e7a357d1a1e1> <http://data.lblod.info/id/mandatarissen/b2f00b62-a1a6-49d3-ad64-e7a357d1a1e1>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/0afcebc1-1ae8-4f5d-b833-e4e090494856> <http://data.lblod.info/id/mandatarissen/0afcebc1-1ae8-4f5d-b833-e4e090494856>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/d329483e-8248-4792-8df8-446b73c77009> <http://data.lblod.info/id/mandatarissen/d329483e-8248-4792-8df8-446b73c77009>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/4b1e82e0-6990-4db4-8482-0a6f2117c434> <http://data.lblod.info/id/mandatarissen/4b1e82e0-6990-4db4-8482-0a6f2117c434>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/d6f57bef-672a-4db3-b5cc-57ce879ea536> <http://data.lblod.info/id/mandatarissen/d6f57bef-672a-4db3-b5cc-57ce879ea536>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/f94385bf-3589-473b-9e4a-61d896740ec2> <http://data.lblod.info/id/mandatarissen/f94385bf-3589-473b-9e4a-61d896740ec2>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/75ff9013-1533-48de-9914-1a4ab42868e0> <http://data.lblod.info/id/mandatarissen/75ff9013-1533-48de-9914-1a4ab42868e0>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/66bf8cb1-dee7-4e14-8fc9-c5568b4c7984> <http://data.lblod.info/id/mandatarissen/66bf8cb1-dee7-4e14-8fc9-c5568b4c7984>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/e4601529-a325-4273-9d5d-3eb619a611c9> <http://data.lblod.info/id/mandatarissen/e4601529-a325-4273-9d5d-3eb619a611c9>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/cfd68700-04eb-4d9a-a052-af477abfdcc0> <http://data.lblod.info/id/mandatarissen/cfd68700-04eb-4d9a-a052-af477abfdcc0>)
+    (<http://mu.semte.ch/vocabularies/ext/mandatarissen/dde5edaa-e995-47de-aa1e-6b0eaa672448> <http://data.lblod.info/id/mandatarissen/dde5edaa-e995-47de-aa1e-6b0eaa672448>)
+  }
+}

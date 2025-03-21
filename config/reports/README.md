@@ -54,11 +54,17 @@ The service can be configured with the following environment variables:
 
 ## Testing new shapes
 
-The easiest way to test new shapes is by following these steps:
+The easiest way to test new SPARQL queries is by following these steps:
 
-- don't run the reporting service container in development mode (makes validation much slower)
+- In case of SPARQL-based constraints, you can test your SPARQL query using the UI that is offered by Virtuoso (`http://localhost:8890/sparql`). Write a SELECT query that returns `?this`and `?value` (and optionally `?path`).
+- To do some exploration whether the returned instance (`?this`) is really invalid, you can use `DESCRIBE <fill-in-uri-of-this>` to retrieve all data of the instance, and select format `Turtle (beautified - browser oriented)`. This gives you the ability to navigate to connected resources in the triple store.
+
+When your query is ready, follow these steps:
 - create a SHACL shape in a Turtle file inside the `shacl` folder
+- Replace `?this` with `$this` in your query, because this is expected by the SHACL engine. 
+- don't run the reporting service container in development mode (makes validation much slower)
 - configure the parameters mentioned above to limit validation to one bestuurseenheid and the shape you want to test
+- pro-tip: when you were testing the query, you can already see which bestuurseenheden will have invalid validation results. Take one of those to test.
 - send an HTTP POST to `http://localhost:8889/reports` to start the validation service, with body:
 ```
 {

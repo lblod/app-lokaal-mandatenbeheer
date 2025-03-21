@@ -92,6 +92,28 @@ export async function getBestuurseenhedenUriAndUuidsToProcess(
   return uriAndUuids;
 }
 
+export async function getBestuurseenheidUriAndUuid(bestuurseenheid) {
+  const queryStringBestuurseenheid = `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX proces: <https://data.vlaanderen.be/ns/proces#>
+    PREFIX dct: <http://purl.org/dc/terms/>
+    PREFIX adms: <http://www.w3.org/ns/adms#>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+    SELECT DISTINCT ?uuid
+    WHERE {
+        ${sparqlEscapeUri(bestuurseenheid)} a besluit:Bestuurseenheid ;
+                        mu:uuid ?uuid .
+    }
+  `;
+  const queryResponse = await querySudo(queryStringBestuurseenheid);
+
+  if (queryResponse.results.bindings.length === 0) return;
+
+  return { uri: bestuurseenheid, uuid: queryResponse.results.bindings[0].uuid.value };
+}
+
 export function generateNamedGraphFromUuid(uuid) {
   return `http://mu.semte.ch/graphs/organizations/${uuid}/LoketLB-mandaatGebruiker`;
 }
@@ -557,7 +579,7 @@ export function enrichValidationReport(
   for (const validationReportQuad of validationReports) {
     const reportUUID = uuid();
     const reportURI = `http://data.lblod.info/id/reports/${reportUUID}`;
-
+    const reportCreatedAt = new Date().toISOString();
     const triplesOfValidationReport = reportDataset.match(
       validationReportQuad.subject,
       null,
@@ -581,7 +603,7 @@ export function enrichValidationReport(
           namedNode(reportURI),
           namedNode("http://purl.org/dc/terms/created"),
           literal(
-            new Date().toISOString(),
+            reportCreatedAt,
             namedNode("http://www.w3.org/2001/XMLSchema#dateTime")
           )
         )

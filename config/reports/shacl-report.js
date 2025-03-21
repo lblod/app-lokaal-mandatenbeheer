@@ -1,5 +1,6 @@
 import {
   mergeFilesContent,
+  getBestuurseenheidUriAndUuid,
   getBestuurseenhedenUriAndUuidsToProcess,
   executeConstructQueriesOnNamedGraph,
   parseTurtleString,

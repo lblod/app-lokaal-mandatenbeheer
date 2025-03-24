@@ -62,7 +62,7 @@ sh:sparql [
                 }
             }
             
-            BIND (concat("Mandataris ", ?voornaam, " ", ?achternaam, " (", ?bestuursperiodeLabel ") heeft geen link naar een besluit.") as ?value)
+            BIND (concat("Mandataris ", ?voornaam, " ", ?achternaam, " (", ?bestuursperiodeLabel, ") heeft geen link naar een besluit.") as ?value)
         }
     """ ;
         sh:message "Deze mandataris met publicatiestatus bekrachtigd heeft steeds een link naar een besluit (of een lmb:linkToBesluit als het besluit niet als linked data is gepubliceerd)"

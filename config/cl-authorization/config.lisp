@@ -128,6 +128,8 @@
   ("person:Person" -> _)
   ("adms:Identifier" -> _)
   ("form:Form" -> _)
+  ("ext:GeneratedForm" -> _)
+  ("form:TopLevelForm" -> _)
   ("form:Extension" -> _)
   ("form:Field" -> _)
   ("form:ValidPhoneNumber" -> _)

@@ -1,0 +1,528 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+# Asse
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-05T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/90acdf92-cd54-47e8-8de0-701e4c42636c>
+    <http://data.lblod.info/id/mandatarissen/e706123d-831c-41d7-8002-19adfcd33f94>
+  }
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris ;
+      mandaat:start ?start ;
+      dct:modified ?mod.
+  }
+  BIND(NOW() AS ?now)
+}
+## Boom -> fix manually aangewezen burgemeester missing
+## Brasschaat -> fix manually aangewezen burgemeester missing
+## Brecht -> fixex manually (vb)
+## Denderleeuw -> FIXED MANUALLY
+## diepenbeek vast bureau
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-03T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/0bd4fc7b-16c2-4254-95aa-2a92025e39f2>
+    <http://data.lblod.info/id/mandatarissen/74cdfe3b-23ba-46d2-89d7-e9e7b2fdc3bb>
+    <http://data.lblod.info/id/mandatarissen/893009bd-d719-404c-98db-d2a32f0c75c9>
+    <http://data.lblod.info/id/mandatarissen/44e0780e-c7c2-491b-983c-f2fc559c1d58>
+    <http://data.lblod.info/id/mandatarissen/ca1e3a89-cec9-466a-8fe1-81aa9a597b73>
+    <http://data.lblod.info/id/mandatarissen/a7e72985-7b93-430f-b9d5-77eae6c5b58c>
+  }
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris ;
+      mandaat:start ?start ;
+      dct:modified ?mod.
+  }
+  BIND(NOW() AS ?now)
+}
+## Erpe-Mere
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-09T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/0816e453ed9171894e7b79f74d83144b6df186c94b9266c4c240280161f443b9>
+    <http://data.lblod.info/id/bestuurseenheden/d9267014daa2764a9edd3b176678b56f57474ffe162363795690e5c684c6eab1>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-09T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# Zemst
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2025-01-05T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/a0393ba99ecc1a0e05d93966aaad42b07980efa5dc90f72106f3fb5954215e18>
+    <http://data.lblod.info/id/bestuurseenheden/d5afbc1a5906c3c386376e82d9930d29c60812ccf897833fb4dde99e73520914>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2025-01-05T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# Zelzate
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2025-01-02T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/0229d2fe575a7beef10ef69ed2d7fa364a3012e95986cc10056e77b6b5f811e5>
+    <http://data.lblod.info/id/bestuurseenheden/51689560fe677738ed03e8a14dc01723d0f865c488f5f47c388622f332241e2d>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2025-01-02T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# Gent fixed manually
+## hamme
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-03T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/290c4b53b407dcb12457bd32c9c33e521f9a43e8743a64b02294c72d114ec6b7>
+    <http://data.lblod.info/id/bestuurseenheden/986bc8bd29af2847bdaa104fe5ff052201032f3e5b95d7b2ae3a3c5486842a94>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-03T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# hamont-achel: fixed manually
+# herzele
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-03T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/19a90656ebde5754d524ca8a17d06b857a6392b0b3db57dd24f899a1b71eda7d>
+    <http://data.lblod.info/id/bestuurseenheden/64a615714901b84561abd58d820d61c2e22e89ef6878170e225d45639caf7d38>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-03T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# hoogstraten fixed manually
+# willebroek had some issues with schepenen so i guess keep things as is
+# vilvoorde
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-04T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/8fd72c4cd5f095c508af05e3406aa63114279e8bde54e9f5b83a59c7794dac72>
+    <http://data.lblod.info/id/bestuurseenheden/ceb1cdcf01ffc68542de2b1e0f8e6f1d581b0267d85fc7080cc451977dc42c5a>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-04T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# stekene
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-02T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/6025a5d1ca2262a784f002edd8ce9ca9073ae3d5ebc6b6b5531f05a29e9250af>
+    <http://data.lblod.info/id/bestuurseenheden/eb33e645ecfec12a9f701cc21db2d919242d9c94812a7b5550e158fd28d8cd9c>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-02T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# steenokkerzeel
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-04T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/30ffe6401585d30b839b382a730c253255d88403dd5baf70b4a3e60f1bd03cc0>
+    <http://data.lblod.info/id/bestuurseenheden/5f7bd773873d0f3910802f9855bdc2b6738aacc44fdb6d8ed45cdd8220f10586>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-04T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# sint-gillis-waas fixed manually
+#ranst
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-04T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/8fb90f367f105c14f37a7062d6732696dc2efc292f87fd5045548a0da407dbe4>
+    <http://data.lblod.info/id/bestuurseenheden/93746445b8e49813e27e0d07459a2dac0d8d4aafb85d87662addecb3644c6c02>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-04T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# pittem
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-04T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/4ff28976ce6eb2a8d6bd19346f5b4de202c53bc5b33904205c8cc580877e4769>
+    <http://data.lblod.info/id/bestuurseenheden/9727dd2f315c2aa8a87ec657fa3dc24c18a6ee6c813a57db008c9ff479dbf144>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-04T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# oostrozebeke
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-02T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/6eb63a95ebb0e5fcb9e59b25a264977107e690a46a89755da1637d1427693560>
+    <http://data.lblod.info/id/bestuurseenheden/b5a995382b4d908862d8203045a669c3d058553c16a4e2370030a012cf5f74bf>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-02T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# maasmechelen had issues with mayor and schepenen. keep as is
+# maaseik had issues with mayor and schepenen, keep as is
+# knokke-heist
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-04T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/6cec176758a515b339ebca3b863b8f2b7caf7da58d329ebceee830ab6518bd86>
+    <http://data.lblod.info/id/bestuurseenheden/7c64f3e2c9830891e559f203dd2cc0c065617bbd2b91d1e380d10a8521cdb7a0>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-04T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# kalmthout
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2025-01-12T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/c7ff21a1a6c315ca5aec2b136ffcf0d9d285dd37a1d5b10d8d134bb714e8d774>
+    <http://data.lblod.info/id/bestuurseenheden/d52bb1ae601fa75cfdd9d1a2208545a96b219ea29a49bb8d8bcbd10614607923>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2025-01-12T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# hove self fixed! good job!
+# anzegem
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-04T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+<http://data.lblod.info/id/bestuurseenheden/2fd8218dd4a404931eeaef879e33506ae998e38d4ca745620f4f6044c230dff3>
+<http://data.lblod.info/id/bestuurseenheden/8662dc060c121e9d69101062f67daeef8370d38bfe86533752b9e54190dd0e2f>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-04T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+};
+# beerse
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-04T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/530983bec9d00f1ab745b2eec290d35200c1011c592bd5694782680bf055092b>
+    <http://data.lblod.info/id/bestuurseenheden/5dac914e84e5b9293b3457a57007ede319ba8e7da44cd7366593b7212c21bef0>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(?start < "2024-12-04T23:00:00.000Z"^^xsd:dateTime)
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+}

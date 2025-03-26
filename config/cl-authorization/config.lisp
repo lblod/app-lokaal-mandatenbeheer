@@ -128,6 +128,8 @@
   ("person:Person" -> _)
   ("adms:Identifier" -> _)
   ("form:Form" -> _)
+  ("form:PropertyGroup" -> _)
+  ("ext:CustomFormType" -> _)
   ("ext:GeneratedForm" -> _)
   ("form:TopLevelForm" -> _)
   ("form:Extension" -> _)

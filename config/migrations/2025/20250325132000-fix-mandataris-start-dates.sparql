@@ -525,4 +525,34 @@ WHERE {
   FILTER(?start < "2024-12-04T23:00:00.000Z"^^xsd:dateTime)
   ?g ext:ownedBy ?someone.
   BIND(NOW() AS ?now)
+};
+# Wellen
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:start "2024-12-05T23:00:00.000Z"^^xsd:dateTime.
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?eenheid {
+    <http://data.lblod.info/id/bestuurseenheden/23bb41cfe7b4cb3af101ef96bf9ef0466d19997c0e100123722371d369d580b1>
+    <http://data.lblod.info/id/bestuurseenheden/5809888c4bc3fe6708e4bb775f50311edcfe2c5e424b71f8accb62e8f7a32cb5>
+  }
+  ?orgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+  ?orgT lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7.
+  ?orgT org:hasPost ?mandaat.
+  ?mandataris org:holds ?mandaat.
+  GRAPH ?g {
+    ?mandataris mandaat:start ?start.
+    ?mandataris dct:modified ?mod.
+  }
+  FILTER(STR(?start) = "2024-12-05T00:00:00")
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
 }

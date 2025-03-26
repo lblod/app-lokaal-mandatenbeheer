@@ -98,6 +98,13 @@ ext:eindeF
             sh:path mandaat:einde;
             sh:severity sh:Warning
             # sh:resultMessage "Einddatum ligt niet in de bestuursperiode."
+        ],
+        [
+            a ext:GreaterThan;
+            form:grouping form:Bag;
+            sh:path mandaat:einde;
+            ext:ValueToCompare mandaat:start;
+            sh:resultMessage "Einddatum ligt voor de startdatum."
         ].
 ext:fractieF
     a form:Field;

@@ -111,7 +111,7 @@ ext:eindeF
             form:grouping form:Bag;
             sh:path mandaat:einde;
             ext:ValueToCompare mandaat:start;
-            sh:resultMessage "Einddatum ligt voor de startdatum."
+            sh:resultMessage "Einddatum valt voor de startdatum."
         ].
 ext:fractieF
     a form:Field;

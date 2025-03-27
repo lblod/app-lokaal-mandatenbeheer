@@ -74,7 +74,7 @@ ext:startF
             a form:RequiredConstraint;
             form:grouping form:Bag;
             sh:path mandaat:start;
-            # sh:resultMessage "Startdatum is verplicht."
+            sh:resultMessage "Startdatum is verplicht."
         ],
         [
             a ext:ValidMandatarisDate;

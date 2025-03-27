@@ -82,6 +82,13 @@ ext:startF
             sh:path mandaat:start;
             sh:severity sh:Warning
             # sh:resultMessage "Startdatum ligt niet in de bestuursperiode."
+        ],
+        [
+            a ext:LessThan;
+            form:grouping form:Bag;
+            sh:path mandaat:start;
+            ext:ValueToCompare mandaat:einde;
+            sh:resultMessage "Einddatum valt voor de startdatum."
         ].
 ext:eindeF
     a form:Field;

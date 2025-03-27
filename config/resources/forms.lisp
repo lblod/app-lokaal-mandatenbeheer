@@ -6,6 +6,7 @@
                 (:target-label :uri-set ,(s-prefix "form:targetLabel"))
                 (:created-at :datetime ,(s-prefix "dct:created"))
                 (:modified-at :datetime ,(s-prefix "dct:modified"))
+                (:name :string ,(s-prefix "skos:prefLabel"))
                 (:description :string ,(s-prefix "dct:description"))
                 (:prefix :url ,(s-prefix "ext:prefix"))
                 (:id :string ,(s-prefix "mu:uuid"))

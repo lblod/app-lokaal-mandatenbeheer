@@ -292,6 +292,10 @@ This will needs to be set in the consuming stack too. See [delta-producer-public
 
 ##### Additional notes
 
+###### Custom forms
+
+In the authorization config, we added a class `ext:CustomFormType`. This was added to trick the database into inserting unknown types. These types are custom forms that each have a unique type URI. As they are unique and we cannot dynamically add these types to the auth config, we insert the data with the allowed (`ext:CustomFormType`) type and the dynamic one.
+
 ###### Performance (mandatarissen/leidinggevenden)
 
 - The default virtuoso settings might be too weak if you need to ingest the production data. Hence, there is better config, you can take over in your `docker-compose.override.yml`

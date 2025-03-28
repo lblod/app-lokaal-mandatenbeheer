@@ -343,6 +343,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/forms/")
   end
 
+  match "/generated-forms/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/generated-forms/")
+  end
+
   match "/form-extensions/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/form-extensions/")
   end

@@ -19,6 +19,17 @@
   :on-path "forms"
 )
 
+(define-resource generated-form (form)
+  :class (s-prefix "ext:GeneratedForm")
+  :properties `((:created-at :datetime ,(s-prefix "dct:created"))
+              (:modified-at :datetime ,(s-prefix "dct:modified"))
+              (:name :string ,(s-prefix "skos:prefLabel"))
+              (:description :string ,(s-prefix "dct:description"))
+              (:base-form :string ,(s-prefix "ext:extendsForm")))
+  :resource-base (s-url "http://data.lblod.info/id/lmb/generated-forms/")
+  :on-path "generated-forms"
+)
+
 (define-resource form-extension (form)
   :class (s-prefix "form:Extension")
   :has-one `((form :via ,(s-prefix "ext:extendsForm")

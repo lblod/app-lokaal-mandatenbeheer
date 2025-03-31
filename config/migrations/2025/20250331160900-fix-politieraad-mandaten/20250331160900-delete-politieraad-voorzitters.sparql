@@ -1,0 +1,26 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH ?g {
+    ?orgT org:hasPost <http://data.lblod.info/id/mandaten/C8A9E44C-F458-11EF-BC01-8152F78DE954>.
+  }
+}
+WHERE {
+  GRAPH ?g {
+  ?orgT mandaat:isTijdspecialisatieVan ?org.
+  ?orgT org:hasPost <http://data.lblod.info/id/mandaten/C8A9E44C-F458-11EF-BC01-8152F78DE954>.
+  ?org skos:prefLabel ?label.
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandaten/C8A9E44C-F458-11EF-BC01-8152F78DE954> ?p ?o.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandaten/C8A9E44C-F458-11EF-BC01-8152F78DE954> ?p ?o.
+  }
+}

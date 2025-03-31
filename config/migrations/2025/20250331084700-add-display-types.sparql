@@ -1,0 +1,18 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/display-types/lmb/custom-concept-scheme-selector-input> a ext:DisplayType ;
+     mu:uuid "ddcf8cea-d4a8-485d-9bc2-5e9998914a27" ;
+     skos:prefLabel "Codelijst" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-concept-scheme-multi-selector-input> a ext:DisplayType ;
+     mu:uuid "fc1d9e1f-c2c0-43dd-913a-9ae9bd1cd54f" ;
+     skos:prefLabel "Codelijst met meerdere selecties" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-concept-scheme-selector-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+    <http://lblod.data.gift/display-types/lmb/custom-concept-scheme-multi-selector-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+  }
+}

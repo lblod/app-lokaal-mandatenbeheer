@@ -25,28 +25,23 @@ WHERE {
     }
   ?og ext:ownedBy / skos:prefLabel ?label
 
-  { SELECT DISTINCT ?g ?bestuursorgaanIT ?bindingStart ?modified (MIN(?start) AS ?earliestStart) WHERE {
+  { SELECT DISTINCT ?g ?bestuursorgaanIT ?bindingStart (MIN(?start) AS ?earliestStart) WHERE {
     GRAPH ?g {
       ?bestuursorgaan a besluit:Bestuursorgaan ;
       besluit:classificatie ?classificatie .
       ?bestuursorgaanIT a besluit:Bestuursorgaan ;
       mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
-      lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 ; # 2025 - heden
+      lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 ; # 2024 - heden
       org:hasPost / ^org:holds ?mandataris .
       OPTIONAL {
         ?bestuursorgaanIT mandaat:bindingStart ?bindingStart .
-      }
-      OPTIONAL {
-        ?bestuursorgaanIT dct:modified ?modified .
       }
       ?mandataris mandaat:start ?start .
     }
     ?classificatie skos:inScheme extlmb:gemeente-bestuursorgaan-codes .
     ?g ext:ownedBy ?bestuurseenheid .
     ?bestuurseenheid ext:voorbereidingVerborgen true .
-  } GROUP BY ?g ?bestuursorgaanIT ?bindingStart ?modified
+  } GROUP BY ?g ?bestuursorgaanIT ?bindingStart
   }
-  BIND(NOW() as ?now)
-FILTER(?bindingStart != ?earliestStart)
-
+  FILTER(?bindingStart != ?earliestStart)
 }

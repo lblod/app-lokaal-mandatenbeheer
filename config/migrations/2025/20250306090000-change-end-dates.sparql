@@ -1,4 +1,4 @@
-# mofidied the migrations data in the db manually to also include the new filename of this migration
+# modified the migrations data in the db manually to also include the new filename of this migration
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX dct: <http://purl.org/dc/terms/>

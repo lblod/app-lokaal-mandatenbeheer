@@ -1,5 +1,6 @@
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE {
   GRAPH ?g {

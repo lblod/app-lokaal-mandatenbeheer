@@ -1,0 +1,46 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX ns3: <http://data.vlaanderen.be/id/conceptscheme/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> rdf:type skos:Concept, ext:BestuursfunctieCode ;
+    mu:uuid "9210094bcdeb4fc8aabd458fe5a1d711" ;
+    skos:prefLabel "Politieraadslid" ;
+    skos:topConceptOf ns3:BestuursfunctieCode ;
+    skos:inScheme ns3:BestuursfunctieCode .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> rdf:type skos:Concept, ext:BestuursfunctieCode ;
+    skos:prefLabel "Voorzitter van de politieraad" ;
+    mu:uuid "00801a4ba8104832a8430f014be9172f" ;
+    skos:topConceptOf ns3:BestuursfunctieCode ;
+    skos:inScheme ns3:BestuursfunctieCode .
+  }
+};
+DELETE {
+  GRAPH ?g {
+    ?mandaat org:role ?oldRole.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandaat org:role ?newRole.
+  }
+}
+WHERE {
+  ?org a besluit:Bestuursorgaan.
+  ?org besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/1afce932-53c1-46d8-8aab-90dcc331e67d> .
+  ?orgT mandaat:isTijdspecialisatieVan ?org.
+  ?orgT org:hasPost ?mandaat.
+  VALUES (?oldRole ?newRole){
+    (<http://data.lblod.info/id/lb-mandaat-classificatiecode/22da4572-4818-454b-bbd4-28a9ea97856c> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711>) # voorzitter
+    (<http://data.lblod.info/id/lb-mandaat-classificatiecode/28d0ed76-e1a3-4c90-89df-4d11587390b3> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f>) # lid
+  }
+  GRAPH ?g {
+    ?mandaat org:role ?oldRole.
+  }
+}

@@ -74,7 +74,7 @@ ext:startF
             a form:RequiredConstraint;
             form:grouping form:Bag;
             sh:path mandaat:start;
-            # sh:resultMessage "Startdatum is verplicht."
+            sh:resultMessage "Startdatum is verplicht."
         ],
         [
             a ext:ValidMandatarisDate;
@@ -82,6 +82,14 @@ ext:startF
             sh:path mandaat:start;
             sh:severity sh:Warning
             # sh:resultMessage "Startdatum ligt niet in de bestuursperiode."
+        ],
+        [
+            a ext:LessThan;
+            form:grouping form:Bag;
+            sh:path mandaat:start;
+            sh:datatype xsd:dateTime;
+            ext:ValueToCompare mandaat:einde;
+            sh:resultMessage "De startdatum kan niet na de einddatum liggen."
         ].
 ext:eindeF
     a form:Field;
@@ -98,6 +106,14 @@ ext:eindeF
             sh:path mandaat:einde;
             sh:severity sh:Warning
             # sh:resultMessage "Einddatum ligt niet in de bestuursperiode."
+        ],
+        [
+            a ext:GreaterThan;
+            form:grouping form:Bag;
+            sh:path mandaat:einde;
+            sh:datatype xsd:dateTime;
+            ext:ValueToCompare mandaat:start;
+            sh:resultMessage "De einddatum kan niet voor de startdatum liggen."
         ].
 ext:fractieF
     a form:Field;

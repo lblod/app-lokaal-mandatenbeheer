@@ -87,6 +87,7 @@ ext:startF
             a ext:LessThan;
             form:grouping form:Bag;
             sh:path mandaat:start;
+            sh:datatype xsd:dateTime;
             ext:ValueToCompare mandaat:einde;
             sh:resultMessage "Einddatum valt voor de startdatum."
         ].
@@ -110,6 +111,7 @@ ext:eindeF
             a ext:GreaterThan;
             form:grouping form:Bag;
             sh:path mandaat:einde;
+            sh:datatype xsd:dateTime;
             ext:ValueToCompare mandaat:start;
             sh:resultMessage "Einddatum valt voor de startdatum."
         ].

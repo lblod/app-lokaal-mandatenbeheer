@@ -51,6 +51,7 @@ The service can be configured with the following environment variables:
 - `BESTUURSEENHEID_URI` [string]: the URI of a bestuurseenheid to filter on. By default, all bestuurseenheden are retrieved to validate. E.g. `http://data.lblod.info/id/bestuurseenheden/0a3ba641d653b436b14fde37bb6eab4f1054aa0586eb98021b723d58f6ce82fb`
 - `BESTUURSPERIODE_LABEL` [string]: the label of the bestuursperiode to filter on. By default: `2024 - heden`. E.g. `2024 - heden`
 - `SHAPE_URI` [string]: the URI of the SHACL shape to specifically validate with. By default, all shapes are validated in the shacl folder. E.g. `http://example.org/mandataris_1_12_shape`
+- `RUN_REPORT_NOW` [true or false]: The code only checks if the environment is available. This will start the creation of a report after 10 seconds that the service is up.
 
 ## Testing new shapes
 

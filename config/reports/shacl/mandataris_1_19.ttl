@@ -23,7 +23,7 @@ sh:sparql [
         PREFIX org: <http://www.w3.org/ns/org#>
         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-        select $this ?value
+        select distinct $this ?value
         where {
             $this a mandaat:Mandataris ;
                     org:holds/org:role ?mandaatClassificatie ;

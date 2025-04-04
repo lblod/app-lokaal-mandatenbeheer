@@ -28,7 +28,7 @@ sh:sparql [
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
-    select $this ?value
+    select distinct $this ?value
     where {
         ?gemeenteraadInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> ;
                             org:hasPost ?mandaatGemeenteraad .

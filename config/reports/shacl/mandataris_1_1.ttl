@@ -13,7 +13,7 @@ sh:sparql [
     sh:select """
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 
-    select $this ?value
+    select distinct $this ?value
     where {
         $this a mandaat:Mandataris .
         FILTER NOT EXISTS {

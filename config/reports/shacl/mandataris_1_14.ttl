@@ -28,7 +28,7 @@ sh:sparql [
         PREFIX org: <http://www.w3.org/ns/org#>
         PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
-        select $this ?value
+        select distinct $this ?value
         where {
             ?burgemeesterInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> ;
                                 org:hasPost ?mandaatBurgemeester .

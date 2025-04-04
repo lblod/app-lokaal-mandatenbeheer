@@ -28,7 +28,7 @@ sh:sparql [
         PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
         
-        select $this ?value
+        select distinct $this ?value
         where {
             $this a mandaat:Mandataris ;
                     lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6> ;

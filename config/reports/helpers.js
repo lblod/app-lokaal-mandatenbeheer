@@ -15,7 +15,7 @@ const BATCH_SIZE =
     ? env.get("BATCH_SIZE").asIntPositive()
     : 50;
 
-export async function mergeFilesContent(directory) {
+export async function getAllShapes(directory) {
   try {
     const files = await readdir(directory);
 
@@ -25,18 +25,17 @@ export async function mergeFilesContent(directory) {
     }
 
     // Loop over files and read their contents
-    const contentPromises = files.map(async (file) => {
+    const shapes = files.map(async (file) => {
       const filePath = path.join(directory, file);
-      return readFile(filePath, "utf8");
+      const shapeContent =  await readFile(filePath, "utf8");
+
+      return {
+        path: filePath,
+        dataset: await parseTurtleString(shapeContent),
+      }
     });
-
-    // Wait for all file contents to be read
-    const contents = await Promise.all(contentPromises);
-
-    // Merge all content into a single field
-    const mergedContent = contents.join("\n");
-    return mergedContent;
-  } catch (err) {
+    return await Promise.all(shapes);
+      } catch (err) {
     console.error(`Error: ${err.message}`);
   }
 }
@@ -408,9 +407,9 @@ export async function validateDataset(dataset, shapesDataset) {
   const validator = new shacl.Validator(shapesDataset, {
     factory: rdf.default,
     validations: sparqljs.validations,
+    details: true,
   });
   const report = await validator.validate({ dataset: dataset });
-
   return report;
 }
 

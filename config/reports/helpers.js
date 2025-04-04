@@ -52,10 +52,7 @@ export async function getBestuurseenhedenUriAndUuidsToProcess(
   }
   const queryStringBestuurseenheden = `
         PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX proces: <https://data.vlaanderen.be/ns/proces#>
         PREFIX dct: <http://purl.org/dc/terms/>
-        PREFIX adms: <http://www.w3.org/ns/adms#>
         PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
         PREFIX sh: <http://www.w3.org/ns/shacl#>
         PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -95,10 +92,6 @@ export async function getBestuurseenhedenUriAndUuidsToProcess(
 export async function getBestuurseenheidUriAndUuid(bestuurseenheid) {
   const queryStringBestuurseenheid = `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-    PREFIX proces: <https://data.vlaanderen.be/ns/proces#>
-    PREFIX dct: <http://purl.org/dc/terms/>
-    PREFIX adms: <http://www.w3.org/ns/adms#>
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
     SELECT DISTINCT ?uuid
@@ -233,7 +226,6 @@ async function addPersonen(store, namedGraphs, bestuursorgaanUris) {
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
   const queryStringConstructOfGraph = `
-    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
@@ -242,7 +234,7 @@ async function addPersonen(store, namedGraphs, bestuursorgaanUris) {
     CONSTRUCT {
         ?persoon ?pPersoon ?oPersoon .
         ?geboorte ?pGeboorte ?oGeboorte .
-        ?identifier ?pIdentifier ?oIdentifier.
+        ?identifier ?pIdentifier ?oIdentifier .
     }
     WHERE {
         VALUES ?graph {
@@ -277,8 +269,6 @@ async function addFracties(store, namedGraphs, bestuursorgaanUris) {
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
   const queryStringConstructOfGraph = `
-    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX org: <http://www.w3.org/ns/org#>
 
     CONSTRUCT {
@@ -292,7 +282,7 @@ async function addFracties(store, namedGraphs, bestuursorgaanUris) {
             VALUES ?bestuursorgaanInTijd {
                 ${safeBestuursorganen}
             }
-            ?bestuursorgaanInTijd ^org:memberOf ?fractie.
+            ?bestuursorgaanInTijd ^org:memberOf ?fractie .
             ?fractie ?p ?o .
         }
     }`;
@@ -309,8 +299,6 @@ async function addMandaten(store, namedGraphs, bestuursorgaanUris) {
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
   const queryStringConstructOfGraph = `
-    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX org: <http://www.w3.org/ns/org#>
 
     CONSTRUCT {
@@ -324,7 +312,7 @@ async function addMandaten(store, namedGraphs, bestuursorgaanUris) {
             VALUES ?bestuursorgaanInTijd {
                 ${safeBestuursorganen}
             }
-            ?bestuursorgaanInTijd org:hasPost ?mandaat.
+            ?bestuursorgaanInTijd org:hasPost ?mandaat .
             ?mandaat ?p ?o .
         }
     }`;
@@ -342,8 +330,6 @@ async function addLidmaatschappen(store, namedGraphs, bestuursorgaanUris) {
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
   const queryStringConstructOfGraph = `
-    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX org: <http://www.w3.org/ns/org#>
 
     CONSTRUCT {
@@ -357,7 +343,7 @@ async function addLidmaatschappen(store, namedGraphs, bestuursorgaanUris) {
             VALUES ?bestuursorgaanInTijd {
                 ${safeBestuursorganen}
             }
-            ?bestuursorgaanInTijd org:hasPost / ^org:holds / org:hasMembership ?lidmaatschap.
+            ?bestuursorgaanInTijd org:hasPost / ^org:holds / org:hasMembership ?lidmaatschap .
             ?lidmaatschap ?p ?o .
         }
     }`;
@@ -640,9 +626,6 @@ export async function saveDatasetToNamedGraphs(dataset, namedGraphs) {
     });
   });
   const queryString = `
-        PREFIX dct: <http://purl.org/dc/terms/>
-        PREFIX prov: <http://www.w3.org/ns/prov#>
-        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
         PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
         INSERT {
@@ -662,8 +645,6 @@ export async function saveDatasetToNamedGraphs(dataset, namedGraphs) {
 export async function deletePreviousReports(namedGraphs) {
   const queryString = `
     PREFIX dct: <http://purl.org/dc/terms/>
-    PREFIX prov: <http://www.w3.org/ns/prov#>
-    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
     PREFIX sh: <http://www.w3.org/ns/shacl#>
 
     SELECT DISTINCT ?reportUri
@@ -677,7 +658,7 @@ export async function deletePreviousReports(namedGraphs) {
         }
     }
     ORDER BY DESC(?created)
-    `;
+  `;
 
   const response = await querySudo(queryString);
 
@@ -692,10 +673,6 @@ export async function deletePreviousReports(namedGraphs) {
 
 async function deleteReportInDatabase(reportUri, namedGraphs) {
   const queryString = `
-        PREFIX dct: <http://purl.org/dc/terms/>
-        PREFIX prov: <http://www.w3.org/ns/prov#>
-        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-        PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
         PREFIX sh: <http://www.w3.org/ns/shacl#>
 
         DELETE {

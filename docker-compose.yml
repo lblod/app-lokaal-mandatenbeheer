@@ -147,7 +147,7 @@ services:
     restart: always
     logging: *default-logging
   form-content:
-    image: lblod/form-content-service:0.0.11
+    image: lblod/form-content-service:0.0.12
     restart: always
     labels:
       - "logging=true"

@@ -1,0 +1,61 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_1_18_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+        sh:prefix "skos" ;
+    ] ];
+sh:sparql [
+    sh:select """
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        
+        select distinct $this ?value
+        where {
+            $this a mandaat:Mandataris ;
+                    lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6> ;
+                    mandaat:isBestuurlijkeAliasVan ?persoon .
+            
+            $this org:holds/org:role/skos:prefLabel ?mandaatLabel .
+
+            ?bestuursorgaan org:hasPost ?mandaat ;
+                    lmb:heeftBestuursperiode/skos:prefLabel ?bestuursperiodeLabel .
+
+            ?persoon <http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam> ?voornaam ;
+                <http://xmlns.com/foaf/0.1/familyName> ?achternaam .
+            
+            FILTER NOT EXISTS {
+                {
+                    $this lmb:linkToBesluit ?url .
+                } 
+                UNION
+                {
+                    ?rechtsgrond mandaat:bekrachtigtAanstellingVan $this .
+                }
+            }
+            
+            BIND (concat("Mandataris ", ?voornaam, " ", ?achternaam, " (", ?bestuursperiodeLabel, ") heeft geen link naar een besluit.") as ?value)
+        }
+    """ ;
+        sh:message "Deze mandataris met publicatiestatus bekrachtigd heeft steeds een link naar een besluit (of een lmb:linkToBesluit als het besluit niet als linked data is gepubliceerd)"
+] .
+
+

@@ -1,7 +1,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.org/mandataris_1_13_shape>
+<http://example.org/mandataris_1_15_shape>
 a sh:NodeShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 sh:prefixes [ sh:declare [
@@ -30,26 +30,38 @@ sh:sparql [
 
         select distinct $this ?value
         where {
-            ?collegeInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> ;
-                                org:hasPost ?mandaatCollege .
+            ?bcsdInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009> ;
+                org:hasPost ?mandaatBcsd .
+            
+            ?mandaatBcsd org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a> .
 
             $this a mandaat:Mandataris ;
-                org:holds ?mandaatCollege ;
+                org:holds ?mandaatBcsd ;
                 mandaat:isBestuurlijkeAliasVan ?persoon .
-
-        FILTER NOT EXISTS {
+            
+            OPTIONAL {
                 ?vastBureauInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> ;
-                                    org:hasPost ?mandaatVastBureau .
+                    org:hasPost ?mandaatVastBureau .
 
                 ?alsMandatarisVastBureau a mandaat:Mandataris ;
                     org:holds ?mandaatVastBureau ;
                     mandaat:isBestuurlijkeAliasVan ?persoon .
-        }
+            }
 
-        BIND ("" as ?value)
+            OPTIONAL {
+                ?raadVoorMaatschappelijkWelzijnInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> ;
+                    org:hasPost ?mandaatRaadVoorMaatschappelijkWelzijn .
+                                
+                ?alsMandatarisRaadVoorMaatschappelijkWelzijn a mandaat:Mandataris ;
+                    org:holds ?mandaatRaadVoorMaatschappelijkWelzijn ;
+                    mandaat:isBestuurlijkeAliasVan ?persoon .
+            }
+
+            FILTER(!bound(?alsMandatarisVastBureau) && !bound(?alsMandatarisRaadVoorMaatschappelijkWelzijn))
+            BIND ("" as ?value)
         }
     """ ;
-    sh:message "Mandataris in college van burgemeester en schepenen zetelt niet in vast bureau."
+        sh:message "De voorzitter van het BCSD is niet lid van raad van maatschappelijk welzijn of vast bureau."
 ] .
 
 

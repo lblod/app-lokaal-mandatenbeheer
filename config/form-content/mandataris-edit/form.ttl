@@ -89,7 +89,7 @@ ext:startF
             sh:path mandaat:start;
             sh:datatype xsd:dateTime;
             ext:ValueToCompare mandaat:einde;
-            sh:resultMessage "Einddatum valt voor de startdatum."
+            sh:resultMessage "De startdatum kan niet na de einddatum liggen."
         ].
 ext:eindeF
     a form:Field;
@@ -113,7 +113,7 @@ ext:eindeF
             sh:path mandaat:einde;
             sh:datatype xsd:dateTime;
             ext:ValueToCompare mandaat:start;
-            sh:resultMessage "Einddatum valt voor de startdatum."
+            sh:resultMessage "De einddatum kan niet voor de startdatum liggen."
         ].
 ext:fractieF
     a form:Field;

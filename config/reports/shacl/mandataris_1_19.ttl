@@ -6,10 +6,6 @@ a sh:NodeShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
-        sh:prefix "besluit" ;
-    ] ], [ sh:declare [
-        a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
         sh:prefix "mandaat" ;
     ] ], [ sh:declare [
@@ -18,24 +14,13 @@ sh:prefixes [ sh:declare [
         sh:prefix "org" ;
     ] ], [ sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
-        sh:prefix "lmb" ;
-    ] ], [ sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
-        sh:prefix "generiek" ;
-    ] ], [ sh:declare [
-        a sh:PrefixDeclaration ;
         sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
         sh:prefix "skos" ;
     ] ];
 sh:sparql [
     sh:select """
-        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
         PREFIX org: <http://www.w3.org/ns/org#>
-        PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
-        PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
         select $this ?value

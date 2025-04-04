@@ -1,13 +1,9 @@
- @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/persoon_shape>
 a sh:NodeShape ;
 sh:prefixes [ sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
-        sh:prefix "besluit" ;
-    ] ], [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
         sh:prefix "mandaat" ;
@@ -23,7 +19,6 @@ sh:prefixes [ sh:declare [
 sh:targetClass <http://www.w3.org/ns/person#Person> ;
 sh:sparql [
     sh:select """
-        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
         PREFIX org: <http://www.w3.org/ns/org#>
                     

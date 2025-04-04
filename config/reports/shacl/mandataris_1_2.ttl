@@ -6,24 +6,15 @@ a sh:NodeShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
-        sh:prefix "besluit" ;
-    ] ], [ sh:declare [
-        a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
         sh:prefix "mandaat" ;
     ] ], [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
         sh:prefix "org" ;
-    ] ], [ sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
-        sh:prefix "lmb" ;
     ] ];
 sh:sparql [
     sh:select """
-    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX org: <http://www.w3.org/ns/org#>
                 

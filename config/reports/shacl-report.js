@@ -1,5 +1,5 @@
 import {
-  mergeFilesContent,
+  getAllShapes,
   getBestuurseenheidUriAndUuid,
   getBestuurseenhedenUriAndUuidsToProcess,
   executeConstructQueriesOnNamedGraph,
@@ -58,20 +58,21 @@ const cronFunction = async () => {
   }
 
   // Read all SHACL files in the shacl folder
-  const shape = await mergeFilesContent("./config/shacl");
-  let shapesDataset = await parseTurtleString(shape);
+  const shapesArray = await getAllShapes("./config/shacl");
+  console.log(`Found ${shapesArray.length} shapes.`);
+  // let shapesDataset = await parseTurtleString(shape);
 
-  if (SHAPE_URI) {
-    // Remove other shapes from shapes dataset
-    let shapesDatasetFilteredOnShape = new Store();
-    const shapes = shapesDataset.getSubjects(namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/ns/shacl#NodeShape')).map((subject) => subject.value);
-    for (const quad of shapesDataset) {
-      if (quad.subject.value === SHAPE_URI || !shapes.includes(quad.subject.value)) {
-        shapesDatasetFilteredOnShape.add(quad);
-      }
-    }
-    shapesDataset = shapesDatasetFilteredOnShape;
-  }
+  // if (SHAPE_URI) {// this breaks!
+  //   // Remove other shapes from shapes dataset
+  //   let shapesDatasetFilteredOnShape = new Store();
+  //   const shapes = shapesDataset.getSubjects(namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://www.w3.org/ns/shacl#NodeShape')).map((subject) => subject.value);
+  //   for (const quad of shapesDataset) {
+  //     if (quad.subject.value === SHAPE_URI || !shapes.includes(quad.subject.value)) {
+  //       shapesDatasetFilteredOnShape.add(quad);
+  //     }
+  //   }
+  //   shapesDataset = shapesDatasetFilteredOnShape;
+  // }
 
   console.log(
     `Will process ${uriAndUuids.length} bestuurseenheden during this run`
@@ -96,19 +97,26 @@ const cronFunction = async () => {
       console.log(
         `Running SHACL validation for bestuurseenheid ${uriAndUuid.uuid} on store of size ${dataDataset.size}...`
       );
-      const startTime = Date.now();
-      const report = await validateDataset(dataDataset, shapesDataset);
-      const endTime = Date.now();
-      console.log(
-        `SHACL validation took ${(endTime - startTime) / 1000} seconds.`
-      );
+      for (const {path, dataset} of shapesArray) {
+        console.log(`Running shape with path ${path}`);
+        const startTime = Date.now();
+        const report = await validateDataset(dataDataset, dataset);
+        const endTime = Date.now();
+        console.log(
+          `SHACL validation took ${(endTime - startTime) / 1000} seconds.`
+        );
+        console.log(report.conforms);
+      }
 
-      // Enrich validation report by removing blank nodes, adding timestamp etc.
-      const enrichedValidationReportDataset = enrichValidationReport(
-        report.dataset,
-        shapesDataset,
-        dataDataset
-      );
+      throw `Done for now!`;
+  
+        // Enrich validation report by removing blank nodes, adding timestamp etc.
+        const enrichedValidationReportDataset = enrichValidationReport(
+          report.dataset,
+          shapesDataset,
+          dataDataset
+        );
+
 
       await saveDatasetToNamedGraphs(enrichedValidationReportDataset, namedGraphs);
       console.log(`SHACL validation report saved in triple store.`);

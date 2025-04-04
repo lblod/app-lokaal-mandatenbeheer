@@ -43,7 +43,7 @@ sh:sparql [
             $this a mandaat:Mandaat .
 
             OPTIONAL {
-                ?this org:role ?bestuursfunctie .
+                $this org:role ?bestuursfunctie .
             }
             FILTER NOT EXISTS {
                 ?bestuursfunctie skos:prefLabel ?naam .

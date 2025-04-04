@@ -53,7 +53,7 @@ const cronFunction = async () => {
     );
   } else {
     const uriAndUuid = await getBestuurseenheidUriAndUuid(BESTUURSEENHEID_URI);
-    if (uriAndUuid === undefined) throw `UUID not found for bestuurseenheid ${BESTUURSEENHEID_URI}`;
+    if (uriAndUuid === undefined) throw new Error(`UUID not found for bestuurseenheid ${BESTUURSEENHEID_URI}`);
     uriAndUuids.push(uriAndUuid);
   }
 

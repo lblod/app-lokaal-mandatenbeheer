@@ -418,7 +418,7 @@ export function enrichValidationReport(
       null
     );
     if (!sourceShapeQuads.size)
-      throw "No source shape found on validation result";
+      throw new Error("No source shape found on validation result");
     const [sourceShapeQuad] = sourceShapeQuads;
     const targetClassInShapeQuads = shapesDataset.match(
       sourceShapeQuad.object,
@@ -435,7 +435,7 @@ export function enrichValidationReport(
     if (!targetClassInShapeQuads.size) {
       // Fallback by searching the class of the focus node in the dataset
       if (!focusNodeQuads.size) {
-        throw "No focus node found in validation result as fallback to retrieve targetClass";
+        throw new Error("No focus node found in validation result as fallback to retrieve targetClass");
       }
       const [focusNodeQuad] = focusNodeQuads;
 
@@ -445,7 +445,7 @@ export function enrichValidationReport(
         null
       );
       if (!focusNodeTypeInDatasetQuads.size) {
-        throw "No type of focus node found in validation result as fallback to retrieve targetClass";
+        throw new Error("No type of focus node found in validation result as fallback to retrieve targetClass");
       }
       [targetClassQuad] = focusNodeTypeInDatasetQuads;
     } else {

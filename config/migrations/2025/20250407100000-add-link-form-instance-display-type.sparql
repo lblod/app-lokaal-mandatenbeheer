@@ -1,0 +1,13 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/display-types/lmb/custom-link-to-form-selector-input> a ext:DisplayType ;
+     mu:uuid "63bd8c0b-d1e7-4fd8-8a15-a6ca4ebca467" ;
+     skos:prefLabel "Link naar formulier" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-link-to-form-selector-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+  }
+}

@@ -1,0 +1,7 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a> skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a> skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+  }
+}

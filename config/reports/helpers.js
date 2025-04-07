@@ -104,7 +104,10 @@ export async function getBestuurseenheidUriAndUuid(bestuurseenheid) {
 
   if (queryResponse.results.bindings.length === 0) return;
 
-  return { uri: bestuurseenheid, uuid: queryResponse.results.bindings[0].uuid.value };
+  return {
+    uri: bestuurseenheid,
+    uuid: queryResponse.results.bindings[0].uuid.value,
+  };
 }
 
 export function generateNamedGraphFromUuid(uuid) {
@@ -149,6 +152,7 @@ export async function executeConstructQueriesOnNamedGraph(
   await addFracties(store, namedGraphs, bestuursorganen);
   await addMandaten(store, namedGraphs, bestuursorganen);
   await addLidmaatschappen(store, namedGraphs, bestuursorganen);
+  await addPublicData(store);
 
   return store;
 }
@@ -169,7 +173,7 @@ async function addBestuursorgaanAndMandatarissen(
 
     CONSTRUCT {
         ?bestuursorgaanInTijd  ?pBestuursorgaanInTijd ?oBestuursorgaanInTijd .
-                                ?bestuursorgaan ?pBestuursorgaan ?oBestuursorgaan .
+        ?bestuursorgaan ?pBestuursorgaan ?oBestuursorgaan .
         ${sparqlEscapeUri(
           uriAndUuid.uri
         )} besluit:classificatie ?oBestuurseenheid .
@@ -303,6 +307,7 @@ async function addMandaten(store, namedGraphs, bestuursorgaanUris) {
 
     CONSTRUCT {
         ?mandaat ?p ?o .
+        ?bestuursorgaanInTijd org:hasPost ?mandaat .
     }
     WHERE {
         VALUES ?graph {
@@ -318,6 +323,7 @@ async function addMandaten(store, namedGraphs, bestuursorgaanUris) {
     }`;
 
   const queryResponse = await querySudo(queryStringConstructOfGraph);
+
   await addConstructQueryResponseToStore(store, queryResponse);
 }
 
@@ -345,6 +351,29 @@ async function addLidmaatschappen(store, namedGraphs, bestuursorgaanUris) {
             }
             ?bestuursorgaanInTijd org:hasPost / ^org:holds / org:hasMembership ?lidmaatschap .
             ?lidmaatschap ?p ?o .
+        }
+    }`;
+
+  const queryResponse = await querySudo(queryStringConstructOfGraph);
+  await addConstructQueryResponseToStore(store, queryResponse);
+}
+
+async function addPublicData(store) {
+  const queryStringConstructOfGraph = `
+    PREFIX org: <http://www.w3.org/ns/org#>
+
+    CONSTRUCT {
+        ?s ?p ?o.
+    }
+    WHERE {
+        GRAPH <http://mu.semte.ch/graphs/public> {
+            VALUES ?conceptschemes {
+              <http://data.lblod.info/id/conceptscheme/LocalPoliticianMandateRole>
+              <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode>
+              <http://data.lblod.info/id/conceptscheme/LokaalMandaatClassificatieCode>
+            }
+            ?s skos:inScheme ?conceptschemes .
+            ?s ?p ?o.
         }
     }`;
 
@@ -435,7 +464,9 @@ export function enrichValidationReport(
     if (!targetClassInShapeQuads.size) {
       // Fallback by searching the class of the focus node in the dataset
       if (!focusNodeQuads.size) {
-        throw new Error("No focus node found in validation result as fallback to retrieve targetClass");
+        throw new Error(
+          "No focus node found in validation result as fallback to retrieve targetClass"
+        );
       }
       const [focusNodeQuad] = focusNodeQuads;
 
@@ -445,7 +476,9 @@ export function enrichValidationReport(
         null
       );
       if (!focusNodeTypeInDatasetQuads.size) {
-        throw new Error("No type of focus node found in validation result as fallback to retrieve targetClass");
+        throw new Error(
+          "No type of focus node found in validation result as fallback to retrieve targetClass"
+        );
       }
       [targetClassQuad] = focusNodeTypeInDatasetQuads;
     } else {

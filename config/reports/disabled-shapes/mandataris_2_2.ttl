@@ -1,7 +1,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.org/mandataris_2_3_shape>
+<http://example.org/mandataris_2_2_shape>
 a sh:NodeShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandaat> ;
 sh:prefixes [ sh:declare [
@@ -27,7 +27,7 @@ sh:sparql [
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
         PREFIX org: <http://www.w3.org/ns/org#>
         PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
-        
+
         select distinct $this ?value
         where {
             $this a mandaat:Mandaat .
@@ -37,7 +37,7 @@ sh:sparql [
                     generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan ?tijdloosBestuursorgaan ;
                     org:hasPost $this .
             }
-            
+
             BIND ("" as ?value)
         }
     """ ;
@@ -45,3 +45,4 @@ sh:sparql [
 ] .
 
 
+#  somehow this is triggered for all mandaten, even if i simplify to just the org:hasPost. I logged the mandaten construct and this triple is added to the store. i don't get it.

@@ -28,17 +28,15 @@ sh:sparql [
             $this a mandaat:Mandaat .
 
             FILTER NOT EXISTS {
-                {
-                    $this org:role ?mandaatClassificatie .
-                    ?mandaatClassificatie skos:inScheme <https://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+                VALUES ?allowedSchemes {
+                    <http://data.lblod.info/id/conceptscheme/LocalPoliticianMandateRole>
+                    <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode>
+                    <http://data.lblod.info/id/conceptscheme/LokaalMandaatClassificatieCode>
                 }
-                UNION 
-                {
-                    $this org:role ?mandaatClassificatie .
-                    FILTER(contains(str(?mandaatClassificatie), "BestuursfunctieCode"))
-                }
+                $this org:role ?mandaatClassificatie .
+                ?mandaatClassificatie skos:inScheme ?allowedSchemes .
             }
-            
+
             BIND ("Dit mandaat heeft geen classificatie uit de BestuursfunctieCode-codelijst." as ?value)
         }
     """ ;

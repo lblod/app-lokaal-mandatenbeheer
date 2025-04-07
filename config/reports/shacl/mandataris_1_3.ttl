@@ -1,0 +1,111 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_1_3_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ];
+sh:sparql [
+    sh:select """
+        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+        select distinct $this ?value
+        where {
+            {
+                select $this (group_concat(distinct str(?mandataris); separator=', ') as ?mandatarissenLabel) ?startPuntDateTime ?eindePuntDateTime ?aantalMandatarissen ?min ?max
+                where {
+                    {
+                        select $this ?startPuntDateTime ?eindePuntDateTime ?mandaat (count(distinct ?mandataris) as ?aantalMandatarissen)
+                        where {
+                            {
+                                select distinct $this ?mandaat ?startBestuursorgaanDateTime ?eindeBestuursorgaanDateTime ?startPuntDateTime ?eindePuntDateTime
+                                where {
+                                    $this a besluit:Bestuursorgaan ;    
+                                        org:hasPost ?mandaat ;
+                                        mandaat:bindingStart ?startBestuursorgaan .
+
+                                    OPTIONAL {
+                                        $this mandaat:bindingEinde ?eindeBestuursorgaan .
+                                    }
+
+                                    ?mandataris org:holds ?mandaat ;
+                                                mandaat:status ?mandatarisStatus ;
+                                                mandaat:start ?startPuntDateTime .
+                                    OPTIONAL {
+                                        ?mandataris mandaat:einde ?eindePuntDateTime .
+                                    }
+
+                                    VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> 
+                                        <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>
+                                    }
+                                    
+                                    BIND(strdt(?startBestuursorgaan, xsd:dateTime) as ?startBestuursorgaanDateTime)
+                                    BIND(strdt(?eindeBestuursorgaan, xsd:dateTime) as ?eindeBestuursorgaanDateTime)
+
+                                    FILTER (?startPuntDateTime >= ?startBestuursorgaanDateTime)
+                                    FILTER (?eindePuntDateTime <= ?eindeBestuursorgaanDateTime)
+                                }
+                            }
+
+                            $this org:hasPost ?mandaat .
+                            ?mandataris org:holds ?mandaat ;
+                                        mandaat:status ?mandatarisStatus ;
+                                        mandaat:start ?start .
+                            OPTIONAL {
+                                ?mandataris mandaat:einde ?einde .
+                            }
+                            VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> 
+                                        <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>
+                            }
+                            FILTER (?start < ?eindePuntDateTime)
+                            FILTER (if(bound(?einde), ?einde > ?startPuntDateTime, true))
+                        }
+                        group by $this ?startPuntDateTime ?eindePuntDateTime ?mandaat
+                    }
+
+                    ?mandaat lmb:minAantalHouders ?min ;
+                            lmb:maxAantalHouders ?max .
+
+                    ?mandataris org:holds ?mandaat ;
+                                mandaat:status ?mandatarisStatus ;
+                                mandaat:start ?start .
+                    OPTIONAL {
+                        ?mandataris mandaat:einde ?einde .
+                    }
+                    VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> 
+                                <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>
+                    }
+                    FILTER (?start < ?eindePuntDateTime)
+                    FILTER (if(bound(?einde), ?einde > ?startPuntDateTime, true))
+
+                    FILTER (?aantalMandatarissen < ?min || ?aantalMandatarissen > ?max)    
+                }
+                group by $this ?startPuntDateTime ?eindePuntDateTime ?aantalMandatarissen ?min ?max
+            }
+
+            BIND(concat(str(?aantalMandatarissen), " effectieve/waarnemende mandatarissen gevonden (", ?mandatarissenLabel, ") tussen ", str(?startPuntDateTime), " en ", str(?eindePuntDateTime) ," - minimum verwacht: ", str(?min), " - maximum verwacht: ", str(?max)) as ?value)
+        }
+    """ ;
+        sh:message "Dit bestuursorgaan bevat niet op elk moment het aantal effectieve/waarnemende mandatarissen tussen de min en max aantallen."
+] .
+
+

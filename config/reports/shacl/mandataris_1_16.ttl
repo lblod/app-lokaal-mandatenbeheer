@@ -1,0 +1,45 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_1_16_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ];
+sh:sparql [
+    sh:select """
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+
+        select distinct $this ?value
+        where {            
+            $this a mandaat:Mandataris ;
+                    mandaat:isBestuurlijkeAliasVan ?verhinderdePersoon ;
+                    org:holds ?mandaat ;
+                    mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/c301248f-0199-45ca-b3e5-4c596731d5fe> ;
+                    mandaat:start ?momentVanVerhindering .
+            
+            FILTER NOT EXISTS {
+                ?vervangendeMandataris a mandaat:Mandataris ;
+                    mandaat:isBestuurlijkeAliasVan ?vervangendePersoon ;
+                    org:holds ?mandaat ;
+                    mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> ;
+                    mandaat:start ?momentVanVerhindering .
+
+                FILTER (?vervangendePersoon != ?verhinderdePersoon)
+            }
+
+            BIND (concat("De verhinderde mandataris heeft geen vervangende mandataris met als startdatum gelijk aan moment van verhindering (", str(?momentVanVerhindering), ").") as ?value)
+        }
+    """ ;
+        sh:message "Deze mandataris is verhinderd, maar heeft geen vervangende mandataris met gelijke startdatum."
+] .
+
+

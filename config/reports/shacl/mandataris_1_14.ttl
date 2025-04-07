@@ -18,10 +18,6 @@ sh:prefixes [ sh:declare [
         sh:prefix "org" ;
     ] ], [ sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
-        sh:prefix "lmb" ;
-    ] ], [ sh:declare [
-        a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
         sh:prefix "generiek" ;
     ] ];
@@ -30,10 +26,9 @@ sh:sparql [
         PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
         PREFIX org: <http://www.w3.org/ns/org#>
-        PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
         PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
-        select $this ?value
+        select distinct $this ?value
         where {
             ?burgemeesterInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> ;
                                 org:hasPost ?mandaatBurgemeester .

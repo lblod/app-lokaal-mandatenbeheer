@@ -1,9 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.org/mandataris_1_9_shape>
+<http://example.org/mandataris_2_2_shape>
 a sh:NodeShape ;
-sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandaat> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
@@ -27,26 +27,22 @@ sh:sparql [
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
         PREFIX org: <http://www.w3.org/ns/org#>
         PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
-                
+
         select distinct $this ?value
         where {
-            ?bestuursorgaanInTijd generiek:isTijdspecialisatieVan/besluit:classificatie ?bestuursorgaanClassificatieCode ;
-                                org:hasPost ?mandaat .
-            $this a mandaat:Mandataris ;
-                    org:holds ?mandaat .
+            $this a mandaat:Mandaat .
 
             FILTER NOT EXISTS {
-                $this org:hasMembership/org:organisation ?fractie .
+                ?bestuursorgaan a besluit:Bestuursorgaan ;
+                    generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan ?tijdloosBestuursorgaan ;
+                    org:hasPost $this .
             }
-                    
-            VALUES ?bestuursorgaanClassificatieCode { <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> 
-            <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> 
-            <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> }
-        
-            BIND (concat("BestuursorgaanClassificatie: ", str(?bestuursorgaanClassificatieCode)) as ?value)
+
+            BIND ("" as ?value)
         }
     """ ;
-        sh:message "Mandataris in gemeenteraad, burgemeester of college van burgemeester en schepenen organen zit niet in een fractie."
+        sh:message "Dit mandaat is niet gebonden aan een bestuursorgaan in tijd."
 ] .
 
 
+#  somehow this is triggered for all mandaten, even if i simplify to just the org:hasPost. I logged the mandaten construct and this triple is added to the store. i don't get it.

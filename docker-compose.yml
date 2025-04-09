@@ -303,7 +303,7 @@ services:
       - "logging=true"
     logging: *default-logging
   deliver-email:
-    image: redpencil/deliver-email-service:0.4.0
+    image: redpencil/deliver-email-service:1.0.0
     profiles:
       - send-emails
     environment:

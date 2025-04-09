@@ -19,6 +19,7 @@ ext:naamF
     sh:name "Naam";
     sh:order 1;
     sh:path skos:prefLabel;
+    form:showInSummary true;
     form:validatedBy
         [
             a form:RequiredConstraint;
@@ -33,6 +34,7 @@ ext:bestuursorgaanClassificatieCodeF
     sh:name "Type";
     sh:order 2;
     sh:path <http://data.vlaanderen.be/ns/besluit#classificatie>;
+    form:showInSummary true;
     form:validatedBy
         [
             a form:RequiredConstraint;
@@ -47,7 +49,8 @@ ext:deactivatedAtF
     sh:group ext:bestuursorgaanPG;
     sh:name "Actief";
     sh:order 3;
-    sh:path lmb:deactivatedAt.
+    sh:path lmb:deactivatedAt;
+    form:showInSummary true.
 ext:hiddenBestuurseenheidF
     a form:Field;
     sh:name "Bestuurseenheid [hidden input]";

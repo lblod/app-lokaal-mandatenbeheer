@@ -23,7 +23,8 @@ ext:naamF
     form:partOf ext:fractieSection;
     sh:name "Naam";
     sh:order 2;
-    sh:path regorg:legalName.
+    sh:path regorg:legalName;
+    form:showInSummary true.
 ext:fractieSection
     a form:Section; sh:name "Fractie"; sh:order 1.
 

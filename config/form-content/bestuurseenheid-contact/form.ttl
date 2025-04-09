@@ -30,6 +30,7 @@ ext:emailF
   sh:group ext:contactPG;
   sh:name "Email";
   sh:order 2;
+  form:showInSummary true;
   form:validatedBy
     [ a form:ValidEmail;
       form:grouping form:MatchEvery;

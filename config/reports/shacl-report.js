@@ -11,6 +11,7 @@ import {
   getNamedGraphsForBestuurseenheidId,
 } from "./helpers.js";
 import env from "env-var";
+import { insertReportStatusInGraphs, updateReportStatusWithReport } from './report-status.js';
 
 import { DataFactory, Store } from "n3";
 const { namedNode } = DataFactory;
@@ -83,6 +84,7 @@ const cronFunction = async () => {
       const namedGraphs = await getNamedGraphsForBestuurseenheidId(
         uriAndUuid.uuid
       );
+      const statusUri = await insertReportStatusInGraphs(uriAndUuid, namedGraphs);
 
       if (ONLY_KEEP_LATEST_REPORT) {
         await deletePreviousReports(namedGraphs);
@@ -104,13 +106,14 @@ const cronFunction = async () => {
       );
 
       // Enrich validation report by removing blank nodes, adding timestamp etc.
-      const enrichedValidationReportDataset = enrichValidationReport(
+      const { reportUri, reportDataset } = enrichValidationReport(
         report.dataset,
         shapesDataset,
         dataDataset
       );
 
-      await saveDatasetToNamedGraphs(enrichedValidationReportDataset, namedGraphs);
+      await saveDatasetToNamedGraphs(reportDataset, namedGraphs);
+      await updateReportStatusWithReport(statusUri, reportUri, namedGraphs);
       console.log(`SHACL validation report saved in triple store.`);
 
       if (ONLY_KEEP_LATEST_REPORT) {

@@ -595,9 +595,11 @@ export function enrichValidationReport(
     namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
     namedNode("http://www.w3.org/ns/shacl#ValidationReport")
   );
+  let reportUri = null;
   for (const validationReportQuad of validationReports) {
     const reportUUID = uuid();
     const reportURI = `http://data.lblod.info/id/reports/${reportUUID}`;
+    reportUri = reportURI;
     const reportCreatedAt = new Date().toISOString();
     const triplesOfValidationReport = reportDataset.match(
       validationReportQuad.subject,
@@ -638,8 +640,7 @@ export function enrichValidationReport(
       );
     }
   }
-
-  return reportDataset;
+  return { reportUri, reportDataset };
 }
 
 export async function saveDatasetToNamedGraphs(dataset, namedGraphs) {

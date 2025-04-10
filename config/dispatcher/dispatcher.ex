@@ -301,6 +301,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/validationresults/")
   end
 
+  match "/report-statuses/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/report-statuses/")
+  end
+
   #################################################################
   # Login logic
   #################################################################

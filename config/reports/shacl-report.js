@@ -21,7 +21,7 @@ const ONLY_KEEP_LATEST_REPORT =
     ? env.get("ONLY_KEEP_LATEST_REPORT").asBool()
     : false;
 
-const BESTUURSEENHEID_URI = env.get("BESTUURSEENHEID_URI").asString();
+let BESTUURSEENHEID_URI = env.get("BESTUURSEENHEID_URI").asString();
 
 const BESTUURSPERIODE_LABEL = process.env.BESTUURSPERIODE_LABEL != undefined
 ? env.get("BESTUURSPERIODE_LABEL").asString()
@@ -31,7 +31,7 @@ const SHAPE_URI = env.get("SHAPE_URI").asString();
 
 const reportName = "ShaclReport";
 
-const cronFunction = async () => {
+const cronFunction = async (bestuurseenheidUri = null) => {
   console.log("report starts");
   const reportInfo = {
     title: reportName,
@@ -47,14 +47,14 @@ const cronFunction = async () => {
   ];
 
   let uriAndUuids = [];
-  if (BESTUURSEENHEID_URI === undefined) {
+  if (BESTUURSEENHEID_URI === undefined && !bestuurseenheidUri) {
       // Retrieve URI and UUID of bestuurseenheden
     uriAndUuids = await getBestuurseenhedenUriAndUuidsToProcess(
       interestedBestuurseenheidClassificaties
     );
   } else {
-    const uriAndUuid = await getBestuurseenheidUriAndUuid(BESTUURSEENHEID_URI);
-    if (uriAndUuid === undefined) throw new Error(`UUID not found for bestuurseenheid ${BESTUURSEENHEID_URI}`);
+    const uriAndUuid = await getBestuurseenheidUriAndUuid(bestuurseenheidUri || BESTUURSEENHEID_URI);
+    if (uriAndUuid === undefined) throw new Error(`UUID not found for bestuurseenheid ${bestuurseenheidUri || BESTUURSEENHEID_URI}`);
     uriAndUuids.push(uriAndUuid);
   }
 
@@ -139,3 +139,18 @@ if (process.env.RUN_REPORT_NOW) {
   console.log("Running report in 10 seconds");
   setTimeout(() => cronFunction(), 10000);
 }
+
+import { app, errorHandler } from 'mu'
+
+app.post('/reports/generate', async (req, res) => {
+  const bestuurseenheidUri = req.body.bestuurseenheidUri
+  if(!bestuurseenheidUri) {
+    console.log(`A bestuurseenheidUri must be provided for triggering the manual report generation.`);
+    return;
+  }
+
+  console.log(`Manually trigged creation of validation report for bestuurseenheid uri: ${bestuurseenheidUri}`)
+  cronFunction(bestuurseenheidUri);
+
+  res.status(204).send()
+})

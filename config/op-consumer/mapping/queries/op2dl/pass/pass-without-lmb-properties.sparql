@@ -1,0 +1,31 @@
+CONSTRUCT {
+  ?s ?p ?o .
+}
+WHERE {
+  ?s ?p ?o .
+  FILTER EXISTS {
+    ?s a ?type .
+    VALUES ?type {
+      <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>
+      <http://purl.org/dc/terms/Agent>
+      <http://www.w3.org/ns/org#Organization>
+      <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>
+      <http://data.vlaanderen.be/ns/mandaat#Mandaat>
+      <http://www.w3.org/ns/org#Post>
+    }
+  }
+  FILTER (?p NOT IN (
+    <http://www.w3.org/ns/adms#identifier>,
+    <http://www.w3.org/ns/org#classification>,
+    <http://mu.semte.ch/vocabularies/ext/voorbereidingVerborgen>,
+    <http://mu.semte.ch/vocabularies/ext/isLokaalBeheerd>,
+    <http://mu.semte.ch/vocabularies/ext/isOCMWVoor>,
+    <http://www.w3.org/ns/org#linkedTo>,
+    <http://mu.semte.ch/vocabularies/ext/origineleBestuurseenheid>,
+    <http://mu.semte.ch/vocabularies/ext/isTijdelijkOrgaanIn>,
+    <http://mu.semte.ch/vocabularies/ext/origineleBestuursorgaan>,
+    <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode>,
+    <http://data.vlaanderen.be/ns/mandaat#aantalHouders>, # <- this property on Mandaat is gone after initial load
+    <http://lblod.data.gift/vocabularies/lmb/minAantalHouders> # <- but this property remains on Mandaat
+  ))
+}

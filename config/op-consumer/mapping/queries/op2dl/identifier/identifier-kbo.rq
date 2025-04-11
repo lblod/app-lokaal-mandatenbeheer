@@ -1,0 +1,25 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+
+CONSTRUCT {
+  ?bestuurseenheid
+    ext:kbonummer ?kboNummer;
+    dcterms:identifier ?kboNummer.
+}
+WHERE {
+  ?identifier
+    skos:notation "KBO nummer";
+    generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
+
+  ?gestructureerdeIdentificator
+    generiek:lokaleIdentificator ?kboNummer.
+
+  ?bestuurseenheid
+    adms:identifier ?identifier.
+}

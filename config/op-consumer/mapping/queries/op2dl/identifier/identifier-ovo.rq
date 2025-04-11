@@ -1,0 +1,20 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+CONSTRUCT {
+  ?bestuurseenheid
+    dcterms:identifier ?ovoNummer.
+}
+WHERE {
+  ?identifier
+    skos:notation "OVO-nummer";
+    generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
+
+  ?gestructureerdeIdentificator
+    generiek:lokaleIdentificator ?ovoNummer.
+
+  ?bestuurseenheid
+    adms:identifier ?identifier.
+}

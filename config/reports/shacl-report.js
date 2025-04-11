@@ -12,7 +12,7 @@ import {
 } from "./helpers.js";
 import env from "env-var";
 import { insertReportStatusInGraphs, updateReportStatusWithReport } from './report-status.js';
-
+import { app } from 'mu'
 import { DataFactory, Store } from "n3";
 const { namedNode } = DataFactory;
 
@@ -140,7 +140,6 @@ if (process.env.RUN_REPORT_NOW) {
   setTimeout(() => cronFunction(), 10000);
 }
 
-import { app, errorHandler } from 'mu'
 
 app.post('/reports/generate', async (req, res) => {
   const bestuurseenheidUri = req.body.bestuurseenheidUri

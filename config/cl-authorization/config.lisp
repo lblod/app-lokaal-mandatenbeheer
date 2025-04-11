@@ -151,7 +151,8 @@
   ("skos:ConceptScheme" -> _)
   ("skos:Concept" -> _)
   ("sh:ValidationResult" -> _)
-  ("sh:ValidationReport" -> _))
+  ("sh:ValidationReport" -> _)
+  ("ext:ReportStatus" -> _))
 
 (define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")
   ("eli:LegalResource" -> _)

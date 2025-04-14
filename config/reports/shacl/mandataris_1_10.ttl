@@ -36,13 +36,13 @@ sh:sparql [
                     org:holds ?mandaat ;
                     mandaat:beleidsdomein ?beleidsdomein .
 
-            FILTER (?bestuursorgaanClassificatieCode != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> && 
+            FILTER (?bestuursorgaanClassificatieCode != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> &&
                     ?bestuursorgaanClassificatieCode != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> )
-        
+
             BIND (concat("Type: ", str(?bestuursorgaanClassificatieCode), ", beleidsdomein: ", str(?beleidsdomein)) as ?value)
         }
     """ ;
-        sh:message "Mandataris is niet van het type schepen of burgemeester en heeft toch beleidsdomeinen."
+        sh:message "Mandataris is niet van het type schepen of burgemeester maar heeft toch beleidsdomeinen."
 ] .
 
 

@@ -39,7 +39,7 @@ sh:sparql [
                             {
                                 select distinct $this ?mandaat ?startBestuursorgaanDateTime ?eindeBestuursorgaanDateTime ?startPuntDateTime ?eindePuntDateTime
                                 where {
-                                    $this a besluit:Bestuursorgaan ;    
+                                    $this a besluit:Bestuursorgaan ;
                                         org:hasPost ?mandaat ;
                                         mandaat:bindingStart ?startBestuursorgaan .
 
@@ -54,10 +54,10 @@ sh:sparql [
                                         ?mandataris mandaat:einde ?eindePuntDateTime .
                                     }
 
-                                    VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> 
+                                    VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a>
                                         <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>
                                     }
-                                    
+
                                     BIND(strdt(?startBestuursorgaan, xsd:dateTime) as ?startBestuursorgaanDateTime)
                                     BIND(strdt(?eindeBestuursorgaan, xsd:dateTime) as ?eindeBestuursorgaanDateTime)
 
@@ -73,7 +73,7 @@ sh:sparql [
                             OPTIONAL {
                                 ?mandataris mandaat:einde ?einde .
                             }
-                            VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> 
+                            VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a>
                                         <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>
                             }
                             FILTER (?start < ?eindePuntDateTime)
@@ -83,7 +83,7 @@ sh:sparql [
                     }
 
                     ?mandaat lmb:minAantalHouders ?min ;
-                            lmb:maxAantalHouders ?max .
+                            mandaat:aantalHouders ?max .
 
                     ?mandataris org:holds ?mandaat ;
                                 mandaat:status ?mandatarisStatus ;
@@ -91,13 +91,13 @@ sh:sparql [
                     OPTIONAL {
                         ?mandataris mandaat:einde ?einde .
                     }
-                    VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> 
+                    VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a>
                                 <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>
                     }
                     FILTER (?start < ?eindePuntDateTime)
                     FILTER (if(bound(?einde), ?einde > ?startPuntDateTime, true))
 
-                    FILTER (?aantalMandatarissen < ?min || ?aantalMandatarissen > ?max)    
+                    FILTER (?aantalMandatarissen < ?min || ?aantalMandatarissen > ?max)
                 }
                 group by $this ?startPuntDateTime ?eindePuntDateTime ?aantalMandatarissen ?min ?max
             }
@@ -105,7 +105,7 @@ sh:sparql [
             BIND(concat(str(?aantalMandatarissen), " effectieve/waarnemende mandatarissen gevonden (", ?mandatarissenLabel, ") tussen ", str(?startPuntDateTime), " en ", str(?eindePuntDateTime) ," - minimum verwacht: ", str(?min), " - maximum verwacht: ", str(?max)) as ?value)
         }
     """ ;
-        sh:message "Dit bestuursorgaan bevat niet op elk moment het aantal effectieve/waarnemende mandatarissen tussen de min en max aantallen."
+        sh:message "Er bij dit bestuursorgaan niet altijd het juiste aantal mandatarissen. De mandatarissen moeten tussen het decretaal vastgelegde minimum en maximum aantal liggen."
 ] .
 
 

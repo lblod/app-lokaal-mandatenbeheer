@@ -21,7 +21,7 @@ sh:sparql [
     sh:select """
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
         PREFIX org: <http://www.w3.org/ns/org#>
-                    
+
         select distinct $this ?value
         where {
             ?mandataris1 mandaat:isBestuurlijkeAliasVan $this ;
@@ -37,9 +37,9 @@ sh:sparql [
             OPTIONAL {
                 ?mandataris2 mandaat:einde ?eindeMandataris2 .
             }
-            
+
             FILTER(?mandataris1 != ?mandataris2)
-            
+
             BIND(strdt(substr(str(?startMandataris1), 1, 10), xsd:date) as ?startMandataris1Date)
             BIND(strdt(substr(str(?eindeMandataris1), 1, 10), xsd:date) as ?eindeMandataris1Date)
             BIND(strdt(substr(str(?startMandataris2), 1, 10), xsd:date) as ?startMandataris2Date)
@@ -49,8 +49,8 @@ sh:sparql [
             BIND((?eindeMandataris1Date >= ?startMandataris2Date && ?eindeMandataris1Date <= ?eindeMandataris2Date) AS ?eindeOverlapt)
 
             FILTER(?startOverlapt || ?eindeOverlapt)
-            
+
             BIND (concat("mandaat: ", str(?mandaat), ", overlappende mandatarissen: ", str(?mandataris1), " en ", str(?mandataris2)) as ?value)
-        }""" ;    
-        sh:message 'Persoon heeft voor 1 mandaat overlappende/meerdere mandatarissen'
+        }""" ;
+        sh:message 'Deze persoon heeft voor 1 mandaat overlappende mandatarissen'
 ] .

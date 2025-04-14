@@ -53,7 +53,7 @@ sh:sparql [
             BIND ("" as ?value)
         }
     """ ;
-        sh:message "Mandataris voorzitter van de gemeenteraad zetelt niet als voorzitter van het ocmw."
+        sh:message "Mandataris voorzitter van de gemeenteraad zetelt niet als voorzitter van de raad voor maatschappelijk welzijn."
 ] .
 
 

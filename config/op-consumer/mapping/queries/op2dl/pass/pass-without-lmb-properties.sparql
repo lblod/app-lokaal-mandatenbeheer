@@ -26,6 +26,7 @@ WHERE {
     <http://mu.semte.ch/vocabularies/ext/origineleBestuursorgaan>,
     <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode>,
     <http://data.vlaanderen.be/ns/mandaat#aantalHouders>, # <- this property on Mandaat is gone after initial load
-    <http://lblod.data.gift/vocabularies/lmb/minAantalHouders> # <- but this property remains on Mandaat
+    <http://lblod.data.gift/vocabularies/lmb/minAantalHouders>, # <- but this property remains on Mandaat
+    <http://mu.semte.ch/vocabularies/ext/deeltBestuurVan>
   ))
 }

@@ -40,12 +40,9 @@
   :class (s-prefix "besluit:Bestuurseenheid")
   :properties `((:naam :string ,(s-prefix "skos:prefLabel"))
                 (:alternatieve-naam :string-set ,(s-prefix "skos:altLabel"))
-                (:wil-mail-ontvangen :boolean ,(s-prefix "ext:wilMailOntvangen")) ;;Voorkeur in berichtencentrum
                 (:mail-adres :string ,(s-prefix "ext:mailAdresVoorNotificaties"))
-                (:is-trial-user :boolean ,(s-prefix "ext:isTrailUser"))
                 (:hide-legislatuur :boolean ,(s-prefix "ext:voorbereidingVerborgen"))
-                (:is-lokaal-beheerd :boolean ,(s-prefix "ext:isLokaalBeheerd"))
-                (:view-only-modules :string-set ,(s-prefix "ext:viewOnlyModules")))
+                (:is-lokaal-beheerd :boolean ,(s-prefix "ext:isLokaalBeheerd")))
   :has-one `((werkingsgebied :via ,(s-prefix "besluit:werkingsgebied")
                              :as "werkingsgebied")
              (werkingsgebied :via ,(s-prefix "ext:inProvincie")

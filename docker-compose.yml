@@ -350,7 +350,6 @@ services:
     image: lblod/delta-consumer:0.1.4
     environment:
       DCR_SERVICE_NAME: "op-public-consumer"
-      # DCR_SYNC_BASE_URL: "https://organisaties.abb.lblod.info" # replace with link to OP API
       DCR_SYNC_FILES_PATH: "/sync/public/files"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/PublicCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/op-public"

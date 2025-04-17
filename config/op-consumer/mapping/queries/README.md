@@ -1,2 +1,9 @@
-Example configuration for Organization Portal (PUBLIC) to Loket.
-It contains some mappings which are not used in the public producer (such as names of persons) but does not yet take all the necessary mapping into account yet for a sensitive data in OP. Mainly the pass configuration should be extended.
+Based off example configuration for Organization Portal (PUBLIC) to Loket.
+
+using this consumer, LMB consumes data from OP for realising its business case of tracking Mandataris instances, main targets for consumption are:
+
+- Bestuurseenheden
+- Bestuursorganen
+- Mandaten
+
+However, some other things are consumed as well: skos:Concepts, sites, locations.

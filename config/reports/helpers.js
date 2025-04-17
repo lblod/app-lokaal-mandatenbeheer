@@ -136,21 +136,43 @@ export async function getNamedGraphsForBestuurseenheidId(uuid) {
   return queryResponse.results.bindings.map((res) => res.graph.value);
 }
 
+export async function getSelfAndOCMW(uuid) {
+  const sparqlQuery = `
+        PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+        SELECT DISTINCT ?eenheid WHERE {
+          VALUES ?uuid {
+            ${sparqlEscapeString(uuid)}
+          }
+          { { ?eenheid mu:uuid ?uuid. }
+            UNION
+            { ?eenheid ext:isOCMWVoor / mu:uuid ?uuid. }
+            UNION
+            { ?eenheid ^ext:isOCMWVoor / mu:uuid ?uuid. }
+          }
+        }
+    `;
+  const queryResponse = await querySudo(sparqlQuery);
+  return queryResponse.results.bindings.map((res) => res.eenheid.value);
+}
+
 export async function executeConstructQueriesOnNamedGraph(
   uriAndUuid,
   bestuursperiodeLabel
 ) {
+  const bestuurseenheidUris = await getSelfAndOCMW(uriAndUuid.uuid);
   const namedGraphs = await getNamedGraphsForBestuurseenheidId(uriAndUuid.uuid);
   const store = new Store();
   const bestuursorganen = await addBestuursorgaanAndMandatarissen(
-    uriAndUuid,
     store,
+    bestuurseenheidUris,
     namedGraphs,
     bestuursperiodeLabel
   );
   await addPersonen(store, namedGraphs, bestuursorganen);
   await addFracties(store, namedGraphs, bestuursorganen);
-  await addMandaten(store, namedGraphs, bestuursorganen);
+  await addMandaten(store, bestuursorganen);
   await addLidmaatschappen(store, namedGraphs, bestuursorganen);
   await addPublicData(store);
 
@@ -158,52 +180,57 @@ export async function executeConstructQueriesOnNamedGraph(
 }
 
 async function addBestuursorgaanAndMandatarissen(
-  uriAndUuid,
   store,
-  namedGraphs,
+  bestuurseenheidUris,
+  targetGraphs,
   bestuursperiodeLabel
 ) {
-  const safeNamedGraphs = namedGraphs
+  const safeBestuurseenheden = bestuurseenheidUris
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
+  const safeTargetGraphs = targetGraphs
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
   const queryStringConstructOfGraph = `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
     CONSTRUCT {
         ?bestuursorgaanInTijd  ?pBestuursorgaanInTijd ?oBestuursorgaanInTijd .
         ?bestuursorgaan ?pBestuursorgaan ?oBestuursorgaan .
-        ${sparqlEscapeUri(
-          uriAndUuid.uri
-        )} besluit:classificatie ?oBestuurseenheid .
+        ?eenheid besluit:classificatie ?oBestuurseenheid .
         ?mandataris ?pMandataris ?oMandataris .
     }
     WHERE {
         ?bestuursperiode skos:prefLabel ${sparqlEscapeString(
           bestuursperiodeLabel
         )} .
+        VALUES ?eenheid {
+          ${safeBestuurseenheden}
+        }
         VALUES ?graph {
-            ${safeNamedGraphs}
+          ${safeTargetGraphs}
         }
+        GRAPH <http://mu.semte.ch/graphs/public> {
+          ?eenheid besluit:classificatie ?oBestuurseenheid .
+          ?bestuursorgaan besluit:bestuurt ?eenheid.
+          ?bestuursorgaan ?pBestuursorgaan ?oBestuursorgaan .
+
+          ?bestuursorgaanInTijd a besluit:Bestuursorgaan ;
+            mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
+            org:hasPost ?mandaat ;
+            ?pBestuursorgaanInTijd ?oBestuursorgaanInTijd .
+        }
+        ?bestuursorgaanInTijd <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> ?bestuursperiode .
+
         GRAPH ?graph {
-            ?bestuursorgaanInTijd a besluit:Bestuursorgaan ;
-                <http://lblod.data.gift/vocabularies/lmb/heeftBestuursperiode> ?bestuursperiode ;
-                mandaat:isTijdspecialisatieVan ?bestuursorgaan ;
-                org:hasPost ?mandaat ;
-                ?pBestuursorgaanInTijd ?oBestuursorgaanInTijd .
-
-            ?bestuursorgaan ?pBestuursorgaan ?oBestuursorgaan .
-
-            OPTIONAL {
-                ?mandataris org:holds ?mandaat ;
-                            ?pMandataris ?oMandataris .
-           }
-
+          OPTIONAL {
+              ?mandataris org:holds ?mandaat ;
+                          ?pMandataris ?oMandataris .
+          }
         }
-        ${sparqlEscapeUri(
-          uriAndUuid.uri
-        )} besluit:classificatie ?oBestuurseenheid .
     }
     `;
 
@@ -244,11 +271,13 @@ async function addPersonen(store, namedGraphs, bestuursorgaanUris) {
         VALUES ?graph {
             ${safeNamedGraphs}
         }
+        VALUES ?bestuursorgaanInTijd {
+            ${safeBestuursorganen}
+        }
+        ?bestuursorgaanInTijd org:hasPost ?mandaat .
+
         GRAPH ?graph {
-            VALUES ?bestuursorgaanInTijd {
-                ${safeBestuursorganen}
-            }
-            ?bestuursorgaanInTijd org:hasPost / ^org:holds / mandaat:isBestuurlijkeAliasVan ?persoon.
+            ?mandaat ^org:holds / mandaat:isBestuurlijkeAliasVan ?persoon.
             ?persoon ?pPersoon ?oPersoon .
             OPTIONAL {
                 ?persoon persoon:geboorte ?geboorte .
@@ -295,10 +324,7 @@ async function addFracties(store, namedGraphs, bestuursorgaanUris) {
   await addConstructQueryResponseToStore(store, queryResponse);
 }
 
-async function addMandaten(store, namedGraphs, bestuursorgaanUris) {
-  const safeNamedGraphs = namedGraphs
-    .map((uri) => sparqlEscapeUri(uri))
-    .join("\n");
+async function addMandaten(store, bestuursorgaanUris) {
   const safeBestuursorganen = bestuursorgaanUris
     .map((uri) => sparqlEscapeUri(uri))
     .join("\n");
@@ -310,10 +336,7 @@ async function addMandaten(store, namedGraphs, bestuursorgaanUris) {
         ?bestuursorgaanInTijd org:hasPost ?mandaat .
     }
     WHERE {
-        VALUES ?graph {
-            ${safeNamedGraphs}
-        }
-        GRAPH ?graph {
+        GRAPH <http://mu.semte.ch/graphs/public> {
             VALUES ?bestuursorgaanInTijd {
                 ${safeBestuursorganen}
             }
@@ -342,14 +365,17 @@ async function addLidmaatschappen(store, namedGraphs, bestuursorgaanUris) {
         ?lidmaatschap ?p ?o .
     }
     WHERE {
+        GRAPH <http://mu.semte.ch/graphs/public> {
+          VALUES ?bestuursorgaanInTijd {
+              ${safeBestuursorganen}
+          }
+          ?bestuursorgaanInTijd org:hasPost ?mandaat.
+        }
         GRAPH ?graph {
             VALUES ?safeNamedGraphs {
                 ${safeNamedGraphs}
             }
-            VALUES ?bestuursorgaanInTijd {
-                ${safeBestuursorganen}
-            }
-            ?bestuursorgaanInTijd org:hasPost / ^org:holds / org:hasMembership ?lidmaatschap .
+            ?mandaat ^org:holds / org:hasMembership ?lidmaatschap .
             ?lidmaatschap ?p ?o .
         }
     }`;

@@ -21,7 +21,7 @@ const ONLY_KEEP_LATEST_REPORT =
     ? env.get("ONLY_KEEP_LATEST_REPORT").asBool()
     : false;
 
-let BESTUURSEENHEID_URI = env.get("BESTUURSEENHEID_URI").asString();
+const BESTUURSEENHEID_URI = env.get("BESTUURSEENHEID_URI").asString();
 
 const BESTUURSPERIODE_LABEL = process.env.BESTUURSPERIODE_LABEL != undefined
 ? env.get("BESTUURSPERIODE_LABEL").asString()

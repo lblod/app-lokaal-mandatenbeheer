@@ -11,7 +11,8 @@ import {
   getNamedGraphsForBestuurseenheidId,
 } from "./helpers.js";
 import env from "env-var";
-
+import { insertReportStatusInGraphs, updateReportStatusWithReport } from './report-status.js';
+import { app } from 'mu'
 import { DataFactory, Store } from "n3";
 const { namedNode } = DataFactory;
 
@@ -30,7 +31,7 @@ const SHAPE_URI = env.get("SHAPE_URI").asString();
 
 const reportName = "ShaclReport";
 
-const cronFunction = async () => {
+const cronFunction = async (bestuurseenheidUri = null) => {
   console.log("report starts");
   const reportInfo = {
     title: reportName,
@@ -46,14 +47,14 @@ const cronFunction = async () => {
   ];
 
   let uriAndUuids = [];
-  if (BESTUURSEENHEID_URI === undefined) {
+  if (BESTUURSEENHEID_URI === undefined && !bestuurseenheidUri) {
       // Retrieve URI and UUID of bestuurseenheden
     uriAndUuids = await getBestuurseenhedenUriAndUuidsToProcess(
       interestedBestuurseenheidClassificaties
     );
   } else {
-    const uriAndUuid = await getBestuurseenheidUriAndUuid(BESTUURSEENHEID_URI);
-    if (uriAndUuid === undefined) throw new Error(`UUID not found for bestuurseenheid ${BESTUURSEENHEID_URI}`);
+    const uriAndUuid = await getBestuurseenheidUriAndUuid(bestuurseenheidUri || BESTUURSEENHEID_URI);
+    if (uriAndUuid === undefined) throw new Error(`UUID not found for bestuurseenheid ${bestuurseenheidUri || BESTUURSEENHEID_URI}`);
     uriAndUuids.push(uriAndUuid);
   }
 
@@ -83,6 +84,7 @@ const cronFunction = async () => {
       const namedGraphs = await getNamedGraphsForBestuurseenheidId(
         uriAndUuid.uuid
       );
+      const statusUri = await insertReportStatusInGraphs(uriAndUuid, namedGraphs);
 
       if (ONLY_KEEP_LATEST_REPORT) {
         await deletePreviousReports(namedGraphs);
@@ -104,13 +106,14 @@ const cronFunction = async () => {
       );
 
       // Enrich validation report by removing blank nodes, adding timestamp etc.
-      const enrichedValidationReportDataset = enrichValidationReport(
+      const { reportUri, reportDataset } = enrichValidationReport(
         report.dataset,
         shapesDataset,
         dataDataset
       );
 
-      await saveDatasetToNamedGraphs(enrichedValidationReportDataset, namedGraphs);
+      await saveDatasetToNamedGraphs(reportDataset, namedGraphs);
+      await updateReportStatusWithReport(statusUri, reportUri, namedGraphs);
       console.log(`SHACL validation report saved in triple store.`);
 
       if (ONLY_KEEP_LATEST_REPORT) {
@@ -136,3 +139,17 @@ if (process.env.RUN_REPORT_NOW) {
   console.log("Running report in 10 seconds");
   setTimeout(() => cronFunction(), 10000);
 }
+
+
+app.post('/reports/generate', async (req, res) => {
+  const bestuurseenheidUri = req.body.bestuurseenheidUri
+  if(!bestuurseenheidUri) {
+    console.log(`A bestuurseenheidUri must be provided for triggering the manual report generation.`);
+    return;
+  }
+
+  console.log(`Manually trigged creation of validation report for bestuurseenheid uri: ${bestuurseenheidUri}`)
+  cronFunction(bestuurseenheidUri);
+
+  res.status(204).send()
+})

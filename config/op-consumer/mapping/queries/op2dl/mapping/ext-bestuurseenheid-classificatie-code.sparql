@@ -1,0 +1,5 @@
+CONSTRUCT {
+  ?s a <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>.
+} WHERE {
+  ?s a <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>.
+}

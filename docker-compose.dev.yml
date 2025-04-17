@@ -128,3 +128,5 @@ services:
       LOG_ERRORS: true
   vendor-management-consumer:
     restart: "no"
+  op-public-consumer:
+    restart: "no"

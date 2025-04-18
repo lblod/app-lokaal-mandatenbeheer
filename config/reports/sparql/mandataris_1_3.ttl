@@ -1,0 +1,87 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+<http://example.org/mandataris_1_3_shape>
+a ext:SparqlShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://lblod.data.gift/vocabularies/lmb/"^^xsd:anyURI ;
+        sh:prefix "lmb" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+        sh:prefix "skos" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ;
+        sh:prefix "xsd" ;
+    ] ];
+sh:sparql [
+    sh:select """
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX org: <http://www.w3.org/ns/org#>
+  PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+  select distinct $this ?value
+  where {
+    {
+      SELECT $this ?mandaat ?dateToCheck (COUNT(DISTINCT(?person)) AS ?mandatarisCount) WHERE {
+        { SELECT DISTINCT $this ?mandaat ?dateToCheck WHERE {
+
+          $this org:hasPost ?mandaat.
+          $this mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+
+          ?s a mandaat:Mandataris.
+          ?s org:holds ?mandaat.
+          ?mandaat mandaat:aantalHouders ?max.
+          ?mandaat lmb:minAantalHouders ?min.
+
+          { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("3000-01-01"^^xsd:dateTime AS ?dateToCheck) } UNION { ?s mandaat:start|mandaat:einde ?rightBefore. BIND(?rightBefore + "PT200M"^^xsd:duration AS ?dateToCheck) } }
+        } }
+
+        ?s a mandaat:Mandataris.
+        ?s org:holds ?mandaat.
+
+        VALUES ?mandatarisStatus { <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a>
+          <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>
+        }
+        ?s mandaat:status ?mandatarisStatus.
+        ?s mandaat:start ?start.
+        OPTIONAL {
+          ?s mandaat:einde ?einde.
+        }
+        BIND(IF(BOUND(?einde), ?einde, "3000-01-01"^^xsd:dateTime) AS ?safeEinde)
+        ?s mandaat:isBestuurlijkeAliasVan ?person.
+        FILTER (?start <= ?dateToCheck && ?safeEinde >= ?dateToCheck)
+      } GROUP BY $this ?mandaat ?dateToCheck
+    }
+    ?mandaat mandaat:aantalHouders ?max.
+    ?mandaat lmb:minAantalHouders ?min.
+    ?mandaat org:role / skos:prefLabel ?mandaatLabel.
+
+    FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
+    BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?dateToCheck),"-",MONTH(?dateToCheck),"-", YEAR(?dateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max)) as ?value)
+
+  }
+    """ ;
+        sh:message "Dit bestuursorgaan bevat niet op elk moment het aantal effectieve/waarnemende mandatarissen tussen de min en max aantallen."
+] .
+
+

@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
-<http://example.org/mandataris_1_14_shape>
-a sh:NodeShape ;
+<http://example.org/mandataris_1_13_shape>
+a ext:SparqlShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
@@ -30,18 +31,16 @@ sh:sparql [
 
         select distinct $this ?value
         where {
-            ?burgemeesterInTijd (generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan)/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> ;
-                                org:hasPost ?mandaatBurgemeester .
+            ?collegeInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> ;
+                                org:hasPost ?mandaatCollege .
 
             $this a mandaat:Mandataris ;
-                org:holds ?mandaatBurgemeester ;
+                org:holds ?mandaatCollege ;
                 mandaat:isBestuurlijkeAliasVan ?persoon .
 
         FILTER NOT EXISTS {
-                ?vastBureauInTijd (generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan)/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> ;
+                ?vastBureauInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> ;
                                     org:hasPost ?mandaatVastBureau .
-
-                ?mandaatVastBureau org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018> .
 
                 ?alsMandatarisVastBureau a mandaat:Mandataris ;
                     org:holds ?mandaatVastBureau ;
@@ -51,7 +50,7 @@ sh:sparql [
         BIND ("" as ?value)
         }
     """ ;
-        sh:message "Mandataris, die een (evt. aangewezen) burgemeester is, is niet voorzitter van het vast bureau."
+    sh:message "Mandataris in college van burgemeester en schepenen zetelt niet in vast bureau."
 ] .
 
 

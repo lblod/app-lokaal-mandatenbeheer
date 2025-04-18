@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
 <http://example.org/persoon_shape>
-a sh:NodeShape ;
+a ext:SparqlShape ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;

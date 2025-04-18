@@ -330,6 +330,7 @@ async function addMandaten(store, bestuursorgaanUris) {
     .join("\n");
   const queryStringConstructOfGraph = `
     PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
     CONSTRUCT {
         ?mandaat ?p ?o .
@@ -341,8 +342,11 @@ async function addMandaten(store, bestuursorgaanUris) {
                 ${safeBestuursorganen}
             }
             ?bestuursorgaanInTijd org:hasPost ?mandaat .
-            ?mandaat ?p ?o .
         }
+        GRAPH ?g {
+          ?mandaat ?p ?o .
+        }
+        ?g ext:ownedBy ?someone.
     }`;
 
   const queryResponse = await querySudo(queryStringConstructOfGraph);

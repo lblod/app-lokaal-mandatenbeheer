@@ -3,7 +3,7 @@
   :properties `((:created :datetime ,(s-prefix "dct:created"))
                 (:conforms :boolean ,(s-prefix "sh:conforms")))
   :has-many `((validationresult :via ,(s-prefix "sh:result")
-                              :as "validationresults"))
+                              :as "valiadationresults"))
   :resource-base (s-url "http://data.lblod.info/id/reports/")
   :features '(include-uri)
   :on-path "reports"

@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
 <http://example.org/mandataris_1_12_shape>
-a sh:NodeShape ;
+a ext:SparqlShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;

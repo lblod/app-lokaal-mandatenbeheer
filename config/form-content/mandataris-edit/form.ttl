@@ -55,6 +55,7 @@ ext:rangordeF
     sh:name "Rangorde";
     sh:order 600;
     sh:path mandaat:rangorde;
+    form:showInSummary true;
     form:validatedBy [
       a ext:ValidRangorde;
       form:grouping form:MatchSome;
@@ -69,6 +70,7 @@ ext:startF
     sh:name "Start";
     sh:order 700;
     sh:path mandaat:start;
+    form:showInSummary true;
     form:validatedBy
         [
             a form:RequiredConstraint;
@@ -99,6 +101,7 @@ ext:eindeF
     sh:order 800;
     sh:path mandaat:einde;
     fieldOption:endOfDay true;
+    form:showInSummary true;
     form:validatedBy
         [
             a ext:ValidMandatarisDate;

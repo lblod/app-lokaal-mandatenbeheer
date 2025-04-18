@@ -16,7 +16,6 @@ ext:aantalHoudersF
     sh:name "Aantal houders";
     sh:order 2;
     sh:path mandaat:aantalHouders;
-    form:showInSummary true;
     form:validatedBy [
       a form:PositiveNumber ;
       form:grouping form:MatchEvery ;

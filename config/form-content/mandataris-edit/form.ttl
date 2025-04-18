@@ -19,7 +19,6 @@ ext:mandaatF
     sh:name "Mandaat";
     sh:order 100;
     sh:path org:holds;
-    form:showInSummary true;
     form:validatedBy
         [
             a form:RequiredConstraint;

@@ -21,7 +21,6 @@ ext:gebruikteVoornaamF
     sh:name "Voornaam";
     sh:order 2;
     sh:path persoon:gebruikteVoornaam;
-    form:showInSummary true;
     form:validatedBy
         [
             a form:RequiredConstraint;
@@ -36,7 +35,6 @@ ext:achternaamF
     sh:name "Achternaam";
     sh:order 3;
     sh:path foaf:familyName;
-    form:showInSummary true;
     form:validatedBy
         [
             a form:RequiredConstraint;

@@ -1,0 +1,22 @@
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX org: <http://www.w3.org/ns/org#>
+  DELETE {
+    GRAPH ?g {
+      ?s ?p ?o.
+    }
+  }
+  WHERE {
+    graph ?g {
+      ?s a besluit:Bestuurseenheid.
+      ?s ?p ?o.
+      FILTER (?p NOT IN (
+                         ext:mailAdresVoorNotificaties,
+                         ext:voorbereidingVerborgen,
+                         ext:isLokaalBeheerd,
+                         ext:isOCMWVoor,
+                         org:linkedTo,
+                         ext:origineleBestuurseenheid
+                         ))
+    }
+  }

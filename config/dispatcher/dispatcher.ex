@@ -297,8 +297,16 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/reports/")
   end
 
+  match "/validation-report-api/*path", %{layer: :api_services, accept: %{any: true}} do
+    forward(conn, path, "http://report-generation/")
+  end
+
   match "/validationresults/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/validationresults/")
+  end
+
+  match "/report-statuses/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/report-statuses/")
   end
 
   #################################################################
@@ -341,6 +349,10 @@ defmodule Dispatcher do
 
   match "/forms/*path", %{layer: :resources, accept: %{json: true}} do
     forward(conn, path, "http://cache/forms/")
+  end
+
+  match "/generated-forms/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/generated-forms/")
   end
 
   match "/form-extensions/*path", %{layer: :resources, accept: %{json: true}} do

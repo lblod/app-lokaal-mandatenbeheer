@@ -1,0 +1,23 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+DELETE {
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?old.
+    ?mandaat lmb:maxAantalHouders ?new.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?new.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandaat a mandaat:Mandaat.
+    ?mandaat lmb:maxAantalHouders ?new.
+    OPTIONAL {
+      ?mandaat mandaat:aantalHouders ?old.
+    }
+  }
+}

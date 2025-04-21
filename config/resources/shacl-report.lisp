@@ -9,6 +9,18 @@
   :on-path "reports"
 )
 
+(define-resource report-status ()
+  :class (s-prefix "ext:ReportStatus")
+  :properties `((:started-at :datetime ,(s-prefix "dct:created"))
+                (:finished-at :datetime ,(s-prefix "dct:issued"))
+                (:is-flagged-as-crashed :datetime ,(s-prefix "ext:flaggedAsCrashed")))
+  :has-one `((report :via ,(s-prefix "ext:forReport")
+                          :as "report"))
+  :resource-base (s-url "http://data.lblod.info/id/report-statuses/")
+  :features '(include-uri)
+  :on-path "report-statuses"
+)
+
 (define-resource validationresult ()
   :class (s-prefix "sh:ValidationResult")
   :properties `((:focus-node :string ,(s-prefix "sh:focusNode"))

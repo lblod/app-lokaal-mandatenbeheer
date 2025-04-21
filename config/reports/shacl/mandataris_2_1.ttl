@@ -1,0 +1,46 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_2_1_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandaat> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+        sh:prefix "skos" ;
+    ] ];
+sh:sparql [
+    sh:select """
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+        select distinct $this ?value
+        where {
+            $this a mandaat:Mandaat .
+
+            FILTER NOT EXISTS {
+                VALUES ?allowedSchemes {
+                    <http://data.lblod.info/id/conceptscheme/LocalPoliticianMandateRole>
+                    <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode>
+                    <http://data.lblod.info/id/conceptscheme/LokaalMandaatClassificatieCode>
+                }
+                $this org:role ?mandaatClassificatie .
+                ?mandaatClassificatie skos:inScheme ?allowedSchemes .
+            }
+
+            BIND ("Dit mandaat heeft geen classificatie uit de BestuursfunctieCode-codelijst." as ?value)
+        }
+    """ ;
+        sh:message "Dit mandaat heeft geen classificatie uit de juiste codelijst."
+] .
+
+

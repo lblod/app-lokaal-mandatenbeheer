@@ -1,0 +1,27 @@
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+  PREFIX org: <http://www.w3.org/ns/org#>
+  DELETE {
+    GRAPH ?g {
+      ?s ?p ?o.
+    }
+  }
+  WHERE {
+    ?s a mandaat:Mandaat.
+    graph ?g {
+      ?s ?p ?o.
+    }
+    FILTER(?p NOT IN (
+                      mandaat:aantalHouders,
+                      lmb:minAantalHouders
+                      ))
+    filter not exists {
+      VALUES ?role {
+        <http://data.lblod.info/id/lb-mandaat-classificatiecode/22da4572-4818-454b-bbd4-28a9ea97856c> # Voorzitter
+        <http://data.lblod.info/id/lb-mandaat-classificatiecode/28d0ed76-e1a3-4c90-89df-4d11587390b3> # Lid
+        <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> # Politieraadslid
+        <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> # Voorzitter politieraad
+      }
+      ?s org:role ?role.
+    }
+  }

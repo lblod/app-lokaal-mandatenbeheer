@@ -1,0 +1,48 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/mandataris_2_2_shape>
+a sh:NodeShape ;
+sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandaat> ;
+sh:prefixes [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ;
+        sh:prefix "besluit" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ;
+        sh:prefix "mandaat" ;
+    ] ], [ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
+        sh:prefix "org" ;
+    ] ],[ sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
+        sh:prefix "generiek" ;
+    ] ];
+sh:sparql [
+    sh:select """
+        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+        select distinct $this ?value
+        where {
+            $this a mandaat:Mandaat .
+
+            FILTER NOT EXISTS {
+                ?bestuursorgaan a besluit:Bestuursorgaan ;
+                    generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan ?tijdloosBestuursorgaan ;
+                    org:hasPost $this .
+            }
+
+            BIND ("" as ?value)
+        }
+    """ ;
+        sh:message "Dit mandaat is niet gebonden aan een bestuursorgaan in tijd."
+] .
+
+
+#  somehow this is triggered for all mandaten, even if i simplify to just the org:hasPost. I logged the mandaten construct and this triple is added to the store. i don't get it.

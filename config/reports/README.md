@@ -43,3 +43,77 @@ The report can access some helper functions that you can import from
 * `saveDatasetToNamedGraph(dataset, namedGraph)`: it inserts the triples of a RDF/JS dataset in the named graph of the triple store.
   * The `dataset` argument is an RDF/JS Dataset containing the triples (e.g. the dataset of the SHACL report)
   * The `namedGraph` argument is a string containing the URI of the named graph to be used in the SPARQL INSERT query
+
+## Configuration
+
+The service can be configured with the following environment variables:
+
+- `BESTUURSEENHEID_URI` [string]: the URI of a bestuurseenheid to filter on. By default, all bestuurseenheden are retrieved to validate. E.g. `http://data.lblod.info/id/bestuurseenheden/0a3ba641d653b436b14fde37bb6eab4f1054aa0586eb98021b723d58f6ce82fb`
+- `BESTUURSPERIODE_LABEL` [string]: the label of the bestuursperiode to filter on. By default: `2024 - heden`. E.g. `2024 - heden`
+- `SHAPE_URI` [string]: the URI of the SHACL shape to specifically validate with. By default, all shapes are validated in the shacl folder. E.g. `http://example.org/mandataris_1_12_shape`
+- `RUN_REPORT_NOW` [true or false]: The code only checks if the environment is available. This will start the creation of a report after 10 seconds that the service is up.
+
+## Testing new shapes
+
+The easiest way to test new SPARQL queries is by following these steps:
+
+- In case of SPARQL-based constraints, you can test your SPARQL query using the UI that is offered by Virtuoso (`http://localhost:8890/sparql`). Write a SELECT query that returns `?this`and `?value` (and optionally `?path`).
+- To do some exploration whether the returned instance (`?this`) is really invalid, you can use `DESCRIBE <fill-in-uri-of-this>` to retrieve all data of the instance, and select format `Turtle (beautified - browser oriented)`. This gives you the ability to navigate to connected resources in the triple store.
+
+When your query is ready, follow these steps:
+- create a SHACL shape in a Turtle file inside the `shacl` folder
+- Replace `?this` with `$this` in your query, because this is expected by the SHACL engine. 
+- don't run the reporting service container in development mode (makes validation much slower)
+- configure the parameters mentioned above to limit validation to one bestuurseenheid and the shape you want to test
+- pro-tip: when you were testing the query, you can already see which bestuurseenheden will have invalid validation results. Take one of those to test.
+- send an HTTP POST to `http://localhost:8889/reports` to start the validation service, with body:
+```
+{
+  "data": {
+    "attributes": {
+      "reportName": "ShaclReport"
+   }
+  }
+}
+```
+
+Screening the results can be done using:
+- go to `http://localhost:8890/sparql` and retrieve the latest report with following SPARQL query:
+
+```
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+CONSTRUCT {
+ ?report a sh:ValidationReport ;
+    sh:result ?result ;
+  ?preport ?oreport .
+
+  ?result ?presult ?oresult .
+}
+WHERE {
+  GRAPH ?g {
+    ?report a sh:ValidationReport ;
+      ?preport ?oreport .
+
+    OPTIONAL {
+      ?report sh:result ?result .
+      ?result ?presult ?oresult .
+    }
+
+    {
+      SELECT ?report ?g
+      WHERE {
+        GRAPH ?g {
+          ?report a sh:ValidationReport ;
+            dct:created ?created .
+        }
+      }
+      ORDER BY DESC(?created)
+      LIMIT 1
+    }
+  }
+}
+```
+
+- Go to the LMB frontend `http://localhost:4200`, log in with the configured bestuurseenheid, and go to the report route `http://localhost:4200/report` to visualize and further analyze the instances with validation errors. 

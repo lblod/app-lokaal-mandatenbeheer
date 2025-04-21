@@ -39,9 +39,10 @@ export const ldesInstances = {
         specialType: true,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
       },
-      "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://data.vlaanderen.be/ns/mandaat#Mandaat": {
+        instanceFilter: `?s <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .`,
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
       "http://www.w3.org/ns/person#Person": {
         instanceFilter: `FILTER(?p NOT IN (<http://data.vlaanderen.be/ns/persoon#heeftGeboorte>, <http://www.w3.org/ns/adms#identifier>, <http://data.vlaanderen.be/ns/persoon#geslacht>, <https://data.vlaanderen.be/ns/persoon#geslacht>, <https://data.vlaanderen.be/ns/persoon#heeftGeboorte>))
 
@@ -109,9 +110,10 @@ export const ldesInstances = {
         specialType: true,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
       },
-      "http://data.vlaanderen.be/ns/mandaat#Mandaat": [
-        "http://purl.org/dc/terms/modified",
-      ],
+      "http://data.vlaanderen.be/ns/mandaat#Mandaat": {
+        instanceFilter: `?s <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .`,
+        healingPredicates: ["http://purl.org/dc/terms/modified"],
+      },
       "http://www.w3.org/ns/person#Person": {
         healingPredicates: ["http://purl.org/dc/terms/modified"],
         transformPredicates: {

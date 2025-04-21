@@ -214,7 +214,7 @@ services:
   # LDES
   ##############################################################################
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:1.2.2
+    image: redpencil/ldes-delta-pusher:1.2.6
     environment:
       LDES_ENDPOINT: "http://ldes-backend"
       LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"

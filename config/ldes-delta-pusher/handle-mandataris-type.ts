@@ -1,6 +1,7 @@
 import { querySudo } from "@lblod/mu-auth-sudo";
 import { sparqlEscapeUri } from "mu";
 import { Changeset } from "../types";
+import { ldesInstances } from "./ldes-instances";
 
 import { publishInterestingSubjects } from "./handle-types-util";
 import { InterestingSubject } from "./publisher";
@@ -35,12 +36,23 @@ const keepMandatarisTypesQuery = async (
     .map((binding) => {
       const isNotDraft =
         binding.publicationStatus?.value !== MANDATARIS_DRAFT_STATE;
-      const ldesType = isNotDraft ? "public" : "abb"; // default to non-draft if not present
-      return {
+      const mandatarisType = "http://data.vlaanderen.be/ns/mandaat#Mandataris";
+      const config = {
         uri: binding.s.value,
-        ldesType,
+        ldesType: {
+          abb: {
+            filter: ldesInstances.abb.entities[mandatarisType].instanceFilter,
+          },
+          internal: {},
+        },
         type: "http://data.vlaanderen.be/ns/mandaat#Mandataris",
       };
+      if (isNotDraft) {
+        (config.ldesType as any).public = {
+          filter: ldesInstances.public.entities[mandatarisType].instanceFilter,
+        };
+      }
+      return config;
     })
     .filter((b) => !!b) as InterestingSubject[];
 };

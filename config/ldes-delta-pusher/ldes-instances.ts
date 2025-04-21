@@ -27,7 +27,10 @@ export const ldesInstances = {
           // "http://mu.semte.ch/vocabularies/ext/lmb/hasPublicationStatus",
         ],
         instanceFilter: `OPTIONAL { ?s <http://lblod.data.gift/vocabularies/lmb/hasPublicationStatus> ?publicationStatus. }
-        FILTER(!BOUND(?publicationStatus) || ?publicationStatus != <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07>)`,
+        FILTER(!BOUND(?publicationStatus) || ?publicationStatus != <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07>)
+
+        ?s <http://www.w3.org/ns/org#holds> / <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .
+        `,
       },
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
         "http://purl.org/dc/terms/modified",
@@ -41,6 +44,8 @@ export const ldesInstances = {
       ],
       "http://www.w3.org/ns/person#Person": {
         instanceFilter: `FILTER(?p NOT IN (<http://data.vlaanderen.be/ns/persoon#heeftGeboorte>, <http://www.w3.org/ns/adms#identifier>, <http://data.vlaanderen.be/ns/persoon#geslacht>, <https://data.vlaanderen.be/ns/persoon#geslacht>, <https://data.vlaanderen.be/ns/persoon#heeftGeboorte>))
+
+        ?s ^<http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> / <http://www.w3.org/ns/org#holds> / <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .
       `,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
         transformPredicates: {
@@ -95,6 +100,7 @@ export const ldesInstances = {
         specialType: true,
         republishRelated: ["http://www.w3.org/ns/org#hasMembership"],
         healingPredicates: ["http://purl.org/dc/terms/modified"],
+        instanceFilter: `?s <http://www.w3.org/ns/org#holds> / <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .`,
       },
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
         "http://purl.org/dc/terms/modified",
@@ -118,6 +124,7 @@ export const ldesInstances = {
           "http://data.vlaanderen.be/ns/persoon#geslacht":
             "https://data.vlaanderen.be/ns/persoon#geslacht",
         },
+        instanceFilter: `?s ^<http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> / <http://www.w3.org/ns/org#holds> / <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .`,
       },
       "http://www.w3.org/ns/adms#Identifier": [
         "http://purl.org/dc/terms/modified",

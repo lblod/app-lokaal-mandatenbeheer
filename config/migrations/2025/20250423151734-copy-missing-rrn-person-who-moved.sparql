@@ -14,7 +14,7 @@ INSERT {
     ?person adms:identifier ?id .
     ?person dct:modified ?now .
     ?id ?ip ?io .
-    ?geb persoon:datum ?datum .
+    ?geb ?gp ?go .
   }
 }
 WHERE {
@@ -33,7 +33,7 @@ WHERE {
       persoon:heeftGeboorte ?geb ;
       adms:identifier ?id .
     ?id ?ip ?io .
-    ?geb persoon:datum ?datum .
+    ?geb ?gp ?go .
   }
   VALUES ?person { <http://data.lblod.info/id/personen/48979c60-4a2a-4b00-a292-c18ac5ac66b9> }
   BIND(NOW() AS ?now)

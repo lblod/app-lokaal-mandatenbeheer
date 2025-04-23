@@ -13,6 +13,7 @@ INSERT {
     ?person adms:identifier ?id .
     ?person dct:modified ?now .
     ?id ?ip ?io .
+    ?id dct:modified ?now .
   }
 }
 WHERE {

@@ -14,7 +14,9 @@ INSERT {
     ?person adms:identifier ?id .
     ?person dct:modified ?now .
     ?id ?ip ?io .
+    ?id dct:modified ?now .
     ?geb ?gp ?go .
+    ?geb dct:modified ?now .
   }
 }
 WHERE {

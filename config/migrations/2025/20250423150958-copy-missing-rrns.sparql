@@ -30,6 +30,36 @@ WHERE {
       adms:identifier ?id .
     ?id ?ip ?io .
   }
+      VALUES ?person {
+      <http://data.lblod.info/id/personen/1d5790880efc3831c44efb160ec7c2c54fd64ded2c9473cdb18ed74134b56e25>
+      <http://data.lblod.info/id/personen/310fb8c7ef008754ca61a89b6914f2a876c1b4af557eafeff5b5f4877cc7a944>
+      <http://data.lblod.info/id/personen/39e42254283b21b911f577028c508e8591c955fd190bf0691a81434a4a92056f>
+      <http://data.lblod.info/id/personen/52593388bf9faf02d3fd0d22b98e309093c0d537cac6cb17159eabcc6b23276c>
+      <http://data.lblod.info/id/personen/5E994A8EA3ACB6000800074D>
+      <http://data.lblod.info/id/personen/5E994BFEA3ACB60008000757>
+      <http://data.lblod.info/id/personen/5b3594f8b1227f579ebff964f75e6310ea5b9f54dfb06a22d2af51c3a8b991d1>
+      <http://data.lblod.info/id/personen/5C2F5E2E9E5B64000900018E>
+      <http://data.lblod.info/id/personen/5C3868AA57753A00090002AE>
+      <http://data.lblod.info/id/personen/5C3F4A9157753A00090008B3>
+      <http://data.lblod.info/id/personen/5C7D27A7D5BECA00090002B2>
+      <http://data.lblod.info/id/personen/5C7D2833D5BECA00090002C0>
+      <http://data.lblod.info/id/personen/5C7D28F7D5BECA00090002D4>
+      <http://data.lblod.info/id/personen/5E994B81A3ACB60008000752>
+      <http://data.lblod.info/id/personen/5EFB462DBF8231000800059D>
+      <http://data.lblod.info/id/personen/5F4E2CFFF9D3020008000049>
+      <http://data.lblod.info/id/personen/648044E0878F1A1C42F6234D>
+      <http://data.lblod.info/id/personen/7dc1107bf9d2fa7bd3d7109e214a840549132c11fb4027af7daee7632f2172ad>
+      <http://data.lblod.info/id/personen/910564e7d28cd310d3f11d49dc4b59c85824b457db8db0a80b0fcdb6225c1d39>
+      <http://data.lblod.info/id/personen/93c13504e51b0e8a5052262e0653d2e54e2c5dd1c4df1f8074d53b52462e9714>
+      <http://data.lblod.info/id/personen/93e037a49f307b14596be36a0d00e75efa02e2002369b3464fc8853dd38c38c6>
+      <http://data.lblod.info/id/personen/aa80441132ee0b9eee4f5f202fbaba5f11764f181669919e2cdb5772cfe6f742>
+      <http://data.lblod.info/id/personen/ac14da361af3349d736e882ab97e596b46aa02b252044e8f6806e93251601d9f>
+      <http://data.lblod.info/id/personen/aee2ddb1d38b1cb23b4690bd70a871cac36b1b6118dfef8e661067c8e7ff7383>
+      <http://data.lblod.info/id/personen/be123b141d8f198a99ad3a0e5c505da14f385714e84695f47c5af480e84a315d>
+      <http://data.lblod.info/id/personen/d78071ab21d0008fd0e5e65b16d484afcd3f55f33ca122183a89582285d63187>
+      <http://data.lblod.info/id/personen/f8504a1991028d5008c71ef275f490e564800d234373a8b0a9bdd8c6f9ab2975>
+      <http://data.lblod.info/id/personen/fcf04aa2dc81a4be2f19856b5ad82aeb7c5aec265c0491584b4bd6d3700125ca>
+    }
   BIND(NOW() AS ?now)
   ?g ext:ownedBy ?someone .
   ?h ext:ownedBy ?someoneElse .

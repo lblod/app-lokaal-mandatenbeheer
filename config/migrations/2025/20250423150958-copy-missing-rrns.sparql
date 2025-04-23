@@ -1,0 +1,38 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+DELETE {
+  GRAPH ?g {
+    ?person dct:modified ?mod .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?person adms:identifier ?id .
+    ?person dct:modified ?now .
+    ?id ?ip ?io .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?person a person:Person .
+    FILTER NOT EXISTS {
+      ?person adms:identifier ?rrn .
+    }
+    OPTIONAL {
+      ?person dct:modified ?mod .
+    }
+  }
+  GRAPH ?h {
+    ?person a person:Person ;
+      adms:identifier ?id .
+    ?id ?ip ?io .
+  }
+  BIND(NOW() AS ?now)
+  ?g ext:ownedBy ?someone .
+  ?h ext:ownedBy ?someoneElse .
+  ?someone skos:prefLabel ?label .
+  ?someoneElse skos:prefLabel ?label .
+}

@@ -26,6 +26,20 @@ ext:mandaatF
             sh:path org:holds;
             sh:resultMessage "Mandaat is verplicht."
     ].
+ext:rangordeF
+    a form:Field;
+    form:displayType displayTypes:mandatarisRangorde;
+    sh:group ext:editMandatarisPG;
+    sh:name "Rangorde";
+    sh:order 200;
+    sh:path mandaat:rangorde;
+    form:validatedBy [
+      a ext:ValidRangorde;
+      form:grouping form:MatchSome;
+      sh:severity sh:Warning;
+      sh:resultMessage "Er werd geen geldige rangorde herkend";
+      sh:path mandaat:rangorde
+    ].
 ext:mandatarisStatusCodeF
     a form:Field;
     form:displayType displayTypes:mandatarisStatusCodeSelector;
@@ -46,21 +60,21 @@ ext:replacementF
     form:displayType displayTypes:mandatarisReplacement;
     sh:group ext:editMandatarisPG;
     sh:name "Tijdelijk vervangen door";
-    sh:order 400;
+    sh:order 500;
     sh:path mandaat:isTijdelijkVervangenDoor.
-ext:rangordeF
+ext:fractieF
     a form:Field;
-    form:displayType displayTypes:mandatarisRangorde;
+    form:displayType displayTypes:mandatarisFractieSelector;
     sh:group ext:editMandatarisPG;
-    sh:name "Rangorde";
+    sh:name "Fractie";
     sh:order 600;
-    sh:path mandaat:rangorde;
-    form:validatedBy [
-      a ext:ValidRangorde;
-      form:grouping form:MatchSome;
-      sh:severity sh:Warning;
-      sh:resultMessage "Er werd geen geldige rangorde herkend";
-      sh:path mandaat:rangorde
+    sh:path ( org:hasMembership org:organisation );
+    form:validatedBy
+        [
+            a ext:RequiredForBestuursorganen;
+            form:grouping form:Bag;
+            sh:path ( org:hasMembership org:organisation );
+            sh:resultMessage "Dit veld is verplicht."
     ].
 ext:startF
     a form:Field;
@@ -115,20 +129,6 @@ ext:eindeF
             ext:ValueToCompare mandaat:start;
             sh:resultMessage "De einddatum kan niet voor de startdatum liggen."
         ].
-ext:fractieF
-    a form:Field;
-    form:displayType displayTypes:mandatarisFractieSelector;
-    sh:group ext:editMandatarisPG;
-    sh:name "Fractie";
-    sh:order 900;
-    sh:path ( org:hasMembership org:organisation );
-    form:validatedBy
-        [
-            a ext:RequiredForBestuursorganen;
-            form:grouping form:Bag;
-            sh:path ( org:hasMembership org:organisation );
-            sh:resultMessage "Dit veld is verplicht."
-    ].
 ext:editMandatarisPG
     a form:PropertyGroup; sh:name ""; sh:order 1.
 

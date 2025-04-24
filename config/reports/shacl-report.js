@@ -225,10 +225,7 @@ async function runSparqlValidations(graph, sparqlValidationObjects) {
         validationResults[sparqlValidationObject.uri].push({
           target: binding.this.value,
           value: binding.value?.value,
-          message:
-            binding.value?.value && binding.value.value.trim().length > 0
-              ? binding.value.value
-              : sparqlValidationObject.message,
+          message: sparqlValidationObject.message,
         });
       });
     }

@@ -41,7 +41,7 @@ sh:sparql [
             BIND ("Dit mandaat heeft geen classificatie uit de BestuursfunctieCode-codelijst." as ?value)
         }
     """ ;
-        sh:message "Dit mandaat heeft geen classificatie uit de juiste codelijst."
+        sh:message "Onbekend mandaat"
 ] .
 
 

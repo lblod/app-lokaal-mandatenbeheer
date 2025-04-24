@@ -43,10 +43,10 @@ sh:sparql [
                 $this mandaat:rangorde ?rangorde .
             }
 
-            BIND (concat(?voornaam, " ", ?achternaam, " (", ?mandaatClassificatieLabel, ")") as ?value)
+            BIND (concat(?voornaam, " ", ?achternaam, " (", ?mandaatClassificatieLabel, ") heeft geen rangorde maar dat wordt wel verwacht") as ?value)
         }
     """ ;
-        sh:message "Deze mandataris heeft een classificatie schepen, toegevoegde schepen of gemeenteraadslid, maar heeft geen rangorde."
+        sh:message "Geen rangorde"
 ] .
 
 

@@ -44,10 +44,10 @@ sh:sparql [
             <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284>
             <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> }
 
-            BIND ($this as ?value)
+            BIND ("Mandataris in gemeenteraad, burgemeester of college van burgemeester en schepenen organen zit niet in een fractie" as ?value)
         }
     """ ;
-        sh:message "Mandataris in gemeenteraad, burgemeester of college van burgemeester en schepenen organen zit niet in een fractie."
+        sh:message "Geen fractie gevonden"
 ] .
 
 

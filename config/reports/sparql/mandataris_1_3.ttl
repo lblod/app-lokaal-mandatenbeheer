@@ -81,7 +81,7 @@ sh:sparql [
 
   }
     """ ;
-        sh:message "Dit bestuursorgaan bevat niet op elk moment het aantal effectieve/waarnemende mandatarissen tussen de min en max aantallen."
+        sh:message "Verkeerd aantal mandatarissen."
 ] .
 
 

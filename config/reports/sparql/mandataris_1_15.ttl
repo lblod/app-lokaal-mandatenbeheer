@@ -59,10 +59,10 @@ sh:sparql [
             }
 
             FILTER(!bound(?alsMandatarisVastBureau) && !bound(?alsMandatarisRaadVoorMaatschappelijkWelzijn))
-            BIND ("" as ?value)
+            BIND ("De voorzitter van het BCSD is niet lid van raad van maatschappelijk welzijn of vast bureau" as ?value)
         }
     """ ;
-        sh:message "De voorzitter van het BCSD is niet lid van raad van maatschappelijk welzijn of vast bureau."
+        sh:message "Voorwaarde voorzitter BCSD niet vervuld"
 ] .
 
 

@@ -39,7 +39,7 @@ sh:sparql [
         BIND (concat("Start mandataris: ", str(?startMandataris), " Einde mandataris: ", str(?eindeMandataris), " Start bestuursorgaan: ", str(?startBestuursorgaan), " Einde bestuursorgaan: ", str(?eindeBestuursorgaan)) as ?value)
     }
     """ ;
-        sh:message "Mandataris heeft start- en einddatum die buiten de bindingStart en bindingEinde van het bestuursorgaan vallen."
+        sh:message "Datum mandataris buiten periode van orgaan."
 ] .
 
 

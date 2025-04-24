@@ -40,7 +40,7 @@ sh:sparql [
             BIND (concat("De verhinderde mandataris heeft geen vervangende mandataris met als startdatum gelijk aan moment van verhindering (", str(?momentVanVerhindering), ").") as ?value)
         }
     """ ;
-        sh:message "Deze mandataris is verhinderd, maar heeft geen vervangende mandataris met gelijke startdatum."
+        sh:message "Geen vervanger"
 ] .
 
 

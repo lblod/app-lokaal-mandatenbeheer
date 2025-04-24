@@ -39,7 +39,7 @@ sh:sparql [
 
             FILTER (?bestuursorgaanClassificatieCode != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> &&
                     ?bestuursorgaanClassificatieCode != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> )
-            BIND("Mandataris is niet van het type schepen of burgemeester en heeft toch beleidsdomeinen" AS ?value)
+            BIND("Enkel mandatarissen van het type burgemeester of schepen mogen beleidsdomeinen hebben en deze mandataris is niet van dat type." AS ?value)
         }
     """ ;
         sh:message "Onverwachte beleidsdomeinen"

@@ -21,7 +21,7 @@ sh:sparql [
             $this mandaat:status ?mandatarisStatusCode .
         }
 
-        BIND ("Mandataris heeft geen status." as ?value)
+        BIND ("De bestuurlijke status (e.g. effectief, verhinderd, ...) is niet ingevuld voor deze mandataris." as ?value)
     }""" ;
         sh:message "Mandataris heeft geen status."
 ] .

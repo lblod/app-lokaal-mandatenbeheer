@@ -38,7 +38,7 @@ sh:sparql [
                 ?mandaatClassificatie skos:inScheme ?allowedSchemes .
             }
 
-            BIND ("Dit mandaat heeft geen classificatie uit de BestuursfunctieCode-codelijst." as ?value)
+            BIND ("Dit mandaat heeft een type dat niet voorkomt in de vastgelegde lijst van Bestuursfunctie Codes." as ?value)
         }
     """ ;
         sh:message "Onbekend mandaat"

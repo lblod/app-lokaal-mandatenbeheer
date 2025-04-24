@@ -43,7 +43,7 @@ sh:sparql [
                 $this mandaat:rangorde ?rangorde .
             }
 
-            BIND (concat(?voornaam, " ", ?achternaam, " (", ?mandaatClassificatieLabel, ") heeft geen rangorde maar dat wordt wel verwacht") as ?value)
+            BIND (concat(?voornaam, " ", ?achternaam, " heeft geen rangorde maar dat wordt wel verwacht voor een ", ?mandaatClassificatieLabel) as ?value)
         }
     """ ;
         sh:message "Geen rangorde"

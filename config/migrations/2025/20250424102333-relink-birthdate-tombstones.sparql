@@ -27,6 +27,13 @@ WHERE {
     ?geb a astreams:Tombstone ;
       owl:sameAs ?alias .
   }
+  VALUES ?geb {
+    <http://data.lblod.info/id/geboorte/aff9cb6b-ea26-42ee-a1c1-d232340f2b70>
+    <http://data.lblod.info/id/geboorte/93d59bf1-0ed4-45bc-971a-cf210918e40b>
+    <http://data.lblod.info/id/geboorte/eeab154a-f268-4fa1-8e17-8c5b382b00ae>
+    <http://data.lblod.info/id/geboorte/ac6194a2-4d3e-409c-b15e-50401e17c32d>
+    <http://data.lblod.info/id/geboortes/5C5AF69DD5BECA000B0004A1>
+    }
   ?g ext:ownedBy ?someone .
   BIND(NOW() AS ?now)
 }

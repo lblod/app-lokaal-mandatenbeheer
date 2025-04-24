@@ -1,0 +1,32 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dct: <http://purl.org/dc/terms/>
+DELETE {
+  GRAPH ?g {
+    ?persoon persoon:heeftGeboorte ?geb .
+    ?persoon dct:modified ?mod .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon persoon:heeftGeboorte ?alias .
+    ?persoon dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+       persoon:heeftGeboorte ?geb .
+    OPTIONAL {
+      ?persoon dct:modified ?mod .
+    }
+    ?geb a astreams:Tombstone ;
+      owl:sameAs ?alias .
+  }
+  ?g ext:ownedBy ?someone .
+  BIND(NOW() AS ?now)
+}

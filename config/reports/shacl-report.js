@@ -370,23 +370,30 @@ async function dropTempGraph(graph) {
     {},
     { sparqlEndpoint: DIRECT_DATABASE_CONNECTION }
   );
+  await querySudo(
+    `DELETE DATA {
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        <${graph}> a <http://mu.semte.ch/vocabularies/ext/ValidationWorkingGraph> .
+      }
+    } `,
+    {},
+    { sparqlEndpoint: DIRECT_DATABASE_CONNECTION }
+  );
 }
 
 async function loadTtlToTempGraph(ttl) {
   const id = uuid();
   const graph = `http://mu.semte.ch/graphs/temp/validation/${id}`;
   await querySudo(
-    `INSERT DATA { GRAPH <${graph}> { ${ttl} } }`,
+    `INSERT DATA {
+      GRAPH <${graph}> { ${ttl} }
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        <${graph}> a <http://mu.semte.ch/vocabularies/ext/ValidationWorkingGraph> .
+      }
+    }`,
     {},
     { sparqlEndpoint: DIRECT_DATABASE_CONNECTION }
   );
-  // const uploadRes = await fetch(`${DIRECT_SPARQL_ENDPOINT}?graph=${graph}`, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "text/turtle",
-  //   },
-  //   body: ttl,
-  // });
 
   return graph;
 }

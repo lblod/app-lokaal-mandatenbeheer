@@ -1,0 +1,47 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+  GRAPH ?g {
+    ?bestuurseenheid ext:voorbereidingVerborgen "true"^^xsd:boolean .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?iv lmb:hasStatus <http://data.lblod.info/id/concept/InstallatievergaderingStatus/c9fc3292-1576-4a82-8dcd-60795e22131f> . # Behandeld
+  }
+  ?g ext:ownedBy ?someone .
+  BIND(?someone AS ?bestuurseenheid)
+};
+DELETE {
+  GRAPH ?gemeenteG {
+    ?s a mandaat:Mandataris.
+    ?s ?p ?o.
+    ?s org:hasMembership ?member.
+    ?member ?mp ?mo.
+  }
+} WHERE {
+  GRAPH ?gemeenteG {
+    ?s a mandaat:Mandataris.
+    ?s ?p ?o.
+    OPTIONAL {
+      ?s org:hasMembership ?member.
+      ?member ?mp ?mo.
+    }
+  }
+  VALUES ?role {
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> # Lid van het Vast Bureau
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000019> # Lid van het Bijzonder Comité voor de Sociale Dienst
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018> # Voorzitter van het Vast bureau
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016> # Voorzitter van de Raad voor Maatschappelijk Welzijn
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015> # Lid van de Raad voor Maatschappelijk Welzijn
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a> # Voorzitter van het Bijzonder Comité voor de Sociale Dienst
+
+  }
+  ?s org:holds / org:role ?role.
+  ?gemeenteG ext:ownedBy ?gemeente.
+  ?ocmw ext:isOCMWVoor ?gemeente.
+}

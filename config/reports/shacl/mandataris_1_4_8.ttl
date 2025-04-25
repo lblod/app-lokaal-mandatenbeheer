@@ -23,7 +23,7 @@ sh:prefixes [ sh:declare [
     ] ];
   sh:property [
 		sh:name "isBestuurlijkeAliasVan" ;
-		sh:description "De persoon die de mandatarisrol vervult." ;
+		sh:description "De persoon die het mandaat opneemt." ;
 		sh:path <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ;
 		sh:class <http://www.w3.org/ns/person#Person> ;
 		sh:minCount 1 ;
@@ -47,7 +47,7 @@ sh:prefixes [ sh:declare [
 	] ;
 	sh:property [
 		sh:name "status" ;
-		sh:description "De gesteldheid van de mandataris." ;
+		sh:description "De bestuurlijke status van de mandataris." ;
 		sh:path <http://data.vlaanderen.be/ns/mandaat#status> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;

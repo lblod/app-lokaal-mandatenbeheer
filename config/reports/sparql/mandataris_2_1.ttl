@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
 <http://example.org/mandataris_2_1_shape>
-a sh:NodeShape ;
+a ext:SparqlShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandaat> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
@@ -37,10 +38,10 @@ sh:sparql [
                 ?mandaatClassificatie skos:inScheme ?allowedSchemes .
             }
 
-            BIND ("Dit mandaat heeft geen classificatie uit de BestuursfunctieCode-codelijst." as ?value)
+            BIND ("Dit mandaat heeft een type dat niet voorkomt in de vastgelegde lijst van Bestuursfunctie Codes." as ?value)
         }
     """ ;
-        sh:message "Dit mandaat heeft geen classificatie uit de juiste codelijst."
+        sh:message "Onbekend mandaat"
 ] .
 
 

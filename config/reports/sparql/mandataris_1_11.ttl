@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
 <http://example.org/mandataris_1_11_shape>
-a sh:NodeShape ;
+a ext:SparqlShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
@@ -50,10 +51,10 @@ sh:sparql [
                     mandaat:isBestuurlijkeAliasVan ?persoon .
         }
 
-       BIND ("" as ?value)
+       BIND ("Mandataris in de gemeenteraad zetelt niet als lid van de raad voor maatschappelijk welzijn" as ?value)
     }
     """ ;
-        sh:message "Mandataris in de gemeenteraad zetelt niet als lid van het ocmw."
+        sh:message "Mandataris niet in OCMW"
 ] .
 
 

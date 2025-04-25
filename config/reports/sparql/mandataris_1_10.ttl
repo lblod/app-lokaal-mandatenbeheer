@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
-<http://example.org/mandataris_1_9_shape>
-a sh:NodeShape ;
+<http://example.org/mandataris_1_10_shape>
+a ext:SparqlShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
@@ -16,7 +17,7 @@ sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ;
         sh:prefix "org" ;
-    ] ],[ sh:declare [
+    ] ], [ sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ;
         sh:prefix "generiek" ;
@@ -27,26 +28,21 @@ sh:sparql [
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
         PREFIX org: <http://www.w3.org/ns/org#>
         PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
-                
-        select distinct $this ?value
-        where {
-            ?bestuursorgaanInTijd generiek:isTijdspecialisatieVan/besluit:classificatie ?bestuursorgaanClassificatieCode ;
+
+        SELECT DISTINCT $this ?value
+        WHERE {
+            ?bestuursorgaanInTijd (generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan)/besluit:classificatie ?bestuursorgaanClassificatieCode ;
                                 org:hasPost ?mandaat .
             $this a mandaat:Mandataris ;
-                    org:holds ?mandaat .
+                    org:holds ?mandaat ;
+                    mandaat:beleidsdomein ?beleidsdomein .
 
-            FILTER NOT EXISTS {
-                $this org:hasMembership/org:organisation ?fractie .
-            }
-                    
-            VALUES ?bestuursorgaanClassificatieCode { <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> 
-            <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> 
-            <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> }
-        
-            BIND (concat("BestuursorgaanClassificatie: ", str(?bestuursorgaanClassificatieCode)) as ?value)
+            FILTER (?bestuursorgaanClassificatieCode != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> &&
+                    ?bestuursorgaanClassificatieCode != <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> )
+            BIND("Enkel mandatarissen van het type burgemeester of schepen mogen beleidsdomeinen hebben en deze mandataris is niet van dat type." AS ?value)
         }
     """ ;
-        sh:message "Mandataris in gemeenteraad, burgemeester of college van burgemeester en schepenen organen zit niet in een fractie."
+        sh:message "Onverwachte beleidsdomeinen"
 ] .
 
 

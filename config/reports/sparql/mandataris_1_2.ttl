@@ -1,8 +1,9 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
 <http://example.org/mandataris_1_2_shape>
-a sh:NodeShape ;
+a ext:SparqlShape ;
 sh:targetClass <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
 sh:prefixes [ sh:declare [
         a sh:PrefixDeclaration ;
@@ -17,7 +18,7 @@ sh:sparql [
     sh:select """
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX org: <http://www.w3.org/ns/org#>
-                
+
     select distinct $this ?value
     where {
         $this a mandaat:Mandataris ;
@@ -32,13 +33,13 @@ sh:sparql [
 
         BIND((?startMandataris >= ?startBestuursorgaan && ?startMandataris <= ?eindeBestuursorgaan) AS ?startValid)
         BIND(if(!bound(?eindeMandataris), true, ?eindeMandataris >= ?startBestuursorgaan && ?eindeMandataris <= ?eindeBestuursorgaan) as ?eindeValid)
-        
+
         FILTER(!?startValid || !?eindeValid)
-       
+
         BIND (concat("Start mandataris: ", str(?startMandataris), " Einde mandataris: ", str(?eindeMandataris), " Start bestuursorgaan: ", str(?startBestuursorgaan), " Einde bestuursorgaan: ", str(?eindeBestuursorgaan)) as ?value)
     }
     """ ;
-        sh:message "Mandataris heeft start- en einddatum die buiten de bindingStart en bindingEinde van het bestuursorgaan vallen."
+        sh:message "Datum mandataris buiten periode van orgaan."
 ] .
 
 

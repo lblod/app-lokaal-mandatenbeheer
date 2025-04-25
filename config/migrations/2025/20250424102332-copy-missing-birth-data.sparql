@@ -1,0 +1,100 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+  INSERT {
+    GRAPH ?g {
+      ?geb ?gp ?go .
+      ?geb dct:modified ?now .
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?persoon a person:Person ;
+         persoon:heeftGeboorte ?geb .
+      FILTER NOT EXISTS {
+        ?geb ?p ?o .
+      }
+    }
+    GRAPH ?h {
+      ?geb a persoon:Geboorte .
+      ?geb ?gp ?go .
+    }
+    VALUES ?geb {
+      <http://data.lblod.info/id/geboorte/365f929fffa68b804ac72884003172529e10c7c305a6394aad7ac284d5f0f598>
+      <http://data.lblod.info/id/geboorte/973ffb9130642c99ac783b8acb3e4190038e5a72118858cf9127a9ebc0c1687f>
+      <http://data.lblod.info/id/geboorte/9387ba26962a14b6a0fb531a148f054087457ad2b75972fa51a4bbafec488045>
+      <http://data.lblod.info/id/geboorte/c78cc98815906b240671dac49767bc8d5e6e73b26e825eb595fe0b6911a9dfcc>
+      <http://data.lblod.info/id/geboorte/844427fb5253d2a84895590ad2212b1d974d2d4373af7d28f36db9169f75d1a6>
+      <http://data.lblod.info/id/geboorte/07547c23b7b674fc063c3e83bc7dbe8f8c9c219a95e9d6930ad8aaab4a9440a7>
+      <http://data.lblod.info/id/geboortes/5FEB454B78A81C00090007D4>
+      <http://data.lblod.info/id/geboorte/de7211cdb68c2fe652cce5c973946adbf330692eff55967356bb0b9671c63bb8>
+      <http://data.lblod.info/id/geboorte/e941213992c6c1a928fb69ee82b2c1b58c4037f055bfc8d3529e320bf95c426d>
+      <http://data.lblod.info/id/geboorte/3a2da8e9220f980e7dad6c7a57ca058f24089349400f56c32dc24a9ce28ee49b>
+      <http://data.lblod.info/id/geboorte/be65a1854a57d0d6c2787fe505028b8517b6a1c73331f457f00902980d5a4e40>
+      <http://data.lblod.info/id/geboorte/3e43b0421adac126d2b1fad694c23522abc8afb73d129bf38eae2063445c3734>
+      <http://data.lblod.info/id/geboorte/ceebe416461ff3ace454482c381e34153af32175561986c500d54aafe16f9374>
+      <http://data.lblod.info/id/geboorte/1d8c6617e47fe23c51fe8609f538d7d9dc5e51598bf4562577a384afd32802d2>
+      <http://data.lblod.info/id/geboorte/3d073df7e650cd3ceb8494841d429499a5c31fa1a62cb3b9abfde9645c0d59e3>
+      <http://data.lblod.info/id/geboorte/270e2e5100a8e509b76967d74d516727e7c59361545f2feebb742c893f08632c>
+      <http://data.lblod.info/id/geboorte/137ba01debf3def3dee0f0b42b2e62e9746393d8f6c90335f12b6eecd91b963e>
+      <http://data.lblod.info/id/geboorte/a4a3ec9f6465e7b0ab1325e1e21c49cbf9418f39ecdcb4ddd19162d95bbcad28>
+      <http://data.lblod.info/id/geboorte/2f11fd74835933d6b249eb62e6456eef5f7ab9499b9b116efba9a6dfcee1ae33>
+      <http://data.lblod.info/id/geboorte/225de3079e6489ae9f6b20c447d95e3f5fc6bb075ebad9fa3fde620ffaede474>
+      <http://data.lblod.info/id/geboorte/82e5508701b745ef1409f98d895aa49620e2553f4aea043b715cbe053b018bd2>
+      <http://data.lblod.info/id/geboorte/27c45e7aae4ab4666ec2b054ef38f6975c1f1f8b6eb5252c589a911b19fcc323>
+      <http://data.lblod.info/id/geboorte/a8f15c415eb8c0d285463bbceccf337be329cbb490229b9d1cda8fc28b8491ac>
+      <http://data.lblod.info/id/geboorte/46270b2c98dbb30e2f6770922645287194fb1535e3fb3424ef98d73eddb302cc>
+      <http://data.lblod.info/id/geboorte/102b39cd-39bb-449a-825e-9b781a3943ee>
+      <http://data.lblod.info/id/geboorte/6aa758a96a65160a5dbc538b667c6ce5a739cbe378ffc6edc9a513c4ea0177ad>
+      <http://data.lblod.info/id/geboorte/79b273d2-6aca-4e57-8e43-6ee1f8ad6308>
+      <http://data.lblod.info/id/geboorte/64381dfc51afb825144df73c36354af62d80926ce08a1930fb23a5cfec150b4d>
+      <http://data.lblod.info/id/geboorte/8bfe62da0e1fa105dd140a8eb7a9bdcd206ea644b8b51b77575fffdfbd539218>
+      <http://data.lblod.info/id/geboorte/c4b2d750c00ba14d7cd90f56e1a435b9438a3ada4891ad17ec4d5b9ec24108a2>
+      <http://data.lblod.info/id/geboorte/9c69955bcc747c5ca231ff0c3badc86903f041d44c09f5da92f22fd9c83fc7e0>
+      <http://data.lblod.info/id/geboorte/8b533f4e7a003b87f1b595f1daad26ee9e14192f911a1af0139f874ceb9b23bc>
+      <http://data.lblod.info/id/geboorte/cbcdd1eecd42f2e1ea0bcd4fc592aa9f6f0107cd561d0cb93150b3d611a679ca>
+      <http://data.lblod.info/id/geboorte/a3a6171b41dc14a6b93b76c50d9657b9bcd8a665f5b837e1df9b9d3bbe02775f>
+      <http://data.lblod.info/id/geboorte/b93a31ff3f35a160cefdf108c1f94fed9ed2a770b53bad22e4435c693de0f151>
+      <http://data.lblod.info/id/geboorte/fdcb05b9b553b5270338861c5db3a18b4ffac74920f2376112ab61e84c1d8be2>
+      <http://data.lblod.info/id/geboorte/d6e958ddf026f3ca5012f8388599ceafb1feedeb72d40bd525ec33cf87ada5dd>
+      <http://data.lblod.info/id/geboorte/cd62205a49b68a3df1168e9686bf035efd87bcec958c6c899e0a7f57c54c9839>
+      <http://data.lblod.info/id/geboorte/a89ade4bef7f129a8dd0f897b50e927aa5669e73079594a18d13870d68077508>
+      <http://data.lblod.info/id/geboorte/cd97d36926d41fb97ab4721fa1d19d836a1187cd32ddb57d5ff93c9c48695181>
+      <http://data.lblod.info/id/geboorte/d9a9d1651c4510b1ce3938948fff92473725fdbf2ba22f75cbb03b727c2d1134>
+      <http://data.lblod.info/id/geboorte/309b3e508ed0c046e6d7de9e6108f125aa0895e25cbea3cd478b5b59586c876a>
+      <http://data.lblod.info/id/geboorte/a73169c1bc20399ac83bc7011ab19229ee0060d064b3b929995b9f06b8612835>
+      <http://data.lblod.info/id/geboorte/cff9f9a8-3aef-4715-9fbe-41a66342fe26>
+      <http://data.lblod.info/id/geboorte/b64c0a428e479cd8f2ff350453e5501847114ac1cc291993f3ce81cbdc5a80b3>
+      <http://data.lblod.info/id/geboorte/e6663966e0d1c5b93fbaace537e4b206315300c1833a0dae0b1707db4bd49b1c>
+      <http://data.lblod.info/id/geboorte/e11cfe03f7f5e9415323bf7ffa700d622e5590f2c83d8d257218f1759ff82c24>
+      <http://data.lblod.info/id/geboorte/15c57802840df25407f6cf3614f457c128e0c134ade784b7721d9c847cc5c445>
+      <http://data.lblod.info/id/geboorte/48032a13-f583-42ae-9169-d75553a2333e>
+      <http://data.lblod.info/id/geboorte/4bf9955eab70ce556fffb0de37c1466ad187347e167675bf82d844c5b56b232b>
+      <http://data.lblod.info/id/geboorte/89da81ed96cf57b0bf5902cced9b51d8465d32e0a50e2fccef90483f7c0a063c>
+      <http://data.lblod.info/id/geboorte/6da91a6e679cb72433e3f2b8499adc268ae5e5c7fc5dddac2bf3b9c68872d00d>
+      <http://data.lblod.info/id/geboorte/66c4ab0ad5322d51cf73f1a9669df2c10d9cfe91954c40288eff48d8f438bdc3>
+      <http://data.lblod.info/id/geboorte/79ffd175-f12e-44d0-ad23-b21383f22524>
+      <http://data.lblod.info/id/geboorte/54294a28731bb6a92c0e9bdc96456a36bfd529ed3c74ee1c819514e20419847e>
+      <http://data.lblod.info/id/geboorte/a98a9df0907b3344bd885c387f7e6ecff7d42d0a71ef9e87c37ab196bfd0f21a>
+      <http://data.lblod.info/id/geboorte/d0cd95f6e1fc86177799f868280c5123e46af85344af481b125baec53b043f61>
+      <http://data.lblod.info/id/geboorte/c6a0eb119ee758cc02c283ecfe1d31f3ce4d8826d37cedd2c5fbfe5281e9476d>
+      <http://data.lblod.info/id/geboorte/88257224f0473457982a2fa6d2e53781722ac0483bedbf673199f1510081523e>
+      <http://data.lblod.info/id/geboorte/3681e3d4c5f4f00ea02047e9e948e39a98c116e41ffdc6a5c3acacfbc1998190>
+      <http://data.lblod.info/id/geboorte/185f0fcb675c4fa310de09dc3cda66dc5e5663d46d3ba06bf5c520db3fd19d65>
+      <http://data.lblod.info/id/geboorte/3ce245cc-2059-4156-b5df-d935d786e992>
+      <http://data.lblod.info/id/geboorte/737de61714c79cb776b604dd6e97b3d227be65820c1b56ee5847d7fcb39d4e32>
+      <http://data.lblod.info/id/geboorte/0e3055336fa59eee232a28209d80c82610d898f152c7f33a121c28da51c9fd3d>
+      <http://data.lblod.info/id/geboorte/3540434850dc322c7ce12babae3331258fdcfd1337a0f090f77027e0cf91caa4>
+      <http://data.lblod.info/id/geboorte/b12763df8f96d7682107d79fa00f82abfc6e75f33eee88be8ca35453025d85ee>
+      <http://data.lblod.info/id/geboorte/1ed9736ccc16e050d8f6f7c1257e71f2bc69dbf15bcc53843bc332c7485a7fbd>
+      <http://data.lblod.info/id/geboorte/78befcfc0d3a2a62dffef5f87ee09adb9378bb7623b2fb1b85a43913d53d28a7>
+      <http://data.lblod.info/id/geboorte/90e1d4fe475339ef6f1f4473ed27b8bad221f402443bfdc1a3f71a2362ff7c94>
+      <http://data.lblod.info/id/geboorte/84abcfa86dd0bf9d38d8c895461e135f2f7a06f73c1dba85893cf7da36158217>
+      <http://data.lblod.info/id/geboorte/ba1575e2-a751-4795-95dd-e544d5c1afae>
+      <http://data.lblod.info/id/geboorte/134869fbfc0eaa88c5c89f353f2dd7713f777198b3b9eb96e741c46ad9ccd08a>
+    }
+    BIND(NOW() AS ?now)
+  ?g ext:ownedBy ?someone .
+  ?h ext:ownedBy ?someoneElse .
+}

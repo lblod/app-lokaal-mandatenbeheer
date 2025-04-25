@@ -28,10 +28,10 @@ const DIRECT_DATABASE_CONNECTION =
   process.env.DIRECT_DATABASE_CONNECTION || "http://virtuoso:8890/sparql";
 const BESTUURSEENHEID_URI = env.get("BESTUURSEENHEID_URI").asString();
 
-const BESTUURSPERIODE_LABEL =
-  process.env.BESTUURSPERIODE_LABEL != undefined
-    ? env.get("BESTUURSPERIODE_LABEL").asString()
-    : "2024 - heden";
+const TARGET_BESTUURSPERIODE =
+  process.env.TARGET_BESTUURSPERIODE != undefined
+    ? env.get("TARGET_BESTUURSPERIODE").asString()
+    : "http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7";
 
 const SHAPE_URI = env.get("SHAPE_URI").asString();
 
@@ -100,7 +100,7 @@ const cronFunction = async (bestuurseenheidUri = null) => {
       // Retrieve all triples within the bestuurseenheid graph limited to the bestuursperiode
       const dataDataset = await executeConstructQueriesOnNamedGraph(
         uriAndUuid,
-        BESTUURSPERIODE_LABEL
+        TARGET_BESTUURSPERIODE
       );
 
       console.log(

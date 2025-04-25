@@ -50,7 +50,7 @@ sh:sparql [
         BIND ("Mandataris in college van burgemeester en schepenen zetelt niet in vast bureau" as ?value)
         }
     """ ;
-    sh:message "Niet in OCMW"
+    sh:message "Mandataris niet in OCMW"
 ] .
 
 

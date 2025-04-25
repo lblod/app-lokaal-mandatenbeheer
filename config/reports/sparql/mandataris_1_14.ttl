@@ -52,7 +52,7 @@ sh:sparql [
         BIND ("Mandataris, die een (evt. aangewezen) burgemeester is, is niet voorzitter van het vast bureau" as ?value)
         }
     """ ;
-        sh:message "Niet in OCMW"
+        sh:message "Mandataris niet in OCMW"
 ] .
 
 

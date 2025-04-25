@@ -10,7 +10,7 @@ The `shacl-report.js` file loads data for each Bestuurseenheid, because we want 
 
 ## Shape
 
-All SHACL files that reside inside the `./config/shacl` folder will be merged into one shape. 
+All SHACL files that reside inside the `./config/shacl` folder will be merged into one shape.
 
 Note: if you have multiple SPARQL-based constraints with the same target class (e.g. Mandataris), make sure to use a separate node shape URI per SPARQL query. Otherwise, we are not able to fetch the target class of the source shape for every validation result.
 
@@ -49,7 +49,7 @@ The report can access some helper functions that you can import from
 The service can be configured with the following environment variables:
 
 - `BESTUURSEENHEID_URI` [string]: the URI of a bestuurseenheid to filter on. By default, all bestuurseenheden are retrieved to validate. E.g. `http://data.lblod.info/id/bestuurseenheden/0a3ba641d653b436b14fde37bb6eab4f1054aa0586eb98021b723d58f6ce82fb`
-- `BESTUURSPERIODE_LABEL` [string]: the label of the bestuursperiode to filter on. By default: `2024 - heden`. E.g. `2024 - heden`
+- `TARGET_BESTUURSPERIODE` [string]: the uri of the bestuursperiode to filter on. By default: the uri for `2024 - heden`. E.g. `http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7`
 - `SHAPE_URI` [string]: the URI of the SHACL shape to specifically validate with. By default, all shapes are validated in the shacl folder. E.g. `http://example.org/mandataris_1_12_shape`
 - `RUN_REPORT_NOW` [true or false]: The code only checks if the environment is available. This will start the creation of a report after 10 seconds that the service is up.
 
@@ -62,7 +62,7 @@ The easiest way to test new SPARQL queries is by following these steps:
 
 When your query is ready, follow these steps:
 - create a SHACL shape in a Turtle file inside the `shacl` folder
-- Replace `?this` with `$this` in your query, because this is expected by the SHACL engine. 
+- Replace `?this` with `$this` in your query, because this is expected by the SHACL engine.
 - don't run the reporting service container in development mode (makes validation much slower)
 - configure the parameters mentioned above to limit validation to one bestuurseenheid and the shape you want to test
 - pro-tip: when you were testing the query, you can already see which bestuurseenheden will have invalid validation results. Take one of those to test.
@@ -116,4 +116,4 @@ WHERE {
 }
 ```
 
-- Go to the LMB frontend `http://localhost:4200`, log in with the configured bestuurseenheid, and go to the report route `http://localhost:4200/report` to visualize and further analyze the instances with validation errors. 
+- Go to the LMB frontend `http://localhost:4200`, log in with the configured bestuurseenheid, and go to the report route `http://localhost:4200/report` to visualize and further analyze the instances with validation errors.

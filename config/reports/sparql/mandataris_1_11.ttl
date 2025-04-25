@@ -54,7 +54,7 @@ sh:sparql [
        BIND ("Mandataris in de gemeenteraad zetelt niet als lid van de raad voor maatschappelijk welzijn" as ?value)
     }
     """ ;
-        sh:message "Niet in OCMW"
+        sh:message "Mandataris niet in OCMW"
 ] .
 
 

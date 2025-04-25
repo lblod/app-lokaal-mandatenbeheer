@@ -159,7 +159,7 @@ export async function getSelfAndOCMW(uuid) {
 
 export async function executeConstructQueriesOnNamedGraph(
   uriAndUuid,
-  bestuursperiodeLabel
+  targetBestuursperiode
 ) {
   const bestuurseenheidUris = await getSelfAndOCMW(uriAndUuid.uuid);
   const namedGraphs = await getNamedGraphsForBestuurseenheidId(uriAndUuid.uuid);
@@ -168,7 +168,7 @@ export async function executeConstructQueriesOnNamedGraph(
     store,
     bestuurseenheidUris,
     namedGraphs,
-    bestuursperiodeLabel
+    targetBestuursperiode
   );
   await addPersonen(store, namedGraphs, bestuursorganen);
   await addFracties(store, namedGraphs, bestuursorganen);
@@ -183,7 +183,7 @@ async function addBestuursorgaanAndMandatarissen(
   store,
   bestuurseenheidUris,
   targetGraphs,
-  bestuursperiodeLabel
+  bestuursperiodeUri
 ) {
   const safeBestuurseenheden = bestuurseenheidUris
     .map((uri) => sparqlEscapeUri(uri))
@@ -204,9 +204,9 @@ async function addBestuursorgaanAndMandatarissen(
         ?mandataris ?pMandataris ?oMandataris .
     }
     WHERE {
-        ?bestuursperiode skos:prefLabel ${sparqlEscapeString(
-          bestuursperiodeLabel
-        )} .
+        VALUES ?bestuursperiode {
+         ${sparqlEscapeUri(bestuursperiodeUri)}
+        } .
         VALUES ?eenheid {
           ${safeBestuurseenheden}
         }

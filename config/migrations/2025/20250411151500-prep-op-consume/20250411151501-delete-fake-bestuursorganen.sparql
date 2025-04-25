@@ -1,0 +1,15 @@
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+  DELETE {
+    GRAPH ?g {
+      ?s ?p ?o .
+    }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s a besluit:Bestuursorgaan .
+      ?s ext:origineleBestuurseenheid ?bestuurseenheid .
+      ?s ?p ?o .
+    }
+  }

@@ -8,14 +8,14 @@
   }
   WHERE {
     ?s a mandaat:Mandaat.
-    graph ?g {
+    GRAPH ?g {
       ?s ?p ?o.
     }
     FILTER(?p NOT IN (
                       mandaat:aantalHouders,
                       lmb:minAantalHouders
                       ))
-    filter not exists {
+    FILTER NOT EXISTS {
       VALUES ?role {
         <http://data.lblod.info/id/lb-mandaat-classificatiecode/22da4572-4818-454b-bbd4-28a9ea97856c> # Voorzitter
         <http://data.lblod.info/id/lb-mandaat-classificatiecode/28d0ed76-e1a3-4c90-89df-4d11587390b3> # Lid

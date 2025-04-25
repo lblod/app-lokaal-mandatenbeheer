@@ -1,4 +1,5 @@
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
   DELETE {
     GRAPH ?g {
@@ -7,6 +8,7 @@
   }
   WHERE {
     GRAPH ?g {
+      ?s a besluit:Bestuursorgaan .
       ?s ext:origineleBestuursorgaan ?ogBOIT .
       ?s ?p ?o .
     }

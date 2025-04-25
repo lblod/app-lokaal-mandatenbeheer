@@ -1,0 +1,18 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+CONSTRUCT {
+  ?bestuursorgaan skos:prefLabel ?bestuursorgaanLabel.
+} WHERE {
+  ?bestuursorgaan
+    besluit:bestuurt ?bestuurseenheid;
+    org:classification ?classificatie.
+
+  ?classificatie
+    skos:prefLabel ?classificatieLabel.
+  ?bestuurseenheid
+    skos:prefLabel ?bestuurseenheidLabel.
+
+  BIND(CONCAT(str(?classificatieLabel), " ", str(?bestuurseenheidLabel)) as ?bestuursorgaanLabel)
+}

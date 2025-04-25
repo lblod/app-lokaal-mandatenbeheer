@@ -1,0 +1,35 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ext:publicMandate "true"^^xsd:boolean .
+  }
+}
+WHERE {
+  VALUES ?s {
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/59a90e03-4f22-4bb9-8c91-132618db4b38> # Toegevoegde schepen
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011> # Gemeenteraadslid
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012> # Voorzitter van de gemeenteraad
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013> # Burgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> # Schepen
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015> # Lid van de Raad voor Maatschappelijk Welzijn
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016> # Voorzitter van de Raad voor Maatschappelijk Welzijn
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> # Lid van het Vast Bureau
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018> # Voorzitter van het Vast bureau
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000019> # Lid van het Bijzonder Comité voor de Sociale Dienst
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a> # Voorzitter van het Bijzonder Comité voor de Sociale Dienst
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> # Districtsraadslid
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> # Voorzitter van de districtsraad
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> # Districtsburgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001f> # Provincieraadslid
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000023> # Ocmw-ondervoorzitter
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000027> # Voorzitter van de provincieraad
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a> # Aangewezen burgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/d7c00cd1-baf1-4346-83c0-6796c0bedd85> # Gouverneur
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> # Districtsschepen
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000020> # Gedeputeerde
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000022> # Lid van het districtscollege
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000026> # Voorzitter van het districtscollege
+  }
+  ?s a ?thing.
+}

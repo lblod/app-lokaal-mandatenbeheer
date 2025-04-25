@@ -6,7 +6,7 @@ import cron from 'node-cron';
 // 30 minutes cron
 cron.schedule('*/30 * * * *', async () => {
   console.log('\nFlag statuses that are expected to be crashed.');
-  const momentWhenStatusesAreCrashed = new Date();
+  const momentWhenStatusesAreCrashed = new Date(new Date().getTime() - 1000 * 60 * 30);
   const queryString = `
     PREFIX dct: <http://purl.org/dc/terms/>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -64,10 +64,6 @@ export async function insertReportStatusInGraphs(uriAndUuid, namedGraphs) {
         ${namedGraphs.map((g) => sparqlEscapeUri(g)).join("\n")}
       }
       ?g ext:ownedBy ?ocmwOrMunicipality .
-
-      OPTIONAL {
-      
-      }
     }
     `;
   try {

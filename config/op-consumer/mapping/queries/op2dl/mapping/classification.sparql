@@ -1,0 +1,15 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+CONSTRUCT {
+  ?s besluit:classificatie ?o .
+} WHERE {
+  ?s org:classification ?o .
+
+  # The consumers currently don't support the OCMWv subcategories, special mapping rules are needed.
+  # See mapping-ocmwv.sparql
+  FILTER (?o NOT IN
+    ( <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/34b5af85-dc9f-468f-9e03-ef89b174c267>,
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/e8294b73-87c9-4fa2-9441-1937350763c9>
+    ))
+}

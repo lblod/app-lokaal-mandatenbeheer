@@ -2,7 +2,7 @@ import { sparqlEscapeUri, sparqlEscape, sparqlEscapeString } from "mu";
 import { querySudo } from "@lblod/mu-auth-sudo";
 import { addData, getConfigFromEnv } from "@lblod/ldes-producer";
 
-import { LDES_FRAGMENTER } from "../config";
+import { LDES_FRAGMENTER } from "../environment";
 import { log } from "./logger";
 import {
   defaultProperties,
@@ -77,8 +77,9 @@ const fetchSubjectData = async (
       ${sparqlEscapeUri(subject.uri)} ext:relatedTo ?bestuurseenheid .
       ${extraConstruct}
     } WHERE {
+      VALUES ?s { ${sparqlEscapeUri(subject.uri)} }
       GRAPH ?g {
-        ${sparqlEscapeUri(subject.uri)} ?p ?o .
+        ?s ?p ?o .
       }
       ?g ext:ownedBy ?bestuurseenheid .
       ${predicateLimiter}

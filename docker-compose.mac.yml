@@ -25,6 +25,8 @@ services:
     platform: linux/amd64
   vendor-management-consumer:
     platform: linux/amd64
+  op-public-consumer:
+    platform: linux/amd64
   report-generation:
     platform: linux/amd64
   adressenregister:

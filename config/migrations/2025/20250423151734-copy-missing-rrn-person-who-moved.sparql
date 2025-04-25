@@ -1,0 +1,46 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+DELETE {
+  GRAPH ?g {
+    ?person dct:modified ?mod .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?person adms:identifier ?id .
+    ?person dct:modified ?now .
+    ?id ?ip ?io .
+    ?id dct:modified ?now .
+    ?geb ?gp ?go .
+    ?geb dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?person a person:Person ;
+      persoon:heeftGeboorte ?geb .
+    FILTER NOT EXISTS {
+      ?person adms:identifier ?rrn .
+    }
+    OPTIONAL {
+      ?person dct:modified ?mod .
+    }
+  }
+  GRAPH ?h {
+    ?person a person:Person ;
+      persoon:heeftGeboorte ?geb ;
+      adms:identifier ?id .
+    ?id ?ip ?io .
+    ?geb ?gp ?go .
+  }
+  VALUES ?person { <http://data.lblod.info/id/personen/48979c60-4a2a-4b00-a292-c18ac5ac66b9> }
+  BIND(NOW() AS ?now)
+  ?g ext:ownedBy ?someone .
+  ?h ext:ownedBy ?someoneElse .
+  ?someone besluit:classificatie ?class .
+  ?someoneElse besluit:classificatie ?class .
+}

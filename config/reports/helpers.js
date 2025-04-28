@@ -736,15 +736,33 @@ export async function deletePreviousReports(namedGraphs) {
 }
 
 async function deleteReportInDatabase(reportUri, namedGraphs) {
+  // done in two parts because single query confuses db because of join result set explosion
+  const queryDeleteResults = `
+    PREFIX sh: <http://www.w3.org/ns/shacl#>
+
+    DELETE {
+      GRAPH ?g {
+        ?result ?presult ?oresult .
+      }
+    }
+    WHERE {
+      VALUES ?g {
+        ${namedGraphs.map((g) => sparqlEscapeUri(g)).join("\n")}
+      }
+      GRAPH ?g {
+        ${sparqlEscapeUri(reportUri)} sh:result ?result .
+
+        ?result ?presult ?oresult .
+      }
+    }
+  `;
+  await querySudo(queryDeleteResults);
   const queryString = `
         PREFIX sh: <http://www.w3.org/ns/shacl#>
 
         DELETE {
           GRAPH ?g {
-            ${sparqlEscapeUri(reportUri)} sh:result ?result ;
-            ?preport ?oreport .
-
-            ?result ?presult ?oresult .
+            ${sparqlEscapeUri(reportUri)} ?preport ?oreport .
           }
         }
         WHERE {
@@ -752,10 +770,7 @@ async function deleteReportInDatabase(reportUri, namedGraphs) {
             ${namedGraphs.map((g) => sparqlEscapeUri(g)).join("\n")}
           }
           GRAPH ?g {
-            ${sparqlEscapeUri(reportUri)} sh:result ?result ;
-            ?preport ?oreport .
-
-            ?result ?presult ?oresult .
+            ${sparqlEscapeUri(reportUri)} ?preport ?oreport .
           }
         }
     `;

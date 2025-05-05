@@ -13,6 +13,7 @@ ext:emailF
     sh:name "Email";
     sh:order 2;
     sh:path schema:email;
+    form:showInSummary true;
     form:validatedBy
         [
             a form:ValidEmail;

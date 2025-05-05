@@ -42,13 +42,6 @@ ext:achternaamF
             sh:path foaf:familyName;
             sh:resultMessage "Achternaam is verplicht."
     ].
-ext:alternatieveNaamF
-    a form:Field;
-    form:displayType displayTypes:defaultInput;
-    sh:group ext:persoonPG;
-    sh:name "Roepnaam";
-    sh:order 4;
-    sh:path foaf:name.
 ext:identificatorF
     a form:Field;
     form:displayType displayTypes:rijksregisterInput;
@@ -109,7 +102,6 @@ ext:possibleDuplicateF
     form:includes
         ext:gebruikteVoornaamF,
         ext:achternaamF,
-        ext:alternatieveNaamF,
         ext:identificatorF,
         ext:geboorteF,
         ext:geslachtCodeF,

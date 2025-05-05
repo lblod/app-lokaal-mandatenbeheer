@@ -1,0 +1,37 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix person: <http://www.w3.org/ns/person#>.
+@prefix persoon: <http://data.vlaanderen.be/ns/persoon#>.
+@prefix adms: <http://www.w3.org/ns/adms#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix org: <http://www.w3.org/ns/org#>.
+@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
+
+ext:alternatieveNaamF
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    sh:group ext:persoonExtraPG;
+    sh:name "Roepnaam";
+    sh:order 4;
+    sh:path foaf:name.
+ext:persoonExtraPG
+    a form:PropertyGroup; sh:name ""; sh:order 1.
+
+<http://data.lblod.info/id/lmb/forms/persoon-extra-info>
+    a form:Form, form:TopLevelForm;
+    form:includes
+        ext:alternatieveNaamF;
+    sh:group ext:persoonExtraPG;
+    form:targetType person:Person;
+    form:targetLabel foaf:familyName;
+    form:targetLabel persoon:gebruikteVoornaam;
+    ext:prefix <http://data.lblod.info/id/personen/>;
+    mu:uuid "20cce164-b575-4099-9d2a-3630493de8cc".
+

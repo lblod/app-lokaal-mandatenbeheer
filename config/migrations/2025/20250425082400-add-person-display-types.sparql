@@ -1,0 +1,18 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/display-types/lmb/custom-person-input> a ext:DisplayType ;
+     mu:uuid "232508ea-219a-45eb-8001-48d57f4960fa" ;
+     skos:prefLabel "Persoon (enkel)" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-person-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+    <http://lblod.data.gift/display-types/lmb/custom-person-multi-input> a ext:DisplayType ;
+     mu:uuid "0f6a7c40-a33a-43fd-bba1-2a11543cb41b" ;
+     skos:prefLabel "Persoon (multi)" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-person-multi-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+  }
+}

@@ -706,7 +706,7 @@ export async function saveDatasetToNamedGraphs(dataset, namedGraphs) {
 
 export async function quadsToTtl(quads) {
   const result = new Promise((resolve, reject) => {
-    const writer = new Writer();
+    const writer = new Writer({ format: "N-Triples" });
     quads.forEach((quad) => {
       writer.addQuad(quad);
     });

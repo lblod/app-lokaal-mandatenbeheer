@@ -9,6 +9,7 @@ import {
   saveDatasetToNamedGraphs,
   deletePreviousReports,
   getNamedGraphsForBestuurseenheidId,
+  quadsToTtl,
 } from "./helpers.js";
 import env from "env-var";
 import {
@@ -17,7 +18,7 @@ import {
 } from "./report-status.js";
 import { app, uuid } from "mu";
 import { querySudo } from "@lblod/mu-auth-sudo";
-import { DataFactory, Store } from "n3";
+import { DataFactory } from "n3";
 const { quad, literal, namedNode } = DataFactory;
 
 const ONLY_KEEP_LATEST_REPORT =
@@ -192,8 +193,7 @@ async function addSparqlValidationsToReport(
   reportDataset,
   sparqlValidationObjects
 ) {
-  const ttl = dataDataset.toString();
-  const graph = await loadTtlToTempGraph(ttl);
+  const graph = await loadDatasetToTempGraph(dataDataset);
   try {
     const results = await runSparqlValidations(graph, sparqlValidationObjects);
     await addResultsToReport(results, reportDataset, dataDataset);
@@ -381,19 +381,33 @@ async function dropTempGraph(graph) {
   );
 }
 
-async function loadTtlToTempGraph(ttl) {
+async function loadDatasetToTempGraph(dataset) {
   const id = uuid();
   const graph = `http://mu.semte.ch/graphs/temp/validation/${id}`;
-  await querySudo(
-    `INSERT DATA {
+  let batch = [];
+  const insertBatch = async () => {
+    const ttl = await quadsToTtl(batch);
+    await querySudo(
+      `INSERT DATA {
       GRAPH <${graph}> { ${ttl} }
       GRAPH <http://mu.semte.ch/graphs/public> {
         <${graph}> a <http://mu.semte.ch/vocabularies/ext/ValidationWorkingGraph> .
       }
     }`,
-    {},
-    { sparqlEndpoint: DIRECT_DATABASE_CONNECTION }
-  );
+      {},
+      { sparqlEndpoint: DIRECT_DATABASE_CONNECTION }
+    );
+  };
+  for (let quad of dataset) {
+    batch.push(quad);
+    if (batch.length > 1000) {
+      await insertBatch();
+      batch = [];
+    }
+  }
+  if (batch.length > 0) {
+    await insertBatch();
+  }
 
   return graph;
 }

@@ -15,7 +15,7 @@ INSERT {
     ?vbMandaat mandaat:aantalHouders ?newHouders .
   }
 }
-WHERE { 
+WHERE {
   ?orgaan besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> . # Vast Bureau
   ?orgaan besluit:bestuurt ?ocmwVoorEenheid .
   ?ocmwVoorEenheid ext:isOCMWVoor ?eenheid .
@@ -24,11 +24,11 @@ WHERE {
   FILTER NOT EXISTS {
     ?eenheid lmb:faciliteitenGemeente true .
   }
-  ?vbMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> . # Lid Vast Bureau 
+  ?vbMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> . # Lid Vast Bureau
   ?boi org:hasPost ?vbMandaat .
   GRAPH ?g {
     ?vbMandaat mandaat:aantalHouders ?houders .
   }
-  ?g ext:ownedBy ?ocmwVoorEenheid .
+  ?g ext:ownedBy ?someone .
   BIND(xsd:integer(?houders) + 1 AS ?newHouders)
 }

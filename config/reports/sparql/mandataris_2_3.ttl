@@ -46,9 +46,9 @@ sh:sparql [
 
             FILTER(?mandataris1 != ?mandataris2)
 
-            BIND(strdt(substr(str(bif:dateadd('hour', 1, ?startMandataris1)), 1, 10), xsd:date) AS ?startMandataris1Date)
+            BIND(strdt(substr(str(bif:dateadd('hour', 2, ?startMandataris1)), 1, 10), xsd:date) AS ?startMandataris1Date)
             BIND(strdt(substr(str(?eindeMandataris1), 1, 10), xsd:date) as ?eindeMandataris1Date)
-            BIND(strdt(substr(str(bif:dateadd('hour', 1, ?startMandataris2)), 1, 10), xsd:date) AS ?startMandataris2Date)
+            BIND(strdt(substr(str(bif:dateadd('hour', 2, ?startMandataris2)), 1, 10), xsd:date) AS ?startMandataris2Date)
             BIND(strdt(substr(str(?eindeMandataris2), 1, 10), xsd:date) as ?eindeMandataris2Date)
 
             BIND((?startMandataris1Date > ?startMandataris2Date && ?startMandataris1Date < ?eindeMandataris2Date) AS ?startOverlapt)

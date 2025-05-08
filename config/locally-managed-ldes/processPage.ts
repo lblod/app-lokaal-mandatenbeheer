@@ -19,6 +19,7 @@ async function replaceExistingData() {
   }
   await replaceFracties(options);
   await replaceMandatees(options);
+  await replaceMembership(options);
   await replacePeople(options);
 }
 
@@ -71,13 +72,11 @@ async function replaceMandatees(connectionOptions) {
     DELETE {
       GRAPH ?targetGraph {
         ?s ?pOld ?oOld.
-        ?ls ?lpOld ?loOld.
       }
     }
     INSERT {
       GRAPH ?targetGraph {
         ?s ?pNew ?oNew.
-        ?ls ?lpNew ?loNew.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
@@ -86,16 +85,7 @@ async function replaceMandatees(connectionOptions) {
         ?versionedMember a mandaat:Mandataris .
         ?versionedMember ?pNew ?oNew .
         ?versionedMember org:holds ?mandaat .
-        OPTIONAL {
-          ?versionedMember org:hasMembership ?lidmaatschap .
-          ?versionedLidmaatschap ${sparqlEscapeUri(
-            VERSION_PREDICATE
-          )} ?lidmaatschap .
-          ?versionedLidmaatschap ?lpNew ?loNew .
-          FILTER (?lpNew NOT IN ( ${sparqlEscapeUri(
-            VERSION_PREDICATE
-          )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
-        }
+        ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid.
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
           VERSION_PREDICATE
         )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
@@ -107,9 +97,43 @@ async function replaceMandatees(connectionOptions) {
           ?s ?pOld ?oOld.
         }
       }
+    }`,
+    {},
+    connectionOptions
+  );
+}
+
+async function replaceMembership(connectionOptions) {
+  await updateSudo(
+    `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    DELETE {
+      GRAPH ?targetGraph {
+        ?s ?pOld ?oOld.
+      }
+    }
+    INSERT {
+      GRAPH ?targetGraph {
+        ?s ?pNew ?oNew.
+      }
+    } WHERE {
+      GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
+        ?stream <https://w3id.org/tree#member> ?versionedMember .
+        ?versionedMember ${sparqlEscapeUri(VERSION_PREDICATE)} ?s .
+        ?versionedMember a org:Membership .
+        ?versionedMember ?pNew ?oNew .
+        ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid.
+        FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
+          VERSION_PREDICATE
+        )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
+      }
+      ?targetGraph ext:ownedBy ?bestuurseenheid .
       OPTIONAL {
         GRAPH ?targetGraph {
-          ?ls ?lpOld ?loOld .
+          ?s ?pOld ?oOld.
         }
       }
     }`,

@@ -22,6 +22,45 @@ async function replaceExistingData() {
   await replacePeople(options);
 }
 
+async function replaceFracties(connectionOptions) {
+  await updateSudo(
+    `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    DELETE {
+      GRAPH ?targetGraph {
+        ?s ?pOld ?oOld.
+      }
+    }
+    INSERT {
+      GRAPH ?targetGraph {
+        ?s ?pNew?oNew.
+      }
+    } WHERE {
+      GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
+        ?stream <https://w3id.org/tree#member> ?versionedMember .
+        ?versionedMember ${sparqlEscapeUri(VERSION_PREDICATE)} ?s .
+        ?versionedMember a mandaat:Mandataris .
+        ?versionedMember ?pNew ?oNew .
+        ?versionedMember org:linkedTo ?bestuurseenheid .
+        FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
+          VERSION_PREDICATE
+        )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
+      }
+      ?targetGraph ext:ownedBy ?bestuurseenheid .
+      OPTIONAL {
+        GRAPH ?targetGraph {
+          ?s ?pOld ?oOld.
+        }
+      }
+    }`,
+    {},
+    connectionOptions
+  );
+}
+
 async function replaceMandatees(connectionOptions) {
   await updateSudo(
     `
@@ -71,45 +110,6 @@ async function replaceMandatees(connectionOptions) {
       OPTIONAL {
         GRAPH ?targetGraph {
           ?ls ?lpOld ?loOld .
-        }
-      }
-    }`,
-    {},
-    connectionOptions
-  );
-}
-
-async function replaceFracties(connectionOptions) {
-  await updateSudo(
-    `
-    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-    PREFIX org: <http://www.w3.org/ns/org#>
-    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-    DELETE {
-      GRAPH ?targetGraph {
-        ?s ?pOld ?oOld.
-      }
-    }
-    INSERT {
-      GRAPH ?targetGraph {
-        ?s ?pNew?oNew.
-      }
-    } WHERE {
-      GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
-        ?stream <https://w3id.org/tree#member> ?versionedMember .
-        ?versionedMember ${sparqlEscapeUri(VERSION_PREDICATE)} ?s .
-        ?versionedMember a mandaat:Mandataris .
-        ?versionedMember ?pNew ?oNew .
-        ?versionedMember org:linkedTo ?bestuurseenheid .
-        FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
-          VERSION_PREDICATE
-        )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
-      }
-      ?targetGraph ext:ownedBy ?bestuurseenheid .
-      OPTIONAL {
-        GRAPH ?targetGraph {
-          ?s ?pOld ?oOld.
         }
       }
     }`,

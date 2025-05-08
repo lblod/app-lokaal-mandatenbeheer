@@ -1,0 +1,17 @@
+{
+  "endpoints": [
+    {
+      "name": "Stream 1",
+      "LDES_BASE": "https://locally-managed/streams/ldes-1/abb/",
+      "FIRST_PAGE": "https://locally-managed/streams/ldes-1/abb/1",
+      "TARGET_GRAPH": "http://mu.semte.ch/graphs/locally-managed",
+      "WORKING_GRAPH": "http://mu.semte.ch/graphs/locally-managed/working",
+      "STATUS_GRAPH": "http://mu.semte.ch/graphs/locally-managed/status",
+      "BATCH_GRAPH": "http://mu.semte.ch/graphs/locally-managed/batch",
+      "uri": "wss://example.com/stream1",
+      "key": "example-key-1",
+      "user": "http://mu.semte.ch/vocabularies/ext/abb",
+      "bestuurseenheid": "http://data.lblod.info/id/bestuurseenheden/28346950e285b8b816133fece5ac9408097c3f190c7f32573cf0c640d6c34b1a"
+    }
+  ]
+}

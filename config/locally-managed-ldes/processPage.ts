@@ -46,6 +46,7 @@ async function replaceFracties(connectionOptions) {
         ?versionedMember a mandaat:Mandataris .
         ?versionedMember ?pNew ?oNew .
         ?versionedMember org:linkedTo ?bestuurseenheid .
+        ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid .
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
           VERSION_PREDICATE
         )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))

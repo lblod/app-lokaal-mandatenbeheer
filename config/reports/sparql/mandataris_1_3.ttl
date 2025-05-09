@@ -55,7 +55,7 @@ sh:sparql [
 
           { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("3000-01-01"^^xsd:dateTime AS ?dateToCheck) } }
         } }
-        BIND(bif:dateadd('hour', 0, strdt(substr(str(?dateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
+        BIND(bif:dateadd('hour', 24, strdt(substr(str(?dateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
 
         ?s a mandaat:Mandataris.
         ?s org:holds ?mandaat.
@@ -80,7 +80,7 @@ sh:sparql [
     ?mandaat org:role / skos:prefLabel ?mandaatLabel.
 
     FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
-    BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max)) as ?value)
+    BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", (IF(HOURS(?processedDateToCheck) = 23, 1, 0) + DAY(?processedDateToCheck)),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max)) as ?value)
 
   }
     """ ;

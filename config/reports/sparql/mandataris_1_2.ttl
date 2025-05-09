@@ -28,15 +28,23 @@ sh:sparql [
             $this mandaat:einde ?eindeMandataris .
         }
 
-        ?bestuursorgaanInTijd mandaat:bindingStart ?startBestuursorgaan ;
-                              mandaat:bindingEinde ?eindeBestuursorgaan .
+        ?bestuursorgaanInTijd mandaat:bindingStart ?startBestuursorgaan .
+        OPTIONAL {
+            ?bestuursorgaanInTijd mandaat:bindingEinde ?eindeBestuursorgaan .
+        }
 
+        BIND(IF(!bound(?eindeBestuursorgaan), "3000-01-01"^^xsd:dateTime, ?eindeBestuursorgaan) AS ?safeEindeBestuursorgaan)
         BIND((?startMandataris >= ?startBestuursorgaan && ?startMandataris <= ?eindeBestuursorgaan) AS ?startValid)
-        BIND(if(!bound(?eindeMandataris), true, ?eindeMandataris >= ?startBestuursorgaan && ?eindeMandataris <= ?eindeBestuursorgaan) as ?eindeValid)
+        BIND(if(!bound(?eindeMandataris), true, ?eindeMandataris >= ?startBestuursorgaan && ?eindeMandataris <= ?safeEindeBestuursorgaan) as ?eindeValid)
+
+        BIND(CONCAT(DAY(?startMandataris) + 1, "-", MONTH(?startMandataris), "-", YEAR(?startMandataris)) AS ?startStr)
+        BIND(IF(BOUND(?eindeMandataris), CONCAT(DAY(?eindeMandataris), "-", MONTH(?eindeMandataris), "-", YEAR(?eindeMandataris)), "?") AS ?eindeStr)
+        BIND(CONCAT(DAY(?startBestuursorgaan) + 1, "-", MONTH(?startBestuursorgaan), "-", YEAR(?startBestuursorgaan)) AS ?startStrOrg)
+        BIND(IF(BOUND(?eindeBestuursorgaan), CONCAT(DAY(?eindeBestuursorgaan), "-", MONTH(?eindeBestuursorgaan), "-", YEAR(?eindeBestuursorgaan)), "?") AS ?eindeStrOrg)
 
         FILTER(!?startValid || !?eindeValid)
 
-        BIND (concat("Start mandataris: ", str(?startMandataris), " Einde mandataris: ", str(?eindeMandataris), " Start bestuursorgaan: ", str(?startBestuursorgaan), " Einde bestuursorgaan: ", str(?eindeBestuursorgaan)) as ?value)
+        BIND (concat("Periode mandataris: (", ?startStr, " - ", ?eindeStr, "). Periode bestuursorgaan: (", ?startStrOrg, " - ", ?eindeStrOrg,"). Pas de start- of einddatum van de mandataris aan.") as ?value)
     }
     """ ;
         sh:message "Datum mandataris buiten periode van orgaan."

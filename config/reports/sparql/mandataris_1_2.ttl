@@ -33,7 +33,7 @@ sh:sparql [
             ?bestuursorgaanInTijd mandaat:bindingEinde ?eindeBestuursorgaan .
         }
 
-        BIND(IF(!bound(?eindeBestuursorgaan), "3000-01-01"^^xsd:dateTime, ?eindeBestuursorgaan) AS ?safeEindeBestuursorgaan)
+        BIND(IF(!bound(?eindeBestuursorgaan), "2030-12-31"^^xsd:dateTime, ?eindeBestuursorgaan) AS ?safeEindeBestuursorgaan)
         BIND((?startMandataris >= ?startBestuursorgaan && ?startMandataris <= ?eindeBestuursorgaan) AS ?startValid)
         BIND(if(!bound(?eindeMandataris), true, ?eindeMandataris >= ?startBestuursorgaan && ?eindeMandataris <= ?safeEindeBestuursorgaan) as ?eindeValid)
 

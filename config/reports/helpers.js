@@ -674,36 +674,52 @@ export function enrichValidationReport(
 }
 
 export async function saveDatasetToNamedGraphs(dataset, namedGraphs) {
-  const writer = new Writer({ format: "N-Triples" });
-  for (const quad of dataset) {
-    writer.addQuad(quad);
-  }
-
-  const triples = await new Promise((resolve, reject) => {
-    writer.end((error, result) => {
-      if (error) {
-        console.log("Error while writing to store");
-        reject(error);
-      } else {
-        resolve(result);
-      }
-    });
-  });
-  const queryString = `
+  const insertBatch = async (batch) => {
+    const ttl = await quadsToTtl(batch);
+    await updateSudo(`
         PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
         INSERT {
             GRAPH ?g {
-                ${triples}
+                ${ttl}
             }
         } WHERE {
           VALUES ?g {
             ${namedGraphs.map((g) => sparqlEscapeUri(g)).join("\n")}
           }
           ?g ext:ownedBy ?someone .
-        }
-        `;
-  await updateSudo(queryString);
+        }`);
+  };
+  await handleQuadsInBatch(dataset, 1000, insertBatch);
+}
+
+export async function handleQuadsInBatch(quads, batchSize, callback) {
+  let batch = [];
+  for (const quad of quads) {
+    batch.push(quad);
+    if (batch.length >= batchSize) {
+      await callback(batch);
+      batch = [];
+    }
+  }
+  if (batch.length > 0) {
+    await callback(batch);
+  }
+}
+
+export async function quadsToTtl(quads) {
+  const result = new Promise((resolve, reject) => {
+    const writer = new Writer({ format: "N-Triples" });
+    writer.addQuads(quads);
+    writer.end((error, result) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+  return result;
 }
 
 export async function deletePreviousReports(namedGraphs) {

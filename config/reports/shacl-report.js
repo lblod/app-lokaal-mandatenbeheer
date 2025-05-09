@@ -9,15 +9,17 @@ import {
   saveDatasetToNamedGraphs,
   deletePreviousReports,
   getNamedGraphsForBestuurseenheidId,
+  quadsToTtl,
+  handleQuadsInBatch,
 } from "./helpers.js";
 import env from "env-var";
 import {
   insertReportStatusInGraphs,
   updateReportStatusWithReport,
 } from "./report-status.js";
-import { app, uuid } from "mu";
+import { app, uuid, query, sparqlEscapeString } from "mu";
 import { querySudo } from "@lblod/mu-auth-sudo";
-import { DataFactory, Store } from "n3";
+import { DataFactory } from "n3";
 const { quad, literal, namedNode } = DataFactory;
 
 const ONLY_KEEP_LATEST_REPORT =
@@ -192,8 +194,7 @@ async function addSparqlValidationsToReport(
   reportDataset,
   sparqlValidationObjects
 ) {
-  const ttl = dataDataset.toString();
-  const graph = await loadTtlToTempGraph(ttl);
+  const graph = await loadDatasetToTempGraph(dataDataset);
   try {
     const results = await runSparqlValidations(graph, sparqlValidationObjects);
     await addResultsToReport(results, reportDataset, dataDataset);
@@ -213,7 +214,6 @@ async function runSparqlValidations(graph, sparqlValidationObjects) {
       sparqlValidationObject.query.substring(0, insertPos) +
       `FROM <${graph}>\n` +
       sparqlValidationObject.query.substring(insertPos);
-    console.log(`Running SPARQL validation query: ${query}`);
     const result = await querySudo(
       query,
       {},
@@ -231,11 +231,6 @@ async function runSparqlValidations(graph, sparqlValidationObjects) {
     }
   }
 
-  console.log(
-    `Found ${
-      Object.keys(validationResults).length
-    } SPARQL validation results: ${JSON.stringify(validationResults, null, 2)}`
-  );
   return validationResults;
 }
 
@@ -381,19 +376,23 @@ async function dropTempGraph(graph) {
   );
 }
 
-async function loadTtlToTempGraph(ttl) {
+async function loadDatasetToTempGraph(dataset) {
   const id = uuid();
   const graph = `http://mu.semte.ch/graphs/temp/validation/${id}`;
-  await querySudo(
-    `INSERT DATA {
+  const insertBatch = async (batch) => {
+    const ttl = await quadsToTtl(batch);
+    await querySudo(
+      `INSERT DATA {
       GRAPH <${graph}> { ${ttl} }
       GRAPH <http://mu.semte.ch/graphs/public> {
         <${graph}> a <http://mu.semte.ch/vocabularies/ext/ValidationWorkingGraph> .
       }
     }`,
-    {},
-    { sparqlEndpoint: DIRECT_DATABASE_CONNECTION }
-  );
+      {},
+      { sparqlEndpoint: DIRECT_DATABASE_CONNECTION }
+    );
+  };
+  await handleQuadsInBatch(dataset, 1000, insertBatch);
 
   return graph;
 }
@@ -424,4 +423,82 @@ app.post("/reports/generate", async (req, res) => {
   cronFunction(bestuurseenheidUri);
 
   res.status(204).send();
+});
+
+app.get("/reports/:id/:eenheidId/issues", async (req, res) => {
+  const reportId = req.params.id;
+  const eenheidId = req.params.eenheidId;
+
+  const issues = await query(`
+    PREFIX sh: <http://www.w3.org/ns/shacl#>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+    SELECT DISTINCT ?focusNode ?focusNodeId ?resultSeverity ?sourceConstraintComponent ?sourceShape ?resultMessage ?resultPath ?value ?targetClassOfFocusNode
+    WHERE {
+      ?report a sh:ValidationReport ;
+              mu:uuid ${sparqlEscapeString(reportId)} ;
+              sh:result ?validationResult .
+
+      ?result a sh:ValidationResult ;
+              sh:focusNode ?focusNode .
+      OPTIONAL {
+        ?result sh:resultMessage ?resultMessage .
+      }
+      OPTIONAL {
+        ?result sh:resultSeverity ?resultSeverity .
+      }
+      OPTIONAL {
+        ?result sh:sourceShape ?sourceShape .
+      }
+      OPTIONAL {
+        ?result sh:sourceConstraintComponent ?sourceConstraintComponent .
+      }
+      OPTIONAL {
+        ?result sh:value ?value .
+      }
+      OPTIONAL {
+        ?result sh:resultPath ?resultPath .
+      }
+      {
+        {
+          ?focusNode a ?targetClassOfFocusNode .
+          FILTER(?targetClassOfFocusNode != besluit:Bestuursorgaan )
+          ?focusNode mu:uuid ?focusNodeId .
+        }
+        UNION
+        {
+          ?focusNode a ?targetClassOfFocusNode .
+          FILTER(?targetClassOfFocusNode = besluit:Bestuursorgaan )
+          ?focusNode mandaat:isTijdspecialisatieVan / besluit:bestuurt / mu:uuid ${sparqlEscapeString(
+            eenheidId
+          )} .
+          ?focusNode mu:uuid ?focusNodeId .
+        }
+      }
+
+    }
+  `);
+
+  if (!issues.results.bindings) {
+    res
+      .status(500)
+      .send("Er ging iets fout bij het opghalen van de validatie resultaten.");
+    return;
+  }
+  const transformedIssues = issues.results.bindings.map((issue) => {
+    return {
+      focusNode: issue.focusNode.value,
+      focusNodeId: issue.focusNodeId.value,
+      resultSeverity: issue.resultSeverity?.value,
+      sourceConstraintComponent: issue.sourceConstraintComponent?.value,
+      sourceShape: issue.sourceShape?.value,
+      resultMessage: issue.resultMessage?.value,
+      resultPath: issue.resultPath?.value,
+      value: issue.value?.value,
+      targetClassOfFocusNode: issue.targetClassOfFocusNode.value,
+    };
+  });
+  res.json(transformedIssues);
 });

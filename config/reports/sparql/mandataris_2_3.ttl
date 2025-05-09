@@ -58,7 +58,7 @@ sh:sparql [
 
 
         } GROUP BY ?persoon ?labelMandaat}
-           BIND (CONCAT("Persoon heeft voor [",?labelMandaat,"] overlappende mandaten") as ?value)
+           BIND (CONCAT("Persoon heeft voor [",?labelMandaat,"] overlappende mandaten. Controleer de start- en einddatums van de periodes voor deze mandataris.") as ?value)
         }""" ;
         sh:message 'Persoon heeft overlappende mandaten'
 ] .

@@ -37,7 +37,7 @@ sh:sparql [
                 FILTER (?vervangendePersoon != ?verhinderdePersoon)
             }
 
-            BIND (concat("De verhinderde mandataris heeft geen vervangende mandataris met als startdatum gelijk aan moment van verhindering (", str(?momentVanVerhindering), ").") as ?value)
+            BIND (concat("De verhinderde mandataris heeft geen vervangende mandataris met als startdatum gelijk aan het moment van verhindering (", DAY(?momentVanVerhindering) + 1, "-", MONTH(?momentVanVerhindering), "-", YEAR(?momentVanVerhindering), ").") as ?value)
         }
     """ ;
         sh:message "Geen vervanger"

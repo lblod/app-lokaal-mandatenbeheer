@@ -674,8 +674,7 @@ export function enrichValidationReport(
 }
 
 export async function saveDatasetToNamedGraphs(dataset, namedGraphs) {
-  let batch = [];
-  const insertBatch = async () => {
+  const insertBatch = async (batch) => {
     const ttl = await quadsToTtl(batch);
     await updateSudo(`
         PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -691,25 +690,27 @@ export async function saveDatasetToNamedGraphs(dataset, namedGraphs) {
           ?g ext:ownedBy ?someone .
         }`);
   };
-  const limit = 1000;
-  for (const quad of dataset) {
+  await handleQuadsInBatch(dataset, 1000, insertBatch);
+}
+
+export async function handleQuadsInBatch(quads, batchSize, callback) {
+  let batch = [];
+  for (const quad of quads) {
     batch.push(quad);
-    if (batch.length >= limit) {
-      await insertBatch();
+    if (batch.length >= batchSize) {
+      await callback(batch);
       batch = [];
     }
   }
   if (batch.length > 0) {
-    await insertBatch();
+    await callback(batch);
   }
 }
 
 export async function quadsToTtl(quads) {
   const result = new Promise((resolve, reject) => {
     const writer = new Writer({ format: "N-Triples" });
-    quads.forEach((quad) => {
-      writer.addQuad(quad);
-    });
+    writer.addQuads(quads);
     writer.end((error, result) => {
       if (error) {
         reject(error);

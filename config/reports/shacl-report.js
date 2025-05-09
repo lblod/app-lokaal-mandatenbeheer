@@ -10,6 +10,7 @@ import {
   deletePreviousReports,
   getNamedGraphsForBestuurseenheidId,
   quadsToTtl,
+  handleQuadsInBatch,
 } from "./helpers.js";
 import env from "env-var";
 import {
@@ -213,7 +214,6 @@ async function runSparqlValidations(graph, sparqlValidationObjects) {
       sparqlValidationObject.query.substring(0, insertPos) +
       `FROM <${graph}>\n` +
       sparqlValidationObject.query.substring(insertPos);
-    console.log(`Running SPARQL validation query: ${query}`);
     const result = await querySudo(
       query,
       {},
@@ -231,11 +231,6 @@ async function runSparqlValidations(graph, sparqlValidationObjects) {
     }
   }
 
-  console.log(
-    `Found ${
-      Object.keys(validationResults).length
-    } SPARQL validation results: ${JSON.stringify(validationResults, null, 2)}`
-  );
   return validationResults;
 }
 
@@ -384,8 +379,7 @@ async function dropTempGraph(graph) {
 async function loadDatasetToTempGraph(dataset) {
   const id = uuid();
   const graph = `http://mu.semte.ch/graphs/temp/validation/${id}`;
-  let batch = [];
-  const insertBatch = async () => {
+  const insertBatch = async (batch) => {
     const ttl = await quadsToTtl(batch);
     await querySudo(
       `INSERT DATA {
@@ -398,16 +392,7 @@ async function loadDatasetToTempGraph(dataset) {
       { sparqlEndpoint: DIRECT_DATABASE_CONNECTION }
     );
   };
-  for (let quad of dataset) {
-    batch.push(quad);
-    if (batch.length > 1000) {
-      await insertBatch();
-      batch = [];
-    }
-  }
-  if (batch.length > 0) {
-    await insertBatch();
-  }
+  await handleQuadsInBatch(dataset, 1000, insertBatch);
 
   return graph;
 }

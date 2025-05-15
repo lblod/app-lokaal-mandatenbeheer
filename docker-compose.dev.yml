@@ -75,14 +75,10 @@ services:
     restart: "no"
   mandataris:
     restart: "no"
-    profiles:
-      - nodebug
   concept-scheme:
     restart: "no"
   modified:
     restart: "no"
-    profiles:
-      - nodebug
   adressenregister:
     restart: "no"
   merge-person-cron:

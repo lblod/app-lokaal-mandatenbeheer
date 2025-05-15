@@ -5,8 +5,7 @@ import {
   BATCH_GRAPH,
   BYPASS_MU_AUTH,
   DIRECT_DATABASE_CONNECTION,
-  TIME_PREDICATE,
-  VERSION_PREDICATE,
+  environment,
 } from "../environment";
 
 async function replaceExistingData() {
@@ -17,13 +16,20 @@ async function replaceExistingData() {
       sparqlEndpoint: DIRECT_DATABASE_CONNECTION,
     };
   }
-  await replaceFracties(options);
-  await replaceMandatees(options);
-  await replaceMembership(options);
-  await replacePeople(options);
+  const env = {
+    VERSION_PREDICATE: environment.getVersionPredicate(),
+    TIME_PREDICATE: environment.getTimePredicate(),
+    CURRENT_STREAM_NAME: environment.getCurrentStreamConfig().name,
+  };
+  console.log("handling page for stream ", env.CURRENT_STREAM_NAME);
+  await replaceFracties(options, env);
+  await replaceMandatees(options, env);
+  await replaceMembership(options, env);
+  await replacePeople(options, env);
+  // TODO add tombstones
 }
 
-async function replaceFracties(connectionOptions) {
+async function replaceFracties(connectionOptions, env) {
   await updateSudo(
     `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
@@ -42,14 +48,14 @@ async function replaceFracties(connectionOptions) {
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
         ?stream <https://w3id.org/tree#member> ?versionedMember .
-        ?versionedMember ${sparqlEscapeUri(VERSION_PREDICATE)} ?s .
+        ?versionedMember ${sparqlEscapeUri(env.VERSION_PREDICATE)} ?s .
         ?versionedMember a mandaat:Mandataris .
         ?versionedMember ?pNew ?oNew .
         ?versionedMember org:linkedTo ?bestuurseenheid .
         ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid .
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
-          VERSION_PREDICATE
-        )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
+          env.VERSION_PREDICATE
+        )}, ${sparqlEscapeUri(env.TIME_PREDICATE)} ))
       }
       ?targetGraph ext:ownedBy ?bestuurseenheid .
       OPTIONAL {
@@ -63,7 +69,7 @@ async function replaceFracties(connectionOptions) {
   );
 }
 
-async function replaceMandatees(connectionOptions) {
+async function replaceMandatees(connectionOptions, env) {
   await updateSudo(
     `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
@@ -82,14 +88,14 @@ async function replaceMandatees(connectionOptions) {
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
         ?stream <https://w3id.org/tree#member> ?versionedMember .
-        ?versionedMember ${sparqlEscapeUri(VERSION_PREDICATE)} ?s .
+        ?versionedMember ${sparqlEscapeUri(env.VERSION_PREDICATE)} ?s .
         ?versionedMember a mandaat:Mandataris .
         ?versionedMember ?pNew ?oNew .
         ?versionedMember org:holds ?mandaat .
         ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid.
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
-          VERSION_PREDICATE
-        )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
+          env.VERSION_PREDICATE
+        )}, ${sparqlEscapeUri(env.TIME_PREDICATE)} ))
       }
       ?mandaat org:hasPost / mandaat:isTijdspecialisatieVan / besluit:bestuurt ?bestuurseenheid .
       ?targetGraph ext:ownedBy ?bestuurseenheid .
@@ -104,7 +110,7 @@ async function replaceMandatees(connectionOptions) {
   );
 }
 
-async function replaceMembership(connectionOptions) {
+async function replaceMembership(connectionOptions, env) {
   await updateSudo(
     `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
@@ -123,13 +129,13 @@ async function replaceMembership(connectionOptions) {
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
         ?stream <https://w3id.org/tree#member> ?versionedMember .
-        ?versionedMember ${sparqlEscapeUri(VERSION_PREDICATE)} ?s .
+        ?versionedMember ${sparqlEscapeUri(env.VERSION_PREDICATE)} ?s .
         ?versionedMember a org:Membership .
         ?versionedMember ?pNew ?oNew .
         ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid.
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
-          VERSION_PREDICATE
-        )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
+          env.VERSION_PREDICATE
+        )}, ${sparqlEscapeUri(env.TIME_PREDICATE)} ))
       }
       ?targetGraph ext:ownedBy ?bestuurseenheid .
       OPTIONAL {
@@ -143,7 +149,7 @@ async function replaceMembership(connectionOptions) {
   );
 }
 
-async function replacePeople(connectionOptions) {
+async function replacePeople(connectionOptions, env) {
   await updateSudo(
     `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
@@ -165,7 +171,7 @@ async function replacePeople(connectionOptions) {
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
         ?stream <https://w3id.org/tree#member> ?versionedMember .
-        ?versionedMember ${sparqlEscapeUri(VERSION_PREDICATE)} ?s .
+        ?versionedMember ${sparqlEscapeUri(env.VERSION_PREDICATE)} ?s .
         VALUES ?type {
           person:Person
           persoon:Geboorte
@@ -175,8 +181,8 @@ async function replacePeople(connectionOptions) {
         ?versionedMember ?pNew ?oNew .
         ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid.
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
-          VERSION_PREDICATE
-        )}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
+          env.VERSION_PREDICATE
+        )}, ${sparqlEscapeUri(env.TIME_PREDICATE)} ))
       }
       ?targetGraph ext:ownedBy ?bestuurseenheid .
       OPTIONAL {

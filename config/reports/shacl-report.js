@@ -435,7 +435,7 @@ app.get("/reports/:id/:eenheidId/issues", async (req, res) => {
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 
-    SELECT DISTINCT ?focusNode ?focusNodeId ?resultSeverity ?sourceConstraintComponent ?sourceShape ?resultMessage ?resultPath ?value ?targetClassOfFocusNode
+    SELECT DISTINCT ?result ?focusNode ?focusNodeId ?resultSeverity ?sourceConstraintComponent ?sourceShape ?resultMessage ?resultPath ?value ?targetClassOfFocusNode
     WHERE {
       ?report a sh:ValidationReport ;
               mu:uuid ${sparqlEscapeString(reportId)} ;
@@ -489,6 +489,7 @@ app.get("/reports/:id/:eenheidId/issues", async (req, res) => {
   }
   const transformedIssues = issues.results.bindings.map((issue) => {
     return {
+      result: issue.result.value,
       focusNode: issue.focusNode.value,
       focusNodeId: issue.focusNodeId.value,
       resultSeverity: issue.resultSeverity?.value,

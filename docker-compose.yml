@@ -387,6 +387,8 @@ services:
       RANDOMIZE_GRAPHS: true
       BATCH_SIZE: 100
       BYPASS_MU_AUTH: false
+    volumes:
+      - ./config/locally-managed-ldes:/config
     labels:
       - "logging=true"
     logging: *default-logging

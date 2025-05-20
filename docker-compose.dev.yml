@@ -130,3 +130,5 @@ services:
     restart: "no"
   op-public-consumer:
     restart: "no"
+  locally-managed-ldes-client:
+    restart: "no"

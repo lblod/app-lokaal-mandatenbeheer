@@ -49,10 +49,10 @@ async function replaceFracties(connectionOptions, env) {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
         ?stream <https://w3id.org/tree#member> ?versionedMember .
         ?versionedMember ${sparqlEscapeUri(env.VERSION_PREDICATE)} ?s .
-        ?versionedMember a mandaat:Mandataris .
+        ?versionedMember a mandaat:Fractie .
         ?versionedMember ?pNew ?oNew .
         ?versionedMember org:linkedTo ?bestuurseenheid .
-        ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid .
+        ?versionedMember ext:owningBestuurseenheid | <http://mu.semte.ch/vocabularies/ext/relatedTo> ?bestuurseenheid .
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
           env.VERSION_PREDICATE
         )}, ${sparqlEscapeUri(env.TIME_PREDICATE)} ))
@@ -92,12 +92,12 @@ async function replaceMandatees(connectionOptions, env) {
         ?versionedMember a mandaat:Mandataris .
         ?versionedMember ?pNew ?oNew .
         ?versionedMember org:holds ?mandaat .
-        ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid.
+        ?versionedMember ext:owningBestuurseenheid | <http://mu.semte.ch/vocabularies/ext/relatedTo> ?bestuurseenheid.
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
           env.VERSION_PREDICATE
         )}, ${sparqlEscapeUri(env.TIME_PREDICATE)} ))
       }
-      ?mandaat org:hasPost / mandaat:isTijdspecialisatieVan / besluit:bestuurt ?bestuurseenheid .
+      ?mandaat ^org:hasPost / mandaat:isTijdspecialisatieVan / besluit:bestuurt ?bestuurseenheid .
       ?targetGraph ext:ownedBy ?bestuurseenheid .
       OPTIONAL {
         GRAPH ?targetGraph {
@@ -132,7 +132,7 @@ async function replaceMembership(connectionOptions, env) {
         ?versionedMember ${sparqlEscapeUri(env.VERSION_PREDICATE)} ?s .
         ?versionedMember a org:Membership .
         ?versionedMember ?pNew ?oNew .
-        ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid.
+        ?versionedMember ext:owningBestuurseenheid | <http://mu.semte.ch/vocabularies/ext/relatedTo> ?bestuurseenheid.
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
           env.VERSION_PREDICATE
         )}, ${sparqlEscapeUri(env.TIME_PREDICATE)} ))
@@ -177,9 +177,9 @@ async function replacePeople(connectionOptions, env) {
           persoon:Geboorte
           adms:Identifier
         }
-        ?versionedMember a mandaat:Mandataris .
+        ?versionedMember a ?type .
         ?versionedMember ?pNew ?oNew .
-        ?versionedMember ext:owningBestuurseenheid ?bestuurseenheid.
+        ?versionedMember ext:owningBestuurseenheid | <http://mu.semte.ch/vocabularies/ext/relatedTo> ?bestuurseenheid.
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(
           env.VERSION_PREDICATE
         )}, ${sparqlEscapeUri(env.TIME_PREDICATE)} ))

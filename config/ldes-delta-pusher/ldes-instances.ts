@@ -35,6 +35,9 @@ export const ldesInstances = {
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
         "http://purl.org/dc/terms/modified",
       ],
+      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode": [
+        "http://purl.org/dc/terms/modified",
+      ],
       "http://www.w3.org/ns/org#Membership": {
         specialType: true,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
@@ -104,6 +107,9 @@ export const ldesInstances = {
         instanceFilter: `?s <http://www.w3.org/ns/org#holds> / <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .`,
       },
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode": [
         "http://purl.org/dc/terms/modified",
       ],
       "http://www.w3.org/ns/org#Membership": {
@@ -184,6 +190,9 @@ export const ldesInstances = {
         healingPredicates: ["http://purl.org/dc/terms/modified"],
       },
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
+        "http://purl.org/dc/terms/modified",
+      ],
+      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode": [
         "http://purl.org/dc/terms/modified",
       ],
       "http://www.w3.org/ns/org#Membership": {
@@ -270,6 +279,10 @@ export const officialPredicates = {
     "http://www.w3.org/ns/org#linkedTo",
     "http://mu.semte.ch/vocabularies/ext/isFractietype",
     "http://mu.semte.ch/vocabularies/ext/geproduceerdDoor",
+  ],
+  "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode": [
+    "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "http://www.w3.org/2004/02/skos/core#inScheme",
   ],
   "http://www.w3.org/ns/org#Membership": [
     "http://www.w3.org/ns/org#organisation",

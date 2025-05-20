@@ -28,16 +28,18 @@ sh:sparql [
                     mandaat:start ?momentVanVerhindering .
 
             FILTER NOT EXISTS {
+                $this mandaat:isTijdelijkVervangenDoor ?vervangendeMandataris .
                 ?vervangendeMandataris a mandaat:Mandataris ;
                     mandaat:isBestuurlijkeAliasVan ?vervangendePersoon ;
                     org:holds ?mandaat ;
-                    mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> ;
-                    mandaat:start ?momentVanVerhindering .
+                    mandaat:start ?startVervangendeMandataris ;
+                    mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a>  .
 
                 FILTER (?vervangendePersoon != ?verhinderdePersoon)
+                FILTER (?startVervangendeMandataris >= ?momentVanVerhindering)
             }
 
-            BIND (concat("De verhinderde mandataris heeft geen vervangende mandataris met als startdatum gelijk aan het moment van verhindering (", DAY(?momentVanVerhindering) + 1, "-", MONTH(?momentVanVerhindering), "-", YEAR(?momentVanVerhindering), ").") as ?value)
+            BIND (concat("De verhinderde mandataris heeft geen vervangende mandataris met startdatum groter dan of gelijk aan het moment van verhindering (", DAY(?momentVanVerhindering) + 1, "-", MONTH(?momentVanVerhindering), "-", YEAR(?momentVanVerhindering), ").") as ?value)
         }
     """ ;
         sh:message "Geen vervanger"

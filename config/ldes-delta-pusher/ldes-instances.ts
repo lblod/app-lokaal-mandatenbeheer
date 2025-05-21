@@ -283,6 +283,7 @@ export const officialPredicates = {
   "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode": [
     "http://www.w3.org/2004/02/skos/core#prefLabel",
     "http://www.w3.org/2004/02/skos/core#inScheme",
+    "http://www.w3.org/ns/shacl#order",
   ],
   "http://www.w3.org/ns/org#Membership": [
     "http://www.w3.org/ns/org#organisation",

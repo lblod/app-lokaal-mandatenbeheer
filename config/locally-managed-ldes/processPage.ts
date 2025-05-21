@@ -9,10 +9,10 @@ import {
 } from "../environment";
 
 async function replaceExistingData() {
-  let options = {};
+  let connectionOptions = {};
   if (BYPASS_MU_AUTH) {
     console.log(">>>>> bypassing mu-auth");
-    options = {
+    connectionOptions = {
       sparqlEndpoint: DIRECT_DATABASE_CONNECTION,
     };
   }
@@ -22,11 +22,11 @@ async function replaceExistingData() {
     CURRENT_STREAM_NAME: environment.getCurrentStreamConfig().name,
   };
   console.log("handling page for stream ", env.CURRENT_STREAM_NAME);
-  await replaceFracties(options, env);
-  await replaceMandatees(options, env);
-  await replaceMembership(options, env);
-  await replacePeople(options, env);
-  await replaceTombstones(options, env);
+  await replaceFracties(connectionOptions, env);
+  await replaceMandatees(connectionOptions, env);
+  await replaceMembership(connectionOptions, env);
+  await replacePeople(connectionOptions, env);
+  await replaceTombstones(connectionOptions, env);
 }
 
 async function replaceFracties(connectionOptions, env) {
@@ -43,7 +43,7 @@ async function replaceFracties(connectionOptions, env) {
     }
     INSERT {
       GRAPH ?targetGraph {
-        ?s ?pNew?oNew.
+        ?s ?pNew ?oNew.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
@@ -84,7 +84,7 @@ async function replaceTombstones(connectionOptions, env) {
     }
     INSERT {
       GRAPH ?targetGraph {
-        ?s ?pNew?oNew.
+        ?s ?pNew ?oNew.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {

@@ -1,0 +1,31 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/f1591b78-d269-490f-bc33-cc9e62c2def2> ?p ?o.
+    ?oo ?pp <http://data.lblod.info/id/personen/f1591b78-d269-490f-bc33-cc9e62c2def2>.
+    <http://data.lblod.info/id/personen/38818b83-141f-46c3-b5b3-8f2716d79440> dct:modified ?officialMod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?oo ?pp <http://data.lblod.info/id/personen/38818b83-141f-46c3-b5b3-8f2716d79440> .
+    <http://data.lblod.info/id/personen/38818b83-141f-46c3-b5b3-8f2716d79440> dct:modified ?now.
+    <http://data.lblod.info/id/personen/f1591b78-d269-490f-bc33-cc9e62c2def2> dct:modified ?now.
+    <http://data.lblod.info/id/personen/f1591b78-d269-490f-bc33-cc9e62c2def2> a <http://www.w3.org/ns/activitystreams#Tombstone> ;
+        astreams:deleted ?now ;
+        astreams:formerType <http://www.w3.org/ns/person#Person> ;
+        owl:sameAs <http://data.lblod.info/id/personen/38818b83-141f-46c3-b5b3-8f2716d79440> .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/f1591b78-d269-490f-bc33-cc9e62c2def2> ?p ?o.
+    <http://data.lblod.info/id/personen/38818b83-141f-46c3-b5b3-8f2716d79440> dct:modified ?officialMod.
+    OPTIONAL {
+      ?oo ?pp <http://data.lblod.info/id/personen/f1591b78-d269-490f-bc33-cc9e62c2def2>.
+    }
+  }
+  BIND(NOW() AS ?now)
+}

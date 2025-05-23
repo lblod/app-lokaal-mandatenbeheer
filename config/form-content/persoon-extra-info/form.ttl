@@ -2,6 +2,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 @prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix lmbDisplayTypes: <http://lblod.data.gift/display-types/lmb/>.
 @prefix schema: <http://schema.org/>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
@@ -16,7 +17,7 @@
 
 ext:alternatieveNaamF
     a form:Field;
-    form:displayType displayTypes:defaultInput;
+    form:displayType lmbDisplayTypes:standard-string-input;
     sh:group ext:persoonExtraPG;
     sh:name "Roepnaam";
     sh:order 4;

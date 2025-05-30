@@ -40,6 +40,11 @@ sh:sparql [
             org:holds ?mandaatGemeenteraad ;
             mandaat:isBestuurlijkeAliasVan ?persoon .
 
+
+        FILTER NOT EXISTS {
+            ?gemeenteraadInTijd mandaat:isTijdspecialisatieVan / besluit:bestuurt / <http://lblod.data.gift/vocabularies/lmb/faciliteitenGemeente> true.
+        }
+
         FILTER NOT EXISTS {
             ?raadVoorMaatschappelijkWelzijnInTijd generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> ;
                                     org:hasPost ?mandaatRaadVoorMaatschappelijkWelzijn .

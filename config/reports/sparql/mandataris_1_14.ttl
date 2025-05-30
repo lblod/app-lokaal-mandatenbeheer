@@ -38,7 +38,11 @@ sh:sparql [
                 org:holds ?mandaatBurgemeester ;
                 mandaat:isBestuurlijkeAliasVan ?persoon .
 
-        FILTER NOT EXISTS {
+            FILTER NOT EXISTS {
+                ?burgemeesterInTijd mandaat:isTijdspecialisatieVan / besluit:bestuurt / <http://lblod.data.gift/vocabularies/lmb/faciliteitenGemeente> true.
+            }
+
+            FILTER NOT EXISTS {
                 ?vastBureauInTijd (generiek:isTijdspecialisatieVan|mandaat:isTijdspecialisatieVan)/besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> ;
                                     org:hasPost ?mandaatVastBureau .
 

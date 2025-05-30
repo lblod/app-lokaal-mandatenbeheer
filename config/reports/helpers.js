@@ -170,6 +170,7 @@ export async function executeConstructQueriesOnNamedGraph(
     namedGraphs,
     targetBestuursperiode
   );
+  await addBestuurseenheden(store, bestuurseenheidUris);
   await addPersonen(store, namedGraphs, bestuursorganen);
   await addFracties(store, namedGraphs, bestuursorganen);
   await addMandaten(store, bestuursorganen);
@@ -177,6 +178,31 @@ export async function executeConstructQueriesOnNamedGraph(
   await addPublicData(store);
 
   return store;
+}
+
+async function addBestuurseenheden(store, bestuurseenheidUris) {
+  const safeBestuurseenheden = bestuurseenheidUris
+    .map((uri) => sparqlEscapeUri(uri))
+    .join("\n");
+  const queryStringConstructOfGraph = `
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+    CONSTRUCT {
+        ?eenheid  ?p ?o .
+    }
+    WHERE {
+        VALUES ?eenheid {
+          ${safeBestuurseenheden}
+        }
+        ?eenheid ?p ?o.
+    }
+    `;
+
+  const queryResponse = await querySudo(queryStringConstructOfGraph);
+  await addConstructQueryResponseToStore(store, queryResponse);
 }
 
 async function addBestuursorgaanAndMandatarissen(

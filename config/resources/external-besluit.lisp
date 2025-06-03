@@ -40,6 +40,7 @@
   :class (s-prefix "besluit:Bestuurseenheid")
   :properties `((:naam :string ,(s-prefix "skos:prefLabel"))
                 (:alternatieve-naam :string-set ,(s-prefix "skos:altLabel"))
+                (:is-faciliteiten-gemeente :boolean ,(s-prefix "lmb:faciliteitenGemeente"))
                 (:mail-adres :string ,(s-prefix "ext:mailAdresVoorNotificaties"))
                 (:hide-legislatuur :boolean ,(s-prefix "ext:voorbereidingVerborgen"))
                 (:is-lokaal-beheerd :boolean ,(s-prefix "ext:isLokaalBeheerd")))

@@ -64,8 +64,6 @@ WHERE {
     <http://data.lblod.info/id/conceptscheme/LocalPoliticianMandateRole> # Concept Scheme grouping Politician Mandate Roles for Local Authorities
     <http://lblod.data.gift/concept-schemes/5d05a003-4692-4aff-9e93-325db2aefb8a> # LEKP-Goal, LEKP-doelstelling
     <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> # Type dossier inzending voor toezicht
-    <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> # besluit document type
-    <https://data.vlaanderen.be/id/conceptscheme/BesluitType> # besluit type
   }
   GRAPH ?g {
     ?cs a skos:ConceptScheme .

@@ -439,7 +439,7 @@ app.get("/reports/:id/:eenheidId/issues", async (req, res) => {
     WHERE {
       ?report a sh:ValidationReport ;
               mu:uuid ${sparqlEscapeString(reportId)} ;
-              sh:result ?validationResult .
+              sh:result ?result .
 
       ?result a sh:ValidationResult ;
               sh:focusNode ?focusNode .

@@ -1,0 +1,71 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g {
+    ?cs ?p ?o .
+    }
+  }
+WHERE {
+  VALUES ?cs {
+    <http://lblod.data.gift/concept-schemes/5cecec47-ba66-4d7a-ac9d-a1e7962ca4e2> # Document authenticity type, Type authenticiteit van het document 
+    <http://lblod.data.gift/concept-schemes/646b3381-9a63-48d3-8686-4d877502db8c> # Plan Samenleven doelstellingen rules
+    <http://lblod.data.gift/concept-schemes/b65b15ba-6755-4cd2-bd07-2c2cf3c0e4d3> # Minimal Belgian chart of accounts, Minimumindeling van het algemeen rekeningenstelsel, Plan comptable minimum normalisé
+    <http://lblod.data.gift/concept-schemes/6facb675-63f5-44ef-a3bd-38a0cb87e1c5> # Employee unit measures, Meeteenheden voor werknemers
+    <http://lblod.data.gift/concept-schemes/9a3f018b-6528-4abb-82d5-b7920d05a3da> # Climate subsidy withdrawal rules
+    <http://lblod.data.gift/concept-schemes/dcfb437e-1219-4d1e-891d-057f262da9d6> # All administrative-units with as besluit:classficatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+    <http://lblod.data.gift/concept-schemes/31d5b7f2-fd44-4ef6-8fbe-95ba26d0b3fb> # Werktijd categorie, Working time category
+    <http://lblod.data.gift/concept-schemes/95d22e7f-de86-4a2c-9974-0e3de5013d87> # Werktijd categorie, Working time category
+    <http://lblod.data.gift/concept-schemes/9cf6fa63-1f49-4d53-af06-e1c235ece10b> # Statusen van ingestuurde document, Submission document statuses 
+    <http://lblod.data.gift/concept-schemes/f7274d7f-31d5-4b02-aca8-b96481115651> # Empty label
+    <http://lblod.data.gift/concept-schemes/ac6766b6-6d9c-458a-b60b-1338db2f870c> # Educational level, Opleidingsniveau
+    <http://lblod.data.gift/concept-schemes/4e719768-d43b-4ca1-ab92-b463e15721f5> # Rapportperiode meerjarenplan erediensten, Reporting period long term plan worship services
+    <http://lblod.data.gift/concept-schemes/af23feb1-a876-4834-9427-947f93b776f2> # Possible answers to the question: Is this subsidy-application an application for a collaboration
+    <http://lblod.data.gift/concept-schemes/c200126a-e624-4a62-b2fd-db8dd419f053> # Project themes for GZG subsidy call-up 7.
+    <http://lblod.data.gift/concept-schemes/7db0bcc4-7ccf-4848-affd-cbd41124ef71> # Project themes for GZG subsidy call-up 2 and 3. 
+    <http://lblod.data.gift/concept-schemes/b6a991c7-e126-4f9e-a956-4a4684502ba6> # Empty label
+    <http://lblod.data.gift/concept-schemes/77604806-1006-459b-9228-583d279c7a1c> # Empty label
+    <http://lblod.data.gift/concept-schemes/e311b861-d8aa-47a1-80e9-7f4a1fb3de09> # Onderzoeksvraag ja/nee
+    <http://lblod.data.gift/concept-schemes/94818b96-5b18-48b8-a125-1e6825b6b724> # Participatie rollen, Participation roles
+    <http://lblod.data.gift/concept-schemes/99b07146-80b1-4bfa-8835-7c43bccd264d> # Subsidy can be paid on known bank account 
+    <http://lblod.data.gift/concept-schemes/6e9129dc-06aa-409f-af5e-fc450bf87123> # Project themes for GZG subsidy call-up 5,6 and 7.
+    <http://lblod.data.gift/concept-schemes/fffb9b3a-21ba-4050-b171-0d9b84d1927d> # Project themes for GZG subsidy call-up 1 and 4. 
+    <http://lblod.data.gift/concept-schemes/dd44f316-7a30-45ab-b0f3-5dd642e0b6c7> # pre-defined additional-contact-tracing-measures users can pick while filing the contact and source tracing subsidy-form
+    <http://lblod.data.gift/concept-schemes/91655ebf-5ab7-43c4-b587-094536baf737> # Document authenticity type (worship services), Type authenticiteit van het document (erediensten)
+    <https://productencatalogus.data.vlaanderen.be/id/conceptscheme/IPDCOrganisaties> # IPDCOrganisaties, IPDCOrganisations
+    <http://lblod.data.gift/concept-schemes/fdfeccc2-4b4a-47eb-ad9c-32fb5d1a4423> # (Conceptual) public service statuses, Statusen van publieke producten en diensten en hun concepten
+    <http://lblod.data.gift/concept-schemes/3f514a6a-094c-4a33-b1d1-c97e59e2844a> # Opleidingen
+    <http://lblod.data.gift/concept-schemes/2c0ec673-a430-4cd3-861d-8666991b790f> # concept-scheme defining priority-levels
+    <http://lblod.data.gift/concept-schemes/c319af9d-2e1f-4d2e-befd-43f0e895604b> # Types of contacts
+    <http://lblod.data.gift/concept-schemes/2c7ca3db-f61b-4903-8497-245073800ceb> # Types of e-inclusion actions
+    <http://lblod.data.gift/vocabularies/subsidie/FinancieringPartnerType> # Financieringspartnertype                                                                                                                            
+    <http://lblod.data.gift/concept-schemes/e31c7d36-6e7d-47e0-a749-5011f99d1514> # E-inclusion actions
+    <http://lblod.data.gift/concept-schemes/56ef78a0-5ab4-4548-b995-fd995703183c> # Collectieve energierenovatie, Collective energy renovation case
+    <http://lblod.data.gift/concept-schemes/4135a965-2cd9-425f-8c45-1223307c66d4> # Organized help for vulnerable groups
+    <http://lblod.data.gift/concept-schemes/6fb38b16-9d92-49da-ae56-945505c12e1a> # Taken actions for source detection-3355505f7278
+    <http://lblod.data.gift/concept-schemes/a995bb71-3c87-4385-a06b-a786f2fa0d16> # Decision adoption type, Type vaststelling van het besluit
+    <http://lblod.data.gift/concept-schemes/60d620a5-ec34-4a91-ba84-fff0813d0ccc> # Municipal road procedure type, Type procedure voor een gemeenteweg
+    <http://lblod.data.gift/concept-schemes/19c53ee2-bac1-4ce8-8015-6ff589ccfaca> # Worship services sensitive export
+    <http://lblod.data.gift/concept-schemes/85b363cc-6d69-4aa4-88ed-ab5ba50b1993> # Used methods for quarantaine-coaching
+    <http://lblod.data.gift/concept-schemes/9410a32e-308e-4bf0-a3b0-af8f9c9c19b2> # Used methods for prevention
+    <http://lblod.data.gift/concept-schemes/0b058b75-5953-40cf-b2b5-34e23168b370> # Focused/targeted population 
+    <http://lblod.data.gift/concept-schemes/b956a95b-bfb6-4094-b7f7-6b612e650c4f> # Focused at-risk and vulnerable populations
+    <http://lblod.data.gift/concept-schemes/ba36f197-1a96-4ea2-a7f7-3b5c7ffcd6ee> # Type beroepsprocedure, Type of appeal procedure
+    <http://lblod.data.gift/concept-schemes/0b93ef1c-4435-4922-8611-31b4f3ca3c85> # Explanation type LEKP, Type Toelichting LEKP 
+    <http://lblod.data.gift/concept-schemes/7856206c-dfda-4163-8bd3-f465c794eced> # Type inhoud van het besluit (erediensten), Type of content of decision
+    <http://lblod.data.gift/concept-schemes/3037c4f4-1c63-43ac-bfc4-b41d098b15a6> # Tax Type, Type belasting
+    <http://lblod.data.gift/concept-schemes/1dfc51af-99fd-4be9-a681-41360c195f14> # Correction type LEKP, Type correctie LEKP
+    <http://lblod.data.gift/concept-schemes/0887b850-b810-40d4-be0f-cafd01d3259b> # Loket mandatarissen export
+    <http://lblod.data.gift/concept-schemes/06bad311-e964-48a4-9b6b-f765819e76e0> # Loket leidinggevenden export
+    <http://lblod.data.gift/concept-schemes/27f40c36-141d-42e9-bed8-fea1a47c4869> # Type afschrift, Type of statement
+    <http://data.lblod.info/id/conceptscheme/LocalOfficerMandateRole> # Concept Scheme grouping Officer Mandate Roles for Local Authorities
+    <http://lblod.data.gift/concept-schemes/c2e7699a-b543-443c-b8b2-b60bef8767dc> # Authentic source LEKP-report, Authentieke bron LEKP-report
+    <http://lblod.data.gift/concept-schemes/c93ccd41-aee7-488f-86d3-038de890d05a> # Reglementtype inzending voor toezicht 
+    <http://data.lblod.info/id/conceptscheme/LocalPoliticianMandateRole> # Concept Scheme grouping Politician Mandate Roles for Local Authorities
+    <http://lblod.data.gift/concept-schemes/5d05a003-4692-4aff-9e93-325db2aefb8a> # LEKP-Goal, LEKP-doelstelling
+    <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> # Type dossier inzending voor toezicht
+  }
+  GRAPH ?g {
+    ?cs a skos:ConceptScheme .
+    ?cs ?p ?o .
+  }
+}

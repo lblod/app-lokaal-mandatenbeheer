@@ -56,6 +56,11 @@ ext:identificatorF
       sh:path ( adms:identifier skos:notation )
     ],
     [
+      a ext:IsUniqueRrn;
+      form:grouping form:Bag ;
+      sh:path ( adms:identifier skos:notation )
+    ],
+    [
       a form:RequiredConstraint;
       form:grouping form:Bag;
       sh:path ( adms:identifier skos:notation );

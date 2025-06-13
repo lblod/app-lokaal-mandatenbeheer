@@ -56,6 +56,12 @@ ext:identificatorF
       sh:path ( adms:identifier skos:notation )
     ],
     [
+      a ext:RijksregisternummerIsDuplicate;
+      form:grouping form:Bag ;
+      sh:path ( adms:identifier skos:notation ) ;
+      sh:resultMessage "Er bestaat al een persoon met dit rijksregisternummer"
+    ],
+    [
       a form:RequiredConstraint;
       form:grouping form:Bag;
       sh:path ( adms:identifier skos:notation );

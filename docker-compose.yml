@@ -392,3 +392,11 @@ services:
     labels:
       - "logging=true"
     logging: *default-logging
+
+  rekenhof-service:
+    image: owenhstudent/lblod-rekenhof-service:latest
+    ports:
+      - "1234:80"
+    environment:
+      NODE_ENV: "development"
+

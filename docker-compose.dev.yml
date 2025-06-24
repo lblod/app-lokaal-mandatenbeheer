@@ -87,6 +87,10 @@ services:
     restart: "no"
     environment:
       DEBUG: "true"
+  ldes-checkpointer:
+    "restart": "no"
+  ldes-healer:
+    "restart": "no"
   ldes-backend:
     restart: "no"
     environment:

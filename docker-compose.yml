@@ -250,6 +250,45 @@ services:
       - "logging=true"
     links:
       - virtuoso:database
+  ldes-checkpointer:
+    image: local-ldes-checkpointer
+    environment:
+      LDES_ENDPOINT: "http://ldes-backend"
+      STARTUP_TIMEOUT: 5000
+      LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"
+      DATA_FOLDER: /data
+      CRON_CHECKPOINT: "0 0 5 1 * *"
+      SUDO_QUERY_RETRY_TIMEOUT_INCREMENT_FACTOR: 0.003
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: 429,500,502,503,504
+      MAX_PAGE_SIZE_BYTES: 10000000
+      INITIAL_STATE_LIMIT: 10000
+      DIRECT_DB_ENDPOINT: "http://virtuoso:8890/sparql"
+      WRITE_INITIAL_STATE: "false"
+      WRITE_CHECKPOINT_ON_START: "false"
+
+    volumes:
+      - ./config/ldes-checkpointer/:/config/
+      - ./data/ldes-feed/:/data/
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
+  ldes-healer:
+    image: local-ldes-healer
+    environment:
+      LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"
+      BASE_URL: "https://dev.mandatenbeheer.lblod.info/streams/ldes/"
+      DATA_FOLDER: /data
+      SUDO_QUERY_RETRY_TIMEOUT_INCREMENT_FACTOR: 0.003
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: 429,500,502,503,504
+      DIRECT_DB_ENDPOINT: "http://virtuoso:8890/sparql"
+    volumes:
+      - ./config/ldes-healer/:/config/
+      - ./data/ldes-feed/:/data/
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
   ldes-backend:
     image: redpencil/fragmentation-producer:0.4.2
     restart: always

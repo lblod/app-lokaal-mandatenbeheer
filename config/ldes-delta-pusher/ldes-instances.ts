@@ -78,6 +78,7 @@ export const ldesInstances = {
         ],
       },
       "http://www.w3.org/ns/activitystreams#Tombstone": {
+        specialType: true,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
         // 1) don't care about tombstones that are already present, modified date doesn't matter (old ones didn't have it)
         // 2) don't put tombstones for things that still have another type in another application graph
@@ -160,6 +161,7 @@ export const ldesInstances = {
         ],
       },
       "http://www.w3.org/ns/activitystreams#Tombstone": {
+        specialType: true,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
         // 1) don't care about tombstones that are already present, modified date doesn't matter (old ones didn't have it)
         // 2) don't put tombstones for things that still have another type in another application graph
@@ -241,6 +243,7 @@ export const ldesInstances = {
         ],
       },
       "http://www.w3.org/ns/activitystreams#Tombstone": {
+        specialType: true,
         healingPredicates: ["http://purl.org/dc/terms/modified"],
         // 1) don't care about tombstones that are already present, modified date doesn't matter (old ones didn't have it)
         // 2) don't put tombstones for things that still have another type in another application graph

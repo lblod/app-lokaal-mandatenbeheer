@@ -18,6 +18,7 @@ sh:sparql [
     sh:select """
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
         PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
         select distinct $this ?value
         where {
@@ -39,7 +40,8 @@ sh:sparql [
                 FILTER (?startVervangendeMandataris >= ?momentVanVerhindering)
             }
 
-            BIND (concat("De verhinderde mandataris heeft geen vervangende mandataris met startdatum groter dan of gelijk aan het moment van verhindering (", DAY(?momentVanVerhindering) + 1, "-", MONTH(?momentVanVerhindering), "-", YEAR(?momentVanVerhindering), ").") as ?value)
+            BIND(bif:dateadd('hour', 24, strdt(substr(str(?momentVanVerhindering), 1, 10), xsd:date)) as ?nextDay)
+            BIND (concat("De verhinderde mandataris heeft geen vervangende mandataris met startdatum groter dan of gelijk aan het moment van verhindering (", DAY(?nextDay), "-", MONTH(?nextDay), "-", YEAR(?nextDay), ").") as ?value)
         }
     """ ;
         sh:message "Geen vervanger"

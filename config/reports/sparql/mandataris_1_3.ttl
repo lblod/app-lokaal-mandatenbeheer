@@ -38,64 +38,52 @@ sh:sparql [
       PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+      PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
-        select distinct $this ?value
-        where {
-          $this a besluit:Bestuursorgaan .
-          { select distinct $this ?mandaat SAMPLE(?value) AS ?value where {
-            {
-              SELECT $this ?mandaat ?processedDateToCheck (COUNT(DISTINCT(?person)) AS ?mandatarisCount) WHERE {
-                { SELECT DISTINCT $this ?mandaat ?dateToCheck WHERE {
+      SELECT DISTINCT $this ?value
+      WHERE {
+        $this a besluit:Bestuursorgaan .
+        # fetch the mandaten in the orgaan with it's label and there min, max holders
+        {{
+          SELECT DISTINCT $this ?mandaat ?mandaatLabel ?minHouders ?maxHouders
+          WHERE {
+            $this org:hasPost ?mandaat.
+            $this mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid .
+            ?mandaat mandaat:aantalHouders ?maxHouders.
+            ?mandaat lmb:minAantalHouders ?minHouders.
+            ?mandaat org:role / skos:prefLabel ?mandaatLabel .
+          }
+        }}
+        {{
+          SELECT ?mandaat (COUNT(DISTINCT(?person)) AS ?mandatarisCount)
+          WHERE {
+            GRAPH ?g {
+              ?mandataris a mandaat:Mandataris.
+              ?mandataris org:holds ?mandaat.
 
-                  $this org:hasPost ?mandaat.
-                  $this mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid.
+              VALUES ?mandatarisStatus {
+                <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> # Waarnemend
+                <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75> # Effectief
+              }
+              ?mandataris mandaat:status ?mandatarisStatus.
+              ?mandataris mandaat:isBestuurlijkeAliasVan ?person.
+              ?mandataris mandaat:start ?mStart.
+              OPTIONAL {
+                ?mandataris mandaat:einde ?mEinde.
+              }
+              BIND(strdt(CONCAT(substr(str(?mStart), 1, 10), "T00:00:00Z"), xsd:dateTime) AS ?safeStart)
+              BIND(IF(BOUND(?mEinde), strdt(CONCAT(substr(str(?mEinde), 1, 10), "T23:59:59Z"), xsd:dateTime), "2030-12-31T23:59:59Z"^^xsd:dateTime) AS ?safeEinde)
 
-                  ?s a mandaat:Mandataris.
-                  ?s org:holds ?mandaat.
-                  ?mandaat mandaat:aantalHouders ?max.
-                  ?mandaat lmb:minAantalHouders ?min.
-
-                  { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("2030-12-31T23:59:59Z"^^xsd:dateTime AS ?dateToCheck) } }
-                } }
-                # dateToCheck + 1 day
-                BIND(bif:dateadd('hour', 24, strdt(substr(str(?dateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
-
-                ?s a mandaat:Mandataris.
-                ?s org:holds ?mandaat.
-
-                VALUES ?mandatarisStatus {
-                  <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a> # waarnemend
-                  <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75> # effectief
-                }
-                ?s mandaat:status ?mandatarisStatus.
-                ?s mandaat:start ?start.
-                OPTIONAL {
-                  ?s mandaat:einde ?einde.
-                }
-                BIND(IF(BOUND(?einde), strdt(CONCAT(substr(str(?einde), 1, 10), "T23:59:59Z"), xsd:dateTime), "2030-12-31T23:59:59Z"^^xsd:dateTime) AS ?safeEinde)
-                # if status effectief make the start date the next day?
-                BIND(IF(?mandatarisStatus != <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75>, 32, 0) AS ?offset) 
-                BIND(strdt(CONCAT(substr(str(?start), 1, 10), "T00:00:00Z"), xsd:dateTime) AS ?startWithTime)
-                BIND(bif:dateadd('hour', ?offset, ?startWithTime) AS ?offsetStart)
-                ?s mandaat:isBestuurlijkeAliasVan ?person.
-                FILTER (?offsetStart <= ?processedDateToCheck && ?safeEinde >= ?processedDateToCheck)
-              } GROUP BY $this ?mandaat ?processedDateToCheck
+              BIND(strdt(CONCAT(substr(str(NOW()), 1, 10), "T23:59:59Z"), xsd:dateTime) AS ?today)
+              FILTER(?today <= ?safeEinde && ?today >= ?safeStart)
             }
-            ?mandaat mandaat:aantalHouders ?max.
-            ?mandaat lmb:minAantalHouders ?min.
-            ?mandaat org:role / skos:prefLabel ?mandaatLabel.
-
-            FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
-            BIND(?processedDateToCheck + "P1D"^^xsd:duration AS ?theNextDay)
-            BIND(IF(HOURS(?processedDateToCheck) = 23,
-                    CONCAT(DAY(?theNextDay),"-",MONTH(?theNextDay),"-", YEAR(?theNextDay)),
-                    CONCAT(DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck))
-                 ) AS ?dateToDisplay)
-            BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", str(?dateToDisplay), " - minimum: ", str(?min), " - maximum: ", str(?max)) as ?value)
-          } GROUP BY $this ?mandaat }
-        }
+            ?g ext:ownedBy ?eenheid . # fetch the mandaten in the orgaan with it's label and there min, max holders
+          }
+      }}
+      FILTER(?minHouders > ?mandatarisCount || ?maxHouders < ?mandatarisCount)
+      BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden. - minimum: ", str(?minHouders), " - maximum: ", str(?maxHouders)) as ?value)
+    }
     """ ;
         sh:message "Verkeerd aantal mandatarissen."
 ] .
-
 

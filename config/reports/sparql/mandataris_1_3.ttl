@@ -55,10 +55,10 @@ sh:sparql [
                   ?mandaat mandaat:aantalHouders ?max.
                   ?mandaat lmb:minAantalHouders ?min.
 
-                  { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("2030-12-31T00:00:00Z"^^xsd:dateTime AS ?dateToCheck) } }
+                  { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("2030-12-31T23:59:59Z"^^xsd:dateTime AS ?dateToCheck) } }
                 } }
                 # dateToCheck + 1 day
-                BIND(strdt(substr(str(?dateToCheck), 1, 10), xsd:dateTime) + "P1D"^^xsd:duration as ?processedDateToCheck)
+                BIND(bif:dateadd('hour', 24, strdt(substr(str(?dateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
 
                 ?s a mandaat:Mandataris.
                 ?s org:holds ?mandaat.

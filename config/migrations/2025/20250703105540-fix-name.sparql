@@ -1,0 +1,31 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?persoon foaf:familyName "Tilieu" .
+    ?persoon dct:modified ?oldTime .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?persoon foaf:familyName "Tillieu" .
+    ?persoon dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+      foaf:familyName "Tilieu" ;
+      persoon:gebruikteVoornaam "Jelle" .
+    OPTIONAL {
+      ?persoon dct:modified ?oldTime.
+    }
+  }
+  VALUES ?persoon { <http://data.lblod.info/id/personen/74883397d36b06b949f767271931c5ddee112ddaa9fcbe687ee3a48c120b226d> }
+  ?g ext:ownedBy ?something .
+  BIND(NOW() as ?now)
+}

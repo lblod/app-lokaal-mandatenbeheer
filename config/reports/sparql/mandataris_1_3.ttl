@@ -43,7 +43,7 @@ sh:sparql [
   where {
     $this a besluit:Bestuursorgaan .
     # pick one date where the count is not between min and max (inclusive)
-    { select distinct $this ?mandaat SAMPLE(?value) AS ?value where {
+    { select distinct $this ?mandaat ?mandatarisCount ?mandaatLabel ?min ?max MIN(?processedDateToCheck) AS ?processedDateToCheck where {
       {
         # count all persons per mandate for each of these 'edge' dates
         SELECT $this ?mandaat ?dateToCheck (COUNT(DISTINCT(?person)) AS ?mandatarisCount) WHERE {
@@ -78,7 +78,7 @@ sh:sparql [
             ?s mandaat:einde ?einde.
           }
           # end dates of mandatarissen are set to 23h59:59 of the day that they end so they are effectively a full day too long
-          BIND(IF(BOUND(?einde), bif:dateadd('hour', -24, ?einde, xsd:date), "2030-12-31"^^xsd:dateTime) AS ?safeEinde)
+          BIND(IF(BOUND(?einde), bif:dateadd('hour', -24, ?einde, xsd:date), "2030-12-30"^^xsd:dateTime) AS ?safeEinde)
           ?s mandaat:isBestuurlijkeAliasVan ?person.
           FILTER (?start <= ?dateToCheck && ?safeEinde >= ?dateToCheck)
         } GROUP BY $this ?mandaat ?dateToCheck
@@ -92,9 +92,8 @@ sh:sparql [
       BIND(bif:dateadd('hour', 24, strdt(substr(str(?dateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
       FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
 
-      BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max)) as ?value)
-
-    } GROUP BY $this ?mandaat }
+    } GROUP BY $this ?mandaat ?mandatarisCount ?mandaatLabel ?min ?max}
+    BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max)) as ?value)
   }
     """ ;
         sh:message "Verkeerd aantal mandatarissen."

@@ -63,8 +63,6 @@ sh:sparql [
 
             { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("2030-12-31"^^xsd:dateTime AS ?dateToCheck) } }
           } }
-          # # our dates are UTC 23, so we need to add a day
-          # BIND(bif:dateadd('hour', 24, strdt(substr(str(?dateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
 
           ?s a mandaat:Mandataris.
           ?s org:holds ?mandaat.

@@ -46,9 +46,9 @@ sh:sparql [
     { select distinct $this ?mandaat ?mandatarisCount ?mandaatLabel ?min ?max MIN(?processedDateToCheck) AS ?processedDateToCheck where {
       {
         # count all persons per mandate for each of these 'edge' dates
-        SELECT $this ?mandaat ?dateToCheck (COUNT(DISTINCT(?person)) AS ?mandatarisCount) WHERE {
+        SELECT $this ?mandaat ?simplifiedDateToCheck (COUNT(DISTINCT(?person)) AS ?mandatarisCount) WHERE {
           # find possible 'edge' dates where mandataris changes happen for each mandate
-          { SELECT DISTINCT $this ?mandaat ?dateToCheck WHERE {
+          { SELECT DISTINCT $this ?mandaat ?simplifiedDateToCheck WHERE {
 
             $this org:hasPost ?mandaat.
 
@@ -62,6 +62,7 @@ sh:sparql [
 
 
             { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("2030-12-31"^^xsd:dateTime AS ?dateToCheck) } }
+            BIND(strdt(substr(str(?dateToCheck), 1, 10), xsd:date) AS ?simplifiedDateToCheck)
           } }
 
           ?s a mandaat:Mandataris.
@@ -76,12 +77,15 @@ sh:sparql [
           ?s mandaat:start ?start.
           OPTIONAL {
             ?s mandaat:einde ?einde.
+            BIND(strdt(substr(str(?einde), 1, 10), xsd:date) AS ?simplifiedEinde)
           }
-          # end dates of mandatarissen are set to 23h59:59 of the day that they end so they are effectively a full day too long
-          BIND(IF(BOUND(?einde), bif:dateadd('hour', -24, ?einde, xsd:date), "2030-12-30"^^xsd:dateTime) AS ?safeEinde)
+          BIND(-24 AS ?offsetEinde)
+          BIND(IF(MINUTES(?start) = 59, -24, 0) AS ?offsetStart)
+          BIND(IF(BOUND(?simplifiedEinde), bif:dateadd('hour', ?offsetEinde, ?simplifiedEinde), "2030-12-30"^^xsd:dateTime) AS ?safeEinde)
+          BIND(bif:dateadd('hour', ?offsetStart, strdt(substr(str(?start), 1, 10), xsd:date)) AS ?simplifiedStart)
           ?s mandaat:isBestuurlijkeAliasVan ?person.
-          FILTER (?start <= ?dateToCheck && ?safeEinde >= ?dateToCheck)
-        } GROUP BY $this ?mandaat ?dateToCheck
+          FILTER (?simplifiedStart <= ?simplifiedDateToCheck && ?safeEinde > ?simplifiedDateToCheck)
+        } GROUP BY $this ?mandaat ?simplifiedDateToCheck
       }
       ?mandaat mandaat:aantalHouders ?max.
       ?mandaat lmb:minAantalHouders ?min.
@@ -89,7 +93,7 @@ sh:sparql [
 
 
       # # our dates are UTC 23, so we need to add a day
-      BIND(bif:dateadd('hour', 24, strdt(substr(str(?dateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
+      BIND(bif:dateadd('hour', 24, strdt(substr(str(?simplifiedDateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
       FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
 
     } GROUP BY $this ?mandaat ?mandatarisCount ?mandaatLabel ?min ?max}

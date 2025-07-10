@@ -13,7 +13,7 @@ INSERT DATA {
 
     ext:validUrlConstraint a ext:ValidUri ;
       form:grouping form:Bag ;
-      sh:resultMessage "Waarde zonder http://, https:// of mailto:// zijn niet toegestaan" .
+      sh:resultMessage "Zorg dat je waar begint met http://, https:// of mailto:" .
 
     <http://lblod.data.gift/display-types/lmb/custom-url-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
   }

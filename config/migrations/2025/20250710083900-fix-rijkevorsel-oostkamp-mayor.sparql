@@ -1,0 +1,24 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+DELETE {
+  GRAPH ?g {
+    ?mandataris <http://lblod.data.gift/vocabularies/lmb/hasPublicationStatus> ?oldStatus.
+    ?mandataris dct:modified ?old.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris <http://lblod.data.gift/vocabularies/lmb/hasPublicationStatus> <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6> .
+    ?mandataris dct:modified ?now.
+  }
+}
+WHERE {
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/c6bc0554-fc5d-4d89-8577-1b98312f877e>
+    <http://data.lblod.info/id/mandatarissen/f8df94f2-1862-4a53-8993-0d7e5bc5a9e4>
+  }
+  GRAPH ?g {
+    ?mandataris <http://lblod.data.gift/vocabularies/lmb/hasPublicationStatus> ?oldStatus.
+    ?mandataris dct:modified ?old.
+  }
+  BIND(NOW() AS ?now)
+}

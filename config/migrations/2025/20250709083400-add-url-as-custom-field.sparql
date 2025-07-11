@@ -1,0 +1,20 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX form: <http://lblod.data.gift/vocabularies/forms/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/display-types/lmb/custom-url-input> a ext:DisplayType ;
+    mu:uuid "21199e3b-b99b-480f-9df7-9f98fb09339b" ;
+    form:validatedBy ext:validUrlConstraint ;    
+    skos:prefLabel "Link" .
+
+    ext:validUrlConstraint a ext:ValidUri ;
+      form:grouping form:Bag ;
+      sh:resultMessage "Zorg dat je waarde begint met http://, https:// of mailto:" .
+
+    <http://lblod.data.gift/display-types/lmb/custom-url-input> skos:inScheme <http://lblod.data.gift/concept-schemes/lmb-custom-display-types> .
+  }
+}

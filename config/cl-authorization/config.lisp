@@ -136,6 +136,7 @@
   ("form:Field" -> _)
   ("form:ValidPhoneNumber" -> _)
   ("form:RequiredConstraint" -> _)
+  ("ext:ValidUri" -> _)
   ("lmb:Installatievergadering" -> _)
   ("lmb:InstallatievergaderingStatus" -> _)
   ("mandaat:RechtstreekseVerkiezing" -> _)

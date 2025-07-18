@@ -1,0 +1,63 @@
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX org: <http://www.w3.org/ns/org#>
+  PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+  DELETE {
+    GRAPH ?g {
+      ?mandaat mandaat:aantalHouders ?houders .
+      ?mandaat lmb:minAantalHouders ?minHouders .
+    }
+  }
+  INSERT {
+    GRAPH ?g {
+      ?mandaat mandaat:aantalHouders ?newHouders .
+      ?mandaat lmb:minAantalHouders ?newHouders .
+    }
+  }
+  WHERE {
+    VALUES ( ?bestuurseenheid ?bestuursfunctieCode ?newHouders ) {
+      (
+       <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c> # Gemeente Antwerpen
+       <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> # Schepen CBS
+       11
+       )
+      (
+       <http://data.lblod.info/id/bestuurseenheden/83c7a12a4a8ac8dd82895715095a866dc4794e60de61b967419bdfc1e207ad96> # OCMW Antwerpen
+       <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> # Lid Vast Bureau
+       11
+       )
+      (
+       <http://data.lblod.info/id/bestuurseenheden/c73ee91f068da28ed1f16fb057f38808e7c0d29f4c5b8b9d7b2eec235ed4d5a4> # Gemeente Brecht
+       <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> # Schepen CBS
+       6
+       )
+      (
+       <http://data.lblod.info/id/bestuurseenheden/cbf76918872399f21eb1c979e63d4b10df940eada09955821fbf52bae4344677> # OCMW Brecht
+       <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> # Lid Vast Bureau
+       6
+       )
+      (
+       <http://data.lblod.info/id/bestuurseenheden/a277d61f41cf0025df3e51df800c9551a27c80e2515c32aabbbbbc2c818852eb> # Gemeente Lebbeke
+       <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> # Schepen CBS
+       5
+       )
+      (
+       <http://data.lblod.info/id/bestuurseenheden/aabfc4d66b59d5910872e7093ba0ae19df2cef3b85f849f42313f0afda1af6ae> # OCMW Lebbeke
+       <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> # Lid Vast Bureau
+       5
+       )
+    }
+    ?boi mandaat:isTijdspecialisatieVan ?orgaan .
+    ?boi lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
+    FILTER NOT EXISTS {
+      ?bestuurseenheid lmb:faciliteitenGemeente true .
+    }
+    ?mandaat org:role ?bestuursfunctieCode .
+    ?boi org:hasPost ?mandaat .
+    GRAPH ?g {
+      ?mandaat mandaat:aantalHouders ?houders .
+      ?mandaat lmb:minAantalHouders ?minHouders .
+    }
+    ?g ext:ownedBy ?bestuurseenheid .
+  }

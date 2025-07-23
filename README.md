@@ -15,35 +15,37 @@ This repository contains multiple docker-compose files
 
 General information on running and maintaining an installation.
 
-### Before you start
+### Getting started
+
+1. Clone the repository
 
 ```bash
-  # Clone this repository
-  git clone https://github.com/lblod/app-lokaal-mandatenbeheer.git
-
-  # Move into the directory
-  cd app-lokaal-mandatenbeheer
+git clone https://github.com/lblod/app-lokaal-mandatenbeheer.git
 ```
 
-To ease all typing for `docker compose` commands, start by creating the following files in the directory of the project.
-A `docker-compose.override.yml` file with following content:
-
-```yaml
-services:
+2. Move into the directory
+```bash
+cd app-lokaal-mandatenbeheer
 ```
-
-And an `.env` file with following content:
-
+3. To ease all typing for `docker compose` commands create a compose override file in the root of the project
+```bash
+touch docker-compose.override.yml
 ```
+4. Create an env file so we can define the compose files and other environment variables
+```bash
+touch .env
+```
+5. Set the `COMPOSE_FILE` in the .env
+```bash
 COMPOSE_FILE=docker-compose.yml:docker-compose.dev.yml:docker-compose.override.yml
 ```
 
-### Normal start
+### Running the stack
 
 This should be your go-to way of starting the stack.
 
 ```bash
-docker compose up # or 'docker compose up -d' if you want to run it in the background
+docker compose up -d # run without -d flag when you don't want to run it in the background
 ```
 
 Always double check the status of the migrations `docker compose logs -f --tail=100 migrations`
@@ -71,45 +73,38 @@ There are two main pain points:
 1. Mac has an arm64 processor, a lot of the services don't have a multi-platform image. In the case they only have a amd64 image, docker will gave you a warning about this. In general this is not a real problem since your macbook can just emulate amd64, but still the warnings are annoying, so these are suppressed.
 2. At the moment this project was setup the service mu-identifier and mu-authorization weren't working for mac (at least on my device), so you have to build these yourself, and gave them the appropriate image name and tag.
 
-### Upgrading your setup
-
-Once installed, you may desire to upgrade your current setup to follow development of the main stack. The following example describes how to do this.
-
-For the dev setup, we assume you'll pull more often and thus will most likely clear the database separately:
-
-```bash
-# This assumes the .env file has been set. Cf. supra in the README.md
-# Bring the application down
-docker compose down
-# Pull in the changes
-git pull origin master
-# Launch the stack
-docker compose up -d
-```
-
-As with the initial setup, we wait for everything to boot to ensure clean caches. You may choose to monitor the migrations service in a separate terminal to and wait for the overview of all migrations to appear: `docker compose logs -f --tail=100 migrations`.
-
-Once the migrations have ran, you can go on with your current setup.
-
 ### Cleaning the database
 
 At some times you may want to clean the database and make sure it's in a pristine state, it is always a good idea to backup your data first.
 
+1. Go the root of the project
+2. Make a checkpoint in the in the virtuoso container
 ```bash
-# This assumes the .env file has been set. Cf. supra in the README.md
-# First you should run the query CHECKPOINT in your virtuoso conductor's isql interface on localhost:8890
-> docker compose virtuoso isql-v
- SQL> checkpoint;
-# Then you can bring down the current setup
+docker compose exec virtuoso isql-v
+```
+```sql
+  SQL> checkpoint;
+  SQL> exit;
+```
+3. Put your stack down
+```bash
 docker compose down
-# Back-up your database folder
-mv data/db data/db-bak
-# If you don't want to keep your old data you can do the following:
-# Keep only required database files
-rm -Rf data/db
-git checkout data/db
-# Bring the stack back up
-docker compose up
+```
+4. Make a backup of the database data
+```bash
+mv data/db data/db.backup
+```
+5. Remove the db folder if you wan to start from scratch **OPTIONAL**
+```bash
+rm -rf data/db
+```
+6. When you want to start from a database dump you can now add it as `data/db`
+```bash
+ cp -r _location-of-db-dump_/db /data/db
+```
+7. Start the stack again
+```bash
+docker compose up -d
 ```
 
 ## Resources
@@ -142,7 +137,7 @@ This application uses LDES to share information with other applications, like th
 
 Vendors can access the sparql endpoint through the `/vendor/sparql` endpoint. This is secured through the [lblod/vendor-login-service](https://github.com/lblod/vendor-login-service). They need to log in first using a POST request to `/vendor/login` with a body like this:
 
-```
+```json
 {
   "organization": "http://data.lblod.info/id/bestuurseenheden/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18",
   "publisher": {
@@ -166,12 +161,12 @@ An example request to the vendor's sparql endpoint could be a POST with Content-
 
 We fetch the bestuurseenheden and bestuursorganen from Organisatie Portaal. To fetch this data we have a service `op-public-consumer`. Follow these steps to get all the data in your database.
 
-> Note that when using a database dumb this is probably already done
+> Note that when using a database dumb from one of our environments this is probably already done
 
 1. Start the stack without the `op-public-consumer` service
 2. Let the `migrations` run until they are done
-3. Start the `op-public-consumer` service.This will take around 10 minutes to consume the data. 
-4. They application should be good to go
+3. Start the `op-public-consumer` service.This will take around 10 minutes to consume the data
+4. After the consuming is done the application should be good to go
 
 ## Additional notes
 
@@ -183,7 +178,7 @@ In the authorization config, we added a class `ext:CustomFormType`. This was add
 
 - The default virtuoso settings might be too weak if you need to ingest the production data. Hence, there is better config, you can take over in your `docker-compose.override.yml`
 
-```
+```yaml
   virtuoso:
     volumes:
       - ./data/db:/data

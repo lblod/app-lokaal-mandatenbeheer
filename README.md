@@ -124,8 +124,6 @@ In combination with the `docker-compose.override.yml` and the debug compose file
 
 ## Resources
 
-A big part of the resources is shared with other applications, because of this, these resources are defined in a dedicated github repo [link](https://github.com/lblod/domain-files). The resources that originate here are defined in files of which the name starts with external-. Unfortunately there have been some changes to these files that are not reflected in the original definition.
-
 The models this app uses are:
 
 - [mandaten](http://data.vlaanderen.be/ns/mandaat)

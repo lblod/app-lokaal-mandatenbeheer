@@ -107,6 +107,22 @@ rm -rf data/db
 docker compose up -d
 ```
 
+### Development
+
+All custom configuration for the services can be found in the `/config` folder.
+
+Most of the time when doing active development you will be working on these services:
+
+* [Mandataris Service](https://github.com/lblod/mandataris-service)
+* [Form Content Service](https://github.com/lblod/form-content-service)
+
+In combination with the `docker-compose.override.yml` and the debug compose file in these services you can easily work on the stack.
+
+1. Kill the service you are working (or add a profile to it in the compose override)
+2. Run the `docker-compose -d` command in your local project of the service
+
+> Note that we these debug compose files should not be added to other services as this is not the preferred way 
+
 ## Resources
 
 A big part of the resources is shared with other applications, because of this, these resources are defined in a dedicated github repo [link](https://github.com/lblod/domain-files). The resources that originate here are defined in files of which the name starts with external-. Unfortunately there have been some changes to these files that are not reflected in the original definition.

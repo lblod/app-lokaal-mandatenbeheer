@@ -17,25 +17,21 @@ General information on running and maintaining an installation.
 
 ### Getting started
 
-1. Clone the repository
+1. Clone the repository and go into the directory
+2. To ease all typing for `docker compose` commands create a compose override file in the root of the project
 
-```bash
-git clone https://github.com/lblod/app-lokaal-mandatenbeheer.git
-```
-
-2. Move into the directory
-```bash
-cd app-lokaal-mandatenbeheer
-```
-3. To ease all typing for `docker compose` commands create a compose override file in the root of the project
 ```bash
 touch docker-compose.override.yml
 ```
-4. Create an env file so we can define the compose files and other environment variables
+
+3. Create an env file so we can define the compose files and other environment variables
+
 ```bash
 touch .env
 ```
-5. Set the `COMPOSE_FILE` in the .env
+
+4. Set the `COMPOSE_FILE` in the .env
+
 ```bash
 COMPOSE_FILE=docker-compose.yml:docker-compose.dev.yml:docker-compose.override.yml
 ```
@@ -79,33 +75,36 @@ At some times you may want to clean the database and make sure it's in a pristin
 
 1. Go the root of the project
 2. Make a checkpoint in the in the virtuoso container
+
 ```bash
 docker compose exec virtuoso isql-v
 ```
+
 ```sql
   SQL> checkpoint;
   SQL> exit;
 ```
+
 3. Put your stack down
-```bash
-docker compose down
-```
 4. Make a backup of the database data
+
 ```bash
 mv data/db data/db.backup
 ```
+
 5. Remove the db folder if you wan to start from scratch **OPTIONAL**
+
 ```bash
 rm -rf data/db
 ```
+
 6. When you want to start from a database dump you can now add it as `data/db`
+
 ```bash
  cp -r _location-of-db-dump_/db /data/db
 ```
+
 7. Start the stack again
-```bash
-docker compose up -d
-```
 
 ### Development
 
@@ -113,15 +112,15 @@ All custom configuration for the services can be found in the `/config` folder.
 
 Most of the time when doing active development you will be working on these services:
 
-* [Mandataris Service](https://github.com/lblod/mandataris-service)
-* [Form Content Service](https://github.com/lblod/form-content-service)
+- [Mandataris Service](https://github.com/lblod/mandataris-service)
+- [Form Content Service](https://github.com/lblod/form-content-service)
 
 In combination with the `docker-compose.override.yml` and the debug compose file in these services you can easily work on the stack.
 
 1. Kill the service you are working (or add a profile to it in the compose override)
 2. Run the `docker-compose -d` command in your local project of the service
 
-> Note that we these debug compose files should not be added to other services as this is not the preferred way 
+> Note that we these debug compose files should not be added to other services as this is not the preferred way
 
 ## Resources
 
@@ -195,11 +194,11 @@ In the authorization config, we added a class `ext:CustomFormType`. This was add
 - The default virtuoso settings might be too weak if you need to ingest the production data. Hence, there is better config, you can take over in your `docker-compose.override.yml`
 
 ```yaml
-  virtuoso:
-    volumes:
-      - ./data/db:/data
-      - ./config/virtuoso/virtuoso-production.ini:/data/virtuoso.ini
-      - ./config/virtuoso/:/opt/virtuoso-scripts
+virtuoso:
+  volumes:
+    - ./data/db:/data
+    - ./config/virtuoso/virtuoso-production.ini:/data/virtuoso.ini
+    - ./config/virtuoso/:/opt/virtuoso-scripts
 ```
 
 ### delta-producer-report-generator

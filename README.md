@@ -71,7 +71,7 @@ There are two main pain points:
 
 ### Cleaning the database
 
-At some times you may want to clean the database and make sure it's in a pristine state, it is always a good idea to backup your data first.
+At some point you may want to clean the database and make sure it's in a pristine state, it is always a good idea to backup your data first.
 
 1. Go the root of the project
 2. Make a checkpoint in the in the virtuoso container
@@ -123,8 +123,6 @@ In combination with the `docker-compose.override.yml` and the debug compose file
 > Note that we these debug compose files should not be added to other services as this is not the preferred way
 
 ## Resources
-
-A big part of the resources is shared with other applications, because of this, these resources are defined in a dedicated github repo [link](https://github.com/lblod/domain-files). The resources that originate here are defined in files of which the name starts with external-. Unfortunately there have been some changes to these files that are not reflected in the original definition.
 
 The models this app uses are:
 

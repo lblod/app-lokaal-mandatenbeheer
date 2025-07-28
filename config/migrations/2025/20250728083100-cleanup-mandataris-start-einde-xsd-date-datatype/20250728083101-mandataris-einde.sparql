@@ -17,6 +17,6 @@ WHERE {
     ?mandataris a mandaat:Mandataris .
     ?mandataris mandaat:einde ?einde .
     BIND(substr(str(?einde), 1, 10) as ?eindeAsDateString)
-    BIND(strdt(CONCAT(?eindeAsDateString, "T22:59:59Z"), xsd:dateTime) AS ?eindeWithTime) # changed so the frontend shows the date with hours 23:59:59
+    BIND(strdt(CONCAT(?eindeAsDateString, "T23:59:59Z"), xsd:dateTime) AS ?eindeWithTime)
   }
 } 

@@ -15,11 +15,8 @@ WHERE {
   GRAPH ?g {
     ?mandataris a mandaat:Mandataris .
     ?mandataris mandaat:start ?start .
-
-    # the time should be an hour before so it is displayed correctly in the frontend
+   
     BIND(substr(str(?start), 1, 10) as ?startAsDateString)
-    BIND(bif:dateadd('hour', -1 ,strdt(?startAsDateString, xsd:date)) AS ?dayBefore)
-    BIND(substr(str(?dayBefore), 1, 10) as ?dayBeforeAsDateString)
-    BIND(strdt(CONCAT(?dayBeforeAsDateString, "T23:00:00Z"), xsd:dateTime) AS ?startWithTime)
+    BIND(strdt(CONCAT(?startAsDateString, "T00:00:00Z"), xsd:dateTime) AS ?startWithTime)
   }
 }

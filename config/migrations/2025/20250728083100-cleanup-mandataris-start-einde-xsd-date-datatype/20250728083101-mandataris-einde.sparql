@@ -1,0 +1,22 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris mandaat:einde ?einde .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris mandaat:einde ?eindeWithTime .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris .
+    ?mandataris mandaat:einde ?einde .
+    BIND(substr(str(?einde), 1, 10) as ?eindeAsDateString)
+    BIND(strdt(CONCAT(?eindeAsDateString, "T23:59:59Z"), xsd:dateTime) AS ?eindeWithTime)
+  }
+} 

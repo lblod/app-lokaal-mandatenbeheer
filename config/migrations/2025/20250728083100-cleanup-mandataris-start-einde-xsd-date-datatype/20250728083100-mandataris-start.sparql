@@ -1,22 +1,29 @@
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
 DELETE {
   GRAPH ?g {
     ?mandataris mandaat:start ?start .
+    ?mandataris dct:modified ?modified .
   }
 }
 INSERT {
   GRAPH ?g {
     ?mandataris mandaat:start ?startWithTime .
+    ?mandataris dct:modified ?now .
   }
 }
 WHERE {
   GRAPH ?g {
     ?mandataris a mandaat:Mandataris .
     ?mandataris mandaat:start ?start .
-   
+    OPTIONAL {
+      ?mandataris dct:modified ?modified .
+    }
     BIND(substr(str(?start), 1, 10) as ?startAsDateString)
     BIND(strdt(CONCAT(?startAsDateString, "T00:00:00Z"), xsd:dateTime) AS ?startWithTime)
+    BIND(NOW() as ?now)
   }
 }

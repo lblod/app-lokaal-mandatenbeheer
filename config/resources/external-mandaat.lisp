@@ -7,6 +7,7 @@
   :class (s-prefix "mandaat:Fractie")
   :properties `((:naam :string ,(s-prefix "regorg:legalName"))
                 (:generated-from :uri-set ,(s-prefix "ext:generatedFrom")) ;;if it e.g. comes from gelinkt-notuleren
+                (:end-date :datetime ,(s-prefix "ext:endDate")) 
                 (:modified :datetime ,(s-prefix "dct:modified")))
   :resource-base (s-url "http://data.lblod.info/id/fracties/")
   :has-many `((bestuursorgaan :via ,(s-prefix "org:memberOf")
@@ -15,6 +16,8 @@
                               :as "bestuurseenheid")
              (fractietype :via ,(s-prefix "ext:isFractietype")
                           :as "fractietype")
+             (fractie :via ,(s-prefix "dct:replaces")
+                          :as "replacement")
              (kandidatenlijst :via ,(s-prefix "ext:geproduceerdDoor")
                           :as "originele-kandidatenlijst"))
   :features '(include-uri)

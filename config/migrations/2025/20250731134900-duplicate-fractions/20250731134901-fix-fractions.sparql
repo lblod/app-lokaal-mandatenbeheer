@@ -1,0 +1,29 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?l org:organisation ?oldFractie.
+    ?l dct:modified ?oldMod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?l org:organisation ?newFractie.
+    ?l dct:modified ?now.
+  }
+}
+WHERE {
+  GRAPH <http://localhost/temp-fix-fracties> {
+    ?l org:organisation ?newFractie.
+  }
+  GRAPH ?g {
+    ?l org:organisation ?oldFractie.
+    OPTIONAL {
+      ?l dct:modified ?oldMod.
+    }
+    ?l org:organisation ?oldFractie.
+    BIND(NOW() AS ?now)
+  }
+};
+DROP SILENT GRAPH <http://localhost/temp-fix-fracties>

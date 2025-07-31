@@ -1,0 +1,221 @@
+@prefix ns0:	<http://www.w3.org/ns/org#> .
+<http://data.lblod.info/id/lidmaatschappen/6175b681-f84c-4db9-bf2b-fb7b2a28f79c>	ns0:organisation	<http://data.lblod.info/id/fracties/671F563E0C2BDDC7570104D5> .
+@prefix ns1:	<http://mu.semte.ch/services/ldes-time-fragmenter/versioned/> .
+<http://data.lblod.info/id/lidmaatschappen/6175b681-f84c-4db9-bf2b-fb7b2a28f79c>	ns0:organisation	ns1:B000D333-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/76DA8654-088E-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	ns1:B000D333-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F563E0C2BDDC7570104D5> .
+<http://data.lblod.info/id/lidmaatschappen/76DA86AE-088E-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	<http://data.lblod.info/id/fracties/671F563E0C2BDDC7570104D5> ,
+		ns1:B000D333-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/3cf9b155-3891-4bcd-89f5-60dc9088e5dc>	ns0:organisation	ns1:B000D4F4-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6721F434FDAA900F9C5408DC> .
+<http://data.lblod.info/id/lidmaatschappen/32fce416-d0e1-41c3-9c7c-7d760bfffff7>	ns0:organisation	ns1:B0813356-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6744866CE204328242FA8C2A> .
+<http://data.lblod.info/id/lidmaatschappen/1e7cee5f-bda4-42f0-9891-25faca187ed5>	ns0:organisation	ns1:B07660AD-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F724D0C2BDDC757010688> .
+<http://data.lblod.info/id/lidmaatschappen/98C14186-30C0-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	<http://data.lblod.info/id/fracties/671F7C2A0C2BDDC7570106A7> ,
+		ns1:B06E01C8-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/98C1419B-30C0-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	<http://data.lblod.info/id/fracties/671F7C2A0C2BDDC7570106A7> ,
+		ns1:B06E01C8-5638-11F0-9EC8-EAA73EBAC1A7 .
+@prefix ns2:	<http://data.lblod.info/id/lidmaatschappen/> .
+ns2:e7bae231-e5bd-4289-ad74-615d897b0c00	ns0:organisation	<http://data.lblod.info/id/fracties/673C92C3936DCE1D998C0A22> ,
+		ns1:B000D3D2-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/642B4792-2A52-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	<http://data.lblod.info/id/fracties/671F724D0C2BDDC757010688> ,
+		ns1:B07660AD-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/642B481E-2A52-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	<http://data.lblod.info/id/fracties/671F724D0C2BDDC757010688> ,
+		ns1:B07660AD-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/33aa839c-1e6d-47ec-b7fb-954d14bcd824>	ns0:organisation	ns1:B0765F58-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67289CA3FF201E5A13DF7A46> .
+<http://data.lblod.info/id/lidmaatschappen/250d559a-4051-40d5-9d15-637885156561>	ns0:organisation	ns1:B0813362-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/673F2E219CF860BDE8A8BBC6> .
+ns2:adbe4db4-6822-4fd7-923b-7588c0aa321b	ns0:organisation	<http://data.lblod.info/id/fracties/673C92C3936DCE1D998C0A22> ,
+		ns1:B000D3D2-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/658a6e91-f8c4-4b52-917e-b3f8d5c166e6>	ns0:organisation	<http://data.lblod.info/id/fracties/671F44630C2BDDC757010452> ,
+		ns1:B000D595-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:b4d87549-fce5-4902-b4c8-f51255726b17	ns0:organisation	ns1:B06E00A6-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		ns1:B06E00A8-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/674061723AEE0EF0252D928F> ,
+		<http://data.lblod.info/id/fracties/67443B842488F439F82A1118> .
+<http://data.lblod.info/id/lidmaatschappen/0e4363aa-31c8-4c76-b0dc-62a5fa4f2c33>	ns0:organisation	<http://data.lblod.info/id/fracties/671B4CF00C2BDDC757010367> ,
+		ns1:B07B978E-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/611253cd-efd3-4a8d-81a1-de4da365c221>	ns0:organisation	<http://data.lblod.info/id/fracties/6734738E841B069B8FB61071> ,
+		ns1:B081350F-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/6787DB86E1E58D2537AC7416>	ns0:organisation	ns1:B06DFFEA-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6736F9FFE22C1C199C5D1472> .
+<http://data.lblod.info/id/lidmaatschappen/8cedeafa-719b-491e-8f54-8be99737c406>	ns0:organisation	ns1:B06E01C8-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F7C2A0C2BDDC7570106A7> .
+ns2:a827a59e-dc67-492a-8eaa-5b51be3c8f86	ns0:organisation	<http://data.lblod.info/id/fracties/67814A2AFF8E211506E893B8> ,
+		ns1:B06E0309-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:a8aef64a-28aa-4956-b6a2-500cd55f1eb1	ns0:organisation	<http://data.lblod.info/id/fracties/671B4CF50C2BDDC757010369> ,
+		ns1:B07B978F-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:d26a2090-3d3f-49ec-a91c-569ae4f26eb0	ns0:organisation	<http://data.lblod.info/id/fracties/67814A32FF8E211506E893BB> ,
+		ns1:B06E031C-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/0b8f6657-cee9-4dd5-8f70-2ca0f301b4bc>	ns0:organisation	<http://data.lblod.info/id/fracties/671F563E0C2BDDC7570104D5> ,
+		ns1:B000D333-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:fb3aaa12-681a-4d80-bf6d-06bab833e3a9	ns0:organisation	<http://data.lblod.info/id/fracties/6721F434FDAA900F9C5408DC> ,
+		ns1:B000D4F4-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:cf67f93c-7e37-426b-9fdb-b6d2dcee7323	ns0:organisation	ns1:B06E0382-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6735C97C4F6B5E7D74AD643F> .
+ns2:AB8ED13E-2A53-11F0-9EC8-EAA73EBAC1A7	ns0:organisation	<http://data.lblod.info/id/fracties/671F724D0C2BDDC757010688> ,
+		ns1:B07660AD-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/6878E0669A53CD016F5DE6DB>	ns0:organisation	ns1:B06E0382-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6735C97C4F6B5E7D74AD643F> .
+<http://data.lblod.info/id/lidmaatschappen/6845e6f9-5bf0-4de4-aa17-5d0904540e39>	ns0:organisation	<http://data.lblod.info/id/fracties/6736F9FFE22C1C199C5D1472> ,
+		ns1:B06DFFEA-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/6bb0e397-bfb6-4ae7-94de-481b018cb546>	ns0:organisation	ns1:B07B978F-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671B4CF50C2BDDC757010369> .
+<http://data.lblod.info/id/lidmaatschappen/739d0d02-0558-4f3b-9aa6-2fe0078585b3>	ns0:organisation	ns1:B06E043F-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6740616F3AEE0EF0252D928D> ,
+		<http://data.lblod.info/id/fracties/67443B7E2488F439F82A1117> ,
+		ns1:B06E00A7-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:c6990a2b-c1ff-4773-9557-bc1f008cb23f	ns0:organisation	<http://data.lblod.info/id/fracties/672386C3AE5F6D098DC00878> ,
+		ns1:B0765A26-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:d86209d1-c14c-4520-a345-9de4a9937b8f	ns0:organisation	ns1:B07B955E-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F6F730C2BDDC757010649> .
+<http://data.lblod.info/id/lidmaatschappen/08d33489-bc22-4db4-92b1-f38cc8b49e6e>	ns0:organisation	ns1:B0766020-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67867D04FF8E211506E893C6> .
+<http://data.lblod.info/id/lidmaatschappen/0de91e47-7a85-4ec1-b557-f5355b5a4a03>	ns0:organisation	<http://data.lblod.info/id/fracties/6736F9FFE22C1C199C5D1472> ,
+		ns1:B06DFFEA-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/13d67066-0da5-4f8f-ad1c-543e6aa48b1d>	ns0:organisation	<http://data.lblod.info/id/fracties/6737B1EC878066AAD2F84067> ,
+		ns1:B06DFFDF-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/1cadacf5-1e3e-405c-9ea6-c706e0466fa7>	ns0:organisation	<http://data.lblod.info/id/fracties/67814A2AFF8E211506E893B8> ,
+		ns1:B06E0309-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/33a7fb77-d8ee-4cba-9ea6-65dc7e854677>	ns0:organisation	<http://data.lblod.info/id/fracties/67335F19D2F339806D122631> ,
+		ns1:B0766368-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/868ca4d8-b8aa-4341-9cd1-b6a8f7550dcf>	ns0:organisation	ns1:B000D333-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F563E0C2BDDC7570104D5> .
+<http://data.lblod.info/id/lidmaatschappen/89b619f5-abd1-4217-b984-c0b0d185e279>	ns0:organisation	<http://data.lblod.info/id/fracties/6736F9FFE22C1C199C5D1472> ,
+		ns1:B06DFFEA-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:a78dbe9b-2359-4bb0-8705-249504c49b47	ns0:organisation	<http://data.lblod.info/id/fracties/672499C7FF201E5A13DF78EB> ,
+		ns1:B07B9A2D-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:a7bd9aa0-19ed-43ed-a671-fcc8c8f8fa2e	ns0:organisation	ns1:B06E031C-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67814A32FF8E211506E893BB> .
+ns2:bdf8e8b6-ebd9-4a8e-808a-d0f49264ff83	ns0:organisation	<http://data.lblod.info/id/fracties/67443B7E2488F439F82A1117> ,
+		ns1:B06E00A7-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		ns1:B06E043F-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6740616F3AEE0EF0252D928D> .
+ns2:e4395d2c-38c5-4944-aa33-301c5f930cb1	ns0:organisation	<http://data.lblod.info/id/fracties/6736F9FFE22C1C199C5D1472> ,
+		ns1:B06DFFEA-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/7e49be53-437c-4eaa-863f-5a611eb143aa>	ns0:organisation	<http://data.lblod.info/id/fracties/6736F9FFE22C1C199C5D1472> ,
+		ns1:B06DFFEA-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/7e68a2a5-c969-4fd0-8f69-16426e79f36c>	ns0:organisation	ns1:B07B9A2D-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/672499C7FF201E5A13DF78EB> .
+<http://data.lblod.info/id/lidmaatschappen/9460abdd-b4d6-401e-b831-54d1a01d534e>	ns0:organisation	ns1:B0766020-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67867D04FF8E211506E893C6> .
+ns2:b0dc4756-11bc-4ffb-be3d-f19976facd64	ns0:organisation	ns1:B081359B-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/673F0DD306748E4ACD3ACE13> .
+ns2:d45e9190-e97b-4b7d-9398-05a71cbf2df1	ns0:organisation	<http://data.lblod.info/id/fracties/67443B842488F439F82A1118> ,
+		<http://data.lblod.info/id/fracties/674061723AEE0EF0252D928F> ,
+		ns1:B06E00A6-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		ns1:B06E00A8-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/050D30B1-DCC6-11EF-BC01-8152F78DE954>	ns0:organisation	ns1:B0766020-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67867D04FF8E211506E893C6> .
+<http://data.lblod.info/id/lidmaatschappen/0d274253-bf0e-4cf5-ad49-2254843cb309>	ns0:organisation	<http://data.lblod.info/id/fracties/671F563E0C2BDDC7570104D5> ,
+		ns1:B000D333-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/45b4517e-d842-45c1-9db6-3a5658f95b71>	ns0:organisation	<http://data.lblod.info/id/fracties/671F760E0C2BDDC757010698> ,
+		ns1:B07B99F0-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/678E635CD78E586FA314EE7F>	ns0:organisation	ns1:B06DFFEA-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6736F9FFE22C1C199C5D1472> .
+<http://data.lblod.info/id/lidmaatschappen/9b234de1-5e60-4a86-a058-0ede55f3c4cc>	ns0:organisation	<http://data.lblod.info/id/fracties/673326F03B862019FED2B956> ,
+		ns1:B07B9505-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:a5f51e6f-30c9-4e0f-bd7d-862f1354a430	ns0:organisation	ns1:B06DFFDF-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6737B1EC878066AAD2F84067> .
+ns2:d1a3a013-8834-48c7-b6bc-eff5b81bf558	ns0:organisation	<http://data.lblod.info/id/fracties/673F0DD306748E4ACD3ACE13> ,
+		ns1:B081359B-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/383e236f-c66e-422a-951f-288c04701371>	ns0:organisation	<http://data.lblod.info/id/fracties/6728DEC9FF201E5A13DF7BAB> ,
+		ns1:B07B975E-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/24941832-0A51-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	<http://data.lblod.info/id/fracties/6728DEC9FF201E5A13DF7BAB> ,
+		ns1:B07B975E-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/6d5f0f26-cb9b-42ce-bf88-aec905be3340>	ns0:organisation	<http://data.lblod.info/id/fracties/67376A5C0FAA93A02E8D787D> ,
+		ns1:B08134BF-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/739dc066-3a3d-4e6b-8da1-ce89fe64b29b>	ns0:organisation	<http://data.lblod.info/id/fracties/673DF90E3E441364E16DDEB7> ,
+		ns1:B06E04B6-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/0b5531e4-ccca-41e2-99aa-e3a9d3c99650>	ns0:organisation	ns1:B07B986A-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F72410C2BDDC757010685> .
+<http://data.lblod.info/id/lidmaatschappen/3d1a3f8f-2567-47a0-8065-8c8908bfc73d>	ns0:organisation	<http://data.lblod.info/id/fracties/674050893AEE0EF0252D9261> ,
+		ns1:B06E02A5-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/8759ac85-a1e1-4e18-89b3-455e872ddb64>	ns0:organisation	<http://data.lblod.info/id/fracties/671F6EE40C2BDDC757010644> ,
+		ns1:B07B96A8-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:ca48fe57-60a0-408c-97ba-61719efa48e8	ns0:organisation	<http://data.lblod.info/id/fracties/67443B842488F439F82A1118> ,
+		ns1:B06E00A6-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		ns1:B06E00A8-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/674061723AEE0EF0252D928F> .
+ns2:de07e4f4-994c-490b-a4f2-b75b324f7430	ns0:organisation	ns1:B06E0326-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67374BF0274DE4C74A9FE55A> .
+ns2:e5eebf5e-3fd8-4208-b195-c63820d02c8f	ns0:organisation	<http://data.lblod.info/id/fracties/6721F434FDAA900F9C5408DC> ,
+		ns1:B000D4F4-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/12a70d2a-7f93-448e-91c3-3022fde0a75e>	ns0:organisation	ns1:B06E01FB-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F90620C2BDDC75701077D> .
+<http://data.lblod.info/id/lidmaatschappen/5e8e23b9-99af-4d8f-96b7-4b314be21f2c>	ns0:organisation	<http://data.lblod.info/id/fracties/67867D04FF8E211506E893C6> ,
+		ns1:B0766020-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/669566b6-2951-437b-bf29-2e99c08a505f>	ns0:organisation	<http://data.lblod.info/id/fracties/67814A2AFF8E211506E893B8> ,
+		ns1:B06E0309-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/810a4e0e-ca11-477b-8981-8414a9d9cbaa>	ns0:organisation	<http://data.lblod.info/id/fracties/67867D04FF8E211506E893C6> ,
+		ns1:B0766020-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:b09bdbb9-7e2b-4561-90bf-54e3322b5db3	ns0:organisation	ns1:B07B97F3-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6733415E3B862019FED2B9BB> .
+ns2:da1f795c-0f69-44cf-b30b-f8e13c57cbec	ns0:organisation	ns1:B07B96A8-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F6EE40C2BDDC757010644> .
+<http://data.lblod.info/id/lidmaatschappen/5a985888-f583-4a53-b9a6-f4640d4ebe04>	ns0:organisation	<http://data.lblod.info/id/fracties/67443B842488F439F82A1118> ,
+		ns1:B06E00A6-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		ns1:B06E00A8-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/674061723AEE0EF0252D928F> .
+ns2:e4a9d80a-7f48-4c2b-b6d8-433cb590aa33	ns0:organisation	<http://data.lblod.info/id/fracties/671F724D0C2BDDC757010688> ,
+		ns1:B07660AD-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/63083093-f8a4-4ff9-933e-5ed86dda282a>	ns0:organisation	<http://data.lblod.info/id/fracties/673C92C3936DCE1D998C0A22> ,
+		ns1:B000D3D2-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/288dd506-fe74-4e23-8959-1d766c0a0c8f>	ns0:organisation	ns1:B07B978F-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671B4CF50C2BDDC757010369> .
+<http://data.lblod.info/id/lidmaatschappen/532026ec-8575-43be-b5b5-4ba91f8c44ef>	ns0:organisation	<http://data.lblod.info/id/fracties/6736F9FFE22C1C199C5D1472> ,
+		ns1:B06DFFEA-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/56ee1aee-f62c-4c7f-9606-166c08e536bc>	ns0:organisation	<http://data.lblod.info/id/fracties/673F30FD9CF860BDE8A8BBCA> ,
+		ns1:B06E04E8-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/678942CFD78E586FA314EE6E>	ns0:organisation	<http://data.lblod.info/id/fracties/67814A32FF8E211506E893BB> ,
+		ns1:B06E031C-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/6c9df494-43ef-4016-9b6d-5cdca6a981fb>	ns0:organisation	<http://data.lblod.info/id/fracties/671B4CF50C2BDDC757010369> ,
+		ns1:B07B978F-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/739cc921-db61-48c2-9353-a1d9b9b25f69>	ns0:organisation	<http://data.lblod.info/id/fracties/67443B842488F439F82A1118> ,
+		<http://data.lblod.info/id/fracties/674061723AEE0EF0252D928F> ,
+		ns1:B06E00A6-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		ns1:B06E00A8-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/80f60104-a451-427d-8f5e-4967f8bef758>	ns0:organisation	ns1:B08134F1-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67375C730FAA93A02E8D7837> .
+<http://data.lblod.info/id/lidmaatschappen/858d9320-4cc9-4576-9fb5-9a05bda58047>	ns0:organisation	ns1:B06E031C-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67814A32FF8E211506E893BB> .
+ns2:ae886d30-d925-45d8-a58c-04376d3f034c	ns0:organisation	<http://data.lblod.info/id/fracties/673F0DD306748E4ACD3ACE13> ,
+		ns1:B081359B-5638-11F0-9EC8-EAA73EBAC1A7 .
+ns2:b523c1b7-0def-49cb-b2ad-99b4fd269319	ns0:organisation	ns1:B06E0309-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67814A2AFF8E211506E893B8> .
+ns2:c0da1fc9-7794-4a94-96b1-7978327f68eb	ns0:organisation	ns1:B06E01C8-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/671F7C2A0C2BDDC7570106A7> .
+ns2:cc46133e-9050-49c2-a507-1d21aa94c76f	ns0:organisation	<http://data.lblod.info/id/fracties/67443B7E2488F439F82A1117> ,
+		<http://data.lblod.info/id/fracties/6740616F3AEE0EF0252D928D> ,
+		ns1:B06E043F-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		ns1:B06E00A7-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/6cecc993-afbc-4b62-8c98-dc1f37ed3f40>	ns0:organisation	<http://data.lblod.info/id/fracties/671F563E0C2BDDC7570104D5> ,
+		ns1:B000D333-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/5fc90f02-95b2-4bf3-b009-365f4546c86e>	ns0:organisation	ns1:B07B975E-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6728DEC9FF201E5A13DF7BAB> .
+<http://data.lblod.info/id/lidmaatschappen/7b3b5f80-9b42-4856-87c1-f2448482a3f2>	ns0:organisation	ns1:B0813356-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6744866CE204328242FA8C2A> .
+<http://data.lblod.info/id/lidmaatschappen/2fed9236-3b8f-4078-8b4e-c49551ea8e56>	ns0:organisation	ns1:B0813356-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6744866CE204328242FA8C2A> .
+ns2:aa1af229-888f-4690-9b65-f4c9834214c7	ns0:organisation	ns1:B0765B8F-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/67447F1AE204328242FA8C23> .
+<http://data.lblod.info/id/lidmaatschappen/4B7FC43C-0A51-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	ns1:B07B975E-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6728DEC9FF201E5A13DF7BAB> .
+<http://data.lblod.info/id/lidmaatschappen/1B9EEFBC-0AF2-11F0-9EC8-EAA73EBAC1A7>	ns0:organisation	ns1:B07B975E-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/6728DEC9FF201E5A13DF7BAB> .
+ns2:e62bf1e1-1c32-41b6-a0b2-9273caaba7a9	ns0:organisation	<http://data.lblod.info/id/fracties/67208ED88C045FAC2C1D6F34> ,
+		ns1:B0765DDC-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/5e7dcbbd-9fba-49b4-b040-32c96cb2bfa4>	ns0:organisation	ns1:B0765A26-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/672386C3AE5F6D098DC00878> .
+<http://data.lblod.info/id/lidmaatschappen/2d4fb124-d2ab-4196-8afa-090328ae3eb6>	ns0:organisation	<http://data.lblod.info/id/fracties/671F44630C2BDDC757010452> ,
+		ns1:B000D595-5638-11F0-9EC8-EAA73EBAC1A7 .
+<http://data.lblod.info/id/lidmaatschappen/79c93286-5239-4d6b-ade6-39ad65c81c8c>	ns0:organisation	ns1:B0813362-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/673F2E219CF860BDE8A8BBC6> .
+ns2:cdd272bd-df49-4641-bfc2-7ec00e3cbf1b	ns0:organisation	ns1:B000D3D2-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		<http://data.lblod.info/id/fracties/673C92C3936DCE1D998C0A22> .
+<http://data.lblod.info/id/lidmaatschappen/7759057a-00f3-4987-a4c0-ed68a8cbb94f>	ns0:organisation	<http://data.lblod.info/id/fracties/674061723AEE0EF0252D928F> ,
+		<http://data.lblod.info/id/fracties/67443B842488F439F82A1118> ,
+		ns1:B06E00A6-5638-11F0-9EC8-EAA73EBAC1A7 ,
+		ns1:B06E00A8-5638-11F0-9EC8-EAA73EBAC1A7 .

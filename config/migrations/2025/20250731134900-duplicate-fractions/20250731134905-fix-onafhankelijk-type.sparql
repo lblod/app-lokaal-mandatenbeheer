@@ -1,0 +1,34 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+DELETE {
+  GRAPH ?g {
+    ?f ext:isFractietype ?oldtype.
+    ?f dct:modified ?oldMod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?f ext:isFractietype <http://data.vlaanderen.be/id/concept/Fractietype/Onafhankelijk>.
+    ?f dct:modified ?now.
+  }
+}
+WHERE {
+  graph ?g {
+    ?f a mandaat:Fractie.
+    ?f <https://www.w3.org/ns/regorg#legalName> ?name.
+    OPTIONAL {
+      ?f ext:isFractietype ?oldtype.
+    }
+    OPTIONAL {
+      ?f dct:modified ?oldMod.
+    }
+    BIND(NOW() AS ?now)
+    FILTER NOT EXISTS {
+      ?f ext:isFractietype <http://data.vlaanderen.be/id/concept/Fractietype/Onafhankelijk>.
+    }
+    FILTER(?name = "Onafhankelijk")
+  }
+  ?g ext:ownedBy ?someone.
+}

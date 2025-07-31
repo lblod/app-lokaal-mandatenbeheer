@@ -1,0 +1,78 @@
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX org: <http://www.w3.org/ns/org#>
+DELETE {
+  GRAPH ?g {
+    ?l dct:modified ?oldMod.
+    ?l org:organisation ?old.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?l dct:modified ?now.
+    ?l org:organisation ?new.
+  }
+}
+WHERE {
+  VALUES (?old ?new) {
+    (<http://data.lblod.info/id/fracties/c25cc9c9-2836-4c8a-a6cb-a4b80b77e3ae> <http://data.lblod.info/id/fracties/fe6ba604-02b7-4626-a232-977d3a00741f>)
+    (<http://data.lblod.info/id/fracties/674061723AEE0EF0252D928F> <http://data.lblod.info/id/fracties/67443B842488F439F82A1118>)
+    (<http://data.lblod.info/id/fracties/5F4C288DF9D3020008000AC3> <http://data.lblod.info/id/fracties/8e53abae5740bd6f64f13892b7b499deaec13bacce4104205c6f09f8b33b0ad8>)
+    (<http://data.lblod.info/id/fracties/5CD3D836D5BECA000900002C> <http://data.lblod.info/id/fracties/60801D27FC62020008000282>)
+    (<http://data.lblod.info/id/fracties/654CE999B1228B3021C4A71B> <http://data.lblod.info/id/fracties/5C9CC616D5BECA000900022E>)
+    (<http://data.lblod.info/id/fracties/6740616F3AEE0EF0252D928D> <http://data.lblod.info/id/fracties/67443B7E2488F439F82A1117>)
+    (<http://data.lblod.info/id/fracties/5b49ce79-63a2-40fa-9b25-7447971b85c3> <http://data.lblod.info/id/fracties/60CB3195CA2C91000800015C>)
+    (<http://data.lblod.info/id/fracties/605DD0629006E90008000119> <http://data.lblod.info/id/fracties/5C3AEE7557753A000900003A>)
+    (<http://data.lblod.info/id/fracties/654CE4EDB1228B3021C4A709> <http://data.lblod.info/id/fracties/5C3C7EA457753A00090003D4>)
+    (<http://data.lblod.info/id/fracties/605DCFC19006E90008000111> <http://data.lblod.info/id/fracties/5C386E2057753A0009000361>)
+  }
+  GRAPH ?g {
+    ?l org:organisation ?old.
+    OPTIONAL {
+      ?l dct:modified ?oldMod.
+    }
+    BIND(NOW() AS ?now)
+  }
+  ?g ext:ownedBy ?someone.
+};
+
+DELETE {
+  GRAPH ?g {
+    ?f ?p ?o.
+    ?oo ?pp ?f.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?f a astreams:Tombstone.
+    ?f dct:modified ?now .
+    ?f astreams:deleted ?now .
+    ?f astreams:formerType mandaat:Fractie .
+    ?f owl:sameAs <http://data.lblod.info/id/fracties/674456702488F439F82A116C> .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    VALUES ?f {
+      <http://data.lblod.info/id/fracties/c25cc9c9-2836-4c8a-a6cb-a4b80b77e3ae>
+      <http://data.lblod.info/id/fracties/674061723AEE0EF0252D928F>
+      <http://data.lblod.info/id/fracties/5F4C288DF9D3020008000AC3>
+      <http://data.lblod.info/id/fracties/5CD3D836D5BECA000900002C>
+      <http://data.lblod.info/id/fracties/654CE999B1228B3021C4A71B>
+      <http://data.lblod.info/id/fracties/6740616F3AEE0EF0252D928D>
+      <http://data.lblod.info/id/fracties/5b49ce79-63a2-40fa-9b25-7447971b85c3>
+      <http://data.lblod.info/id/fracties/605DD0629006E90008000119>
+      <http://data.lblod.info/id/fracties/654CE4EDB1228B3021C4A709>
+      <http://data.lblod.info/id/fracties/605DCFC19006E90008000111>
+    }
+    ?f ?p ?o.
+    OPTIONAL {
+      ?oo ?pp ?f.
+    }
+  }
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+}

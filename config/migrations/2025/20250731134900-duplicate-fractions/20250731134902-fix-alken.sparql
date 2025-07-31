@@ -1,0 +1,25 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g {
+    ?l dct:modified ?oldMod.
+    ?l org:organisation <http://data.lblod.info/id/fracties/67446C0C2488F439F82A1170>.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?l dct:modified ?now.
+    ?l org:organisation <http://data.lblod.info/id/fracties/674456702488F439F82A116C>.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?l org:organisation <http://data.lblod.info/id/fracties/67446C0C2488F439F82A1170>.
+    OPTIONAL {
+      ?l dct:modified ?oldMod.
+    }
+    BIND(NOW() AS ?now)
+  }
+  ?g ext:ownedBy ?someone.
+}

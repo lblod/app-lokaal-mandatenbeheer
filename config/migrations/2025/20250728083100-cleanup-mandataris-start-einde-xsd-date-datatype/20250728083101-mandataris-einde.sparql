@@ -11,7 +11,7 @@ DELETE {
 }
 INSERT {
   GRAPH ?g {
-    ?mandataris mandaat:einde ?eindeWithTime .
+    ?mandataris mandaat:einde ?eindeDateTime .
     ?mandataris dct:modified ?now .
   }
 }
@@ -22,8 +22,26 @@ WHERE {
     OPTIONAL {
       ?mandataris dct:modified ?modified .
     }
+    FILTER(
+            datatype(?einde) = xsd:date &&
+                    ?einde IN(
+                      """2025-01-22"""^^xsd:date,
+                      """2030-12-30"""^^xsd:date,
+                      """2024-12-05"""^^xsd:date,
+                      """2025-01-29"""^^xsd:date,
+                      """2025-01-28"""^^xsd:date,
+                      """2019-01-03"""^^xsd:date,
+                      """2024-12-01"""^^xsd:date,
+                      """2025-01-20"""^^xsd:date,
+                      """2019-01-02"""^^xsd:date,
+                      """2025-01-27"""^^xsd:date,
+                      """2024-12-02"""^^xsd:date,
+                      """2024-12-04"""^^xsd:date,
+                      """2025-01-20"""^^xsd:date,                                                       
+                      """2025-01-20T23:00:00.000Z"""^^xsd:date
+                    ))
     BIND(substr(str(?einde), 1, 10) as ?eindeAsDateString)
-    BIND(strdt(CONCAT(?eindeAsDateString, "T23:59:59Z"), xsd:dateTime) AS ?eindeWithTime)
+    BIND(strdt(CONCAT(?eindeAsDateString, "T22:59:59Z"), xsd:dateTime) AS ?eindeDateTime)
     BIND(NOW() as ?now)
   }
-} 
+}

@@ -309,6 +309,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://cache/report-statuses/")
   end
 
+  match "/silenced-validations/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/silenced-validations/")
+  end
+
   #################################################################
   # Login logic
   #################################################################

@@ -153,6 +153,7 @@
   ("skos:Concept" -> _)
   ("sh:ValidationResult" -> _)
   ("sh:ValidationReport" -> _)
+  ("ext:SilencedValidation" -> _)
   ("ext:ReportStatus" -> _))
 
 (define-graph besluiten ("http://mu.semte.ch/graphs/besluiten-consumed")

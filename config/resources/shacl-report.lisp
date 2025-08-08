@@ -39,3 +39,15 @@
   :on-path "validationresults"
 )
 
+(define-resource silenced-validation () ;; Subclass of m8g:PublicOrganisation, which is a subclass of dct:Agent
+  :class (s-prefix "ext:SilencedValidation")
+  :properties `((:validation-key :string ,(s-prefix "ext:validationKey"))
+                (:focus-node-id :string ,(s-prefix "lmb:targetIdOfFocusNode"))
+                (:source-shape :string ,(s-prefix "sh:sourceShape"))
+                (:silenced-at :datetime ,(s-prefix "dct:created")))
+  :has-one `((bestuurseenheid :via ,(s-prefix "dct:creator")
+                                    :as "bestuurseenheid"))
+  :resource-base (s-url "http://data.lblod.info/id/silenced-validations/")
+  :features '(include-uri)
+  :on-path "silenced-validations"
+)

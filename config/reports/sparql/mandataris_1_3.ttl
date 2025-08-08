@@ -43,7 +43,7 @@ sh:sparql [
   where {
     $this a besluit:Bestuursorgaan .
     # pick one date where the count is not between min and max (inclusive)
-    { select distinct $this ?mandaat ?mandatarisCount ?mandaatLabel ?min ?max MIN(?processedDateToCheck) AS ?processedDateToCheck where {
+    { select distinct $this ?mandaat ?mandatarisCount ?mandaatLabel ?min ?max ?processedDateToCheck where {
       {
         # count all persons per mandate for each of these 'edge' dates
         SELECT $this ?mandaat ?simplifiedDateToCheck (COUNT(DISTINCT(?person)) AS ?mandatarisCount) WHERE {
@@ -96,7 +96,7 @@ sh:sparql [
       BIND(bif:dateadd('hour', 24, strdt(substr(str(?simplifiedDateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
       FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
 
-    } GROUP BY $this ?mandaat ?mandatarisCount ?mandaatLabel ?min ?max}
+    } }
     BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max)) as ?value)
   }
     """ ;

@@ -1,0 +1,28 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+DELETE {
+  GRAPH ?g {
+    ?s lmb:linkToBesluit ?besluit.
+    ?s dct:modified ?old.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s dct:modified ?now.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a mandaat:Mandataris.
+    ?s lmb:linkToBesluit ?besluit.
+    ?s lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/d3b12468-3720-4cb0-95b4-6aa2996ab188>. #niet bekrachtigd
+    OPTIONAL {
+      ?s dct:modified ?old
+    }
+  }
+  BIND(NOW() AS ?now)
+  ?g ext:ownedBy ?someone.
+
+}

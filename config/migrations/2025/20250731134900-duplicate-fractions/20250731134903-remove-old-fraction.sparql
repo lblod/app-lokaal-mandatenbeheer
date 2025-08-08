@@ -1,0 +1,34 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX astreams: <http://www.w3.org/ns/activitystreams#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?f ?p ?o.
+    ?oo ?pp ?f.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?f a astreams:Tombstone.
+    ?f dct:modified ?now .
+    ?f astreams:deleted ?now .
+    ?f astreams:formerType mandaat:Fractie .
+    ?f owl:sameAs <http://data.lblod.info/id/fracties/674456702488F439F82A116C> .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    VALUES ?f {
+      <http://data.lblod.info/id/fracties/67446C0C2488F439F82A1170>
+    }
+    ?f ?p ?o.
+    OPTIONAL {
+      ?oo ?pp ?f.
+    }
+  }
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+}

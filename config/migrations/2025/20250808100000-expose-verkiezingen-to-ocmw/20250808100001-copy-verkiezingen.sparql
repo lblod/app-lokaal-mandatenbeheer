@@ -1,0 +1,30 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX org: <http://www.w3.org/ns/org#>
+INSERT {
+  GRAPH ?ocmwG {
+    ?verkiezing mandaat:steltSamen ?gemeenteOrgInTijd.
+    ?verkiezing ext:copiedForOCMW ?ocmw.
+    ?verkiezing mandaat:steltSamen ?ocmwOrgInTijd.
+  }
+} WHERE {
+  VALUES ?gemeente {
+    <http://data.lblod.info/id/bestuurseenheden/dfd76f1550853dc2b4bc8d763c7b378c8c8c81588dd4ba3e0ef05cfd0a456927> # Herstappe
+    <http://data.lblod.info/id/bestuurseenheden/1086df7c6c150e427fc56e2239eed2b7e2d9d4a97abb24c00e951ec89f9bcbec> # Lo-Reninge
+  } 
+  ?gemeente a besluit:Bestuurseenheid .
+  ?ocmw a besluit:Bestuurseenheid .
+  ?gemeente skos:prefLabel ?name.
+  ?ocmw skos:prefLabel ?name.
+  ?gemeenteOrgInTijd mandaat:isTijdspecialisatieVan / besluit:bestuurt ?gemeente.
+  ?gemeenteOrgInTijd lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> .
+    ?ocmwOrg besluit:bestuurt ?ocmw.
+    ?ocmwOrg besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> .
+    ?ocmwOrgInTijd mandaat:isTijdspecialisatieVan ?ocmwOrg.
+    ?ocmwOrgInTijd lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> .
+      ?ocmwG ext:ownedBy ?ocmw .
+  ?verkiezing mandaat:steltSamen ?gemeenteOrgInTijd.
+}

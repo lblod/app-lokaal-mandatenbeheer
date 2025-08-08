@@ -1,0 +1,38 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX dct: <http://purl.org/dc/terms/>
+DELETE {
+  GRAPH ?g {
+    ?fractie dct:modified ?modified .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?fractie ext:startDate ?startBoi .
+    ?fractie ext:endDate ?eindeBoi .
+    ?fractie dct:modified ?now .
+  } 
+}
+WHERE {
+  GRAPH ?g {
+    ?fractie a mandaat:Fractie .
+    ?fractie ext:isFractietype <http://data.vlaanderen.be/id/concept/Fractietype/Samenwerkingsverband> .
+    ?fractie dct:modified ?modified .
+    ?fractie org:memberOf ?boi .
+    ?boi lmb:heeftBestuursperiode ?bestuursperiode .
+  }
+  ?g ext:ownedBy ?eenheid .
+  {{
+    SELECT ?fractie ?boi ?startBoi ?eindeBoi
+    WHERE {
+      ?fractie org:memberOf ?boi .
+      ?boi mandaat:bindingStart ?startBoi .
+      OPTIONAL {
+        ?boi mandaat:bindingEinde ?eindeBoi .
+      }
+    }
+  }}
+  BIND(NOW() as ?now)
+}

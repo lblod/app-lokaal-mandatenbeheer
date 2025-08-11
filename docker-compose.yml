@@ -289,7 +289,7 @@ services:
   # VENDOR ENDPOINTS
   ##############################################################################
   vendor-login:
-    image: lblod/vendor-login-service:1.1.0
+    image: lblod/vendor-login-service:1.3.0
     restart: always
     labels:
       - "logging=true"

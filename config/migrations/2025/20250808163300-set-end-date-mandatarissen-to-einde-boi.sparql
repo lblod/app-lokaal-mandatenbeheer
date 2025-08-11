@@ -7,7 +7,7 @@ PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 
 DELETE {
   GRAPH ?g {
-    ?mandataris dct:modified ?now .
+    ?mandataris dct:modified ?modified .
     ?mandataris mandaat:einde ?mandatarisEinde .
   }
 }
@@ -25,6 +25,9 @@ WHERE {
   GRAPH ?g  {
     ?mandataris mandaat:einde ?mandatarisEinde .
     ?mandataris org:holds ?mandaat .
+    OPTIONAL {
+      ?mandataris dct:modified ?modified .
+    }
   }
   ?g ext:ownedBy ?eenheid .
   FILTER (?period != bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 && ?mandatarisEinde > ?boiEinde) # 2024 - heden

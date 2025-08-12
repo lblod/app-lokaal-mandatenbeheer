@@ -9,25 +9,26 @@ PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX dct: <http://purl.org/dc/terms/>
 
 DELETE {
- GRAPH <http://mu.semte.ch/graphs/public> {
+  GRAPH <http://mu.semte.ch/graphs/public> {
     ?boiP mandaat:bindingEinde ?bindingEinde .
     ?boiP dct:modified ?modified .
- }
+  }
 }
 INSERT {
- GRAPH <http://mu.semte.ch/graphs/public> {
+  GRAPH <http://mu.semte.ch/graphs/public> {
     ?boiP mandaat:bindingEinde ?startCurrentPeriod .
     ?boiP dct:modified ?now .
- }
+  }
 }
 WHERE {
   ?bestuursorgaan besluit:classificatie / skos:inScheme extlmb:gemeente-bestuursorgaan-codes .
 
   ?boi mandaat:isTijdspecialisatieVan ?bestuursorgaan .
   ?boi lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2024 - heden
+
   GRAPH <http://mu.semte.ch/graphs/public> {
     ?boi mandaat:bindingStart ?startCurrentPeriod .
-  }  
+  } 
   ?boiP mandaat:isTijdspecialisatieVan ?bestuursorgaan .
   ?boiP lmb:heeftBestuursperiode bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca . # 2019 - 2024
 
@@ -36,7 +37,6 @@ WHERE {
       ?boiP mandaat:bindingEinde ?bindingEinde .
     }
   }
-
   OPTIONAL {
     ?boiP dct:modified ?modified .
   }

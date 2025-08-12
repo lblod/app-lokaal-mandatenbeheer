@@ -1,0 +1,20 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingStart ?oldStart .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingStart ?newStart .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/lmb-1603-new-binding-start-2025> {
+    ?boi mandaat:bindingStart ?newStart .
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingStart ?oldStart .
+  }
+}

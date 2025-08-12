@@ -1,0 +1,22 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingEinde ?oldEinde .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingEinde ?newEinde .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp/lmb-1603-new-binding-einde-2019> {
+    ?boi mandaat:bindingEinde ?newEinde .
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingEinde ?oldEinde .
+  }
+  BIND(NOW() AS ?now)
+}

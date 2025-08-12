@@ -29,7 +29,7 @@ WHERE {
     <http://lblod.data.gift/vocabularies/lmb/minAantalHouders>, # <- but this property remains on Mandaat
     <http://mu.semte.ch/vocabularies/ext/deeltBestuurVan>,
     <http://lblod.data.gift/vocabularies/lmb/faciliteitenGemeente>,
-    <http://data.vlaanderen.be/ns/mandaat#bindingStart>,
-    <http://data.vlaanderen.be/ns/mandaat#bindingEinde>
+    <http://data.vlaanderen.be/ns/mandaat#bindingStart>, # Adding bindingStart & bindingEinde to this list as these values.. 
+    <http://data.vlaanderen.be/ns/mandaat#bindingEinde> # are set by the first mandataris start date in the period
   ))
 }

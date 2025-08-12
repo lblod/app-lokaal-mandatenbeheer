@@ -35,7 +35,6 @@ WHERE {
   OPTIONAL {
     ?boi dct:modified ?modified .
   }
-
   {{
     SELECT DISTINCT ?boi (MIN(?start) AS ?earliestStart) 
     WHERE {

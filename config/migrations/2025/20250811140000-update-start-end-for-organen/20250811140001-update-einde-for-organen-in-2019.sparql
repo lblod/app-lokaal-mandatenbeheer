@@ -25,14 +25,18 @@ WHERE {
 
   ?boi mandaat:isTijdspecialisatieVan ?bestuursorgaan .
   ?boi lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2024 - heden
-  ?boi mandaat:bindingStart ?startCurrentPeriod .
-      
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingStart ?startCurrentPeriod .
+  }  
   ?boiP mandaat:isTijdspecialisatieVan ?bestuursorgaan .
   ?boiP lmb:heeftBestuursperiode bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca . # 2019 - 2024
 
-  OPTIONAL {
-    ?boiP mandaat:bindingEinde ?bindingEinde .
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    OPTIONAL {
+      ?boiP mandaat:bindingEinde ?bindingEinde .
+    }
   }
+
   OPTIONAL {
     ?boiP dct:modified ?modified .
   }

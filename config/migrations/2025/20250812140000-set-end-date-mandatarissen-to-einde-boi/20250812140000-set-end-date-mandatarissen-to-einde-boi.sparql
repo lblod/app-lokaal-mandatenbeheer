@@ -1,0 +1,37 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris dct:modified ?modified .
+    ?mandataris mandaat:einde ?mandatarisEinde .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris dct:modified ?now .
+    ?mandataris mandaat:einde ?boiEinde .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingEinde ?boiEinde .
+  }
+  ?boi lmb:heeftBestuursperiode bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca . # 2019 - 2024
+  ?boi mandaat:isTijdspecialisatieVan ?orgaan .
+  ?boi org:hasPost ?mandaat .
+  GRAPH ?g  {
+    ?mandataris mandaat:einde ?mandatarisEinde .
+    ?mandataris org:holds ?mandaat .
+    OPTIONAL {
+      ?mandataris dct:modified ?modified .
+    }
+  }
+  ?g ext:ownedBy ?eenheid .
+  FILTER (?mandatarisEinde > ?boiEinde)
+  BIND(NOW() AS ?now)
+}

@@ -18,8 +18,10 @@ INSERT {
   }
 }
 WHERE {
-  ?boi mandaat:bindingEinde ?boiEinde .
-  ?boi lmb:heeftBestuursperiode ?period .
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?boi mandaat:bindingEinde ?boiEinde .
+  }
+  ?boi lmb:heeftBestuursperiode bestuursperiode:a2b977a3-ce68-4e42-80a6-4397f66fc5ca . # 2019 - 2024
   ?boi mandaat:isTijdspecialisatieVan ?orgaan .
   ?boi org:hasPost ?mandaat .
   GRAPH ?g  {
@@ -30,6 +32,6 @@ WHERE {
     }
   }
   ?g ext:ownedBy ?eenheid .
-  FILTER (?period != bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 && ?mandatarisEinde > ?boiEinde) # 2024 - heden
+  FILTER (?mandatarisEinde > ?boiEinde)
   BIND(NOW() AS ?now)
 }

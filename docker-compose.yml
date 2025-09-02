@@ -155,7 +155,7 @@ services:
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.9.0
+    image: lblod/mandataris-service:0.9.1
     labels:
       - "logging=true"
     restart: always
@@ -163,9 +163,9 @@ services:
     volumes:
       - ./data/files/burgemeester-benoemingen:/uploads
     environment:
-      # NOTIFICATION_CRON_PATTERN: 0 8 * * 1-5 disable for now
-      EMAIL_FROM_MANDATARIS_WITHOUT_DECISION: "lokaalmandatenbeheer@vlaanderen.be" # Must be the same as EMAIL_ADDRESS in deliver-email service
-      SEND_EMAIL_FOR_MANDATARIS_WITHOUT_DECISION: false
+      NOTIFICATION_CRON_PATTERN: 31 8 * * 1-5
+      EMAIL_FROM_MANDATARIS_WITHOUT_DECISION: "lokaalmandatenbeheer@abb.vlaanderen.be" # Must be the same as EMAIL_ADDRESS in deliver-email service
+      SEND_EMAIL_FOR_MANDATARIS_WITHOUT_DECISION: true
       BESLUIT_STAGING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as decision-ldes-client working graph
   concept-scheme:
     image: lblod/concept-scheme-service:0.0.2
@@ -310,7 +310,7 @@ services:
       MAILBOX_URI: "http://data.lblod.info/id/mailboxes/1"
       SECURE_CONNECTION: "true"
       EMAIL_PROTOCOL: "smtp"
-      EMAIL_ADDRESS: "lokaalmandatenbeheer@vlaanderen.be"
+      EMAIL_ADDRESS: "lokaalmandatenbeheer@abb.vlaanderen.be"
       EMAIL_PASSWORD: "myemailpassword"
       FROM_NAME: "Lokaal Mandatenbeheer"
       WELL_KNOWN_SERVICE: "Outlook365"

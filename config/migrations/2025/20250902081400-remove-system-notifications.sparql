@@ -1,0 +1,27 @@
+PREFIX nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
+PREFIX mailFolders: <http://data.lblod.info/id/mail-folders/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a ext:SystemNotification.
+    ?s ?p ?o.
+  }
+};
+DELETE {
+  GRAPH ?g {
+    ?mail ?p ?o .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mail a nmo:Email .
+    ?mail ?p ?o .
+  }
+}

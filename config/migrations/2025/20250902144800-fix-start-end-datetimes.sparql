@@ -1,0 +1,60 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE {
+  GRAPH ?g {
+    ?s dct:modified ?mod.
+    ?s mandaat:start ?start.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s dct:modified ?now.
+    ?s mandaat:start ?newstartTZ.
+  }
+}WHERE {
+  ?orgT org:hasPost ?mandaat.
+  ?orgT lmb:heeftBestuursperiode / mu:uuid """96efb929-5d83-48fa-bfbb-b98dfb1180c7""" .
+  graph ?g {
+    ?s org:holds ?mandaat.
+    ?s mandaat:start ?start.
+    ?s dct:modified ?mod.
+  }
+  FILTER (SECONDS(xsd:dateTime(STR(?start))) != 0 && SECONDS(xsd:dateTime(STR(?start))) != 59)
+  BIND(IF("2025-03-30" > STR(?start), -1, -2) AS ?offset)
+  BIND(bif:dateadd('hour', ?offset, xsd:dateTime(SUBSTR(STR(?start), 0, 10))) AS ?newstart)
+  BIND(xsd:dateTime(CONCAT(STR(?newstart),"Z")) AS ?newstartTZ)
+  BIND(NOW() AS ?now)
+  ?g ext:ownedBy ?someone.
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s dct:modified ?mod.
+    ?s mandaat:einde ?einde.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s dct:modified ?now.
+    ?s mandaat:einde ?newEindeTZ.
+  }
+} WHERE {
+  ?orgT org:hasPost ?mandaat.
+  ?orgT lmb:heeftBestuursperiode / mu:uuid """96efb929-5d83-48fa-bfbb-b98dfb1180c7""" .
+  graph ?g {
+    ?s org:holds ?mandaat.
+    ?s mandaat:einde ?einde.
+    ?s dct:modified ?mod.
+  }
+  FILTER (SECONDS(xsd:dateTime(STR(?einde))) != 0 && SECONDS(xsd:dateTime(STR(?einde))) != 59)
+  BIND(IF("2025-03-30" > STR(?einde), 23, 22) AS ?offset)
+  BIND(bif:dateadd('second', 3599, bif:dateadd('hour', ?offset, xsd:dateTime(SUBSTR(STR(?einde), 0, 10)))) AS ?newEinde)
+  BIND(xsd:dateTime(CONCAT(STR(?newEinde),"Z")) AS ?newEindeTZ)
+  BIND(NOW() AS ?now)
+  ?g ext:ownedBy ?someone.
+}

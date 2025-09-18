@@ -1,0 +1,29 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+    ?mandataris org:holds <http://data.lblod.info/id/mandaten/06bf0a8450048a458e306ec2b9639bf1cb5d5dad15c0d65caf5c10811c16ee2a> . # Toegevoegde Schepen
+    ?mandataris dct:modified ?modified .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandataris org:holds <http://data.lblod.info/id/mandaten/1ba0b2b260793ace3bf8425b22fd22622e2fcc0f805c14db10ac8194b227a988> . # Mandaat schepen
+    ?mandataris dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    VALUES ?mandataris { 
+      <http://data.lblod.info/id/mandatarissen/9d68ab2c-ebca-470a-926e-289054d2e448> # Toegevoegde schepen College van Burgemeester en Schepenen Antwerpen Els
+    }
+    ?mandataris org:holds <http://data.lblod.info/id/mandaten/06bf0a8450048a458e306ec2b9639bf1cb5d5dad15c0d65caf5c10811c16ee2a> . # Toegevoegde Schepen
+    OPTIONAL {
+      ?mandataris dct:modified ?modified .
+    }
+  }
+  ?g ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c> . # Gemeente Antwerpen
+  BIND(NOW() as ?now)
+}

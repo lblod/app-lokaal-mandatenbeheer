@@ -1,20 +1,22 @@
 CONSTRUCT {
-  ?s ?p ?o .
+  ?bestuursorgaan ?p ?o .
+  ?bestuursorgaan <http://data.vlaanderen.be/ns/besluit#classificatie> ?classificationCode .
 }
 WHERE {
-  ?s ?p ?o .
-  FILTER EXISTS {
-    ?s a ?type .
-    VALUES ?type {
-      <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>
-      <http://purl.org/dc/terms/Agent>
-      <http://www.w3.org/ns/org#Organization>
-      <http://data.vlaanderen.be/ns/mandaat#Mandaat>
-      <http://www.w3.org/ns/org#Post>
-    }
-  }
-  # These properties should be the same in file 'pass-without-voorzitter-bestuursorgaan-codes.sparql'
+  ?bestuursorgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> .
+  ?bestuursorgaan <http://data.vlaanderen.be/ns/besluit#classificatie> ?classificationCode .
+  ?bestuursorgaan ?p ?o .
+
+  FILTER(?classificationCode NOT IN(
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/e14fe683-e061-44a2-b7c8-e10cab4e6ed9>, # Voorzitter RMW 
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4c38734d-2cc1-4d33-b792-0bd493ae9fc2>, # Voorzitter GR 
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9> # Voorzitter BCSD 
+    )
+  )
+
+  # Got these properties from file 'pass-without-lmb-properties.sparql'
   FILTER (?p NOT IN (
+    <http://data.vlaanderen.be/ns/besluit#classificatie>, # Not an LMB property added this for only this query
     <http://www.w3.org/ns/adms#identifier>,
     <http://www.w3.org/ns/org#classification>,
     <http://mu.semte.ch/vocabularies/ext/voorbereidingVerborgen>,
@@ -33,3 +35,4 @@ WHERE {
     <http://data.vlaanderen.be/ns/mandaat#bindingEinde> # are set by the first mandataris start date in the period
   ))
 }
+

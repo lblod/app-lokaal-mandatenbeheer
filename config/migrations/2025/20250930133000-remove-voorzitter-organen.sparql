@@ -1,0 +1,23 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+  GRAPH ?g {
+    ?bestuursorgaan besluit:classificatie ?notAllowed .
+    ?bestuursorgaan ?p ?o .
+    ?boi <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?bestuursorgaan .
+    ?boi ?pp ?oo .
+  }
+}
+WHERE {
+  VALUES ?notAllowed {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/e14fe683-e061-44a2-b7c8-e10cab4e6ed9> # Voorzitter RMW
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4c38734d-2cc1-4d33-b792-0bd493ae9fc2> # Voorzitter GR
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9> # Voorzitter BCSD
+  }
+  GRAPH ?g {
+    ?bestuursorgaan besluit:classificatie ?notAllowed .
+    ?bestuursorgaan ?p ?o .
+    ?boi <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?bestuursorgaan .
+    ?boi ?pp ?oo .
+  }
+}

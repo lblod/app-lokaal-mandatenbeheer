@@ -214,6 +214,22 @@
       LIMIT 1"
 )
 
+(supply-allowed-group "logged-in-or-impersonating"
+  :parameters ("session_group")
+  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    SELECT DISTINCT ?session_group WHERE {
+      {
+        <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group.
+      } UNION {
+        <SESSION_ID> ext:originalSessionGroup/mu:uuid ?session_group.
+      }
+    }")
+
+(grant (read)
+  :to-graph (organization)
+  :for-allowed-group "logged-in-or-impersonating")
+
 (grant (read)
        :to-graph organization-mandatendatabank
        :for-allowed-group "vendor")

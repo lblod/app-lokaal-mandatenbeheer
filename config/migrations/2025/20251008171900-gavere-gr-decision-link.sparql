@@ -1,54 +1,43 @@
   PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
   PREFIX prov: <http://www.w3.org/ns/prov#>
-
+  PREFIX org: <http://www.w3.org/ns/org#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+  PREFIX eli: <http://data.europa.eu/eli/ontology#>
+  
   DELETE {
     GRAPH ?gRechtsgrond {
-      ?rechtsgrond prov:wasDerivedFrom ?link .
+     ?rechtsgrond ?gp ?go .
     }
   }
   INSERT {
     GRAPH ?gRechtsgrond {
-      ?rechtsgrond prov:wasDerivedFrom ?newLink .
+      ?newRechtsgrond a eli:LegalResource .
+      ?newRechtsgrond mandaat:bekrachtigtAanstellingVan ?mandataris .
+      ?newRechtsgrond prov:wasDerivedFrom ?newLink .
+      ?newRechtsgrond ext:isAddedThroughMigration true .
     }
   }
   WHERE {
-    VALUES ?mandataris  {
-      <http://data.lblod.info/id/mandatarissen/671FA79A8C045FAC2C1D6E37> # Pascale
-      <http://data.lblod.info/id/mandatarissen/671FA78F8C045FAC2C1D6E26> # Ankie D
-      <http://data.lblod.info/id/mandatarissen/671FA7988C045FAC2C1D6E34> # Christophe DB 
-      <http://data.lblod.info/id/mandatarissen/671FA79B8C045FAC2C1D6E38> # Roland
-      <http://data.lblod.info/id/mandatarissen/671FA79C8C045FAC2C1D6E3A> # Christine
-      <http://data.lblod.info/id/mandatarissen/671FA7948C045FAC2C1D6E2D> # Peter
-      <http://data.lblod.info/id/mandatarissen/671FA7938C045FAC2C1D6E2C> # Karolien
-      <http://data.lblod.info/id/mandatarissen/671FA7918C045FAC2C1D6E28> # Nadine D
-      <http://data.lblod.info/id/mandatarissen/671FA7928C045FAC2C1D6E2A> # Veronique D
-      <http://data.lblod.info/id/mandatarissen/671FA7998C045FAC2C1D6E36> # Peggy
-      <http://data.lblod.info/id/mandatarissen/671FA7968C045FAC2C1D6E31> # Dennis D
-      <http://data.lblod.info/id/mandatarissen/671FA7928C045FAC2C1D6E2B> # Luc G
-      <http://data.lblod.info/id/mandatarissen/671FA78F8C045FAC2C1D6E25> # Charles H
-      <http://data.lblod.info/id/mandatarissen/671FA7918C045FAC2C1D6E29> # Hugo L
-      <http://data.lblod.info/id/mandatarissen/5bbce5c1-06ec-41bc-aaf5-fd3fa6110da7> # Steven
-      <http://data.lblod.info/id/mandatarissen/671FA7958C045FAC2C1D6E2F> # Tim
-      <http://data.lblod.info/id/mandatarissen/671FA79C8C045FAC2C1D6E39> # Stany
-      <http://data.lblod.info/id/mandatarissen/671FA7988C045FAC2C1D6E35> # Jean-Piere
-      <http://data.lblod.info/id/mandatarissen/671FA7948C045FAC2C1D6E2E> # Isabelle
-      <http://data.lblod.info/id/mandatarissen/671FA7908C045FAC2C1D6E27> # Davy
-      <http://data.lblod.info/id/mandatarissen/671FA7968C045FAC2C1D6E30> # Frans V
+    GRAPH ?g {
+      ?mandataris a mandaat:Mandataris .
+      ?mandataris mandaat:start """2024-12-01T23:00:00Z"""^^xsd:dateTime .
+      ?mandataris org:holds ?mandaat .
     }
-    VALUES (?oldLink ?newLink) {
+    ?boi org:hasPost ?mandaat .
+    ?boi mandaat:isTijdspecialisatieVan ?bestuursorgaan .
+    ?bestuursorgaan besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> . # Gemeenteraad
+    ?g ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/393a7495daffabe3dabd5d341673287cedc58485c3c8bc273cbd058e735dfee2> . # Gemeente Gavere
+
+    VALUES (?newRechtsgrond ?newLink) {
       (
-       """https://gavere-echo.cipalschaubroeck.be/raadpleegomgeving/zittingen/07ea11f2-a986-43bc-9c5a-836f7f5e79eb/besluitenlijst"""
+       <https://gavere-echo.cipalschaubroeck.be/id/besluiten/4e1d83d3-7a38-425b-81f2-619141a5a286> # Generated id
        """https://gavere-echo.cipalschaubroeck.be/raadpleegomgeving/zittingen/c5912094-829e-496c-8b70-eab84b2a3af7/besluitenlijst"""
-      )
+       )
     }
     GRAPH ?gRechtsgrond {
       ?rechtsgrond mandaat:bekrachtigtAanstellingVan|mandaat:bekrachtigtOntslagVan ?mandataris .
-      ?rechtsgrond prov:wasDerivedFrom ?link .
+      ?rechtsgrond ?gp ?go .
     }
-    FILTER(STR(?link) = ?oldLink)
-    GRAPH ?g {
-      ?mandataris a mandaat:Mandataris .
-    }
-    ?g ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/393a7495daffabe3dabd5d341673287cedc58485c3c8bc273cbd058e735dfee2> . # Gemeente Gavere
   }

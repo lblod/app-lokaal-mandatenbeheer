@@ -1,24 +1,12 @@
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX eli: <http://data.europa.eu/eli/ontology#>
-PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 DELETE {
   GRAPH ?gRechtsgrond {
     ?rechtsgrond ?gp ?go .
-  }
-}
-INSERT {
-  GRAPH ?gRechtsgrond {
-    ?newRechtsgrond a eli:LegalResource .
-    ?newRechtsgrond mu:uuid """4e1d83d3-7a38-425b-81f2-619141a5a286""" .
-    ?newRechtsgrond mandaat:bekrachtigtAanstellingVan ?mandataris .
-    ?newRechtsgrond prov:wasDerivedFrom ?newLink .
-    ?newRechtsgrond ext:isAddedThroughMigration true .
   }
 }
 WHERE {
@@ -32,14 +20,11 @@ WHERE {
   ?bestuursorgaan besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> . # Gemeenteraad
   ?g ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/393a7495daffabe3dabd5d341673287cedc58485c3c8bc273cbd058e735dfee2> . # Gemeente Gavere
 
-  VALUES (?newRechtsgrond ?newLink) {
-    (
-      <https://gavere-echo.cipalschaubroeck.be/id/besluiten/4e1d83d3-7a38-425b-81f2-619141a5a286> # Generated id
-      """https://gavere-echo.cipalschaubroeck.be/raadpleegomgeving/zittingen/c5912094-829e-496c-8b70-eab84b2a3af7/besluitenlijst"""
-      )
-  }
   GRAPH ?gRechtsgrond {
     ?rechtsgrond mandaat:bekrachtigtAanstellingVan|mandaat:bekrachtigtOntslagVan ?mandataris .
     ?rechtsgrond ?gp ?go .
+    FILTER(
+      ?rechtsgrond NOT IN(<https://gavere-echo.cipalschaubroeck.be/id/besluiten/e34164ec-4ed9-47ca-abf4-268dbdef9ff9>, <https://gavere-echo.cipalschaubroeck.be/id/besluiten/a28226b1-45cd-4a98-9bc2-1e1b980867f6>)
+    )
   }
 }

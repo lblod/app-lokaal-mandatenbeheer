@@ -16,8 +16,9 @@ export const interestingTypes = [
   "http://www.w3.org/ns/activitystreams#Tombstone",
 ];
 
-export const filterModifiedSubjects =
-  "?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?someone.";
+export const filterModifiedSubjects = `
+  ?g <http://mu.semte.ch/vocabularies/ext/ownedBy> ?someone.
+  ?h <http://mu.semte.ch/vocabularies/ext/ownedBy> ?someoneElse.`;
 
 export async function filterDeltas(changeSets: Changeset[]) {
   const modifiedPred = "http://purl.org/dc/terms/modified";

@@ -186,7 +186,9 @@ services:
     depends_on:
       - virtuoso
   modified:
-    image: lblod/track-modified-service:0.1.1
+    image: lblod/track-modified-service:0.2.0
+    environment:
+      CLEANUP_DUPLICATES_CRON: 16 * * * *
     labels:
       - "logging=true"
     volumes:

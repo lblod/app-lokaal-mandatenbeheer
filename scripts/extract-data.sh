@@ -28,16 +28,29 @@ WHERE {
 };" \
   | sed -n 's#^<*\(http[s]*://[^>]*\)>*$#\1#p' > bestuurseenheidGraphUris.txt
 
-
 dropStatements=()
+while IFS= read -r G; do
+  FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
+  dropStatements+=("DROP SILENT GRAPH <$G> ")
+done < bestuurseenheidGraphUris.txt
+totalGraphCount=${#dropStatements[@]}
+
+batchSize=10
+totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
+echo "Total graphs found: $totalGraphCount"
+echo "Batch size: $batchSize"
+echo "Total of batches: $totalBatches"
 
 echo "DROPPING GRAPHS"
 echo "WARNING! Do not exit the script unless done!"
-while IFS= read -r G; do
-  FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
-  dropStatements+="DROP SILENT GRAPH <$G>"
-done < bestuurseenheidGraphUris.txt
-$ISQL exec="SPARQL $dropStatements ;"
+
+for ((i=0; i<totalGraphCount; i+=batchSize)); do
+  echo "Executing batch $((i+10))/$totalGraphCount"
+  batch=("${dropStatements[@]:i:batchSize}")
+  $ISQL exec="SPARQL ${batch[*]} ;"
+done
+
 rm -rf ./bestuurseenheidGraphUris.txt
 echo "Done cleaning up!"
+echo "NOTE: Make sure to restart cache & resources"
 exit 0;

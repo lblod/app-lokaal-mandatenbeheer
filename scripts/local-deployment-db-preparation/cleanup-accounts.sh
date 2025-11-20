@@ -2,7 +2,7 @@
 
 ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
 
-echo "> Removing accounts other than Aalst"
+echo "> Removing users other than Aalst"
 
 $ISQL exec="SPARQL
   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -27,7 +27,7 @@ if [ $totalGebruikerCount -eq "0" ]; then
 fi
 
 batchSize=100
-totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
+totalBatches=$(( (totalGebruikerCount + batchSize - 1) / batchSize ))
 echo "Total users found: $totalGebruikerCount"
 
 
@@ -54,6 +54,7 @@ for ((i=0; i<totalBatches; i++)); do
     FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
     values+=("<$G>")
   done < users.txt
+  rm -rf users.txt
   $ISQL exec="SPARQL
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       DELETE {
@@ -74,8 +75,30 @@ for ((i=0; i<totalBatches; i++)); do
           VALUES ?gebruiker { ${values[*]} }
         }
       }
-;"
+  ;"
 done
+
+echo "Deleting all accounts without user"
+  $ISQL exec="SPARQL
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      DELETE {
+        GRAPH ?g {
+          ?account ?ap ?ao .
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          ?account a foaf:OnlineAccount .  
+          ?account ?ap ?ao .  
+
+          FILTER NOT EXISTS {
+              ?gebruiker a foaf:Person .
+              ?gebruiker foaf:account ?account .
+          }
+        }
+      }
+;"
+
 
 echo "Done cleaning up the users/accounts!"
 exit 0;

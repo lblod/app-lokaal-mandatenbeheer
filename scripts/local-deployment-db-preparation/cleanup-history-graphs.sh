@@ -2,7 +2,7 @@
 
 ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
 
-echo "Dropping history graphs"
+echo "> Dropping history graphs"
 
 $ISQL exec="SPARQL
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -13,6 +13,7 @@ $ISQL exec="SPARQL
 ;" > countHistoryGraphs.txt
 
 totalGraphCount=$(grep -o '[0-9]*' countHistoryGraphs.txt) 
+rm -rf ./countHistoryGraphs.txt
 
 batchSize=100
 totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
@@ -33,9 +34,9 @@ for ((i=0; i<totalBatches; i++)); do
     FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
     dropStatements+=("DROP SILENT GRAPH <$G> ")
   done < historyGraphs.txt
+  rm -rf ./historyGraphs.txt
   $ISQL exec="SPARQL ${dropStatements[*]} ;"
 done
 
-rm -rf ./historyGraphs.txt
 echo "Done cleaning up the history graphs!"
 exit 0;

@@ -1,7 +1,7 @@
 
 ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
 
-echo "Dropping organization graphs other than Aalst"
+echo "> Dropping organization graphs other than Aalst"
 
 $ISQL exec="SPARQL
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -21,8 +21,9 @@ while IFS= read -r G; do
   FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
   dropStatements+=("DROP SILENT GRAPH <$G> ")
 done < bestuurseenheidGraphUris.txt
-totalGraphCount=${#dropStatements[@]}
+rm -rf bestuurseenheidGraphUris.txt
 
+totalGraphCount=${#dropStatements[@]}
 batchSize=100
 echo "Total graphs found: $totalGraphCount"
 for ((i=0; i<totalGraphCount; i+=batchSize)); do
@@ -31,6 +32,5 @@ for ((i=0; i<totalGraphCount; i+=batchSize)); do
   $ISQL exec="SPARQL ${batch[*]} ;"
 done
 
-rm -rf bestuurseenheidGraphUris.txt
 echo "Done cleaning up the organization graphs!"
 exit 0;

@@ -2,7 +2,7 @@
 
 ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
 
-echo "Removing accounts other than Aalst"
+echo "> Removing accounts other than Aalst"
 
 $ISQL exec="SPARQL
   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -19,6 +19,7 @@ $ISQL exec="SPARQL
 ;" > countUsers.txt
 
 totalGebruikerCount=$(grep -o '[0-9]*' countUsers.txt) 
+rm -rf countUsers.txt
 
 batchSize=100
 totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
@@ -70,7 +71,5 @@ for ((i=0; i<totalBatches; i++)); do
 ;"
 done
 
-rm -rf countUsers.txt
-rm -rf users.txt
 echo "Done cleaning up the users/accounts!"
 exit 0;

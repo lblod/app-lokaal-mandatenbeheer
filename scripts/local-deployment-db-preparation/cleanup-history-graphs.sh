@@ -20,7 +20,7 @@ $ISQL exec="SPARQL
   SELECT COUNT(DISTINCT ?g) AS ?count
   WHERE {
     {
-      ?g a <http://mu.semte.ch/vocabularies/ext/FormHistory> .
+      ?g a ext:FormHistory .
     }
     GRAPH ?g {
       ?s a ?type .

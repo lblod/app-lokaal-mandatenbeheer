@@ -14,18 +14,19 @@ $ISQL exec="SPARQL
 
 totalGraphCount=$(grep -o '[0-9]*' countHistoryGraphs.txt) 
 
-batchSize=500
+batchSize=100
+totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
 echo "Total graphs found: $totalGraphCount"
 
-for ((i=0; i<totalGraphCount; i+=batchSize)); do
-  printf "\rDropping graphs $((i+batchSize))/$totalGraphCount                                           "
+for ((i=0; i<totalBatches; i++)); do
+  printf "\rDropping graphs ($i/$totalBatches)                                    "
   dropStatements=()
   $ISQL exec="SPARQL
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     SELECT DISTINCT ?g
     WHERE {
       ?g a <http://mu.semte.ch/vocabularies/ext/FormHistory> .
-    } LIMIT $batchSize
+    } LIMIT $batchSize OFFSET $((i*batchSize))
   ;" \
     | sed -n 's#^<*\(http[s]*://[^>]*\)>*$#\1#p' > historyGraphs.txt
   while IFS= read -r G; do
@@ -35,7 +36,6 @@ for ((i=0; i<totalGraphCount; i+=batchSize)); do
   $ISQL exec="SPARQL ${dropStatements[*]} ;"
 done
 
-rm -rf countHistoryGraphs.txt
-rm -rf historyGraphs.txt
+rm -rf ./historyGraphs.txt
 echo "Done cleaning up the history graphs!"
 exit 0;

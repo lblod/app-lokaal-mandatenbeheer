@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
+batchSize=100
 
 echo "> Removing users other than Aalst"
 
@@ -26,13 +27,12 @@ if [ $totalGebruikerCount -eq "0" ]; then
   exit 0;
 fi
 
-batchSize=100
 totalBatches=$(( (totalGebruikerCount + batchSize - 1) / batchSize ))
 echo "Total users found: $totalGebruikerCount"
 
 
 for ((i=0; i<totalBatches; i++)); do
-  printf "\rDeleting users/accounts ($i/$totalBatches)                                           "
+  printf "\rDeleting users/accounts ($((i+1))/$totalBatches)                                           "
   values=()
   $ISQL exec="SPARQL
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -49,28 +49,27 @@ for ((i=0; i<totalBatches; i++)); do
     LIMIT $batchSize OFFSET $((i*batchSize))
   ;" \
     | sed -n 's#^<*\(http[s]*://[^>]*\)>*$#\1#p' > users.txt
-  echo "LIMIT $batchSize OFFSET $((i*batchSize))"
   while IFS= read -r G; do
     FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
     values+=("<$G>")
   done < users.txt
   rm -rf users.txt
+  if [ ${#values[@]} -eq 0 ]; then
+    echo "Something went wrong.. The user uri's are empty."
+    exit 1
+  fi
   $ISQL exec="SPARQL
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       DELETE {
         GRAPH ?g {
           ?gebruiker ?p ?o .
-          ?account ?ap ?ao .
         }
       }
       WHERE {
         GRAPH ?g {
-          ?gebruiker a foaf:Person .
-          ?gebruiker foaf:member ?bestuurseenheid .
           ?gebruiker ?p ?o .
 
           ?gebruiker foaf:account ?account .
-          ?account ?ap ?ao .  
 
           VALUES ?gebruiker { ${values[*]} }
         }

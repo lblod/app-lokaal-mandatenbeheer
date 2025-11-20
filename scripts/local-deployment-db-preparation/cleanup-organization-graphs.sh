@@ -1,5 +1,6 @@
 
 ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
+batchSize=100
 
 echo "> Dropping organization graphs other than Aalst"
 
@@ -36,19 +37,18 @@ $ISQL exec="SPARQL
   }
 ;" > countOrganizationGraphsWithTriples.txt
 totalGraphsWithTriplesCount=$(grep -o '[0-9]*' countOrganizationGraphsWithTriples.txt)
-rm -rf ./countOrganizationGraphsWithTriples.txt
+rm -rf countOrganizationGraphsWithTriples.txt
 
 if [ $totalGraphsWithTriplesCount -eq "0" ]; then
   echo "All organization graphs are empty"
   exit 0;
 fi
 
-batchSize=100
 totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
 echo "Total graphs found: $totalGraphCount"
 
 for ((i=0; i<totalBatches; i++)); do
-  printf "\rDropping graphs ($i/$totalBatches)                                    "
+  printf "\rDropping graphs ($((i+1))/$totalBatches)                                    "
   dropStatements=()
   $ISQL exec="SPARQL
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -67,7 +67,11 @@ for ((i=0; i<totalBatches; i++)); do
     FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
     dropStatements+=("DROP SILENT GRAPH <$G> ")
   done < bestuurseenheidGraphUris.txt
-  rm -rf ./bestuurseenheidGraphUris.txt
+  rm -rf bestuurseenheidGraphUris.txt
+  if [ ${#dropStatements[@]} -eq 0 ]; then
+    echo "Something went wrong.. The graph uri's are empty."
+    exit 1
+  fi
   $ISQL exec="SPARQL ${dropStatements[*]} ;"
 done
 

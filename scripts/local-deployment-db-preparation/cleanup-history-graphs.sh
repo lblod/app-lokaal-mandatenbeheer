@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
+batchSize=100
 
 echo "> Dropping history graphs"
 
@@ -13,7 +14,7 @@ $ISQL exec="SPARQL
 ;" > countHistoryGraphs.txt
 
 totalGraphCount=$(grep -o '[0-9]*' countHistoryGraphs.txt) 
-rm -rf ./countHistoryGraphs.txt
+rm -rf countHistoryGraphs.txt
 
 $ISQL exec="SPARQL
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -28,7 +29,7 @@ $ISQL exec="SPARQL
   }
 ;" > countHistoryGraphsWithTriples.txt
 totalGraphsWithTriplesCount=$(grep -o '[0-9]*' countHistoryGraphsWithTriples.txt)
-rm -rf ./countHistoryGraphsWithTriples.txt
+rm -rf countHistoryGraphsWithTriples.txt
 
 if [ $totalGraphsWithTriplesCount -eq "0" ]; then
   echo "All history graphs are empty"
@@ -36,12 +37,11 @@ if [ $totalGraphsWithTriplesCount -eq "0" ]; then
 fi
 
 
-batchSize=100
 totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
 echo "Total graphs found: $totalGraphCount"
 
 for ((i=0; i<totalBatches; i++)); do
-  printf "\rDropping graphs ($i/$totalBatches)                                    "
+  printf "\rDropping graphs ($((i+1))/$totalBatches)                                    "
   dropStatements=()
   $ISQL exec="SPARQL
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -55,7 +55,11 @@ for ((i=0; i<totalBatches; i++)); do
     FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
     dropStatements+=("DROP SILENT GRAPH <$G> ")
   done < historyGraphs.txt
-  rm -rf ./historyGraphs.txt
+  rm -rf historyGraphs.txt
+  if [ ${#dropStatements[@]} -eq 0 ]; then
+    echo "Something went wrong.. The graph uri's are empty."
+    exit 1
+  fi
   $ISQL exec="SPARQL ${dropStatements[*]} ;"
 done
 

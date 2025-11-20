@@ -21,9 +21,15 @@ $ISQL exec="SPARQL
 totalGebruikerCount=$(grep -o '[0-9]*' countUsers.txt) 
 rm -rf countUsers.txt
 
+if [ $totalGebruikerCount -eq "0" ]; then
+  echo "All user/accounts removed"
+  exit 0;
+fi
+
 batchSize=100
 totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
 echo "Total users found: $totalGebruikerCount"
+
 
 for ((i=0; i<totalBatches; i++)); do
   printf "\rDeleting users/accounts ($i/$totalBatches)                                           "

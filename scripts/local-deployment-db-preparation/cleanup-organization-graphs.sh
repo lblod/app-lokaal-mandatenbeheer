@@ -11,8 +11,8 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
   WHERE {
     ?g ext:ownedBy ?bestuurseenheid  .
     FILTER ( ?g NOT IN (
-      <http://mu.semte.ch/graphs/organizations/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4/LoketLB-mandaatGebruiker>, # Gemeente
-      <http://mu.semte.ch/graphs/organizations/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18/LoketLB-mandaatGebruiker>,  # OCMW
+      <http://mu.semte.ch/graphs/organizations/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4/LoketLB-mandaatGebruiker>, # Gemeente Aalst
+      <http://mu.semte.ch/graphs/organizations/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18/LoketLB-mandaatGebruiker>,  # OCMW Aalst
       <http://mu.semte.ch/graphs/public> # Always keep
     ))
 };" > countOrganizationGraphs.txt
@@ -27,8 +27,8 @@ $ISQL exec="SPARQL
     {
       ?g ext:ownedBy ?bestuurseenheid  .
       FILTER ( ?g NOT IN (
-        <http://mu.semte.ch/graphs/organizations/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4/LoketLB-mandaatGebruiker>, # Gemeente
-        <http://mu.semte.ch/graphs/organizations/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18/LoketLB-mandaatGebruiker>,  # OCMW
+        <http://mu.semte.ch/graphs/organizations/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4/LoketLB-mandaatGebruiker>, # Gemeente Aalst
+        <http://mu.semte.ch/graphs/organizations/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18/LoketLB-mandaatGebruiker>,  # OCMW Aalst
         <http://mu.semte.ch/graphs/public> # Always keep
       ))
     }

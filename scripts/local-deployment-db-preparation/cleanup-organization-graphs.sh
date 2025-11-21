@@ -1,5 +1,6 @@
+#!/bin/bash
 
-ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
+ISQL="docker compose exec -T virtuoso isql-v VERBOSE=OFF"
 batchSize=100
 
 echo "> Dropping organization graphs other than Aalst"
@@ -16,7 +17,7 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     ))
 };" > countOrganizationGraphs.txt
 
-totalGraphCount=$(grep -o '[0-9]*' countOrganizationGraphs.txt) 
+totalGraphCount=$(grep -o '[0-9]*' countOrganizationGraphs.txt)
 rm -rf ./countOrganizationGraphs.txt
 
 $ISQL exec="SPARQL

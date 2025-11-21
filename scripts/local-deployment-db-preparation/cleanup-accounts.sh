@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
+ISQL="docker compose exec -T virtuoso isql-v VERBOSE=OFF"
 batchSize=100
 
 echo "> Removing users other than Aalst"
@@ -36,8 +36,8 @@ $ISQL exec="SPARQL
   }
   WHERE {
     GRAPH ?g {
-      ?account a foaf:OnlineAccount .  
-      ?account ?ap ?ao .  
+      ?account a foaf:OnlineAccount .
+      ?account ?ap ?ao .
 
       FILTER NOT EXISTS {
         ?gebruiker a foaf:Person .

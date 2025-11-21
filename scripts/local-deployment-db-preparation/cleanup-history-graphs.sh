@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ISQL="docker-compose exec -T virtuoso isql-v VERBOSE=OFF"
+ISQL="docker compose exec -T virtuoso isql-v VERBOSE=OFF"
 batchSize=100
 
 echo "> Dropping history graphs"
@@ -13,7 +13,7 @@ $ISQL exec="SPARQL
   }
 ;" > countHistoryGraphs.txt
 
-totalGraphCount=$(grep -o '[0-9]*' countHistoryGraphs.txt) 
+totalGraphCount=$(grep -o '[0-9]*' countHistoryGraphs.txt)
 rm -rf countHistoryGraphs.txt
 
 $ISQL exec="SPARQL

@@ -19,6 +19,7 @@ $ISQL exec="checkpoint ; exit ;"
 sh ./cleanup-organization-graphs.sh
 sh ./cleanup-history-graphs.sh
 sh ./cleanup-accounts.sh
+sh ./cleanup-other-graphs.sh
 
 echo ""
 echo "Next steps:"

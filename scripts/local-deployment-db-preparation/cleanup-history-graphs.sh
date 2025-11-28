@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ISQL="docker compose exec -T virtuoso isql-v VERBOSE=OFF"
-batchSize=100
+batchSize=500
 
 echo "> Dropping history graphs"
 
@@ -41,7 +41,7 @@ totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
 echo "Total graphs found: $totalGraphCount"
 
 for ((i=0; i<totalBatches; i++)); do
-  printf "\rDropping graphs ($((i+1))/$totalBatches)                                    "
+  printf "\rDropping batches ($((i+1))/$totalBatches)                                      "
   dropStatements=()
   $ISQL exec="SPARQL
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>

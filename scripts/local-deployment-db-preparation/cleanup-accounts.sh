@@ -20,7 +20,8 @@ $ISQL exec="SPARQL
 
       FILTER(?bestuurseenheid NOT IN(
         <http://data.lblod.info/id/bestuurseenheden/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4>, # Gemeente Aalst
-        <http://data.lblod.info/id/bestuurseenheden/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18> # OCMW Aalst
+        <http://data.lblod.info/id/bestuurseenheden/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18>, # OCMW Aalst
+        <http://data.lblod.info/id/bestuurseenheden/e5f3c3f23f6791de122a5e6f1af83543651d272eba40e138c2fdf91ec05f8a40> # PZ Aalst
       ))
     }
   }

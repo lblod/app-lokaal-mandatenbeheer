@@ -16,9 +16,9 @@ echo "Creating  checkpoint of the database"
 
 $ISQL exec="checkpoint ; exit ;"
 
-./cleanup-organization-graphs.sh
-./cleanup-history-graphs.sh
 ./cleanup-accounts.sh
+./cleanup-history-graphs.sh
+./cleanup-organization-graphs.sh
 ./cleanup-other-graphs.sh
 
 echo "Creating  checkpoint of the database"

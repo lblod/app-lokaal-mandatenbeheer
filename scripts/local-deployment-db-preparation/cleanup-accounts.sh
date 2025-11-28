@@ -13,6 +13,7 @@ $ISQL exec="SPARQL
   }
   WHERE {
     GRAPH ?g {
+      ?gebruiker a foaf:Person .
       ?gebruiker ?p ?o .
 
       ?gebruiker foaf:account ?account .

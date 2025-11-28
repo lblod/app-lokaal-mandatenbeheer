@@ -15,11 +15,16 @@ $ISQL exec="SPARQL
       }
     }
     FILTER(?g NOT IN(
+      <http://mu.semte.ch/graphs/sessions>,
+      <http://mu.semte.ch/graphs/besluiten-consumed>,
+      <http://mu.semte.ch/graphs/linkedInstances>,
       <http://mu.semte.ch/graphs/public>,
       <http://mu.semte.ch/application>,
       <http://mu.semte.ch/graphs/landing-zone/op-public>,
       <http://mu.semte.ch/graphs/organizations/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4/LoketLB-mandaatGebruiker>, # Gemeente Aalst
-      <http://mu.semte.ch/graphs/organizations/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18/LoketLB-mandaatGebruiker>  # OCMW Aalst
+      <http://mu.semte.ch/graphs/organizations/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18/LoketLB-mandaatGebruiker>,  # OCMW Aalst
+      <http://mu.semte.ch/graphs/organizations/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4>, # Gemeente Aalst
+      <http://mu.semte.ch/graphs/organizations/d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18>  # OCMW Aalst
     ))
   }
 ;" \

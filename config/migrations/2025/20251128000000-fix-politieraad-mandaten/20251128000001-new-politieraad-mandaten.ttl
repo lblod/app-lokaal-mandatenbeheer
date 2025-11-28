@@ -1,0 +1,1022 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns1:	<http://data.vlaanderen.be/ns/mandaat#> .
+<http://data.lblod.info/id/mandaten/834BB282-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat .
+@prefix ns2:	<http://mu.semte.ch/vocabularies/core/> .
+<http://data.lblod.info/id/mandaten/834BB282-0E38-11F0-9EC8-EAA73EBAC1A7>	ns2:uuid	"834CB358-0E38-11F0-9EC8-EAA73EBAC1A7" .
+@prefix ns3:	<http://www.w3.org/ns/org#> .
+<http://data.lblod.info/id/mandaten/834BB282-0E38-11F0-9EC8-EAA73EBAC1A7>	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2AA-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB38A-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2B4-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB394-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2BE-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB39E-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2C8-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB39F-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2D2-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3A8-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2D3-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3B2-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2DC-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3BC-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2E6-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3BD-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2F0-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3C6-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB2FA-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3D0-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB304-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3DA-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB30E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3DB-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB30F-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3E4-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB318-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3EE-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB322-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3F8-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB32C-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB3F9-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB336-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB402-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB340-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB40C-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB341-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB416-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB34A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB417-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB354-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB420-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB35E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB42A-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB368-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB434-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB372-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB435-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB373-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB43E-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB37C-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB448-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB386-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB452-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB390-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB453-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB39A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB45C-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB39B-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB466-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB3A4-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB470-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB3AE-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB471-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB3B8-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB47A-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB3C2-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB484-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB430-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB48E-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB43A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB48F-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB43B-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB498-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB444-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4A2-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB44E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4A3-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB458-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4AC-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB462-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4B6-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB46C-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4C0-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB476-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4C1-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB480-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4CA-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB481-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4D4-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB48A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4DE-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB494-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4DF-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB49E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4E8-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4A8-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4F2-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4B2-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4FC-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4BC-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB4FD-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4C6-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB506-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4C7-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB510-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4D0-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB511-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4DA-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB51A-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4E4-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB524-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4EE-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB52E-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4F8-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB52F-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB4F9-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB538-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB502-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB542-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB50C-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB54C-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB516-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB54D-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB520-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB556-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB52A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB560-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB534-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB561-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB535-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB56A-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB53E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB574-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB548-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB57E-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB552-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB57F-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB55C-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB588-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB566-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB592-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB570-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB59C-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB571-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB59D-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB57A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5A6-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB584-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5B0-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB58E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5B1-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB598-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5BA-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5A2-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5C4-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5A3-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5CE-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5AC-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5CF-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5B6-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5D8-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5C0-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5E2-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5CA-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5E3-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5D4-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5EC-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5D5-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5F6-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5DE-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB5F7-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5E8-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB600-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5F2-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB60A-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB5FC-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB614-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB606-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB615-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB610-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB61E-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB61A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB628-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB624-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB629-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB625-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB632-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB62E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB63C-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB638-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB646-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB642-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB647-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB64C-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB650-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB656-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB65A-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB660-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB65B-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB66A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB664-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB674-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB66E-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB675-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB678-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB67E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB679-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB688-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB682-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB692-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB68C-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB69C-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB68D-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6A6-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB696-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6B0-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6A0-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6BA-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6A1-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6BB-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6AA-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6C4-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6B4-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6CE-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6BE-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6D8-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6BF-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6E2-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6C8-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6EC-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6D2-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB6F6-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6D3-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB700-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6DC-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB70A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6E6-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB714-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6F0-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB71E-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6F1-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB728-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB6FA-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB732-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB704-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB746-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB705-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB750-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB70E-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+<http://data.lblod.info/id/mandaten/834BB75A-0E38-11F0-9EC8-EAA73EBAC1A7>	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"834CB718-0E38-11F0-9EC8-EAA73EBAC1A7" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/00801a4ba8104832a8430f014be9172f> .
+@prefix ns4:	<http://data.lblod.info/id/mandaten/> .
+<http://data.lblod.info/id/bestuursorganen/009d6677e7b37c6994d5fd4db533f368eb2a4b43d4e20adc1e5283d712a433e1>	ns3:hasPost	ns4:C8A925E8-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB2D3-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/063916b901beaa3940a9068ce0acef862629393eca53858df13f14d2fd626fcd>	ns3:hasPost	ns4:C8A92715-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB4C7-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/0716d33ba303c1c68461427be814fbd4ea117d7674eb7f279fe23ac61e7f0e95>	ns3:hasPost	ns4:C8A92642-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB341-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/09b3ba7a81c078b155ccbacd3b031ae0a342bd39e61b57616692bba67c6eaf42>	ns3:hasPost	ns4:C8A92886-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB6BA-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/09d4ee592dca6e4154bac5bee43154eba37d4d53139b24e9499e2828e8bd60b8>	ns3:hasPost	ns4:C8A926ED-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB494-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/09e4e6e2e877b968544828e08518b3251fa2fbaa0f7f02e0cf8c4514d715d7c4>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB70A-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9293A-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/0ce64317e66e60110311d9d1ba8459f2ba0cfd31ebbc7d1c9830cb0556bc0379>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB552-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92782-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/15e5c6128e8b54b5776290b90f055f7e1148a9e550dddbcd576650d008b5c587>	ns3:hasPost	ns4:C8A92912-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB6CE-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/16ddb0c854ddbdde4850f5209c43d774df4540fe6d7916d270752ec4cdd38c37>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB535-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9276E-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/199a9dfff6197b14c38ae7d4778d4ff975c6bab3bf6306db91b2add057d4f623>	ns3:hasPost	ns4:C8A927C9-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB5B6-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/1d1291d6c6af383ecd0ff0339e5312da9c3d1d8c91c103199f7e232910265e19>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB52A-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9275B-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/1ec1c99eba448f51fc0f3e11c3335ab6153934aa62baf5aa6e2ff837a4491f59>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB5E8-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A927F0-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/1ef2a30e0c114aa94c058e071a4c4bd4b65d3dbcbce26d01e39f1d97dce12b7b>	ns3:hasPost	ns4:C8A925CA-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB2AA-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/21bd05fd722f8eb3115b9b14f918355722bc7a3e37251b2c6beec9c02785e6f5>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB4A8-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92700-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/2231dab7f916e0b02e1b542ab9efc35e47b656c0fffc3874cc555993325f539d>	ns3:hasPost	ns4:C8A92607-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB304-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/228500b66f7c3f74deba2b4769517aad17e4e2dbee486becc10fcbeb2957f10c>	ns3:hasPost	ns4:C8A92689-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB3A4-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/22eb1f33dfc936bfd624ca207c68d87c7a8becb61e07c9a2a244169286fa8f49>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB444-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A926BA-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/24c8bd1cf9c3b310c748a87511841b2067c4930e80472849824ce190a410a9b3>	ns3:hasPost	ns4:C8A925AC-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB282-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/280f83dd5ae5e09983c05b8a83757b93d8206baadf6eb952dae516fde79ce370>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB5F2-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A927FA-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/281c620f04284875d196e877dcb2b431b6ba84c8469f2dd1f0d4a99d54bb3905>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB6E2-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9291D-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/2ad894f92b585aa0e86e7e1378996e8270c94bb2caf8ddec3982f15e928717df>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB566-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9278C-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/2ec55541d22ae866bc196bed74f21d0d7f7394128552786d3e1317b52309f29a>	ns3:hasPost	ns4:C8A927E6-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB5D5-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/35cda722358ce2a96fb1117f895aeea7e9d36604a73402ed95a89167de03709f>	ns3:hasPost	ns4:C8A9262F-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB336-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/3ac6cbf0b47515b41cdc97b2d8f7b107d335a96b4e2b553f2d4e048ab313d6c3>	ns3:hasPost	ns4:C8A92693-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB3B8-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/3b8127d1a3c6c0a88ff5a343996af7ef501338c5dcd70b00f23a83d550bebc09>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB688-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92868-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/3d0a685178f54a54d585de7dbc22c735158cd94c69da7af5dc11ad57751560da>	ns3:hasPost	ns4:C8A9270A-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB4BC-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/3e27d8a3c8abad9560f943c369bbb08a53f25d6b2cfb98ab4144572b3272a46f>	ns3:hasPost	ns4:C8A92746-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB502-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/3ee7157e5ec009f665479d973db36ab0337eb767a2c9f76da507da09d4680dff>	ns3:hasPost	ns4:C8A9294E-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB728-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/3ef452398a9fa6e7e1bedd79e9815fccffb666c3eaed62abd637aeedccbd87da>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB340-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92638-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/3ef90354f5bd6abb6a52b20a383791e46fa81aada82390f21e5b0807e3e980bc>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB386-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92674-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/3f45cf66a149651ce50a1eddb97064488d03cd41f2e94e354b7f08bd045b15a8>	ns3:hasPost	ns4:C8A926E3-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB481-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/40a0760639766a69b087e4198ac7b5b10eefa9f2c880979ceb4777b7f199d404>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB43A-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A926A7-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/4143d41e612cc448f83518827cc4d9dd44e22e68c4e0aabf4befa2f456bccf61>	ns3:hasPost	ns4:C8A92783-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB55C-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/433ec84ce031a421645c5eb37924fb776dab4aeac3a1d54cdaaf65ff85fe55f4>	ns3:hasPost	ns4:C8A92701-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB4B2-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/46232c3816fa7d6cdbb52d773f864ec57905d18073ea469ba45f30cb62eb8df4>	ns3:hasPost	ns4:C8A92610-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB30E-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/47b7d7d23304b0d9f835151eb6445548d4cf2372031cc13edd741383b7c17a4f>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB6A6-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9287C-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/4a0cf8d6cdf6c8a896242b3911800868b95a7595c1d5a50446fe776a5f32e770>	ns3:hasPost	ns4:C8A92872-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB69C-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/4a565ab1d849f51474ba8bdfa5481a2c9e92c63e84053b133f5dc2c0e0ffaee8>	ns3:hasPost	ns4:C8A9278D-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB570-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/4b6e9286a36035c0eb3cf9e5608d9b7595dc3bd69af6378db1ac1f63d64236a2>	ns3:hasPost	ns4:C8A925DE-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB2C8-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/4fb36164a0697d7a022c3beb679a10bd2bde62597afc995ab9ee2f3f72c21d93>	ns3:hasPost	ns4:C8A92688-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB39B-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/501357b4f2cd350e7e0c7ac39458a6e3747f77b30b4c844321f74d635ec64c08>	ns3:hasPost	ns4:C8A92778-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB548-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/503573c5e689df055490fd9e7c77a8b917706775451137ef6cb9a29214ca19b8>	ns3:hasPost	ns4:C8A925DF-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB2D2-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/50a59b7522db9183cb6293108ceb847e871dc8769ee0a270dd17acd76a94fd22>	ns3:hasPost	ns4:C8A92930-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB6F6-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/512635ccc5b9093b08e080309df14e382ae084bafa6bd15867dace8a6e264eaf>	ns3:hasPost	ns4:C8A92729-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB4E4-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/52dcacab0e85af03c6fd49f65ed7c07d93c22c2fd12252673ff385aff315697a>	ns3:hasPost	ns4:C8A927AA-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB58E-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/541b51f13f2c4e16243b5fc3d3a225d023a18916a3ed7cb9b1461ce870078af6>	ns3:hasPost	ns4:C8A92854-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB674-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/5469778ff6c981eef7444672559e1f22908c92fe6607d2fcd1606276deaf536a>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB67E-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9285E-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/57cc71755a226e55a881e36d37b56d1a4642c8b94067e21be9f3971673862b17>	ns3:hasPost	ns4:C8A925F3-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB2E6-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/58ece82eaf48a488e169ffbc6dbb20f2babba2873d4a73bdd3e0cf5685303689>	ns3:hasPost	ns4:C8A926A6-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB430-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/5adf874a0f9eb09739b53306aeb79c58b8fca4e9e8f3cb384fb6e49c99e2ff4c>	ns3:hasPost	ns4:C8A92692-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB3AE-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/5b7724c1baa75bb411d1fe5bf58051d13d756b709e85332f43b6e3300c36451e>	ns3:hasPost	ns4:C8A9269C-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB3C2-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/60961812795c94bfb4bead9bdc4d20bd4223772509db294e5b5252e15ab5be72>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB66A-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9284A-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/60a885b00850e1a54b3f07a7e86322358cec351a44333ede2654da0c0f1a0a5d>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB390-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92675-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/6152f1c958c62348de94f43da72bb0cae8f1ff71d876bb91e701646520a89060>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB2F0-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A925FC-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/65c586595e7e4927512f691972d504a1d2bdf8775f046fc9b70e5cc8dfc98cb2>	ns3:hasPost	ns4:C8A926D8-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB476-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/667ba9aa12c96d3c74d35ff0b2710c7a3258980830694f510036f12aa69e2ad0>	ns3:hasPost	ns4:C8A927A1-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB584-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/66a035311fc80a0d321221dd19e412536b1e2b5e3f476cc58d40c54054592a50>	ns3:hasPost	ns4:C8A926F6-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB49E-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/67f344046b93e7219c5a78b3b23442f39469b23b16eb55493028c6a206f75123>	ns3:hasPost	ns4:C8A9266A-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB37C-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/6eab34c28c0119edd95d4f97483182958d19fe93cf5dc8d8afe8708f48da8e6c>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB6B0-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9287D-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/71ef8f2bce0f44c14f46158614d7a4f7fc022d0cd637d11cd4ef32d94a838457>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB39A-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9267E-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/74d76770e35df5315321ddf22fd3088d057795c64b198b934e432951e43868db>	ns3:hasPost	ns4:C8A92728-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB4DA-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/77fb785871808a477915b934d8ecd251f02169dda616e54304e441d2802b605a>	ns3:hasPost	ns4:C8A925F2-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB2DC-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/790000e1c2579a209e7f855fef8d8210418b7fd50daaaaf3044f67f3c143146a>	ns3:hasPost	ns4:C8A9262E-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB32C-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/795b27019a2a936e25fe66c26598f8a5220220571fbb4aa59c96d6821a5d1706>	ns3:hasPost	ns4:C8A92660-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB372-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/796a07f6524aae6f2d9e89a9c16e23cf2d664f216e293b0ce37352c8deae9175>	ns3:hasPost	ns4:C8A926CE-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB462-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/7e3cd4c8156bfd4bf889b07a5a6b26f8eddb268244d94b78774a9eb79c272c51>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB2B4-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A925D4-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/841cc8c784717dd7d9146700fd73337673cc5bef0e4423269e0440362a272881>	ns3:hasPost	ns4:C8A92818-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB624-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/841ee84caad500e27dcf2a3649ee215aab2dc369819247860279b21a96e186ec>	ns3:hasPost	ns4:C8A926EC-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB48A-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/863606f3329717683f1caeaef02dce20816c6af48ec2f0d26078c9b91c05d463>	ns3:hasPost	ns4:C8A9280E-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB610-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/89f00011afac5cc84e866e6546c5a4aa125052f8e28f34a2dbe25739620ee313>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB458-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A926C4-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/8d158b6b839c730601220047cf6c913e039bf4df91d44d6af711b0d72fb0aaa5>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB318-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9261B-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/8d26559602b7901f1d5a7a053723be23a600c7c0af72221c1bfaf93a7966983d>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB373-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92661-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/8dd9da4b298ef3e18f9d332ba28de96be7c585652c7f7256f8a48644e97285bd>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB642-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9282D-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/954f89cd5fd273a079a7341386355d06f0044b177daaa2c29482f1ce02aa53a2>	ns3:hasPost	ns4:C8A927B4-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB598-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/964600b2cd30e7593dcd6f5f9d12fd7867ab59d8babf0ba0f79c0e4fbc328f58>	ns3:hasPost	ns4:C8A92840-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB656-0E38-11F0-9EC8-EAA73EBAC1A7> .
+<http://data.lblod.info/id/bestuursorganen/9b7688b0-dd46-11ee-a3f3-238f80ef635b>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB516-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92750-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/9c01c8ba9e036328f255fe0fc00680a2c9e4832edda0b350e6f8619a291ec5f5>	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB71E-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92944-F458-11EF-BC01-8152F78DE954 .
+@prefix ns5:	<http://data.lblod.info/id/bestuursorganen/> .
+ns5:a39bb26ed9f8e2b98e52b221175b556ba993b29e8bc40d9d1b135254095a70d0	ns3:hasPost	ns4:C8A92606-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB2FA-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:a4d418ef259948c0019cc7ca4d96c7f80216cc7dac55fe349cd3bbb91dd28eff	ns3:hasPost	ns4:C8A92796-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB571-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:ab1e3bf45ed06ecef3c5f455b74a3f493936e96ffee0ffd313dfe7a94d6d937e	ns3:hasPost	ns4:C8A92822-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB625-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:ab45101ab5fdb2cbdd148ddc71e5b63d41f592cab7b2cce5629683579435c21b	ns3:hasPost	ns4:C8A926B0-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB43B-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:aecf1c45c72c5dc29ff0e57525b039da1072242078269b17cfe6de826e768de4	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB62E-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92823-F458-11EF-BC01-8152F78DE954 .
+ns5:b18df1766c19867bfbf466512fbb3e0fdc6ece9896c3d41253ae090428b26b28	ns3:hasPost	ns4:C8A926CF-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB46C-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:b1d7fc58360db8e54b4cac7e7130657c7ab7b0343a09d8925a53102cf468044d	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB6C4-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92908-F458-11EF-BC01-8152F78DE954 .
+ns5:b39c133f7ac7eb88ace5f3629b279e0ad43d2f88c31b9074f4719d5ac0f00184	ns3:hasPost	ns4:C8A9282C-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB638-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:b3ba737dcd31105971c11ec6d230bb3a383f3610c3c1172d8dda06a98987e7fa	ns3:hasPost	ns4:C8A925D5-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB2BE-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:b5d378ab47f57f75c5429305da3deb673e1d57360c6097c702f76efe0cbd0b9c	ns3:hasPost	ns4:C8A927DC-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB5CA-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:bc160a57c7ecd8957902dd01b9b225afa03d7c287ec6e4ecb1cd0d45aa642304	ns3:hasPost	ns4:C8A92656-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB368-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:bca2b5d9b2181a4277cf1585fec5844a3d6b7a578a506fccbb582a32a322033e	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB6EC-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92926-F458-11EF-BC01-8152F78DE954 .
+ns5:bdab4bc6256448bd3b6fa4f918cffa6c2e63b1bd19d8086acda257235ca1a0f6	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB4D0-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9271E-F458-11EF-BC01-8152F78DE954 .
+ns5:be2bcdd9fc6d3fe2be5a1ba3f9d9aaab5b33b25985b0784ac6f497251fe75de5	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB5C0-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A927D2-F458-11EF-BC01-8152F78DE954 .
+ns5:be81440eebbcb5d7875f5c925ba45cca81b9740f895365132d9b9b094ddfd55c	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB354-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9264C-F458-11EF-BC01-8152F78DE954 .
+ns5:bf11dce2bad398d8be131e1225e5f5eed5a416f7ad6768e684b60ed3b00fd684	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB4F9-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9273C-F458-11EF-BC01-8152F78DE954 .
+ns5:bf988241f8268425a6b73e89091a67ae2db0bf412398b8e5915ca28b1ff9b384	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB44E-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A926BB-F458-11EF-BC01-8152F78DE954 .
+ns5:c2cc885ed6eb540dae330c202af313cf256abac6dc20a104324a7768743477e7	ns3:hasPost	ns4:C8A927BE-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB5A3-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:c2f7ba3cf8ee67ac5bc40cafe18e0733f2a0f9e135be52b4aecb532efb8620d2	ns3:hasPost	ns4:C8A927A0-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB57A-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:c3c1a12b3818d7dd71e6d39197afcd581a47f66e745b674751efb2354580f8ad	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB34A-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92643-F458-11EF-BC01-8152F78DE954 .
+ns5:c70fecf2c91dcec48b01e8bddddd25b36e25de4fe30ea9b6e866f6e50cb27433	ns3:hasPost	ns4:C8A9261A-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB30F-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:ca3c455dd898b1e3253b4096e0241428a542e6c50f9cef48f84a531fc8b437ce	ns3:hasPost	ns4:C8A92855-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB675-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:cc73363c8dbd74578a1269c91598c3eac876ee750615b5840df74367fef1fbc1	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB322-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92624-F458-11EF-BC01-8152F78DE954 .
+ns5:cc9f79b2474762414349f0ddcce86d1c1ea054fd5bd38cb2cec71503ba37fedf	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB4EE-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92732-F458-11EF-BC01-8152F78DE954 .
+ns5:cde14265b0851b5456e49756853ad2915801559150cc748bbab68836c8ca71af	ns3:hasPost	ns4:C8A927E7-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB5DE-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:d1681799cd3919e501d4456ddc48b4719d5d2036a48be9747fb92f36768db8b6	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB732-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9294F-F458-11EF-BC01-8152F78DE954 .
+ns5:d39d41c4fc776917120eef5509a456b9903124c5004741750158458491e17712	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB700-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92931-F458-11EF-BC01-8152F78DE954 .
+ns5:d7b4fcf1b7de64127f7ad17e12cf3bb476b1e22aede473b29bf8391dde1d3575	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB5A2-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A927B5-F458-11EF-BC01-8152F78DE954 .
+ns5:d91521fcd08369164266c140a3dbba2b67870ee428e50d7c710a1aa3ae59f10e	ns3:hasPost	ns4:C8A926E2-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB480-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:d9c5b640587ff660442bad17e37ad20c5a036176a789c98e0094af594cb3e469	ns3:hasPost	ns4:C8A9291C-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB6D8-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:d9d7a66d0b67007922d0a4d0164e0fb0419b0736e89ad53df139443ffd967712	ns3:hasPost	ns4:C8A9280F-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB61A-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:db367cee8a8edca18c6c3a8834140622c98a062b463a9b795ec23f9e15416df1	ns3:hasPost	ns4:C8A92714-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB4C6-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:def2bea159fab128c8bc5e216cdb26e350a38419c6d7d764dc4ac746e30291a3	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB6BB-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92887-F458-11EF-BC01-8152F78DE954 .
+ns5:e011923781d2d6eac74bfce64e9093a100989f22eee691aedf7d469c503c14bf	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB35E-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9264D-F458-11EF-BC01-8152F78DE954 .
+ns5:e06c7238cbd97ba6b9b7cbb69ead729074fa7eecdc7d690dd301b15d64510362	ns3:hasPost	ns4:C8A927C8-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB5AC-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:e18afa449e15adde801fb471d851aa9a06ba8d47d3e9caec515bf876e48bbee4	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB714-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9293B-F458-11EF-BC01-8152F78DE954 .
+ns5:e64a22d8aafa1f0958e5eac312684f6e2c13893c0f9b11b0f11821aa4ec87bb6	ns3:hasPost	ns4:C8A927FB-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB5FC-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:eb462e4b1171a67fdbaa2c78a69b5b74ed81919aa518f1eb9650a1fcc4dd91cf	ns3:hasPost	ns4:C8A92869-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB692-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:ebda91fa148fdf733f7dc976153d8be740a0f5bff9a9209bd67f7812d21aedc8	ns3:hasPost	ns4:C8A927DD-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB5D4-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:ec6dd6d55878d86424539a52ed9f2ad12ef8fa7d3e1d30b14dd06e25003a70e3	ns3:hasPost	ns4:C8A92836-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB64C-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:f07e0fcaa759b02bd5708c82ae67931913710ce6ea7790794dc5bbbacf149969	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB520-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9275A-F458-11EF-BC01-8152F78DE954 .
+ns5:f08263341ad1236cef861c77968a393b84533c6c8dda5bffda5217147baa7104	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB53E-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A9276F-F458-11EF-BC01-8152F78DE954 .
+ns5:f1ae71d69db3601ac8ff38ef2b679f8f5a1adcf04e226f46c8b132629d814cab	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB4F8-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92733-F458-11EF-BC01-8152F78DE954 .
+ns5:f4acfccaf86b70c6979977ba8c0cf4a9c0b2ad902cde59838303eb6eb552cd11	ns3:hasPost	ns4:C8A92841-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB660-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:f70cb2d76c2884384d5985c43574ac82003ccaf522d51f6068d67b37c4f288f0	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB50C-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92747-F458-11EF-BC01-8152F78DE954 .
+ns5:fda765fecc3ed87fb23252d42797f13d61c4cffa6f69a25ad718478bb930e2d4	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB534-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92764-F458-11EF-BC01-8152F78DE954 .
+ns5:fde97fa50c8538b5b1482a365f1b4fa86c74366d883b816bbdc9a6a9fc1bb948	ns3:hasPost	<http://data.lblod.info/id/mandaten/834BB606-0E38-11F0-9EC8-EAA73EBAC1A7> ,
+		ns4:C8A92804-F458-11EF-BC01-8152F78DE954 .
+<http://data.lblod.info/id/bestuursorganen/498dd480-cdd3-11ef-aa81-653d3582e97a>	ns3:hasPost	ns4:C8A92963-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB746-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:a2e42a30-cdc8-11ef-aa81-653d3582e97a	ns3:hasPost	ns4:C8A92958-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB750-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns5:cfe98a70-cdd2-11ef-aa81-653d3582e97a	ns3:hasPost	ns4:C8A92962-F458-11EF-BC01-8152F78DE954 ,
+		<http://data.lblod.info/id/mandaten/834BB75A-0E38-11F0-9EC8-EAA73EBAC1A7> .
+ns4:C8A925AC-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925AC-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925CA-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925CA-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925D4-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925D4-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925D5-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925D5-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925DE-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925DE-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925DF-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925DF-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925E8-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925E8-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925F2-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925F2-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925F3-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925F3-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A925FC-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A925FC-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92606-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92606-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92607-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92607-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92610-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92610-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9261A-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9261A-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9261B-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9261B-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92624-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92624-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9262E-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9262E-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9262F-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9262F-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92638-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92638-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92642-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92642-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92643-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92643-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9264C-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9264C-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9264D-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9264D-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92656-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92656-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92660-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92660-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92661-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92661-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9266A-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9266A-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92674-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92674-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92675-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92675-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9267E-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9267E-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92688-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92688-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92689-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92689-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92692-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92692-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92693-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92693-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9269C-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9269C-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926A6-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926A6-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926A7-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926A7-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926B0-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926B0-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926BA-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926BA-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926BB-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926BB-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926C4-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926C4-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926CE-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926CE-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926CF-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926CF-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926D8-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926D8-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926E2-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926E2-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926E3-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926E3-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926EC-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926EC-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926ED-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926ED-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A926F6-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A926F6-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92700-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92700-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92701-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92701-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9270A-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9270A-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92714-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92714-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92715-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92715-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9271E-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9271E-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92728-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92728-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92729-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92729-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92732-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92732-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92733-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92733-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9273C-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9273C-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92746-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92746-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92747-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92747-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92750-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92750-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9275A-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9275A-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9275B-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9275B-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92764-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92764-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9276E-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9276E-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9276F-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9276F-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92778-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92778-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92782-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92782-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92783-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92783-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9278C-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9278C-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9278D-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9278D-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92796-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92796-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927A0-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927A0-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927A1-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927A1-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927AA-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927AA-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927B4-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927B4-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927B5-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927B5-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927BE-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927BE-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927C8-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927C8-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927C9-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927C9-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927D2-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927D2-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927DC-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927DC-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927DD-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927DD-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927E6-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927E6-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927E7-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927E7-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927F0-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927F0-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927FA-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927FA-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A927FB-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A927FB-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92804-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92804-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9280E-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9280E-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9280F-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9280F-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92818-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92818-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92822-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92822-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92823-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92823-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9282C-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9282C-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9282D-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9282D-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92836-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92836-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92840-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92840-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92841-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92841-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9284A-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9284A-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92854-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92854-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92855-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92855-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9285E-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9285E-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92868-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92868-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92869-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92869-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92872-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92872-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9287C-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9287C-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9287D-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9287D-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92886-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92886-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92887-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92887-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92908-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92908-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92912-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92912-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9291C-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9291C-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9291D-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9291D-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92926-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92926-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92930-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92930-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92931-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92931-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9293A-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9293A-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9293B-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9293B-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92944-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92944-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9294E-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9294E-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A9294F-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A9294F-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92958-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92958-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92962-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92962-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .
+ns4:C8A92963-F458-11EF-BC01-8152F78DE954	rdf:type	ns1:Mandaat ;
+	ns2:uuid	"C8A92963-F458-11EF-BC01-8152F78DE954" ;
+	ns3:role	<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/9210094bcdeb4fc8aabd458fe5a1d711> .

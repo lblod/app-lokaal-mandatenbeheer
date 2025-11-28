@@ -1,0 +1,22 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?orgT org:hasPost ?mandaat.
+    ?mandaat ?p ?o.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?orgT mandaat:isTijdspecialisatieVan ?org.
+  }
+  GRAPH <http://localhost/temp/politieraad> {
+    ?orgT org:hasPost ?mandaat.
+  }
+  GRAPH ?orgGraph {
+    ?mandaat ?p ?o.
+  }
+  ?orgGraph ext:ownedBy ?eenheid .
+}

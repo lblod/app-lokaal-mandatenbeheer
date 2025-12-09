@@ -127,3 +127,8 @@ services:
     restart: "no"
   locally-managed-ldes-client:
     restart: "no"
+  bb-aalst-ldes-client:
+    restart: "no"
+    environment:
+      RUN_AT_STARTUP: false
+      LOG_LEVEL: info # error, warn, info, verbose, debug, or silly. Default: info

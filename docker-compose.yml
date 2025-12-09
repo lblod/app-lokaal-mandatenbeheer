@@ -392,3 +392,20 @@ services:
     labels:
       - "logging=true"
     logging: *default-logging
+  bb-aalst-ldes-client:
+    image: lblod/ldes-client:0.0.3
+    volumes:
+    - ./config/bb-aalst-ldes:/config
+    restart: always
+    environment:
+      CRON_PATTERN: "3 * * * *" # Every hour at minute 3
+      LDES_BASE: https://mandatenbeheer.lblod.info/streams/ldes/public/
+      FIRST_PAGE: https://mandatenbeheer.lblod.info/streams/ldes/public/1
+      TARGET_GRAPH: http://mu.semte.ch/graphs/aalst-bb-lmb-consumed
+      WORKING_GRAPH: http://mu.semte.ch/graphs/aalst-bb-lmb-consumed-tmp
+      DIRECT_DATABASE_CONNECTION: 'http://virtuoso:8890/sparql'
+      RANDOMIZE_GRAPHS: true
+      BATCH_SIZE: 100
+    labels:
+      - "logging=true"
+    logging: *default-logging

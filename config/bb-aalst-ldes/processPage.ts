@@ -34,13 +34,8 @@ export async function processPage() {
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
-    DELETE {
-      GRAPH ${sparqlEscapeUri(TARGET_GRAPH)} {
-        ?s ?pOld ?oOld.
-      }
-    }
     INSERT {
-      GRAPH ${sparqlEscapeUri(TARGET_GRAPH)} {
+      GRAPH ?organizationG {
         ?s ?pNew ?oNew.
       }
     } WHERE {
@@ -54,7 +49,6 @@ export async function processPage() {
         GRAPH ?organizationG {
           ?s a mandaat:Mandataris .
         }
-        ?organizationG ext:ownedBy ?bestuurseenheid .
       }
 
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
@@ -67,10 +61,6 @@ export async function processPage() {
         ?versionedMember ?pNew ?oNew .
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(VERSION_PREDICATE)}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
       }
-      OPTIONAL {
-        GRAPH ${sparqlEscapeUri(TARGET_GRAPH)} {
-          ?s ?pOld ?oOld.
-        }
-      }
+      ?organizationG ext:ownedBy ?bestuurseenheid .
     }`);
 };

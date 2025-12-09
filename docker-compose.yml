@@ -269,6 +269,8 @@ services:
       - "./data/ldes-feed/:/data/"
   decision-ldes-client:
     image: lblod/ldes-client:0.0.3
+    profiles:
+      - isDisabledOnLocalSetup
     links:
       - database:database
       - virtuoso:virtuoso
@@ -290,6 +292,8 @@ services:
   ##############################################################################
   vendor-login:
     image: lblod/vendor-login-service:1.3.0
+    profiles:
+      - isDisabledOnLocalSetup
     restart: always
     labels:
       - "logging=true"
@@ -325,6 +329,8 @@ services:
     logging: *default-logging
   vendor-management-consumer:
     image: lblod/delta-consumer:0.0.26
+    profiles:
+      - isDisabledOnLocalSetup
     environment:
       DCR_SERVICE_NAME: "vendor-management-consumer"
       DCR_SYNC_BASE_URL: "https://dev.loket.lblod.info/"

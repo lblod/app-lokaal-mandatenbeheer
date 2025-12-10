@@ -5,7 +5,6 @@ import {
   BATCH_GRAPH,
   VERSION_PREDICATE,
   TIME_PREDICATE,
-  TARGET_GRAPH,
 } from "../environment";
 
 /**
@@ -27,7 +26,8 @@ export async function processPage() {
   logger.debug("Running custom logic to process the current page");
 
   const burgemeesterOrgaanClassificatieCodeUri = 'http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284';
-  const bekrachtigdPublicatieCodeUri = 'https://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6';
+  const bekrachtigdPublicatieCodeUri = 'http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6';
+
   await updateSudo(`
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
     PREFIX org: <http://www.w3.org/ns/org#>
@@ -44,12 +44,14 @@ export async function processPage() {
       ?orgaanIT org:hasPost ?mandaat .
       ?orgaanIT mandaat:isTijdspecialisatieVan ?orgaan .
       ?orgaan besluit:classificatie | org:classification ${sparqlEscapeUri(burgemeesterOrgaanClassificatieCodeUri)} .
+      ?orgaan besluit:bestuurt ?bestuurseenheid .
 
       FILTER NOT EXISTS {
         GRAPH ?organizationG {
           ?s a mandaat:Mandataris .
         }
       }
+      ?organizationG ext:ownedBy ?bestuurseenheid .
 
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
         ?stream <https://w3id.org/tree#member> ?versionedMember .
@@ -61,6 +63,5 @@ export async function processPage() {
         ?versionedMember ?pNew ?oNew .
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(VERSION_PREDICATE)}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
       }
-      ?organizationG ext:ownedBy ?bestuurseenheid .
     }`);
 };

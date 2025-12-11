@@ -1,5 +1,5 @@
 import { logger } from "../logger";
-import { updateSudo } from "@lblod/mu-auth-sudo";
+import { updateSudo, querySudo } from "@lblod/mu-auth-sudo";
 import { sparqlEscapeUri } from "mu";
 import {
   BATCH_GRAPH,
@@ -27,18 +27,15 @@ export async function processPage() {
 
   const burgemeesterOrgaanClassificatieCodeUri = 'http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284';
   const bekrachtigdPublicatieCodeUri = 'http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6';
-
-  await updateSudo(`
+  const commonWhereStatement = (selection: string) => `
     PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
-    INSERT {
-      GRAPH ?organizationG {
-        ?s ?pNew ?oNew.
-      }
-    } WHERE {
+
+    ${selection}
+    WHERE {
       VALUES ?bestuurseenheid { ${sparqlEscapeUri(GEMEENTE_BESTUURSEENHEID_URI)} }
       
       ?orgaanIT org:hasPost ?mandaat .
@@ -63,5 +60,22 @@ export async function processPage() {
         ?versionedMember ?pNew ?oNew .
         FILTER (?pNew NOT IN ( ${sparqlEscapeUri(VERSION_PREDICATE)}, ${sparqlEscapeUri(TIME_PREDICATE)} ))
       }
-    }`);
+    }
+    `
+
+  const sparqlResult = await querySudo(commonWhereStatement('SELECT DISTINCT ?s'));
+  const foundSubjectUris = sparqlResult.results?.bindings.map((b) => b.s.value) ?? [];
+  if (foundSubjectUris.length >= 1) {
+    logger.info(`Found ${foundSubjectUris.length} subjects for burgemeester-benoemingen. (${foundSubjectUris.join(', ')})`);
+  }
+
+  await updateSudo(commonWhereStatement(`
+    INSERT {
+      GRAPH ?organizationG {
+        ?s ?pNew ?oNew.
+      }
+    }
+  `));
 };
+
+

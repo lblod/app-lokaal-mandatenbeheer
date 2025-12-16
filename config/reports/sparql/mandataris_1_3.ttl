@@ -43,7 +43,7 @@ sh:sparql [
   where {
     $this a besluit:Bestuursorgaan .
     # pick one date where the count is not between min and max (inclusive)
-    { select distinct $this ?mandaat ?mandatarisCount ?mandaatLabel ?min ?max ?processedDateToCheck where {
+    { select distinct $this ?mandaat ?mandatarisCount ?mandaatLabel ?max ?processedDateToCheck where {
       {
         # count all persons per mandate for each of these 'edge' dates
         SELECT $this ?mandaat ?simplifiedDateToCheck (COUNT(DISTINCT(?person)) AS ?mandatarisCount) WHERE {
@@ -57,9 +57,6 @@ sh:sparql [
             ?s a mandaat:Mandataris.
             ?s org:holds ?mandaat.
             ?mandaat mandaat:aantalHouders ?max.
-            ?mandaat lmb:minAantalHouders ?min.
-
-
 
             { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("2030-12-31"^^xsd:dateTime AS ?dateToCheck) } }
             BIND(strdt(substr(str(?dateToCheck), 1, 10), xsd:date) AS ?simplifiedDateToCheck)
@@ -88,16 +85,15 @@ sh:sparql [
         } GROUP BY $this ?mandaat ?simplifiedDateToCheck
       }
       ?mandaat mandaat:aantalHouders ?max.
-      ?mandaat lmb:minAantalHouders ?min.
       ?mandaat org:role / skos:prefLabel ?mandaatLabel.
 
 
       # # our dates are UTC 23, so we need to add a day
       BIND(bif:dateadd('hour', 24, strdt(substr(str(?simplifiedDateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
-      FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
+      FILTER(?max < ?mandatarisCount)
 
     } }
-    BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max)) as ?value)
+    BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?max), " - maximum: ", str(?max)) as ?value)
   }
     """ ;
         sh:message "Verkeerd aantal mandatarissen."

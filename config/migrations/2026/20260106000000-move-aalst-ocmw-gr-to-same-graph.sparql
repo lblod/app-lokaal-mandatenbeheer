@@ -1,0 +1,16 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/> 
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/aalstCombinedGraph/LoketLB-mandaatGebruiker> {
+    ?s ?p ?o .
+  }
+} WHERE {
+  graph ?g {
+    ?s ?p ?o .
+  }
+  VALUES ?id { "974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4" "d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18" }
+  ?g ext:ownedBy ?eenheid .
+  ?eenheid mu:uuid ?id .
+
+}

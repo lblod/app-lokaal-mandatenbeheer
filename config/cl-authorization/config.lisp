@@ -294,6 +294,15 @@
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
           SELECT ?session_group ?session_role WHERE {
             <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group.
+            BIND(IF(?session_group IN (
+                    \"974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4\",
+                    \"d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18\"
+                  ),
+                  \"aalstCombinedGraph\",
+                  ?session_group
+                )
+                AS ?session_group_mut
+              )
           }")
 
 (grant (read)
@@ -301,25 +310,43 @@
        :for-allowed-group "organization-member")
 
 (supply-allowed-group "mandaat-gebruiker"
-  :parameters ("session_group" "session_role")
+  :parameters ("session_group_mut" "session_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-          SELECT DISTINCT ?session_group ?session_role WHERE {
+          SELECT DISTINCT ?session_group_mut ?session_role WHERE {
             <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                          ext:sessionRole ?session_role.
             FILTER( ?session_role = \"LoketLB-mandaatGebruiker\" )
+            BIND(IF(?session_group IN (
+                    \"974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4\",
+                    \"d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18\"
+                  ),
+                  \"aalstCombinedGraph\",
+                  ?session_group
+                )
+                AS ?session_group_mut
+              )
           }")
 
 (supply-allowed-group "politieraad-lezer"
-  :parameters ("session_group" "session_role")
+  :parameters ("session_group_mut" "session_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-          SELECT DISTINCT ?session_group ?session_role WHERE {
+          SELECT DISTINCT ?session_group_mut ?session_role WHERE {
             <SESSION_ID> ext:sessionGroup ?original_session_group;
                          ext:sessionRole ?session_role.
             ?original_session_group ext:deeltBestuurVan/mu:uuid ?session_group.
 
             FILTER( ?session_role = \"LoketLB-mandaatGebruiker\" )
+            BIND(IF(?session_group IN (
+                    \"974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4\",
+                    \"d769b4b9411ad25f67c1d60b0a403178e24a800e1671fb3258280495011d8e18\"
+                  ),
+                  \"aalstCombinedGraph\",
+                  ?session_group
+                )
+                AS ?session_group_mut
+              )
           }")
 
 (grant (read)

@@ -367,7 +367,6 @@ services:
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       SUDO_QUERY_RETRY: "true"
       DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be"
-      #DCR_CRON_PATTERN_DELTA_SYNC: '* * * * *' # this is every minute
       DCR_DISABLE_DELTA_INGEST: "false"
     volumes:
       - ./config/op-consumer/mapping:/config/mapping

@@ -1,0 +1,15 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE {
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?houders .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?houders .
+  }
+  ?g ext:ownedBy / mu:uuid ?eenheid .
+}

@@ -1,0 +1,10 @@
+DELETE {
+  GRAPH ?g {
+    ?s <http://lblod.data.gift/vocabularies/lmb/minAantalHouders> ?min .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s <http://lblod.data.gift/vocabularies/lmb/minAantalHouders> ?min .
+  }
+}

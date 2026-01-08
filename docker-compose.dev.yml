@@ -125,5 +125,9 @@ services:
     restart: "no"
   op-public-consumer:
     restart: "no"
+    environment:
+      DCR_START_FROM_DELTA_TIMESTAMP: "2025-01-01T00:00:00Z"
+      DCR_SYNC_BASE_URL: "https://dev.organisaties.abb.lblod.info"
+      #DCR_CRON_PATTERN_DELTA_SYNC: '* * * * *' # this is every minute      
   locally-managed-ldes-client:
     restart: "no"

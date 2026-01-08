@@ -57,9 +57,6 @@ sh:sparql [
             ?s a mandaat:Mandataris.
             ?s org:holds ?mandaat.
             ?mandaat mandaat:aantalHouders ?max.
-            ?mandaat lmb:minAantalHouders ?min.
-
-
 
             { { ?s mandaat:start|mandaat:einde ?dateToCheck } UNION { ?s mandaat:start ?start. BIND("2030-12-31"^^xsd:dateTime AS ?dateToCheck) } }
             BIND(strdt(substr(str(?dateToCheck), 1, 10), xsd:date) AS ?simplifiedDateToCheck)
@@ -88,12 +85,15 @@ sh:sparql [
         } GROUP BY $this ?mandaat ?simplifiedDateToCheck
       }
       ?mandaat mandaat:aantalHouders ?max.
-      ?mandaat lmb:minAantalHouders ?min.
-      ?mandaat org:role / skos:prefLabel ?mandaatLabel.
+      ?mandaat org:role ?orgaanCode .
+      ?orgaanCode skos:prefLabel ?mandaatLabel.
 
 
       # # our dates are UTC 23, so we need to add a day
       BIND(bif:dateadd('hour', 24, strdt(substr(str(?simplifiedDateToCheck), 1, 10), xsd:date)) as ?processedDateToCheck)
+      BIND(IF(?orgaanCode IN(
+              <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017> # Lid Vast Bureau
+            ), ?max - 1, ?max) AS ?min)
       FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
 
     } }

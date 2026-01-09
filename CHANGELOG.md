@@ -1,4 +1,15 @@
 # Changelog
+
+## 1.1.7 (2026-01-07)
+
+### :house: Internal
+ - Bumped frontend to v0.9.7
+
+### :rocket: Enhancement
+  - Scripts to extract the Data of Aalst from the database. To be used in local deployment.
+  - Fix politiezone data
+  - Get aantal houders from OP-consumer
+
 ## 1.88.0 (2023-10-31)
 ### general
 - update virtuoso

@@ -67,8 +67,6 @@ services:
     restart: "no"
   file:
     restart: "no"
-  filehost:
-    restart: "no"
   sink:
     restart: "no"
   form-content:

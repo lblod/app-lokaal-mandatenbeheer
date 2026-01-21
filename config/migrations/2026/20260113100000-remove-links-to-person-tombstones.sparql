@@ -6,6 +6,6 @@ DELETE {
 WHERE {
   GRAPH ?g {
     ?s <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?persoon.
-    ?persoon a <http://www.w3.org/ns/activitystreams#Tombstone> .
   }
+  ?persoon a <http://www.w3.org/ns/activitystreams#Tombstone> .
 }

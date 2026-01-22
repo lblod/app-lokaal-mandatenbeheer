@@ -126,16 +126,6 @@ services:
     environment:
       EMBER_ENVIRONMENT_NAME: "PROD"
       EMBER_AUTHENTICATION_ENABLED: "true"
-  filehost:
-    image: nginx:1.15.2
-    volumes:
-      - ./config/filehost/nginx.conf:/etc/nginx/nginx.conf
-      - ./config/filehost/conf.d:/etc/nginx/conf.d
-      - ./data/files:/data:ro
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
   sink:
     image: nginx:1.15.2
     volumes:

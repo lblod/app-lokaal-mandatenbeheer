@@ -259,6 +259,8 @@ services:
       - "./data/ldes-feed/:/data/"
   decision-ldes-client:
     image: lblod/ldes-client:0.0.3
+    profiles:
+      - isDisabledOnLocalSetup
     links:
       - database:database
       - virtuoso:virtuoso
@@ -280,6 +282,8 @@ services:
   ##############################################################################
   vendor-login:
     image: lblod/vendor-login-service:1.3.0
+    profiles:
+      - isDisabledOnLocalSetup
     restart: always
     labels:
       - "logging=true"
@@ -315,6 +319,8 @@ services:
     logging: *default-logging
   vendor-management-consumer:
     image: lblod/delta-consumer:0.0.26
+    profiles:
+      - isDisabledOnLocalSetup
     environment:
       DCR_SERVICE_NAME: "vendor-management-consumer"
       DCR_SYNC_BASE_URL: "https://dev.loket.lblod.info/"
@@ -378,6 +384,23 @@ services:
       BYPASS_MU_AUTH: false
     volumes:
       - ./config/locally-managed-ldes:/config
+    labels:
+      - "logging=true"
+    logging: *default-logging
+  bb-aalst-ldes-client:
+    image: lblod/ldes-client:0.0.3
+    volumes:
+    - ./config/bb-aalst-ldes:/config
+    restart: always
+    environment:
+      CRON_PATTERN: "3 * * * *" # Every hour at minute 3
+      LDES_BASE: https://mandatenbeheer.lblod.info/streams/ldes/public/
+      FIRST_PAGE: https://mandatenbeheer.lblod.info/streams/ldes/public/1
+      TARGET_GRAPH: http://mu.semte.ch/graphs/aalst-bb-lmb-consumed
+      WORKING_GRAPH: http://mu.semte.ch/graphs/aalst-bb-lmb-consumed-tmp
+      DIRECT_DATABASE_CONNECTION: 'http://virtuoso:8890/sparql'
+      RANDOMIZE_GRAPHS: true
+      BATCH_SIZE: 100
     labels:
       - "logging=true"
     logging: *default-logging

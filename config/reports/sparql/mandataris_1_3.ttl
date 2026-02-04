@@ -97,8 +97,9 @@ sh:sparql [
       FILTER(?min > ?mandatarisCount || ?max < ?mandatarisCount)
 
     } }
-    BIND(IF(?mandatarisCount < ?min, ". Mogelijks is er een mandataris verhinderd.", "") AS ?valueSuffix)
-    BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max), ?valueSuffix) as ?value)
+    BIND(concat(str(?mandatarisCount), " mandataris(sen) voor '",str(?mandaatLabel), "' gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max), ?valueSuffix) as ?normalSituation)
+    BIND(concat("Onverwacht aantal mandatarissen - ", str(?mandatarisCount), " mandataris(sen) voor ", str(?mandaatLabel), " gevonden op ", DAY(?processedDateToCheck),"-",MONTH(?processedDateToCheck),"-", YEAR(?processedDateToCheck), " - minimum: ", str(?min), " - maximum: ", str(?max), ". Mogelijks is een mandataris verhinderd.") as ?replacementMessage)
+    BIND(IF(?mandatarisCount < ?min, ?replacementMessage , ?normalSituation) AS ?value)
   }
     """ ;
         sh:message "Verkeerd aantal mandatarissen."

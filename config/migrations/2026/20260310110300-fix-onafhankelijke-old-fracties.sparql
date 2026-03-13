@@ -1,0 +1,62 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?lidmaatschap org:organisation ?fractie .
+    ?lidmaatschap dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?newFractie mu:uuid ?newUUID .
+    ?newFractie a <http://data.vlaanderen.be/ns/mandaat#Fractie> .
+    ?newFractie ext:isFractietype <http://data.vlaanderen.be/id/concept/Fractietype/Onafhankelijk> .
+
+    ?newFractie dct:modified ?now .
+    ?newFractie regorg:legalName "Onafhankelijk" .
+    ?newFractie org:linkedTo ?eenheid .
+    ?newFractie org:memberOf ?otherOrgT.
+    ?lidmaatschap org:organisation ?newFractie .
+    ?lidmaatschap dct:modified ?now .
+  }
+
+}WHERE {
+
+  VALUES ?mandataris {
+    <http://data.lblod.info/id/mandatarissen/1b7c6e1d-650b-4d86-bf1b-1d0b629e9805>
+    <http://data.lblod.info/id/mandatarissen/99664cb1-4798-4d4e-9ea1-55021526a51c>
+    <http://data.lblod.info/id/mandatarissen/5d93b39a-8b35-428b-9cd2-5a63d47d14ef>
+    <http://data.lblod.info/id/mandatarissen/4a6372f1-8429-4bf3-ab94-0d461e428fe0>
+    <http://data.lblod.info/id/mandatarissen/162deb64-843b-4ff9-89a8-1c93f34789e2>
+    <http://data.lblod.info/id/mandatarissen/22998806-0cea-4b6f-809f-7fc1a522bb43>
+    <http://data.lblod.info/id/mandatarissen/342bc720-c0f7-4329-8f16-acba463b908e>
+    <http://data.lblod.info/id/mandatarissen/b445bcc2-9044-4502-a2c9-a39aceac78d9>
+    <http://data.lblod.info/id/mandatarissen/5b3752d5-0fdd-4199-950f-78a0b3e8787a>
+  }
+  GRAPH ?g {
+    ?mandataris org:hasMembership ?lidmaatschap .
+    ?mandataris org:holds ?mandaat .
+    ?lidmaatschap org:organisation ?fractie .
+    ?lidmaatschap dct:modified ?mod.
+    ?lidmaatschap mu:uuid ?lidmUUid .
+    BIND(SHA256(CONCAT(?lidmUuid, "fractie20260310")) AS ?newUUID)
+  }
+  ?g ext:ownedBy ?someone.
+  ?orgT org:hasPost ?mandaat .
+  ?orgT mandaat:isTijdspecialisatieVan ?org .
+  ?org besluit:bestuurt ?eenheid .
+  ?orgT lmb:heeftBestuursperiode ?periode .
+
+  ?otherOrgT mandaat:isTijdspecialisatieVan / besluit:bestuurt ?eenheid. 
+
+
+  BIND(IRI(CONCAT("http://data.lblod.info/id/fracties/", ?newUUID)) AS ?newFractie)
+  BIND(NOW() AS ?now)
+}

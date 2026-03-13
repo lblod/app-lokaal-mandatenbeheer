@@ -1,0 +1,66 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX regorg: <https://www.w3.org/ns/regorg#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g {
+    ?lidmaatschap org:organisation ?fractie .
+    ?lidmaatschap dct:modified ?mod .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?lidmaatschap org:organisation ?correctFractie .
+    ?lidmaatschap dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?org a besluit:Bestuursorgaan .
+  }
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris.
+    ?mandataris org:holds ?mandaat.
+    ?mandataris org:hasMembership ?lidmaatschap.
+    ?lidmaatschap org:organisation ?fractie .
+    ?lidmaatschap dct:modified ?mod .
+    ?fractie regorg:legalName ?fractieName .
+    ?fractie org:memberOf ?org2.
+    ?correctFractie org:memberOf ?org .
+    ?correctFractie regorg:legalName ?fractieName .
+    FILTER NOT EXISTS {
+      ?fractie org:memberOf ?org.
+    }
+  }
+  ?g ext:ownedBy ?someone.
+
+  ?org org:hasPost ?mandaat .
+  ?org lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>. # current
+  ?org2 mandaat:bindingStart ?start.
+
+  BIND(NOW() AS ?now)
+
+};
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/lidmaatschappen/98271d12-5718-47fc-b1b0-20ca73e7ccd6> org:organisation ?old.
+    <http://data.lblod.info/id/lidmaatschappen/98271d12-5718-47fc-b1b0-20ca73e7ccd6> dct:modified ?mod.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/lidmaatschappen/98271d12-5718-47fc-b1b0-20ca73e7ccd6> org:organisation <http://data.lblod.info/id/fracties/672CB3DFFA33CF4AB9A6136D> .
+    <http://data.lblod.info/id/lidmaatschappen/98271d12-5718-47fc-b1b0-20ca73e7ccd6> dct:modified ?now.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/lidmaatschappen/98271d12-5718-47fc-b1b0-20ca73e7ccd6> org:organisation ?old.
+    <http://data.lblod.info/id/lidmaatschappen/98271d12-5718-47fc-b1b0-20ca73e7ccd6> dct:modified ?mod.
+  }
+  BIND(NOW() AS ?now)
+}

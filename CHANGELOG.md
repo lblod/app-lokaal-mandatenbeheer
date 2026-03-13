@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.8 (2026-03-13)
+
+### :house: Internal
+ - Bumped mandataris-service to v0.9.7
+ - Bumped frontend to v0.9.8
+
+### :rocket: Enhancement
+  - Fix fraction data 
+  - Loosen validation for replacements
+  - Import aantal houders from OP as a migration 
+
 ## 1.1.7 (2026-01-07)
 
 ### :house: Internal

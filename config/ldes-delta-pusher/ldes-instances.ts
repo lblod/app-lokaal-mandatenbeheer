@@ -26,11 +26,13 @@ export const ldesInstances = {
           // "http://data.vlaanderen.be/ns/mandaat#status",
           // "http://mu.semte.ch/vocabularies/ext/lmb/hasPublicationStatus",
         ],
-        instanceFilter: `OPTIONAL { ?s <http://lblod.data.gift/vocabularies/lmb/hasPublicationStatus> ?publicationStatus. }
-        FILTER(!BOUND(?publicationStatus) || ?publicationStatus != <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07>)
-
-        ?s <http://www.w3.org/ns/org#holds> / <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .
-        `,
+        instanceFilter: `
+        GRAPH ?g {
+          OPTIONAL { ?s <http://lblod.data.gift/vocabularies/lmb/hasPublicationStatus> ?publicationStatus. }
+          FILTER(!BOUND(?publicationStatus) || ?publicationStatus != <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07>)
+          ?s <http://www.w3.org/ns/org#holds> ?mandate .
+        }
+        ?mandate <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .`,
       },
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
         "http://purl.org/dc/terms/modified",
@@ -105,7 +107,10 @@ export const ldesInstances = {
         specialType: true,
         republishRelated: ["http://www.w3.org/ns/org#hasMembership"],
         healingPredicates: ["http://purl.org/dc/terms/modified"],
-        instanceFilter: `?s <http://www.w3.org/ns/org#holds> / <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .`,
+        instanceFilter: `GRAPH ?g {
+          ?s <http://www.w3.org/ns/org#holds> ?mandaat .
+        } 
+        ?mandaat <http://www.w3.org/ns/org#role> / <http://mu.semte.ch/vocabularies/ext/publicMandate> "true"^^xsd:boolean .`,
       },
       "http://data.vlaanderen.be/ns/mandaat#Fractie": [
         "http://purl.org/dc/terms/modified",

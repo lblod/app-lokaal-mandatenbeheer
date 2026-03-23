@@ -1,0 +1,11 @@
+(define-resource feature-flag ()
+  :class (s-prefix "ext:FeatureFlag")
+  :properties `(
+    (:name :string ,(s-prefix "schema:name"))
+    (:label :string ,(s-prefix "rdfs:label"))
+    (:description :string ,(s-prefix "schema:description"))
+    (:is-enabled :boolean ,(s-prefix "schema:value"))
+  )
+  :resource-base (s-url "http://data.lblod.info/id/FeatureFlag/")
+  :features '(include-uri)
+  :on-path "feature-flags")

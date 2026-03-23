@@ -2,24 +2,33 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX schema: <http://schema.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 INSERT {
   GRAPH ?g {
-    ?editableForms a ext:FeatureFlag.
-    ?editableForms schema:name """editable-forms""" .
-    ?editableForms rdfs:label """Eigen gegevens via formulieren""" .
-    ?editableForms schema:description """Opbouwen van formulieren om eigen gegevens bij te houden.""" .
-    ?editableForms schema:value """true"""^^xsd:Boolean .
+    ?editableForms a ext:FeatureFlag .
+    ?editableForms mu:uuid ?editableFormsId .
+    ?editableForms schema:name "editable-forms" .
+    ?editableForms rdfs:label "Eigen gegevens via formulieren" .
+    ?editableForms schema:description "Opbouwen van formulieren om eigen gegevens bij te houden." .
+    ?editableForms schema:value "true"^^xsd:boolean .
     
-    ?customOrganen a ext:FeatureFlag.
-    ?customOrganen schema:name """custom-organen""" .
-    ?customOrganen rdfs:label """Eigen organen""" .
-    ?customOrganen schema:description """Naast de decretale bestuursorganen kunnen er ook eigen organen aangemaakt worden.""" .
-    ?customOrganen schema:value """true"""^^xsd:Boolean .
+    ?customOrganen a ext:FeatureFlag .
+    ?customOrganen mu:uuid ?customOrganenId .
+    ?customOrganen schema:name "custom-organen" .
+    ?customOrganen rdfs:label "Eigen organen" .
+    ?customOrganen schema:description "Naast de decretale bestuursorganen kunnen er ook eigen organen aangemaakt worden." .
+    ?customOrganen schema:value "true"^^xsd:boolean .
   }
 }
 WHERE {
-  BIND(<http://data.lblod.info/id/FeatureFlag/15080440-1ca9-4d85-9554-930f33635e4c> AS ?editableForms)
-  BIND(<http://data.lblod.info/id/FeatureFlag/26fc602d-1abc-45a7-a2f2-f6ac718025ea> AS ?customOrganen)
-  ?g ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> . # Provincie Limburg  
+  ?g ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+  
+  BIND(STR("http://data.lblod.info/id/FeatureFlag/") AS ?baseUri)
+  
+  BIND(STR("15080440-1ca9-4d85-9554-930f33635e4c") AS ?editableFormsId)
+  BIND(URI(CONCAT(?baseUri, ?editableFormsId)) AS ?editableForms)
+  
+  BIND(STR("26fc602d-1abc-45a7-a2f2-f6ac718025ea") AS ?customOrganenId)
+  BIND(URI(CONCAT(?baseUri, ?customOrganenId)) AS ?customOrganen)
 }

@@ -56,6 +56,9 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/remote-data-objects/")
   end
 
+  get "/feature-flags/*path", %{layer: :resources, accept: %{json: true}} do
+    forward(conn, path, "http://cache/feature-flags/")
+  end
   #################################################################
   # Abstract resources
   #################################################################

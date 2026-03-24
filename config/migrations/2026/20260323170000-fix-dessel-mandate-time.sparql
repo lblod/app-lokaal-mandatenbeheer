@@ -17,6 +17,10 @@ insert {
   }
 }
 where {
+  values ?bestuurseenheid {
+    <http://data.lblod.info/id/bestuurseenheden/dfb206885f2dfd9257e65364956f70562e52d55fd99702dff117c8f24ebbda43> # OCMW Dessel
+    <http://data.lblod.info/id/bestuurseenheden/b40be11d4f04a2e0fff76e8feae92471963c063e2d65a68210dab2707ac62726> # Gemeenteraad Dessel
+  }
   graph ?g {
     ?mandataris a mandaat:Mandataris .
     ?mandataris mandaat:start ?start .
@@ -27,7 +31,7 @@ where {
   }
   ?orgaan org:hasPost ?mandaat .
   ?orgaan lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2025 - heden
-  ?g ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/b40be11d4f04a2e0fff76e8feae92471963c063e2d65a68210dab2707ac62726>  . # Gemeenteraad Dessel
+  ?g ext:ownedBy ?bestuurseenheid .
 }
 
 ;
@@ -43,6 +47,10 @@ insert {
   }
 }
 where {
+  values ?bestuurseenheid {
+    <http://data.lblod.info/id/bestuurseenheden/dfb206885f2dfd9257e65364956f70562e52d55fd99702dff117c8f24ebbda43> # OCMW Dessel
+    <http://data.lblod.info/id/bestuurseenheden/b40be11d4f04a2e0fff76e8feae92471963c063e2d65a68210dab2707ac62726> # Gemeenteraad Dessel
+  }
   graph ?g {
     ?mandataris a mandaat:Mandataris .
     ?mandataris mandaat:einde ?einde .
@@ -53,5 +61,5 @@ where {
   }
   ?orgaan org:hasPost ?mandaat .
   ?orgaan lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2025 - heden
-  ?g ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/b40be11d4f04a2e0fff76e8feae92471963c063e2d65a68210dab2707ac62726>  . # Gemeenteraad Dessel
+  ?g ext:ownedBy ?bestuurseenheid .
 }

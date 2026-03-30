@@ -1,0 +1,67 @@
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+delete {
+  graph ?g {
+    ?mandataris mandaat:start ?start .
+  }
+}
+insert {
+  graph ?g {
+    ?mandataris mandaat:start ?correctedStart .
+  }
+}
+where {
+  values ?bestuurseenheid {
+    <http://data.lblod.info/id/bestuurseenheden/dfb206885f2dfd9257e65364956f70562e52d55fd99702dff117c8f24ebbda43> # OCMW Dessel
+    <http://data.lblod.info/id/bestuurseenheden/b40be11d4f04a2e0fff76e8feae92471963c063e2d65a68210dab2707ac62726> # Gemeenteraad Dessel
+  }
+  graph ?g {
+    ?mandataris a mandaat:Mandataris .
+    ?mandataris mandaat:start ?start .
+    ?mandataris org:holds ?mandaat .
+    bind(substr(str(?start), 0, 4) as ?startYear)
+    filter(?startYear = "2024")
+    bind(substr(str(?start), 11, 20) as ?startTime)
+    filter(?startTime = "T00:00:00Z")
+    bind(bif:dateadd('hour', -1, ?start) as ?correctedStart)
+  }
+  ?orgaan org:hasPost ?mandaat .
+  ?orgaan lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2025 - heden
+  ?g ext:ownedBy ?bestuurseenheid .
+}
+
+;
+
+delete {
+  graph ?g {
+    ?mandataris mandaat:einde ?einde .
+  }
+}
+insert {
+  graph ?g {
+    ?mandataris mandaat:einde ?correctedEinde .
+  }
+}
+where {
+  values ?bestuurseenheid {
+    <http://data.lblod.info/id/bestuurseenheden/dfb206885f2dfd9257e65364956f70562e52d55fd99702dff117c8f24ebbda43> # OCMW Dessel
+    <http://data.lblod.info/id/bestuurseenheden/b40be11d4f04a2e0fff76e8feae92471963c063e2d65a68210dab2707ac62726> # Gemeenteraad Dessel
+  }
+  graph ?g {
+    ?mandataris a mandaat:Mandataris .
+    ?mandataris mandaat:einde ?einde .
+    ?mandataris org:holds ?mandaat .
+    bind(substr(str(?einde), 11, 20) as ?eindeTime)
+    filter(?eindeTime = "T23:59:59Z")
+    bind(bif:dateadd('hour', -1, ?einde) as ?correctedEinde)
+  }
+  ?orgaan org:hasPost ?mandaat .
+  ?orgaan lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2025 - heden
+  ?g ext:ownedBy ?bestuurseenheid .
+}

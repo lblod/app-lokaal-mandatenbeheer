@@ -25,6 +25,8 @@ where {
     ?mandataris a mandaat:Mandataris .
     ?mandataris mandaat:start ?start .
     ?mandataris org:holds ?mandaat .
+    bind(substr(str(?start), 0, 4) as ?startYear)
+    filter(?startYear = "2024")
     bind(substr(str(?start), 11, 20) as ?startTime)
     filter(?startTime = "T00:00:00Z")
     bind(bif:dateadd('hour', -1, ?start) as ?correctedStart)

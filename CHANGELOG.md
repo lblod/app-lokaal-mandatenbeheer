@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.9 (2026-04-01)
+
+### :house: Internal
+ - Bumped mandataris-service to v0.9.8
+ - Bumped frontend to v0.9.9
+ - Bumped ldes-delta-pusher to v1.2.13
+ - Fix Ldes content publish
+
+### :rocket: Enhancement
+  - Unlink mandate before linking 
+  - Fix datetime of mandate data in Dessel (ocmw/gemeente) 
+
 ## 1.1.8 (2026-03-13)
 
 ### :house: Internal

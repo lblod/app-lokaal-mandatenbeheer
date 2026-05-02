@@ -143,7 +143,7 @@ services:
     volumes:
       - ./config/form-content:/config
   mandataris:
-    image: lblod/mandataris-service:0.9.9
+    image: lblod/mandataris-service:0.9.10
     labels:
       - "logging=true"
     restart: always
@@ -152,6 +152,7 @@ services:
       - ./data/files/burgemeester-benoemingen:/uploads
     environment:
       NOTIFICATION_CRON_PATTERN: 31 8 * * 1-5
+      LINKING_MANDATEES_CRON_PATTERN: "37 * * * *" # Every hour at 37th minute
       EMAIL_FROM_MANDATARIS_WITHOUT_DECISION: "lokaalmandatenbeheer@abb.vlaanderen.be" # Must be the same as EMAIL_ADDRESS in deliver-email service
       SEND_EMAIL_FOR_MANDATARIS_WITHOUT_DECISION: true
       BESLUIT_STAGING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as decision-ldes-client working graph

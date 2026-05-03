@@ -165,6 +165,8 @@ export const publish = async (
         folder: target,
         body: safeData,
         fragmenter: LDES_FRAGMENTER,
+      }).catch((e) => {
+        console.log(`Error: failed to push data to the stream. [${target}], ${safeData}\npublish error: ${e}`);
       });
     })
   );

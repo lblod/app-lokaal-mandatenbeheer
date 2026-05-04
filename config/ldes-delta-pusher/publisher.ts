@@ -2,7 +2,8 @@ import { sparqlEscapeUri, sparqlEscape, sparqlEscapeString } from "mu";
 import { querySudo } from "@lblod/mu-auth-sudo";
 import { addData, getConfigFromEnv } from "@lblod/ldes-producer";
 
-import { LDES_FRAGMENTER } from "../environment";
+import ENV from "../environment";
+const LDES_FRAGMENTER = ENV.LDES_FRAGMENTER;
 import { log } from "./logger";
 import {
   defaultProperties,
@@ -111,10 +112,16 @@ const sparqlEscapeObject = (bindingObject): string => {
     : sparqlEscape(bindingObject.value, escapeType);
 };
 
-export const bindingToTriple = (binding) =>
-  `${sparqlEscapeUri(binding.s.value)} ${sparqlEscapeUri(
-    binding.p.value
-  )} ${sparqlEscapeObject(binding.o)} .`;
+export const bindingToTriple = (binding) => {
+  try {
+    return `${sparqlEscapeUri(binding.s.value)} ${sparqlEscapeUri(
+      binding.p.value
+    )} ${sparqlEscapeObject(binding.o)} .`;
+  }catch(e){
+    // somehow object claims replace is not a function, let's log and continue
+    console.log(`ERROR: Failed to transform binding to triple: ${JSON.stringify(binding)}`);
+  }  
+}
 
 const streamTargets: Record<LDES_TYPE, string[]> = {
   public: ["public", "abb", "internal"],

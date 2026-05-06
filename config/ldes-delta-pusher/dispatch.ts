@@ -20,6 +20,10 @@ function filterOutNonAppChanges(changesets: Changeset[]) {
     'http://mu.semte.ch/graphs/landing-zone/op-public',
     'http://mu.semte.ch/graphs/formHistory',
     'http://mu.semte.ch/graphs/besluiten-consumed',
+    'http://example.org/cache',
+    'http://mu.semte.ch/graphs/system/jobs',
+    'http://mu.semte.ch/graphs/delete-op-public',
+    'http://redpencil.data.gift/id/deltas/producer/public',
   ];
   const shouldNotIgnoreGraph = (quad: Quad) => {
     return !graphsToIgnore.find((graphPrefix) => {

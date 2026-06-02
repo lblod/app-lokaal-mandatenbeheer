@@ -1,0 +1,334 @@
+x-logging: &default-logging
+  driver: 'json-file'
+  options:
+    max-size: '10m'
+    max-file: '3'
+
+services:
+  identifier:
+    image: semtech/mu-identifier:1.10.1
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+    ports:
+      - '80:80'
+  dispatcher:
+    image: semtech/mu-dispatcher:2.1.0-beta.2
+    volumes:
+      - ./config/dispatcher:/config
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  deltanotifier:
+    image: semtech/mu-delta-notifier:0.3.0
+    volumes:
+      - ./config/delta:/config
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  database:
+    image: semtech/sparql-parser:0.0.14
+    environment:
+      MU_SPARQL_ENDPOINT: 'http://virtuoso:8890/sparql'
+      DATABASE_OVERLOAD_RECOVERY: 'true'
+      DATABASE_COMPATIBILITY: 'Virtuoso'
+      LISP_DYNAMIC_SPACE_SIZE: 4096
+      # Note: not sure wether it gets picked up properly, it is meant for healing-process which may make
+      # heavy queries
+      QUERY_MAX_PROCESSING_TIME: 605000
+      QUERY_MAX_EXECUTION_TIME: 605000
+    volumes:
+      - ./config/cl-authorization:/config
+      - ./data/mu-auth:/data
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  virtuoso:
+    image: redpencil/virtuoso:1.3.1
+    environment:
+      SPARQL_UPDATE: 'true'
+      DEFAULT_GRAPH: 'http://mu.semte.ch/application'
+    volumes:
+      - ./data/db:/data
+      - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini # Note: on production override this setting
+      - ./config/virtuoso/:/opt/virtuoso-scripts
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  migrations:
+    image: semtech/mu-migrations-service:0.6.0
+    links:
+      - virtuoso:database
+    environment:
+      MU_SPARQL_TIMEOUT: '300'
+    volumes:
+      - ./config/migrations:/data/migrations
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  cache:
+    image: semtech/mu-cache:2.0.1
+    links:
+      - resource:backend
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  resource:
+    image: semtech/mu-cl-resources:feature-more-backtrace
+    environment:
+      CACHE_CLEAR_PATH: 'http://cache/.mu/clear-keys'
+    volumes:
+      - ./config/resources:/config
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  login:
+    image: lblod/acmidm-login-service:0.12.0
+    environment:
+      MU_APPLICATION_AUTH_DISCOVERY_URL: 'https://authenticatie-ti.vlaanderen.be/op'
+      MU_APPLICATION_AUTH_CLIENT_ID: 'a2c0d6ea-01b4-4f68-920b-10834a943c27'
+      LOG_SINK_URL: 'http://sink'
+      MU_APPLICATION_AUTH_JWK_PRIVATE_KEY: /config/jwk_private_key.json
+      MU_APPLICATION_AUTH_USERID_CLAIM: vo_id
+      MU_APPLICATION_AUTH_REDIRECT_URI: 'https://mandatenbeheer.lblod.info/authorization/callback'
+    volumes:
+      - ./config/login:/config
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  file:
+    image: semtech/mu-file-service:3.4.0
+    volumes:
+      - ./data/files:/share
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  frontend:
+    image: lblod/frontend-lokaal-mandatenbeheer:feature-local-deployment-aalst
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+    environment:
+      EMBER_ENVIRONMENT_NAME: 'QA'
+      EMBER_AUTHENTICATION_ENABLED: 'false'
+  mocklogin:
+    image: lblod/mock-login-service:0.5.0
+  sink:
+    image: nginx:1.15.2
+    volumes:
+      - ./config/sink/sink.conf:/etc/nginx/conf.d/default.conf
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  form-content:
+    image: lblod/form-content-service:0.1.0
+    restart: always
+    labels:
+      - 'logging=true'
+    logging: *default-logging
+    volumes:
+      - ./config/form-content:/config
+  mandataris:
+    image: lblod/mandataris-service:0.9.12
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+    volumes:
+      - ./data/files/burgemeester-benoemingen:/uploads
+    environment:
+      LINKING_MANDATEES_CRON_PATTERN: '37 * * * *' # Every hour at 37th minute
+      SEND_EMAIL_FOR_MANDATARIS_WITHOUT_DECISION: false
+      BESLUIT_STAGING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as decision-ldes-client working graph
+  concept-scheme:
+    image: lblod/concept-scheme-service:0.0.2
+    labels:
+      - 'logging=true'
+    restart: always
+  adressenregister:
+    image: lblod/adressenregister-fuzzy-search-service:0.8.0
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+  merge-person-cron:
+    image: lblod/merge-person-service:1.0.0
+    labels:
+      - 'logging=true'
+    restart: always
+    depends_on:
+      - virtuoso
+  modified:
+    image: lblod/track-modified-service:0.2.0
+    environment:
+      CLEANUP_DUPLICATES_CRON: 16 * * * *
+    labels:
+      - 'logging=true'
+    volumes:
+      - ./config/modified:/config
+    restart: always
+    logging: *default-logging
+
+  authorization-wrapper:
+    image: lblod/ldes-authorization-wrapper:0.0.2
+    labels:
+      - 'logging=true'
+    restart: always
+    logging: *default-logging
+    volumes:
+      - ./config/authorization-wrapper:/config
+  ################################################################################
+  # REPORTING
+  ################################################################################
+  report-generation:
+    image: lblod/loket-report-generation-service:0.8.3
+    environment:
+      DEFAULT_GRAPH: 'http://mu.semte.ch/graphs/reports'
+      ONLY_KEEP_LATEST_REPORT: 'true'
+    volumes:
+      - ./data/files:/share
+      - ./config/reports:/config
+    restart: always
+    labels:
+      - 'logging=true'
+    logging: *default-logging
+  ##############################################################################
+  # LDES
+  ##############################################################################
+  ldes-delta-pusher:
+    image: redpencil/ldes-delta-pusher:1.2.14
+    environment:
+      LDES_ENDPOINT: 'http://ldes-backend'
+      LDES_BASE: 'https://dev.mandatenbeheer.lblod.info/streams/ldes'
+      LDES_FOLDER: public # ignored as we have an ldes config that sets the stream folder
+      DATA_FOLDER: /data
+      CRON_HEALING: '0 0 0 * * *' # Every day at midnight
+      AUTO_HEALING: 'true'
+      CRON_CHECKPOINT: '0 0 5 1 * *'
+      SUDO_QUERY_RETRY_TIMEOUT_INCREMENT_FACTOR: 0.003
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: 429,500,502,503,504
+      MAX_PAGE_SIZE_BYTES: 10000000
+      INITIAL_STATE_LIMIT: 10000
+      # for catching up after restart
+      #LDES_STATUS_GRAPH: "http://mu.semte.ch/graphs/ldes-status"
+      DIRECT_DB_ENDPOINT: 'http://virtuoso:8890/sparql'
+      WRITE_INITIAL_STATE: 'false'
+    volumes:
+      - ./config/ldes-delta-pusher/:/config/
+      - ./data/ldes-feed/:/data/
+    restart: always
+    logging: *default-logging
+    labels:
+      - 'logging=true'
+    links:
+      - virtuoso:database
+  ldes-backend:
+    image: redpencil/fragmentation-producer:0.4.2
+    restart: always
+    logging: *default-logging
+    labels:
+      - 'logging=true'
+    environment:
+      BASE_URL: 'https://dev.mandatenbeheer.lblod.info/streams/ldes/'
+      FOLDER_DEPTH: 1
+      PAGE_RESOURCES_COUNT: 20
+      LDES_STREAM_PREFIX: 'https://dev.mandatenbeheer.lblod.info/streams/ldes/'
+      TIME_TREE_RELATION_PATH: 'http://www.w3.org/ns/prov#generatedAtTime'
+      CACHE_SIZE: 10
+      DATA_FOLDER: '/data'
+      ENABLE_AUTH: 'false'
+    volumes:
+      - './data/ldes-feed/:/data/'
+  sparql-authorization-wrapper:
+    image: lblod/sparql-authorization-wrapper-service:1.0.0
+    volumes:
+      - ./config/sparql-authorization-wrapper:/config
+    restart: always
+    labels:
+      - 'logging=true'
+    logging: *default-logging
+  project-scripts:
+    image: semtech/simple-script-store:1.0.0
+    volumes:
+      - ./scripts/:/app/scripts/
+    restart: 'no'
+  op-public-consumer:
+    image: lblod/delta-consumer:0.1.4
+    environment:
+      DCR_SERVICE_NAME: 'op-public-consumer'
+      DCR_SYNC_FILES_PATH: '/sync/public/files'
+      DCR_SYNC_DATASET_SUBJECT:
+        "http://data.lblod.info/datasets/delta-producer/dumps\
+        /PublicCacheGraphDump"
+      DCR_INITIAL_SYNC_JOB_OPERATION:
+        "http://redpencil.data.gift/id/jobs/concept/Job\
+        Operation/deltas/consumer/initialSync/op-public"
+      DCR_DELTA_SYNC_JOB_OPERATION:
+        "http://redpencil.data.gift/id/jobs/concept/JobOp\
+        eration/deltas/consumer/deltaSync/op-public"
+      DCR_JOB_CREATOR_URI: 'http://data.lblod.info/services/id/op-public-consumer'
+      DCR_DISABLE_INITIAL_SYNC: 'false'
+      DCR_WAIT_FOR_INITIAL_SYNC: 'true'
+      DCR_KEEP_DELTA_FILES: 'true'
+      DCR_START_FROM_DELTA_TIMESTAMP: '2025-01-01T00:00:00Z'
+      DCR_DELTA_JOBS_RETENTION_PERIOD: '30'
+      DCR_ENABLE_TRIPLE_REMAPPING: 'true'
+      DCR_LANDING_ZONE_GRAPH: 'http://mu.semte.ch/graphs/landing-zone/op-public'
+      DCR_REMAPPING_GRAPH: 'http://mu.semte.ch/graphs/public'
+      DCR_BATCH_SIZE: 1000
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: '404,500,503'
+      SUDO_QUERY_RETRY: 'true'
+      DCR_SYNC_BASE_URL: 'https://organisaties.abb.vlaanderen.be'
+      DCR_DISABLE_DELTA_INGEST: 'false'
+    volumes:
+      - ./config/op-consumer/mapping:/config/mapping
+      - ./data/files/consumer-files/op-public:/consumer-files/
+    restart: always
+    labels:
+      - 'logging=true'
+    logging: *default-logging
+  locally-managed-ldes-client:
+    image: lblod/ldes-client:0.1.0
+    restart: always
+    profiles:
+      - 'disabled'
+    environment:
+      WORKING_GRAPH: http://mu.semte.ch/graphs/locally-managed-tmp
+      DIRECT_DATABASE_CONNECTION: 'http://virtuoso:8890/sparql'
+      RANDOMIZE_GRAPHS: true
+      BATCH_SIZE: 100
+      BYPASS_MU_AUTH: false
+    volumes:
+      - ./config/locally-managed-ldes:/config
+    labels:
+      - 'logging=true'
+    logging: *default-logging
+  bb-aalst-ldes-client:
+    image: lblod/ldes-client:0.0.3
+    volumes:
+      - ./config/bb-aalst-ldes:/config
+    restart: always
+    environment:
+      CRON_PATTERN: '3 * * * *' # Every hour at minute 3
+      LDES_BASE: https://mandatenbeheer.lblod.info/streams/ldes/public/
+      FIRST_PAGE: https://mandatenbeheer.lblod.info/streams/ldes/public/1
+      TARGET_GRAPH: http://mu.semte.ch/graphs/aalst-bb-lmb-consumed
+      WORKING_GRAPH: http://mu.semte.ch/graphs/aalst-bb-lmb-consumed-tmp
+      DIRECT_DATABASE_CONNECTION: 'http://virtuoso:8890/sparql'
+      RANDOMIZE_GRAPHS: true
+      BATCH_SIZE: 100
+    labels:
+      - 'logging=true'
+    logging: *default-logging

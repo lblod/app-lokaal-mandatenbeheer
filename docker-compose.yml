@@ -381,13 +381,12 @@ services:
       - "logging=true"
     logging: *default-logging
   locally-managed-ldes-client:
-    image: lblod/ldes-client:0.1.0
+    image: lblod/ldes-client:0.0.3
     restart: always
-    profiles:
-      - "disabled"
     environment:
       WORKING_GRAPH: http://mu.semte.ch/graphs/locally-managed-tmp
       DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
+      VERSION_PREDICATE: "http://purl.org/dc/terms/isVersionOf"
       RANDOMIZE_GRAPHS: true
       BATCH_SIZE: 100
       BYPASS_MU_AUTH: false

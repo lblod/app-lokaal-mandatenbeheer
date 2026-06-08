@@ -392,6 +392,7 @@ services:
     environment:
       CRON_PATTERN: "*/5 * * * *"
       WORKING_GRAPH: http://mu.semte.ch/graphs/locally-managed-tmp
+      STATUS_GRAPH: http://mu.semte.ch/graphs/locally-managed/status
       DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
       VERSION_PREDICATE: "http://purl.org/dc/terms/isVersionOf"
       RANDOMIZE_GRAPHS: true

@@ -39,7 +39,7 @@ services:
       - default
       - debug
   database:
-    image: semtech/sparql-parser:feature-ordered-data-modification-queries
+    # image: semtech/sparql-parser:feature-ordered-data-modification-queries
     restart: "no"
     networks:
       - default

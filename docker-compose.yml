@@ -384,7 +384,8 @@ services:
     image: lblod/ldes-client:latest
     restart: always
     environment:
-      WORKING_GRAPH: http://mu.semte.ch/graphs/locally-managed-tmp
+      STATUS_GRAPH: http://mu.semte.ch/graphs/locally-managed/status
+      WORKING_GRAPH: http://mu.semte.ch/graphs/locally-managed/tmp
       DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
       VERSION_PREDICATE: "http://purl.org/dc/terms/isVersionOf"
       RANDOMIZE_GRAPHS: true

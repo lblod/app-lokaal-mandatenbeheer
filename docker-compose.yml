@@ -381,7 +381,7 @@ services:
       - "logging=true"
     logging: *default-logging
   locally-managed-ldes-client:
-    image: lblod/ldes-client:latest
+    image: lblod/ldes-client:0.0.5
     restart: always
     environment:
       STATUS_GRAPH: http://mu.semte.ch/graphs/locally-managed/status

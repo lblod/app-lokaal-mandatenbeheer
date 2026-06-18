@@ -1,0 +1,85 @@
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix org: <http://www.w3.org/ns/org#>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix cs: <http://data.lblod.info/id/conceptscheme/>
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix code: <http://data.lblod.info/id/lb-mandaat-classificatiecode/>
+
+insert {
+  graph ?g {
+    ?newMandaat a mandaat:Mandaat .
+    ?newMandaat mu:uuid ?newId .
+    ?newMandaat org:role ?bfCode .
+    ?orgaanInTijd org:hasPost ?newMandaat .
+  }
+}
+where {
+  graph <http://mu.semte.ch/graphs/public> {
+    ?orgaanClassification skos:inScheme cs:LokaalOrgaanClassificatieCode .
+  }
+  values ?bfCode {
+    code:c724b7a2-012e-4acd-863c-f98c97a9ba56  # Adviserend lid
+    code:82eb2bc7-09c4-43f8-9d9f-841243eb1f6a  # Adviserend lid met raadgevende stem
+    code:3de1400b-c42b-4a26-9c86-10bb529b593e  # Adviserend lid middenveld
+    code:0cdffd2e-0225-4244-98fd-e4767c98078d  # Adviserend lid zonder stemrecht
+    code:e8a215a6-0c1f-491a-8cc3-6ab8fe1e73e9  # Adviserend vertegenwoordiger
+    code:c09cf783-0356-4cd8-92ef-5b6c560962e5  # Ambtelijk plaatsvervanger
+    code:d7d374ee-74c9-4792-9a96-2ed166c50274  # Ambtelijke plaatsvervangend vertegenwoordiger
+    code:661b0fbf-7284-4ec1-9d13-8d855af532aa  # Ambtelijke vaste vertegenwoordiger
+    code:b626fb85-52df-4a03-9455-c28315e9a116  # Eerste plaatsvervanger
+    code:15b60a6e-7c9e-4afc-97f1-80784f105fae  # Effectief lid
+    code:0f8eef4e-7470-4f7d-9f09-4fad8a42fd08  # Effectieve vertegenwoordiger
+    code:3b483f29-306a-4b68-997c-15cb32bb072b  # Kandidaat-bestuurder
+    code:ec29066b-1fba-4e2c-ad11-f1f73a891a6e  # Lid (aangelegenheden PBW)
+    code:55061e48-0fa6-46da-94d6-099f15f94974  # Lid als lid RESOC
+    code:4fd2a8bb-a828-4153-bf3f-9561188d35c0  # Lid dienst Landbouw en Platteland
+    code:215d60cb-7993-4cdb-8c37-0564a19b6915  # Lid komende uit of bekend met de kunstensector
+    code:31217a76-f3ca-4dc7-a4a6-a4247722bab6  # Lid middenveld
+    code:1b1b373b-ceb9-4d20-9bba-24a71ff6c62b  # Lid provinciale organisatie
+    code:fb900a61-4ceb-4c3e-9100-535a89ec3d43  # Lid publieke sector
+    code:b4221dda-b91f-4069-a009-6152d6e0517b  # Lid werkgevers/middenstands/landbouworganisaties SERV
+    code:23879068-96b3-46ad-b051-177346b3e58f  # Lid werknemersorganisaties SERV
+    code:cc51d9f0-ddca-45f3-ab38-0f021eada23b  # Lid-waarnemer
+    code:91576147-c1a7-4309-ad56-891015c20535  # Niet-stemgerechtigd lid
+    code:9f4dbcea-f543-4b63-8b23-b5d543933ee1  # Ondervoorzitter
+    code:1e0c280e-32b1-4a3e-9abd-d2290cce00ef  # Plaatsvervangend adviserend lid middenveld
+    code:9523b180-c2fa-47ef-a8c2-100c171e831c  # Plaatsvervangend lid dienst Landbouw en Platteland
+    code:943e70a3-b68a-440b-a269-0e66ea73c070  # Plaatsvervangend lid middenveld
+    code:90f7043b-98db-49d6-bf34-d26668c6631c  # Plaatsvervangend lid provinciale organisatie
+    code:534532bc-7c0d-4257-a0c3-354c31f1f419  # Plaatsvervangend stemgerechtigd lid
+    code:7880bbf9-5424-474a-af91-75c831e7aa5d  # Plaatsvervangend stemgerechtigde vertegenwoordiger
+    code:fd0f605f-d8c5-4a37-946c-787122f97a94  # Plaatsvervangend adviserend lid
+    code:9e8110c8-7c98-42ad-ab96-6cc33cfd10cd  # Plaatsvervangend lid
+    code:176c7cba-8ae8-4236-a2df-6b002817d63e  # Plaatsvervangend secretaris
+    code:56486dc8-1d77-44a3-9d2d-14dc335fe719  # Plaatsvervangend vertegenwoordiger
+    code:10389c0b-591c-49b7-b358-479f6d5c4df4  # Politieke plaatsvervangende vertegenwoordiger
+    code:ba05738e-9233-4e95-b2e0-6eb81ae9ce03  # Politieke vaste vertegenwoordiger
+    code:a2535c60-5b42-4622-b07e-fe8c9b6c8c04  # Raadgevend lid
+    code:c5506328-6187-4986-960c-38f87fe9fa7d  # Secretaris
+    code:4e6b1a7e-fe0c-45f5-ac1c-b562dd90044e  # Stemgerechtigd lid
+    code:05c60352-ecb2-484f-a555-b9d700b0f428  # Stemgerechtigd lid onderwijs
+    code:3c0175d9-6f27-40e8-a02a-5b810f48404c  # Stemgerechtigd lid socio-economische organisatie
+    code:c321ef6c-f7ec-43ad-b14b-efddd08daeb0  # Stemgerechtigd vertegenwoordiger
+    code:ff45ee78-a4d5-4dbd-94b3-62714f1e3215  # Technicus
+    code:caf93096-5806-4806-80fa-14680683716a  # Tweede plaatsvervanger
+    code:eaa21c78-661e-44bd-9710-452159a4b39c  # Vaste vertegenwoordiger
+    code:f54b8de5-c6f0-4c11-b221-4766c9450f88  # Vertegenwoordiger
+    code:20f0a2a3-1785-4346-898a-14789a5682cc  # Vicevoorzitter
+    code:27ea7ccb-ecc7-4e6b-b190-208addb2cc4f  # Waarnemer
+    code:5ae0b70e-3845-4a82-88cd-f6c8051e6f68  # Werkend lid
+  }
+  graph ?g {
+    ?orgaan besluit:classificatie ?orgaanClassification .
+    ?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan .
+    filter not exists {
+      ?orgaanInTijd org:hasPost ?existing .
+      ?existing org:role ?bfCode .
+    }
+  }
+  ?g ext:ownedBy ?organization .
+  ?organization besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+  bind(STRUUID() AS ?newId)
+  bind(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?newId)) AS ?newMandaat)
+}

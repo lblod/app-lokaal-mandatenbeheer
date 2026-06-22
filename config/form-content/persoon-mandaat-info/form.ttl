@@ -6,7 +6,7 @@
 @prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 
-ext:mandatarisPG
+ext:persoonMandaatPG
     a form:PropertyGroup ;
     sh:name "" ;
     sh:order 1 .
@@ -23,14 +23,14 @@ ext:hiddenPersoonF
     sh:order 2 ;
     sh:path mandaat:isBestuurlijkeAliasVan .
 
-<http://data.lblod.info/id/lmb/forms/mandataris-custom-fields>
+<http://data.lblod.info/id/lmb/forms/persoon-mandaat-info>
     a form:Form, form:TopLevelForm ;
     form:includes
         ext:hiddenMandaatF ,
         ext:hiddenPersoonF ;
-    sh:group ext:mandatarisPG ;
-    form:targetType mandaat:Mandataris ;
+    sh:group ext:persoonMandaatPG ;
+    form:targetType ext:PersoonMandaatInfo ;
     form:targetLabel mu:uuid ;
-    ext:prefix <http://data.lblod.info/id/mandatarissen/> ;
-    mu:uuid "64988ff5-dd0f-421f-b78c-83036055f6dd" .
+    ext:prefix <http://data.lblod.info/id/lmb/persoon-mandaat-info/> ;
+    mu:uuid "70871b2f-2945-476b-964d-14d5def8fd21" .
 

@@ -2,9 +2,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix mu: <http://mu.semte.ch/vocabularies/core/>.
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
-@prefix org: <http://www.w3.org/ns/org#>.
-@prefix fieldOption: <http://lblod.data.gift/vocabularies/form-field-options/> .
-@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>.
 
 ext:persoonMandaatPG
     a form:PropertyGroup ;
@@ -15,13 +13,13 @@ ext:hiddenMandaatF
     a form:Field ;
     sh:name "Mandaat [hidden input]" ;
     sh:order 1 ;
-    sh:path org:holds .
+    sh:path lmb:forMandaat .
 
 ext:hiddenPersoonF
     a form:Field ;
     sh:name "Persoon [hidden input]" ;
     sh:order 2 ;
-    sh:path mandaat:isBestuurlijkeAliasVan .
+    sh:path lmb:forPersoon .
 
 <http://data.lblod.info/id/lmb/forms/persoon-mandaat-info>
     a form:Form, form:TopLevelForm ;

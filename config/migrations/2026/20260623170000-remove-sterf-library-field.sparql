@@ -1,0 +1,37 @@
+delete {
+  graph ?g {
+    ?field ?p ?o .
+    ?form <http://lblod.data.gift/vocabularies/forms/includes> ?field .
+  }
+}
+where {
+  graph ?g {
+    ?field ?fp <http://data.lblod.info/id/lmb/form-library-entries/0bdd360b-c6e5-46d9-9a31-8645a4c5774c> .
+    ?field ?p ?o .
+    optional {
+      ?form <http://lblod.data.gift/vocabularies/forms/includes> ?field .
+    }
+  }
+}
+
+;
+
+delete {
+  graph ?g {
+    ?s ?p ?o .
+  } 
+}
+where {
+  values ?s {
+    <http://data.lblod.info/id/lmb/form-library-entries/0bdd360b-c6e5-46d9-9a31-8645a4c5774c>
+    <http://data.lblod.info/id/lmb/paths/574867d1-3422-41a9-8648-34dc2c443204> 
+    <http://data.lblod.info/id/lmb/paths/0c65e9c8-0910-490a-96e7-19b71290b91a>
+    <http://data.lblod.info/id/lmb/shapes/d56503fc-96d4-49fc-8425-e36db36fd172> 
+    <http://data.lblod.info/id/lmb/shapes/048663a1-6b73-4346-8267-0f40e0dff9f4> 
+    <http://data.lblod.info/id/lmb/generators/3afc0fad-e475-4696-ae50-3627fed41cf8>
+  }
+  graph ?g {
+    ?s ?p ?o .
+  } 
+}
+

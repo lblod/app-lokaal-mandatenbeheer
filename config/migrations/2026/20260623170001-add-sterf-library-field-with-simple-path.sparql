@@ -1,0 +1,15 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX form: <http://lblod.data.gift/vocabularies/forms/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/lmb/form-library-entries/0bdd360b-c6e5-46d9-9a31-8645a4c5774c> a ext:FormLibraryEntry ;
+     mu:uuid "0bdd360b-c6e5-46d9-9a31-8645a4c5774c" ;
+     sh:name "Sterfdatum" ;
+     form:displayType <http://lblod.data.gift/display-types/lmb/custom-date-input> ;
+     sh:path ext:sterfDatum ;
+     sh:order 1000 .
+  }
+}

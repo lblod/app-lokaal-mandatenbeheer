@@ -122,6 +122,7 @@
   ("eli:LegalResource" -> _)
   ("besluit:Bestuursorgaan" -> _)
   ("mandaat:Mandataris" -> _)
+  ("ext:PersoonMandaatInfo" -> _)
   ("mandaat:Mandaat" -> _)
   ("ext:BeleidsdomeinCode" -> _)
   ("org:Post" -> _)

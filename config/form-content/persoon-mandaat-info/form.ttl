@@ -1,0 +1,34 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>.
+
+ext:persoonMandaatPG
+    a form:PropertyGroup ;
+    sh:name "" ;
+    sh:order 1 .
+
+ext:hiddenMandaatF
+    a form:Field ;
+    sh:name "Mandaat [hidden input]" ;
+    sh:order 1 ;
+    sh:path lmb:forMandaat .
+
+ext:hiddenPersoonF
+    a form:Field ;
+    sh:name "Persoon [hidden input]" ;
+    sh:order 2 ;
+    sh:path lmb:forPersoon .
+
+<http://data.lblod.info/id/lmb/forms/persoon-mandaat-info>
+    a form:Form, form:TopLevelForm ;
+    form:includes
+        ext:hiddenMandaatF ,
+        ext:hiddenPersoonF ;
+    sh:group ext:persoonMandaatPG ;
+    form:targetType ext:PersoonMandaatInfo ;
+    form:targetLabel mu:uuid ;
+    ext:prefix <http://data.lblod.info/id/lmb/persoon-mandaat-info/> ;
+    mu:uuid "70871b2f-2945-476b-964d-14d5def8fd21" .
+

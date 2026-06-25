@@ -88,3 +88,12 @@
   :on-path "libraries"
 )
 
+(define-resource persoon-mandaat-info ()
+  :class (s-prefix "ext:PersoonMandaatInfo")
+  :has-one `((mandaat :via ,(s-prefix "lmb:forMandaat")
+                      :as "mandaat")
+             (persoon :via ,(s-prefix "lmb:forPersoon")
+                      :as "persoon"))
+  :resource-base (s-url "http://data.lblod.info/id/lmb/persoon-mandaat-info/")
+  :features '(include-uri)
+  :on-path "persoon-mandaat-info")

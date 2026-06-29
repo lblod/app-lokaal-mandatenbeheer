@@ -1,0 +1,19 @@
+prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix skos:	<http://www.w3.org/2004/02/skos/core#>
+prefix mu:   <http://mu.semte.ch/vocabularies/core/>
+prefix conceptschemes: <http://lblod.data.gift/concept-schemes/>
+prefix bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT DATA {
+  graph <http://mu.semte.ch/graphs/public> {
+    bestuursperiode:3faeb4c3-c4d7-47ea-b449-61579092a200
+      rdf:type
+        skos:Concept,
+        lmb:Bestuursperiode;
+      skos:inScheme conceptschemes:bestuursperiodes;
+      skos:topConceptOf conceptschemes:bestuursperiodes;
+      skos:prefLabel "Alle";
+      mu:uuid "3faeb4c3-c4d7-47ea-b449-61579092a200".
+  }
+}

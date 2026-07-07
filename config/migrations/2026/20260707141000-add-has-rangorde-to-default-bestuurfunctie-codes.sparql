@@ -1,0 +1,25 @@
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+insert {
+  graph <http://mu.semte.ch/graphs/public> {
+    ?bfCode lmb:hasRangorde "true"^^xsd:boolean . 
+  }
+}
+where {
+  graph <http://mu.semte.ch/graphs/public> {
+    values ?bfCode {
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011> # GR lid
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012> # GR Voorzitter
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a> # Aangewezen burgemeester
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013> # Burgemeester
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000014> # Schepen
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/59a90e03-4f22-4bb9-8c91-132618db4b38> # Toegevoegde Schepen
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d> # Districts Burgemeester
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e> # Districts Schepen
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b> # District raadslid
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c> # Voorzitter District raad
+    }
+    ?bfCode a ext:BestuursfunctieCode .
+  }
+}

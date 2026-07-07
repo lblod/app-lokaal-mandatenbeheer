@@ -68,7 +68,8 @@
 
 (define-resource bestuursfunctie-code ()
   :class (s-prefix "ext:BestuursfunctieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:has-rangorde :boolean ,(s-prefix "lmb:hasRangorde")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursfunctieCode/")
   :features '(include-uri)
   :on-path "bestuursfunctie-codes")

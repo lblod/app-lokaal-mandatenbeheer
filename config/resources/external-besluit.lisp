@@ -143,7 +143,8 @@
 
 (define-resource bestuursorgaan-classificatie-code ()
   :class (s-prefix "ext:BestuursorgaanClassificatieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:has-rangorde :boolean ,(s-prefix "lmb:hasRangorde")))
   :has-many `((bestuursfunctie-code :via ,(s-prefix "ext:hasDefaultType")
                         :as "standaard-type"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/")

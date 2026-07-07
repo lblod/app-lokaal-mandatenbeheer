@@ -1,0 +1,19 @@
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+insert {
+  graph <http://mu.semte.ch/graphs/public> {
+    ?uri lmb:hasRangorde "true"^^xsd:boolean . 
+  }
+}
+where {
+  graph <http://mu.semte.ch/graphs/public> {
+    values ?uri {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> # CBS
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> # GR
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> # Districts College
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> # Districts Raad
+    }
+    ?uri a ext:BestuursorgaanClassificatieCode .
+  }
+}

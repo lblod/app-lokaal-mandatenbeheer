@@ -1,0 +1,19 @@
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+insert {
+  graph <http://mu.semte.ch/graphs/public> {
+    ?uri lmb:hasRangorde "true"^^xsd:boolean . 
+  }
+}
+where {
+  graph <http://mu.semte.ch/graphs/public> {
+    values ?uri {
+      <http://data.lblod.info/id/lb-mandaat-classificatiecode/9f4dbcea-f543-4b63-8b23-b5d543933ee1> # Ondervoorzitter
+      <http://data.lblod.info/id/lb-mandaat-classificatiecode/9e8110c8-7c98-42ad-ab96-6cc33cfd10cd> # Plaatsvervangend Lid
+      <http://data.lblod.info/id/lb-mandaat-classificatiecode/c5506328-6187-4986-960c-38f87fe9fa7d> # Secretaris
+      <http://data.lblod.info/id/lb-mandaat-classificatiecode/22da4572-4818-454b-bbd4-28a9ea97856c> # Voorzitter
+    }
+    ?uri a ext:BestuursfunctieCode .
+  }
+}

@@ -1,0 +1,10 @@
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/geboorte/882d8d7887447356de426c66322044e4a1ff693a90f56d69a84bd1efb30a3a41> <http://data.vlaanderen.be/ns/persoon#datum> "0001-01-01"^^xsd:date .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/geboorte/882d8d7887447356de426c66322044e4a1ff693a90f56d69a84bd1efb30a3a41> <http://data.vlaanderen.be/ns/persoon#datum> "0001-01-01"^^xsd:date .
+  }
+}

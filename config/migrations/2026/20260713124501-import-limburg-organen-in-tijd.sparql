@@ -1,0 +1,129 @@
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+prefix org: <http://www.w3.org/ns/org#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+insert {
+  graph ?provincieLimburg {
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?uuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
+    ?orgaanInTijdUri mandaat:bindingStart "2024-12-04T00:00:00"^^xsd:dateTime .
+
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+  }
+}
+where {
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+  values ?orgaanUuid {
+    "a6c3ffaf-1225-4b7c-8e2d-1d2194d3b73a"
+    "1835a5be-1e2e-482c-a862-dea838c6011"
+    "f9416c33-db1d-43ed-92e1-39c30ba87444"
+    "e7c78944-9f73-4478-acb2-d7746eb9cd0c"
+    "ad01f23f-cf8d-45f1-9524-1c81986d4bd6"
+    "9d700765-1595-472e-bc48-fd3031da9c31"
+    "f2882eb3-1913-45f7-962c-7600b2efd245"
+    "0c5e9f69-a54e-4f0d-8103-3aafb6a81fd7"
+    "a83e6b5a-9cfb-4fa9-ab25-86b119de9e39"
+    "31f38242-f09a-4901-8818-70d435563034"
+    "db9eefdb-7ddd-4621-87ea-6953aa9343a7"
+    "06459ee6-aa56-4e50-bd5a-2abb7c7e0e0f"
+    "c7c657f8-07a1-4871-b4bc-c6521e17e075"
+    "596485a7-ff39-4560-b458-26c107014f86"
+    "8a98396f-abbc-43b9-9d26-01f5ecbd0ee8"
+    "f8f1c441-c28c-46c9-a46c-bd5f36190807"
+    "38f8ad07-1bae-4533-b9dc-1b50798f02bb"
+    "95077846-87ea-4f88-922e-f1f725fb515a"
+    "95caaf66-36bd-4a1b-b2ad-326551caa664"
+    "2572fa90-0ba0-4d81-9846-20fd358d9f08"
+    "03d0ec1b-4d19-452b-9198-567fbac576b3"
+    "fca6d1f7-a132-412a-9d6b-ff1b39d5aa76"
+    "424f7100-b2e6-4339-9378-6a0da55b535d"
+    "97fa1c25-d0a0-41e2-b18c-4af06458ec86"
+    "1083d8a7-9aba-4f8c-810a-9c1f356e338b"
+    "6b5554be-e1d7-4049-bcdc-30bec1bbb5b3"
+    "ac54d93a-7917-4dd8-beb3-9f3cc03fe516"
+    "2ed898ee-a4e5-46fc-a3cb-0053f7b3c5d1"
+    "bf7a8f5f-f84a-444b-adde-36c08e569c21"
+    "5ba4aa6d-6a0a-4a21-b1de-e95b6ec3239f"
+    "e656a399-beb1-44bc-a47d-afc7f4943cb9"
+    "5d726ed7-0a7b-46a8-8eea-78f3d1d93be5"
+    "2e132a12-898a-4a41-ae8e-8666c0fd68ad"
+    "64df6e60-3208-4093-99b4-6e34588b2aa7"
+    "8de5c024-6a1a-4eec-a52f-61df21108940"
+    "60174862-706c-4088-8e4c-110c899f4014"
+    "c9d58850-b09f-4bb2-8bc0-83cf983eb8fe"
+    "7b85b4d8-da12-462c-b487-daf93fc6a8e3"
+    "b666cee4-154b-4323-becc-d754fcab4774"
+    "727a1307-e16e-4568-94af-05ebf06ce5dd"
+    "71766eac-86a4-43bf-8c9d-aba020fae938"
+    "4b0db818-307d-40c2-bdd6-930d7f8e311f"
+    "3679edad-6043-4c5c-b925-6be23a5cee0e"
+    "76fd2117-c5c7-4988-9d30-2347d902b742"
+    "8f6b0431-ca47-46a2-8a6f-e22f1ff80bf4"
+    "f5a46d5d-9b30-4f33-831f-9e73df21cc6f"
+    "c18c4828-cb1c-4468-9e15-94402078af19"
+    "2b4fc46c-d91f-4e00-b814-040fd9646ea4"
+    "9d04cfc3-08a4-4274-ac42-8c3f498006ae"
+    "7971f41b-0cb7-4755-8c86-368c6c3fadd4"
+    "07c3223c-426d-4974-869c-f16638811d31"
+    "ac3f3ca3-b158-4d38-8bd7-13817c7ceea5"
+    "d48d17d9-6413-430f-97e6-7eb59ba16b02"
+    "1bb0faf4-bd9d-4eae-ba4c-ff3ca5a375c4"
+    "35b1537e-5d25-4139-9064-0f85833ce4d3"
+    "38edfdd8-5967-41f7-a549-8ae33a61ad33"
+    "ff9112ea-93b9-433a-bce5-041786a3e960"
+    "1e7b54fd-82f4-4c14-8d53-7893d0745e86"
+    "eb49d77e-5800-43c8-945c-ffff23f7ff5b"
+    "77d05a09-5083-4e9c-a356-028cf1294671"
+    "8b20c08b-af9d-4ff5-9298-506d6a31e1a0"
+    "9e672d08-17d6-4e94-9a4e-df4da48c0b04"
+    "04171dec-ece6-412c-a60a-9f869b1b4105"
+    "1deb7544-f40b-4201-a69c-74a38263f243"
+    "fe23e867-1d15-45bf-b567-08d2d75af7fd"
+    "f18bc31f-211d-4680-8f98-60eaa295bf17"
+    "bd757ad6-f4d0-441b-8690-fb00f109c7cb"
+    "1868362e-e3d9-400e-828c-d4591dc16fcd"
+    "f5da470b-c2e2-4424-83fb-2c282cd71c8f"
+    "d7ff0826-6799-49ec-868f-6c25c0735285"
+    "71b10590-acff-497b-8f9d-093a1a28a572"
+    "86a8a1f8-28b9-4fe6-92d3-ddd3e57f7d40"
+    "1f575338-99d4-49ba-b723-8abf011bcf91"
+    "0444d51d-523c-456f-84e5-db380dbd9f33"
+    "14070dbf-dd66-4709-81c8-8c279ed5aa71"
+    "6bccf2e9-dd14-4b88-8f2f-8afda12e817e"
+    "a8e9bb1f-0dd9-4b7f-a205-fc90b2198998"
+    "d5780f91-5638-4ee1-8f21-ff0a41b70ac1"
+    "2bdc02b1-830a-4da0-86c4-16e6fb51def6"
+    "dabacce3-9357-4c7e-af40-914269feae27"
+    "a4b39229-8c72-482e-a937-42852040f456"
+    "a276ce05-cc17-48a2-8d1e-975a269c3895"
+    "e017131f-ae48-46c8-b7a0-f1b430d0fe68"
+    "af620e1a-7558-4d45-82da-0276dd2959cf"
+    "96029358-07bf-4581-82b7-187dbf1352ce"
+    "81325592-a4e7-4e0a-ac39-93af358923ef"
+    "bd7e9428-5e97-4dad-999c-f6de5fee98d1"
+    "c27c9cca-3506-4aa4-a416-23fe1f9ba85d"
+    "762bda11-a9a8-4bba-8aff-389494e1482c"
+    "d3e4e535-6bad-4d04-904b-d10f1ffdb869"
+    "fbe38db3-8714-4c7c-95c4-6b95ea467c91"
+    "f93a712a-acad-4bbd-8c3b-fad4cd45d1bc"
+  }
+  ?orgaanUri mu:uuid ?orgaanUuid .
+
+  ?customMandaatClassificatieUri skos:inScheme <http://data.lblod.info/id/conceptscheme/LokaalMandaatClassificatieCode> ;
+  skos:prefLabel ?label .
+
+  filter not exists {
+    ?existingOrgaanInTijd mandaat:isTijdspecialisatieVan ?orgaanUri .
+    ?existingOrgaanInTijd org:hasPost / org:role ?customMandaatClassificatieUri .
+  }
+
+  bind(SHA256(concat(?orgaanUuid, STR(?customMandaatClassificatieUri))) as ?uuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanInTijdUri) .
+}

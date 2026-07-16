@@ -59,7 +59,7 @@ services:
     restart: always
     logging: *default-logging
   migrations:
-    image: semtech/mu-migrations-service:0.6.0
+    image: semtech/mu-migrations-service:0.9.0
     links:
       - virtuoso:database
     environment:
@@ -323,11 +323,14 @@ services:
       DCR_SYNC_BASE_URL: "https://dev.loket.lblod.info/"
       DCR_SYNC_FILES_PATH: "/sync/vendor-management/files"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/vendor-management-consumer"
-      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps\
+      DCR_SYNC_DATASET_SUBJECT:
+        "http://data.lblod.info/datasets/delta-producer/dumps\
         /VendorManagementCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/Job\
+      DCR_INITIAL_SYNC_JOB_OPERATION:
+        "http://redpencil.data.gift/id/jobs/concept/Job\
         Operation/deltas/consumer/initialSync/vendor-management"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOp\
+      DCR_DELTA_SYNC_JOB_OPERATION:
+        "http://redpencil.data.gift/id/jobs/concept/JobOp\
         eration/deltas/consumer/VendorManagementFileSyncing"
       INGEST_GRAPH: "http://mu.semte.ch/graphs/automatic-submission"
       DCR_DISABLE_INITIAL_SYNC: "true"
@@ -347,11 +350,14 @@ services:
     environment:
       DCR_SERVICE_NAME: "op-public-consumer"
       DCR_SYNC_FILES_PATH: "/sync/public/files"
-      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps\
+      DCR_SYNC_DATASET_SUBJECT:
+        "http://data.lblod.info/datasets/delta-producer/dumps\
         /PublicCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/Job\
+      DCR_INITIAL_SYNC_JOB_OPERATION:
+        "http://redpencil.data.gift/id/jobs/concept/Job\
         Operation/deltas/consumer/initialSync/op-public"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOp\
+      DCR_DELTA_SYNC_JOB_OPERATION:
+        "http://redpencil.data.gift/id/jobs/concept/JobOp\
         eration/deltas/consumer/deltaSync/op-public"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/op-public-consumer"
       DCR_DISABLE_INITIAL_SYNC: "false"

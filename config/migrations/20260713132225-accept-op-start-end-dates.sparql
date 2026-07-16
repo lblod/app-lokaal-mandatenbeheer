@@ -1,0 +1,38 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s mandaat:bindingStart ?old.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s mandaat:bindingStart ?new.
+  }
+}WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s mandaat:bindingStart ?old.
+  }
+  GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
+    ?s mandaat:bindingStart ?new.
+  }
+  FILTER (?old != ?new)
+};
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s mandaat:bindingEinde ?old.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s mandaat:bindingEinde ?new.
+  }
+}WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s mandaat:bindingEinde ?old.
+  }
+  GRAPH <http://mu.semte.ch/graphs/landing-zone/op-public> {
+    ?s mandaat:bindingEinde ?new.
+  }
+  FILTER (?old != ?new)
+}

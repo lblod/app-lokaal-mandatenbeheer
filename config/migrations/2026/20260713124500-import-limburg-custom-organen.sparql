@@ -1,0 +1,126 @@
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+prefix org: <http://www.w3.org/ns/org#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+insert {
+  graph ?provincieLimburg {
+    ?orgaanUri a besluit:Bestuursorgaan .
+    ?orgaanUri mu:uuid ?uuid .
+    ?orgaanUri skos:prefLabel ?orgaanLabel .
+    ?orgaanUri besluit:classificatie ?orgaanType .
+    ?orgaanUri besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?orgaanInTijdUuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7> . # 2024 - heden
+    ?orgaanInTijdUri mandaat:bindingStart "2024-12-04T00:00:00"^^xsd:dateTime .
+
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+  }
+}
+where {
+  values ( ?uuid ?orgaanLabel ?orgaanType ) {
+    ( "019f65d8-aaed-7692-85fb-10cbc9f66560" "Hoog overlegcomité en afzonderlijk bijzonder comité van het gesubsidieerd personeel van het provinciaal onderwijs - Hoog overlegcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/4af47caf-009d-44eb-acf0-b87877af7bb3> )
+    ( "019f65d8-aaed-7692-85fb-10ccb60c984e" "Vereniging van de Vlaamse Provincies (VVP) - Hoog overlegcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/4af47caf-009d-44eb-acf0-b87877af7bb3> )
+    ( "019f65d8-aaed-7692-85fb-10cd53ab8919" "Euregio Maas-Rijn - Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "019f65d8-aaed-7692-85fb-10ce0f65e942" "Vereniging van de Vlaamse Provincies (VVP) - Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "019f65d8-aaed-7692-85fb-10cf48c179b8" "Euregio Maas-Rijn - Bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10d07d459193" "Vereniging van de Vlaamse Provincies (VVP) - Bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10d1a45cfc34" "Erkend Regionaal Samenwerkingsverband Limburg (ERSV Limburg) (in vereffening) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "019f65d8-aaed-7692-85fb-10d26de032d5" "Limburg Sterk Merk (LSM) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "019f65d8-aaed-7692-85fb-10d320ec1476" "s-Lim - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "019f65d8-aaed-7692-85fb-10d44489702d" "Provinciale Ontwikkelingsmaatschappij Limburg (POM Limburg) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "019f65d8-aaed-7692-85fb-10d5252874ee" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "019f65d8-aaed-7692-85fb-10d6669ed816" "Vereniging van de Vlaamse Provincies (VVP) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "019f65d8-aaed-7692-85fb-10d776ee8548" "Erkend Regionaal Samenwerkingsverband Limburg (ERSV Limburg) (in vereffening) - Regionaal Sociaal-Economisch Overlegcomité (RESOC)" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10d8075ce5bb" "Vereniging van de Vlaamse Provincies (VVP) - Regionaal Sociaal-Economisch Overlegcomité (RESOC)" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10d90d943e8f" "Limburgse Economische Raad (L.E.R.) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "019f65d8-aaed-7692-85fb-10da84130180" "Vereniging van de Vlaamse Provincies (VVP) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "019f65d8-aaed-7692-85fb-10db0b3e29c5" "Toerisme Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "019f65d8-aaed-7692-85fb-10dc92737573" "EthiasCo - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "019f65d8-aaed-7692-85fb-10ddb239e03b" "Vlaams Coördinatiecentrum Mestverwerking (VCM) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "019f65d8-aaed-7692-85fb-10de048f74d9" "Provinciale Ontwikkelingsmaatschappij Limburg (POM Limburg) - Directiecomité" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8> )
+    ( "019f65d8-aaed-7692-85fb-10df06bbabf0" "Vereniging van de Vlaamse Provincies (VVP) - Directiecomité" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8> )
+    ( "019f65d8-aaed-7692-85fb-10e03555c835" "Samenwerking Grensgebied de Kempen - Bestuurlijk overleg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10e16d92a7de" "Vereniging van de Vlaamse Provincies (VVP) - Bestuurlijk overleg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10e230ae4d8e" "Vervoerregio Limburg - Vervoerregioraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/79b34b2f-5bc5-4939-900b-3db7fc3e1ef3> )
+    ( "019f65d8-aaed-7692-85fb-10e3eacf405c" "Vereniging van de Vlaamse Provincies (VVP) - Vervoerregioraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/79b34b2f-5bc5-4939-900b-3db7fc3e1ef3> )
+    ( "019f65d8-aaed-7692-85fb-10e43bc18b44" "Vereniging van de Vlaamse Provincies (VVP) - Bekkenbestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/7f7f4e20-ff35-4f26-91f5-a7faaf8f59aa> )
+    ( "019f65d8-aaed-7692-85fb-10e52c68c241" "Vereniging van de Vlaamse Provincies (VVP) - Comité van afgevaardigden van de inrichtende machten (CAIM)" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10e66fb029bb" "Vereniging van de Vlaamse Provincies (VVP) - Beheerscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10e7304ee97c" "Vereniging van de Vlaamse Provincies (VVP) - Plaatselijke Groep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10e8950a97ff" "Vereniging van de Vlaamse Provincies (VVP) - Leadercomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10e9f548988f" "Vereniging van de Vlaamse Provincies (VVP) - Samenstelling" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10eaea6919f8" "Vereniging van de Vlaamse Provincies (VVP) - Aandeelhoudersbestuur van de drinkwaterdienst" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10eb38dc131e" "Vereniging van de Vlaamse Provincies (VVP) - Grindcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10ecb1b3eda5" "Vereniging van de Vlaamse Provincies (VVP) - Technische Werkgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10ed2fc28d29" "Vereniging van de Vlaamse Provincies (VVP) - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10ee18ed98af" "Vereniging van de Vlaamse Provincies (VVP) - Gezamenlijke vergadering van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10ef810f88b2" "Vereniging van de Vlaamse Provincies (VVP) - Centrumraad centrum deeltijds beroepssecundair onderwijs" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f0468cbfbd" "Vereniging van de Vlaamse Provincies (VVP) - Provinciaal Managementcomité (PMC)" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f1a06f4f90" "Vereniging van de Vlaamse Provincies (VVP) - Beperkt Provinciaal Managementcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f2b5f08be7" "Vereniging van de Vlaamse Provincies (VVP) - Afzonderlijk bijzonder comité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f3d15b0a35" "Vereniging van de Vlaamse Provincies (VVP) - Comité van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f42d5d09e3" "Vereniging van de Vlaamse Provincies (VVP) - Dagelijks bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/298234f3-b012-47b8-8779-9b887e55861d> )
+    ( "019f65d8-aaed-7692-85fb-10f55e9ebeec" "Vereniging van de Vlaamse Provincies (VVP) - Opvolgingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f6e54eafc9" "Vereniging van de Vlaamse Provincies (VVP) - Centrumraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f735a4bdc6" "Vereniging van de Vlaamse Provincies (VVP) - Bestuursorgaan" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f80e37bfc1" "Vereniging van de Vlaamse Provincies (VVP) - Wetenschappelijke begeleidingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10f919745db3" "Vereniging van de Vlaamse Provincies (VVP) - Programmateam" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10fa6b838a1c" "Vereniging van de Vlaamse Provincies (VVP) - Adviescomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/39574cb9-0ca4-49da-82c5-468ebf1f5f50> )
+    ( "019f65d8-aaed-7692-85fb-10fb69375392" "Vereniging van de Vlaamse Provincies (VVP) - Beheerscomité - Plaatselijke groep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10fcdac7059c" "Vereniging van de Vlaamse Provincies (VVP) - Raad van Advies" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10fd263390a8" "Vereniging van de Vlaamse Provincies (VVP) - College van Vereffenaars" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10fe58940949" "Vereniging van de Vlaamse Provincies (VVP) - College van vereffenaars" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-10ffe0aafc85" "Vereniging van de Vlaamse Provincies (VVP) - Bestuurscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1100eee4f1b6" "Vereniging van de Vlaamse Provincies (VVP) - Raad van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1101c79862cd" "Vereniging van de Vlaamse Provincies (VVP) - (Raad van Bestuur) vervangen door vereffenaar" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1102061ebe7a" "Vereniging van de Vlaamse Provincies (VVP) - Dagelijks Bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-11038167e61b" "Vereniging van de Vlaamse Provincies (VVP) - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1104e5c00ab8" "Vereniging van de Vlaamse Provincies (VVP) - Toezichtscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-11050d09966f" "Vereniging van de Vlaamse Provincies (VVP) - Coördinatorenoverleg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1106e7a20dfb" "Vereniging van de Vlaamse Provincies (VVP) - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "019f65d8-aaed-7692-85fb-1107cafd669b" "Vereniging van de Vlaamse Provincies (VVP) - Vast Bureau" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-11081dbdd4a7" "Vereniging van de Vlaamse Provincies (VVP) - Bestuurscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-110944c085c2" "Vereniging van de Vlaamse Provincies (VVP) - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-110ac11d3d4f" "Vereniging van de Vlaamse Provincies (VVP) - Interne Beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-110beb47d499" "Vereniging van de Vlaamse Provincies (VVP) - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-110c3bbcc3d6" "Vereniging van de Vlaamse Provincies (VVP) - Managementcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-110d96d61fc7" "Vereniging van de Vlaamse Provincies (VVP) - Adviesraad Streekgericht Bibliotheekbeleid" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-110ec67cb282" "Vereniging van de Vlaamse Provincies (VVP) - Adviesraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-110f80e321ae" "Vereniging van de Vlaamse Provincies (VVP) - Euregionale Sociaal-Economische Raad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1110eb6d61e8" "Vereniging van de Vlaamse Provincies (VVP) - Euregioraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-11110f7200d2" "Vereniging van de Vlaamse Provincies (VVP) - Raad van Beheer" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-11123a492d98" "Vereniging van de Vlaamse Provincies (VVP) - Raadgevend Comité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1113a3dc2c26" "Vereniging van de Vlaamse Provincies (VVP) - Provinciaal Comité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-11141d905a88" "Vereniging van de Vlaamse Provincies (VVP) - Sectorcomité Oost-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1115e173804e" "Vereniging van de Vlaamse Provincies (VVP) - Sectorcomité Zuidoost-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1116413200b7" "Vereniging van de Vlaamse Provincies (VVP) - Sectorcomité Noord-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-111708a832e7" "Vereniging van de Vlaamse Provincies (VVP) - Sectorcomité Zuidwest-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1118f0b4debd" "Vereniging van de Vlaamse Provincies (VVP) - Sectorcomité West-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1119ae3af803" "Vereniging van de Vlaamse Provincies (VVP) - College van Commissarissen" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-111aab01eb3c" "Vereniging van de Vlaamse Provincies (VVP) - gemeenschappelijke vergaderingen van het bestuur van de scholengemeenschap met het medeze" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-111b653b0dae" "Vereniging van de Vlaamse Provincies (VVP) - Bibliotheekraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-111c8aa2aed8" "Vereniging van de Vlaamse Provincies (VVP) - Beleidscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-111dc1d26f44" "Vereniging van de Vlaamse Provincies (VVP) - College van Beleidsdeskundigen" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-111e808d3377" "Vereniging van de Vlaamse Provincies (VVP) - TaskForce Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-111f951e2505" "Vereniging van de Vlaamse Provincies (VVP) - college van vereffenaars" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-112000dd8a6d" "Vereniging van de Vlaamse Provincies (VVP) - Vereffenaar" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1121f5732c90" "Vereniging van de Vlaamse Provincies (VVP) - vereffenaar" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1122373bb267" "Vereniging van de Vlaamse Provincies (VVP) - Vlaams Managementcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "019f65d8-aaed-7692-85fb-1123a7f6e563" "Vereniging van de Vlaamse Provincies (VVP) - Bijzonder Comité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/0ee41ca8-76b4-4c98-9b61-ca746b66d7c2> )
+    ( "019f65d8-aaed-7692-85fb-1124de86306b" "Vereniging van de Vlaamse Provincies (VVP) - Hoog Overlegcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/4af47caf-009d-44eb-acf0-b87877af7bb3> )
+    ( "019f65d8-aaed-7692-85fb-11252824ebc2" "Vereniging van de Vlaamse Provincies (VVP) - Lokale Actiegroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/f3ebb3a5-023c-4e68-b039-8f62235c7a25> )
+    ( "019f65d8-aaed-7692-85fb-1126e2b612e0" "Vereniging van de Vlaamse Provincies (VVP) - Client Board" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+  }
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri).
+  bind(SHA256(concat(?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+}

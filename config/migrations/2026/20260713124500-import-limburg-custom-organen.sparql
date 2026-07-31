@@ -121,6 +121,6 @@ where {
   }
   bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri).
   bind(SHA256(concat(?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
-  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  bind(SHA256(concat("organen-provincie-limburg",?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
   ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
 }

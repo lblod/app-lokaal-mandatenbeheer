@@ -1,0 +1,16 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX form: <http://lblod.data.gift/vocabularies/forms/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/lmb/form-library-entries/d218f989-c61f-4162-b208-274a3cafc71a> a ext:FormLibraryEntry ;
+      mu:uuid "d218f989-c61f-4162-b208-274a3cafc71a" ;
+      sh:name "Organisatie" ;
+      form:displayType <http://lblod.data.gift/display-types/lmb/custom-string-input> ;
+      sh:path lmb:orgaanOrganisationLabel ;
+      sh:order 3000 .
+  }
+}

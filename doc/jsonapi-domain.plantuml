@@ -1,0 +1,323 @@
+@startuml
+set namespaceSeparator none
+class "system-notification-codes"
+"system-notification-codes" : label
+class "system-notification-links"
+"system-notification-links" : kind
+"system-notification-links" : target
+"system-notification-links" --> "1" "gebruikers" : notification > 
+class "installatievergaderingen"
+"installatievergaderingen" --> "1" "installatievergadering-statussen" : status > 
+"installatievergaderingen" --> "1" "bestuurseenheden" : bestuurseenheid > 
+"installatievergaderingen" --> "1" "bestuursperiodes" : bestuursperiode > 
+class "concepts"
+"concepts" : label
+"concepts" : order
+"concepts" : id
+"concepts" --> "*" "concept-schemes" : concept-schemes > 
+"concepts" --> "*" "concept-schemes" : top-concept-schemes > 
+class "rechtsgronden"
+"rechtsgronden" : bekrachtigt-aanstelling-van
+"rechtsgronden" : bekrachtigt-ontslag-van
+"rechtsgronden" : gepubliceerd-vanuit
+class "mandataris-status-codes"
+"mandataris-status-codes" : label
+class "rechtstreekse-verkiezingen"
+"rechtstreekse-verkiezingen" : datum
+"rechtstreekse-verkiezingen" : geldigheid
+"rechtstreekse-verkiezingen" --> "*" "bestuursorganen" : bestuursorganen-in-tijd > 
+"rechtstreekse-verkiezingen" --> "*" "kandidatenlijsten" : kandidatenlijsten > 
+class "generated-forms"
+"generated-forms" : id
+"generated-forms" : created-at
+"generated-forms" : modified-at
+"generated-forms" : name
+"generated-forms" : description
+"generated-forms" : base-form
+"forms" <|-- "generated-forms"
+class "report-statuses"
+"report-statuses" : started-at
+"report-statuses" : finished-at
+"report-statuses" : is-flagged-as-crashed
+"report-statuses" --> "1" "reports" : report > 
+class "besluiten"
+"besluiten" : beschrijving
+"besluiten" : citeeropschrift
+"besluiten" : motivering
+"besluiten" : publicatiedatum
+"besluiten" : inhoud
+"besluiten" : taal
+"besluiten" : titel
+"besluiten" : score
+"rechtsgronden" <|-- "besluiten"
+class "accounts"
+"accounts" : provider
+"accounts" : vo-id
+"accounts" --> "1" "gebruikers" : gebruiker > 
+class "mandatarissen"
+"mandatarissen" : rangorde
+"mandatarissen" : start
+"mandatarissen" : einde
+"mandatarissen" : datum-eedaflegging
+"mandatarissen" : datum-ministrieel-besluit
+"mandatarissen" : generated-from
+"mandatarissen" : duplication-reason
+"mandatarissen" : link-to-besluit
+"mandatarissen" : modified
+"mandatarissen" --> "1" "mandaten" : bekleedt > 
+"mandatarissen" --> "1" "lidmaatschappen" : heeft-lidmaatschap > 
+"mandatarissen" --> "1" "personen" : is-bestuurlijke-alias-van > 
+"mandatarissen" --> "1" "mandataris-status-codes" : status > 
+"mandatarissen" --> "1" "mandatarissen" : duplicate-of > 
+"mandatarissen" --> "1" "mandataris-publication-status-codes" : publication-status > 
+"mandatarissen" --> "1" "rechtsgronden" : aanstelling-bekrachtigd-door > 
+"mandatarissen" --> "1" "rechtsgronden" : ontslag-bekrachtigd-door > 
+"mandatarissen" --> "*" "mandatarissen" : tijdelijke-vervangingen > 
+"mandatarissen" --> "*" "mandatarissen" : vervanger-van > 
+"mandatarissen" --> "*" "contact-punten" : contact-points > 
+"mandatarissen" --> "*" "beleidsdomein-codes" : beleidsdomein > 
+class "system-notifications"
+"system-notifications" : subject
+"system-notifications" : message
+"system-notifications" : created-at
+"system-notifications" : read-at
+"system-notifications" : archived-at
+"system-notifications" --> "1" "gebruikers" : gebruiker > 
+"system-notifications" --> "1" "system-notification-codes" : code > 
+"system-notifications" --> "*" "system-notification-links" : linked-items > 
+class "nationalities"
+"nationalities" : country-label
+"nationalities" : nationality-label
+class "libraries"
+"libraries" : name
+"libraries" --> "*" "library-entries" : entries > 
+class "persoon-mandaat-info"
+"persoon-mandaat-info" --> "1" "mandaten" : mandaat > 
+"persoon-mandaat-info" --> "1" "personen" : persoon > 
+class "mandataris-publication-status-codes"
+"mandataris-publication-status-codes" : label
+"mandataris-publication-status-codes" : order
+class "file-addresses"
+"file-addresses" : address
+"file-addresses" --> "1" "files" : replicated-file > 
+class "werkingsgebieden"
+"werkingsgebieden" : naam
+"werkingsgebieden" : niveau
+"werkingsgebieden" --> "*" "bestuurseenheden" : bestuurseenheid > 
+class "gebruikers"
+"gebruikers" : voornaam
+"gebruikers" : achternaam
+"gebruikers" : rijksregister-nummer
+"gebruikers" --> "*" "accounts" : account > 
+"gebruikers" --> "*" "bestuurseenheden" : bestuurseenheden > 
+"gebruikers" --> "*" "system-notifications" : system-notifications > 
+class "verkiezingsresultaat-gevolg-codes"
+"verkiezingsresultaat-gevolg-codes" : label
+class "form-extensions"
+"form-extensions" --> "1" "forms" : extends-form > 
+"forms" <|-- "form-extensions"
+class "fracties"
+"fracties" : naam
+"fracties" : generated-from
+"fracties" : end-date
+"fracties" : start-date
+"fracties" : modified
+"fracties" --> "1" "bestuurseenheden" : bestuurseenheid > 
+"fracties" --> "1" "fractietypes" : fractietype > 
+"fracties" --> "1" "fracties" : replacement > 
+"fracties" --> "1" "kandidatenlijsten" : originele-kandidatenlijst > 
+"fracties" --> "*" "bestuursorganen" : bestuursorganen-in-tijd > 
+class "mandaten"
+"mandaten" : aantal-houders
+"mandaten" : min-aantal-houders
+"mandaten" : with-rangorde
+"mandaten" --> "1" "bestuursfunctie-codes" : bestuursfunctie > 
+"mandaten" --> "*" "bestuursorganen" : bevat-in > 
+"mandaten" --> "*" "mandatarissen" : bekleed-door > 
+class "geslacht-codes"
+"geslacht-codes" : label
+class "bestuursorgaan-classificatie-codes"
+"bestuursorgaan-classificatie-codes" : label
+"bestuursorgaan-classificatie-codes" --> "*" "bestuursfunctie-codes" : standaard-type > 
+class "fractietypes"
+"fractietypes" : label
+class "silenced-validations"
+"silenced-validations" : validation-key
+"silenced-validations" : focus-node-id
+"silenced-validations" : source-shape
+"silenced-validations" : silenced-at
+"silenced-validations" --> "1" "bestuurseenheden" : bestuurseenheid > 
+class "identificatoren"
+"identificatoren" : identificator
+class "lijsttypes"
+"lijsttypes" : label
+class "concept-schemes"
+"concept-schemes" : label
+"concept-schemes" : id
+"concept-schemes" : is-read-only
+"concept-schemes" : created-at
+"concept-schemes" --> "*" "concepts" : concepts > 
+"concept-schemes" --> "*" "concepts" : top-concepts > 
+class "bestuursfunctie-codes"
+"bestuursfunctie-codes" : label
+class "bestuurseenheid-contacten"
+"bestuurseenheid-contacten" : email
+"bestuurseenheid-contacten" --> "1" "bestuurseenheden" : bestuurseenheid > 
+class "display-types"
+"display-types" : label
+class "lidmaatschappen"
+"lidmaatschappen" --> "1" "fracties" : binnen-fractie > 
+"lidmaatschappen" --> "1" "mandatarissen" : lid > 
+class "beleidsdomein-codes"
+"beleidsdomein-codes" --> "*" "mandatarissen" : mandatarissen > 
+"concepts" <|-- "beleidsdomein-codes"
+class "contact-punten"
+"contact-punten" : email
+"contact-punten" : fax
+"contact-punten" : naam
+"contact-punten" : voornaam
+"contact-punten" : achternaam
+"contact-punten" : website
+"contact-punten" : telefoon
+"contact-punten" : type
+"contact-punten" --> "1" "adressen" : adres > 
+"contact-punten" --> "1" "contact-punten" : secondary-contact-point > 
+class "feature-flags"
+"feature-flags" : name
+"feature-flags" : label
+"feature-flags" : description
+"feature-flags" : is-enabled
+class "files"
+"files" : filename
+"files" : format
+"files" : size
+"files" : extension
+"files" : download-url
+"files" : created
+"files" --> "1" "files" : download > 
+"files" --> "1" "file-addresses" : data-source > 
+class "bestuursperiodes"
+"bestuursperiodes" : start
+"bestuursperiodes" : einde
+"bestuursperiodes" --> "*" "bestuursorganen" : heeft-bestuursorganen-in-tijd > 
+"bestuursperiodes" --> "*" "installatievergaderingen" : installatievergaderingen > 
+"concepts" <|-- "bestuursperiodes"
+class "personen"
+"personen" : achternaam
+"personen" : alternatieve-naam
+"personen" : gebruikte-voornaam
+"personen" : possible-duplicate
+"personen" : modified
+"personen" --> "1" "geboortes" : geboorte > 
+"personen" --> "1" "identificatoren" : identificator > 
+"personen" --> "1" "geslacht-codes" : geslacht > 
+"personen" --> "*" "mandatarissen" : is-aangesteld-als > 
+"personen" --> "*" "nationalities" : nationalities > 
+"personen" --> "*" "fracties" : current-fracties > 
+"personen" --> "*" "verkiezingsresultaten" : verkiezingsresultaten > 
+class "artikels"
+"rechtsgronden" <|-- "artikels"
+class "bestuurseenheden"
+"bestuurseenheden" : naam
+"bestuurseenheden" : alternatieve-naam
+"bestuurseenheden" : is-faciliteiten-gemeente
+"bestuurseenheden" : mail-adres
+"bestuurseenheden" : hide-legislatuur
+"bestuurseenheden" : is-lokaal-beheerd
+"bestuurseenheden" --> "1" "werkingsgebieden" : werkingsgebied > 
+"bestuurseenheden" --> "1" "werkingsgebieden" : provincie > 
+"bestuurseenheden" --> "1" "bestuurseenheden" : is-ocmw-voor > 
+"bestuurseenheden" --> "1" "bestuurseenheid-classificatie-codes" : classificatie > 
+"bestuurseenheden" --> "1" "bestuurseenheid-contacten" : contact > 
+"bestuurseenheden" --> "1" "bestuurseenheden" : is-associated-with > 
+"bestuurseenheden" --> "*" "bestuursorganen" : bestuursorganen > 
+"bestuurseenheden" --> "*" "bestuursorganen" : fake-bestuursorganen > 
+class "bestuurseenheid-classificatie-codes"
+"bestuurseenheid-classificatie-codes" : label
+class "library-entries"
+"library-entries" : name
+"library-entries" : order
+"library-entries" : path
+"library-entries" : options
+"library-entries" --> "1" "display-types" : display-type > 
+class "bestuursorganen"
+"bestuursorganen" : naam
+"bestuursorganen" : deactivated-at
+"bestuursorganen" : binding-einde
+"bestuursorganen" : binding-start
+"bestuursorganen" --> "1" "bestuurseenheden" : bestuurseenheid > 
+"bestuursorganen" --> "1" "bestuurseenheden" : original-bestuurseenheid > 
+"bestuursorganen" --> "1" "bestuurseenheden" : tijdelijk-orgaan-in > 
+"bestuursorganen" --> "1" "bestuursorgaan-classificatie-codes" : classificatie > 
+"bestuursorganen" --> "1" "bestuursorganen" : is-tijdsspecialisatie-van > 
+"bestuursorganen" --> "1" "bestuursorganen" : original-bestuursorgaan > 
+"bestuursorganen" --> "1" "bestuursperiodes" : heeft-bestuursperiode > 
+"bestuursorganen" --> "1" "rechtstreekse-verkiezingen" : verkiezing > 
+"bestuursorganen" --> "*" "bestuursorganen" : heeft-tijdsspecialisaties > 
+"bestuursorganen" --> "*" "mandaten" : bevat > 
+class "adressen"
+"adressen" : busnummer
+"adressen" : huisnummer
+"adressen" : straatnaam
+"adressen" : postcode
+"adressen" : gemeentenaam
+"adressen" : land
+"adressen" : locatieaanduiding
+"adressen" : locatienaam
+"adressen" : postbus
+"adressen" : postnaam
+"adressen" : volledig-adres
+"adressen" : adres-register-id
+"adressen" : adres-register-uri
+class "forms"
+"forms" : target-type
+"forms" : target-label
+"forms" : prefix
+"forms" : id
+"forms" : form-ttl
+"forms" : meta-ttl
+"forms" --> "*" "form-extensions" : extensions > 
+class "verkiezingsresultaten"
+"verkiezingsresultaten" : aantal-naamstemmen
+"verkiezingsresultaten" : plaats-rangorde
+"verkiezingsresultaten" --> "1" "personen" : persoon > 
+"verkiezingsresultaten" --> "1" "kandidatenlijsten" : kandidatenlijst > 
+"verkiezingsresultaten" --> "1" "verkiezingsresultaat-gevolg-codes" : gevolg > 
+class "global-system-messages"
+"global-system-messages" : message
+"global-system-messages" : is-active
+class "validationresults"
+"validationresults" : focus-node
+"validationresults" : focus-node-id
+"validationresults" : result-severity
+"validationresults" : source-constraint-component
+"validationresults" : source-shape
+"validationresults" : result-message
+"validationresults" : result-path
+"validationresults" : value
+"validationresults" : target-class-of-focus-node
+class "kandidatenlijsten"
+"kandidatenlijsten" : lijstnaam
+"kandidatenlijsten" : lijstnummer
+"kandidatenlijsten" --> "1" "lijsttypes" : lijsttype > 
+"kandidatenlijsten" --> "1" "rechtstreekse-verkiezingen" : verkiezing > 
+"kandidatenlijsten" --> "*" "personen" : kandidaten > 
+"kandidatenlijsten" --> "*" "verkiezingsresultaten" : resultaten > 
+"kandidatenlijsten" --> "*" "fracties" : resulterende-fracties > 
+class "reports"
+"reports" : created
+"reports" : conforms
+"reports" --> "*" "validationresults" : validationresults > 
+class "geboortes"
+"geboortes" : datum
+class "form-fields"
+"form-fields" : name
+"form-fields" : order
+"form-fields" : path
+"form-fields" : options
+"form-fields" --> "1" "form-extensions" : form > 
+"form-fields" --> "1" "display-types" : display-type > 
+"form-fields" --> "1" "library-entries" : library-entry > 
+class "installatievergadering-statussen"
+"installatievergadering-statussen" : label
+@enduml

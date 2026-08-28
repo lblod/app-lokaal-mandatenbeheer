@@ -591,3 +591,618 @@ WHERE {
   BIND(SHA256(CONCAT(?orgaanUuid, STR(?mandaatClassificatie))) AS ?uuid)
   BIND(URI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuid)) AS ?mandaatUri)
 }
+;
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+INSERT {
+  GRAPH ?provincieLimburg {
+    ?mandaatUri a mandaat:Mandaat ;
+                mu:uuid ?uuid ;
+                org:role ?mandaatClassificatie .
+    ?orgaanInTijd org:hasPost ?mandaatUri .
+  }
+}
+WHERE {
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+  ?orgaan besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+  ?orgaan mu:uuid ?orgaanUuid .
+
+  ?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaan .
+  ?orgaan besluit:classificatie / skos:inScheme <http://data.lblod.info/id/conceptscheme/LokaalOrgaanClassificatieCode> .
+
+  ?mandaatClassificatie skos:inScheme <http://data.lblod.info/id/conceptscheme/LokaalMandaatClassificatieCode> .
+
+  FILTER NOT EXISTS {
+    ?orgaanInTijd org:hasPost / org:role ?mandaatClassificatie .
+  }
+
+  BIND(SHA256(CONCAT(?orgaanUuid, STR(?mandaatClassificatie))) AS ?uuid)
+  BIND(URI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuid)) AS ?mandaatUri)
+}
+;
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT {
+  graph ?provincieLimburg {
+    ?orgaanUri a besluit:Bestuursorgaan .
+    ?orgaanUri mu:uuid ?uuid .
+    ?orgaanUri skos:prefLabel ?orgaanLabel .
+    ?orgaanUri besluit:classificatie ?orgaanType .
+    ?orgaanUri besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?orgaanInTijdUuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68> . # overige periode
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+
+    ?orgaanUri ext:isFromManualImport "true"  .
+    ?orgaanInTijdUri ext:isFromManualImport "true"  .
+  }
+}
+where {
+  values ( ?uuid ?orgaanLabel ?orgaanType) {
+    ( "01a047d8-c3ee-74d2-ad2c-fe63123fb999" "Hoog overlegcomité en afzonderlijk bijzonder comité van het gesubsidieerd personeel van het provinciaal onderwijs - Hoog overlegcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/4af47caf-009d-44eb-acf0-b87877af7bb3> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe646c2cf651" "Euregio Maas-Rijn - Vergadering" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe650c64d51e" "Euregio Maas-Rijn - Bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe663ee40581" "Erkend Regionaal Samenwerkingsverband Limburg (ERSV Limburg) (in vereffening) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe6758aeada4" "Erkend Regionaal Samenwerkingsverband Limburg (ERSV Limburg) (in vereffening) - Regionaal Sociaal-Economisch Overlegcomité (RESOC)" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe68d13e2aa9" "Limburgse Economische Raad (L.E.R.) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe6983b5780e" "Limburg Sterk Merk (LSM) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe6afea80824" "s-Lim - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe6b70792494" "Provinciale Ontwikkelingsmaatschappij Limburg (POM Limburg) - Directiecomité" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe6ca55dadcc" "Provinciale Ontwikkelingsmaatschappij Limburg (POM Limburg) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe6df50523c7" "Vereniging van de Vlaamse Provincies (VVP) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe6ec8f9bcb8" "Samenwerking Grensgebied de Kempen - Bestuurlijk overleg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe6f46209042" "Vervoerregio Limburg - Vervoerregioraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/79b34b2f-5bc5-4939-900b-3db7fc3e1ef3> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe70f8234f24" "Toerisme Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe71f97aedb3" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe729bae0b42" "EthiasCo - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe73622eb3fe" "Vlaams Coördinatiecentrum Mestverwerking (VCM) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe748846feaa" "Vereniging van de Vlaamse Provincies (VVP) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe75c4cc7849" "Limburgse Economische Raad (L.E.R.) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe76fe09904b" "Erkend Regionaal Samenwerkingsverband Limburg (ERSV Limburg) (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe773cb35322" "Gemeentelijke Holding (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe7873fd7d4e" "Limburg Diepenbeek Campus - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe796659c681" "Beheerscomité Wetenschapspark Diepenbeek - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe7a9990ad31" "Beheerscomité Wetenschapspark Diepenbeek - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe7bf43e9d2d" "Vlaams infocentrum land- en tuinbouw (VILT) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe7cb0472e69" "Jobpunt Vlaanderen/Poolstok (Vlaams Selectiecentrum voor het Overheidspersoneel) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe7d1cde7ae5" "Vlaamse Maatschappij voor Sociaal Wonen (VMSW) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe7ed8bf9617" "Regionaal Landschap Lage Kempen (RLLK) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe7fbc0504ae" "Regionaal Landschap Lage Kempen (RLLK) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe80565c2ac2" "Demerbekken - Bekkenbestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/7f7f4e20-ff35-4f26-91f5-a7faaf8f59aa> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe81d1264abd" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8225df9384" "Vlaamse Landmaatschappij - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe83391590b5" "Scholengemeenschap van het Provinciaal en Stedelijk Onderwijs Limburg  - Comité van afgevaardigden van de inrichtende machten (CAIM)" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe844cacf1af" "Scholengemeenschap Zuid-Oost Limburg - Beheerscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe85014976de" "Cordium - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8676e258cc" "Cordium - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8792fae72a" "Wonen in Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe886ed28b63" "Wonen in Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8940a607f6" "Maaslands Huis - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8aaa5a421c" "Maaslands Huis - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8b2109c940" "Hacosi - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8c682469af" "Hacosi - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8dda2fedd2" "Gewestelijke sociale huisvestingsmaatschappij Woonzo - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8e79253b41" "Gewestelijke sociale huisvestingsmaatschappij Woonzo - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe8fe143b24b" "Kantonnale Bouwmaatschappij van Beringen voor Huisvesting - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe90e81eff40" "Kantonnale Bouwmaatschappij van Beringen voor Huisvesting - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe91ac0bff6f" "Ons Dak - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe9224a5f336" "Ons Dak - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe933dd43dd0" "Nieuw Dak - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe94e927208e" "Nieuw Dak - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+  }
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri) .
+  bind(SHA256(concat("organen-provincie-limburg", ?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+}
+;
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT {
+  graph ?provincieLimburg {
+    ?orgaanUri a besluit:Bestuursorgaan .
+    ?orgaanUri mu:uuid ?uuid .
+    ?orgaanUri skos:prefLabel ?orgaanLabel .
+    ?orgaanUri besluit:classificatie ?orgaanType .
+    ?orgaanUri besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?orgaanInTijdUuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68> . # overige periode
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+
+    ?orgaanUri ext:isFromManualImport "true"  .
+    ?orgaanInTijdUri ext:isFromManualImport "true"  .
+  }
+}
+where {
+  values ( ?uuid ?orgaanLabel ?orgaanType) {
+    ( "01a047d8-c3ee-74d2-ad2c-fe95ee86f108" "Vooruitzien - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe96d5b1b943" "Vooruitzien - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe973e9791fb" "Landwaarts - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe9859ea7554" "Landwaarts - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe99ad3bd62c" "Nieuw Sint-Truiden - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe9a032cf9d8" "Nieuw Sint-Truiden - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe9b7e534003" "Plaatselijke Groep Haspengouw (PG Haspengouw) - Plaatselijke Groep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe9c74d34419" "Plaatselijke Groep Haspengouw (PG Haspengouw) - Leadercomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe9d606b5a7c" "Plaatselijke Groep Kempen en Maasland (PG Kempen en Maasland) - Plaatselijke Groep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe9e8381a310" "Plaatselijke Groep Kempen en Maasland (PG Kempen en Maasland) - Leadercomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fe9f21123d04" "Het Domein Bokrijk - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ee-74d2-ad2c-fea00da72abe" "Het Domein Bokrijk - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ee-74d2-ad2c-fea1a0dc36b3" "Provinciale Commissie voor Ruimtelijke Ordening (PROCORO) - Samenstelling" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fea275ad4125" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Aandeelhoudersbestuur van de drinkwaterdienst" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fea3a9915bb9" "Samenwerkingsverband Provinciaal en Gemeentelijk Volwassenenonderwijs Limburg - Comité van afgevaardigden van de inrichtende machten (CAIM)" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fea4ff6914b7" "Grindfonds - Grindcomité - Grindcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fea59a66b709" "Provinciaal managementcomité PDPO 2014-2020 - Technische Werkgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ee-74d2-ad2c-fea66ddedc7d" "Limburg Sterk Merk (LSM) - Directiecomité" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8> )
+    ( "01a047d8-c3ee-74d2-ad2c-fea740b67c9f" "Provinciale Technische School Maasmechelen - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1eef090fa90" "Provinciale Secundaire School Voeren - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1eff3c8890b" "Provinciale Secundaire School Hasselt-Kunst en Verpleegkunde - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f093eac3a3" "Provinciale Secundaire School Diepenbeek - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f14bb0cefe" "Provinciale Secundaire School Bilzen - Gezamenlijke vergadering van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f23ff767b2" "Provinciale Middenschool Hasselt  - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f3781cf1d2" "Provinciale Middenschool Diepenbeek  - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f433b79125" "Provinciale Handelsschool Hasselt - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f5a7d6ad6a" "Provinciale Basisschool Voeren en Provinciale Kleuterschool St.-Martens-Voeren - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f632842be4" "Provinciaal Instituut voor Biotechnisch Onderwijs Tongeren - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f751243592" "Provinciaal Instituut Lommel Individueel Onderwijs (PROVIL ION) - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f8b7fe0031" "Provinciaal Instituut Lommel - Gezamenlijke vergaderingen van de inrichtende macht en de schoolraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1f9794db223" "Toerisme Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a1fa58240b9a" "Provinciale Technische School Maasmechelen - Centrumraad centrum deeltijds beroepssecundair onderwijs" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1fb543eda86" "Provinciaal Instituut Lommel - Centrumraad centrum deeltijds beroepssecundair onderwijs" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1fc43c7651d" "Provinciaal managementcomité PDPO 2014-2020 - Provinciaal Managementcomité (PMC)" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1fd2874a225" "Provinciaal managementcomité PDPO 2014-2020 - Beperkt Provinciaal Managementcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1feeb6e7a48" "Hoog overlegcomité en afzonderlijk bijzonder comité van het gesubsidieerd personeel van het provinciaal onderwijs - Afzonderlijk bijzonder comité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a1ffb02fc23a" "Centrum Duurzaam Groen - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2008db037e8" "Samenwerkingsprogramma Interreg VI A Maas-Rijn (NL-BE-DE) - Comité van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a201171a83d3" "Centrum voor Volwassenenonderwijs Limburgse Lerarenopleiding (CVO LIMLO) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a20291f0c1cd" "Samenwerkingsprogramma Interreg VI A Vlaanderen-Nederland 2021-2027 - Comité van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a203b97783cf" "Bosgroep Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2045a30ced9" "Bosgroep Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a20546461705" "Locate in Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a206621beebf" "Locate in Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2078f70a859" "Maasbekken - Bekkenbestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/7f7f4e20-ff35-4f26-91f5-a7faaf8f59aa> )
+    ( "01a047d8-c3ef-7259-98fa-a20822114e63" "Vervoerregio Limburg - Dagelijks bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/298234f3-b012-47b8-8779-9b887e55861d> )
+    ( "01a047d8-c3ef-7259-98fa-a209ad20cc1e" "Netebekken - Bekkenbestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/7f7f4e20-ff35-4f26-91f5-a7faaf8f59aa> )
+    ( "01a047d8-c3ef-7259-98fa-a20a2c22abca" "Leerstoel Herman Reynders - Opvolgingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a20b62c37394" "Provinciaal Centrum voor Leerlingenbegeleiding Limburg (PCLB) - Centrumraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a20c35c6a5bc" "Provinciaal Onderwijs Vlaanderen - Pedagogische Ondersteuning - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+  }
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri) .
+  bind(SHA256(concat("organen-provincie-limburg", ?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+}
+;
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT {
+  graph ?provincieLimburg {
+    ?orgaanUri a besluit:Bestuursorgaan .
+    ?orgaanUri mu:uuid ?uuid .
+    ?orgaanUri skos:prefLabel ?orgaanLabel .
+    ?orgaanUri besluit:classificatie ?orgaanType .
+    ?orgaanUri besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?orgaanInTijdUuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68> . # overige periode
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+
+    ?orgaanUri ext:isFromManualImport "true"  .
+    ?orgaanInTijdUri ext:isFromManualImport "true"  .
+  }
+}
+where {
+  values ( ?uuid ?orgaanLabel ?orgaanType) {
+    ( "01a047d8-c3ef-7259-98fa-a20dd93fcf59" "Provinciaal Onderwijs Vlaanderen - Pedagogische Ondersteuning - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a20e9fe5570b" "Provinciaal Instituut voor Biotechnisch Onderwijs-campus (PIBO-campus) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a20faca94d0a" "Provinciaal Instituut voor Biotechnisch Onderwijs-campus (PIBO-campus) - Bestuursorgaan" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2104786e9c8" "Vlaamse Vervoermaatschappij - De Lijn - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2110f5bad0f" "Provinciaal Onderwijs Vlaanderen - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2122ab869a6" "Provinciaal Onderwijs Vlaanderen - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2130d020d7a" "Leerstoel Herman Reynders - Wetenschappelijke begeleidingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2149028e240" "Vrienden van de Sporthal Provinciaal Instituut voor Biotechnisch Onderwijs (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a21599994ad0" "Vrienden van de Sporthal Provinciaal Instituut voor Biotechnisch Onderwijs (in vereffening) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a216467f2d29" "Vlaamse Landmaatschappij - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2177a33063a" "Uitmuntend Limburg (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a218851f26ce" "Uitmuntend Limburg (in vereffening) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a21951908720" "Steunpunt Duurzaam Bouwen Limburg (Dubolimburg) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a21a3d155e96" "Steunpunt Duurzaam Bouwen Limburg (Dubolimburg) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a21bf876795d" "Regionaal Landschap Kempen en Maasland (RLKM) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a21c247430e8" "Regionaal Landschap Kempen en Maasland (RLKM) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a21daded54f8" "Regionaal Landschap Haspengouw en Voeren (RLHV) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a21e8a000294" "Regionaal Landschap Haspengouw en Voeren (RLHV) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a21fa8452cb6" "Samenwerking Grensgebied de Kempen - Programmateam" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a220209c02be" "Projectgrindwinningscomité (PGC) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2217ebdbf9c" "Onderhandelingscomité van de Scholengemeenschap van het Provinciaal en Stedelijk Onderwijs Limburg (OCSG PSOL) - Samenstelling" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2220c03ce2b" "Bosgroep Noordoost-Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2239511aaf6" "Bosgroep Noordoost-Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a22486ea8851" "Kleine Landeigendom - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a225fa94331a" "Limburgs Steunpunt Rurale Ontwikkeling - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2262341bacc" "Proefcentrum Fruitteelt (pcFruit) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2270fa56cf7" "Proefcentrum Fruitteelt (pcFruit) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a22885b90670" "Cipal - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a229a2972ff9" "Cipal - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a22acb654884" "Cipal - Adviescomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/39574cb9-0ca4-49da-82c5-468ebf1f5f50> )
+    ( "01a047d8-c3ef-7259-98fa-a22b0aad8d74" "Lokaal Gezondheidsoverleg Limburg (Logo Limburg) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a22cf0a3f8e4" "Lokaal Gezondheidsoverleg Limburg (Logo Limburg) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a22d464d7e9f" "Plaatselijke Groep Leader Kempen-Maasland (PG Leader Kempen-Maasland) - Beheerscomité - Plaatselijke groep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a22e69c652bf" "Plaatselijke Groep Leader Kempen-Maasland (PG Leader Kempen-Maasland) - Leadercomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a22fca96aa30" "Plaatselijke Groep Leader Haspengouw (PG Leader Haspengouw) - Beheerscomité - Plaatselijke groep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a230eeb489ea" "Bosgroep Hoge Kempen - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a231f32796aa" "Bosgroep Hoge Kempen - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2329a9b5b50" "Bosgroep Zuid-Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a233d9143425" "Bosgroep Zuid-Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a23409724dd6" "Bosgroep Limburgse Duinen - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a23536fa8088" "Bosgroep Limburgse Duinen - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a236034f5c55" "Medialab  - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a23792857d80" "Medialab  - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a238f2eb79a4" "Inter-media - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a23911521504" "Inter-media - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a23a0f733aca" "Inter-energa - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a23b1326080c" "Inter-energa - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a23c582920d7" "Nolimpark - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a23df356dfc5" "Nolimpark - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a23e3585fc53" "Openbaar Kunstbezit in Vlaanderen - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+  }
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri) .
+  bind(SHA256(concat("organen-provincie-limburg", ?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+}
+;
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT {
+  graph ?provincieLimburg {
+    ?orgaanUri a besluit:Bestuursorgaan .
+    ?orgaanUri mu:uuid ?uuid .
+    ?orgaanUri skos:prefLabel ?orgaanLabel .
+    ?orgaanUri besluit:classificatie ?orgaanType .
+    ?orgaanUri besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?orgaanInTijdUuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68> . # overige periode
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+
+    ?orgaanUri ext:isFromManualImport "true"  .
+    ?orgaanInTijdUri ext:isFromManualImport "true"  .
+  }
+}
+where {
+  values ( ?uuid ?orgaanLabel ?orgaanType) {
+    ( "01a047d8-c3ef-7259-98fa-a23f8c4db720" "Openbaar Kunstbezit in Vlaanderen - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a24099fe234c" "Vlaamse Vervoermaatschappij - De Lijn - Raad van Advies" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2411935deb4" "Vlaams Bureau voor Sportbegeleiding (Vlabus) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a242073be65f" "Vlaams Bureau voor Sportbegeleiding (Vlabus) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a243b49541c5" "Plaatselijke Groep Leader Haspengouw (PG Leader Haspengouw) - Leadercomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a244539c4f86" "CultuurNoord - Beheerscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2455bad8447" "Proef- en Vormingscentrum voor de Landbouw (PVL) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a246894ebcf8" "Inloophuizen voor mensen met kanker en hun naasten - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a247a5ab8970" "Bosgroep West-Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2481aa924e3" "Bosgroep West-Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2498dda6051" "Huis van het Nederlands Limburg (HvN Limburg) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a24a98dd5a5e" "Huis van het Nederlands Limburg (HvN Limburg) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a24b129da836" "Steunpunt Buurtopbouwwerk (STEBO) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a24cd225b3df" "Steunpunt Buurtopbouwwerk (STEBO) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a24d36702e47" "Euregio Benelux Middengebied Grensoverschrijdend Openbaar Lichaam (GOL) (in vereffening) - College van Vereffenaars" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a24efd318451" "Limgrond.be (vereffend) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a24fca2728ee" "Oncologisch Studiecentrum Erika Thijs - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a250a7c7efdd" "Marketing Erfgoedsites Limburg (in vereffening) - College van vereffenaars" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2518ee9fe92" "Limburgs Steunpunt Rurale Ontwikkeling - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2529bbca3ec" "Oncologisch Studiecentrum Erika Thijs - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a253f30a220d" "Intercommunale Vereniging voor Hulp aan Gehandicapten in Limburg (IGL) - Bestuurscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2543d10acab" "Intercommunale Vereniging voor Hulp aan Gehandicapten in Limburg (IGL) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2557ec8ab68" "Intercommunale Vereniging voor Hulp aan Gehandicapten in Limburg (IGL) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a256c3a3aeb0" "Provinciaal Steunpunt Arbeidszorg (PSAZ) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2574a4fda85" "Provinciaal Steunpunt Arbeidszorg (PSAZ) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a258accea835" "Stichting Manifesta 9 Limburg - Raad van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2594306d149" "Consortium Volwassenenonderwijs Limburg Noord (CVLN) (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a25aa8736b29" "Limburgs Huis voor de Sport (vereffend) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a25bc3841f05" "Limburgs Huis voor de Sport (vereffend) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a25c91a77cc6" "Startcentrale (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a25dcf24e335" "Startcentrale (in vereffening) - (Raad van Bestuur) vervangen door vereffenaar" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a25e93c8d9b1" "Infrax Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a25fe9270d26" "Infrax Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a260e7abc72b" "Universiteit Hasselt - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2615388984a" "Toegankelijkheidsbureau - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a262afeb9d75" "Toegankelijkheidsbureau - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2639f433791" "Monumentenwacht van de provincie Limburg (vereffend) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a264338c1090" "Monumentenwacht van de provincie Limburg (vereffend) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a265dd30ddd4" "Abdij, Stad en Regio (ASR) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a26661144c34" "Abdij, Stad en Regio (ASR) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a26750cafb84" "Limburgs Orkest - Jeugd en Muziek - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a268e4ac1a5a" "Limburgs Orkest - Jeugd en Muziek - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2693bb927a4" "Regionaal Instituut voor Maatschappelijk Opbouwwerk Limburg (RIMO Limburg) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a26a5d262a47" "Regionaal Instituut voor Maatschappelijk Opbouwwerk Limburg (RIMO Limburg) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a26bc9f59f28" "Onthaalbureau Inburgering Limburg - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a26c9deb51c0" "Onthaalbureau Inburgering Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a26d32a36af9" "Verkeers- en Mobiliteitseducatief Centrum (VME) (in vereffening) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a26e8d243885" "Verkeers- en Mobiliteitseducatief Centrum (VME) (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a26fc312b6ea" "Limburgs Overleg van regionale samenwerkingsinitiatieven in de thuisverzorging en van multidisciplinaire vorming in de eerstelijnsgezondheidszorg (LISTEL) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2705b34afa2" "Limburgs Overleg van regionale samenwerkingsinitiatieven in de thuisverzorging en van multidisciplinaire vorming in de eerstelijnsgezondheidszorg (LISTEL) - Dagelijks Bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/298234f3-b012-47b8-8779-9b887e55861d> )
+  }
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri) .
+  bind(SHA256(concat("organen-provincie-limburg", ?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+}
+;
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT {
+  graph ?provincieLimburg {
+    ?orgaanUri a besluit:Bestuursorgaan .
+    ?orgaanUri mu:uuid ?uuid .
+    ?orgaanUri skos:prefLabel ?orgaanLabel .
+    ?orgaanUri besluit:classificatie ?orgaanType .
+    ?orgaanUri besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?orgaanInTijdUuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68> . # overige periode
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+
+    ?orgaanUri ext:isFromManualImport "true"  .
+    ?orgaanInTijdUri ext:isFromManualImport "true"  .
+  }
+}
+where {
+  values ( ?uuid ?orgaanLabel ?orgaanType) {
+    ( "01a047d8-c3ef-7259-98fa-a2713bf97385" "Limburgs Overleg van regionale samenwerkingsinitiatieven in de thuisverzorging en van multidisciplinaire vorming in de eerstelijnsgezondheidszorg (LISTEL) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a272f9cd6220" "Limburgse Kankersamenwerking (Likas) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3ef-7259-98fa-a2735e61082f" "Limburgse Kankersamenwerking (Likas) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a274328e8346" "Algemene Dienst voor Jeugdtoerisme vzw - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2756e44256a" "Basilica Concerten - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2761a1924d6" "CIC-overleg - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a277b7582cb2" "Communautair initiatief voor plattelandsontwikkeling 'Leader+' (in vereffening) - Toezichtscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a278bce717d3" "Denktank IFG - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2799ada4ba3" "Doelstelling 2 Vlaanderen 2007-2013 - Toezichtscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a27a224ed5d0" "Limburgse Raad voor het Cultuurbeleid - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a27bc220e619" "Samenwerkingsprogramma Interreg IV-A Euregio Maas-Rijn - Comité van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a27ceebe0ff1" "Samenwerkingsprogramma Interreg IV-A Grensregio Vlaanderen-Nederland - Comité van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a27d5512a224" "Samenwerkingsprogramma Interreg IV-A Grensregio Vlaanderen-Nederland - Coördinatorenoverleg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a27e53d68fc3" "Samenwerkingsprogramma Interreg IV-A Grensregio Vlaanderen-Nederland - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3ef-7259-98fa-a27f1c62d797" "Platform Voorzieningen voor Personen met een Handicap Limburg (feitelijke vereniging) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3ef-7259-98fa-a2809a172b78" "Platform Voorzieningen voor Personen met een Handicap Limburg (feitelijke vereniging) - Vast Bureau" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a2817922982e" "Provinciaal Domein Dommelhof - Bestuurscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a28268001635" "Provinciaal Instituut Lommel - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3ef-7259-98fa-a28361cda36d" "Provinciaal Instituut Lommel - Interne Beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ede9099ff1f" "Provinciaal Instituut Lommel Individueel Onderwijs (PROVIL ION) - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8edf3981e969" "Provinciaal Instituut Lommel Individueel Onderwijs (PROVIL ION) - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee0670fba15" "Provinciaal Instituut voor Biotechnisch Onderwijs Tongeren - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee15c751fc0" "Provinciaal Instituut voor Biotechnisch Onderwijs Tongeren - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee223797ea9" "Provinciaal managementcomité PDPO 2007-2013 - Managementcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee37bfb9d1b" "Provinciaal Overleg  - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee43f7b0f6d" "Provinciaal Platform Algemeen Welzijnswerk (feitelijke vereniging) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8ee5a92d1438" "Provinciaal Politieoverleg - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee62a833b25" "Provinciaal Steunpunt Limburgse Bibliotheken - Adviesraad Streekgericht Bibliotheekbeleid" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee7a823fd73" "Provinciale Adviesraad Dierenwelzijn (P.A.D.) - Adviesraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee811a7c550" "Provinciale Basisschool Voeren en Provinciale Kleuterschool St.-Martens-Voeren - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ee9164fb55c" "Provinciale Basisschool Voeren en Provinciale Kleuterschool St.-Martens-Voeren - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8eea0d6e1796" "Provinciale Commissie Verkeer en Mobiliteit - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8eeb2a6207ef" "Provinciale Commissie voor Criminaliteitspreventie - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8eec57b91fb4" "Stichting Euregio Maas-Rijn - Euregionale Sociaal-Economische Raad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8eeddb00f01b" "Stichting Euregio Maas-Rijn - Euregioraad " <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8eee9953aef7" "Limburg.net - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8eefd8ad88f9" "Provinciale Gehandicaptensportraad - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8ef0750440bc" "Provinciale Gehandicaptensportraad - Raad van Beheer" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ef1ea9edb1b" "Provinciale Handelsschool Hasselt - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ef243d57dcb" "Provinciale Handelsschool Hasselt - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ef31a5decdb" "Provinciale Landbouwkamer Limburg - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8ef466c2dba6" "Provinciale Middenschool Diepenbeek  - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ef5a23146e1" "Provinciale Middenschool Diepenbeek  - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ef6b7a9e9e2" "Provinciale Middenschool Hasselt  - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ef78f37f05a" "Provinciale Middenschool Hasselt  - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ef8c755a390" "Stichting Maastricht Culturele Hoofdstad van Europa 2018 (in vereffening) - Raad van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8ef97573010d" "Limburgs Steunpunt Kinderopvang - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8efae2ff8498" "Limburgs Steunpunt Kinderopvang - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8efb75ac99c5" "IML (in vereffening) - College van Vereffenaars" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8efccb9515c3" "Consortium Volwassenenonderwijs Limburg Zuid (CVLZ) (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+  }
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri) .
+  bind(SHA256(concat("organen-provincie-limburg", ?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+}
+;
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT {
+  graph ?provincieLimburg {
+    ?orgaanUri a besluit:Bestuursorgaan .
+    ?orgaanUri mu:uuid ?uuid .
+    ?orgaanUri skos:prefLabel ?orgaanLabel .
+    ?orgaanUri besluit:classificatie ?orgaanType .
+    ?orgaanUri besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?orgaanInTijdUuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68> . # overige periode
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+
+    ?orgaanUri ext:isFromManualImport "true"  .
+    ?orgaanInTijdUri ext:isFromManualImport "true"  .
+  }
+}
+where {
+  values ( ?uuid ?orgaanLabel ?orgaanType) {
+    ( "01a047d8-c3f0-7460-83f4-8efdcf72f5b6" "Limburg Helpt (vereffend) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8efefa3d57da" "Limburg Helpt (vereffend) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8eff4ac481e5" "EthiasCo - Raadgevend Comité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f000b302e00" "Stichting Euregio Maas-Rijn - Bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f013f445f6d" "Monumentenwacht van de provincie Limburg (vereffend) - Dagelijks bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/298234f3-b012-47b8-8779-9b887e55861d> )
+    ( "01a047d8-c3f0-7460-83f4-8f02d998826e" "Limburg.net - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f03c23578b5" "I-Cleantech Vlaanderen - innovatie in cleantech (ICTV) (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f04ca65fb5d" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Provinciaal Comité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f0596a51216" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Sectorcomité Oost-Limburg " <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f069ea8bc41" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Sectorcomité Zuidoost-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f077da0fda0" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Sectorcomité Noord-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f08039fc2b0" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Sectorcomité Zuidwest-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f09093ed061" "Vlaamse Maatschappij voor Watervoorziening (De Watergroep) - Sectorcomité West-Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f0a06247f16" "Provinciale Hogeschool Limburg (PHL) - College van Commissarissen" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f0bd408b034" "Provinciale Hogeschool Limburg (PHL) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f0cf3593748" "Samenwerking Psychiatrische Initiatieven Limburg (SPIL) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f0d19df2b62" "Marketing Erfgoedsites Limburg (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f0e54b46ded" "Samenwerking Psychiatrische Initiatieven Limburg (SPIL) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f0f422fb7b8" "Proef- en Vormingscentrum voor de Landbouw (PVL) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f1063853761" "Waterschap Demer-Noord - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f110d0eb460" "Waterschap Demer-Zuid - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f124172ad52" "Waterschap Dommel en Warmbeek - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f13f808ffcb" "Waterschap Grote Nete en Wimp - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f14ca1e0c73" "Waterschap Grote Nete, Molse Nete en Grote Laak - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f15f334614b" "Waterschap Herk en Mombeek - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f16c4e7ee0b" "Waterschap Jeker, Heeswater en Voeren - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f1789ab45ed" "Waterschap Melsterbeek - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f187ef478fc" "Waterschap Noordoost-Limburg - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f19c5d99828" "Waterschap Zwarte Beek en Mangelbeek - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f1a2683c081" "Interbestuurlijk Plattelandsoverleg (IPO) - Bestuurlijk overleg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f1bdfa115ab" "Coöperatieve Irrigatie Ruilverkaveling Ophoven (CIRO) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f1c0573744f" "Limburgs Platform Bijzondere Jeugdbijstand (L.P.J.) (feitelijke vereniging) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f1d51e403a7" "Limburgs Platform Ontwikkelingssamenwerking (LPOS) (feitelijke vereniging) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f1ed5128111" "Limburgs Platform Ontwikkelingssamenwerking (LPOS) (feitelijke vereniging) - Vast Bureau" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f1fef649364" "Limburgs Platform Verslaving (LPV) (feitelijke vereniging) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f20ef17decd" "Limburgs Platform Verslaving (LPV) (feitelijke vereniging) - Dagelijks Bestuur" <http://data.lblod.info/id/lb-orgaan-classificatiecode/298234f3-b012-47b8-8779-9b887e55861d> )
+    ( "01a047d8-c3f0-7460-83f4-8f21cebf73a1" "Limburgs Steunpunt OCMW's (LSO) (feitelijke vereniging) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f2292136d4b" "Limburgs Steunpunt OCMW's (LSO) (feitelijke vereniging) - Vast Bureau" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f2382ea382c" "Limburgse Gehandicaptenadviesraad - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f244b9e796f" "Scholengemeenschap van het Provinciaal en Stedelijk Onderwijs Limburg  - gemeenschappelijke vergaderingen van het bestuur van de scholengemeenschap met het medeze " <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f25e5e23cac" "Stedelijke Bibliotheek Hasselt en Provinciale Bibliotheek Limburg - Bibliotheekraad" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f26f98f2cd0" "Vlaamse Interprovinciale Commissie voor Letterkunde - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f2705375821" "Waterschap Bovenlopen Kleine Nete - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f2813c8aad0" "Waterschap Bovenstroom Demer - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f299453d593" "Waterschap Centrale Maasvlakte - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f2ae4721f0e" "Provinciale Raad voor Ouderen - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f2baa9216dc" "Provinciale ronde tafel technopreventie - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f2c6acd6cd6" "Provinciale Secundaire School Diepenbeek - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f2db35cdf91" "Provinciale Secundaire School Diepenbeek - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f2edac493b9" "Provinciale Secundaire School Hasselt-Kunst en Verpleegkunde - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+  }
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri) .
+  bind(SHA256(concat("organen-provincie-limburg", ?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+}
+;
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix mu: <http://mu.semte.ch/vocabularies/core/>
+prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+INSERT {
+  graph ?provincieLimburg {
+    ?orgaanUri a besluit:Bestuursorgaan .
+    ?orgaanUri mu:uuid ?uuid .
+    ?orgaanUri skos:prefLabel ?orgaanLabel .
+    ?orgaanUri besluit:classificatie ?orgaanType .
+    ?orgaanUri besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+
+    ?orgaanInTijdUri a besluit:Bestuursorgaan .
+    ?orgaanInTijdUri mu:uuid ?orgaanInTijdUuid .
+    ?orgaanInTijdUri lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68> . # overige periode
+    ?orgaanInTijdUri mandaat:isTijdspecialisatieVan ?orgaanUri .
+
+    ?orgaanUri ext:isFromManualImport "true"  .
+    ?orgaanInTijdUri ext:isFromManualImport "true"  .
+  }
+}
+where {
+  values ( ?uuid ?orgaanLabel ?orgaanType) {
+    ( "01a047d8-c3f0-7460-83f4-8f2f26450aa8" "Provinciale Secundaire School Hasselt-Kunst en Verpleegkunde - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f308cd7a12a" "Provinciale Secundaire School Voeren -  Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f3109980ab4" "Provinciale Secundaire School Voeren - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f320d0540e1" "Provinciale Sportraad - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f33b5a9c499" "Provinciale Sportraad - Raad van Beheer" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f3481ad4877" "Provinciale Technische School Maasmechelen - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f3579b4142a" "Provinciale Technische School Maasmechelen - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f36e2683b5f" "Provinciale Veiligheidsraad - Commissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f37697c6feb" "Provincie Limburg Opleiding en Training - PLOT - Beleidscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f38f8c63762" "Inter-media - College van Beleidsdeskundigen" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f39e0bcd1b4" "Landbouwcentrum voor granen, eiwitrijke gewassen, oliehoudende zaden en kleine industrie gewassen (Vlaanderen), (LCG) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f3a3badaf06" "Landbouwcentrum voor granen, eiwitrijke gewassen, oliehoudende zaden en kleine industrie gewassen (Vlaanderen), (LCG) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f3bb3180fbc" "Landbouwcentrum voor voedergewassen (LCV) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f3cd75e1da5" "Kleine Landeigendom - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f3dfaef6e9e" "Coöperatieve Irrigatie Ruilverkaveling Ophoven (CIRO) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f3ee0e37385" "Landbouwcentrum voor voedergewassen (LCV) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f3fc33dbe6a" "Inloophuizen voor mensen met kanker en hun naasten - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f40f36c6fd5" "Coördinatiecentrum voorlichting en begeleiding duurzame bemesting (CVBB) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f419f504ad5" "TaskForce Limburg - TaskForce Limburg" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f42b8a0a802" "Verkeers- en Mobiliteitseducatief Centrum (VME) (in vereffening) - Directiecomité" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8> )
+    ( "01a047d8-c3f0-7460-83f4-8f4326a911a7" "Provinciale Secundaire School Bilzen - Interne beroepscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f4409b5afa1" "IML (in vereffening) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f454635073a" "Vlaams infocentrum land- en tuinbouw (VILT) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f46f13c9962" "Provinciale Secundaire School Bilzen - Bemiddelingscommissie" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f475ce57745" "Coördinatiecentrum praktijkgericht onderzoek en voorlichting Biologische Teelt (CCBT) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f484f6a212b" "Hogeschool PXL - Raad van Toezicht" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f49b4b636b3" "Limburgse Reconversie Maatschappij (LRM) - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f4aaafccbd8" "Limgrond.be (vereffend) - college van vereffenaars" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f4b1350ee23" "Limburg Helpt (vereffend) - Vereffenaar" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f4cea757fbb" "Test Lidwine - Adviescomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/39574cb9-0ca4-49da-82c5-468ebf1f5f50> )
+    ( "01a047d8-c3f0-7460-83f4-8f4d13d2f98c" "VLM-project Horstgaterbeek en Lossing - Stuurgroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/ac9c0cec-aad2-4ff7-9335-43eb59cdbf17> )
+    ( "01a047d8-c3f0-7460-83f4-8f4e5162bf4e" "Monumentenwacht Vlaanderen - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f4f69636c40" "Monumentenwacht Vlaanderen - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f5064614d8a" "Limburgs Huis voor de Sport (vereffend) - Vereffenaar" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f511f166019" "Samenwerkingsprogramma Interreg VI A Vlaanderen-Nederland 2021-2027 - Coördinatorenoverleg " <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f520e4937e3" "Dierenasiel opvanggebied Oost-Limburg - Beheerscomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f53f05b2d5a" "Monumentenwacht van de provincie Limburg (vereffend) - vereffenaar" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f549213b434" "be-MINE Beheer - Raad van Bestuur" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> )
+    ( "01a047d8-c3f0-7460-83f4-8f55ed5bea3d" "be-MINE Beheer - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f56c07c9523" "Vlaams Managementcomité - Vlaams Managementcomité " <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f5780076cd4" "Hoog Overlegcomité en Bijzonder Comité voor het provinciepersoneel van de provinciale diensten - Bijzonder Comité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f589d5dca36" "Hoog Overlegcomité en Bijzonder Comité voor het provinciepersoneel van de provinciale diensten - Hoog Overlegcomité" <http://data.lblod.info/id/lb-orgaan-classificatiecode/4af47caf-009d-44eb-acf0-b87877af7bb3> )
+    ( "01a047d8-c3f0-7460-83f4-8f59633335d5" "Limburgs Platform Ziekenhuizen, Thuiszorg- en Onderwijsinstellingen (LPZO) - Algemene Vergadering" <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> )
+    ( "01a047d8-c3f0-7460-83f4-8f5a989d4481" "Limburgs Platform Ziekenhuizen, Thuiszorg- en Onderwijsinstellingen (LPZO) - Bestuursorgaan" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f5bbc5130e8" "Kunstenwerkplaats Dommelhof - Bestuursorgaan" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+    ( "01a047d8-c3f0-7460-83f4-8f5c9afda4ff" "Interbestuurlijke Vereniging Lokale Actiegroep Kempen - Lokale Actiegroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/f3ebb3a5-023c-4e68-b039-8f62235c7a25> )
+    ( "01a047d8-c3f0-7460-83f4-8f5df42152ce" "Interbestuurlijke Vereniging Lokale Actiegroep Maasland - Lokale Actiegroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/f3ebb3a5-023c-4e68-b039-8f62235c7a25> )
+    ( "01a047d8-c3f0-7460-83f4-8f5ea0fbb067" "Interbestuurlijke Vereniging Lokale Actiegroep Haspengouw Zuidoost - Lokale Actiegroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/f3ebb3a5-023c-4e68-b039-8f62235c7a25> )
+    ( "01a047d8-c3f0-7460-83f4-8f5f979d855e" "Interbestuurlijke Vereniging Lokale Actiegroep Haspengouw Zuidwest - Lokale Actiegroep" <http://data.lblod.info/id/lb-orgaan-classificatiecode/f3ebb3a5-023c-4e68-b039-8f62235c7a25> )
+    ( "01a047d8-c3f0-7460-83f4-8f601b1fd52e" "EthiasCo - Client Board" <http://data.lblod.info/id/lb-orgaan-classificatiecode/aa5f804a-2ad0-422d-9569-ea93496f5b69> )
+  }
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?uuid)) as ?orgaanUri) .
+  bind(SHA256(concat("organen-provincie-limburg", ?uuid, str(?orgaantype))) as ?orgaanInTijdUuid) .
+  bind(uri(concat("http://data.lblod.info/id/bestuursorganen/", ?orgaanInTijdUuid)) as ?orgaanInTijdUri) .
+  ?provincieLimburg ext:ownedBy <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> .
+}

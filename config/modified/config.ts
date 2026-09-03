@@ -1,19 +1,19 @@
-import { Changeset } from "../types";
+import { Changeset } from '../types';
 
 export const interestingTypes = [
-  "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-  "http://data.vlaanderen.be/ns/mandaat#Fractie",
-  "http://data.vlaanderen.be/ns/persoon#Geboorte",
-  "http://www.w3.org/ns/org#Membership",
-  "http://data.vlaanderen.be/ns/mandaat#Mandaat",
-  "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
-  "http://www.w3.org/ns/person#Person",
-  "http://www.w3.org/ns/adms#Identifier",
-  "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-  "http://lblod.data.gift/vocabularies/lmb/Installatievergadering",
-  "http://schema.org/ContactPoint",
-  "http://www.w3.org/ns/locn#Address",
-  "http://www.w3.org/ns/activitystreams#Tombstone",
+  'http://data.vlaanderen.be/ns/mandaat#Mandataris',
+  'http://data.vlaanderen.be/ns/mandaat#Fractie',
+  'http://data.vlaanderen.be/ns/persoon#Geboorte',
+  'http://www.w3.org/ns/org#Membership',
+  'http://data.vlaanderen.be/ns/mandaat#Mandaat',
+  'http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode',
+  'http://www.w3.org/ns/person#Person',
+  'http://www.w3.org/ns/adms#Identifier',
+  'http://data.vlaanderen.be/ns/besluit#Bestuursorgaan',
+  'http://lblod.data.gift/vocabularies/lmb/Installatievergadering',
+  'http://schema.org/ContactPoint',
+  'http://www.w3.org/ns/locn#Address',
+  'http://www.w3.org/ns/activitystreams#Tombstone',
 ];
 
 export const filterModifiedSubjects = `
@@ -21,7 +21,7 @@ export const filterModifiedSubjects = `
   ?h <http://mu.semte.ch/vocabularies/ext/ownedBy> ?someoneElse.`;
 
 export async function filterDeltas(changeSets: Changeset[]) {
-  const modifiedPred = "http://purl.org/dc/terms/modified";
+  const modifiedPred = 'http://purl.org/dc/terms/modified';
   const subjectsWithModified = new Set();
 
   const trackModifiedSubjects = (quad) => {
@@ -34,8 +34,13 @@ export async function filterDeltas(changeSets: Changeset[]) {
   });
 
   const ignoredGraphPrefixes = [
-    "http://mu.semte.ch/graphs/formHistory",
-    "http://mu.semte.ch/graphs/besluiten-consumed",
+    'http://mu.semte.ch/graphs/formHistory',
+    'http://mu.semte.ch/graphs/besluiten-consumed',
+    'http://mu.semte.ch/graphs/landing-zone/op-public',
+    'http://example.org/cache',
+    'http://mu.semte.ch/graphs/system/jobs',
+    'http://mu.semte.ch/graphs/delete-op-public',
+    'http://redpencil.data.gift/id/deltas/producer/public',
   ];
   const isGoodQuad = (quad) =>
     !subjectsWithModified.has(quad.subject.value) &&

@@ -30,7 +30,7 @@ services:
   database:
     image: semtech/sparql-parser:0.0.15
     environment:
-      MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_OVERLOAD_RECOVERY: "true"
       DATABASE_COMPATIBILITY: "Virtuoso"
       LISP_DYNAMIC_SPACE_SIZE: 4096
@@ -45,7 +45,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  virtuoso:
+  triplestore:
     image: redpencil/virtuoso:1.3.1
     environment:
       SPARQL_UPDATE: "true"
@@ -61,7 +61,7 @@ services:
   migrations:
     image: semtech/mu-migrations-service:0.9.0
     links:
-      - virtuoso:database
+      - triplestore:database
     environment:
       MU_SPARQL_TIMEOUT: "300"
     volumes:
@@ -173,7 +173,7 @@ services:
       - "logging=true"
     restart: always
     depends_on:
-      - virtuoso
+      - triplestore
   modified:
     image: lblod/track-modified-service:0.2.0
     environment:
@@ -227,7 +227,7 @@ services:
       INITIAL_STATE_LIMIT: 10000
       # for catching up after restart
       #LDES_STATUS_GRAPH: "http://mu.semte.ch/graphs/ldes-status"
-      DIRECT_DB_ENDPOINT: "http://virtuoso:8890/sparql"
+      DIRECT_DB_ENDPOINT: "http://triplestore:8890/sparql"
       WRITE_INITIAL_STATE: "false"
       # for writing initial state
       #WRITE_INITIAL_STATE: "true"
@@ -240,7 +240,7 @@ services:
     labels:
       - "logging=true"
     links:
-      - virtuoso:database
+      - triplestore:database
   ldes-backend:
     image: redpencil/fragmentation-producer:0.4.2
     restart: always
@@ -262,14 +262,13 @@ services:
     image: lblod/ldes-client:0.0.3
     links:
       - database:database
-      - virtuoso:virtuoso
     restart: always
     environment:
       LDES_BASE: https://mandaten-besluiten.lblod.info/streams/ldes/public/
       FIRST_PAGE: https://mandaten-besluiten.lblod.info/streams/ldes/public/1
       TARGET_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed # must be the same as mandataris besluit staging graph
       WORKING_GRAPH: http://mu.semte.ch/graphs/besluiten-consumed-tmp
-      DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
+      DIRECT_DATABASE_CONNECTION: "http://triplestore:8890/sparql"
       RANDOMIZE_GRAPHS: true
       BATCH_SIZE: 100
       BYPASS_MU_AUTH: false
@@ -387,7 +386,7 @@ services:
       - "disabled"
     environment:
       WORKING_GRAPH: http://mu.semte.ch/graphs/locally-managed-tmp
-      DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
+      DIRECT_DATABASE_CONNECTION: "http://triplestore:8890/sparql"
       RANDOMIZE_GRAPHS: true
       BATCH_SIZE: 100
       BYPASS_MU_AUTH: false

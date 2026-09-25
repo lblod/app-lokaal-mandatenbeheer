@@ -10,7 +10,7 @@ WHERE {
     ?persoon a foaf:Person;
       ?p ?o.
   }
-}
+};
 
 DELETE {
   GRAPH ?g {

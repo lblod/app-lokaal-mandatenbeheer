@@ -3,6 +3,7 @@ PREFIX form: <http://lblod.data.gift/vocabularies/forms/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {

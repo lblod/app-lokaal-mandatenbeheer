@@ -3,13 +3,13 @@ PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 INSERT {
   GRAPH ?g {
     ?eenheid ext:computedStartDateNewPeriod ?min.
   }
 } WHERE {
-  GRAPH ?g {
-    { SELECT ?g (MIN(?start) AS ?min) WHERE {
+  { SELECT ?g (MIN(?start) AS ?min) WHERE {
       GRAPH ?g {
         ?orgInT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
         ?orgInT org:hasPost ?mandaat.
@@ -17,8 +17,10 @@ INSERT {
         ?mandataris org:holds ?mandaat.
         ?mandataris mandaat:start ?start.
       }
-    }}
-    ?orgInT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
+    } GROUP BY ?g }
+    GRAPH ?g {
+
+      ?orgInT lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/96efb929-5d83-48fa-bfbb-b98dfb1180c7>.
   }
   ?g ext:ownedBy ?eenheid.
   ?eenheid skos:prefLabel ?label.

@@ -30,7 +30,8 @@ services:
   database:
     image: semtech/sparql-parser:0.0.15
     environment:
-      MU_SPARQL_ENDPOINT: "http://qlever-wrapper:8890/sparql"
+      # this doesn't matter with the backend config in the lisp file
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_OVERLOAD_RECOVERY: "true"
       DATABASE_COMPATIBILITY: "Virtuoso"
       LISP_DYNAMIC_SPACE_SIZE: 4096
@@ -51,17 +52,17 @@ services:
     working_dir: /data
     # since we have user remapping of docker, 0 + 1000 = 1000, our user
     user: "0:0"
+    # the query-planning-budget is lower so we don't lose a lot of time planning the query. This MAY be a result from there not being GPSO style indexes yet
     command:
       - >
         qlever index || true &&
-        qlever start --rebuild-index-strategy automatic:10000:1000000:0.1 --log-level DEBUG --run-in-foreground query-planning-budget=200
+        qlever start --log-level DEBUG --run-in-foreground query-planning-budget=200
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
     volumes:
       - ./data/db:/data
-      # - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini # Note: on production override this setting
-      # - ./config/virtuoso/:/opt/virtuoso-scripts
+      - ./config/qlever/Qleverfile:/data/Qleverfile
     labels:
       - "logging=true"
     restart: always

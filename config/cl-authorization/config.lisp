@@ -1,8 +1,3 @@
-(in-package :client)
-(setf *log-sparql-query-roundtrip* t)
-(setf *backend* "http://triplestore:8890/sparql")
-(setf *backend-type* :qlever)
-(setf *qlever-access-token* "dba")
 ;;;;;;;;;;;;;;;;;;;
 ;;; delta messenger
 (in-package :delta-messenger)
@@ -13,15 +8,11 @@
 
 ;;;;;;;;;;;;;;;;;
 ;;; configuration
-; (in-package :client)
-; (setf *log-sparql-query-roundtrip* t)
-; (setf *backend* "http://qlever-wrapper:8890/sparql"
-;       ;; (list "http://triplestore:8890/sparql"
-;       ;;       "http://triplestore1:8890/sparql"
-;       ;;       "http://triplestore2:8890/sparql"
-;       ;;       "http://triplestore3:8890/sparql"
-;       ;;       )
-;       )
+(in-package :client)
+(setf *log-sparql-query-roundtrip* t)
+(setf *backend* "http://triplestore:8890/sparql")
+(setf *backend-type* :qlever)
+(setf *qlever-access-token* "dba")
 
 (in-package :server)
 (setf *log-incoming-requests-p* t)

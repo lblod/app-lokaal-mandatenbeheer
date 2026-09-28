@@ -30,7 +30,7 @@ services:
   database:
     image: semtech/sparql-parser:0.0.15
     environment:
-      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+      MU_SPARQL_ENDPOINT: "http://qlever-wrapper:8890/sparql"
       DATABASE_OVERLOAD_RECOVERY: "true"
       DATABASE_COMPATIBILITY: "Virtuoso"
       LISP_DYNAMIC_SPACE_SIZE: 4096
@@ -46,14 +46,22 @@ services:
     restart: always
     logging: *default-logging
   triplestore:
-    image: redpencil/virtuoso:1.3.1
+    image: adfreiburg/qlever:latest # sha256:7f07a1d25b4896fa839b41a37ebd6c445adb742095c722e17695f7000e265041
+    entrypoint: ["bash", "-c"]
+    working_dir: /data
+    # since we have user remapping of docker, 0 + 1000 = 1000, our user
+    user: "0:0"
+    command:
+      - >
+        qlever index || true &&
+        qlever start --rebuild-index-strategy automatic:10000:1000000:0.1 --log-level DEBUG --run-in-foreground query-planning-budget=200
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
     volumes:
       - ./data/db:/data
-      - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini # Note: on production override this setting
-      - ./config/virtuoso/:/opt/virtuoso-scripts
+      # - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini # Note: on production override this setting
+      # - ./config/virtuoso/:/opt/virtuoso-scripts
     labels:
       - "logging=true"
     restart: always
@@ -64,6 +72,8 @@ services:
       - triplestore:database
     environment:
       MU_SPARQL_TIMEOUT: "300"
+      MU_SPARQL_COMPATIBILITY: qlever
+      MU_SPARQL_AUTH_TOKEN: dba
     volumes:
       - ./config/migrations:/data/migrations
     labels:

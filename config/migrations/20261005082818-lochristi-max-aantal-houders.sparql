@@ -1,0 +1,24 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?old.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?new.
+  }
+}
+WHERE {
+  VALUES (?mandaat ?new) {
+    ( <http://data.lblod.info/id/mandaten/80eb9a131cb0816616da9fef0e7d24f3ff3f447c6a5056fed717f3f7641567ae> 31 ) # gemeenteraadslid lochristi
+    ( <http://data.lblod.info/id/mandaten/ecc86fe00377c983551a952181a2fa50c2966a52fc578f1652644be2a60795b0> 8 ) # schepen lochristi
+    ( <http://data.lblod.info/id/mandaten/bb441c350c9fd956b3b55836869341372bc37fa911843e65032893018b000159> 31 ) # rmw lochristi
+    ( <http://data.lblod.info/id/mandaten/57a91fdf8ff7fd7bdba1c5d68278d1d79b35b20c873f46b78e4e473aaeadc128> 9 ) # vast bureau lochristi
+  }
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?old.
+  }
+}
+

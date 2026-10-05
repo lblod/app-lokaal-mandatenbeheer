@@ -3,7 +3,7 @@
   DELETE {
     GRAPH ?g {
       ?org ?p ?o.
-      ?orgt ?pt ?ot.
+      ?orgT ?pt ?ot.
     }
   }
   WHERE {

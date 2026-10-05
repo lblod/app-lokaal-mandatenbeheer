@@ -1,4 +1,5 @@
 PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 DELETE {
   GRAPH ?g {
     <http://data.lblod.info/id/personen/5EFC792BBF82310008000050> persoon:gebruikteVoornaam ?name.

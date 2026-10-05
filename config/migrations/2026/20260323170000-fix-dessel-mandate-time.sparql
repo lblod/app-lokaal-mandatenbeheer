@@ -29,7 +29,7 @@ where {
     filter(?startYear = "2024")
     bind(substr(str(?start), 11, 20) as ?startTime)
     filter(?startTime = "T00:00:00Z")
-    bind(bif:dateadd('hour', -1, ?start) as ?correctedStart)
+    bind(?start - "1H"^^xsd:dayTimeDuration as ?correctedStart)
   }
   ?orgaan org:hasPost ?mandaat .
   ?orgaan lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2025 - heden
@@ -59,7 +59,7 @@ where {
     ?mandataris org:holds ?mandaat .
     bind(substr(str(?einde), 11, 20) as ?eindeTime)
     filter(?eindeTime = "T23:59:59Z")
-    bind(bif:dateadd('hour', -1, ?einde) as ?correctedEinde)
+    bind(?einde - "1H"^^xsd:dayTimeDuration as ?correctedEinde)
   }
   ?orgaan org:hasPost ?mandaat .
   ?orgaan lmb:heeftBestuursperiode bestuursperiode:96efb929-5d83-48fa-bfbb-b98dfb1180c7 . # 2025 - heden

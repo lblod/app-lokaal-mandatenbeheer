@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.2.0 (2026-10-05)
+> pre-release QA
+
+### :house: Internal
+
+- Bumped mandataris-service to v0.9.13
+- Bumped frontend to v0.9.10
+- Bump sparql-parser to v0.0.15
+- Import custom organen for manual import Limburg
+- Ignore certain graphs when adding modified dates
+- Follow-up Organisatie-portaal start & end dates of bestuursorganen
+- Sterftedatum custom library field removed (issue with complex path)
+- Set virtuoso ini (prod) to ResultSetMaxRows=0 (unlimited)
+
+### :rocket: Enhancement
+
+- Custom library field "organisatie" added for custom forms
+- Provincial custom orgaan bestuursfunctie codes have togalabel rangorde
+- Update "aantal-houders" for Lochristi
+
 ## 1.1.9 (2026-04-01)
 
 ### :house: Internal

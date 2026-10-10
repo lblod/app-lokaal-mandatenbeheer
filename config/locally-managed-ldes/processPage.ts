@@ -6,7 +6,7 @@ import {
   BYPASS_MU_AUTH,
   DIRECT_DATABASE_CONNECTION,
   environment,
-} from "../environment";
+} from "./environment";
 
 async function replaceExistingData() {
   let connectionOptions = {};

@@ -2,8 +2,8 @@ export default {
   endpoints: [
     {
       name: "Public Stream",
-      LDES_BASE: "http://ldes-backend/public/", // note: in real life this would be an external endpoint, probably with a longer path like streams/ldes/public, same for the first page
-      FIRST_PAGE: "http://ldes-backend/public/1",
+      LDES_BASE: "https://mandatenbeheer.lblod.info/streams/ldes/public/", // note: in real life this would be an external endpoint, probably with a longer path like streams/ldes/public, same for the first page
+      FIRST_PAGE: "https://mandatenbeheer.lblod.info/streams/ldes/public/1",
       TARGET_GRAPH: "http://mu.semte.ch/graphs/public",
       STATUS_GRAPH: "http://mu.semte.ch/graphs/locally-managed/status",
       EXTRA_HEADERS: {},

@@ -1,0 +1,66 @@
+services:
+  identifier:
+    ports:
+      - '81:80'
+  virtuoso:
+    volumes:
+      - ./config/virtuoso/virtuoso.ini:/data/virtuoso-production.ini
+  login:
+    profiles:
+        - disabled
+    environment:
+      MU_APPLICATION_AUTH_DISCOVERY_URL: 'https://authenticatie-ti.vlaanderen.be/op'
+      MU_APPLICATION_AUTH_CLIENT_ID: 'a2c0d6ea-01b4-4f68-920b-10834a943c27'
+      MU_APPLICATION_AUTH_JWK_PRIVATE_KEY: /config/jwk_private_key.json
+      MU_APPLICATION_AUTH_REDIRECT_URI: 'https://mandatenbeheer.lblod.info/authorization/callback'
+  frontend:
+    image: lblod/frontend-lokaal-mandatenbeheer:feature-local-deployment-aalst
+    environment:
+      EMBER_ENVIRONMENT_NAME: 'PROD'
+      EMBER_AUTHENTICATION_ENABLED: 'false'
+  mandataris:
+    environment:
+      EMAIL_FROM_MANDATARIS_WITHOUT_DECISION: 'lokaalmandatenbeheer@abb.vlaanderen.be' # Must be the same as EMAIL_ADDRESS in deliver-email service
+      SEND_EMAIL_FOR_MANDATARIS_WITHOUT_DECISION: false
+      NOTIFICATION_CRON_PATTERN: false
+  ldes-delta-pusher:
+    environment:
+      # LDES_BASE: "https://dev.mandatenbeheer.lblod.info/streams/ldes"
+      LDES_STREAM_PREFIX: 'http://localhost/streams/ldes/'
+      LDES_BASE: 'http://localhost/streams/ldes/'
+      WRITE_INITIAL_STATE: 'false'
+  ldes-backend:
+    environment:
+      LDES_STREAM_PREFIX: "http://localhost/streams/ldes/"
+      BASE_URL: 'http://ldes-backend/'
+      #BASE_URL: "https://dev.mandatenbeheer.lblod.info/streams/ldes/"
+      # LDES_STREAM_PREFIX: "https://dev.mandatenbeheer.lblod.info/streams/ldes/"
+  decision-ldes-client:
+    environment:
+      LDES_BASE: https://mandaten-besluiten.lblod.info/streams/ldes/public/
+      FIRST_PAGE: https://mandaten-besluiten.lblod.info/streams/ldes/public/1
+  op-public-consumer:
+    environment:
+      DCR_DISABLE_INITIAL_SYNC: 'true'
+      DCR_WAIT_FOR_INITIAL_SYNC: 'false'
+      DCR_KEEP_DELTA_FILES: 'true'
+      DCR_START_FROM_DELTA_TIMESTAMP: '2025-01-01T00:00:00Z'
+  bb-aalst-ldes-client:
+    environment:
+      LDES_BASE: https://mandatenbeheer.lblod.info/streams/ldes/public/
+      FIRST_PAGE: https://mandatenbeheer.lblod.info/streams/ldes/public/1
+  locally-managed-ldes-client:
+    profiles:
+      - disabled
+  impersonation:
+    profiles:
+      - disabled
+  vendor-management-consumer:
+    profiles:
+      - disabled
+  vendor-login:
+    profiles:
+      - disabled
+  deliver-email:
+    profiles:
+      - disabled

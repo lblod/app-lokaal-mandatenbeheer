@@ -1,0 +1,23 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?s a ?oldType .
+    ?s dct:modified ?modified.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a <http://www.w3.org/ns/activitystreams#Tombstone> .
+    ?s a ?oldType .
+    ?s dct:modified ?modified.
+  }
+  ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
+}

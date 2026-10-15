@@ -1,0 +1,29 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?lidmaatschap org:organisation ?versionedResource .
+    ?lidmaatschap dct:modified ?modified .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?lidmaatschap dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?lidmaatschap a org:Membership ;
+      org:organisation ?versionedResource , ?fractie ;
+      dct:modified ?modified .
+
+    FILTER(?versionedResource != ?fractie)
+
+    FILTER(STRSTARTS(STR(?versionedResource), "http://mu.semte.ch/services/ldes-time-fragmenter/versioned/"))
+    FILTER(!STRSTARTS(STR(?fractie), "http://mu.semte.ch/services/ldes-time-fragmenter/versioned/"))
+  }
+  ?g ext:ownedBy ?someone .
+  BIND(NOW() AS ?now)
+}

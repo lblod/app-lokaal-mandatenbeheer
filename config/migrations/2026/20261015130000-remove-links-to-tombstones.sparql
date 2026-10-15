@@ -1,0 +1,40 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX as: <http://www.w3.org/ns/activitystreams#>
+
+DELETE {
+  GRAPH ?h {
+    ?tombstone a ?oldType .
+    ?tombstone dct:modified ?sModified .
+  }
+  GRAPH ?g {
+    ?parent ?p ?tombstone .
+    ?parent dct:modified ?pModified .
+  }
+}
+INSERT {
+  GRAPH ?h {
+    ?tombstone dct:modified ?now .
+  }
+  GRAPH ?g {
+    ?parent dct:modified ?now .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?parent ?p ?tombstone , ?resource .
+    ?parent dct:modified ?pModified .
+    FILTER(?resource != ?s)
+  }
+  ?tombstone a as:Tombstone .
+  OPTIONAL {
+    GRAPH ?h {
+      ?tombstone a ?oldType .
+      ?tombstone dct:modified ?sModified .
+      FILTER(?oldType != as:Tombstone)
+    }
+  }
+  FILTER NOT EXISTS { ?resource a as:Tombstone }
+  ?g ext:ownedBy ?someone .
+  BIND(NOW() AS ?now)
+}

@@ -17,9 +17,16 @@ PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
 DELETE {
   GRAPH ?g {
     ?lidmaatschap org:organisation ?oldFractie .
+    ?lidmaatschap dct:modified ?modified.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?lidmaatschap dct:modified ?now.
   }
 }
 WHERE {
@@ -27,7 +34,9 @@ WHERE {
     ?lidmaatschap a org:Membership ;
     org:organisation ?oldFractie , ?newFractie .
     ?newFractie dct:replaces ?oldFractie .
+    ?lidmaatschap dct:modified ?modified.
 
     FILTER(?oldFractie != ?newFractie)
   }
+  BIND(NOW() AS ?now)
 }

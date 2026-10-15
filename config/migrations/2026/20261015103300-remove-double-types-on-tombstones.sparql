@@ -16,6 +16,7 @@ WHERE {
   GRAPH ?g {
     ?s a <http://www.w3.org/ns/activitystreams#Tombstone> .
     ?s a ?oldType .
+    FILTER(?oldType != <http://www.w3.org/ns/activitystreams#Tombstone>)
     ?s dct:modified ?modified.
   }
   ?g ext:ownedBy ?someone.

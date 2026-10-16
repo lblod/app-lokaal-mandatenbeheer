@@ -24,7 +24,7 @@ WHERE {
   GRAPH ?g {
     ?parent ?p ?tombstone , ?resource .
     ?parent dct:modified ?pModified .
-    FILTER(?resource != ?s)
+    FILTER(?resource != ?tombstone)
   }
   ?tombstone a as:Tombstone .
   OPTIONAL {

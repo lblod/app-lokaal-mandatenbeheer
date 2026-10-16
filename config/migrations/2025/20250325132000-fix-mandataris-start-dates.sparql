@@ -31,7 +31,7 @@ WHERE {
       dct:modified ?mod.
   }
   BIND(NOW() AS ?now)
-}
+};
 ## Boom -> fix manually aangewezen burgemeester missing
 ## Brasschaat -> fix manually aangewezen burgemeester missing
 ## Brecht -> fixex manually (vb)
@@ -64,7 +64,7 @@ WHERE {
       dct:modified ?mod.
   }
   BIND(NOW() AS ?now)
-}
+};
 ## Erpe-Mere
 
 DELETE {

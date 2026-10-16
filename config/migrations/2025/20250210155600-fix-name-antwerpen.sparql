@@ -20,4 +20,5 @@ WHERE {
     }
   }
   ?g ext:ownedBy ?someone.
+  BIND(NOW() AS ?now)
 }

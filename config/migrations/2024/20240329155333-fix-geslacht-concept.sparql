@@ -10,7 +10,7 @@ WHERE {
 	GRAPH ?g {
 		?s mu:uuid "5accdb4d64a9790001000000".
 	}
-}
+};
 
 DELETE {
 	GRAPH ?g {

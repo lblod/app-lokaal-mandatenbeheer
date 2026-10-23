@@ -63,3 +63,6 @@ services:
   impersonation:
     profiles:
       - disabled
+  locally-managed-ldes-client:
+    profiles:
+      - disabled

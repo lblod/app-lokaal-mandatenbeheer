@@ -1,0 +1,65 @@
+networks:
+  backend:
+    external: true
+    name: lmb-azure-test_backend
+
+services:
+  identifier:
+    networks:
+      - default
+      - backend
+  virtuoso:
+    volumes:
+      - ./config/virtuoso/virtuoso.ini:/data/virtuoso-production.ini
+  mocklogin:
+    image: lblod/mock-login-service:0.5.0
+  login:
+    environment:
+      MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie.vlaanderen.be/op"
+      MU_APPLICATION_AUTH_REDIRECT_URI: "https://lokaalmandatenbeheer.decursor.net/authorization/callback"
+  frontend:
+    image: lblod/frontend-lokaal-mandatenbeheer:feature-local-deployment-aalst
+    environment:
+      EMBER_ENVIRONMENT_NAME: 'PROD'
+      EMBER_AUTHENTICATION_ENABLED: 'true'
+      EMBER_ACMIDM_AUTH_URL: "https://authenticatie.vlaanderen.be/op/v1/auth"
+      EMBER_ACMIDM_LOGOUT_URL: "https://authenticatie.vlaanderen.be/op/v1/logout"
+      EMBER_ACMIDM_AUTH_REDIRECT_URL: "https://lokaalmandatenbeheer.decursor.net/authorization/callback"
+      EMBER_ACMIDM_SWITCH_REDIRECT_URL: "https://lokaalmandatenbeheer.decursor.net/authorization/logout"
+  form-content:
+    environment:
+      NODE_ENV: development
+  mandataris:
+    environment:
+      SEND_EMAIL_FOR_MANDATARIS_WITHOUT_DECISION: false
+  ldes-delta-pusher:
+    environment:
+      LDES_BASE: "https://lokaalmandatenbeheer.decursor.net/streams/ldes"
+      WRITE_INITIAL_STATE: 'false'
+  ldes-backend:
+    environment:
+      BASE_URL: "https://lokaalmandatenbeheer.decursor.net/streams/ldes/"
+      LDES_STREAM_PREFIX: "https://lokaalmandatenbeheer.decursor.net/streams/ldes/"
+  op-public-consumer:
+    environment:
+      DCR_KEEP_DELTA_FILES: 'true'
+      DCR_START_FROM_DELTA_TIMESTAMP: '2025-01-01T00:00:00Z'
+  bb-aalst-ldes-client:
+    environment:
+      LDES_BASE: https://mandatenbeheer.lblod.info/streams/ldes/public/
+      FIRST_PAGE: https://mandatenbeheer.lblod.info/streams/ldes/public/1
+  decision-ldes-client:
+    profiles:
+      - disabled
+  vendor-login:
+    profiles:
+      - disabled
+  deliver-email:
+    profiles:
+      - disabled
+  vendor-management-consumer:
+    profiles:
+      - disabled
+  impersonation:
+    profiles:
+      - disabled

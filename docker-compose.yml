@@ -162,7 +162,7 @@ services:
       - "logging=true"
     restart: always
   adressenregister:
-    image: lblod/adressenregister-fuzzy-search-service:0.8.0
+    image: lblod/adressenregister-fuzzy-search-service:0.9.0
     labels:
       - "logging=true"
     restart: always

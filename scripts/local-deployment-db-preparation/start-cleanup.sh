@@ -25,8 +25,13 @@ echo "Creating  checkpoint of the database"
 
 $ISQL exec="checkpoint ; exit ;"
 
+echo "Dump nquads in dump folder"
+docker compose exec -T virtuoso mkdir -p /data/dumps
+$ISQL exec="dump_nquads('dumps', 1, 10000000, 1);"
+
 echo ""
 echo "Next steps:"
-echo "1. Zip the folder for export 'tar cvzf db-local-deployment-aalst-20112025.tar.gz ./db '"
-echo "2. use 'scp' to copy the folder to the server "
+echo "1. Zip the dumps for export 'tar cvzf db-local-deployment-aalst-$(date +%d%m%Y).tar.gz ./data/db/dumps '"
+echo "2. use 'scp' to copy the archive to the server "
+echo "3. on the server, load the dumps into an empty virtuoso:"
 echo "==> Database ready for local deployment!"

@@ -20,6 +20,7 @@ async function replaceExistingData() {
     VERSION_PREDICATE: environment.getVersionPredicate(),
     TIME_PREDICATE: environment.getTimePredicate(),
     CURRENT_STREAM_NAME: environment.getCurrentStreamConfig().name,
+    CURRENT_STREAM_BASE: environment.getCurrentStreamConfig().LDES_BASE,
   };
   console.log("handling page for stream ", env.CURRENT_STREAM_NAME);
   await replaceFracties(connectionOptions, env);
@@ -36,6 +37,8 @@ async function replaceFracties(connectionOptions, env) {
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+
     DELETE {
       GRAPH ?targetGraph {
         ?s ?pOld ?oOld.
@@ -44,6 +47,7 @@ async function replaceFracties(connectionOptions, env) {
     INSERT {
       GRAPH ?targetGraph {
         ?s ?pNew ?oNew.
+        ?s prov:hadPrimarySource ${sparqlEscapeUri(env.CURRENT_STREAM_BASE)}.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
@@ -77,6 +81,8 @@ async function replaceTombstones(connectionOptions, env) {
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+
     DELETE {
       GRAPH ?targetGraph {
         ?s ?pOld ?oOld.
@@ -85,6 +91,7 @@ async function replaceTombstones(connectionOptions, env) {
     INSERT {
       GRAPH ?targetGraph {
         ?s ?pNew ?oNew.
+        ?s prov:hadPrimarySource ${sparqlEscapeUri(env.CURRENT_STREAM_BASE)}.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
@@ -116,6 +123,8 @@ async function replaceMandatees(connectionOptions, env) {
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+
     DELETE {
       GRAPH ?targetGraph {
         ?s ?pOld ?oOld.
@@ -124,6 +133,7 @@ async function replaceMandatees(connectionOptions, env) {
     INSERT {
       GRAPH ?targetGraph {
         ?s ?pNew ?oNew.
+        ?s prov:hadPrimarySource ${sparqlEscapeUri(env.CURRENT_STREAM_BASE)}.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
@@ -157,6 +167,8 @@ async function replaceMembership(connectionOptions, env) {
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+
     DELETE {
       GRAPH ?targetGraph {
         ?s ?pOld ?oOld.
@@ -165,6 +177,7 @@ async function replaceMembership(connectionOptions, env) {
     INSERT {
       GRAPH ?targetGraph {
         ?s ?pNew ?oNew.
+        ?s prov:hadPrimarySource ${sparqlEscapeUri(env.CURRENT_STREAM_BASE)}.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {
@@ -196,9 +209,11 @@ async function replacePeople(connectionOptions, env) {
     PREFIX org: <http://www.w3.org/ns/org#>
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
     PREFIX person: <http://www.w3.org/ns/person#>
     PREFIX adms: <http://www.w3.org/ns/adms#>
     PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+
     DELETE {
       GRAPH ?targetGraph {
         ?s ?pOld ?oOld.
@@ -207,6 +222,7 @@ async function replacePeople(connectionOptions, env) {
     INSERT {
       GRAPH ?targetGraph {
         ?s ?pNew ?oNew.
+        ?s prov:hadPrimarySource ${sparqlEscapeUri(env.CURRENT_STREAM_BASE)}.
       }
     } WHERE {
       GRAPH ${sparqlEscapeUri(BATCH_GRAPH)} {

@@ -280,6 +280,10 @@ export const defaultProperties = [
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
 ];
 
+export const commonExcludedPredicates = [
+  "http://www.w3.org/ns/prov#hadPrimarySource",
+];
+
 export const officialPredicates = {
   "http://data.vlaanderen.be/ns/mandaat#Fractie": [
     "https://www.w3.org/ns/regorg#legalName",

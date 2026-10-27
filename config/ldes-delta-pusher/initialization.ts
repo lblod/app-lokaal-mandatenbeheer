@@ -1,11 +1,16 @@
-import { ldesInstances } from "./ldes-instances";
+import { commonExcludedPredicates, ldesInstances } from "./ldes-instances";
 import { sparqlEscapeUri } from "mu";
 
 // this is so we can relate our instances to the bestuurseenheid they concern
 const extraConstruct = `
   ?versionedS <http://mu.semte.ch/vocabularies/ext/relatedTo> ?bestuurseenheid.
 `;
-const extraWhere = ``;
+
+const extraWhere = commonExcludedPredicates.length
+  ? `FILTER (?p NOT IN ( ${commonExcludedPredicates
+      .map((p) => sparqlEscapeUri(p))
+      .join(", ")} ))`
+  : ``;
 
 export const initialization = {};
 

@@ -7,12 +7,19 @@ const LDES_FRAGMENTER = ENV.LDES_FRAGMENTER;
 import { log } from "./logger";
 import {
   defaultProperties,
+  commonExcludedPredicates,
   ldesInstances,
   officialPredicates,
 } from "./ldes-instances";
 import dispatch from "./dispatch";
 
 const ldesProducerConfig = getConfigFromEnv();
+
+const predicateExclusion = commonExcludedPredicates.length
+  ? `FILTER (?p NOT IN ( ${commonExcludedPredicates
+      .map((p) => sparqlEscapeUri(p))
+      .join(", ")} ))`
+  : "";
 
 export type LDES_TYPE = "public" | "abb" | "internal";
 export type TypesWithFilter = {
@@ -84,6 +91,7 @@ const fetchSubjectData = async (
       }
       ?g ext:ownedBy ?bestuurseenheid .
       ${predicateLimiter}
+      ${predicateExclusion}
       ${filter}
       ${extraWhere}
     }

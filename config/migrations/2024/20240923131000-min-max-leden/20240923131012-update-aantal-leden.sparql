@@ -66,7 +66,7 @@ WHERE {
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
-}
+};
 
 # Process nb members cbs
 DELETE {
@@ -137,7 +137,7 @@ WHERE {
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
-}
+};
 
 # Process nb members Vast Bureau -> Mirrors CBS
 DELETE {
@@ -201,7 +201,7 @@ WHERE {
     }
   }
   BIND (?ocmw AS ?graph)
-}
+};
 
 # Process nb members RMW
 DELETE {
@@ -262,7 +262,7 @@ WHERE {
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
-}
+};
 
 # Process nb members BCSD
 DELETE {
@@ -323,7 +323,7 @@ WHERE {
   }
   BIND (?h AS ?graph)
   FILTER (LCASE(STR(REPLACE(?naam1, "\\s+$", ""))) = LCASE(STR(REPLACE(?naam2, "\\s+$", ""))))
-}
+};
 
 # Process nb members Districtsraad
 DELETE {

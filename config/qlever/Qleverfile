@@ -1,0 +1,29 @@
+[data]
+NAME              = triplestore
+BASE_URL          = http://mu.semte.ch/graphs/application
+DESCRIPTION       = your application triplestore
+FORMAT = nq
+
+[index]
+SETTINGS_JSON   = { "ascii-prefixes-only": false, "num-triples-per-batch": 100000 }
+INPUT_FILES     = *.nq.gz
+CAT_INPUT_FILES = zcat *.nq.gz
+# or if you want to have even faster querying as tradeoff for memory: in-memory-compressed
+VOCABULARY_type = on-disk-compressed
+# if you want a text index (larger index size)
+# TEXT_INDEX      = from_literals
+
+[server]
+PORT               = 8890
+ACCESS_TOKEN       = dba
+CACHE_MAX_SIZE     = 2G
+TIMEOUT            = 30s
+PERSIST_UPDATES    = true
+REBUILD_INDEX_STRATEGY = automatic:10000:1000000:0.1
+MEMORY_FOR_QUERIES = 12G
+
+[runtime]
+SYSTEM = native
+
+[ui]
+UI_CONFIG = olympics

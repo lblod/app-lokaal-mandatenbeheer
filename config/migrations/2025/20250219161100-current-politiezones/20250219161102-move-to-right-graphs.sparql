@@ -54,5 +54,5 @@ WHERE {
     ?s skos:prefLabel ?label2.
   }
   FILTER(?label2 < ?label)
-}
+};
 DROP SILENT GRAPH <http://mu.semte.ch/graphs/temp/politiezone-op>

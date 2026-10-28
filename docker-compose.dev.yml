@@ -44,7 +44,7 @@ services:
     networks:
       - default
       - debug
-  virtuoso:
+  triplestore:
     ports:
       - "8890:8890"
     restart: "no"
@@ -126,6 +126,18 @@ services:
     environment:
       DCR_START_FROM_DELTA_TIMESTAMP: "2025-01-01T00:00:00Z"
       DCR_SYNC_BASE_URL: "https://dev.organisaties.abb.lblod.info"
-      #DCR_CRON_PATTERN_DELTA_SYNC: '* * * * *' # this is every minute      
+      #DCR_CRON_PATTERN_DELTA_SYNC: '* * * * *' # this is every minute
   locally-managed-ldes-client:
     restart: "no"
+  # this gives you query plan information using the 'analyse' button
+  # you need to run `drc exec qlever-ui python manage.py migrate` and `drc exec qlever-ui python manage.py createsuperuser`
+  # then go to http://localhost:8176/admin and configure
+  # use http://localhost:8890 as you base url
+  qlever-ui:
+    image: adfreiburg/qlever-ui:latest #sha256:0b416211c1b060f874940d20ce1a2ec2e9ef1cc8735fa9f4759b758509287b16
+    ports:
+      - "8176:7000"
+    volumes:
+      - ./ui-db:/app/db
+    environment:
+      QLEVERUI_DATABASE_URL: sqlite:////app/db/qleverui.sqlite3

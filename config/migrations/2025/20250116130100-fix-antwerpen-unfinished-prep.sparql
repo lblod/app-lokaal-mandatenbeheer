@@ -45,6 +45,7 @@ WHERE {
   }
   ?g ext:ownedBy ?someone.
   ?h ext:ownedBy ?someoneElse.
+  BIND(NOW() AS ?now)
 };
 DELETE {
   GRAPH ?g {

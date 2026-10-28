@@ -1,3 +1,3 @@
 export const router = {
-  '/abb': 'https://mandatenbeheer.lblod.info/streams/ldes/abb',
+  '/abb': 'http://ldes-backend:80',
 }

@@ -14,9 +14,11 @@ services:
   mocklogin:
     image: lblod/mock-login-service:0.5.0
   login:
+    image: lblod/acmidm-login-service:0.13.0
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie.vlaanderen.be/op"
       MU_APPLICATION_AUTH_REDIRECT_URI: "https://lokaalmandatenbeheer.decursor.net/authorization/callback"
+      MU_APPLICATION_AUTH_ROLE_CLAIM: "stadaalst_lokaalmandatenbeheer_rol_3d"
   frontend:
     image: lblod/frontend-lokaal-mandatenbeheer:feature-local-deployment-aalst
     environment:

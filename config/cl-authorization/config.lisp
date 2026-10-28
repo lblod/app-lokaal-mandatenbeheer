@@ -305,11 +305,11 @@
   :parameters ("session_group" "hardcoded_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-          SELECT DISTINCT ?session_group ?session_role WHERE {
+          SELECT DISTINCT ?session_group ?hardcoded_role WHERE {
             <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                          ext:sessionRole ?session_role.
             FILTER( ?session_role IN( 
-                                      \"stadaalst_lokaalmandatenbeheer-mandaatGebruiker\",
+                                      \"stadaalstlokaalmandatenbeheer-mandaatGebruiker\",
                                       \"LoketLB-mandaatGebruiker\"
                                     )
                   )
@@ -322,13 +322,13 @@
   :parameters ("session_group" "hardcoded_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-          SELECT DISTINCT ?session_group ?session_role WHERE {
+          SELECT DISTINCT ?session_group ?hardcoded_role WHERE {
             <SESSION_ID> ext:sessionGroup ?original_session_group;
                          ext:sessionRole ?session_role.
             ?original_session_group ext:deeltBestuurVan/mu:uuid ?session_group.
 
             FILTER( ?session_role IN( 
-                                      \"stadaalst_lokaalmandatenbeheer-mandaatGebruiker\",
+                                      \"stadaalstlokaalmandatenbeheer-mandaatGebruiker\",
                                       \"LoketLB-mandaatGebruiker\"
                                     )
                   )

@@ -300,18 +300,26 @@
        :to-graph organization
        :for-allowed-group "organization-member")
 
+;; Hardcoded the role because Aalst has a different role but everything works with LoketLB-mandaatgebruiker
 (supply-allowed-group "mandaat-gebruiker"
-  :parameters ("session_group" "session_role")
+  :parameters ("session_group" "hardcoded_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
           SELECT DISTINCT ?session_group ?session_role WHERE {
             <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                          ext:sessionRole ?session_role.
-            FILTER( ?session_role = \"LoketLB-mandaatGebruiker\" )
+            FILTER( ?session_role IN( 
+                                      \"stadaalst_lokaalmandatenbeheer-mandaatGebruiker\",
+                                      \"LoketLB-mandaatGebruiker\"
+                                    )
+                  )
+            BIND(\"LoketLB-mandaatGebruiker\" AS ?hardcoded_role)
           }")
 
+;; Warning this won't work: politieraad writes data in multiple graphs
+;; Warning no sync from central to local deployment: shared mandatarissen will never appear
 (supply-allowed-group "politieraad-lezer"
-  :parameters ("session_group" "session_role")
+  :parameters ("session_group" "hardcoded_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
           SELECT DISTINCT ?session_group ?session_role WHERE {
@@ -319,7 +327,12 @@
                          ext:sessionRole ?session_role.
             ?original_session_group ext:deeltBestuurVan/mu:uuid ?session_group.
 
-            FILTER( ?session_role = \"LoketLB-mandaatGebruiker\" )
+            FILTER( ?session_role IN( 
+                                      \"stadaalst_lokaalmandatenbeheer-mandaatGebruiker\",
+                                      \"LoketLB-mandaatGebruiker\"
+                                    )
+                  )
+            BIND(\"LoketLB-mandaatGebruiker\" AS ?hardcoded_role)
           }")
 
 (grant (read)

@@ -381,8 +381,8 @@ services:
       - "logging=true"
     logging: *default-logging
   locally-managed-ldes-client:
-    image: lblod/ldes-client:0.1.0
-    restart: always
+    image: lblod/ldes-client:0.0.5
+    restart: unless-stopped
     profiles:
       - "disabled"
     environment:

@@ -7,61 +7,46 @@ echo "> Dropping history graphs"
 
 $ISQL exec="SPARQL
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-  SELECT COUNT(DISTINCT ?g) AS ?count
+  SELECT DISTINCT ?g
   WHERE {
-    ?g a <http://mu.semte.ch/vocabularies/ext/FormHistory> .
+    ?g a ext:FormHistory .
+    GRAPH ?g { ?s ?p ?o . }
   }
-;" > countHistoryGraphs.txt
+;" \
+  | sed -n 's#^<*\(http[s]*://[^>]*\)>*$#\1#p' > historyGraphs.txt
 
-totalGraphCount=$(grep -o '[0-9]*' countHistoryGraphs.txt)
-rm -rf countHistoryGraphs.txt
+totalGraphCount=$(wc -l < historyGraphs.txt)
 
-$ISQL exec="SPARQL
-  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-  SELECT COUNT(DISTINCT ?g) AS ?count
-  WHERE {
-    {
-      ?g a ext:FormHistory .
-    }
-    GRAPH ?g {
-      ?s a ?type .
-    }
-  }
-;" > countHistoryGraphsWithTriples.txt
-totalGraphsWithTriplesCount=$(grep -o '[0-9]*' countHistoryGraphsWithTriples.txt)
-rm -rf countHistoryGraphsWithTriples.txt
-
-if [ $totalGraphsWithTriplesCount -eq "0" ]; then
+if [ "$totalGraphCount" -eq "0" ]; then
   echo "All history graphs are empty"
+  rm -f historyGraphs.txt
   exit 0;
 fi
-
 
 totalBatches=$(( (totalGraphCount + batchSize - 1) / batchSize ))
 echo "Total graphs found: $totalGraphCount"
 
-for ((i=0; i<totalBatches; i++)); do
-  printf "\rDropping batches ($((i+1))/$totalBatches)                                      "
-  dropStatements=()
-  $ISQL exec="SPARQL
-    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-    SELECT DISTINCT ?g
-    WHERE {
-      ?g a <http://mu.semte.ch/vocabularies/ext/FormHistory> .
-    } LIMIT $batchSize OFFSET $((i*batchSize))
-  ;" \
-    | sed -n 's#^<*\(http[s]*://[^>]*\)>*$#\1#p' > historyGraphs.txt
-  while IFS= read -r G; do
-    FILE=$(echo "$G" | sed 's/[^a-zA-Z0-9]/_/g').nq
-    dropStatements+=("DROP SILENT GRAPH <$G> ")
-  done < historyGraphs.txt
-  rm -rf historyGraphs.txt
+batch=0
+dropStatements=()
+flushBatch() {
   if [ ${#dropStatements[@]} -eq 0 ]; then
-    echo "Something went wrong.. The graph uri's are empty."
-    exit 1
+    return
   fi
-  $ISQL exec="SPARQL ${dropStatements[*]} ;"
-done
+  batch=$((batch + 1))
+  printf "\rDropping batches ($batch/$totalBatches)                                      "
+  $ISQL exec="SPARQL ${dropStatements[*]} ;" < /dev/null
+  dropStatements=()
+}
 
+while IFS= read -r G; do
+  dropStatements+=("DROP SILENT GRAPH <$G> ")
+  if [ ${#dropStatements[@]} -eq $batchSize ]; then
+    flushBatch
+  fi
+done < historyGraphs.txt
+flushBatch
+rm -f historyGraphs.txt
+
+echo ""
 echo "Done cleaning up the history graphs!"
 exit 0;

@@ -187,9 +187,7 @@
                                       muAccount:account/ext:sessionRole ?session_role.
               ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/^<http://lblod.data.gift/vocabularies/lmb/heeftBestuurseenheid>/<http://lblod.data.gift/vocabularies/lmb/hasStatus> <http://data.lblod.info/id/concept/InstallatievergaderingStatus/a40b8f8a-8de2-4710-8d9b-3fc43a4b740e> .
               VALUES ?account {
-                <http://data.lblod.info/vendors/14db001d-ea0f-4a8a-8453-c48547347588> # Cipal
-                <http://data.lblod.info/vendors/42edb420-08c7-4ede-9961-bc0e527d0f3b> # Green Valley
-                <http://data.lblod.info/vendors/dc62419e-1267-44e7-9562-0114e2708b6f> # Remmicom
+                <http://data.lblod.info/vendors/93d258bc-0ff5-464b-b405-db2d86c5ecda> # Centraal LMB
               }
             }}
           }")
@@ -302,26 +300,39 @@
        :to-graph organization
        :for-allowed-group "organization-member")
 
+;; Hardcoded the role because Aalst has a different role but everything works with LoketLB-mandaatgebruiker
 (supply-allowed-group "mandaat-gebruiker"
-  :parameters ("session_group" "session_role")
+  :parameters ("session_group" "hardcoded_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-          SELECT DISTINCT ?session_group ?session_role WHERE {
+          SELECT DISTINCT ?session_group ?hardcoded_role WHERE {
             <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                          ext:sessionRole ?session_role.
-            FILTER( ?session_role = \"LoketLB-mandaatGebruiker\" )
+            FILTER( ?session_role IN( 
+                                      \"stadaalstlokaalmandatenbeheer-mandaatGebruiker\",
+                                      \"LoketLB-mandaatGebruiker\"
+                                    )
+                  )
+            BIND(\"LoketLB-mandaatGebruiker\" AS ?hardcoded_role)
           }")
 
+;; Warning this won't work: politieraad writes data in multiple graphs
+;; Warning no sync from central to local deployment: shared mandatarissen will never appear
 (supply-allowed-group "politieraad-lezer"
-  :parameters ("session_group" "session_role")
+  :parameters ("session_group" "hardcoded_role")
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-          SELECT DISTINCT ?session_group ?session_role WHERE {
+          SELECT DISTINCT ?session_group ?hardcoded_role WHERE {
             <SESSION_ID> ext:sessionGroup ?original_session_group;
                          ext:sessionRole ?session_role.
             ?original_session_group ext:deeltBestuurVan/mu:uuid ?session_group.
 
-            FILTER( ?session_role = \"LoketLB-mandaatGebruiker\" )
+            FILTER( ?session_role IN( 
+                                      \"stadaalstlokaalmandatenbeheer-mandaatGebruiker\",
+                                      \"LoketLB-mandaatGebruiker\"
+                                    )
+                  )
+            BIND(\"LoketLB-mandaatGebruiker\" AS ?hardcoded_role)
           }")
 
 (grant (read)

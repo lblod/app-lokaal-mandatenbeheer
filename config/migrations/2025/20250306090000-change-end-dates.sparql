@@ -23,6 +23,6 @@ WHERE {
     FILTER(?mod > "2024-01-01T00:00:00Z"^^xsd:dateTime)
   }
   ?g ext:ownedBy ?someone.
-  BIND(bif:dateadd('second', -1, xsd:DateTime(?end)) AS ?newEnd)
+  BIND(xsd:dateTime(?end) - "1S"^^xsd:dayTimeDuration AS ?newEnd)
   BIND(NOW() AS ?now)
 }

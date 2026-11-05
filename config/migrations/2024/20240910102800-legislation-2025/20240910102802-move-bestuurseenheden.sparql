@@ -9,6 +9,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 PREFIX bestuursperiode: <http://data.lblod.info/id/concept/Bestuursperiode/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 # Werkingsgebieden
 INSERT {
@@ -22,7 +26,7 @@ WHERE {
       ?p ?o .
     FILTER (?p IN (mu:uuid, rdf:type, rdfs:label, ext:werkingsgebiedNiveau))
   }
-}
+};
 
 # Bestuurseenheden
 INSERT {
@@ -38,7 +42,7 @@ WHERE {
       ?p ?o .
     FILTER (?p IN (mu:uuid, rdf:type, skos:prefLabel, besluit:werkingsgebied, org:linkedTo))
   }
-}
+};
 
 # Bestuursorganen
 INSERT {

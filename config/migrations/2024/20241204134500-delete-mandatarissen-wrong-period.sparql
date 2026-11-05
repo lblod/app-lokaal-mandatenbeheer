@@ -77,4 +77,5 @@
       ?mandataris ?p ?o.
     }
     ?g ext:ownedBy ?org.
+    BIND(NOW() AS ?now)
   }

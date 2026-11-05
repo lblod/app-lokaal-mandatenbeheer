@@ -8,7 +8,6 @@ PREFIX lmb: <http://lblod.data.gift/vocabularies/lmb/>
 DELETE {
   GRAPH ?g {
     ?mandataris dct:modified ?modified .
-    ?mandataris mandaat:einde ?mandatarisEinde .
   }
 }
 INSERT {

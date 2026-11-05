@@ -24,4 +24,5 @@ INSERT {
     ?mandataris ?p ?o.
   }
   ?g ext:ownedBy ?something.
+  BIND(NOW() AS ?now)
 }

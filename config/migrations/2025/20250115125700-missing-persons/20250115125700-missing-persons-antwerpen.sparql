@@ -1,6 +1,8 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/temp/missing-persons> {
     ?persoon ext:neededInGraph ?g.

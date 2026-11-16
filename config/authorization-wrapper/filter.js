@@ -19,6 +19,8 @@ export async function isBasicAuthorized(user, key, _req) {
         a foaf:Agent;
         muAccount:key ${mu.sparqlEscapeString(key)};
         muAccount:canActOnBehalfOf <http://mu.semte.ch/vocabularies/ext/abb>.
+
+        <http://mu.semte.ch/vocabularies/ext/abb> mu:uuid ?organizationID .
     }
   `;
   const response = await mas.querySudo(checkLoginQuery);

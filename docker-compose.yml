@@ -383,9 +383,8 @@ services:
   locally-managed-ldes-client:
     image: lblod/ldes-client:0.0.5
     restart: unless-stopped
-    profiles:
-      - "disabled"
     environment:
+      CRON_PATTERN: "*/5 * * * *"
       WORKING_GRAPH: http://mu.semte.ch/graphs/locally-managed-tmp
       DIRECT_DATABASE_CONNECTION: "http://virtuoso:8890/sparql"
       RANDOMIZE_GRAPHS: true

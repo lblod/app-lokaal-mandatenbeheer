@@ -188,6 +188,7 @@
               ?session muAccount:canActOnBehalfOf/ext:isOCMWVoor/^<http://lblod.data.gift/vocabularies/lmb/heeftBestuurseenheid>/<http://lblod.data.gift/vocabularies/lmb/hasStatus> <http://data.lblod.info/id/concept/InstallatievergaderingStatus/a40b8f8a-8de2-4710-8d9b-3fc43a4b740e> .
               VALUES ?account {
                 <http://data.lblod.info/vendors/93d258bc-0ff5-464b-b405-db2d86c5ecda> # Centraal LMB
+                <http://data.lblod.info/vendors/1a062f67-0f07-4549-898f-7f6049445dfd> # Aalst Integration
               }
             }}
           }")

@@ -45,5 +45,3 @@ services:
     platform: linux/amd64
   ldes-delta-pusher:
     platform: linux/amd64
-  decision-ldes-client:
-    platform: linux/amd64

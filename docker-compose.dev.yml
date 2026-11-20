@@ -93,11 +93,6 @@ services:
     networks:
       - default
       - debug
-  decision-ldes-client:
-    restart: no
-    environment:
-      NODE_ENV: development
-      CRON_PATTERN: "* * * * *" # Every minute
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:
@@ -126,6 +121,6 @@ services:
     environment:
       DCR_START_FROM_DELTA_TIMESTAMP: "2025-01-01T00:00:00Z"
       DCR_SYNC_BASE_URL: "https://dev.organisaties.abb.lblod.info"
-      #DCR_CRON_PATTERN_DELTA_SYNC: '* * * * *' # this is every minute      
+      #DCR_CRON_PATTERN_DELTA_SYNC: '* * * * *' # this is every minute
   locally-managed-ldes-client:
     restart: "no"

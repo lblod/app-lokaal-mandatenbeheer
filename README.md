@@ -47,27 +47,18 @@ docker compose up -d # run without -d flag when you don't want to run it in the 
 Always double check the status of the migrations `docker compose logs -f --tail=100 migrations`
 Wait for everything to boot to ensure clean caches.
 
-Probably the first thing you'll want to do, is see wether the app is running correctly. The fastest way forward is creating adding this to your `docker-compose.override.yml`
 
-```yaml
-# (...)
-frontend:
-  ports:
-    - 4205:80
-```
-
-This way, you can directly connect to a built version of the frontend on port `4205`. Note, you might have conflicts because the port is already busy.
-you're free to change `4205` to whatever suits you.
+The app exposes the identifier on port 90, which results in the frontend being hosted there too (through the dispatcher). So just visiting http://localhost:90 should give you a working app locally.
 
 Once the migrations have ran, you can start developing your application by connecting the ember frontend application to this backend. See <https://github.com/lblod/frontend-lokaal-mandatenbeheer> for the corresponding frontend.
 
 ### Running on mac silicon
 
-Running the application on mac silicon can cause some troubles. For this reason an extra docker-compose file has been included, this is the file docker-compose.mac.yml, this file should be included when starting the stack. The command `docker-compose up -f docker-compose.yml -f docker-compose.dev.yml up -d` now becomes `docker compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.mac.yml up -d`
+Running the application on mac silicon can cause some troubles. For this reason an extra docker-compose file has been included, this is the file `docker-compose.mac.yml`, this file should be included when starting the stack. The command `docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d` now becomes `docker compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.mac.yml up -d`.
 There are two main pain points:
 
-1. Mac has an arm64 processor, a lot of the services don't have a multi-platform image. In the case they only have a amd64 image, docker will gave you a warning about this. In general this is not a real problem since your macbook can just emulate amd64, but still the warnings are annoying, so these are suppressed.
-2. At the moment this project was setup the service mu-identifier and mu-authorization weren't working for mac (at least on my device), so you have to build these yourself, and gave them the appropriate image name and tag.
+1. Mac has an arm64 processor, a lot of the services don't have a multi-platform image. In the case they only have a amd64 image, docker will give you a warning about this. In general this is not a real problem since your macbook can just emulate amd64, but still the warnings are annoying, so these are suppressed.
+2. At the moment this project was set up, the services `mu-identifier` and `mu-authorization` weren't working for mac (at least on my device), so you have to build these yourself, and give them the appropriate image name and tag.
 
 ### Cleaning the database
 
@@ -92,7 +83,7 @@ docker compose exec virtuoso isql-v
 mv data/db data/db.backup
 ```
 
-5. Remove the db folder if you wan to start from scratch **OPTIONAL**
+5. Remove the db folder if you want to start from scratch **OPTIONAL**
 
 ```bash
 rm -rf data/db
@@ -101,7 +92,7 @@ rm -rf data/db
 6. When you want to start from a database dump you can now add it as `data/db`
 
 ```bash
- cp -r _location-of-db-dump_/db /data/db
+cp -r _location-of-db-dump_/db ./data/db
 ```
 
 7. Start the stack again
@@ -117,16 +108,16 @@ Most of the time when doing active development you will be working on these serv
 
 In combination with the `docker-compose.override.yml` and the debug compose file in these services you can easily work on the stack.
 
-1. Kill the service you are working (or add a profile to it in the compose override)
-2. Run the `docker-compose -d` command in your local project of the service
+1. Kill the service you are working on (or add a profile to it in the compose override)
+2. Run the `docker compose up -d` command in your local project of the service
 
-> Note that we these debug compose files should not be added to other services as this is not the preferred way
+They have docker-compose files of their own that build their service and connect to the LMB network during development.
 
 ## Resources
 
 The models this app uses are:
 
-- [mandaten](http://data.vlaanderen.be/ns/mandaat)
+- [mandaat](http://data.vlaanderen.be/ns/mandaat)
 - [mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/)
 - [besluit-publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/)
 
@@ -144,7 +135,7 @@ The original application had a lot of migrations, these have been pruned to a te
 
 ## LDES
 
-This application uses LDES to share information with other applications, like the Vlaamse Mandatendatabank and Gelinkt Notuleren. Read more about it [here](docs/LDES.md).
+This application uses LDES to share information with other applications, like the Vlaamse Mandatendatabank and Gelinkt Notuleren. The documentation lives in the [LMB GitBook](https://github.com/lblod/gitbook-lokaal-mandatenbeheer/blob/master/algemene-informatie/system-overview/ldes.md).
 
 ## Vendor Sparql Access
 
@@ -199,9 +190,9 @@ virtuoso:
     - ./config/virtuoso/:/opt/virtuoso-scripts
 ```
 
-### delta-producer-report-generator
+### Reports
 
-Not all required parameters are provided, since deploy specific, see [report-generator](https://github.com/lblod/delta-producer-report-generator)
+The SHACL reports are generated by the `loket-report-generation-service` with the configuration in [`config/reports`](./config/reports/README.md). See the README there for the environment variables and for testing new shapes.
 
 ### deliver-email-service
 

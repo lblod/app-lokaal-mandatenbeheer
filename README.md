@@ -135,7 +135,7 @@ The original application had a lot of migrations, these have been pruned to a te
 
 ## LDES
 
-This application uses LDES to share information with other applications, like the Vlaamse Mandatendatabank and Gelinkt Notuleren. Read more about it [here](docs/LDES.md). The user-facing documentation lives in the [LMB GitBook](https://github.com/lblod/gitbook-lokaal-mandatenbeheer/blob/master/algemene-informatie/system-overview/ldes.md); the version in this repository is the application-specific design document.
+This application uses LDES to share information with other applications, like the Vlaamse Mandatendatabank and Gelinkt Notuleren. The documentation lives in the [LMB GitBook](https://github.com/lblod/gitbook-lokaal-mandatenbeheer/blob/master/algemene-informatie/system-overview/ldes.md).
 
 ## Vendor Sparql Access
 
